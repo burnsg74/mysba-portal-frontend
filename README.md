@@ -15,13 +15,6 @@
 ### TODO: A proper holding place for front end terraform.
 ** We recommend making a .terraform/ directory **
 
-### ./github-oidc
-
-Houses the OIDC GitHub Provider. The provider and IAM role created from this state is to be used with GitHub CI/CD.
-  - workspaces that are supported.
-    - lower
-    - upper
-
 ### Logging
 
 To satisfy SBA security & compliance requirements all `CloudFront`, `ELB` and `S3` access logs must be written to the accounts delegated `log` bucket. To ensure `access logs` are replicated, resources should be configured to write to the bucket in the lower & upper account. Logs in this bucket should be separated by prefixes for their respective resources, see the examples below.
