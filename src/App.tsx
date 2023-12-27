@@ -1,11 +1,31 @@
-import React from "react";
-import Counter from "./features/counter/Counter";
+// src/App.tsx
+import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
+import DashboardContainer from './views/DashboardContainer';
+import LoginPage from './components/LoginPage/LoginPage';
+import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
-function App(): JSX.Element {
+const App: React.FC = () => {
+  const isAuthenticated = true; // Replace with your actual authentication logic
+
   return (
-    <div className="App">
-      <Counter />
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/login" element={<LoginPage />} />
+        <Route 
+          path="/" 
+          element={
+            <ProtectedRoute isAuthenticated={isAuthenticated} redirectTo="/login">
+              <DashboardContainer />
+            </ProtectedRoute>
+          }
+        />
+      </Routes>
+    </Router>
   );
 }
 
