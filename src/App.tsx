@@ -10,7 +10,7 @@ import LoginPage from './components/LoginPage/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 
 const App: React.FC = () => {
-  const isAuthenticated = true; // Replace with your actual authentication logic
+  const isAuthenticated = true; // Replace with actual authentication logic
 
   return (
     <Router>
