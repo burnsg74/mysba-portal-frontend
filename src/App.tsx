@@ -6,20 +6,20 @@ import {
   Route
 } from 'react-router-dom';
 import DashboardContainer from './views/DashboardContainer';
-import LoginPage from './components/LoginPage/LoginPage';
 import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
+import LandingPage from './components/LandingPage/LandingPage'
 
 const App: React.FC = () => {
-  const isAuthenticated = true; // Replace with actual authentication logic
+  const isAuthenticated = true;
 
   return (
     <Router>
       <Routes>
-        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<LandingPage/>}></Route>
         <Route 
-          path="/" 
+          path="/user" 
           element={
-            <ProtectedRoute isAuthenticated={isAuthenticated} redirectTo="/login">
+            <ProtectedRoute isAuthenticated={isAuthenticated} redirectTo="/">
               <DashboardContainer />
             </ProtectedRoute>
           }
