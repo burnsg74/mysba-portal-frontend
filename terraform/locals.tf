@@ -1,7 +1,9 @@
 locals {
   all = {
     default = {
-      region = "us-east-1"
+      region          = "us-east-1"
+      sts_external_id = "65e13d1f-4d2d-43de-a285-a3531d8d4b4c"
+      principal_id    = "197857026523"
     }
     lower = {
       account_id = "474340895216"
@@ -16,13 +18,5 @@ locals {
     try(local.all[terraform.workspace], {})
   )
 
-  # GitHub OIDC Config
-  github = {
-    org = "USSBA"
-    repositories = [
-      # add future repositories to this list and reapply terraform.
-      "mysba-front-end",
-      "mysba-infrastructure",
-    ]
-  }
+  s3_bucket_name = "mysba-portal-frontend-dev"
 }

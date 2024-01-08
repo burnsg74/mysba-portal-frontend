@@ -3,8 +3,8 @@ terraform {
     bucket               = "mysba-terraform-remote-state"
     dynamodb_table       = "mysba-terraform-locktable-account"
     acl                  = "bucket-owner-full-control"
-    key                  = "frontend.tfstate"
+    key                  = "bootstrap.tfstate"
     region               = "us-east-1"
-    workspace_key_prefix = "frontend"
+    workspace_key_prefix = "bootstrap"
   }
 }

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import "./HEader.css"
+import "./Header.css"
 import { Header, NavDropDownButton, NavList } from "@trussworks/react-uswds";
 import SBALogo from "../../assets/SBA-Logo-Horizontal.png";
 import ListIcon from "../../assets/menu.svg";
@@ -12,7 +12,7 @@ const SBAHeader = () => {
     setExpanded((prevExpanded) => !prevExpanded);
   };
 
-  const handleLanguageChange = (event) => {
+  const handleLanguageChange = (event: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
     setLanguage(event.target.value);
   };
   return (
