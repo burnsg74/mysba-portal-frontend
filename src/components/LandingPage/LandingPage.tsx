@@ -4,7 +4,7 @@ import SBALogo from "../../assets/SBA-Logo-Horizontal.png";
 const LandingPage = () => {
   return (
     <div>
-      <header className="bg-gray-800 text-white text-center p-4 flex justify-between items-center">
+      <header className="bg-white text-black text-center p-4 flex justify-between items-center">
         <a href="/" title="Home" aria-label="Home">
           <img src={SBALogo} alt="Sweet Delights" className="h-8" />
         </a>
@@ -12,18 +12,6 @@ const LandingPage = () => {
           Sign In
         </button>
       </header>
-
-      <section className="hero bg-blue-100 p-8 text-center">
-        <h2 className="text-2xl font-bold">Welcome to MyApp</h2>
-        <p className="mt-4 text-gray-700">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur nec
-          diam nec lorem placerat elementum.
-        </p>
-        <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">
-          Get Started
-        </button>
-      </section>
-
       <section id="features" className="p-8">
         <h2 className="text-xl font-bold">Features</h2>
         <ul className="list-disc pl-5 mt-4">
