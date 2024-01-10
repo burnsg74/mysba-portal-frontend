@@ -1,11 +1,11 @@
 import React from 'react';
-import SBAHeader from '../components/Header/Header';
-import CustomSideNav from '../components/SideNav/SideNav';
+import MaterialHeader from '../components/Header/MaterialHeader';
+import CustomSideNav from '../components/SideNav/MaterialSideNav';
 
 const CertificationsContainer = () => {
   return (
     <div className="flex flex-col h-screen bg-white-100">
-      <SBAHeader />
+      <MaterialHeader />
       <div className="flex flex-1 overflow-hidden">
         <CustomSideNav />
         {/* Main content with left and right borders */}

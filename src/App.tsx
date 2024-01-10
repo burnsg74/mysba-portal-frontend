@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import DashboardContainer from './views/DashboardContainer';
 import LandingPage from './components/LandingPage/LandingPage'
@@ -32,7 +32,7 @@ const App: React.FC = () => {
     return (
         <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
             <Routes>
-                <Route path="/" element={<LandingPage/>}></Route>
+                <Route path="/" element={<LandingPage />}></Route>
                 <Route path="/login/callback" element={<LoginCallback loadingElement={<Loading/>}/>}/>
                 <Route element={<ProtectedRoute/>}>
                     <Route path="/dashboard" element={<DashboardContainer/>}/>

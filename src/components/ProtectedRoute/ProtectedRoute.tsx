@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {useOktaAuth} from '@okta/okta-react';
-import {Navigate, Outlet} from 'react-router-dom';
-import {useEffect, useState} from "react";
+import {Outlet} from 'react-router-dom';
+import {useEffect} from "react";
 
 interface ProtectedRouteProps {
     children?: React.ReactNode;
