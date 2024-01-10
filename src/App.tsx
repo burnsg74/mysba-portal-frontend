@@ -31,7 +31,7 @@ const App: React.FC = () => {
     <Router>
       <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
         <Routes>
-          <Route path="/" element={<LandingPage />} />
+          <Route path="/" element={<DashboardContainer />} />
           <Route path="/user" element={<RequiredAuth />}>
             <Route path="" element={<DashboardContainer />} />
           </Route>
