@@ -1,18 +1,24 @@
-import React, { ReactElement } from 'react';
-import { Navigate } from 'react-router-dom';
+import * as React from 'react';
+import {useOktaAuth} from '@okta/okta-react';
+import {Navigate, Outlet} from 'react-router-dom';
+import {useEffect, useState} from "react";
 
 interface ProtectedRouteProps {
-  isAuthenticated: boolean;
-  redirectTo: string;
-  children: ReactElement;
+    children?: React.ReactNode;
 }
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({
-  isAuthenticated,
-  redirectTo,
-  children,
-}): ReactElement => {
-  return isAuthenticated ? children : <Navigate to={redirectTo} replace />;
+const ProtectedRoute: React.FC<ProtectedRouteProps> = ({children}) => {
+    const {authState } = useOktaAuth();
+
+    useEffect(() => {
+        console.log("authState Changed: ", authState)
+        if (!authState || !authState.isAuthenticated) {
+            console.log("Not Auth ")
+            // return <Navigate to="/" replace/>;
+        }
+    }, [authState]);
+
+    return children ? children : <Outlet/>;
 };
 
 export default ProtectedRoute;

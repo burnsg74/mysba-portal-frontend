@@ -2,7 +2,7 @@ import React from 'react';
 import SBAHeader from '../components/Header/Header';
 import CustomSideNav from '../components/SideNav/SideNav';
 
-const DashboardContainer = () => {
+const BusinessesContainer = () => {
   return (
     <div className="flex flex-col h-screen bg-white-100">
       <SBAHeader />
@@ -11,11 +11,11 @@ const DashboardContainer = () => {
         {/* Main content with left and right borders */}
         <main className="flex-1 p-6 overflow-auto border-r border-l border-light-grey-border">
             {/* Main content */}
-            <h1>Dashboard</h1>
+            <h1>Businesses</h1>
         </main>
       </div>
     </div>
   );
 };
 
-export default DashboardContainer;
+export default BusinessesContainer;
