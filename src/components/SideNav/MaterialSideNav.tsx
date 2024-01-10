@@ -23,7 +23,7 @@ const CustomSideNav = () => {
         <Toolbar />
         <Box sx={{ overflow: 'auto' }}>
           <List>
-            {['Business Info', 'Certifications', 'Loans', 'People'].map((text, index) => (
+            {['Dashboard','Business', 'Certifications', 'Loans', 'People'].map((text, index) => (
               <ListItem key={text} disablePadding>
                 <ListItemButton>
                   <ListItemText primary={text} />

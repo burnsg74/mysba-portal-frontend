@@ -32,7 +32,7 @@ const App: React.FC = () => {
     return (
         <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
             <Routes>
-                <Route path="/" element={<LandingPage/>}></Route>
+                <Route path="/" element={<LandingPage />}></Route>
                 <Route path="/login/callback" element={<LoginCallback loadingElement={<Loading/>}/>}/>
                 <Route element={<ProtectedRoute/>}>
                     <Route path="/dashboard" element={<DashboardContainer/>}/>
