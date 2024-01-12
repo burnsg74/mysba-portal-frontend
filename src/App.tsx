@@ -14,19 +14,19 @@ import CertificationsContainer from "./views/CertificationsContainer";
 import LoansContainer from "./views/LoansContainer";
 import HelpContainer from "./views/HelpContainer";
 
+const oktaAuth = new OktaAuth({
+    clientId: '0oacsfgduKvV9LKa80j6',
+    issuer: 'https://sbadev.okta-gov.com/oauth2/default',
+    redirectUri: `${window.location.origin}/login/callback`,
+    postLogoutRedirectUri: `${window.location.origin}`,
+    scopes: ['openid', 'profile', 'email'],
+    pkce: true
+});
+
 const App: React.FC = () => {
     const navigate = useNavigate();
-    const oktaAuth = new OktaAuth({
-        clientId: '0oacsfgduKvV9LKa80j6',
-        issuer: 'https://sbadev.okta-gov.com/oauth2/default',
-        redirectUri: `${window.location.origin}/login/callback`,
-        postLogoutRedirectUri: `${window.location.origin}`,
-        scopes: ['openid', 'profile', 'email'],
-        pkce: true
-    });
-    console.log("oktaAuth: ", oktaAuth)
     const restoreOriginalUri = () => {
-        navigate('/dashboard')
+        navigate('/')
     };
 
     return (
