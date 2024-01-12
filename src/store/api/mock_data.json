@@ -1,66 +1,65 @@
 [
-    {
-      "id": 1,
-      "name": "Cindy Smith",
-      "contactInformation": {
-        "email": "cindysmith@spoonandharvest.com"
-      },
-      "attributes": {
-        "firstName": "Cindy",
-        "lastName": "Smith",
-        "address": "8189 Canary Street, Austin, Texas, 78703"
-      },
-      "preferences": {
-        "notifyAboutUpdates": true
-      },
-      "authentication": {
-        "username": "cindysmith",
-        "passwordHash": "EXAMPLE_HASHED_PASSWORD",
-        "passwordSalt": "EXAMPLE_SALT",
-        "lastLogin": "2024-01-02T08:30:00Z"
-      }
+  {
+    "id": 1,
+    "name": "Cindy Smith",
+    "contactInformation": {
+      "email": "cindysmith@spoonandharvest.com"
     },
-    {
-      "id": 2,
-      "name": "John Doe",
-      "contactInformation": {
-        "email": "johndoe@harvestgreens.com"
-      },
-      "attributes": {
-        "firstName": "John",
-        "lastName": "Doe",
-        "address": "902 Apple Blvd, Cupertino, California, 95014"
-      },
-      "preferences": {
-        "notifyAboutUpdates": false
-      },
-      "authentication": {
-        "username": "johndoe",
-        "passwordHash": "ANOTHER_EXAMPLE_HASHED_PASSWORD",
-        "passwordSalt": "ANOTHER_EXAMPLE_SALT",
-        "lastLogin": "2024-01-01T14:45:00Z"
-      }
+    "attributes": {
+      "firstName": "Cindy",
+      "lastName": "Smith",
+      "address": "8189 Canary Street, Austin, Texas, 78703"
     },
-    {
-      "id": 3,
-      "name": "Alice Johnson",
-      "contactInformation": {
-        "email": "alicejohnson@freshfarm.com"
-      },
-      "attributes": {
-        "firstName": "Alice",
-        "lastName": "Johnson",
-        "address": "47 Ocean Drive, Miami Beach, Florida, 33139"
-      },
-      "preferences": {
-        "notifyAboutUpdates": true
-      },
-      "authentication": {
-        "username": "alicejohnson",
-        "passwordHash": "YET_ANOTHER_EXAMPLE_HASHED_PASSWORD",
-        "passwordSalt": "YET_ANOTHER_EXAMPLE_SALT",
-        "lastLogin": "2024-01-03T11:00:00Z"
-      }
+    "preferences": {
+      "notifyAboutUpdates": true
+    },
+    "authentication": {
+      "username": "cindysmith",
+      "passwordHash": "EXAMPLE_HASHED_PASSWORD",
+      "passwordSalt": "EXAMPLE_SALT",
+      "lastLogin": "2024-01-02T08:30:00Z"
     }
-  ]
-  
+  },
+  {
+    "id": 2,
+    "name": "John Doe",
+    "contactInformation": {
+      "email": "johndoe@harvestgreens.com"
+    },
+    "attributes": {
+      "firstName": "John",
+      "lastName": "Doe",
+      "address": "902 Apple Blvd, Cupertino, California, 95014"
+    },
+    "preferences": {
+      "notifyAboutUpdates": false
+    },
+    "authentication": {
+      "username": "johndoe",
+      "passwordHash": "ANOTHER_EXAMPLE_HASHED_PASSWORD",
+      "passwordSalt": "ANOTHER_EXAMPLE_SALT",
+      "lastLogin": "2024-01-01T14:45:00Z"
+    }
+  },
+  {
+    "id": 3,
+    "name": "Alice Johnson",
+    "contactInformation": {
+      "email": "alicejohnson@freshfarm.com"
+    },
+    "attributes": {
+      "firstName": "Alice",
+      "lastName": "Johnson",
+      "address": "47 Ocean Drive, Miami Beach, Florida, 33139"
+    },
+    "preferences": {
+      "notifyAboutUpdates": true
+    },
+    "authentication": {
+      "username": "alicejohnson",
+      "passwordHash": "YET_ANOTHER_EXAMPLE_HASHED_PASSWORD",
+      "passwordSalt": "YET_ANOTHER_EXAMPLE_SALT",
+      "lastLogin": "2024-01-03T11:00:00Z"
+    }
+  }
+]
