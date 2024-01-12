@@ -1,19 +1,21 @@
-import { createSlice } from '@reduxjs/toolkit';
-import mock_data from "../api/mock_data.json"
-const initialState = mock_data
+import {createSelector, createSlice} from '@reduxjs/toolkit';
+import {RootState} from "../store";
+const initialState = {}
 
 export const userSlice = createSlice({
-  name: 'users',
+  name: 'user',
   initialState,
   reducers: {
-    // Define reducers here as needed, for example:
-    addUser: (state, action) => {
-      state.push(action.payload);
+    setUser: (state, action) => {
+      return action.payload;
     },
-    // ...other reducers like deleteUser, updateUser, etc.
   },
 });
 
-export const { addUser } = userSlice.actions;
+export const { setUser } = userSlice.actions;
+export const getUser = createSelector(
+    (state: RootState) => state.user,
+    (user) => user
+)
 
 export default userSlice.reducer;
