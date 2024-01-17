@@ -3,12 +3,10 @@ import {useOktaAuth} from '@okta/okta-react';
 import {Outlet} from 'react-router-dom';
 import {useEffect} from "react";
 import {useNavigate} from 'react-router-dom';
+import Layout from "src/components/Layout/Layout";
 
-interface ProtectedRouteProps {
-    children?: React.ReactNode;
-}
 
-const ProtectedRoute: React.FC<ProtectedRouteProps> = ({children}) => {
+const ProtectedRoute = () => {
     const {authState} = useOktaAuth();
     const navigate = useNavigate();
 
@@ -16,7 +14,12 @@ const ProtectedRoute: React.FC<ProtectedRouteProps> = ({children}) => {
         if (!authState || !authState.isAuthenticated) return navigate("/");
     }, [authState]);
 
-    return children ? children : <Outlet/>;
+
+    return <>
+        <Layout>
+            <Outlet/>
+        </Layout>
+    </>;
 };
 
 export default ProtectedRoute;

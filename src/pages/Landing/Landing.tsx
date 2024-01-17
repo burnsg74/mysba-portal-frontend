@@ -1,12 +1,12 @@
-import {UserClaims} from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
-import {setUser} from '../../store/user/userSlice';
 import {useDispatch} from 'react-redux';
 import {useEffect} from 'react';
 import {useNavigate} from 'react-router-dom';
+import {UserClaims} from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
+import {setUser} from 'src/store/user/userSlice';
 import {useOktaAuth} from '@okta/okta-react';
 
 let isWaitingForOktaSign = false;
-const LandingPage = () => {
+const Landing = () => {
     const USER_DATA_API = 'https://hgoxmkqll5.execute-api.us-east-1.amazonaws.com/dev/get-user-data';
     const navigate = useNavigate();
     const dispatch = useDispatch();
@@ -33,7 +33,6 @@ const LandingPage = () => {
     useEffect(() => {
         if (!authState && isWaitingForOktaSign) return;
         if (!authState || !authState.isAuthenticated) {
-
             signIn();
         } else {
             oktaAuth.getUser()
@@ -45,7 +44,11 @@ const LandingPage = () => {
                 }
             );
         }
-    }, [oktaAuth, authState]);
+    }, [oktaAuth, authState, signIn, dispatch, navigate]);
+
+    useEffect(() => {
+        navigate('/dashboard');
+    }, [navigate]);
 
 
     return null;
@@ -64,4 +67,4 @@ const LandingPage = () => {
     // );
 };
 
-export default LandingPage;
+export default Landing;

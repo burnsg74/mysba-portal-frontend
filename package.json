@@ -8,19 +8,15 @@
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\""
   },
   "dependencies": {
-    "@emotion/react": "^11.11.3",
-    "@emotion/styled": "^11.11.0",
-    "@mui/icons-material": "^5.15.4",
-    "@mui/material": "^5.15.4",
     "@okta/okta-auth-js": "^7.5.0",
     "@okta/okta-react": "^6.7.0",
     "@reduxjs/toolkit": "^1.9.7",
+    "@uswds/uswds": "^3.7.1",
     "@vitejs/plugin-react": "^3.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.3",
-    "react-router-dom": "^6.21.1",
-    "uswds": "^2.14.0"
+    "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.47",
@@ -29,13 +25,13 @@
     "@typescript-eslint/parser": "^5.62.0",
     "@vitejs/plugin-react-refresh": "^1.3.6",
     "autoprefixer": "^10.4.16",
+    "esbuild": "^0.19.11",
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
-    "vite": "^4.5.1",
-    "esbuild": "^0.19.11"
+    "vite": "^4.5.1"
   }
 }
