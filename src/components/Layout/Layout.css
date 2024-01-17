@@ -1,0 +1,10 @@
+.side-nav {
+    height: 100vh;
+    margin-left: 10px;
+    border-right: 1px solid lightgray;
+    width: 200px;
+}
+
+.main-content {
+    padding: 10px;
+}
