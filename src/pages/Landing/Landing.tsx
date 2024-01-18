@@ -24,13 +24,13 @@ const Landing = () => {
         return await response.json();
     }
 
-    const signIn = async () => {
-        dispatch(setUser(null));
-        isWaitingForOktaSign = true;
-        await oktaAuth.signInWithRedirect();
-    };
-
     useEffect(() => {
+        const signIn = async () => {
+            dispatch(setUser(null));
+            isWaitingForOktaSign = true;
+            await oktaAuth.signInWithRedirect();
+        };
+
         if (!authState && isWaitingForOktaSign) return;
         if (!authState || !authState.isAuthenticated) {
             signIn();
@@ -44,7 +44,7 @@ const Landing = () => {
                 }
             );
         }
-    }, [oktaAuth, authState, signIn, dispatch, navigate]);
+    }, [oktaAuth, authState, dispatch, navigate]);
 
     useEffect(() => {
         navigate('/dashboard');
