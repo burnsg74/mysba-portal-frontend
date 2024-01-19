@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from "react-router-dom";
-
+import './SideNav.css'
 const SideNav = () => {
     const NAVIGATION_LINKS = [
         {
@@ -31,7 +31,7 @@ const SideNav = () => {
                     {NAVIGATION_LINKS.map((item, index) =>
                         <li key={index}
                             className={`usa-sidenav__item ${item.url === window.location.pathname ? 'usa-current' : ''}`}>
-                            <Link to={item.url}   className="side-nav-link" >{item.name}</Link>
+                            <Link to={item.url}  className="side-nav-link" >{item.name}</Link>
                         </li>
                     )}
                 </ul>

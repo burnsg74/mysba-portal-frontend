@@ -1,0 +1,114 @@
+.banner {
+    position: relative;
+    height: 280px;
+    padding-top: 10px;
+    background-color: #F3F8FC;
+    color: var(--sba-blue, #002E6D);
+}
+
+.welcome-message {
+    color: var(--sba-blue, #002E6D);
+    text-align: center;
+    padding-top: 5px;
+}
+
+.mysba-message {
+    color: var(--sba-blue, #002E6D);
+    text-align: center;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.dashboard-container {
+    flex: 1;
+    border-left: 2px solid gray;
+    margin-left: 10px;
+}
+
+.cityscape {
+    /*position: absolute;*/
+    z-index: 2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    height: 20vh;
+}
+
+.dashboard-right-content__title {
+    font-size: 24px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 28px;
+}
+
+.sun {
+    overflow: hidden;
+    /*position: absolute;*/
+    z-index: 1;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    border-radius: 50% 50% 0 0;
+    background-color: #FEE685;
+    width: 20vw;
+    height: 10vw;
+}
+
+.dashboard-alert {
+    margin-right: 20px;
+    margin-left: 20px;
+}
+
+.dashboard-content {
+    margin: 30px;
+    color: var(--sba-blue, #002E6D);
+}
+
+.sba-blue {
+    color: var(--sba-blue, #002E6D);
+}
+
+.certifications-header__link {
+    text-align: right;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
+    padding-right: 10px;
+    font-family: "Public Sans-Regular", Helvetica, serif;
+    color: #002e6d;
+}
+
+.dashboard-usa-card__header {
+    background: rgba(165, 198, 224, 0.20);
+}
+
+.usa-card__header {
+    padding: 20px;
+}
+
+.right-container {
+    width: 350px;
+}
+
+.business__icon {
+    padding-right: 20px;
+}
+
+.cert-header__row {
+    margin-bottom: 20px;
+}
+
+.certifications {
+    font-family: "Source Sans Pro-Regular", Helvetica, serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 22px;
+    letter-spacing: 0;
+    margin-left: 10px;
+}

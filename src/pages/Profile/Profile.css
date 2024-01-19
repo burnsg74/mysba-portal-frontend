@@ -1,0 +1,63 @@
+.usa-panel {
+  padding: 40px;
+}
+
+.usa-form label {
+  margin-top: 24px;
+}
+
+.usa-button {
+  margin-top: 24px;
+}
+
+.profile-name {
+  color: #002e6d;
+  font-size: 36px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 600;
+  word-wrap: break-word;
+}
+
+.profile-subheading {
+  color: #002e6d;
+  font-size: 20px;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 400;
+  line-height: 24px;
+  word-wrap: break-word;
+}
+
+.profile-label {
+  color: #002e6d;
+  font-size: 18px;
+  font-family: "Source Sans 3", sans-serif;
+  font-weight: 600;
+  line-height: 22px;
+  word-wrap: break-word;
+}
+
+.profile-info {
+  color: #002e6d;
+  font-size: 16px;
+  font-family: "Public Sans", sans-serif;
+  font-weight: 400;
+  line-height: 18px;
+  word-wrap: break-word;
+}
+
+.updates-label {
+  color: black;
+  font-size: 15px;
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  word-wrap: break-word;
+}
+
+.usa-checkbox__input:checked + .usa-checkbox__label::before {
+  background-color: #007dbc;
+  border-color: #007dbc;
+}
+
+.checkbox{
+    padding-bottom: 24px;
+}

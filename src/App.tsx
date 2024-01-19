@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {OktaAuth} from '@okta/okta-auth-js';
 import {Security} from '@okta/okta-react';
 import {LoginCallback} from '@okta/okta-react';
+import Error from "src/pages/Error/Error";
 import Businesses from "src/pages/Businesses/Businesses";
 import Certifications from "src/pages/Certifications/Certifications";
 import Dashboard from 'src/pages/Dashboard/Dashboard';
@@ -35,6 +36,7 @@ const App: React.FC = () => {
             <Routes>
                 <Route path="/" element={<Landing />}></Route>
                 <Route path="/login/callback" element={<LoginCallback loadingElement={<Loading/>}/>}/>
+                <Route path="/error" element={<Error />}></Route>
                 <Route element={<ProtectedRoute/>}>
                     <Route path="/dashboard" element={<Dashboard/>}/>
                     <Route path="/profile" element={<Profile/>}/>
