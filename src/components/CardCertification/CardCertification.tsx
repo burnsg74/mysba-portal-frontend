@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "src/components/CardCertification/CardCertification.module.css";
 
 interface CardCertificationProps {
-    certification: Certification;
+    certification: ICertification;
 }
 
 const CardCertification: React.FC<CardCertificationProps> = ({certification}) => {
@@ -40,7 +40,7 @@ const CardCertification: React.FC<CardCertificationProps> = ({certification}) =>
                             <svg className="usa-icon " aria-hidden="true"
                                  focusable="false" role="img">
                                 <use
-                                    xlinkHref="/node_modules/@uswds/uswds/dist/img/sprite.svg#warning"></use>
+                                    xlinkHref="/assets/img/sprite.svg#warning"></use>
                             </svg>
                             Renew in 90 Days
                         </div>

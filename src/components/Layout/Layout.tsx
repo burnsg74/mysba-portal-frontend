@@ -1,10 +1,13 @@
 import React from 'react';
 import Header from 'src/components/Header/Header';
 import SideNav from 'src/components/SideNav/SideNav';
-import {Outlet} from "react-router-dom";
 import 'src/components/Layout/Layout.css';
 
-const Layout = () => {
+type LayoutProps = {
+    children: React.ReactNode;
+};
+
+const Layout: React.FC<LayoutProps> = ({ children })  => {
     return (
         <>
             <div className="grid-row">
@@ -17,7 +20,7 @@ const Layout = () => {
                     <SideNav/>
                 </div>
                 <main className="grid-col main-content">
-                    <Outlet/>
+                    {children}
                 </main>
             </div>
         </>

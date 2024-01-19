@@ -26,7 +26,7 @@ const Businesses = () => {
                                                  focusable="false"
                                                  role="img">
                                                 <use
-                                                    xlinkHref="/node_modules/@uswds/uswds/dist/img/sprite.svg#store"></use>
+                                                    xlinkHref="/assets/img/sprite.svg#store"></use>
                                             </svg>
                                         </div>
                                         <div className="grid-col">

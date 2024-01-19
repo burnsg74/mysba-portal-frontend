@@ -4,6 +4,9 @@ interface IUserProfile {
 
 interface IBusiness {
     name: string;
+    type: string;
+    uei: string;
+    ein: string;
 }
 
 interface ICertification {
@@ -18,12 +21,7 @@ interface IUser {
     certifications?: ICertification[];
 }
 
-interface Certification {
-    name: string;
-    company_name: string;
-    number: string;
-}
 
-interface CardCertificationProps {
-    certification: Certification;
+interface ICardCertificationProps {
+    certification: ICertification;
 }

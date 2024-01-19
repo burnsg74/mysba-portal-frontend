@@ -12,7 +12,7 @@ const ProtectedRoute = () => {
 
     useEffect(() => {
         if (!authState || !authState.isAuthenticated) return navigate("/");
-    }, [authState]);
+    }, [authState, navigate]);
 
 
     return <>

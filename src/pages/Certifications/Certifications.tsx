@@ -29,7 +29,7 @@ const Certifications = () => {
                         <button
                             type="button"
                             className="usa-button usa-button--secondary"
-                            disabled="disabled"
+                            disabled={true}
                         >
                             Link a Certification
                         </button>
@@ -73,7 +73,7 @@ const Certifications = () => {
                                                     <svg className="usa-icon " aria-hidden="true"
                                                          focusable="false" role="img">
                                                         <use
-                                                            xlinkHref="/node_modules/@uswds/uswds/dist/img/sprite.svg#warning"></use>
+                                                            xlinkHref="/assets/img/sprite.svg#warning"></use>
                                                     </svg>
                                                     Renew in 90 Days
                                                 </div>
