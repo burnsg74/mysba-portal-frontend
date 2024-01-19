@@ -18,7 +18,7 @@ const Help = () => {
                                 Who do I call for help?
                             </button>
                         </h4>
-                        <div id="a1" className="usa-accordion__content usa-prose">
+                        <div id="a1" className="usa-accordion__content usa-prose" hidden>
                             <p>
                                 Congress shall make no law respecting an establishment of religion, or
                                 prohibiting the free exercise thereof; or abridging the freedom of speech,
@@ -36,7 +36,7 @@ const Help = () => {
                                 What is better star trek or star wars?
                             </button>
                         </h4>
-                        <div id="a2" className="usa-accordion__content usa-prose">
+                        <div id="a2" className="usa-accordion__content usa-prose" hidden>
                             <p>
                                 A well regulated Militia, being necessary to the security of a free State,
                                 the right of the people to keep and bear Arms, shall not be infringed.

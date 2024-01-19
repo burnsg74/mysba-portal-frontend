@@ -17,9 +17,12 @@ const Businesses = () => {
                         <React.Fragment key={index}>
                             <div className="usa-card__container">
                                 <div className={`usa-card__header ${styles['card__header']}`}>
-                                    <div className="grid-row">
-                                        <div className="grid-col-auto">
-                                            <svg className="usa-icon text-middle pe-10" aria-hidden="true"
+                                    <div className={`grid-row ${styles['card__text']}`}>
+                                        <div  className={`grid-col-auto ${styles['store_icon']}`}>
+                                            <svg
+                                                 height="40"
+                                                 width="40"
+                                                 aria-hidden="true"
                                                  focusable="false"
                                                  role="img">
                                                 <use
@@ -28,9 +31,6 @@ const Businesses = () => {
                                         </div>
                                         <div className="grid-col">
                                             <h2 className="usa-card__heading sba-blue text-middle">{business.name} </h2>
-                                        </div>
-                                        <div className="grid-col-auto">
-                                        <button type="button" className="usa-button">Details</button>
                                         </div>
                                     </div>
                                 </div>
