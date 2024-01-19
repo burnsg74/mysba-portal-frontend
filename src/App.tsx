@@ -36,7 +36,6 @@ const App: React.FC = () => {
             <Routes>
                 <Route path="/" element={<Landing />}></Route>
                 <Route path="/login/callback" element={<LoginCallback loadingElement={<Loading/>}/>}/>
-                <Route path="/error" element={<Error />}></Route>
                 <Route element={<ProtectedRoute/>}>
                     <Route path="/dashboard" element={<Dashboard/>}/>
                     <Route path="/profile" element={<Profile/>}/>

@@ -1,0 +1,47 @@
+.container {
+    margin: 40px;
+}
+
+.title__row {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.title {
+    font-family: "Source Sans Pro-Regular", Helvetica, serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 40px;
+    letter-spacing: 0;
+}
+
+.badge {
+    background: var(--warningwarning-lighter, #FAF3D1);
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px 20px 5px 12px;
+    position: relative;
+    background-color: var(--warningwarning-lighter);
+    border-radius: 34px;
+    overflow: hidden;
+    border: 2px solid;
+    border-color: var(--warningwarning);
+
+}
+
+.card__header {
+    background: rgba(165, 198, 224, 0.20);
+}
+
+.card__text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--sba-blue, #002E6D);
+}
+
+.store_icon {
+    color: var(--sba-blue, #002E6D);
+    margin-right: 20px;
+}

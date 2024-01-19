@@ -1,0 +1,35 @@
+.title {
+    font-family: "Source Sans Pro-Regular", Helvetica, serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+.title__img {
+    margin-top: 50px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title__text {
+    margin-bottom: 20px;
+    font-family: "Source Sans Pro-Regular", Helvetica, serif;
+    font-weight: 400;
+    /*color: transparent;*/
+    font-size: 22px;
+    text-align: center;
+    max-width: 600px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.title__btn {
+    text-align: center;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}

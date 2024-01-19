@@ -1,0 +1,95 @@
+.container {
+    width: 390px;
+    padding: 10px;
+    border-left: 1px solid lightgray;
+}
+
+.header-label {
+    font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.title {
+    font-family: "Source Sans Pro-SemiBold", Helvetica, sans-serif;
+    font-weight: 600;
+    color: #002e6d;
+    font-size: 22px;
+    letter-spacing: -0.3px;
+}
+
+.description {
+    font-family: "Source Sans Pro-SemiBold", Helvetica, sans-serif;
+    font-weight: 400;
+    color: #565c65;
+    font-size: 17px;
+    letter-spacing: 0;
+}
+
+.video-title {
+    font-weight: 700;
+    color: #002e6d;
+}
+
+.video-subtitle {
+    font-family: "Source Sans Pro-Italic", Helvetica, serif;
+    font-style: italic;
+    color: #565c65;
+    font-size: 15px;
+}
+
+.header-label {
+    font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 17px;
+    letter-spacing: 0;
+    line-height: normal;
+}
+
+.video-container {
+    padding: 16px;
+    border-bottom: 1px solid var(--basebase-lighter, #DCDEE0);
+}
+
+.header-sba_logo {
+    height: 20px;
+}
+
+.header-launch-href {
+    text-decoration: none;
+    color: unset;
+    height: 20px;
+}
+
+.content-image {
+    width: 350px;
+    height: 358px;
+}
+
+.video-href {
+    text-decoration: none;
+    color: unset;
+}
+
+.video-row {
+    display: flex;
+    align-items: center;
+}
+
+.video-icon {
+    height: 40px;
+    margin-right: 10px;
+}
+
+.next-icon {
+    height: 20px;
+    margin-left: 10px;
+}
+
+.usa-card__heading {
+    padding: 0.5rem;
+}
