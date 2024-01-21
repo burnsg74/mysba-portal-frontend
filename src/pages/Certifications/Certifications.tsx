@@ -62,8 +62,7 @@ const Certifications = () => {
 
                                                 </div>
                                                 <div className="grid-col-auto">
-                                                    <button type="button" className="usa-button">Details
-                                                    </button>
+                                                    <Link to={`/certification/${certification.id}`} className="usa-button">Details</Link>
                                                 </div>
                                             </div>
                                         </div>

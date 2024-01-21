@@ -3,6 +3,7 @@ interface IUserProfile {
 }
 
 interface IBusiness {
+    id: string;
     name: string;
     type: string;
     uei: string;
@@ -10,9 +11,14 @@ interface IBusiness {
 }
 
 interface ICertification {
+    id: string;
     name: string;
     company_name: string;
     number: number;
+    issue_at: string;
+    expire_at: string;
+    owner: string;
+    system: string;
 }
 
 interface IUser {

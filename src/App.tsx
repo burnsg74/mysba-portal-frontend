@@ -14,6 +14,7 @@ import Loading from "src/pages/Loading/Loading";
 import Loans from "src/pages/Loans/Loans";
 import Profile from "src/pages/Profile/Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
+import CertificationView from "src/pages/CertificationView/CertificationView";
 
 // @TODO Move this to a config file
 const oktaAuth = new OktaAuth({
@@ -41,6 +42,7 @@ const App: React.FC = () => {
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/businesses" element={<Businesses/>}/>
                     <Route path="/certifications" element={<Certifications/>}/>
+                    <Route path="/certification/:id" element={<CertificationView/>}/>
                     <Route path="/loans" element={<Loans/>}/>
                     <Route path="/help" element={<Help/>}/>
                 </Route>

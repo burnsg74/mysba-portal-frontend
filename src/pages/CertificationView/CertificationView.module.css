@@ -1,0 +1,54 @@
+.container {
+    margin: 40px;
+}
+
+.title-banner {
+    align-items: center;
+    gap: 10px 10px;
+    padding: 20px 40px;
+    position: relative;
+    background-color: #d9e8f666;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
+}
+
+.title {
+    font-family: "Source Sans Pro-Regular", Helvetica, serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: 38.4px;
+}
+
+.title-icon {
+    margin-right: 10px;
+}
+
+.subtitle {
+    font-family: "Public Sans-Regular", Helvetica, serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.badge {
+    background: var(--warningwarning-lighter, #FAF3D1);
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 5px 20px 5px 12px;
+    position: relative;
+    background-color: var(--warningwarning-lighter);
+    border-radius: 34px;
+    overflow: hidden;
+    border: 2px solid;
+    border-color: var(--warningwarning);
+
+}
+
