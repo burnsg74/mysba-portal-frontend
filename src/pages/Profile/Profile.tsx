@@ -1,5 +1,6 @@
 import React from "react";
 import {useOktaAuth} from "@okta/okta-react";
+import styles from "src/pages/Profile/Profile.module.css";
 
 const Profile = () => {
     const {oktaAuth} = useOktaAuth();
@@ -18,14 +19,14 @@ const Profile = () => {
     return (
         <div className="usa-section">
             <div className="grid-container">
-                <h1 className="profile-name">{profileData.name}</h1>
-                <h2 className="profile-subheading">Contact Information</h2>
-                <p className="profile-label">Email</p>
-                <p className="profile-info">{profileData.email}</p>
-                <p className="profile-label">First Name</p>
-                <p className="profile-info">{profileData.given_name}</p>
-                <p className="profile-label">Last Name</p>
-                <p className="profile-info">{profileData.family_name}</p>
+                <h1 className={`${styles['profile-name']}`}>{profileData.name}</h1>
+                <h2 className={`${styles['profile-subheading']}`}>Contact Information</h2>
+                <p className={`${styles['profile-label']}`}>Email</p>
+                <p className={`${styles['profile-info']}`}>{profileData.email}</p>
+                <p className={`${styles['profile-label']}`}>First Name</p>
+                <p className={`${styles['profile-info']}`}>{profileData.given_name}</p>
+                <p className={`${styles['profile-label']}`}>Last Name</p>
+                <p className={`${styles['profile-info']}`}>{profileData.family_name}</p>
                 <div className="usa-checkbox checkbox">
                     <input
                         id="updates"
