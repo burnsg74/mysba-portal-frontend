@@ -4,7 +4,6 @@ import {useNavigate} from 'react-router-dom';
 import {OktaAuth} from '@okta/okta-auth-js';
 import {Security} from '@okta/okta-react';
 import {LoginCallback} from '@okta/okta-react';
-import Error from "src/pages/Error/Error";
 import Businesses from "src/pages/Businesses/Businesses";
 import Certifications from "src/pages/Certifications/Certifications";
 import Dashboard from 'src/pages/Dashboard/Dashboard';
@@ -15,6 +14,7 @@ import Loans from "src/pages/Loans/Loans";
 import Profile from "src/pages/Profile/Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CertificationView from "src/pages/CertificationView/CertificationView";
+import { useTranslation } from 'react-i18next';
 
 // @TODO Move this to a config file
 const oktaAuth = new OktaAuth({
@@ -31,6 +31,9 @@ const App: React.FC = () => {
     const restoreOriginalUri = () => {
         navigate('/')
     };
+    const { i18n } = useTranslation();
+
+    // i18n.changeLanguage('es'); // Changes language to French
 
     return (
         <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>

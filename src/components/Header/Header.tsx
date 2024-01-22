@@ -7,12 +7,23 @@ import USFlag from "/node_modules/@uswds/uswds/dist/img/us_flag_small.png";
 import DotGov from "/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg";
 import HttpsIcon from "/node_modules/@uswds/uswds/dist/img/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";
+import { useTranslation } from 'react-i18next';
 
 const Header = () => {
     const {oktaAuth} = useOktaAuth();
+    const detectedLang: string = (navigator.language || navigator.userLanguage).substring(0, 2);
+    const [lang, setLang] = useState(localStorage.getItem('lang') || detectedLang || 'en');
+    const { i18n } = useTranslation();
     const logout = async () => {
         await oktaAuth.signOut();
     };
+
+    const switchLanguage = () => {
+        const newLang = lang === 'en' ? 'es' : 'en';
+        setLang(newLang);
+        localStorage.setItem('lang', newLang);
+        i18n.changeLanguage(newLang);
+    }
 
     return (
         <>
@@ -129,14 +140,14 @@ const Header = () => {
                     </div>
                     <nav role="navigation" className="usa-nav">
                         <div className="usa-language-container">
-                            <button type="button" className="usa-button" role="button">
-                                <span lang="es">Español</span>
+                            <button type="button" className="usa-button" role="button" onClick={switchLanguage}>
+                                <span lang={lang === 'en' ? 'es' : 'en'}>{lang === 'en' ? 'Español' : 'English'}</span>
                             </button>
                         </div>
                         <div className="usa-nav__inner">
                             <ul className="usa-nav__primary usa-accordion">
                                 <li className="usa-nav__primary-item">
-                                    <button
+                                <button
                                         className={`usa-accordion__button usa-nav__link pill-button ${styles['pill-button']}`}
                                         aria-expanded="false"
                                         aria-controls="basic-nav-section-one"

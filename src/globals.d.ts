@@ -1,3 +1,6 @@
+import Field from "src/components/Field/Field";
+import React from "react";
+
 interface IUserProfile {
     first_name: string;
 }
@@ -8,6 +11,10 @@ interface IBusiness {
     type: string;
     uei: string;
     ein: string;
+    mailing_address: string;
+    business_address: string;
+    phone_number: string;
+    fax: string;
 }
 
 interface ICertification {

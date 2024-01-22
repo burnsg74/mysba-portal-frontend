@@ -6,7 +6,7 @@ interface Props {
     value: string;
 }
 
-const MyComponent: React.FC<Props> = ({label, value}) => {
+const Field: React.FC<Props> = ({label, value}) => {
     return (
         <div className={`${styles['row']}`}>
             <div className={`${styles['label']}`}>
@@ -19,4 +19,4 @@ const MyComponent: React.FC<Props> = ({label, value}) => {
     );
 }
 
-export default MyComponent;
+export default Field;

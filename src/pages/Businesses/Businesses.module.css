@@ -15,6 +15,17 @@
     letter-spacing: 0;
 }
 
+.subtitle {
+    font-family: "Public Sans-Regular", Helvetica, serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 24px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
 .badge {
     background: var(--warningwarning-lighter, #FAF3D1);
     align-items: center;
@@ -44,4 +55,9 @@
 .store_icon {
     color: var(--sba-blue, #002E6D);
     margin-right: 20px;
+}
+
+.toggle__icon {
+    width: 30px;
+    height: 30px;
 }

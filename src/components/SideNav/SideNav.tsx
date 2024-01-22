@@ -1,7 +1,9 @@
 import React from 'react';
 import {Link} from "react-router-dom";
+import { useTranslation } from 'react-i18next';
 
 const SideNav = () => {
+    const { t } = useTranslation();
     const NAVIGATION_LINKS = [
         {
             "name": "Dashboard",
@@ -31,7 +33,7 @@ const SideNav = () => {
                     {NAVIGATION_LINKS.map((item, index) =>
                         <li key={index}
                             className={`usa-sidenav__item ${item.url === window.location.pathname ? 'usa-current' : ''}`}>
-                            <Link to={item.url} className="side-nav-link">{item.name}</Link>
+                            <Link to={item.url} className="side-nav-link">{t(item.name)}</Link>
                         </li>
                     )}
                 </ul>
