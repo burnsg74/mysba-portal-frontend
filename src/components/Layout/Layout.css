@@ -5,3 +5,9 @@
     width: 200px;
 }
 
+@media screen and (max-width: 768px) {
+    .side-nav {
+        display: none;
+    }
+}
+

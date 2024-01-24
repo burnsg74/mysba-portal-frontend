@@ -7,7 +7,7 @@ import USFlag from "/node_modules/@uswds/uswds/dist/img/us_flag_small.png";
 import DotGov from "/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg";
 import HttpsIcon from "/node_modules/@uswds/uswds/dist/img/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";
-
+import MenuIcon from "src/assets/menu.svg"
 const Header = () => {
     const {oktaAuth} = useOktaAuth();
     const logout = async () => {
@@ -157,6 +157,13 @@ const Header = () => {
                                             </li>
                                         </ul>
                                     </div>
+                                    <button
+                                        className={`usa-accordion__button usa-nav__link pill-button ${styles['pill-button']}`}
+                                        aria-expanded="false"
+                                        aria-controls="al"
+                                    >
+                                        <img src={MenuIcon} alt="Menu"/>
+                                    </button>
                                 </li>
                             </ul>
                         </div>
