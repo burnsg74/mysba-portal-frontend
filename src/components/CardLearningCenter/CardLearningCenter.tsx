@@ -27,7 +27,8 @@ const CardLearningCenter = () => {
 
     return (
         <div className={`${styles['container']}`}>
-            <div className={`${styles['title']}`}>Resources for you</div>
+            <div className={`${styles['title']}`}>Resources for you
+            </div>
             <hr/>
             <div className="usa-card__container">
                 <div className="usa-card__header">
@@ -44,7 +45,7 @@ const CardLearningCenter = () => {
                                    rel="noopener noreferrer">
                                     <svg className="usa-icon" aria-hidden="true" focusable="false" role="img">
                                         <use
-                                            xlinkHref="/node_modules/@uswds/uswds/dist/img/sprite.svg#launch"></use>
+                                            xlinkHref="/assets/img/sprite.svg#launch"></use>
                                     </svg>
                                 </a>
                             </div>

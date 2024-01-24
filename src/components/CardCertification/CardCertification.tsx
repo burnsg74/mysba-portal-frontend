@@ -1,8 +1,9 @@
 import React from 'react';
 import styles from "src/components/CardCertification/CardCertification.module.css";
+import {Link} from "react-router-dom";
 
 interface CardCertificationProps {
-    certification: Certification;
+    certification: ICertification;
 }
 
 const CardCertification: React.FC<CardCertificationProps> = ({certification}) => {
@@ -30,7 +31,7 @@ const CardCertification: React.FC<CardCertificationProps> = ({certification}) =>
                             <h2 className="usa-card__heading sba-blue text-middle"> {certification.name}</h2>
                         </div>
                         <div className="grid-col-auto">
-                            <button type="button" className="usa-button">Details</button>
+                            <Link to={`/certification/${certification.id}`} className="usa-button">Details</Link>
                         </div>
                     </div>
                 </div>
@@ -40,7 +41,7 @@ const CardCertification: React.FC<CardCertificationProps> = ({certification}) =>
                             <svg className="usa-icon " aria-hidden="true"
                                  focusable="false" role="img">
                                 <use
-                                    xlinkHref="/node_modules/@uswds/uswds/dist/img/sprite.svg#warning"></use>
+                                    xlinkHref="/assets/img/sprite.svg#warning"></use>
                             </svg>
                             Renew in 90 Days
                         </div>

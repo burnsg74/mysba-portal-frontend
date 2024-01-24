@@ -42,7 +42,7 @@ const Dashboard = () => {
                                 <svg className="usa-icon text-middle business__icon" aria-hidden="true"
                                      focusable="false"
                                      role="img">
-                                    <use xlinkHref="/node_modules/@uswds/uswds/dist/img/sprite.svg#store"></use>
+                                    <use xlinkHref="/assets/img/sprite.svg#store"></use>
                                 </svg>
                                 {business.name}</h1>
                             <div className={`grid-row ${styles["cert-header__row"]}`}>

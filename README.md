@@ -62,3 +62,5 @@ For `Github` automation the following directories will already exist.
 `./.github/actions/`: Contains re-usable modules which are used in each workflow.
 
 `./.github/workflows/`: Contains workflows for each environment.`
+
+https://react.i18next.com/getting-started

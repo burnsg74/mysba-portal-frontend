@@ -2,17 +2,28 @@
     margin: 40px;
 }
 
-.title__row {
-    margin-top: 40px;
-    margin-bottom: 40px;
+.title-banner {
+    align-items: center;
+    gap: 10px 10px;
+    padding: 20px 40px;
+    position: relative;
+    background-color: #d9e8f666;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-top: 20px;
 }
 
 .title {
     font-family: "Source Sans Pro-Regular", Helvetica, serif;
     font-weight: 400;
     color: #002e6d;
-    font-size: 40px;
+    font-size: 32px;
     letter-spacing: 0;
+    line-height: 38.4px;
+}
+
+.title-icon {
+    margin-right: 10px;
 }
 
 .subtitle {
@@ -41,23 +52,3 @@
 
 }
 
-.card__header {
-    background: rgba(165, 198, 224, 0.20);
-}
-
-.card__text {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--sba-blue, #002E6D);
-}
-
-.store_icon {
-    color: var(--sba-blue, #002E6D);
-    margin-right: 20px;
-}
-
-.toggle__icon {
-    width: 30px;
-    height: 30px;
-}
