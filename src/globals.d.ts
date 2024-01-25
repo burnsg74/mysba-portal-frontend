@@ -1,6 +1,3 @@
-import Field from "src/components/Field/Field";
-import React from "react";
-
 interface IUserProfile {
     first_name: string;
 }
@@ -28,13 +25,22 @@ interface ICertification {
     system: string;
 }
 
+interface INav {
+    showNav: boolean;
+}
+
 interface IUser {
     profile?: IUserProfile;
     businesses?: IBusiness[];
     certifications?: ICertification[];
 }
 
-
 interface ICardCertificationProps {
     certification: ICertification;
+    showDetails?: boolean;
+}
+
+interface ICardBusinessProps {
+    business: IBusiness
+    showDetails?: boolean;
 }

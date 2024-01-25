@@ -1,0 +1,147 @@
+.container-row {
+    display: flex;
+    justify-content: center;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    width: 730px;
+    margin: 40px;
+    max-width: 730px;
+    gap: 20px;
+}
+
+.header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.open-sign {
+    position: relative;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-family:  "Source Sans Pro",  serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 32px;
+    margin-bottom: 20px;
+}
+
+.subtitle {
+    color: #002e6d;
+    font-family:  "Source Sans Pro",  serif;
+    font-weight: 400;
+    font-size: 22px;
+    margin-bottom: 20px;
+}
+
+.label {
+    font-family:  "Source Sans Pro",  serif;
+    font-weight: 400;
+    color: #002e6d;
+    font-size: 40px;
+    width: 100%;
+}
+
+.section_label {
+    font-family: "Source Sans Pro", serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+    color: var(--sba-blue, #002E6D);
+}
+
+.section_message {
+    font-family: "Source Sans Pro", serif;
+    font-size: 17px;
+    font-weight: 400;
+    line-height: 21px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: var(--sba-blue, #002E6D);
+}
+
+.checkbox__group {
+    display: flex;
+    align-items: center;
+}
+
+input[type="checkbox"] {
+    width: 24px;
+    height: 24px;
+    margin-right: 16px;
+}
+
+input[type="checkbox"]:focus {
+    outline: none;
+}
+
+.checkbox_label {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Source Sans Pro", serif;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+    color: var(--sba-blue, #002E6D);
+}
+
+.card__container {
+    margin: 0;
+}
+
+.button-group {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    font-family: Source Sans Pro, serif;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    text-align: left;
+    width: 270px;
+    background-color: var(--sba-celeste, #007DBC);
+    color: #fff;
+    border-radius: 6px;
+    padding: 10px;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -135px;
+}
+
+.tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent var(--sba-celeste, #007DBC) transparent;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+}

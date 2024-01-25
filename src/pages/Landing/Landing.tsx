@@ -4,6 +4,7 @@ import {useNavigate} from 'react-router-dom';
 import {UserClaims} from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
 import {setUser} from 'src/store/user/userSlice';
 import {useOktaAuth} from '@okta/okta-react';
+import {setNav} from "src/store/showNav/showNavSlice";
 
 let isWaitingForOktaSign = false;
 const Landing = () => {
@@ -21,6 +22,7 @@ const Landing = () => {
             },
             body: JSON.stringify({email: info.email, first_name: info.given_name, last_name: info.family_name})
         });
+
         return await response.json();
     }
 
@@ -38,9 +40,16 @@ const Landing = () => {
             oktaAuth.getUser()
                 .then((info: UserClaims) => {
                     return fetchUserDataFromBackend(info);
-                }).then((data) => {
-                    dispatch(setUser(data));
-                    navigate('/dashboard');
+                }).then((user) => {
+                    dispatch(setUser(user));
+
+                    if (!user || !user.profile || !user.profile.id) {
+                        console.log('User profile not found in database');
+                        dispatch(setNav(false));
+                        navigate('/account-setup/1');
+                    } else {
+                        navigate('/dashboard');
+                    }
                 }
             );
         }

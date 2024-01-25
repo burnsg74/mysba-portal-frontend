@@ -10,6 +10,11 @@ async function copyAssets() {
             path.resolve(__dirname, 'node_modules/@uswds/uswds/dist/img/sprite.svg'),
             path.resolve(__dirname, 'public/assets/img/sprite.svg')
         );
+        // node_modules/@uswds/uswds/dist/fonts/source-sans-pro/sourcesanspro-regular-webfont.woff2
+        await fs.copy(
+            path.resolve(__dirname, 'node_modules/@uswds/uswds/dist/fonts/source-sans-pro/sourcesanspro-regular-webfont.woff2'),
+            path.resolve(__dirname, 'public/assets/fonts/sourcesanspro-regular-webfont.woff2')
+        );
         console.log("File copy was successful!")
     } catch (error) {
         console.error("Error occurred while copying file: ", error)

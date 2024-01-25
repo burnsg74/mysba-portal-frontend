@@ -2,11 +2,7 @@ import React from 'react';
 import styles from "src/components/CardCertification/CardCertification.module.css";
 import {Link} from "react-router-dom";
 
-interface CardCertificationProps {
-    certification: ICertification;
-}
-
-const CardCertification: React.FC<CardCertificationProps> = ({certification}) => {
+const CardCertification: React.FC<ICardCertificationProps> = ({certification, showDetails = true}) => {
     return (
         <>
             <div className="usa-card__container">
@@ -30,9 +26,11 @@ const CardCertification: React.FC<CardCertificationProps> = ({certification}) =>
                         <div className="grid-col">
                             <h2 className="usa-card__heading sba-blue text-middle"> {certification.name}</h2>
                         </div>
-                        <div className="grid-col-auto">
-                            <Link to={`/certification/${certification.id}`} className="usa-button">Details</Link>
-                        </div>
+                        {showDetails &&
+                            <div className="grid-col-auto">
+                                <Link to={`/certification/${certification.id}`} className="usa-button">Details</Link>
+                            </div>
+                        }
                     </div>
                 </div>
                 <div className="usa-card__body">
@@ -52,6 +50,7 @@ const CardCertification: React.FC<CardCertificationProps> = ({certification}) =>
                     </div>
                 </div>
             </div>
+
         </>
     );
 };

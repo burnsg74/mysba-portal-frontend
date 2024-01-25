@@ -11,7 +11,7 @@ import { useTranslation } from 'react-i18next';
 
 const Header = () => {
     const {oktaAuth} = useOktaAuth();
-    const detectedLang: string = (navigator.language || navigator.userLanguage).substring(0, 2);
+    const detectedLang: string = navigator.language.substring(0, 2);
     const [lang, setLang] = useState(localStorage.getItem('lang') || detectedLang || 'en');
     const { i18n } = useTranslation();
     const logout = async () => {
