@@ -44,7 +44,6 @@ const Landing = () => {
                     dispatch(setUser(user));
 
                     if (!user || !user.profile || !user.profile.id) {
-                        console.log('User profile not found in database');
                         dispatch(setNav(false));
                         navigate('/account-setup/1');
                     } else {

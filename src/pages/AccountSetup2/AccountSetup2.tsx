@@ -3,9 +3,12 @@ import styles from "src/pages/AccountSetup2/AccountSetup2.module.css";
 import {useTranslation} from 'react-i18next';
 import {useNavigate} from 'react-router-dom';
 import CheckListImage from "src/assets/check-list.png";
+import {setNav} from "src/store/showNav/showNavSlice";
+import {useDispatch} from 'react-redux';
 
 
 const AccountSetup1 = () => {
+    const dispatch = useDispatch();
     const {t} = useTranslation();
     const navigate = useNavigate();
     const handleContinueBtnClick = () => {
@@ -15,6 +18,7 @@ const AccountSetup1 = () => {
         navigate('/account-setup/1');
     };
     const handleSkipBtnClick = () => {
+        dispatch(setNav(true));
         navigate('/dashboard');
     }
     const [state, setState] = useState({

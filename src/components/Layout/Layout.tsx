@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React from 'react';
 import { useSelector } from "react-redux";
 import Header from 'src/components/Header/Header';
 import SideNav from 'src/components/SideNav/SideNav';
@@ -11,9 +11,6 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children })  => {
     const showNav: boolean = useSelector(getShowNav);
-    useEffect(() => {
-        console.log('showNav', showNav);
-    }, [showNav]);
 
     return (
         <>
