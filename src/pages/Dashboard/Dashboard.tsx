@@ -74,7 +74,7 @@ const Dashboard = () => {
                         ))}
                     </div>
                 </div>
-                <div className="grid-col-auto">
+                <div className={`grid-col-auto ${styles["scrollable-div"]}`}>
                     <CardLearningCenter/>
                     <CardLearningCenterTwo/>
             </div>

@@ -10,17 +10,17 @@ const CardLearningCenterTwo = () => {
   const videos = [
     {
       title: "Competitive Advantage Overview",
-      duration: "2 minute 55 seconds",
+      duration: "",
       link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage",
     },
     {
       title: "Define Your Brand",
-      duration: "1 minute 54 seconds",
+      duration: "",
       link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business",
     },
     {
       title: "Know Your Competition",
-      duration: "1 minute 20 seconds",
+      duration: "",
       link: "https://learn.sba.gov/learning-center-grow/learning-center-pricing-models-for-successful-business",
     },
   ];

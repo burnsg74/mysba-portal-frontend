@@ -112,3 +112,7 @@
     letter-spacing: 0;
     margin-left: 10px;
 }
+.scrollable-div {
+    height: 900px;
+    overflow-y:auto;
+}
