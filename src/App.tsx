@@ -14,7 +14,8 @@ import Loans from "src/pages/Loans/Loans";
 import Profile from "src/pages/Profile/Profile";
 import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CertificationView from "src/pages/CertificationView/CertificationView";
-import { useTranslation } from 'react-i18next';
+import AccountSetup1 from "src/pages/AccountSetup1/AccountSetup1";
+import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
 
 // @TODO Move this to a config file
 const oktaAuth = new OktaAuth({
@@ -31,9 +32,6 @@ const App: React.FC = () => {
     const restoreOriginalUri = () => {
         navigate('/')
     };
-    const { i18n } = useTranslation();
-
-    // i18n.changeLanguage('es'); // Changes language to French
 
     return (
         <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
@@ -41,7 +39,9 @@ const App: React.FC = () => {
                 <Route path="/" element={<Landing />}></Route>
                 <Route path="/login/callback" element={<LoginCallback loadingElement={<Loading/>}/>}/>
                 <Route element={<ProtectedRoute/>}>
-                    <Route path="/dashboard" element={<Dashboard/>}/>
+                    <Route path="/account-setup/1" element={<AccountSetup1/>}/>
+                    <Route path="/account-setup/2" element={<AccountSetup2/>}/>
+                    <Route path="/dashboard/*" element={<Dashboard/>}/>
                     <Route path="/profile" element={<Profile/>}/>
                     <Route path="/businesses" element={<Businesses/>}/>
                     <Route path="/certifications" element={<Certifications/>}/>
