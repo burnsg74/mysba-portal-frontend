@@ -1,0 +1,15 @@
+.usa-sidenav .usa-current {
+    background-color: #F0F0F0;
+}
+
+.usa-sidenav {
+    padding-top: 24px;
+}
+
+.usa-sidenav > li:first-child {
+    border-top: none;
+}
+
+.side-nav-link {
+    color: #000441 !important;
+}

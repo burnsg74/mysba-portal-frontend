@@ -7,6 +7,7 @@ import USFlag from "/node_modules/@uswds/uswds/dist/img/us_flag_small.png";
 import DotGov from "/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg";
 import HttpsIcon from "/node_modules/@uswds/uswds/dist/img/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";
+import MenuIcon from "src/assets/menu.svg"
 import { useTranslation } from 'react-i18next';
 
 const Header = () => {
@@ -140,36 +141,12 @@ const Header = () => {
                     </div>
                     <nav role="navigation" className="usa-nav">
                         <div className="usa-language-container">
-                            <button type="button" className="usa-button" role="button" onClick={switchLanguage}>
+                            <button type="button" className={`usa-button ${styles['pill-button']}`} role="button" onClick={switchLanguage}>
                                 <span lang={lang === 'en' ? 'es' : 'en'}>{lang === 'en' ? 'Español' : 'English'}</span>
                             </button>
                         </div>
                         <div className="usa-nav__inner">
-                            <ul className="usa-nav__primary usa-accordion">
-                                <li className="usa-nav__primary-item">
-                                <button
-                                        className={`usa-accordion__button usa-nav__link pill-button ${styles['pill-button']}`}
-                                        aria-expanded="false"
-                                        aria-controls="basic-nav-section-one"
-                                    >
-                                        <img src={ProfileIcon} alt="Menu"/>
-                                    </button>
-                                    <div
-                                        id="basic-nav-section-one"
-                                        className="usa-nav__submenu"
-                                        hidden
-                                    >
-                                        <ul className="usa-nav__submenu-list">
-                                            <li className="usa-nav__submenu-item">
-                                                <Link to="/profile">Your Profile</Link>
-                                            </li>
-                                            <li className="usa-nav__submenu-item">
-                                                <Link to="/" onClick={logout}>Logout</Link>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </li>
-                            </ul>
+                            <Link to="/profile"><img src={ProfileIcon} alt="Menu"/></Link>
                         </div>
                     </nav>
                 </div>

@@ -5,6 +5,7 @@ import CityScapeImage from "src/assets/dashboard-cityscape.png";
 import {Link, useLocation} from "react-router-dom";
 import CardLearningCenter from "src/components/CardLearningCenter/CardLearningCenter";
 import CardCertification from "src/components/CardCertification/CardCertification";
+import CardLearningCenterTwo from "src/components/CardLearningCenter/CardLeaningCenterTwo"
 import styles from "src/pages/Dashboard/Dashboard.module.css";
 import AccountSetupModal from "src/components/AccountSetupModal/AccountSetupModal";
 
@@ -73,9 +74,10 @@ const Dashboard = () => {
                         ))}
                     </div>
                 </div>
-                <div className="grid-col-auto">
+                <div className={`grid-col-auto ${styles["scrollable-div"]}`}>
                     <CardLearningCenter/>
-                </div>
+                    <CardLearningCenterTwo/>
+            </div>
             </div>
             <AccountSetupModal showModal={(location.pathname === '/dashboard/new')}/>
         </>

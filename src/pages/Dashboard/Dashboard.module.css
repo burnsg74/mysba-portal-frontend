@@ -105,10 +105,14 @@
 }
 
 .certifications {
-    font-family:  "Source Sans Pro",  serif;
+    font-family: "Source Sans Pro", Helvetica, serif;
     font-weight: 400;
     color: #002e6d;
     font-size: 22px;
     letter-spacing: 0;
     margin-left: 10px;
+}
+.scrollable-div {
+    height: 900px;
+    overflow-y:auto;
 }

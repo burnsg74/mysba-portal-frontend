@@ -5,7 +5,8 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "serve": "vite preview",
-    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\""
+    "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",
+    "test": "jest"
   },
   "dependencies": {
     "@okta/okta-auth-js": "^7.5.0",
@@ -13,6 +14,7 @@
     "@reduxjs/toolkit": "^1.9.7",
     "@uswds/uswds": "^3.7.1",
     "@vitejs/plugin-react": "^3.1.0",
+    "jest-environment-jsdom": "^29.7.0",
     "fs-extra": "^11.2.0",
     "i18next": "^23.7.18",
     "i18next-browser-languagedetector": "^7.2.0",
@@ -25,6 +27,10 @@
     "rollup-plugin-copy": "^3.5.0"
   },
   "devDependencies": {
+    "@babel/preset-react": "^7.23.3",
+    "@testing-library/jest-dom": "^6.2.0",
+    "@testing-library/react": "^14.1.2",
+    "@types/jest": "^29.5.11",
     "@types/react": "^18.2.47",
     "@types/react-dom": "^18.2.18",
     "@typescript-eslint/eslint-plugin": "^5.62.0",
@@ -35,8 +41,12 @@
     "eslint": "^8.56.0",
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
+    "identity-obj-proxy": "^3.0.0",
+    "jest": "^29.7.0",
     "postcss": "^8.4.33",
     "tailwindcss": "^3.4.1",
+    "ts-jest": "^29.1.1",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.3",
     "vite": "^4.5.1"
   }

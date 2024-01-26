@@ -20,3 +20,21 @@
 .badge svg {
     margin-right: 10px;
 }
+
+.location-icon{
+    padding-right: 10px;
+    justify-content: center;
+}
+
+.grid-row-centered {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.pill-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #007DBC;
+}
