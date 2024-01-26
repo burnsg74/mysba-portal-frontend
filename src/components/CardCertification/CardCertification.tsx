@@ -11,8 +11,8 @@ const CardCertification: React.FC<CardCertificationProps> = ({certification}) =>
         <>
             <div className="usa-card__container">
                 <div className={`usa-card__header ${styles['card__header']}`}>
-                    <div className="grid-row">
-                        <div className="grid-col-auto">
+                    <div className={`grid-row ${styles['grid-row-centered']}`}>
+                        <div className={`grid-col-auto ${styles['location-icon']}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30"
                                  height="30" viewBox="0 0 30 30" fill="none">
                                 <mask id="mask0_4412_6503"
@@ -31,8 +31,9 @@ const CardCertification: React.FC<CardCertificationProps> = ({certification}) =>
                             <h2 className="usa-card__heading sba-blue text-middle"> {certification.name}</h2>
                         </div>
                         <div className="grid-col-auto">
-                            <Link to={`/certification/${certification.id}`} className="usa-button">Details</Link>
+                            <Link to={`/certification/${certification.id}`} className={`usa-button ${styles['pill-button']}`}>Details</Link>
                         </div>
+
                     </div>
                 </div>
                 <div className="usa-card__body">

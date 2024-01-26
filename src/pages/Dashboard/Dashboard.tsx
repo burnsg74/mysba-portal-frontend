@@ -5,6 +5,7 @@ import CityScapeImage from "src/assets/dashboard-cityscape.png";
 import {Link} from "react-router-dom";
 import CardLearningCenter from "src/components/CardLearningCenter/CardLearningCenter";
 import CardCertification from "src/components/CardCertification/CardCertification";
+import CardLearningCenterTwo from "src/components/CardLearningCenter/CardLeaningCenterTwo"
 import styles from "src/pages/Dashboard/Dashboard.module.css";
 
 const Dashboard = () => {
@@ -70,6 +71,7 @@ const Dashboard = () => {
             </div>
             <div className="grid-col-auto">
                 <CardLearningCenter/>
+                <CardLearningCenterTwo/>
             </div>
         </div>
     )

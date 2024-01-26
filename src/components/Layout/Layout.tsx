@@ -1,11 +1,6 @@
-import React from 'react';
-import Header from 'src/components/Header/Header';
-import SideNav from 'src/components/SideNav/SideNav';
-import 'src/components/Layout/Layout.css';
 import React from "react";
 import Header from "src/components/Header/Header";
 import SideNav from "src/components/SideNav/SideNav";
-import { Outlet } from "react-router-dom";
 import "src/components/Layout/Layout.css";
 
 type LayoutProps = {
