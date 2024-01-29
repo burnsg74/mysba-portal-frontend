@@ -10,18 +10,18 @@ const CardLearningCenterTwo = () => {
   const videos = [
     {
       title: "Competitive Advantage Overview",
-      duration: "",
-      link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage",
+      duration: "1 minute 0 seconds",
+      link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/competitive-advantage-overview",
     },
     {
       title: "Define Your Brand",
-      duration: "",
-      link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business",
+      duration: "4 minutes 3 seconds",
+      link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/define-your-brand",
     },
     {
       title: "Know Your Competition",
-      duration: "",
-      link: "https://learn.sba.gov/learning-center-grow/learning-center-pricing-models-for-successful-business",
+      duration: "1 minute 2 seconds",
+      link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/know-your-competition",
     },
   ];
 
@@ -114,7 +114,7 @@ const CardLearningCenterTwo = () => {
         </div>
         <div className="usa-card__footer text-center">
           <a
-            href="https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer"
+            href="https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage"
             target="_blank"
             rel="noopener noreferrer"
           >

@@ -11,7 +11,7 @@ const CardLearningCenterTwo = () => {
     {
       title: "Fact, Fiction and Benefits of Government Contracting",
       duration: "3 minutes 0 seconds",
-      link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business/your-financial-needs",
+      link: "https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer",
     },
   ];
 
@@ -110,7 +110,7 @@ const CardLearningCenterTwo = () => {
         </div>
         <div className="usa-card__footer text-center">
           <a
-            href="https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage"
+            href="https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer"
             target="_blank"
             rel="noopener noreferrer"
           >
