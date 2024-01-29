@@ -3,11 +3,14 @@ import { useOktaAuth } from "@okta/okta-react";
 import styles from "src/pages/Profile/Profile.module.css";
 
 const LogoutButton = () => {
+    const {oktaAuth} = useOktaAuth();
+    const logout = async () => {
+        await oktaAuth.signOut();
+    };
     return (
-      <button className={`
-      ${styles["button-style"]}`}>
-          <span className={`${styles["button-text"]}`}>Log Out</span>
-      </button>
+        <button className={` ${styles["button-style"]}`} onClick={logout}>
+            <span className={`${styles["button-text"]}`}>Log Out</span>
+        </button>
     );
   };
 
@@ -61,7 +64,7 @@ const Profile = () => {
               events
             </label>
           </div>
-          <LogoutButton/>
+          <LogoutButton />
         </div>
       </div>
   );
