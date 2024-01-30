@@ -31,7 +31,7 @@ const Loans = () => {
                             <div className={`${styles["title__btn"]}`}>
                                 <button
                                     type="button"
-                                    className="usa-button"
+                                    className={`usa-button ${styles['pill-button']}`}
                                     onClick={(e) => {
                                         e.preventDefault();
                                         window.open('https://lending.sba.gov', '_blank');
