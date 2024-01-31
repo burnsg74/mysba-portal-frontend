@@ -2,6 +2,7 @@ import React from "react";
 import { useOktaAuth } from "@okta/okta-react";
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/store/store';
+import {getUser} from "../../store/user/userSlice"
 import styles from "src/pages/Profile/Profile.module.css";
 
 const LogoutButton = () => {
@@ -23,7 +24,7 @@ const Profile = () => {
     await oktaAuth.signOut();
   };
 
-  const profileData = useSelector((state: RootState) => state.user.profile);
+  const profileData: IUser = useSelector(getUser);
 
   return (
     <div className="grid-row">
