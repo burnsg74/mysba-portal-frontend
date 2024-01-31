@@ -238,3 +238,9 @@
     background-color: transparent;
     color: var(--sba-celeste, #007DBC);
 }
+
+.usa-current {
+    background-color: #f0f0f0;
+    border: unset;
+    color: var(--sba-blue, #002E6D);
+}

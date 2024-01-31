@@ -7,17 +7,27 @@ import USFlag from "/node_modules/@uswds/uswds/dist/img/us_flag_small.png";
 import DotGov from "/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg";
 import HttpsIcon from "/node_modules/@uswds/uswds/dist/img/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";
-import MenuIcon from "src/assets/menu.svg"
-import { useTranslation } from 'react-i18next';
+import {useTranslation} from 'react-i18next';
+import SideNav from "src/components/SideNav/SideNav";
+import {getShowNav} from "src/store/showNav/showNavSlice";
+import {useSelector} from "react-redux";
+
 
 const Header = () => {
     const {oktaAuth} = useOktaAuth();
     const detectedLang: string = navigator.language.substring(0, 2);
     const [lang, setLang] = useState(localStorage.getItem('lang') || detectedLang || 'en');
-    const { i18n } = useTranslation();
-    const logout = async () => {
-        await oktaAuth.signOut();
-    };
+    const {i18n} = useTranslation();
+    const showNav: boolean = useSelector(getShowNav);
+    const [isNavOpen, setIsNavOpen] = useState(false);
+
+    const handleMenuClick = () => {
+        setIsNavOpen(true);
+    }
+
+    const handleSvgCloseClick = () => {
+        setIsNavOpen(false);
+    }
 
     const switchLanguage = () => {
         const newLang = lang === 'en' ? 'es' : 'en';
@@ -28,6 +38,7 @@ const Header = () => {
 
     return (
         <>
+            {/* Top Banner : Official website of the United States government */}
             <section
                 className="usa-banner"
                 aria-label="Official website of the United States government"
@@ -58,9 +69,9 @@ const Header = () => {
                                 aria-expanded="false"
                                 aria-controls="gov-banner-default"
                             >
-                <span className="usa-banner__button-text">
-                  Here’s how you know
-                </span>
+                            <span className="usa-banner__button-text">
+                              Here’s how you know
+                            </span>
                             </button>
                         </div>
                     </header>
@@ -131,26 +142,53 @@ const Header = () => {
                     </div>
                 </div>
             </section>
-            <header className={`sa-header usa-header--basic ${styles['usa-header']}`}>
-                <div className={`usa-nav-container ${styles['usa-nav-container']}`}>
-                    <div className="usa-navbar">
-                        <img className={`usa-logo ${styles['usa-logo']}`} src={SBAlogo} alt="Logo"/>
-                        <button type="button" className="usa-menu-btn">
-                            Menu
-                        </button>
+
+            {/* MySBA Header*/}
+            <header className={`${styles['usa-header']}`}>
+                <div className={`${styles['usa-nav-container']}`}>
+                    <div className={`${styles['left']}`}>
+                        {/* LOGO */}
+                        <img className={`${styles['usa-logo']}`} src={SBAlogo} alt="Logo"/>
                     </div>
-                    <nav role="navigation" className="usa-nav">
-                        <div className="usa-language-container">
-                            <button type="button" className={`usa-button ${styles['pill-button']}`} role="button" onClick={switchLanguage}>
+                    <div className={`${styles['right']}`}>
+                        {/* Multi-Language Toggle */}
+                        <div className={`usa-language-container ${styles['usa-language-container']}`}>
+                            <button type="button" className={`usa-button ${styles['pill-button']}`} role="button"
+                                    onClick={switchLanguage}>
                                 <span lang={lang === 'en' ? 'es' : 'en'}>{lang === 'en' ? 'Español' : 'English'}</span>
                             </button>
                         </div>
+
+                        {/* User Profile Buuton*/}
                         <div className="usa-nav__inner">
                             <Link to="/profile"><img src={ProfileIcon} alt="Menu"/></Link>
                         </div>
-                    </nav>
+
+                        {/* Head Nav for small screens */}
+                        <svg className={`${styles['header-menu__icon']}`}
+                             aria-hidden="true"
+                             focusable="false"
+                             role="img"
+                             onClick={handleMenuClick}>
+                            <use xlinkHref="/assets/img/sprite.svg#menu"></use>
+                        </svg>
+                    </div>
                 </div>
             </header>
+            {showNav &&
+            <div className={`${styles['right-side-nav']} ${isNavOpen ? styles['is-open'] : ''}`}>
+                <div className={`${styles['right-side-nav__header']}`}>
+                    <svg className={`${styles['right-side-nav__icon']}`}
+                         aria-hidden="true"
+                         focusable="false"
+                         role="img"
+                         onClick={handleSvgCloseClick}>
+                        <use xlinkHref="/assets/img/sprite.svg#close"></use>
+                    </svg>
+                </div>
+                <SideNav/>
+            </div>
+            }
         </>
     );
 };
