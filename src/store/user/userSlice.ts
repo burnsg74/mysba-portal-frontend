@@ -1,25 +1,17 @@
 import {createSelector, createSlice} from '@reduxjs/toolkit';
 import {RootState} from "../store";
 
-const initialState = {
-  profile: {
-    allow_notices: false,
-    email: "cindysmith@spoonandharvest.com",
-    first_name: "Cindy",
-    id: 123,
-    last_name: "Smith",
-  },
-};
+const initialState = {};
 
 const userSlice = createSlice({
   name: 'user',
   initialState,
   reducers: {
     setUser: (state, action) => {
-      state.profile = action.payload;
+      return action.payload;
     },
     clearUser: (state) => {
-      state.profile = initialState.profile;
+      state = initialState;
     },
   },
 });
