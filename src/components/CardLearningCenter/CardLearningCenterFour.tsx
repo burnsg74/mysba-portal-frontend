@@ -1,6 +1,6 @@
 import React from "react";
 import LogoImage from "src/assets/sba-logo-learning-center.svg";
-import ContentImage from "src/assets/competitive-advantage.png";
+import ContentImage from "src/assets/legal-learning-content.png";
 import VideoImage from "src/assets/video.png";
 import ArrowNextImage from "src/assets/arrow-next.svg";
 
@@ -9,19 +9,19 @@ import styles from "src/components/CardLearningCenter/CardLearningCenter.module.
 const CardLearningCenterTwo = () => {
   const videos = [
     {
-      title: "Competitive Advantage Overview",
-      duration: "1 minute 0 seconds",
-      link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/competitive-advantage-overview",
+      title: "Legal Requirements Overview",
+      duration: "1 minute 35 seconds",
+      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/legal-requirements-overview",
     },
     {
-      title: "Define Your Brand",
-      duration: "4 minutes 3 seconds",
-      link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/define-your-brand",
+      title: "Determining Your Requirements",
+      duration: "0 minutes 21 seconds",
+      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/determining-your-requirements",
     },
     {
-      title: "Know Your Competition",
-      duration: "1 minute 2 seconds",
-      link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/know-your-competition",
+      title: "Registering And Licensing",
+      duration: "1 minute 9 seconds",
+      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/registering-and-licensing",
     },
   ];
 
@@ -114,7 +114,7 @@ const CardLearningCenterTwo = () => {
         </div>
         <div className="usa-card__footer text-center">
           <a
-            href="https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage"
+            href="https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements"
             target="_blank"
             rel="noopener noreferrer"
           >

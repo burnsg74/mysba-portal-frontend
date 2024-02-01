@@ -1,3 +1,21 @@
 .container {
-    margin: 40px;
+  margin: 40px;
+}
+
+.grid-row {
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .grid-row {
+    flex-direction: column;
+  }
+  .grid-col-auto {
+    order: 3;
+  }
+  .grid-col {
+    order: 2;
+  }
 }
