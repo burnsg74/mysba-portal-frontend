@@ -1,8 +1,7 @@
 import React from "react";
 import { useOktaAuth } from "@okta/okta-react";
 import { useSelector } from 'react-redux';
-import { RootState } from 'src/store/store';
-import {getUser} from "../../store/user/userSlice"
+import {getUser} from "src/store/user/userSlice"
 import styles from "src/pages/Profile/Profile.module.css";
 
 const LogoutButton = () => {
@@ -19,31 +18,26 @@ const LogoutButton = () => {
 
 
 const Profile = () => {
-  const { oktaAuth } = useOktaAuth();
-  const logout = async () => {
-    await oktaAuth.signOut();
-  };
-
   const profileData: IUser = useSelector(getUser);
 
   return (
     <div className="grid-row">
       <div className={`grid-col ${styles["container"]}`}>
-          <h1 className={`${styles["profile-name"]}`}>{profileData.profile.first_name + " " + profileData.profile.last_name}</h1>
+          <h1 className={`${styles["profile-name"]}`}>{profileData?.profile?.first_name + " " + profileData?.profile?.last_name}</h1>
           <h2 className={`${styles["profile-subheading"]}`}>
             Contact Information
           </h2>
           <p className={`${styles["profile-label"]}`}>Email</p>
-          <p className={`${styles["profile-info"]}`}>{profileData.profile.email}</p>
+          <p className={`${styles["profile-info"]}`}>{profileData?.profile?.email}</p>
           <div className={`${styles["divider"]}`}/>
           <p className={`${styles["profile-label"]}`}>First Name</p>
           <p className={`${styles["profile-info"]}`}>
-            {profileData.profile.first_name}
+            {profileData?.profile?.first_name}
           </p>
           <div className={`${styles["divider"]}`}/>
           <p className={`${styles["profile-label"]}`}>Last Name</p>
           <p className={`${styles["profile-info"]}`}>
-            {profileData.profile.last_name}
+            {profileData?.profile?.last_name}
           </p>
           <div className={`${styles["divider"]}`}/>
           <div className="usa-checkbox checkbox">

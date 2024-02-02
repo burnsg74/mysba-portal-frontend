@@ -1,7 +1,16 @@
 .container {
-    width: 390px;
+    width: 350px;
     padding: 10px;
     border-left: 1px solid lightgray;
+}
+
+.usa-card__header {
+    height: 48px;
+    padding: 12px 16px 12px 16px;
+}
+
+.usa-card__body {
+    /*padding: 16px 0 16px 0;*/
 }
 
 .header-label {
@@ -14,31 +23,48 @@
 }
 
 .title {
-    font-family: "Source Sans Pro-SemiBold", Helvetica, sans-serif;
-    font-weight: 600;
-    color: #002e6d;
+    color: var(--Brand-Primary-SBA-Blue, #002E6D);
+    font-family: "Source Sans Pro", serif;
     font-size: 22px;
+    font-weight: 600;
     letter-spacing: -0.3px;
+    line-height: 26px;
+    margin-bottom: 8px;
+    padding: 0 16px 0 16px;
 }
 
 .description {
-    font-family: "Source Sans Pro-SemiBold", Helvetica, sans-serif;
+    font-family: Source Sans Pro, serif;
     font-weight: 400;
-    color: #565c65;
+    color: var(--Base-base-dark, #565C65);
     font-size: 17px;
-    letter-spacing: 0;
+    padding: 0 16px 0 16px;
+}
+
+.usa-card__container {
+    width: 350px;
+    border-radius: 8px;
+    border: 1px solid var(--Neutrals-Light-Gray-4, #E0E0E0);
+    background: #FFF;
+    margin: unset;
+    box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
 }
 
 .video-title {
+    font-family: "Public Sans", serif;
+    font-size: 17px;
     font-weight: 700;
-    color: #002e6d;
+    width: 195px;
+    color: var(--Brand-Primary-SBA-Blue, #002E6D);
 }
 
 .video-subtitle {
-    font-family: "Source Sans Pro-Italic", Helvetica, serif;
-    font-style: italic;
-    color: #565c65;
+    font-family: "Source Sans Pro", serif;
     font-size: 15px;
+    font-weight: 400;
+    font-style: italic;
+    width: 195px;
+    color: var(--Base-base-dark, #565C65);
 }
 
 .header-label {
@@ -52,11 +78,39 @@
 
 .video-container {
     padding: 16px;
-    border-bottom: 1px solid var(--basebase-lighter, #DCDEE0);
+    line-height: normal;
+    border-bottom: 1px solid var(--Base-base-lighter, #DCDEE0);
+}
+
+.view-course-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.view-course-text {
+    padding-right: 10px;
+}
+
+.view-course-icon {
+    width: 24px;
+    height: 24px;
+    fill: var(--sba-celeste, #007DBC);
+
+}
+
+.card__footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.video-row__image {
 }
 
 .header-sba_logo {
     height: 20px;
+    margin-right: 10px;
     padding-right: 10px
 }
 
@@ -71,6 +125,15 @@
     height: 358px;
 }
 
+.video-right {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    padding: 6px 8px 6px 8.59px;
+    justify-content: center;
+    align-items: center;
+}
+
 .video-href {
     text-decoration: none;
     color: unset;
@@ -79,6 +142,7 @@
 .video-row {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .video-icon {
@@ -87,10 +151,24 @@
 }
 
 .next-icon {
-    height: 20px;
+    height: 21px;
     margin-left: 10px;
 }
 
 .usa-card__heading {
-    padding: 0.5rem;
+    padding: 0;
+}
+
+.title_container {
+    padding-top: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--basebase-lighter, #DCDEE0);
+
+}
+
+.usa-card__footer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px 20px 16px;
 }

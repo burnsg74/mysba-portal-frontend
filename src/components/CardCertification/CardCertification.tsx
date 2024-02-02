@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 const CardCertification: React.FC<ICardCertificationProps> = ({certification, showDetails = true}) => {
     return (
         <>
-            <div className="usa-card__container">
-                <div className={`usa-card__header ${styles['card__header']}`}>
+            <div className={`usa-card__container ${styles['usa-card__container']}`}>
+                <div className={`${styles['card__header']}`}>
                     <div className={`grid-row ${styles['grid-row-centered']}`}>
                         <div className={`grid-col-auto ${styles['location-icon']}`}>
                             <svg xmlns="http://www.w3.org/2000/svg" width="30"
@@ -23,19 +23,21 @@ const CardCertification: React.FC<ICardCertificationProps> = ({certification, sh
                                 </g>
                             </svg>
                         </div>
-                        <div className="grid-col">
-                            <h2 className="usa-card__heading sba-blue text-middle"> {certification.name}</h2>
+                        <div
+                            className={`grid-col ${styles['title__container']}`}>
+                            <h2 className={`usa-card__heading sba-blue ${styles['title']}`}
+                            > {certification.name}</h2>
                         </div>
                         {showDetails &&
-                            <div className="grid-col-auto">
-                                <Link to={`/certification/${certification.id}`} className={`usa-button ${styles['pill-button']}`}>Details</Link>
+                            <div className={`grid-col-auto  ${styles['card__header__details-btn']}`}>
+                                <Link to={`/certification/${certification.id}`}
+                                      className={`usa-button ${styles['pill-button']}`}>Details</Link>
                             </div>
                         }
-
                     </div>
                 </div>
-                <div className="usa-card__body">
-                    <div className="grid-row sba-blue">
+                <div className={`${styles['usa-card__body']}`}>
+                    <div className={`grid-row sba-blue ${styles['usa-card__row']}`}>
                         <div className={`grid-col-auto ${styles['badge']}`}>
                             <svg className="usa-icon " aria-hidden="true"
                                  focusable="false" role="img">
@@ -45,13 +47,13 @@ const CardCertification: React.FC<ICardCertificationProps> = ({certification, sh
                             Renew in 90 Days
                         </div>
                         <div
-                            className="grid-col text-center">{certification.company_name}</div>
+                            className={`grid-col text-center ${styles['usa-card__text-center']}`}
+                        >{certification.company_name}</div>
                         <div
                             className="grid-col-auto">ID: {certification.number}</div>
                     </div>
                 </div>
             </div>
-
         </>
     );
 };
