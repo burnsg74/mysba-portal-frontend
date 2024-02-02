@@ -33,7 +33,10 @@ const SideNav = () => {
                     {NAVIGATION_LINKS.map((item, index) =>
                         <li key={index}
                             className={`usa-sidenav__item ${item.url === window.location.pathname ? 'usa-current' : ''}`}>
-                            <Link to={item.url} className="side-nav-link">{t(item.name)}</Link>
+
+                            <Link to={item.url}
+                                  className={`side-nav-link ${item.url === window.location.pathname ? 'usa-current' : ''}`}
+                                  >{t(item.name)}</Link>
                         </li>
                     )}
                 </ul>

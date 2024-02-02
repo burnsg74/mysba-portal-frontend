@@ -10,7 +10,24 @@
     font-display: swap;
 }
 
+@font-face {
+    font-family: "Public Sans";
+    src: url("/assets/fonts/public-sans-regular.woff2") format("woff2");
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
 :root {
+    --Brand-Primary-SBA-Blue: #002E6D;
+    --Base-base-dark: #565C65;
+    --Neutrals-Light-Gray: #FBFCFD;
+    --Neutrals-Light-Gray-4: #E0E0E0;
+    --Base-white: #FFFFFF;
+    --SBA-Celeste: #007DBC;
+    --Text-Text: #1B1B1B;
+    --Base-base-lighter: #DCDEE0;
+    --Brand-Secondary-Bright-Blue: #007DBC;
     --sba-celeste: #007DBC;
     --sba-dark-celeste: #00518B;
     --sba-light-celeste: #58ACEF;
@@ -23,6 +40,7 @@
     --warningwarning-light: #FEE685;
     --base-lightest: #F0F0F0;
     --base-lighter: #DFE1E2;
+    --basebase-lighter: #DCDEE0;
     --warningwarning-lighter: #FAF3D1;
     --warningwarning: #FFBE2E;
     --successsuccess: #00A91C;
@@ -34,8 +52,8 @@
     --primarywhite: #FFFFFF;
     --subtle-drop-shadow: 0px 7px 15px 0px rgba(27, 30, 41, 0.07);
     --variable-collection-SBA-dark-blue: #000441;
-    --SBA-CRM-neutrals-light-gray-4: #E0E0E0;
-    --SBA-CRM-neutrals-light-gray: #FBFCFD;
+    --Neutrals-Light-Grayy-4: #E0E0E0;
+    --Neutrals-Light-Gray: #FBFCFD;
     --SBA-CRM-text-text-light: #71767A;
     --components-button-text-font-family: "Roboto-Bold", Helvetica;
     --components-button-text-font-weight: 700;
@@ -228,6 +246,12 @@
     background: #005ea2;
 
 }
+.usa-current.side-nav-link {
+    outline: none;
+}
+*:focus {
+    outline: none;
+}
 
 /* USWDS Overrides */
 .usa-button {
@@ -237,6 +261,10 @@
 .usa-button--outline {
     background-color: transparent;
     color: var(--sba-celeste, #007DBC);
+}
+
+.side-nav-link {
+    outline: none;
 }
 
 .usa-current {

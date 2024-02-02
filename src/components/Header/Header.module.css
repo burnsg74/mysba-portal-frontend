@@ -9,13 +9,12 @@
 }
 .left {
     display: flex;
-    /* optional line to align items vertically */
     align-items: center;
 }
 .right {
     display: flex;
-    /* optional line to align items vertically */
     align-items: center;
+    justify-content: center;
 }
 
 .usa-banner__inner {
@@ -55,6 +54,10 @@
 .pill-button img {
     width: 20px;
     height: auto;
+}
+
+.header-menu__icon-container {
+    padding-left: 20px;
 }
 
 .header-menu__icon {

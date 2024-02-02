@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import {Link} from "react-router-dom";
 import {useOktaAuth} from "@okta/okta-react";
 import styles from "src/components/Header/Header.module.css";
-import SBAlogo from "src/assets/lockups-horizontal.svg";
+import SBAlogo from "src/assets/logo-horizontal.png";
 import USFlag from "/node_modules/@uswds/uswds/dist/img/us_flag_small.png";
 import DotGov from "/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg";
 import HttpsIcon from "/node_modules/@uswds/uswds/dist/img/icon-https.svg";
@@ -165,29 +165,31 @@ const Header = () => {
                         </div>
 
                         {/* Head Nav for small screens */}
-                        <svg className={`${styles['header-menu__icon']}`}
-                             aria-hidden="true"
-                             focusable="false"
-                             role="img"
-                             onClick={handleMenuClick}>
-                            <use xlinkHref="/assets/img/sprite.svg#menu"></use>
-                        </svg>
+                        <div className={`${styles['header-menu__icon-container']}`}>
+                            <svg className={`${styles['header-menu__icon']}`}
+                                 aria-hidden="true"
+                                 focusable="false"
+                                 role="img"
+                                 onClick={handleMenuClick}>
+                                <use xlinkHref="/assets/img/sprite.svg#menu"></use>
+                            </svg>
+                        </div>
                     </div>
                 </div>
             </header>
             {showNav &&
-            <div className={`${styles['right-side-nav']} ${isNavOpen ? styles['is-open'] : ''}`}>
-                <div className={`${styles['right-side-nav__header']}`}>
-                    <svg className={`${styles['right-side-nav__icon']}`}
-                         aria-hidden="true"
-                         focusable="false"
-                         role="img"
-                         onClick={handleSvgCloseClick}>
-                        <use xlinkHref="/assets/img/sprite.svg#close"></use>
-                    </svg>
+                <div className={`${styles['right-side-nav']} ${isNavOpen ? styles['is-open'] : ''}`}>
+                    <div className={`${styles['right-side-nav__header']}`}>
+                        <svg className={`${styles['right-side-nav__icon']}`}
+                             aria-hidden="true"
+                             focusable="false"
+                             role="img"
+                             onClick={handleSvgCloseClick}>
+                            <use xlinkHref="/assets/img/sprite.svg#close"></use>
+                        </svg>
+                    </div>
+                    <SideNav/>
                 </div>
-                <SideNav/>
-            </div>
             }
         </>
     );
