@@ -1,6 +1,8 @@
 .card__header {
     background: rgba(165, 198, 224, 0.20);
-    margin: 5px;
+    margin-left: 5px;
+    margin-top: 5px;
+    margin-right: 5px;
 }
 
 .card__header__details {
@@ -15,6 +17,7 @@
 
 .usa-card__container {
     border: unset;
+    margin: unset;
     border-radius: 8px;
     box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
 }
@@ -34,20 +37,30 @@
     margin-right: 10px;
 }
 
+.badge__text {
+    color: #1B1B1B;
+    font-family: "Source Sans Pro", serif;
+    font-size: 13px;
+    font-weight: 400;
+    line-height: normal;
+}
+
 .location-icon {
     width: 30px;
     height: 30px;
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 
 .grid-row-centered {
     display: flex;
+    align-items: center;
+    padding: 15px 15px 20px;
+    gap: 10px;
+    align-self: stretch;
+    flex-wrap: wrap;
 }
 
 .card__header__details-btn {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin-right: unset;
 }
 .pill-button {
     color: var(--SBA-Celeste, #007DBC);
@@ -72,12 +85,8 @@
     color: var(--Brand-Primary-SBA-Blue, #002E6D);
     font-family: "Source Sans Pro", serif;
     font-size: 22px;
-    font-style: normal;
     font-weight: 400;
     line-height: 120%;
-    padding-left: 10px;
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 
 .usa-card__row {

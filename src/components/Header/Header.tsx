@@ -145,37 +145,40 @@ const Header = () => {
 
             {/* MySBA Header*/}
             <header className={`${styles['usa-header']}`}>
-                <div className={`${styles['usa-nav-container']}`}>
-                    <div className={`${styles['left']}`}>
+                <div className={`grid-row ${styles['usa-nav-container']}`}>
+                    <div className={`grid-col-auto ${styles['left']}`}>
                         {/* LOGO */}
                         <img className={`${styles['usa-logo']}`} src={SBAlogo} alt="Logo"/>
                     </div>
-                    <div className={`${styles['right']}`}>
-                        {/* Multi-Language Toggle */}
-                        <div className={`usa-language-container ${styles['usa-language-container']}`}>
-                            <button type="button" className={`usa-button ${styles['pill-button']}`} role="button"
-                                    onClick={switchLanguage}>
-                                <span lang={lang === 'en' ? 'es' : 'en'}>{lang === 'en' ? 'Español' : 'English'}</span>
-                            </button>
-                        </div>
+                    <div className={`grid-col ${styles['left']}`}>
+                    </div>
+                        <div className={`grid-col-auto ${styles['right']}`}>
+                            {/* Multi-Language Toggle */}
+                            <div className={`usa-language-container ${styles['usa-language-container']}`}>
+                                <button type="button" className={`usa-button ${styles['pill-button']}`} role="button"
+                                        onClick={switchLanguage}>
+                                    <span
+                                        lang={lang === 'en' ? 'es' : 'en'}>{lang === 'en' ? 'Español' : 'English'}</span>
+                                </button>
+                            </div>
 
-                        {/* User Profile Buuton*/}
-                        <div className="usa-nav__inner">
-                            <Link to="/profile"><img src={ProfileIcon} alt="Menu"/></Link>
-                        </div>
+                            {/* User Profile Buuton*/}
+                            <div className="usa-nav__inner">
+                                <Link to="/profile"><img src={ProfileIcon} alt="Menu"/></Link>
+                            </div>
 
-                        {/* Head Nav for small screens */}
-                        <div className={`${styles['header-menu__icon-container']}`}>
-                            <svg className={`${styles['header-menu__icon']}`}
-                                 aria-hidden="true"
-                                 focusable="false"
-                                 role="img"
-                                 onClick={handleMenuClick}>
-                                <use xlinkHref="/assets/img/sprite.svg#menu"></use>
-                            </svg>
+                            {/* Head Nav for small screens */}
+                            <div className={`${styles['header-menu__icon-container']}`}>
+                                <svg className={`${styles['header-menu__icon']}`}
+                                     aria-hidden="true"
+                                     focusable="false"
+                                     role="img"
+                                     onClick={handleMenuClick}>
+                                    <use xlinkHref="/assets/img/sprite.svg#menu"></use>
+                                </svg>
+                            </div>
                         </div>
                     </div>
-                </div>
             </header>
             {showNav &&
                 <div className={`${styles['right-side-nav']} ${isNavOpen ? styles['is-open'] : ''}`}>
