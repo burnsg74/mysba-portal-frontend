@@ -28,6 +28,7 @@
     --Text-Text: #1B1B1B;
     --Base-base-lighter: #DCDEE0;
     --Brand-Secondary-Bright-Blue: #007DBC;
+    --SBA-Dark-Blue: #000441;
     --sba-celeste: #007DBC;
     --sba-dark-celeste: #00518B;
     --sba-light-celeste: #58ACEF;
@@ -52,8 +53,6 @@
     --primarywhite: #FFFFFF;
     --subtle-drop-shadow: 0px 7px 15px 0px rgba(27, 30, 41, 0.07);
     --variable-collection-SBA-dark-blue: #000441;
-    --Neutrals-Light-Grayy-4: #E0E0E0;
-    --Neutrals-Light-Gray: #FBFCFD;
     --SBA-CRM-text-text-light: #71767A;
     --components-button-text-font-family: "Roboto-Bold", Helvetica;
     --components-button-text-font-weight: 700;
@@ -246,9 +245,11 @@
     background: #005ea2;
 
 }
+
 .usa-current.side-nav-link {
     outline: none;
 }
+
 *:focus {
     outline: none;
 }
@@ -265,10 +266,39 @@
 
 .side-nav-link {
     outline: none;
+    color: var(--SBA-Dark-Blue, #000441);
+    font-family: "Source Sans Pro", serif;
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.usa-sidenav .usa-current {
+    background-color: #F5F5F5;;
 }
 
 .usa-current {
     background-color: #f0f0f0;
     border: unset;
     color: var(--sba-blue, #002E6D);
+    font-family: "Source Sans Pro", serif;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+button {
+    outline: none;
+}
+
+.grid-col-wrap {
+    flex: unset;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+a, a:focus, a:active, a:hover, a:visited {
+    text-decoration: none;
 }

@@ -25,7 +25,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({certification, sh
                         </div>
                         <div
                             className={`grid-col ${styles['title__container']}`}>
-                            <h2 className={`usa-card__heading sba-blue ${styles['title']}`}
+                            <h2 className={`usa-card__heading ${styles['title']}`}
                             > {certification.name}</h2>
                         </div>
                         {showDetails &&
@@ -44,7 +44,9 @@ const CardCertification: React.FC<ICardCertificationProps> = ({certification, sh
                                 <use
                                     xlinkHref="/assets/img/sprite.svg#warning"></use>
                             </svg>
+                            <div className={`${styles['badge__text']}`}>
                             Renew in 90 Days
+                            </div>
                         </div>
                         <div
                             className={`grid-col text-center ${styles['usa-card__text-center']}`}
