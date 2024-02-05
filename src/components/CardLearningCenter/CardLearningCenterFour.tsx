@@ -1,18 +1,27 @@
 import React from "react";
 import LogoImage from "src/assets/sba-logo-learning-center.svg";
-import ContentImage from "src/assets/whitehouse.png";
+import ContentImage from "src/assets/legal-learning-content.png";
 import VideoImage from "src/assets/video.png";
 import ArrowNextImage from "src/assets/arrow-next.svg";
 
 import styles from "src/components/CardLearningCenter/CardLearningCenter.module.css";
 
-//government as a customer
 const CardLearningCenterTwo = () => {
   const videos = [
     {
-      title: "Fact, Fiction and Benefits of Government Contracting",
-      duration: "3 minutes 0 seconds",
-      link: "https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer",
+      title: "Legal Requirements Overview",
+      duration: "1 minute 35 seconds",
+      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/legal-requirements-overview",
+    },
+    {
+      title: "Determining Your Requirements",
+      duration: "0 minutes 21 seconds",
+      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/determining-your-requirements",
+    },
+    {
+      title: "Registering And Licensing",
+      duration: "1 minute 9 seconds",
+      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/registering-and-licensing",
     },
   ];
 
@@ -59,15 +68,9 @@ const CardLearningCenterTwo = () => {
         />
 
         <div className="usa-card__body">
-          <div className={`${styles["title"]}`}>
-            Government As Your Customer
-          </div>
+          <div className={`${styles["title"]}`}>Competitive Advantage</div>
           <div className={`${styles["description"]}`}>
-            As an entrepreneur you’re constantly on the lookout for new
-            customers and untapped markets to grow your business. One potential
-            market for your product or service is the government. This topic
-            within the Government Contracting course will guide you through what
-            you need to know to understand the government as a customer.
+            Leverage the uniqueness of your business to develop your competitive advantage.
           </div>
           <hr />
           {videos.map((video, index) => (
@@ -111,7 +114,7 @@ const CardLearningCenterTwo = () => {
         </div>
         <div className="usa-card__footer text-center">
           <a
-            href="https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer"
+            href="https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements"
             target="_blank"
             rel="noopener noreferrer"
           >

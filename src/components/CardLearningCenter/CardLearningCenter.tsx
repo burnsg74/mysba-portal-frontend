@@ -1,5 +1,5 @@
 import React from "react";
-import LogoImage from "src/assets/logo.png";
+import LogoImage from "src/assets/sba-logo-learning-center.svg";
 import ContentImage from "src/assets/dashboard-content-img1.png";
 import VideoImage from "src/assets/video.png";
 import ArrowNextImage from "src/assets/arrow-next.svg";
