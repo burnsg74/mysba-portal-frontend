@@ -6,6 +6,7 @@ import ArrowNextImage from "src/assets/arrow-next.svg";
 
 import styles from "src/components/CardLearningCenter/CardLearningCenter.module.css";
 
+//government as a customer
 const CardLearningCenterTwo = () => {
   const videos = [
     {

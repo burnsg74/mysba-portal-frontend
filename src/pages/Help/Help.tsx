@@ -1,17 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "src/pages/Help/Help.module.css";
 import CardLearningCenterFour from "src/components/CardLearningCenter/CardLearningCenterFour"
 
 const Help = () => {
-  const [openAccordions, setOpenAccordions] = useState([]);
-
-  const toggleAccordion = (id) => {
-    if (openAccordions.includes(id)) {
-      setOpenAccordions(openAccordions.filter((item) => item !== id));
-    } else {
-      setOpenAccordions([...openAccordions, id]);
-    }
-  };
 
   return (
     <>
@@ -23,18 +14,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a1")}
                 aria-controls="a1"
-                onClick={() => toggleAccordion("a1")}
               >
                 How can I provide feedback on this portal test environment?
               </button>
             </h4>
             <div
               id="a1"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a1" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 You will be able to provide feedback on this test environment
@@ -49,18 +37,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a2")}
                 aria-controls="a2"
-                onClick={() => toggleAccordion("a2")}
               >
                 How do I get help on features in this portal?
               </button>
             </h4>
             <div
               id="a2"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a2" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 This is a test environment and we are building out the help
@@ -74,18 +59,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a3")}
                 aria-controls="a3"
-                onClick={() => toggleAccordion("a3")}
               >
                 How do I change my username?
               </button>
             </h4>
             <div
               id="a3"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a3" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 The ability to change your username will be available in future
@@ -100,18 +82,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a4")}
                 aria-controls="a4"
-                onClick={() => toggleAccordion("a4")}
               >
                 How do I change or get a new password?
               </button>
             </h4>
             <div
               id="a4"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a4" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 The ability to change your password or get a new one will be
@@ -126,18 +105,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a5")}
                 aria-controls="a5"
-                onClick={() => toggleAccordion("a5")}
               >
                 Is my information saved somewhere?
               </button>
             </h4>
             <div
               id="a5"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a5" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 No information is saved in this test environment. Details about
@@ -153,18 +129,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a6")}
                 aria-controls="a6"
-                onClick={() => toggleAccordion("a6")}
               >
                 How do I delete my account?
               </button>
             </h4>
             <div
               id="a6"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a6" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 The ability to delete your account will be available in future
@@ -179,18 +152,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a7")}
                 aria-controls="a7"
-                onClick={() => toggleAccordion("a7")}
               >
                 What happens to my information if I delete my account?
               </button>
             </h4>
             <div
               id="a7"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a7" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 No information is saved in this test environment. Details about
@@ -206,18 +176,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a8")}
                 aria-controls="a8"
-                onClick={() => toggleAccordion("a8")}
               >
                 How do I get help on features in this portal?
               </button>
             </h4>
             <div
               id="a8"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a8" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 This is a test environment and we are building out the help
@@ -231,18 +198,15 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
-                aria-expanded={openAccordions.includes("a9")}
                 aria-controls="a9"
-                onClick={() => toggleAccordion("a9")}
               >
                 How do I change my username?
               </button>
             </h4>
             <div
               id="a9"
-              className={`usa-accordion__content usa-prose ${
-                openAccordions === "a9" ? "" : "hidden"
-              }`}
+              className="usa-accordion__content usa-prose"
+              hidden
             >
               <p>
                 The ability to change your username will be available in future

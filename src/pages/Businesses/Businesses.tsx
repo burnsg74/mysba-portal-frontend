@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import {useSelector} from "react-redux";
 import {getUser} from "src/store/user/userSlice";
-import {Link} from "react-router-dom";
-import CardLearningCenter from "src/components/CardLearningCenter/CardLearningCenter";
+import CardLearningCenterFive from "src/components/CardLearningCenter/CardLearningCenterFour";
 import styles from "src/pages/Businesses/Businesses.module.css";
 import Field from "src/components/Field/Field";
 import { useTranslation } from 'react-i18next';
@@ -88,7 +87,7 @@ const Businesses = () => {
                 </div>
             </div>
             <div className="grid-col-auto">
-                <CardLearningCenter/>
+                <CardLearningCenterFive/>
             </div>
         </div>
     );
