@@ -134,6 +134,13 @@
     max-width: 1200px;
 }
 
+@media screen and (min-width: 1024px) {
+    .dashboard-content {
+        padding-left: 40px;
+        padding-right: 40px;
+    }
+}
+
 @media (min-width: 1600px) {
     .dashboard-content {
         margin-right: auto;

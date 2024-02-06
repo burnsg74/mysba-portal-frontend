@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import {useOktaAuth} from "@okta/okta-react";
 import styles from "src/components/Header/Header.module.css";
 import SBAlogo from "src/assets/logo-horizontal.png";
+import SBAlogoSm from "src/assets/logo.png";
 import USFlag from "/node_modules/@uswds/uswds/dist/img/us_flag_small.png";
 import DotGov from "/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg";
 import HttpsIcon from "/node_modules/@uswds/uswds/dist/img/icon-https.svg";
@@ -149,6 +150,7 @@ const Header = () => {
                     <div className={`grid-col-auto ${styles['left']}`}>
                         {/* LOGO */}
                         <img className={`${styles['usa-logo']}`} src={SBAlogo} alt="Logo"/>
+                        <img className={`${styles['usa-logo__sm']}`} src={SBAlogoSm} alt="Logo"/>
                     </div>
                     <div className={`grid-col ${styles['left']}`}>
                     </div>

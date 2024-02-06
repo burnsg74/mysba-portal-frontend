@@ -31,10 +31,7 @@
     padding-bottom: 20px;
 }
 
-.usa-logo {
-    height: 33px;
-    flex: unset;
-}
+
 
 .usa-banner__header {
     text-align: left;
@@ -67,9 +64,27 @@
     height: 24px;
 }
 
+.usa-logo {
+    height: 33px;
+    flex: unset;
+    display: block;
+}
+
+.usa-logo__sm {
+    height: 33px;
+    flex: unset;
+    display: none;
+}
+
 @media screen and (max-width: 1023px) {
     .header-menu__icon-container {
         display: block;
+    }
+    .usa-logo__sm {
+        display: block;
+    }
+    .usa-logo {
+        display: none;
     }
 }
 

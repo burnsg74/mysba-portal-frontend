@@ -63,7 +63,7 @@
     margin-right: unset;
 }
 .pill-button {
-    color: var(--SBA-Celeste, #007DBC);
+    color: #FFFFFF;
     border-color: var(--SBA-Celeste, #007DBC);
     font-family: "Public Sans", serif;
     font-size: 16px;
