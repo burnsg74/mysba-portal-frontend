@@ -222,8 +222,15 @@ const Help = () => {
             </div>
           </div>
         </div>
-        <div className={"grid-col-auto"}>
-          <CardLearningCenterFour />
+        <div className={`grid-col-auto ${styles["resource-location"]}`}>
+          <div className={`${styles["resource-location__title"]}`}>
+            Resources for you
+          </div>
+          <div className={`${styles["resource-location__scroll-area"]}`}>
+            <div className={`${styles["resource-location__cards"]}`}>
+              <CardLearningCenterFour />
+            </div>
+          </div>
         </div>
       </div>
     </>

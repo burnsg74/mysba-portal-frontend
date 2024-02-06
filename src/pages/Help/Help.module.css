@@ -14,9 +14,9 @@ p {
 
 .textContent {
   flex: 1 1 0;
-  color: #1B1B1B;
+  color: #1b1b1b;
   font-size: 16px;
-  font-family: 'Public Sans', sans-serif;
+  font-family: "Public Sans", sans-serif;
   font-weight: 400;
   line-height: 24px;
   word-wrap: break-word;
@@ -28,8 +28,8 @@ p {
 
 .alertCustomContainer {
   margin-top: 40px;
-  margin-bottom:80px;
-  background: #ECF3EC;
+  margin-bottom: 40px;
+  background: #ecf3ec;
   padding: 16px;
   display: flex;
   gap: 15px;
@@ -46,7 +46,7 @@ p {
 .icon {
   width: 26.67px;
   height: 26.67px;
-  background: #1B1B1B;
+  background: #1b1b1b;
 }
 
 .customTextContainer {
@@ -55,7 +55,17 @@ p {
   gap: 3px;
 }
 
-@media (max-width: 768px) {
+.resource-location {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 390px;
+  border-left: 1px solid var(--Neutrals-Light-Gray-4, #e0e0e0);
+  background: var(--Neutrals-Light-Gray, #fbfcfd);
+  gap: 20px;
+}
+
+@media screen and (max-width: 1024px) {
   .grid-row {
     flex-direction: column;
   }
@@ -64,5 +74,38 @@ p {
   }
   .grid-col {
     order: 2;
+  }
+  .resource-location {
+    display: flex;
+    width: unset;
+    border-left: none;
+  }
+}
+
+.resource-location__title {
+  font-family: "Public Sans", serif;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+  color: var(--Brand-Primary-SBA-Blue, #002e6d);
+  margin-bottom: 20px;
+  padding-top: 40px;
+  padding-bottom: 12px;
+  margin-left: 33px;
+  border-bottom: 1px solid #dfe1e2;
+}
+
+.resource-location__cards {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+
+@media (min-width: 1024px) {
+  .resource-location__scroll-area {
+    height: auto;
+    overflow-y: visible;
   }
 }

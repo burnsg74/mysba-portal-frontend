@@ -23,14 +23,15 @@
 }
 
 .title {
-    color: var(--Brand-Primary-SBA-Blue, #002E6D);
-    font-family: "Source Sans Pro", serif;
-    font-size: 22px;
+    color: #002E6D;
+    font-family: "Public Sans", sans-serif;
+    font-size: 24px;
     font-weight: 600;
-    letter-spacing: -0.3px;
-    line-height: 26px;
+    line-height: 28px;
+    word-wrap: break-word;
+    flex: 1 1 0;
+    padding: 0 16px;
     margin-bottom: 8px;
-    padding: 0 16px 0 16px;
 }
 
 .description {
@@ -214,3 +215,16 @@
     padding: 20px 16px 20px 16px;
 }
 
+@media (max-width: 768px) {
+    .grid-row {
+      flex-direction: column;
+    }
+    .grid-col-auto {
+      order: 3;
+      flex: 0 0 auto
+    }
+    .grid-col {
+      order: 2;
+      flex: 0 0 auto
+    }
+  }
