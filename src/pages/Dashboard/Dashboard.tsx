@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
-import CityScapeImage from "src/assets/cityscape.png";
+import CityScapeImage from "src/assets/cityscape-updated.png";
 import { Link, useLocation } from "react-router-dom";
 import CardLearningCenter from "src/components/CardLearningCenter/CardLearningCenter";
 import CardCertification from "src/components/CardCertification/CardCertification";
@@ -86,7 +86,7 @@ const Dashboard = () => {
                         >
                           <Link
                             to="/certifications"
-                            className={`float-right ${styles["certifications-header__link"]}`}
+                            className={`float-right usa-prose ${styles["certifications-header__link"]}`}
                           >
                             View
                           </Link>

@@ -107,13 +107,21 @@
   transform: translateX(0);
 }
 
+
+@media (max-width: 1023px) {
+  .right-side-nav.is-open {
+    width: 300px;
+  }
+}
+
 .right-side-nav__header {
+  width:300px;
   padding-top: 24px;
   position: relative;
 }
 
 .right-side-nav__icon {
-  height: 18px;
-  margin-left: 30px;
+  height: 24px;
+  margin-left: 120px;
   cursor: pointer;
 }

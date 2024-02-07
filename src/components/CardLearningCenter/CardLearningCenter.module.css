@@ -132,6 +132,7 @@
 
 .view-course-text {
     padding-right: 10px;
+    color: var(--SBA-Celeste, var(--Brand-Secondary-Bright-Blue, #007DBC))
 }
 
 .view-course-icon {
