@@ -72,6 +72,11 @@
   background: #faf3d1;
 }
 
+@media screen and (max-width: 1024px) {
+  .alert__container {
+    margin-left: 20px;
+  }
+}
 .alert__container::before {
   content: "";
   position: absolute;
@@ -107,7 +112,7 @@
 .business__container {
   display: flex;
   align-items: center;
-  width: 907px;
+  max-width: 907px;
   height: 38px;
   margin-bottom: 40px;
 }
@@ -259,10 +264,12 @@
   gap: 15px;
 }
 
-.resource-location__scroll-area {
-  height: 900px;
-  overflow-y: auto;
-  scrollbar-width: none;
+@media (min-width: 1024px) {
+  .resource-location__scroll-area {
+      height: 900px;
+      overflow-y: auto;
+      scrollbar-width: none;
+  }
 }
 
 .resource-location__scroll-area::-webkit-scrollbar {
