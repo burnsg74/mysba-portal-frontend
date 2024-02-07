@@ -1,117 +1,119 @@
 .usa-nav-container {
-    width: 100vw;
-    margin: 0;
-    max-width: unset;
-    display: flex;
-    justify-content: space-between;
-    padding-left: 20px;
-    padding-right: 20px;
+  width: 100vw;
+  margin: 0;
+  max-width: unset;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
 }
+
 .left {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
+
 .right {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .usa-banner__inner {
-    width: 100vw;
-    margin: 0;
-    max-width: unset;
-    justify-content: start;
-    padding-left:16px;
+  width: 100vw;
+  margin: 0;
+  max-width: unset;
+  justify-content: start;
+  padding-left: 16px;
 }
 
 .usa-header {
-    border-bottom: 1px solid lightgray;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  border-bottom: 1px solid lightgray;
+  padding-top: 20px;
+  padding-bottom: 20px;
 }
 
-
-
 .usa-banner__header {
-    text-align: left;
+  text-align: left;
 }
 
 .pill-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #007DBC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007dbc;
 }
 
 .usa-language-container {
-    padding-right: 20px;
+  padding-right: 20px;
 }
 
 .pill-button img {
-    width: 20px;
-    height: auto;
+  width: 20px;
+  height: auto;
 }
 
 .header-menu__icon-container {
-    padding-left: 20px;
-    display: none;
+  padding-left: 20px;
+  display: none;
 }
 
 .header-menu__icon {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
 }
 
 .usa-logo {
-    height: 33px;
-    flex: unset;
-    display: block;
+  height: 33px;
+  flex: unset;
+  display: block;
 }
 
 .usa-logo__sm {
-    height: 33px;
-    flex: unset;
-    display: none;
+  height: 33px;
+  flex: unset;
+  display: none;
 }
 
 @media screen and (max-width: 1023px) {
-    .header-menu__icon-container {
-        display: block;
-    }
-    .usa-logo__sm {
-        display: block;
-    }
-    .usa-logo {
-        display: none;
-    }
+  .header-menu__icon-container {
+    display: block;
+  }
+
+  .usa-logo__sm {
+    display: block;
+  }
+
+  .usa-logo {
+    display: none;
+  }
 }
 
 .right-side-nav {
-    transform: translateX(100%);
-    transition: transform 0.3s ease-out;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    border-left: 1px solid lightgray;
-    width: 200px;
-    z-index: 9999;
-    background-color: white;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  border-left: 1px solid lightgray;
+  width: 200px;
+  z-index: 9999;
+  background-color: white;
 }
 
 .right-side-nav.is-open {
-    transform: translateX(0);
+  transform: translateX(0);
 }
 
 .right-side-nav__header {
-    width: 200px;
+  padding-top: 24px;
+  position: relative;
 }
 
 .right-side-nav__icon {
-    height: 30px;
-    margin-left: 30px;
-    padding: 7px;
-    cursor: pointer;
+  height: 18px;
+  margin-left: 30px;
+  cursor: pointer;
 }

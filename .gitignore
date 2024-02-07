@@ -2,6 +2,7 @@ node_modules
 dist
 dist-ssr
 *.local
-.okta.env
+.*
 !/.gitignore
 !/.github
+!/.prettierrc
