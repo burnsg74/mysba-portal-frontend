@@ -25,7 +25,6 @@ const Header = () => {
   const navRef = useRef<HTMLDivElement | null>(null);
 
   const handleMenuClick = () => {
-    console.log("menu")
     setIsNavOpen(true);
   };
 

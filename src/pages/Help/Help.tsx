@@ -7,8 +7,8 @@ const Help = () => {
     <>
       <div className="grid-row">
         <div className={`grid-col ${styles["container"]}`}>
-          <h1>Frequently Asked Questions</h1>
-          <div className="usa-accordion usa-accordion--bordered usa-accordion usa-accordion--bordered--bordered">
+          <div className={styles.title}>Frequently Asked Questions</div>
+          <div className="usa-accordion">
             <h4 className="usa-accordion__heading">
               <button
                 type="button"
@@ -211,10 +211,17 @@ const Help = () => {
             className={`usa-alert usa-alert--info ${styles.alertCustomContainer}`}
           >
             <div className={styles.iconContainer}>
-              <div className={styles.icon}></div>
+              <svg
+                className={`usa-icon ${styles["alert__icon"]}`}
+                aria-hidden="true"
+                focusable="false"
+                role="img"
+              >
+                <use xlinkHref="/assets/img/sprite.svg#info"></use>
+              </svg>
             </div>
             <div className={styles.customTextContainer}>
-              <h4 className="usa-alert__heading">Still need assistance?</h4>
+              <h3 className="usa-alert__heading">Still need assistance?</h3>
               <p className="usa-alert__text">
                 The SBA is available over email to help at
                 digitalresearch@SBA.gov.
@@ -223,9 +230,9 @@ const Help = () => {
           </div>
         </div>
         <div className={`grid-col-auto ${styles["resource-location"]}`}>
-          <div className={`${styles["resource-location__title"]}`}>
+          <h3 className={`usa-prose ${styles["resource-location__title"]}`}>
             Resources for you
-          </div>
+          </h3>
           <div className={`${styles["resource-location__scroll-area"]}`}>
             <div className={`${styles["resource-location__cards"]}`}>
               <CardLearningCenterFour />
