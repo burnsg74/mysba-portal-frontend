@@ -48,6 +48,7 @@ const Certifications = () => {
                         <div  className={`grid-col grid-col-wrap ${styles['title']}`}>
                                 Certifications
                         </div>
+                        <div  className={`grid-col-auto ${styles['btn-group']}`}>
                         <div className="grid-col-auto grid-col-wrap">
                             <button type="button"
                                     className={`usa-button usa-button--outline ${styles["apply-for-a-certification__btn"]}`}
@@ -63,6 +64,7 @@ const Certifications = () => {
                             >
                                 Link a Certification
                             </button>
+                        </div>
                         </div>
                     </div>
                     <div className="Certifications-content">

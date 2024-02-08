@@ -145,7 +145,8 @@
 
 .apply-for-a-certification__btn {
     border: 2px solid var(--SBA-Celeste, #007DBC);
-    padding: 11px 20px;
+    /*padding: 11px 20px;*/
+    margin: 0;
     color: var(--Brand-Secondary-Bright-Blue, #007DBC);
     text-align: center;
     font-family: "Public Sans", serif;
@@ -201,4 +202,12 @@
     font-weight: 700;
     line-height: 90%;
     box-shadow: unset;
+    margin: 0;
+}
+
+.btn-group {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
 }
