@@ -22,6 +22,20 @@
     line-height: normal;
 }
 
+.title-finance {
+    color: #002E6D;
+    font-family: "Public Sans", sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0em;
+    text-align: left;
+    word-wrap: break-word;
+    flex: 1 1 0;
+    padding: 0 16px;
+    margin-bottom: 8px;
+}
+
 .title {
     color: #002E6D;
     font-family: "Public Sans", sans-serif;

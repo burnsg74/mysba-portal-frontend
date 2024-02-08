@@ -12,6 +12,18 @@ p {
   flex-grow: 1;
 }
 
+
+.title {
+  color: var(--SBA-Celeste, #007dbc);
+  font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 48px;
+  letter-spacing: 0em;
+  text-align: left;
+  padding-bottom: 40px;
+}
+
 .textContent {
   flex: 1 1 0;
   color: #1b1b1b;
@@ -94,6 +106,8 @@ p {
   padding-bottom: 12px;
   margin-left: 33px;
   border-bottom: 1px solid #dfe1e2;
+  letter-spacing: 0em;
+  text-align: left;
 }
 
 .resource-location__cards {
@@ -108,4 +122,12 @@ p {
     height: auto;
     overflow-y: visible;
   }
+}
+
+.alert__icon {
+  margin-left: 14px;
+  margin-right: 14px;
+  width: 32px;
+  min-width: 24px;
+  height: 32px;
 }

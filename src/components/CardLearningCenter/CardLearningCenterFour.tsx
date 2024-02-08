@@ -71,7 +71,7 @@ const CardLearningCenterTwo = () => {
       {/* Body */}
       <div className={`${styles["usa-card__body"]}`}>
         <div className={`${styles["title_container"]}`}>
-          <div className={`${styles["title"]}`}> Financing Your Business</div>
+          <div className={`${styles["title-finance"]}`}> Financing Your Business</div>
           <div className={`${styles["description"]}`}>
             Assess your financing needs and discover financing options for your
             business.
