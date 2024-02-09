@@ -2,303 +2,209 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Source Sans Pro */
 @font-face {
-    font-family: "Source Sans Pro";
-    src: url("/assets/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-display: swap;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
 }
 
+/* Public Sans */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-regular.woff2") format("woff2");
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
+  font-display: swap;
+  font-family: "Public Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("/assets/fonts/public-sans-regular.woff2") format("woff2");
 }
 
 :root {
-    --Brand-Primary-SBA-Blue: #002E6D;
-    --Base-base-dark: #565C65;
-    --Neutrals-Light-Gray: #FBFCFD;
-    --Neutrals-Light-Gray-4: #E0E0E0;
-    --Base-white: #FFFFFF;
-    --SBA-Celeste: #007DBC;
-    --Text-Text: #1B1B1B;
-    --Base-base-lighter: #DCDEE0;
-    --Brand-Secondary-Bright-Blue: #007DBC;
-    --SBA-Dark-Blue: #000441;
-    --sba-celeste: #007DBC;
-    --sba-dark-celeste: #00518B;
-    --sba-light-celeste: #58ACEF;
-    --sba-blue: #002E6D;
-    --baseink: #1B1B1B;
-    --basewhite: #FFFFFF;
-    --sba-dark-blue: #000441;
-    --base-ink: #1B1B1B;
-    --base-dark: #565C65;
-    --warningwarning-light: #FEE685;
-    --base-lightest: #F0F0F0;
-    --base-lighter: #DFE1E2;
-    --basebase-lighter: #DCDEE0;
-    --warningwarning-lighter: #FAF3D1;
-    --warningwarning: #FFBE2E;
-    --successsuccess: #00A91C;
-    --successsuccess-lighter: #ECF3EC;
-    --primaryprimary-lighter: #D9E8F6;
-    --primaryprimary-darker: #162E51;
-    --primaryprimary-dark: #1A4480;
-    --primaryprimary: #005EA2;
-    --primarywhite: #FFFFFF;
-    --subtle-drop-shadow: 0px 7px 15px 0px rgba(27, 30, 41, 0.07);
-    --variable-collection-SBA-dark-blue: #000441;
-    --SBA-CRM-text-text-light: #71767A;
-    --components-button-text-font-family: "Roboto-Bold", Helvetica;
-    --components-button-text-font-weight: 700;
-    --components-button-text-font-size: 16px;
-    --components-button-text-letter-spacing: 0px;
-    --components-button-text-line-height: 24px;
-    --components-button-text-font-style: normal;
-    --prose-h4-font-family: "SourceSans Pro-Bold", Helvetica;
-    --prose-h4-font-weight: 700;
-    --prose-h4-font-size: 16px;
-    --prose-h4-letter-spacing: 0px;
-    --prose-h4-line-height: 120.00000476837158%;
-    --prose-h4-font-style: normal;
-    --sans-md-font-family: "SourceSans Pro-Regular", Helvetica;
-    --sans-md-font-weight: 400;
-    --sans-md-font-size: 17px;
-    --sans-md-letter-spacing: 0px;
-    --sans-md-line-height: normal;
-    --sans-md-font-style: normal;
-    --sans-sm-font-family: "SourceSans Pro-Regular", Helvetica;
-    --sans-sm-font-weight: 400;
-    --sans-sm-font-size: 16px;
-    --sans-sm-letter-spacing: 0px;
-    --sans-sm-line-height: normal;
-    --sans-sm-font-style: normal;
-    --body-font-family: "SourceSans Pro-Regular", Helvetica;
-    --body-font-weight: 400;
-    --body-font-size: 16px;
-    --body-letter-spacing: 0px;
-    --body-line-height: 150%;
-    --body-font-style: normal;
-    --sans-xl-font-family: "SourceSans Pro-Regular", Helvetica;
-    --sans-xl-font-weight: 400;
-    --sans-xl-font-size: 32px;
-    --sans-xl-letter-spacing: 0px;
-    --sans-xl-line-height: 120.00000476837158%;
-    --sans-xl-font-style: normal;
-    --sans-lg-font-family: "SourceSans Pro-Regular", Helvetica;
-    --sans-lg-font-weight: 400;
-    --sans-lg-font-size: 22px;
-    --sans-lg-letter-spacing: 0px;
-    --sans-lg-line-height: 120.00000476837158%;
-    --sans-lg-font-style: normal;
-    --sans-3xs-font-family: "SourceSans Pro-Regular", Helvetica;
-    --sans-3xs-font-weight: 400;
-    --sans-3xs-font-size: 13px;
-    --sans-3xs-letter-spacing: 0px;
-    --sans-3xs-line-height: normal;
-    --sans-3xs-font-style: normal;
-    --headings-h3-font-family: "PublicSans-SemiBold", Helvetica;
-    --headings-h3-font-weight: 600;
-    --headings-h3-font-size: 24px;
-    --headings-h3-letter-spacing: 0px;
-    --headings-h3-line-height: 28px;
-    --headings-h3-font-style: normal;
-    --h4-font-family: "PublicSans-Bold", Helvetica;
-    --h4-font-weight: 700;
-    --h4-font-size: 16px;
-    --h4-letter-spacing: 0px;
-    --h4-line-height: normal;
-    --h4-font-style: normal;
-    --headings-h5-font-family: "PublicSans-SemiBold", Helvetica;
-    --headings-h5-font-weight: 600;
-    --headings-h5-font-size: 18px;
-    --headings-h5-letter-spacing: 0px;
-    --headings-h5-line-height: 22px;
-    --headings-h5-font-style: normal;
-    --body-paragraph-default-font-family: "PublicSans-Regular", Helvetica;
-    --body-paragraph-default-font-weight: 400;
-    --body-paragraph-default-font-size: 16px;
-    --body-paragraph-default-letter-spacing: 0px;
-    --body-paragraph-default-line-height: 20px;
-    --body-paragraph-default-font-style: normal;
-    --sans-2xs-font-family: "SourceSans Pro-Regular", Helvetica;
-    --sans-2xs-font-weight: 400;
-    --sans-2xs-font-size: 14px;
-    --sans-2xs-letter-spacing: 0px;
-    --sans-2xs-line-height: normal;
-    --sans-2xs-font-style: normal;
-    --body-paragraph-small-font-family: "PublicSans-Regular", Helvetica;
-    --body-paragraph-small-font-weight: 400;
-    --body-paragraph-small-font-size: 14px;
-    --body-paragraph-small-letter-spacing: 0px;
-    --body-paragraph-small-line-height: 18px;
-    --body-paragraph-small-font-style: normal;
-    --headings-h4-font-family: "PublicSans-Regular", Helvetica;
-    --headings-h4-font-weight: 400;
-    --headings-h4-font-size: 20px;
-    --headings-h4-letter-spacing: 0px;
-    --headings-h4-line-height: 24px;
-    --headings-h4-font-style: normal;
-    --body-single-line-small-font-family: "PublicSans-Regular", Helvetica;
-    --body-single-line-small-font-weight: 400;
-    --body-single-line-small-font-size: 14px;
-    --body-single-line-small-letter-spacing: 0px;
-    --body-single-line-small-line-height: 16px;
-    --body-single-line-small-font-style: normal;
+  --Base-base-dark: #565c65;
+  --Base-base-lighter: #dcdee0;
+  --Base-white: #ffffff;
+  --Brand-Primary-SBA-Blue: #002e6d;
+  --Brand-Secondary-Bright-Blue: #007dbc;
+  --Neutrals-Light-Gray-4: #e0e0e0;
+  --Neutrals-Light-Gray: #fbfcfd;
+  --SBA-CRM-text-text-light: #71767a;
+  --SBA-Celeste: #007dbc;
+  --SBA-Dark-Blue: #000441;
+  --Text-Text: #1b1b1b;
+
+  --sba-celeste: #007dbc;
+  --sba-dark-celeste: #00518b;
+  --sba-light-celeste: #58acef;
+  --baseink: #1b1b1b;
+  --basewhite: #ffffff;
+  --sba-dark-blue: #000441;
+  --base-ink: #1b1b1b;
+  --base-dark: #565c65;
+  --warningwarning-light: #fee685;
+  --base-lightest: #f0f0f0;
+  --base-lighter: #dfe1e2;
+  --warningwarning-lighter: #faf3d1;
+  --warningwarning: #ffbe2e;
+  --successsuccess: #00a91c;
+  --successsuccess-lighter: #ecf3ec;
+  --primaryprimary-lighter: #d9e8f6;
+  --primaryprimary-darker: #162e51;
+  --primaryprimary-dark: #1a4480;
+  --primaryprimary: #005ea2;
+  --primarywhite: #ffffff;
 }
 
 .sba-blue {
-    color: var(--sba-blue, #002E6D);
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
-
 .container-row {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    width: 730px;
-    margin: 40px;
-    max-width: 730px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 730px;
+  margin: 40px;
+  max-width: 730px;
+  gap: 20px;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .open-sign {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
 }
 
 .title {
-    font-family: "Source Sans Pro-Regular", Helvetica, serif;
-    font-weight: 400;
-    color: #002e6d;
-    font-size: 32px;
-    margin-bottom: 20px;
+  font-family: "Source Sans Pro-Regular", Helvetica, serif;
+  font-weight: 400;
+  color: #002e6d;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 .subtitle {
-    color: #002e6d;
-    font-family: "Source Sans Pro-Regular", Helvetica, serif;
-    font-weight: 400;
-    font-size: 22px;
-    margin-bottom: 20px;
+  color: #002e6d;
+  font-family: "Source Sans Pro-Regular", Helvetica, serif;
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 20px;
 }
 
 .label {
-    font-family: "Source Sans Pro-Regular", Helvetica, serif;
-    font-weight: 400;
-    color: #002e6d;
-    font-size: 40px;
-    width: 100%;
+  font-family: "Source Sans Pro-Regular", Helvetica, serif;
+  font-weight: 400;
+  color: #002e6d;
+  font-size: 40px;
+  width: 100%;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
 }
 
 .closeBtn {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    background: #007DBC;
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  background: #007dbc;
 }
 
 .closeBtn:hover,
 .closeBtn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-    background: #005ea2;
-
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  background: #005ea2;
 }
 
 .usa-current.side-nav-link {
-    outline: none;
+  outline: none;
 }
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 /* USWDS Overrides */
 .usa-button {
-    background-color: var(--sba-celeste, #007DBC);
+  width: auto;
+  background-color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .usa-button--outline {
-    background-color: transparent;
-    color: var(--sba-celeste, #007DBC);
+  background-color: transparent;
+  color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .side-nav-link {
-    outline: none;
-    color: var(--SBA-Dark-Blue, #000441);
-    font-family: "Source Sans Pro", serif;
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  outline: none;
+  color: var(--SBA-Dark-Blue);
+  font-family: "Source Sans Pro", serif;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .usa-sidenav .usa-current {
-    background-color: #F5F5F5;;
+  background-color: #f5f5f5;
 }
 
 .usa-current {
-    background-color: #f0f0f0;
-    border: unset;
-    color: var(--sba-blue, #002E6D);
-    font-family: "Source Sans Pro", serif;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
+  background-color: #F0F0F0;
+  border: unset;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-family: "Source Sans Pro", serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
 }
 
 button {
-    outline: none;
+  outline: none;
 }
 
 .grid-col-wrap {
-    flex: unset;
-    display: flex;
-    flex-wrap: wrap;
+  flex: unset;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-a, a:focus, a:active, a:hover, a:visited {
-    text-decoration: none;
+a,
+a:focus,
+a:active,
+a:hover,
+a:visited {
+  text-decoration: none;
 }

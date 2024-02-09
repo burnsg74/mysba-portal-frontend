@@ -56,7 +56,7 @@
     font-weight: 400;
     line-height: 26px;
     text-align: left;
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .section_message {
@@ -66,7 +66,7 @@
     line-height: 21px;
     letter-spacing: 0em;
     text-align: left;
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .checkbox__group {
@@ -93,7 +93,7 @@ input[type="checkbox"]:focus {
     font-weight: 400;
     line-height: 26px;
     text-align: left;
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .card__container {
@@ -120,7 +120,7 @@ input[type="checkbox"]:focus {
     line-height: 19px;
     text-align: left;
     width: 270px;
-    background-color: var(--sba-celeste, #007DBC);
+    background-color: var(--Brand-Secondary-Bright-Blue);
     color: #fff;
     border-radius: 6px;
     padding: 10px;
@@ -139,7 +139,7 @@ input[type="checkbox"]:focus {
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent var(--sba-celeste, #007DBC) transparent;
+    border-color: transparent transparent var(--Brand-Secondary-Bright-Blue) transparent;
 }
 
 .tooltip:hover .tooltiptext {

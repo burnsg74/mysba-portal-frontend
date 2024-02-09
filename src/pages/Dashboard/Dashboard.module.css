@@ -3,14 +3,14 @@
   height: 276px;
   padding-top: 20px;
   background-color: #f3f8fc;
-  color: var(--sba-blue, #002e6d);
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .welcome-message {
   font-family:
     Source Sans Pro,
     serif;
-  color: var(--sba-blue, #002e6d);
+  color: var(--Brand-Primary-SBA-Blue);
   text-align: center;
   padding-top: 5px;
   font-size: 16px;
@@ -22,7 +22,7 @@
   font-family:
     Public Sans,
     serif;
-  color: var(--sba-blue, #002e6d);
+  color: var(--Brand-Primary-SBA-Blue);
   text-align: center;
   font-size: 22px;
   font-style: normal;
@@ -131,7 +131,7 @@
   font-weight: 400;
   line-height: 38px;
   text-align: left;
-  color: var(--sba-blue, #002e6d);
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .dashboard-content__container {
@@ -141,7 +141,7 @@
 }
 
 .dashboard-content {
-  color: var(--sba-blue, #002e6d);
+  color: var(--Brand-Primary-SBA-Blue);
   max-width: 1200px;
 }
 
@@ -160,7 +160,7 @@
 }
 
 .sba-blue {
-  color: var(--sba-blue, #002e6d);
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .certifications-header__link {
@@ -243,7 +243,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 28px;
-  color: var(--Brand-Primary-SBA-Blue, #002e6d);
+  color: var(--Brand-Primary-SBA-Blue);
   margin-bottom: 20px;
   padding-top: 40px;
   padding-bottom: 12px;

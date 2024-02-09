@@ -16,7 +16,7 @@
 }
 
 .subtitle {
-    font-family: "Public Sans-Regular", Helvetica, serif;
+    font-family: "Public Sans", Helvetica, serif;
     font-weight: 400;
     color: #002e6d;
     font-size: 20px;
@@ -49,11 +49,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .store_icon {
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
     margin-right: 20px;
 }
 

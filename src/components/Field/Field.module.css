@@ -1,23 +1,26 @@
 .row {
-    padding: 0 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  padding-bottom: 16px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: var(--Base-base-lighter);
 }
 
 .label {
-    font-family: "Source Sans 3-SemiBold", Helvetica, serif;
-    font-weight: 600;
-    color: #002e6d;
-    font-size: 18px;
-    letter-spacing: 0;
+  font-family: "Source Sans Pro", serif;
+  font-weight: 600;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 18px;
+  line-height: 21px;
 }
 
 .value {
-    font-family: "Public Sans-Regular", Helvetica, serif;
-    font-weight: 400;
-    color: #002e6d;
-    font-size: 16px;
-    letter-spacing: 0;
-    padding-bottom: 16px;
-    border-bottom-width: 1px;
-    border-bottom-style: solid;
-    border-color: var(--basebase-lighter);
+  font-family: "Source Sans Pro", serif;
+  font-weight: 400;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 17px;
+  line-height: normal;
 }

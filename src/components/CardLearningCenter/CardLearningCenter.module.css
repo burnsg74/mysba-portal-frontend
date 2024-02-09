@@ -70,7 +70,7 @@
     font-size: 17px;
     font-weight: 700;
     width: 195px;
-    color: var(--Brand-Primary-SBA-Blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .video-subtitle {
@@ -94,7 +94,7 @@
 .video-container {
     padding: 16px;
     line-height: normal;
-    border-bottom: 1px solid var(--Base-base-lighter, #DCDEE0);
+    border-bottom: 1px solid var(--Base-base-lighter);
 }
 
 .view-course-btn {
@@ -102,7 +102,7 @@
     align-items: center;
     justify-content: center;
     outline: none;
-    color: var(--SBA-Celeste, var(--Brand-Secondary-Bright-Blue, #007DBC));
+    color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
     font-family: "Public Sans", serif;
     font-size: 16px;
@@ -113,7 +113,7 @@
 
 .view-course-btn:active {
     outline: none;
-    color: var(--SBA-Celeste, var(--Brand-Secondary-Bright-Blue, #007DBC));
+    color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
     font-family: "Public Sans", serif;
     font-size: 16px;
@@ -124,7 +124,7 @@
 
 .view-course-btn:hover {
     outline: none;
-    color: var(--SBA-Celeste, var(--Brand-Secondary-Bright-Blue, #007DBC));
+    color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
     font-family: "Public Sans", serif;
     font-size: 16px;
@@ -135,7 +135,7 @@
 
 .view-course-btn:focus {
     outline: none;
-    color: var(--SBA-Celeste, var(--Brand-Secondary-Bright-Blue, #007DBC));
+    color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
     font-family: "Public Sans", serif;
     font-size: 16px;
@@ -146,13 +146,13 @@
 
 .view-course-text {
     padding-right: 10px;
-    color: var(--SBA-Celeste, var(--Brand-Secondary-Bright-Blue, #007DBC))
+    color: var(--Brand-Secondary-Bright-Blue)
 }
 
 .view-course-icon {
     width: 24px;
     height: 24px;
-    fill: var(--sba-celeste, #007DBC);
+    fill: var(--Brand-Secondary-Bright-Blue);
 
 }
 
@@ -219,7 +219,7 @@
 .title_container {
     padding-top: 16px;
     padding-bottom: 8px;
-    border-bottom: 1px solid var(--basebase-lighter, #DCDEE0);
+    border-bottom: 1px solid var(--Base-base-lighter);
 
 }
 

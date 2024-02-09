@@ -14,7 +14,7 @@ p {
 
 
 .title {
-  color: var(--SBA-Celeste, #007dbc);
+  color: var(--Brand-Secondary-Bright-Blue);
   font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
   font-size: 32px;
   font-weight: 400;
@@ -100,7 +100,7 @@ p {
   font-style: normal;
   font-weight: 600;
   line-height: 28px;
-  color: var(--Brand-Primary-SBA-Blue, #002e6d);
+  color: var(--Brand-Primary-SBA-Blue);
   margin-bottom: 20px;
   padding-top: 40px;
   padding-bottom: 12px;

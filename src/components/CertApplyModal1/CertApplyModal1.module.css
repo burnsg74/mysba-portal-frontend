@@ -38,7 +38,7 @@
     font-weight: 600;
     line-height: 22px;
     text-align: left;
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
     order: 1;
 
 }
@@ -88,7 +88,7 @@
     font-weight: 400;
     line-height: 26px;
     text-align: left;
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .content img {
@@ -102,7 +102,7 @@
     line-height: 38px;
     text-align: center;
     padding-bottom: 40px;
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .card__container {
@@ -115,7 +115,7 @@
     font-weight: 400;
     line-height: 26px;
     text-align: center;
-    color: var(--sba-blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 
@@ -145,7 +145,7 @@
     line-height: 19px;
     text-align: left;
     width: 270px;
-    background-color: var(--sba-celeste, #007DBC);
+    background-color: var(--Brand-Secondary-Bright-Blue);
     color: #fff;
     border-radius: 6px;
     padding: 10px;
@@ -164,7 +164,7 @@
     margin-left: -5px;
     border-width: 5px;
     border-style: solid;
-    border-color: transparent transparent var(--sba-celeste, #007DBC) transparent;
+    border-color: transparent transparent var(--Brand-Secondary-Bright-Blue) transparent;
 }
 
 .tooltip:hover .tooltiptext {
