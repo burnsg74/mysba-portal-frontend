@@ -161,6 +161,11 @@
   outline: none;
 }
 
+button:not([disabled]):focus, input:not([disabled]):focus, select:not([disabled]):focus, textarea:not([disabled]):focus {
+  outline: none;
+  outline-offset: unset;
+}
+
 .usa-button {
   width: auto;
   background-color: var(--Brand-Secondary-Bright-Blue);
