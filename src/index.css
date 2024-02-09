@@ -156,6 +156,11 @@
 }
 
 /* USWDS Overrides */
+[contentEditable=true]:focus, [href]:focus, [tabindex]:focus, iframe:focus {
+  text-decoration: none;
+  outline: none;
+}
+
 .usa-button {
   width: auto;
   background-color: var(--Brand-Secondary-Bright-Blue);
