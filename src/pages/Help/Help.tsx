@@ -8,7 +8,7 @@ const Help = () => {
       <div className="grid-row">
         <div className={`grid-col ${styles["container"]}`}>
           <div className={styles.title}>Frequently Asked Questions</div>
-          <div className="usa-accordion">
+          <div className="usa-accordion usa-accordion--bordered">
             <h4 className="usa-accordion__heading">
               <button
                 type="button"
@@ -229,7 +229,7 @@ const Help = () => {
             </div>
           </div>
         </div>
-        <div className={`grid-col-auto ${styles["resource-location"]}`}>
+        <div className={`grid-col-auto ${styles["resource-location-right"]}`}>
           <h3 className={`usa-prose ${styles["resource-location__title"]}`}>
             Resources for you
           </h3>
@@ -237,6 +237,16 @@ const Help = () => {
             <div className={`${styles["resource-location__cards"]}`}>
               <CardLearningCenterFour />
             </div>
+          </div>
+        </div>
+      </div>
+      <div className={`grid-row ${styles["resource-location-bottom"]}`}>
+        <div className={`${styles["resource-location__title"]}`}>
+          Resources for you
+        </div>
+        <div className={`${styles["resource-location__scroll-area"]}`}>
+          <div className={`${styles["resource-location__cards"]}`}>
+            <CardLearningCenterFour />
           </div>
         </div>
       </div>

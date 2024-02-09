@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  width: 300px;
+  width: 240px;
   height: 952px;
   padding: 24px 0 24px 10px;
   gap: 4px;
@@ -13,6 +13,7 @@
 @media (max-width: 1023px) {
   .container {
     padding: 4px 0 24px 10px;
+    width: 300px;
   }
 }
 
