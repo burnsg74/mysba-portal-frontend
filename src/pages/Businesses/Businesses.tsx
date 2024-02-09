@@ -26,9 +26,9 @@ const Businesses = () => {
             {user.businesses &&
               user.businesses.map((business, index) => (
                 <React.Fragment key={index}>
-                  <div className="usa-card__container">
+                  <div className={`usa-card__container ${styles["usa-card__container"]}`}>
                     <div
-                      className={`usa-card__header ${styles["card__header"]}`}
+                      className={`${styles["card__header"]}`}
                     >
                       <div className={`grid-row ${styles["card__text"]}`}>
                         <div
