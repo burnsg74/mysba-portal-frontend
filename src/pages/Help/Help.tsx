@@ -13,6 +13,7 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
+                aria-expanded="false"
                 aria-controls="a1"
               >
                 How can I provide feedback on this portal test environment?
@@ -36,6 +37,7 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
+                aria-expanded="false"
                 aria-controls="a2"
               >
                 How do I get help on features in this portal?
@@ -60,6 +62,7 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
+                aria-expanded="false"
                 aria-controls="a3"
               >
                 How do I change my username?
@@ -85,6 +88,7 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
+                aria-expanded="false"
                 aria-controls="a4"
               >
                 How do I change or get a new password?
@@ -110,6 +114,7 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
+                aria-expanded="false"
                 aria-controls="a5"
               >
                 Is my information saved somewhere?
@@ -136,6 +141,7 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
+                aria-expanded="false"
                 aria-controls="a6"
               >
                 How do I delete my account?
@@ -161,6 +167,7 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
+                aria-expanded="false"
                 aria-controls="a7"
               >
                 What happens to my information if I delete my account?
@@ -187,6 +194,7 @@ const Help = () => {
               <button
                 type="button"
                 className="usa-accordion__button"
+                aria-expanded="false"
                 aria-controls="a8"
               >
                 How do I change my username?
