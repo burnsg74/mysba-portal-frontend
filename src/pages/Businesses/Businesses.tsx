@@ -26,11 +26,13 @@ const Businesses = () => {
             {user.businesses &&
               user.businesses.map((business, index) => (
                 <React.Fragment key={index}>
-                  <div className={`usa-card__container ${styles["usa-card__container"]}`}>
-                    <div
-                      className={`${styles["card__header"]}`}
-                    >
-                      <div className={`grid-row ${styles["card__text"]}`}>
+                  <div
+                    className={`usa-card__container ${styles["usa-card__container"]}`}
+                  >
+                    <div className={`${styles["card__header"]}`}>
+                      <div
+                        className={`grid-row ${styles["grid-row-centered"]}`}
+                      >
                         <div
                           className={`grid-col-auto ${styles["store_icon"]}`}
                         >
@@ -45,7 +47,7 @@ const Businesses = () => {
                           </svg>
                         </div>
                         <div className="grid-col">
-                          <h2 className="usa-card__heading sba-blue text-middle">
+                          <h2 className={`usa-card__heading ${styles["title"]}`}>
                             {business.name}{" "}
                           </h2>
                         </div>
@@ -105,14 +107,14 @@ const Businesses = () => {
                           <Field label="Fax" value={business.fax} />
                         </>
                       ) : (
-                        <div className={`grid-row`}>
-                          <div className="grid-col text-center">
+                        <div className={`grid-row sba-blue ${styles["usa-card__row"]}`}>
+                          <div className={`grid-col ${styles["usa-card__text-center"]}`}>
                             {business.type}
                           </div>
-                          <div className="grid-col text-center">
+                          <div className={`grid-col ${styles["usa-card__text-center"]}`}>
                             UEI: {business.uei}
                           </div>
-                          <div className="grid-col text-center">
+                          <div className={`grid-col ${styles["usa-card__text-center"]}`}>
                             EIN: {business.ein}
                           </div>
                         </div>
