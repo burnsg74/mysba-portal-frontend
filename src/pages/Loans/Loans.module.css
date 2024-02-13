@@ -1,5 +1,5 @@
 .title {
-    font-family:  "Source Sans Pro",  serif;
+    font-family: var(--Font-Primary);
     font-weight: 400;
     color: #002e6d;
     font-size: 40px;
@@ -16,7 +16,7 @@
 
 .title__text {
     margin-bottom: 20px;
-    font-family:  "Source Sans Pro",  serif;
+    font-family: var(--Font-Primary);
     font-weight: 400;
     /*color: transparent;*/
     font-size: 22px;

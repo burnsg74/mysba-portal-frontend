@@ -20,13 +20,9 @@ const Dashboard = () => {
           {/* Top city banner */}
           <div className={`banner ${styles["banner"]}`}>
             <div className={`${styles["welcome-message"]}`}>
-              {user.profile && (
-                <span>
-                  {" "}
-                  Hi,{" "}
-                  <span className="username"> {user.profile.first_name}</span>
-                </span>
-              )}
+                {user.profile && (
+                    <span className="username">Hi, {user.profile.first_name}</span>
+                )}
             </div>
             <div className={`${styles["mysba-message"]}`}>Welcome to your</div>
             <div className={`${styles["mysba-message"]}`}>MySBA Dashboard</div>
@@ -85,7 +81,7 @@ const Dashboard = () => {
                           className={`grid-col ${styles["certifications-header__link"]}`}
                         >
                           <Link
-                            to="/certifications"
+                            to="/certification"
                             className={`float-right usa-prose ${styles["certifications-header__link"]}`}
                           >
                             View

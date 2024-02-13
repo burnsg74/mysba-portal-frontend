@@ -39,7 +39,7 @@
 
 .badge__text {
   color: #1b1b1b;
-  font-family: "Source Sans Pro", serif;
+  font-family: var(--Font-Primary);
   font-size: 13px;
   font-weight: 400;
   line-height: normal;
@@ -66,7 +66,7 @@
 .pill-button {
   color: #ffffff;
   border-color: var(--Brand-Secondary-Bright-Blue);
-  font-family: "Public Sans", serif;
+  font-family: var(--Font-Secondary);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;
@@ -84,7 +84,7 @@
 
 .title {
   color: var(--Brand-Primary-SBA-Blue);
-  font-family: "Source Sans Pro", serif;
+  font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;
   line-height: 120%;

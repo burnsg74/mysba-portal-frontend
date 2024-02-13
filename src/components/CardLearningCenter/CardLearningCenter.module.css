@@ -14,7 +14,7 @@
 }
 
 .header-label {
-    font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
+    font-family: var(--Font-Primary);
     font-weight: 400;
     color: #002e6d;
     font-size: 17px;
@@ -24,7 +24,7 @@
 
 .title-finance {
     color: #002E6D;
-    font-family: "Public Sans", sans-serif;
+    font-family: var(--Font-Secondary);
     font-size: 20px;
     font-weight: 600;
     line-height: 28px;
@@ -38,7 +38,7 @@
 
 .title {
     color: #002E6D;
-    font-family: "Public Sans", sans-serif;
+    font-family: var(--Font-Secondary);
     font-size: 24px;
     font-weight: 600;
     line-height: 28px;
@@ -49,7 +49,7 @@
 }
 
 .description {
-    font-family: Source Sans Pro, serif;
+    font-family: var(--Font-Primary);
     font-weight: 400;
     color: var(--Base-base-dark, #565C65);
     font-size: 17px;
@@ -66,7 +66,7 @@
 }
 
 .video-title {
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 17px;
     font-weight: 700;
     width: 195px;
@@ -74,7 +74,7 @@
 }
 
 .video-subtitle {
-    font-family: "Source Sans Pro", serif;
+    font-family: var(--Font-Primary);
     font-size: 15px;
     font-weight: 400;
     font-style: italic;
@@ -83,7 +83,7 @@
 }
 
 .header-label {
-    font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
+    font-family: var(--Font-Primary);
     font-weight: 400;
     color: #002e6d;
     font-size: 17px;
@@ -104,7 +104,7 @@
     outline: none;
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -115,7 +115,7 @@
     outline: none;
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -126,7 +126,7 @@
     outline: none;
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -137,7 +137,7 @@
     outline: none;
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;

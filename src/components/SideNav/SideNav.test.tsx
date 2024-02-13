@@ -26,7 +26,7 @@ describe('SideNav Component', () => {
         const expectedLinks = [
             { name: 'Dashboard', url: '/dashboard' },
             { name: 'Businesses', url: '/businesses' },
-            { name: 'Certifications', url: '/certifications' },
+            { name: 'Certifications', url: '/certification' },
             { name: 'Loans', url: '/loans' },
             { name: 'Help', url: '/help' }
         ];

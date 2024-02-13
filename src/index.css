@@ -3,6 +3,39 @@
 @tailwind utilities;
 
 /* Source Sans Pro */
+/* 200 Extra Light (Ultra Light) */
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 200;
+  src: url("/assets/fonts/sourcesanspro-extralight-webfont.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro";
+  font-style: italic;
+  font-weight: 200;
+  src: url("/assets/fonts/sourcesanspro-extralightitalic-webfont.woff2") format("woff2");
+}
+
+/* 300 Extra Light */
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro";
+  font-style: normal;
+  font-weight: 300;
+  src: url("/assets/fonts/sourcesanspro-light-webfont.woff2") format("woff2");
+}
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro";
+  font-style: italic;
+  font-weight: 300;
+  src: url("/assets/fonts/sourcesanspro-lightitalic-webfont.woff2") format("woff2");
+}
+
+/* 400 regular */
 @font-face {
   font-display: swap;
   font-family: "Source Sans Pro";
@@ -10,8 +43,78 @@
   font-weight: 400;
   src: url("/assets/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
 }
+@font-face {
+  font-display: swap;
+  font-family: "Source Sans Pro";
+  font-style: italic;
+  font-weight: 400;
+  src: url("/assets/fonts/sourcesanspro-italic-webfont.woff2") format("woff2");
+}
+
+/* 600 semibold */
+@font-face {
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: normal;
+  src: url('/assets/fonts/sourcesanspro-semibold-webfont.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: italic;
+  src: url('/assets/fonts/sourcesanspro-semibolditalic-webfont.woff2') format('woff2');
+}
+
+/* 700 bold */
+@font-face {
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/assets/fonts/sourcesanspro-bold-webfont.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: italic;
+  src: url('/assets/fonts/sourcesanspro-bolditalic-webfont.woff2') format('woff2');
+}
+
+/* 900  black */
+@font-face {
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: normal;
+  src: url('/assets/fonts/sourcesanspro-black-webfont.woff2') format('woff2');
+}
+@font-face {
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: italic;
+  src: url('/assets/fonts/sourcesanspro-blackitalic-webfont.woff2') format('woff2');
+}
 
 /* Public Sans */
+/* 100 Thin */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-ThinItalic.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
+}
+
+/* 100 Thin */
 @font-face {
   font-display: swap;
   font-family: "Public Sans";
@@ -20,7 +123,120 @@
   src: url("/assets/fonts/public-sans-regular.woff2") format("woff2");
 }
 
+/* 200 ExtraLight */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-ExtraLight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-ExtraLightItalic.woff2') format('woff2');
+  font-weight: 200;
+  font-style: italic;
+}
+
+/* 300 Light */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-Light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+}
+
+/* 400 Regular */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+}
+
+/* 500 Medium */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-Medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-MediumItalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
+}
+
+/* 600 SemiBold */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-SemiBold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-SemiBoldItalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
+}
+
+/* 700 Bold */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-BoldItalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
+}
+
+/* 800 ExtraBold */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-ExtraBold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-ExtraBoldItalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
+}
+
+/* 800 Black */
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-Black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
+}
+@font-face {
+  font-family: "Public Sans";
+  src: url('/assets/fonts/public-sans-BlackItalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
+}
+
 :root {
+  /* Colors */
   --Base-base-dark: #565c65;
   --Base-base-lighter: #dcdee0;
   --Base-white: #ffffff;
@@ -33,7 +249,11 @@
   --SBA-Dark-Blue: #000441;
   --Text-Text: #1b1b1b;
 
-  --sba-celeste: #007dbc;
+  /* Fonts */
+  --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;
+  --Font-Secondary: "Public Sans", "Source Sans Pro", "Helvetica", sans-serif;
+
+  /* @TODO Remove or update name */
   --sba-dark-celeste: #00518b;
   --sba-light-celeste: #58acef;
   --baseink: #1b1b1b;
@@ -88,7 +308,7 @@
 }
 
 .title {
-  font-family: "Source Sans Pro-Regular", Helvetica, serif;
+  font-family: var(--Font-Primary);
   font-weight: 400;
   color: #002e6d;
   font-size: 32px;
@@ -97,14 +317,14 @@
 
 .subtitle {
   color: #002e6d;
-  font-family: "Source Sans Pro-Regular", Helvetica, serif;
+  font-family: var(--Font-Primary);
   font-weight: 400;
   font-size: 22px;
   margin-bottom: 20px;
 }
 
 .label {
-  font-family: "Source Sans Pro-Regular", Helvetica, serif;
+  font-family: var(--Font-Primary);
   font-weight: 400;
   color: #002e6d;
   font-size: 40px;
@@ -179,7 +399,7 @@ button:not([disabled]):focus, input:not([disabled]):focus, select:not([disabled]
 .side-nav-link {
   outline: none;
   color: var(--SBA-Dark-Blue);
-  font-family: "Source Sans Pro", serif;
+  font-family: var(--Font-Primary);
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -194,7 +414,7 @@ button:not([disabled]):focus, input:not([disabled]):focus, select:not([disabled]
   background-color: #F0F0F0;
   border: unset;
   color: var(--Brand-Primary-SBA-Blue);
-  font-family: "Source Sans Pro", serif;
+  font-family: var(--Font-Primary);
   font-size: 16px;
   font-style: normal;
   font-weight: 700;

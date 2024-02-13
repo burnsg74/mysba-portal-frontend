@@ -15,7 +15,7 @@ p {
 
 .title {
   color: var(--Brand-Secondary-Bright-Blue);
-  font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
+  font-family: var(--Font-Primary);
   font-size: 32px;
   font-weight: 400;
   line-height: 48px;
@@ -28,7 +28,7 @@ p {
   flex: 1 1 0;
   color: #1b1b1b;
   font-size: 16px;
-  font-family: "Public Sans", sans-serif;
+  font-family: var(--Font-Secondary);
   font-weight: 400;
   line-height: 24px;
   word-wrap: break-word;
@@ -104,7 +104,7 @@ p {
 }
 
 .resource-location__title {
-  font-family: "Public Sans", serif;
+  font-family: var(--Font-Secondary);
   font-size: 24px;
   font-style: normal;
   font-weight: 600;

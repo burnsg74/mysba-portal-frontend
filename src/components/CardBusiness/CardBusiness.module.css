@@ -8,7 +8,7 @@
 }
 
 .title {
-    font-family: "Source Sans Pro-Regular", Helvetica, serif;
+    font-family: var(--Font-Primary);
     font-weight: 400;
     color: #002e6d;
     font-size: 40px;
@@ -16,7 +16,7 @@
 }
 
 .subtitle {
-    font-family: "Public Sans", Helvetica, serif;
+    font-family: var(--Font-Secondary);
     font-weight: 400;
     color: #002e6d;
     font-size: 20px;

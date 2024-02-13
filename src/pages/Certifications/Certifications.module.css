@@ -19,7 +19,7 @@
 
 .title {
     flex-grow: 1;
-    font-family: "Source Sans Pro", serif;
+    font-family: var(--Font-Primary);
     font-weight: 400;
     color: #002e6d;
     font-size: 40px;
@@ -80,7 +80,7 @@
 }
 
 .resource-location__title {
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 24px;
     font-style: normal;
     font-weight: 600;
@@ -136,7 +136,7 @@
 
 .alert__message {
     padding-left: 16px;
-    font-family: Public Sans, serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-weight: 400;
     text-align: left;
@@ -149,7 +149,7 @@
     margin: 0;
     color: var(--Brand-Secondary-Bright-Blue, #007DBC);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -161,7 +161,7 @@
     outline: none;
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -173,7 +173,7 @@
     border: 2px solid var(--Brand-Secondary-Bright-Blue);
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -185,7 +185,7 @@
     outline: none;
     color:  var(--Brand-Secondary-Bright-Blue);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;
@@ -196,7 +196,7 @@
 .link-a-certification__btn:disabled {
     color: var(--Base-white, #FFF);
     text-align: center;
-    font-family: "Public Sans", serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 700;

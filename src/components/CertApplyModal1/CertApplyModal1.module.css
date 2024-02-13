@@ -33,7 +33,7 @@
 }
 
 .header__title {
-    font-family: Public Sans, serif;
+    font-family: var(--Font-Secondary);
     font-size: 18px;
     font-weight: 600;
     line-height: 22px;
@@ -45,7 +45,7 @@
 
 .header__close {
     color: var(--SBA-CRM-text-text-light);
-    font-family: Public Sans, serif;
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-weight: 400;
     line-height: 18px;
@@ -83,7 +83,7 @@
 }
 
 .checkbox_label {
-    font-family: Source Sans Pro, serif;
+    font-family: var(--Font-Primary);
     font-size: 22px;
     font-weight: 400;
     line-height: 26px;
@@ -96,7 +96,7 @@
 }
 
 .content__title {
-    font-family: Source Sans Pro, serif;
+    font-family: var(--Font-Primary);
     font-size: 32px;
     font-weight: 400;
     line-height: 38px;
@@ -110,7 +110,7 @@
 }
 
 .content__message {
-    font-family: Source Sans Pro, serif;
+    font-family: var(--Font-Primary);
     font-size: 22px;
     font-weight: 400;
     line-height: 26px;
@@ -139,7 +139,7 @@
 
 .tooltip .tooltiptext {
     visibility: hidden;
-    font-family: Source Sans Pro, serif;
+    font-family: var(--Font-Primary);
     font-size: 15px;
     font-weight: 400;
     line-height: 19px;

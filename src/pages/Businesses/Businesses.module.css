@@ -9,7 +9,7 @@
 
 .title {
   color: #002E6D;
-  font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
+  font-family: var(--Font-Primary);
   font-size: 32px;
   font-weight: 400;
   line-height: 48px;
@@ -26,14 +26,14 @@
 
 .usa-card__text-center {
   color: #002E6D;
-  font-family: "Source Sans Pro-Regular", Helvetica, sans-serif;
+  font-family: var(--Font-Primary);
   font-weight: 400;
   flex-grow: 1;
   text-align: center;
 }
 
 .subtitle {
-  font-family: "Public Sans", serif;
+  font-family: var(--Font-Secondary);
   font-weight: 400;
   color: #002e6d;
   font-size: 20px;
@@ -126,7 +126,7 @@
 }
 
 .resource-location__title {
-  font-family: "Public Sans", serif;
+  font-family: var(--Font-Secondary);
   font-size: 24px;
   font-style: normal;
   font-weight: 600;

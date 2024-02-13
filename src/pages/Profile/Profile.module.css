@@ -16,7 +16,7 @@
 .profile-name {
   color: #002e6d;
   font-size: 36px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--Font-Primary);
   font-weight: 600;
   word-wrap: break-word;
   padding-bottom:24px;
@@ -25,7 +25,7 @@
 .profile-subheading {
   color: #002e6d;
   font-size: 20px;
-  font-family: "Public Sans", sans-serif;
+  font-family: var(--Font-Secondary);
   font-weight: 400;
   line-height: 24px;
   word-wrap: break-word;
@@ -35,7 +35,7 @@
 .profile-label {
   color: #002e6d;
   font-size: 18px;
-  font-family: "Source Sans 3", sans-serif;
+  font-family: var(--Font-Primary);
   font-weight: 600;
   line-height: 22px;
   word-wrap: break-word;
@@ -44,7 +44,7 @@
 .profile-info {
   color: #002e6d;
   font-size: 16px;
-  font-family: "Public Sans", sans-serif;
+  font-family: var(--Font-Secondary);
   font-weight: 400;
   line-height: 18px;
   word-wrap: break-word;
@@ -53,7 +53,7 @@
 .updates-label {
   color: black;
   font-size: 15px;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: var(--Font-Primary);
   font-weight: 400;
   word-wrap: break-word;
 }
@@ -92,8 +92,8 @@
   text-align: center;
   color: white;
   font-size: 16px;
-  font-family: 'Public Sans', sans-serif;
+  font-family: var(--Font-Secondary);
   font-weight: 700;
-  line-height: 14.4px;
+  line-height: 14px;
   word-wrap: break-word;
 }
