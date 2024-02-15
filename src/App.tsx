@@ -37,7 +37,7 @@ const App: React.FC = () => {
   const restoreOriginalUri = () => {
     navigate("/");
   };
-  const isDevMode = ['localhost', 'stg.mysba.ussba.io', 'dev.mysba.ussba.io'].includes(window.location.hostname);
+  const isLocal = window.location.hostname === "localhost";
 
   let mockUserFilename = new URLSearchParams(location.search).get('mock-user');
   const fetchUserAndSet = () => {
@@ -58,7 +58,7 @@ const App: React.FC = () => {
   useEffect(() => {
     // @ts-ignore
     dispatch(fetchUserAndSet());
-    if (window.location.pathname === '/' && isDevMode) {
+    if (window.location.pathname === '/' && isLocal) {
       navigate("/dashboard");
     }
 
@@ -77,7 +77,7 @@ const App: React.FC = () => {
       <Route path="/help" element={<Help />} />
     </>
   );
-  return isDevMode ? (
+  return isLocal ? (
     <Routes>
       <Route element={<DevRoute />}>{routes}</Route>
     </Routes>
