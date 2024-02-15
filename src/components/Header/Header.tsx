@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
-import { useOktaAuth } from "@okta/okta-react";
 import styles from "src/components/Header/Header.module.css";
 import SBAlogo from "src/assets/logo-horizontal.png";
 import SBAlogoSm from "src/assets/logo.png";
@@ -14,7 +13,6 @@ import { getShowNav } from "src/store/showNav/showNavSlice";
 import { useSelector } from "react-redux";
 
 const Header = () => {
-  const { oktaAuth } = useOktaAuth();
   const detectedLang: string = navigator.language.substring(0, 2);
   const [lang, setLang] = useState(
     localStorage.getItem("lang") || detectedLang || "en"

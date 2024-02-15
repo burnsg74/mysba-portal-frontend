@@ -1,11 +1,13 @@
 import React from "react";
 import styles from "src/components/CardCertification/CardCertification.module.css";
 import { Link } from "react-router-dom";
+import Pill from "src/components/Pill/Pill";
 
 const CardCertification: React.FC<ICardCertificationProps> = ({
   certification,
   showDetails = true,
 }) => {
+  const daysUntilExpiry = certification?.days_until_expiry ?? 0;
   return (
     <>
       <div className={`usa-card__container ${styles["usa-card__container"]}`}>
@@ -39,7 +41,6 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             </div>
             <div className={`grid-col ${styles["title__container"]}`}>
               <h2 className={`usa-card__heading ${styles["title"]}`}>
-                {" "}
                 {certification.name}
               </h2>
             </div>
@@ -59,17 +60,21 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
         </div>
         <div className={`${styles["usa-card__body"]}`}>
           <div className={`grid-row sba-blue ${styles["usa-card__row"]}`}>
-            <div className={`grid-col-auto ${styles["badge"]}`}>
-              <svg
-                className="usa-icon "
-                aria-hidden="true"
-                focusable="false"
-                role="img"
-              >
-                <use xlinkHref="/assets/img/sprite.svg#warning"></use>
-              </svg>
-              <div className={`${styles["badge__text"]}`}>Renew in 90 Days</div>
-            </div>
+
+            {/* Certifications Pills */}
+            {daysUntilExpiry === 0 ? (
+              <Pill
+                type={"error"}
+                message={`Expired`}
+              />
+            ) : daysUntilExpiry <= 90 ? (
+              <Pill
+                type={"warning"}
+                message={`Renew in ${certification?.days_until_expiry} Days`}
+              />
+            ) : null
+            }
+
             <div
               className={`grid-col-5 text-center ${styles["usa-card__text-center"]}`}
             >

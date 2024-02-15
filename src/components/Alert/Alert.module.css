@@ -1,0 +1,47 @@
+.alert__container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  padding: 8px 16px 8px 14px;
+}
+
+.alert__container::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 8px;
+}
+
+.alert__icon {
+  margin-left: 14px;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
+}
+
+.alert__message {
+  padding-left: 16px;
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--Text-Text);
+}
+
+.alert-warning {
+  background: var(--Alert-Warning-Background);
+}
+
+.alert-warning::before {
+  background-color: var(--Alert-Warning-Bar);
+}
+
+.alert-error {
+  background: var(--Alert-Error-Background);
+}
+
+.alert-error::before {
+  background-color: var(--Alert-Error-Bar);
+}

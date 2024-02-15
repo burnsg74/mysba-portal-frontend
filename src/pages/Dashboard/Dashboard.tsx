@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import CityScapeImage from "src/assets/cityscape-updated.png";
@@ -8,6 +8,8 @@ import CardCertification from "src/components/CardCertification/CardCertificatio
 import CardLearningCenterTwo from "src/components/CardLearningCenter/CardLeaningCenterTwo";
 import styles from "src/pages/Dashboard/Dashboard.module.css";
 import AccountSetupModal from "src/components/AccountSetupModal/AccountSetupModal";
+import Alert from "src/components/Alert/Alert";
+import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
@@ -20,9 +22,11 @@ const Dashboard = () => {
           {/* Top city banner */}
           <div className={`banner ${styles["banner"]}`}>
             <div className={`${styles["welcome-message"]}`}>
-                {user.profile && (
-                    <span className="username">Hi, {user.profile.first_name}</span>
-                )}
+              {user.profile?.crm && (
+                <span className="username">
+                  Hi, {user.profile.crm.first_name}
+                </span>
+              )}
             </div>
             <div className={`${styles["mysba-message"]}`}>Welcome to your</div>
             <div className={`${styles["mysba-message"]}`}>MySBA Dashboard</div>
@@ -36,22 +40,29 @@ const Dashboard = () => {
           {/* Dashboard Content */}
           <div className={`${styles["dashboard-content__container"]}`}>
             <div className={`${styles["dashboard-content"]}`}>
-              {/* Alert */}
-              <div className={`${styles["alert__container"]}`}>
-                <svg
-                  className={`usa-icon ${styles["alert__icon"]}`}
-                  aria-hidden="true"
-                  focusable="false"
-                  role="img"
-                >
-                  <use xlinkHref="/assets/img/sprite.svg#warning"></use>
-                </svg>
-                <div className={`${styles["alert__message"]}`}>
-                  {" "}
-                  Your Woman-Owned Small Business certification must be renewed
-                  by 12/15/2023
-                </div>
-              </div>
+              {/* Certifications Alerts */}
+              {user.certifications &&
+                user.certifications.map((certification, index) => {
+                  const renewalDate = formatDateMMDDYYYY( certification.expire_at );
+                  const daysUntilExpiry = certification?.days_until_expiry || 0;
+                  return (
+                    <React.Fragment key={index}>
+                      {daysUntilExpiry === 0 ? (
+                        <Alert
+                          key={index}
+                          type={"error"}
+                          message={`Your ${certification.name} certification has expired`}
+                        />
+                      ) : daysUntilExpiry <= 90 ? (
+                        <Alert
+                          key={index}
+                          type={"warning"}
+                          message={`Your ${certification.name} certification will expire within 90 days. It must be renewed by ${renewalDate}`}
+                        />
+                      ) : null}
+                    </React.Fragment>
+                  );
+                })}
 
               {/* Businesses */}
               <div className={`${styles["businesses__container"]}`}>

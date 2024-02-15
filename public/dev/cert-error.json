@@ -1,0 +1,43 @@
+{
+  "profile": {
+    "crm": {
+      "id": "P0019385",
+      "first_name": "Cindy",
+      "last_name": "Smith",
+      "email": "cindy@example.com",
+      "allow_notices": false
+    },
+    "portal": {
+      "id": "P0019385"
+    }
+  },
+  "businesses": [
+    {
+      "id": 211,
+      "name": "Spoon and Harvest",
+      "type": "Limited Liability Company",
+      "uei": "4633133233",
+      "ein": "52-1992892",
+      "user_id": "P0019385",
+      "mailing_address": "9918 Main Street\n Austin, Texas 78703",
+      "business_address": "9918 Main Street\n Austin, Texas 78703",
+      "phone_number": "+1 (512) 555-5555",
+      "fax": "(991) 920-1909"
+    }
+  ],
+  "certifications": [
+    {
+      "id": 310,
+      "business_id": 211,
+      "name": "Woman-Owned Small Business",
+      "number": "99182-X",
+      "company_name": "Spoon and Harvest LLC",
+      "issue_at": "2021-08-15",
+      "expire_at": "2025-08-15",
+      "days_until_expiry": 0,
+      "system": "722000 (Food Services and Drinking Places)",
+      "owner": "Sarah Jones",
+      "additional_owner": "Mary Collier"
+    }
+  ]
+}

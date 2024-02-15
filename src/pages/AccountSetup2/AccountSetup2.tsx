@@ -12,6 +12,7 @@ const AccountSetup1 = () => {
     const {t} = useTranslation();
     const navigate = useNavigate();
     const handleContinueBtnClick = () => {
+        dispatch(setNav(true));
         navigate('/dashboard/new');
     };
     const handleBackBtnClick = () => {
