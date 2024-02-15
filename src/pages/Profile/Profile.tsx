@@ -13,7 +13,7 @@ const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const profileData: IUser = useSelector(getUser);
-  const isLocalhost = window.location.hostname === "localhost";
+  const isDevMode = ['localhost', 'stg.mysba.ussba.io', 'dev.mysba.ussba.io'].includes(window.location.hostname);
   const userMocks = ["default", "new-user", "cert-warning", "cert-error"];
   const [value, setValue] = React.useState(
     JSON.stringify(profileData, null, 2)
@@ -94,7 +94,7 @@ const Profile = () => {
         <button className={` ${styles["button-style"]}`} onClick={logout}>
           <span className={`${styles["button-text"]}`}>Log Out</span>
         </button>
-        {isLocalhost && (
+        {isDevMode && (
           <div>
             <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
             <h3>Dev Mode</h3>
