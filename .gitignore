@@ -6,3 +6,5 @@ dist-ssr
 !/.gitignore
 !/.github
 !/.prettierrc
+/public/assets/fonts/
+/public/assets/img/

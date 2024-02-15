@@ -1,0 +1,31 @@
+
+.pill__container {
+  display: flex;
+  padding: 5px 20px 5px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 34px;
+}
+
+.pill svg {
+  margin-right: 10px;
+}
+
+.pill__text {
+  color: #1b1b1b;
+  font-family: var(--Font-Primary);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.pill-warning {
+  background: var(--Alert-Warning-Background);
+  border: 2px solid var(--Alert-Warning-Bar);
+}
+
+.pill-error {
+  background: var(--Alert-Error-Background);
+  border: 2px solid var(--Alert-Error-Bar);
+}

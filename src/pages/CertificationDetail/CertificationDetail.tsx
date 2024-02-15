@@ -1,9 +1,12 @@
 import React from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import styles from "src/pages/CertificationDetail/CertificationDetail.module.css";
 import Field from "src/components/Field/Field";
+import Alert from "src/components/Alert/Alert";
+import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
+import Pill from "src/components/Pill/Pill";
 
 const CertificationDetail = () => {
   const navigate = useNavigate();
@@ -12,6 +15,10 @@ const CertificationDetail = () => {
   const certification: ICertification | undefined = user.certifications?.find(
     certification => certification.id.toString() === id?.toString()
   );
+  const daysUntilExpiry = certification?.days_until_expiry ?? 0;
+  const renewalDate = certification
+    ? formatDateMMDDYYYY(certification.expire_at)
+    : null;
 
   return (
     <div className={`${styles["container"]}`}>
@@ -26,21 +33,18 @@ const CertificationDetail = () => {
           Back
         </button>
       </div>
-      <div className={`${styles["alert__container"]}`}>
-        <svg
-          className={`usa-icon ${styles["alert__icon"]}`}
-          aria-hidden="true"
-          focusable="false"
-          role="img"
-        >
-          <use xlinkHref="/assets/img/sprite.svg#warning"></use>
-        </svg>
-        <div className={`${styles["alert__message"]}`}>
-          {" "}
-          Your Woman-Owned Small Business certification must be renewed by
-          12/15/2023
-        </div>
-      </div>
+      {/* Certifications Alerts */}
+      {daysUntilExpiry === 0 ? (
+        <Alert
+          type={"error"}
+          message={`Your ${certification?.name} certification has expired`}
+        />
+      ) : daysUntilExpiry <= 90 ? (
+        <Alert
+          type={"warning"}
+          message={`Your ${certification?.name} certification will expire within 90 days. It must be renewed by ${renewalDate}`}
+        />
+      ) : null}
       <div className={`grid-row ${styles["title-banner"]}`}>
         <div className={`grid-col-auto`}>
           <svg
@@ -68,21 +72,95 @@ const CertificationDetail = () => {
             </g>
           </svg>
         </div>
-        <div  className={`grid-col ${styles["title"]}`}>
-            {certification?.name ?? ""}
+        <div className={`grid-col ${styles["title"]}`}>
+          {certification?.name ?? ""}
         </div>
-        <div className={`grid-col-auto ${styles["badge"]}`}>
-          <svg
-            className={`usa-icon ${styles["title-icon"]}`}
-            aria-hidden="true"
-            focusable="false"
-            role="img"
-          >
-            <use xlinkHref="/assets/img/sprite.svg#warning"></use>
-          </svg>
-          <div className={`${styles["badge__text"]}`}>Renew in 90 Days</div>
-        </div>
+        {daysUntilExpiry === 0 ? (
+          <Pill type={"error"} message={`Expired`} />
+        ) : daysUntilExpiry <= 90 ? (
+          <Pill
+            type={"warning"}
+            message={`Renew in ${certification?.days_until_expiry} Days`}
+          />
+        ) : null}
       </div>
+      {/* Expired Cert Help*/}
+      {certification?.days_until_expiry === 0 && (
+        <>
+          <div className={`${styles["expired-help__container"]}`}>
+            <div className={`${styles["expired-help__header"]}`}>
+              Need help getting re-certified?
+            </div>
+            <div
+              className={`grid-row ${styles["expired-help__message__container"]}`}
+            >
+              <div className={`grid-col-auto`}>
+                <svg
+                  className={`usa-icon ${styles["expired-help__icon"]}`}
+                  aria-hidden="true"
+                  focusable="false"
+                  role="img"
+                >
+                  <use xlinkHref="/assets/img/sprite.svg#phone"></use>
+                </svg>
+              </div>
+              <div
+                className={`grid-col ${styles["expired-help-message__container"]}`}
+              >
+                <div className={`${styles["expired-help__message__header"]}`}>
+                  Contact Us
+                </div>
+                <div className={`${styles["expired-help__message__body"]}`}>
+                  You can fill out a help request form{" "}
+                  <u>
+                    <a
+                      href="https://wosb.certify.sba.gov/help-csh/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      here
+                    </a>
+                  </u>{" "}
+                  or contact us at{" "}
+                  <u>
+                    <a href="mailto:wosb@sba.gov">wosb@sba.gov</a>
+                  </u>
+                  .
+                </div>
+                <div className={`${styles["expired-help__message__body"]}`}>
+                  <a
+                    href="https://wosb.certify.sba.gov/knowledgebase/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{display: 'flex', alignItems: 'center'}}
+                  >
+                    Frequently Asked Questions
+                    <svg
+                      className="usa-icon"
+                      aria-hidden="true"
+                      focusable="false"
+                      role="img"
+                      width={24}
+                      height={24}
+                    >
+                      <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <button
+            type="button"
+            className={`usa-button usa-button--outline ${styles["start-recertification__btn"]}`}
+            onClick={() =>
+              window.open("https://wosb.certify.sba.gov/", "_blank")
+            }
+          >
+            Start the re-certification process
+          </button>
+        </>
+      )}
       <div className={`${styles["subtitle"]}`}>Details</div>
       <Field
         label="Company Certified"

@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from "react";
 import styles from "src/pages/AccountSetup1/AccountSetup1.module.css";
 import {useTranslation} from 'react-i18next';
-import {useSelector} from "react-redux";
-import {getUser} from "src/store/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, setUser } from "src/store/user/userSlice";
 import CardCertification from "src/components/CardCertification/CardCertification";
 import {useNavigate} from 'react-router-dom';
 import CardBusiness from "src/components/CardBusiness/CardBusiness";
@@ -13,6 +13,13 @@ const AccountSetup1 = () => {
     const {t} = useTranslation();
     const user: IUser = useSelector(getUser);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        const updatedUser = {...user, profile: {...user.profile, portal: {id: Math.floor(Math.random()*10000)}}}; // generate random number
+        dispatch(setUser(JSON.parse(JSON.stringify(updatedUser))));
+    }, []);
+
     const handleContinueBtnClick = () => {
         navigate('/account-setup/2');
     };

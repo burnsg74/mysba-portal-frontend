@@ -1,7 +1,14 @@
 interface IUserProfile {
-    first_name: string;
-    last_name: string;
-    email: string;
+    crm: {
+        id: string;
+        first_name: string;
+        last_name: string;
+        email: string;
+        allow_notices: boolean;
+    };
+    portal: {
+        id: string;
+    };
 }
 
 interface IBusiness {
@@ -23,6 +30,7 @@ interface ICertification {
     number: number;
     issue_at: string;
     expire_at: string;
+    days_until_expiry?: number;
     owner: string;
     system: string;
 }
@@ -32,6 +40,7 @@ interface INav {
 }
 
 interface IUser {
+
     profile?: IUserProfile;
     businesses?: IBusiness[];
     certifications?: ICertification[];

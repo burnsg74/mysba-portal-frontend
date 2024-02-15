@@ -14,6 +14,9 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({showModal = false}
         setModalOpen(showModal);
     }, [showModal]);
 
+    useEffect(() => {
+        window.scrollTo(0, 0);
+    }, []);
     return (
         <>
             {modalOpen &&
