@@ -27,7 +27,7 @@ const CardLearningCenterTwo = () => {
   ];
 
   return (
-    <div className={`${styles["usa-card__container"]}`}>
+    <div className={`${styles["usa-card__container_four"]}`}>
       {/* Header */}
       <div className={`usa-card__header ${styles["usa-card__header"]}`}>
         <div className={`usa-card__heading ${styles["usa-card__heading"]}`}>
