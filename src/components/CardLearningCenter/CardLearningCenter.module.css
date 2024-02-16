@@ -65,6 +65,16 @@
     box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
 }
 
+.usa-card__container_four {
+    width: 350px;
+    border-radius: 8px;
+    border: 1px solid var(--Neutrals-Light-Gray-4, #E0E0E0);
+    background: #FFF;
+    margin: unset;
+    box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+    padding-bottom:20px;
+}
+
 .video-title {
     font-family: var(--Font-Secondary);
     font-size: 17px;

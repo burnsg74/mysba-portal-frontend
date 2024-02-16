@@ -14,7 +14,7 @@ p {
 
 
 .title {
-  color: var(--Brand-Secondary-Bright-Blue);
+  color: var(--Brand-Primary-SBA-Blue);
   font-family: var(--Font-Primary);
   font-size: 32px;
   font-weight: 400;
@@ -22,6 +22,10 @@ p {
   letter-spacing: 0em;
   text-align: left;
   padding-bottom: 40px;
+}
+
+.usa-alert__body {
+  background-color: #007DBC; /* Custom color */
 }
 
 .textContent {
@@ -41,7 +45,8 @@ p {
 .alertCustomContainer {
   margin-top: 40px;
   margin-bottom: 40px;
-  background: #ecf3ec;
+  border-left: 8px solid #007DBC;
+  background: #D1EBFF;
   padding: 16px;
   display: flex;
   gap: 15px;
