@@ -77,16 +77,16 @@ const Profile = () => {
           {profileData?.profile?.crm?.last_name}
         </p>
         <div className={`${styles["divider"]}`} />
-        <div className="usa-checkbox checkbox">
+        <div className={`usa-checkbox ${styles["checkbox"]}`}>
           <input
             id="updates"
             type="checkbox"
             name="updates"
-            className="usa-checkbox__input"
+            className={`usa-checkbox__input`}
           />
           <label
             htmlFor="updates"
-            className="usa-checkbox__label updates-label"
+            className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
           >
             Notify me about updates regarding my SBA account and upcoming events
           </label>
