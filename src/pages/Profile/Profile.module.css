@@ -15,11 +15,12 @@
 
 .profile-name {
   color: #002e6d;
-  font-size: 36px;
+  font-size: 40px;
   font-family: var(--Font-Primary);
   font-weight: 600;
   word-wrap: break-word;
-  padding-bottom:10px;
+  padding-top: 40px;
+  padding-bottom:24px;
 }
 
 .profile-subheading {
@@ -29,7 +30,7 @@
   font-weight: 400;
   line-height: 24px;
   word-wrap: break-word;
-  padding-bottom:5px;
+  padding-bottom:0px;
 }
 
 .profile-label {
@@ -38,6 +39,8 @@
   font-family: var(--Font-Primary);
   font-weight: 600;
   line-height: 22px;
+  padding-top: 16px;
+  padding-bottom:4px;
   word-wrap: break-word;
 }
 
@@ -56,6 +59,7 @@
   font-family: var(--Font-Primary);
   font-weight: 400;
   word-wrap: break-word;
+  margin-left:25px;
 }
 
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
@@ -63,13 +67,24 @@
   border-color: #007dbc;
 }
 
+.usa-checkbox__label {
+  padding-left: 45px;
+}
+
 .checkbox{ 
-  padding-bottom: 24px;
+  padding-bottom: 41px;
+  padding-left: 25px;
 }
 
 .divider {
   border-top: 1px solid #DCDEE0;
   padding-top: 16px;
+}
+
+.divider:last-child {
+  border-top: 1px solid #DCDEE0;
+  padding-top: 16px;
+  padding-bottom: 31px;
 }
 
 .button-style {
