@@ -38,8 +38,8 @@ const Dashboard = () => {
           </div>
 
           {/* Dashboard Content */}
-          <div className={`${styles["dashboard-content__container"]}`}>
-            <div className={`${styles["dashboard-content"]}`}>
+          <div className={` ${styles["dashboard-content__container"]}`}>
+            <div className={`main-container ${styles["dashboard-content"]}`}>
               {/* Certifications Alerts */}
               {user.certifications &&
                 user.certifications.map((certification, index) => {

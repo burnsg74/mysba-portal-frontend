@@ -18,111 +18,123 @@ const Businesses = () => {
   return (
     <>
       <div className="grid-row">
-        <div className={`grid-col ${styles["container"]}`}>
-          <h1 className={`usa-prose ${styles["title"]}`}>
-            {t("Your Business")}{" "}
-          </h1>
-          <div className="Businesses-content">
-            {user.businesses &&
-              user.businesses.map((business, index) => (
-                <React.Fragment key={index}>
-                  <div
-                    className={`usa-card__container ${styles["usa-card__container"]}`}
-                  >
-                    <div className={`${styles["card__header"]}`}>
-                      <div
-                        className={`grid-row ${styles["grid-row-centered"]}`}
-                      >
+        <div className={`grid-col`}>
+          <div className={`main-container`}>
+            <h1 className={`usa-prose ${styles["title"]}`}>
+              {t("Your Business")}{" "}
+            </h1>
+            <div className="Businesses-content">
+              {user.businesses &&
+                user.businesses.map((business, index) => (
+                  <React.Fragment key={index}>
+                    <div
+                      className={`usa-card__container ${styles["usa-card__container"]}`}
+                    >
+                      <div className={`${styles["card__header"]}`}>
                         <div
-                          className={`grid-col-auto ${styles["store_icon"]}`}
+                          className={`grid-row ${styles["grid-row-centered"]}`}
                         >
-                          <svg
-                            height="40"
-                            width="40"
-                            aria-hidden="true"
-                            focusable="false"
-                            role="img"
+                          <div
+                            className={`grid-col-auto ${styles["store_icon"]}`}
                           >
-                            <use xlinkHref="/assets/img/sprite.svg#store"></use>
-                          </svg>
-                        </div>
-                        <div className="grid-col">
-                          <h2 className={`usa-card__heading ${styles["title"]}`}>
-                            {business.name}{" "}
-                          </h2>
-                        </div>
-                        <div
-                          className={`grid-col-auto ${styles["toggle__icon"]}`}
-                          onClick={handleToggleDetails}
-                        >
-                          {showDetails ? (
                             <svg
-                              width="40"
                               height="40"
+                              width="40"
                               aria-hidden="true"
                               focusable="false"
                               role="img"
                             >
-                              <use xlinkHref="/assets/img/sprite.svg#expand_less"></use>
+                              <use xlinkHref="/assets/img/sprite.svg#store"></use>
                             </svg>
-                          ) : (
-                            <svg
-                              width="40"
-                              height="40"
-                              aria-hidden="true"
-                              focusable="false"
-                              role="img"
+                          </div>
+                          <div className="grid-col">
+                            <h2
+                              className={`usa-card__heading ${styles["title"]}`}
                             >
-                              <use xlinkHref="/assets/img/sprite.svg#expand_more"></use>
-                            </svg>
-                          )}
+                              {business.name}{" "}
+                            </h2>
+                          </div>
+                          <div
+                            className={`grid-col-auto ${styles["toggle__icon"]}`}
+                            onClick={handleToggleDetails}
+                          >
+                            {showDetails ? (
+                              <svg
+                                width="40"
+                                height="40"
+                                aria-hidden="true"
+                                focusable="false"
+                                role="img"
+                              >
+                                <use xlinkHref="/assets/img/sprite.svg#expand_less"></use>
+                              </svg>
+                            ) : (
+                              <svg
+                                width="40"
+                                height="40"
+                                aria-hidden="true"
+                                focusable="false"
+                                role="img"
+                              >
+                                <use xlinkHref="/assets/img/sprite.svg#expand_more"></use>
+                              </svg>
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="usa-card__body">
-                      {showDetails ? (
-                        <>
-                          <div className={`grid-row`}>
-                            <div className="grid-col">
-                              <div className={`${styles["subtitle"]}`}>
-                                Business Information
+                      <div className="usa-card__body">
+                        {showDetails ? (
+                          <>
+                            <div className={`grid-row`}>
+                              <div className="grid-col">
+                                <div className={`${styles["subtitle"]}`}>
+                                  Business Information
+                                </div>
                               </div>
                             </div>
+                            <Field label="EIN" value={business.ein} />
+                            <Field label="UEI" value={business.uei} />
+                            <Field label="Type" value={business.type} />
+                            <Field
+                              label="Mailing Address"
+                              value={business.mailing_address}
+                            />
+                            <Field
+                              label="Business Address"
+                              value={business.business_address}
+                            />
+                            <Field
+                              label="Phone Number"
+                              value={business.phone_number}
+                            />
+                            <Field label="Fax" value={business.fax} />
+                          </>
+                        ) : (
+                          <div
+                            className={`grid-row sba-blue ${styles["usa-card__row"]}`}
+                          >
+                            <div
+                              className={`grid-col ${styles["usa-card__text-center"]}`}
+                            >
+                              {business.type}
+                            </div>
+                            <div
+                              className={`grid-col ${styles["usa-card__text-center"]}`}
+                            >
+                              UEI: {business.uei}
+                            </div>
+                            <div
+                              className={`grid-col ${styles["usa-card__text-center"]}`}
+                            >
+                              EIN: {business.ein}
+                            </div>
                           </div>
-                          <Field label="EIN" value={business.ein} />
-                          <Field label="UEI" value={business.uei} />
-                          <Field label="Type" value={business.type} />
-                          <Field
-                            label="Mailing Address"
-                            value={business.mailing_address}
-                          />
-                          <Field
-                            label="Business Address"
-                            value={business.business_address}
-                          />
-                          <Field
-                            label="Phone Number"
-                            value={business.phone_number}
-                          />
-                          <Field label="Fax" value={business.fax} />
-                        </>
-                      ) : (
-                        <div className={`grid-row sba-blue ${styles["usa-card__row"]}`}>
-                          <div className={`grid-col ${styles["usa-card__text-center"]}`}>
-                            {business.type}
-                          </div>
-                          <div className={`grid-col ${styles["usa-card__text-center"]}`}>
-                            UEI: {business.uei}
-                          </div>
-                          <div className={`grid-col ${styles["usa-card__text-center"]}`}>
-                            EIN: {business.ein}
-                          </div>
-                        </div>
-                      )}
+                        )}
+                      </div>
                     </div>
-                  </div>
-                </React.Fragment>
-              ))}
+                  </React.Fragment>
+                ))}
+            </div>
           </div>
         </div>
         <div className={`grid-col-auto ${styles["resource-location-right"]}`}>

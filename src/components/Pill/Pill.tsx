@@ -3,11 +3,18 @@ import styles from "src/components/Pill/Pill.module.css";
 
 interface IPillProps {
   message: string;
-  type: "success" | "error" | "warning";
+  type: "in-progress" | "valid" | "warning" | "error";
 }
 
 const Pill: React.FC<IPillProps> = ({ message, type }) => {
-  let icon = type === "error" ? "cancel" : type === "warning" ? "warning" : "check";
+  const type2icon = {
+    "in-progress": "schedule",
+    "valid": "check_circle",
+    "error": "cancel",
+    "warning": "warning"
+  }
+  const icon = type2icon[type];
+
   return (
     <div className={`${styles["pill__container"]} ${styles["pill-" + type]}`}>
       <svg

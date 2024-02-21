@@ -18,6 +18,7 @@ const Profile = () => {
   const [value, setValue] = React.useState(
     JSON.stringify(profileData, null, 2)
   );
+  const [showMessage, setShowMessage] = React.useState(false);
 
   const logout = async () => {
     const { oktaAuth } = useOktaAuth();
@@ -28,6 +29,7 @@ const Profile = () => {
     try {
       console.log("Save value", value);
       dispatch(setUser(JSON.parse(value)));
+      setShowMessage(true);
     } catch (e) {
       window.alert("Invalid JSON");
     }
@@ -40,6 +42,7 @@ const Profile = () => {
     const response = await fetch(url);
     const userData = await response.json();
     dispatch(setUser(userData));
+    setShowMessage(true);
   };
 
   useEffect(() => {
@@ -50,6 +53,19 @@ const Profile = () => {
       navigate("/account-setup/1");
     }
   }, [profileData]);
+  React.useEffect(() => {
+    let timerId: NodeJS.Timeout | undefined;
+
+    if (showMessage) {
+      timerId = setTimeout(() => setShowMessage(false), 1000);
+    }
+
+    return () => {
+      if (timerId) {
+        clearTimeout(timerId);
+      }
+    };
+  }, [showMessage]);
 
   return (
     <div className="grid-row">
@@ -95,8 +111,9 @@ const Profile = () => {
           <span className={`${styles["button-text"]}`}>Log Out</span>
         </button>
         {isDevMode && (
-          <div>
+          <div className={`${styles["dev_mode__container"]}`}>
             <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
+
             <h3>Dev Mode</h3>
             <button
               style={{ backgroundColor: "#4CAF50" }}
@@ -112,6 +129,9 @@ const Profile = () => {
                 {mockUserFilename}
               </button>
             ))}
+            {showMessage && (
+              <div className={`${styles["update_notice"]}`}>User Data Updated</div>
+            )}
             <AceEditor
               mode="json5"
               theme="github"
@@ -119,6 +139,7 @@ const Profile = () => {
               editorProps={{ $blockScrolling: true }}
               value={value}
               width="100%"
+              maxLines={500}
               onChange={newVal => setValue(newVal)}
               setOptions={{
                 enableBasicAutocompletion: true,

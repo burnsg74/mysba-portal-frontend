@@ -75,15 +75,22 @@ const CertificationDetail = () => {
         <div className={`grid-col ${styles["title"]}`}>
           {certification?.name ?? ""}
         </div>
-        {daysUntilExpiry === 0 ? (
+
+        {/* Certifications Pills */}
+        {daysUntilExpiry === -1 ? (
+          <Pill type={"in-progress"} message={"In progress"} />
+        ) : daysUntilExpiry === 0 ? (
           <Pill type={"error"} message={`Expired`} />
         ) : daysUntilExpiry <= 90 ? (
           <Pill
             type={"warning"}
             message={`Renew in ${certification?.days_until_expiry} Days`}
           />
+        ) : daysUntilExpiry > 90 ? (
+          <Pill type={"valid"} message={"Certified"} />
         ) : null}
       </div>
+
       {/* Expired Cert Help*/}
       {certification?.days_until_expiry === 0 && (
         <>

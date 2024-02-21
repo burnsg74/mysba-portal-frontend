@@ -4,24 +4,28 @@
 
 :root {
   /* Colors */
-  --Base-base-dark: #565C65;
-  --Base-base-lighter: #DCDEE0;
-  --Base-white: #FFFFFF;
-  --Brand-Primary-SBA-Blue: #002E6D;
-  --Brand-Secondary-Bright-Blue: #007DBc;
-  --Neutrals-Light-Gray-4: #E0E0E0;
-  --Neutrals-Light-Gray: #FBFCFD;
-  --SBA-CRM-text-text-light: #71767A;
-  --SBA-Celeste: #007DBC;
+  --Base-base-dark: #565c65;
+  --Base-base-lighter: #dcdee0;
+  --Base-white: #ffffff;
+  --Brand-Primary-SBA-Blue: #002e6d;
+  --Brand-Secondary-Bright-Blue: #007dbc;
+  --Neutrals-Light-Gray-4: #e0e0e0;
+  --Neutrals-Light-Gray: #fbfcfd;
+  --SBA-CRM-text-text-light: #71767a;
+  --SBA-Celeste: #007dbc;
   --SBA-Dark-Blue: #000441;
-  --Text-Text: #1B1B1B;
-  --Success-success-lighter: #ECF3EC;
+  --Text-Text: #1b1b1b;
+  --Success-success-lighter: #ecf3ec;
 
   /* Alert Colors */
-  --Alert-Warning-Bar: #F1C400;
-  --Alert-Warning-Background: #FAF3D1;
-  --Alert-Error-Bar: #CC0000;
-  --Alert-Error-Background: #F4E3DB;
+  --Alert-In-Progress-Bar: #007dbc;
+  --Alert-In-Progress-Background: #d1ebff;
+  --Alert-Valid-Bar: #197e4e;
+  --Alert-Valid-Background: #ecf3ec;
+  --Alert-Warning-Bar: #f1c400;
+  --Alert-Warning-Background: #faf3d1;
+  --Alert-Error-Bar: #cc0000;
+  --Alert-Error-Background: #f4e3db;
 
   /* Fonts */
   --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;
@@ -56,14 +60,17 @@
   font-family: "Source Sans Pro";
   font-style: normal;
   font-weight: 200;
-  src: url("/assets/fonts/sourcesanspro-extralight-webfont.woff2") format("woff2");
+  src: url("/assets/fonts/sourcesanspro-extralight-webfont.woff2")
+    format("woff2");
 }
+
 @font-face {
   font-display: swap;
   font-family: "Source Sans Pro";
   font-style: italic;
   font-weight: 200;
-  src: url("/assets/fonts/sourcesanspro-extralightitalic-webfont.woff2") format("woff2");
+  src: url("/assets/fonts/sourcesanspro-extralightitalic-webfont.woff2")
+    format("woff2");
 }
 
 /* 300 Extra Light */
@@ -74,12 +81,14 @@
   font-weight: 300;
   src: url("/assets/fonts/sourcesanspro-light-webfont.woff2") format("woff2");
 }
+
 @font-face {
   font-display: swap;
   font-family: "Source Sans Pro";
   font-style: italic;
   font-weight: 300;
-  src: url("/assets/fonts/sourcesanspro-lightitalic-webfont.woff2") format("woff2");
+  src: url("/assets/fonts/sourcesanspro-lightitalic-webfont.woff2")
+    format("woff2");
 }
 
 /* 400 regular */
@@ -90,6 +99,7 @@
   font-weight: 400;
   src: url("/assets/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
 }
+
 @font-face {
   font-display: swap;
   font-family: "Source Sans Pro";
@@ -101,62 +111,69 @@
 /* 600 semibold */
 @font-face {
   font-display: swap;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-weight: 600;
   font-style: normal;
-  src: url('/assets/fonts/sourcesanspro-semibold-webfont.woff2') format('woff2');
+  src: url("/assets/fonts/sourcesanspro-semibold-webfont.woff2") format("woff2");
 }
+
 @font-face {
   font-display: swap;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-weight: 600;
   font-style: italic;
-  src: url('/assets/fonts/sourcesanspro-semibolditalic-webfont.woff2') format('woff2');
+  src: url("/assets/fonts/sourcesanspro-semibolditalic-webfont.woff2")
+    format("woff2");
 }
 
 /* 700 bold */
 @font-face {
   font-display: swap;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-weight: 700;
   font-style: normal;
-  src: url('/assets/fonts/sourcesanspro-bold-webfont.woff2') format('woff2');
+  src: url("/assets/fonts/sourcesanspro-bold-webfont.woff2") format("woff2");
 }
+
 @font-face {
   font-display: swap;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-weight: 700;
   font-style: italic;
-  src: url('/assets/fonts/sourcesanspro-bolditalic-webfont.woff2') format('woff2');
+  src: url("/assets/fonts/sourcesanspro-bolditalic-webfont.woff2")
+    format("woff2");
 }
 
 /* 900  black */
 @font-face {
   font-display: swap;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-weight: 900;
   font-style: normal;
-  src: url('/assets/fonts/sourcesanspro-black-webfont.woff2') format('woff2');
+  src: url("/assets/fonts/sourcesanspro-black-webfont.woff2") format("woff2");
 }
+
 @font-face {
   font-display: swap;
-  font-family: 'Source Sans Pro';
+  font-family: "Source Sans Pro";
   font-weight: 900;
   font-style: italic;
-  src: url('/assets/fonts/sourcesanspro-blackitalic-webfont.woff2') format('woff2');
+  src: url("/assets/fonts/sourcesanspro-blackitalic-webfont.woff2")
+    format("woff2");
 }
 
 /* Public Sans */
 /* 100 Thin */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-Thin.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-Thin.woff2") format("woff2");
   font-weight: 100;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-ThinItalic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-ThinItalic.woff2") format("woff2");
   font-weight: 100;
   font-style: italic;
 }
@@ -173,13 +190,14 @@
 /* 200 ExtraLight */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-extralight.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-extralight.woff2") format("woff2");
   font-weight: 200;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-extralightitalic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-extralightitalic.woff2") format("woff2");
   font-weight: 200;
   font-style: italic;
 }
@@ -187,13 +205,14 @@
 /* 300 Light */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-light.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-light.woff2") format("woff2");
   font-weight: 300;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-lightitalic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-lightitalic.woff2") format("woff2");
   font-weight: 300;
   font-style: italic;
 }
@@ -201,13 +220,14 @@
 /* 400 Regular */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-regular.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-italic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
 }
@@ -215,13 +235,14 @@
 /* 500 Medium */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-medium.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-medium.woff2") format("woff2");
   font-weight: 500;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-mediumitalic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-mediumitalic.woff2") format("woff2");
   font-weight: 500;
   font-style: italic;
 }
@@ -229,13 +250,14 @@
 /* 600 SemiBold */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-semibold.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-semibold.woff2") format("woff2");
   font-weight: 600;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-semibolditalic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-semibolditalic.woff2") format("woff2");
   font-weight: 600;
   font-style: italic;
 }
@@ -243,13 +265,14 @@
 /* 700 Bold */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-bold.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-bold.woff2") format("woff2");
   font-weight: 700;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-bolditalic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-bolditalic.woff2") format("woff2");
   font-weight: 700;
   font-style: italic;
 }
@@ -257,13 +280,14 @@
 /* 800 ExtraBold */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-extrabold.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-extrabold.woff2") format("woff2");
   font-weight: 800;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-extrabolditalic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-extrabolditalic.woff2") format("woff2");
   font-weight: 800;
   font-style: italic;
 }
@@ -271,18 +295,32 @@
 /* 800 Black */
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-black.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-black.woff2") format("woff2");
   font-weight: 900;
   font-style: normal;
 }
+
 @font-face {
   font-family: "Public Sans";
-  src: url('/assets/fonts/public-sans-blackitalic.woff2') format('woff2');
+  src: url("/assets/fonts/public-sans-blackitalic.woff2") format("woff2");
   font-weight: 900;
   font-style: italic;
 }
 
+.main-container {
+  max-width: 1200px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
+}
 
+@media screen and (min-width: 391px) {
+  .main-container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
+}
 
 .sba-blue {
   color: var(--Brand-Primary-SBA-Blue);
@@ -356,12 +394,12 @@
   background-color: #fefefe;
   margin: 15% auto;
   padding: 20px;
-  border: 1px solid #888;
+  border: 1px solid #888888;
   width: 80%;
 }
 
 .closeBtn {
-  color: #aaa;
+  color: #aaaaaa;
   float: right;
   font-size: 28px;
   font-weight: bold;
@@ -385,12 +423,18 @@
 }
 
 /* USWDS Overrides */
-[contentEditable=true]:focus, [href]:focus, [tabindex]:focus, iframe:focus {
+[contentEditable="true"]:focus,
+[href]:focus,
+[tabindex]:focus,
+iframe:focus {
   text-decoration: none;
   outline: none;
 }
 
-button:not([disabled]):focus, input:not([disabled]):focus, select:not([disabled]):focus, textarea:not([disabled]):focus {
+button:not([disabled]):focus,
+input:not([disabled]):focus,
+select:not([disabled]):focus,
+textarea:not([disabled]):focus {
   outline: none;
   outline-offset: unset;
 }
@@ -420,7 +464,7 @@ button:not([disabled]):focus, input:not([disabled]):focus, select:not([disabled]
 }
 
 .usa-current {
-  background-color: #F0F0F0;
+  background-color: #f0f0f0;
   border: unset;
   color: var(--Brand-Primary-SBA-Blue);
   font-family: var(--Font-Primary);

@@ -19,6 +19,15 @@
   font-weight: 400;
   line-height: normal;
 }
+.pill-in-progress {
+  background: var(--Alert-In-Progress-Background);
+  border: 2px solid var(--Alert-In-Progress-Bar);
+}
+
+.pill-valid {
+  background: var(--Alert-Valid-Background);
+  border: 2px solid var(--Alert-Valid-Bar);
+}
 
 .pill-warning {
   background: var(--Alert-Warning-Background);
