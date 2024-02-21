@@ -35,66 +35,68 @@ const Certifications = () => {
     <>
       <div className="grid-row">
         <div className={`grid-col ${styles["container"]}`}>
-          {/* Certifications Alerts */}
-          {user.certifications &&
-            user.certifications.map((certification, index) => {
-              const renewalDate = formatDateMMDDYYYY(certification.expire_at);
-              const days_until_expiry = certification?.days_until_expiry || 0;
+          <div className={`main-container`}>
+            {/* Certifications Alerts */}
+            {user.certifications &&
+              user.certifications.map((certification, index) => {
+                const renewalDate = formatDateMMDDYYYY(certification.expire_at);
+                const days_until_expiry = certification?.days_until_expiry || 0;
 
-              return (
-                <React.Fragment key={index}>
-                  {days_until_expiry === 0 ? (
-                    <Alert
-                      key={index}
-                      type={"error"}
-                      message={`Your ${certification.name} certification has expired`}
-                    />
-                  ) : days_until_expiry <= 90 ? (
-                    <Alert
-                      key={index}
-                      type={"warning"}
-                      message={`Your ${certification.name} certification will expire within 90 days. It must be renewed by ${renewalDate}`}
-                    />
-                  ) : null}
-                </React.Fragment>
-              );
-            })}
+                return (
+                  <React.Fragment key={index}>
+                    {days_until_expiry === 0 ? (
+                      <Alert
+                        key={index}
+                        type={"error"}
+                        message={`Your ${certification.name} certification has expired`}
+                      />
+                    ) : days_until_expiry <= 90 ? (
+                      <Alert
+                        key={index}
+                        type={"warning"}
+                        message={`Your ${certification.name} certification will expire within 90 days. It must be renewed by ${renewalDate}`}
+                      />
+                    ) : null}
+                  </React.Fragment>
+                );
+              })}
 
-          <div className={`grid-row ${styles["title__row"]}`}>
-            <div className={`grid-col grid-col-wrap ${styles["title"]}`}>
-              Certifications
-            </div>
-            <div className={`grid-col-auto ${styles["btn-group"]}`}>
-              <div className="grid-col-auto grid-col-wrap">
-                <button
-                  type="button"
-                  className={`usa-button usa-button--outline ${styles["apply-for-a-certification__btn"]}`}
-                  onClick={() => setShowModal(1)}
-                >
-                  Apply for a Certification
-                </button>
+            <div className={`grid-row ${styles["title__row"]}`}>
+              <div className={`grid-col grid-col-wrap ${styles["title"]}`}>
+                Certifications
               </div>
-              <div className="grid-col-auto grid-col-wrap">
-                <button
-                  type="button"
-                  className={`usa-button usa-button--secondary ${styles["link-a-certification__btn"]}`}
-                  disabled={true}
-                >
-                  Link a Certification
-                </button>
+              <div className={`grid-col-auto ${styles["btn-group"]}`}>
+                <div className="grid-col-auto grid-col-wrap">
+                  <button
+                    type="button"
+                    className={`usa-button usa-button--outline ${styles["apply-for-a-certification__btn"]}`}
+                    onClick={() => setShowModal(1)}
+                  >
+                    Apply for a Certification
+                  </button>
+                </div>
+                <div className="grid-col-auto grid-col-wrap">
+                  <button
+                    type="button"
+                    className={`usa-button usa-button--secondary ${styles["link-a-certification__btn"]}`}
+                    disabled={true}
+                  >
+                    Link a Certification
+                  </button>
+                </div>
               </div>
             </div>
-          </div>
-          <div className="Certifications-content">
-            {/* certifications  */}
-            <div className="grid-row">
-              <div className="grid-col">
-                {user.certifications &&
-                  user.certifications.map((certification, index) => (
-                    <React.Fragment key={index}>
-                      <CardCertification certification={certification} />
-                    </React.Fragment>
-                  ))}
+            <div className="Certifications-content">
+              {/* certifications  */}
+              <div className="grid-row">
+                <div className="grid-col">
+                  {user.certifications &&
+                    user.certifications.map((certification, index) => (
+                      <React.Fragment key={index}>
+                        <CardCertification certification={certification} />
+                      </React.Fragment>
+                    ))}
+                </div>
               </div>
             </div>
           </div>
