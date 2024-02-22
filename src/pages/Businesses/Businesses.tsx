@@ -38,8 +38,8 @@ const Businesses = () => {
                             className={`grid-col-auto ${styles["store_icon"]}`}
                           >
                             <svg
-                              height="40"
-                              width="40"
+                              height="30"
+                              width="30"
                               aria-hidden="true"
                               focusable="false"
                               role="img"
@@ -60,8 +60,8 @@ const Businesses = () => {
                           >
                             {showDetails ? (
                               <svg
-                                width="40"
-                                height="40"
+                                width="30"
+                                height="30"
                                 aria-hidden="true"
                                 focusable="false"
                                 role="img"
@@ -114,17 +114,17 @@ const Businesses = () => {
                             className={`grid-row sba-blue ${styles["usa-card__row"]}`}
                           >
                             <div
-                              className={`grid-col ${styles["usa-card__text-center"]}`}
+                              className={`grid-col-auto ${styles["usa-card__text-center"]}`}
                             >
                               {business.type}
                             </div>
                             <div
-                              className={`grid-col ${styles["usa-card__text-center"]}`}
+                              className={`grid-col-auto ${styles["usa-card__text-center"]}`}
                             >
                               UEI: {business.uei}
                             </div>
                             <div
-                              className={`grid-col ${styles["usa-card__text-center"]}`}
+                              className={`grid-col-auto ${styles["usa-card__text-center"]}`}
                             >
                               EIN: {business.ein}
                             </div>
