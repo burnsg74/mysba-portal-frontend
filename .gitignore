@@ -6,5 +6,6 @@ dist-ssr
 !/.gitignore
 !/.github
 !/.prettierrc
+!.terraform.lock.hcl
 /public/assets/fonts/
 /public/assets/img/
