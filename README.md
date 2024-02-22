@@ -12,8 +12,12 @@
 
 ## Terraform States
 
-### TODO: A proper holding place for front end terraform.
-** We recommend making a .terraform/ directory **
+### ./terraform
+Houses the infrastructure that supports the front end portal. S3, CloudFront, WAF, etc.
+  - workspaces that are supported.
+    - dev
+    - stg
+    - prod
 
 ### Logging
 

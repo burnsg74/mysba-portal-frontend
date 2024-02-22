@@ -8,14 +8,18 @@ locals {
     dev = {
       account_id = "474340895216"
       zone_name  = "dev.mysba.ussba.io"
+      web_fqdn   = "dev.mysba.ussba.io"
     }
     stg = {
       account_id = "286837973291"
       zone_name  = "stg.mysba.ussba.io"
+      web_fqdn   = "stg.mysba.ussba.io"
     }
     prod = {
       account_id = "286837973291"
-      zone_name  = "prod.mysba.ussba.io"
+      # prod zone_name and web_fqdn will change in the future when my.sba.gov is delegated
+      zone_name = "prod.mysba.ussba.io"
+      web_fqdn  = "prod.mysba.ussba.io"
     }
   }
 

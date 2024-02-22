@@ -1,3 +1,7 @@
+data "aws_route53_zone" "zone" {
+  name = local.env.zone_name
+}
+
 data "aws_cloudfront_cache_policy" "cache_optimized" {
   name = "Managed-CachingOptimized"
 }
