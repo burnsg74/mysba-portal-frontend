@@ -4,14 +4,11 @@
 }
 
 .title {
-  color: #002E6D;
+  color: var(--Brand-Primary-SBA-Blue);
   font-family: var(--Font-Primary);
-  font-size: 32px;
+  font-size: 22px;
   font-weight: 400;
-  line-height: 48px;
-  letter-spacing: 0;
-  text-align: left;
-  padding-bottom: 10px;
+  line-height: 120%;
 }
 
 .usa-card__row {
@@ -26,6 +23,17 @@
   font-weight: 400;
   flex-grow: 1;
   text-align: center;
+  margin-left:0px;
+  padding-top:14px;
+  padding-bottom:20px;
+}
+
+.usa-card__text-center:last-child{
+  text-align:end;
+}
+
+.usa-card__text-center:first-child{
+  text-align:start;
 }
 
 .subtitle {
@@ -36,7 +44,7 @@
   letter-spacing: 0;
   line-height: 24px;
   margin-top: 20px;
-  margin-bottom: 20px;
+  margin-bottom: 24px;
 }
 
 .badge {
@@ -58,6 +66,7 @@
   margin: unset;
   border-radius: 8px;
   box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+  min-height: 126px;
 }
 
 .card__header {
@@ -75,13 +84,21 @@
 }
 
 .store_icon {
-  color: var(--Brand-Primary-SBA-Blue);
-  margin-right: 20px;
+  fill: var(--Brand-Primary-SBA-Blue);
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
+  margin-left: 20px;
+  display: "block";
+  margin:"auto";
 }
 
 .toggle__icon {
+  fill: var(--Brand-Primary-SBA-Blue);
   width: 30px;
   height: 30px;
+  display:"block";
+  margin: "auto";
   margin-right:20px;
 }
 
@@ -159,4 +176,5 @@
   gap: 10px;
   align-self: stretch;
   flex-wrap: wrap;
+  height:72px;
 }
