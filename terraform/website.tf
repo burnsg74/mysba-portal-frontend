@@ -2,11 +2,6 @@ resource "aws_s3_bucket" "bucket" {
   bucket = "${local.env.account_id}-${local.env.region}-${terraform.workspace}-mysba-portal-frontend"
 }
 
-resource "aws_s3_bucket_acl" "acl" {
-  bucket = aws_s3_bucket.bucket.id
-  acl    = "private"
-}
-
 resource "aws_s3_bucket_public_access_block" "public_access_block" {
   bucket                  = aws_s3_bucket.bucket.id
   block_public_acls       = true
@@ -35,6 +30,11 @@ resource "aws_s3_bucket_policy" "bucket_policy" {
           }
           Action   = "s3:GetObject"
           Resource = "${aws_s3_bucket.bucket.arn}/*"
+          Condition = {
+            StringEquals = {
+              "AWS:SourceArn": aws_cloudfront_distribution.distribution.arn
+            }
+          }
         }
       ]
     }
