@@ -6,7 +6,6 @@
     width: 390px;
     border-left: 1px solid var(--Neutrals-Light-Gray-4, #e0e0e0);
     background: var(--Neutrals-Light-Gray, #fbfcfd);
-    gap: 20px;
 }
 
 .resource-location-bottom {
@@ -47,6 +46,7 @@
     margin-left: 33px;
     margin-right: 33px;
     border-bottom: 1px solid #dfe1e2;
+    margin-bottom: 20px;
 }
 
 @media screen and (max-width: 1024px) {

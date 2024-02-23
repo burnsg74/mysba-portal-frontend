@@ -36,3 +36,16 @@
         display: flex;
     }
 }
+
+@media (min-width: 1024px) {
+    .resource-location__scroll-area {
+        height: 900px;
+        overflow-y: auto;
+        scrollbar-width: none;
+        gap: 20px;
+    }
+}
+
+.resource-location__scroll-area::-webkit-scrollbar {
+    display: none;
+}

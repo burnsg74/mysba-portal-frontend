@@ -32,7 +32,6 @@ const ResourcesForYou = () => {
 
   return (
     <>
-      <div className={scrollAreaClass}>
         <div className={`${styles["resource-location__title"]}`}>
           Resources for you
         </div>
@@ -41,7 +40,6 @@ const ResourcesForYou = () => {
             <LearningCenterCard key={index} learningCenter={course} />
           ))}
         </div>
-      </div>
     </>
   );
 };

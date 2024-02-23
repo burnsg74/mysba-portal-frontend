@@ -13,6 +13,11 @@ type LayoutProps = {
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const showNav: boolean = useSelector(getShowNav);
 
+  const scrollAreaClass =
+    window.location.pathname === "/dashboard" ? `${styles["resource-location__scroll-area"]}` : "";
+
+  console.log("scrollAreaClass", window.location.pathname , scrollAreaClass);
+
   return (
     <>
       <div className="grid-row">
@@ -31,7 +36,9 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         </main>
         {showNav && (
           <div className={`grid-col-auto ${styles["resources-for-you-right"]}`}>
+            <div className={scrollAreaClass}>
             <ResourcesForYou />
+            </div>
           </div>
         )}
       </div>
