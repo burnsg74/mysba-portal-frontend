@@ -4,6 +4,16 @@
 }
 
 .title {
+  flex-grow: 1;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: #002e6d;
+  font-size: 40px;
+  letter-spacing: 0;
+  line-height: 120%;
+}
+
+.subtitle {
   color: var(--Brand-Primary-SBA-Blue);
   font-family: var(--Font-Primary);
   font-size: 22px;
@@ -21,11 +31,10 @@
   color: #002E6D;
   font-family: var(--Font-Primary);
   font-weight: 400;
+  font-size:14px;
   flex-grow: 1;
   text-align: center;
   margin-left:0px;
-  padding-top:14px;
-  padding-bottom:20px;
 }
 
 .usa-card__text-center:last-child{
@@ -172,9 +181,11 @@
 .grid-row-centered {
   display: flex;
   align-items: center;
-  padding: 15px 15px 20px;
-  gap: 10px;
   align-self: stretch;
   flex-wrap: wrap;
   height:72px;
+}
+
+.usa-card__body {
+  padding: 12px 20px 18px 20px;
 }

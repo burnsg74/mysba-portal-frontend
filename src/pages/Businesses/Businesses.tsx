@@ -38,7 +38,7 @@ const Businesses = () => {
                       </svg>
                     </div>
                     <div className="grid-col">
-                      <h2 className={`usa-card__heading ${styles["title"]}`}>
+                      <h2 className={`usa-card__heading ${styles["subtitle"]}`}>
                         {business.name}{" "}
                       </h2>
                     </div>
@@ -58,8 +58,8 @@ const Businesses = () => {
                         </svg>
                       ) : (
                         <svg
-                          width="40"
-                          height="40"
+                          width="30"
+                          height="30"
                           aria-hidden="true"
                           focusable="false"
                           role="img"
@@ -70,7 +70,7 @@ const Businesses = () => {
                     </div>
                   </div>
                 </div>
-                <div className="usa-card__body">
+                <div className={`${styles["usa-card__body"]}`}>
                   {showDetails ? (
                     <>
                       <div className={`grid-row`}>
