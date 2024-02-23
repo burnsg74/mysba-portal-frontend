@@ -42,17 +42,21 @@ const Certifications = () => {
             return (
               <React.Fragment key={index}>
                 {days_until_expiry === 0 ? (
-                  <Alert
-                    key={index}
-                    type={"error"}
-                    message={`Your ${certification.name} certification has expired`}
-                  />
+                  <div className={`${styles["alert-container"]}`}>
+                    <Alert
+                      key={index}
+                      type={"error"}
+                      message={`Your ${certification.name} certification has expired`}
+                    />
+                  </div>
                 ) : days_until_expiry <= 90 ? (
-                  <Alert
-                    key={index}
-                    type={"warning"}
-                    message={`Your ${certification.name} certification will expire within 90 days. It must be renewed by ${renewalDate}`}
-                  />
+                  <div className={`${styles["alert-container"]}`}>
+                    <Alert
+                      key={index}
+                      type={"warning"}
+                      message={`Your ${certification.name} certification will expire within 90 days. It must be renewed by ${renewalDate}`}
+                    />
+                  </div>
                 ) : null}
               </React.Fragment>
             );

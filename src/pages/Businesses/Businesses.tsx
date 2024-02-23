@@ -16,7 +16,7 @@ const Businesses = () => {
 
   return (
     <div className={`main-container`}>
-      <h1 className={`usa-prose ${styles["title"]}`}>{t("Your Business")} </h1>
+      <h1 className={`${styles["title"]}`}>{t("Your Business")} </h1>
       <div className="Businesses-content">
         {user.businesses &&
           user.businesses.map((business, index) => (

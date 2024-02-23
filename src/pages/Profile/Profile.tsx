@@ -13,16 +13,26 @@ const Profile = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const profileData: IUser = useSelector(getUser);
-  const isDevMode = ['localhost', 'stg.mysba.ussba.io', 'dev.mysba.ussba.io'].includes(window.location.hostname);
+  const isDevMode = [
+    "localhost",
+    "stg.mysba.ussba.io",
+    "dev.mysba.ussba.io",
+  ].includes(window.location.hostname);
   const userMocks = ["default", "new-user", "cert-warning", "cert-error"];
   const [value, setValue] = React.useState(
     JSON.stringify(profileData, null, 2)
   );
   const [showMessage, setShowMessage] = React.useState(false);
-  const { oktaAuth } = useOktaAuth();
+  const isLocal = window.location.hostname === "localhost";
+
+  if (!isLocal) {
+    const { oktaAuth } = useOktaAuth();
+  }
 
   const logout = async () => {
-    await oktaAuth.signOut();
+    if (!isLocal) {
+      await oktaAuth.signOut();
+    }
   };
 
   const handleSaveClick = () => {
@@ -130,7 +140,9 @@ const Profile = () => {
               </button>
             ))}
             {showMessage && (
-              <div className={`${styles["update_notice"]}`}>User Data Updated</div>
+              <div className={`${styles["update_notice"]}`}>
+                User Data Updated
+              </div>
             )}
             <AceEditor
               mode="json5"
