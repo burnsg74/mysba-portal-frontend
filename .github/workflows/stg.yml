@@ -36,7 +36,7 @@ jobs:
         run: ./node_modules/.bin/vite build
 
       - name: Copy files to the target S3 bucket
-        run: aws s3 sync dist s3://mysba-portal-frontend-stg
+        run: aws s3 sync dist s3://286837973291-us-east-1-stg-mysba-portal-frontend
 
   deploy:
     needs: build

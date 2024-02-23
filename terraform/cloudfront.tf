@@ -11,7 +11,7 @@ resource "aws_cloudfront_distribution" "distribution" {
 
   origin {
     domain_name              = aws_s3_bucket.bucket.bucket_regional_domain_name
-    origin_id                = "frontend"
+    origin_id                = "mysba-portal-frontend"
     origin_access_control_id = aws_cloudfront_origin_access_control.oac.id
   }
 
@@ -36,7 +36,7 @@ resource "aws_cloudfront_distribution" "distribution" {
     compress               = true
     allowed_methods        = ["GET", "HEAD", "OPTIONS"]
     cached_methods         = ["GET", "HEAD"]
-    target_origin_id       = "frontend"
+    target_origin_id       = "mysba-portal-frontend"
   }
 
   custom_error_response {
