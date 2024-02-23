@@ -1,8 +1,20 @@
 # This is a basic workflow to help you get started with Actions
 name: Dev Portal Frontend Build & Deploy
+
 on:
   push:
-    branches: [ "IA-*" ]
+    branches: [ "dev" ]
+
+# sets the default shell for all jobs
+defaults:
+  run:
+    shell: bash
+
+# permissions can be set globally for jobs
+permissions:
+  contents: read # contents is used for checking out code
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
