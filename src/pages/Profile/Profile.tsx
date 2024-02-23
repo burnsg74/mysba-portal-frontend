@@ -19,9 +19,9 @@ const Profile = () => {
     JSON.stringify(profileData, null, 2)
   );
   const [showMessage, setShowMessage] = React.useState(false);
+  const { oktaAuth } = useOktaAuth();
 
   const logout = async () => {
-    const { oktaAuth } = useOktaAuth();
     await oktaAuth.signOut();
   };
 

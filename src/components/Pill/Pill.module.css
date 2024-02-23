@@ -8,16 +8,18 @@
   border-radius: 34px;
 }
 
-.pill svg {
+.pill__icon {
+  color: #1b1b1b;
   margin-right: 10px;
+
 }
 
-.pill__text {
+.pill__message {
   color: #1b1b1b;
   font-family: var(--Font-Primary);
   font-size: 13px;
   font-weight: 400;
-  line-height: normal;
+  line-height: 16px;
 }
 .pill-in-progress {
   background: var(--Alert-In-Progress-Background);

@@ -27,12 +27,15 @@ const ResourcesForYou = () => {
       break;
   }
 
+  const scrollAreaClass =
+    window.location.pathname === "/dashboard" ? `${styles["resource-location__scroll-area"]}` : "";
+
   return (
     <>
-      <div className={`${styles["resource-location__title"]}`}>
-        Resources for you
-      </div>
-      <div className={`${styles["resource-location__scroll-area"]}`}>
+      <div className={scrollAreaClass}>
+        <div className={`${styles["resource-location__title"]}`}>
+          Resources for you
+        </div>
         <div className={`${styles["resource-location__cards"]}`}>
           {courses.map((course, index) => (
             <LearningCenterCard key={index} learningCenter={course} />

@@ -43,24 +43,28 @@ const Dashboard = () => {
                 return (
                   <React.Fragment key={index}>
                     {daysUntilExpiry === 0 ? (
+                      <div className={`${styles["alert__container"]}`}>
                       <Alert
                         key={index}
                         type={"error"}
                         message={`Your ${certification.name} certification has expired`}
                       />
+                      </div>
                     ) : daysUntilExpiry <= 90 ? (
+                        <div className={`${styles["alert__container"]}`}>
                       <Alert
                         key={index}
                         type={"warning"}
                         message={`Your ${certification.name} certification must be renewed by ${renewalDate}`}
                       />
+                        </div>
                     ) : null}
                   </React.Fragment>
                 );
               })}
 
             {/* Businesses */}
-            <div>
+            <div className={`${styles["container"]}`}>
               {user.businesses &&
                 user.businesses.map((business, index) => (
                   <React.Fragment key={index}>

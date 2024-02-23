@@ -32,7 +32,7 @@ let learningCenterCourses = {
   FinancingYourBusiness: new LearningCenterCourse(
     "Financing Your Business",
     "Assess your financing needs and discover financing options for your business.",
-    "/src/assets/learning-center-financing-your-business.png",
+    "/assets/learning-center-financing-your-business.png",
     "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business",
     [
       {
@@ -55,7 +55,7 @@ let learningCenterCourses = {
   CompetitiveAdvantage: new LearningCenterCourse(
     "Competitive Advantage",
     "Leverage the uniqueness of your business to develop your competitive advantage.",
-    "/src/assets/competitive-advantage.png",
+    "/assets/learning-center-competitive-advantage.png",
     "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage",
     [
       {
@@ -82,7 +82,7 @@ let learningCenterCourses = {
       "market for your product or service is the government. This topic\n" +
       "within the Government Contracting course will guide you through what\n" +
       "you need to know to understand the government as a customer.",
-    "/src/assets/learning-center-goverment-as-your-customer.png",
+    "/assets/learning-center-goverment-as-your-customer.png",
     "https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer",
     [
       {
@@ -95,7 +95,7 @@ let learningCenterCourses = {
   LegalRequirements: new LearningCenterCourse(
     "Legal Requirements",
     "Review how small business legal requirements can impact your business.",
-    "/src/assets/learning-center-legal-requirements.png",
+    "/assets/learning-center-legal-requirements.png",
     "https://learn.sba.gov/learning-center-launch/learning-center-legal-requirements",
     [
       {
@@ -118,7 +118,7 @@ let learningCenterCourses = {
   PricingModelsForSuccessfulBusiness: new LearningCenterCourse(
     "Pricing Models for Successful Business",
     "Set prices, calculate costs, assess competitors and much more.",
-    "/src/assets/learning-center-pricing-models-for-successful-business.png",
+    "/assets/learning-center-pricing-models-for-successful-business.png",
     "https://learn.sba.gov/learning-center-grow/learning-center-pricing-models-for-successful-business",
     [
       {
