@@ -1,33 +1,30 @@
 import React from "react";
-import LogoImage from "src/assets/sba-logo-learning-center.svg";
-import ContentImage from "src/assets/legal-learning-content.png";
+import LogoImage from "src/assets/logo-sm.svg";
 import VideoImage from "src/assets/video.png";
 import ArrowNextImage from "src/assets/arrow-next.svg";
+import styles from "src/components/LearningCenterCard/LearningCenterCard.module.css";
 
-import styles from "src/components/CardLearningCenter/CardLearningCenter.module.css";
+interface LearningCenter {
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  videos: {
+    title: string;
+    description: string;
+    link: string;
+  }[];
+}
 
-const CardLearningCenterTwo = () => {
-  const COURSE_URL = "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements";
-  const VIDEO_LIST = [
-    {
-      title: "Legal Requirements Overview",
-      duration: "1 minute 35 seconds",
-      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/legal-requirements-overview",
-    },
-    {
-      title: "Determining Your Requirements",
-      duration: "0 minutes 21 seconds",
-      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/determining-your-requirements",
-    },
-    {
-      title: "Registering And Licensing",
-      duration: "1 minute 9 seconds",
-      link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/registering-and-licensing",
-    },
-  ];
+interface LearningCenterCardProps {
+  learningCenter: LearningCenter;
+}
 
+const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
+  learningCenter,
+}) => {
   return (
-    <div className={`${styles["usa-card__container_four"]}`}>
+    <div className={`${styles["usa-card__container"]}`}>
       {/* Header */}
       <div className={`usa-card__header ${styles["usa-card__header"]}`}>
         <div className={`usa-card__heading ${styles["usa-card__heading"]}`}>
@@ -63,7 +60,7 @@ const CardLearningCenterTwo = () => {
 
       {/* Lesson Image */}
       <img
-        src={ContentImage}
+        src={learningCenter.image}
         className={`${styles["content-image"]}`}
         alt="Content Image"
       />
@@ -71,15 +68,13 @@ const CardLearningCenterTwo = () => {
       {/* Body */}
       <div className={`${styles["usa-card__body"]}`}>
         <div className={`${styles["title_container"]}`}>
-          <div className={`${styles["title-finance"]}`}> Financing Your Business</div>
+          <div className={`${styles["title"]}`}>{learningCenter.title}</div>
           <div className={`${styles["description"]}`}>
-            Assess your financing needs and discover financing options for your
-            business.
+            {learningCenter.description}
           </div>
         </div>
-
         {/* List of Videos */}
-        {VIDEO_LIST.map((video, index) => (
+        {learningCenter.videos.map((video, index) => (
           <React.Fragment key={index}>
             <div className={`${styles["video-container"]}`}>
               <a
@@ -101,7 +96,7 @@ const CardLearningCenterTwo = () => {
                       {video.title}
                     </div>
                     <div className={`${styles["video-subtitle"]}`}>
-                      Video ({video.duration})
+                      {video.description}
                     </div>
                   </div>
                   <div className={`${styles["video-right"]}`}>
@@ -118,12 +113,12 @@ const CardLearningCenterTwo = () => {
         ))}
       </div>
       <div className={`usa-card__footer ${styles["usa-card__footer"]}`}>
-        <button
-          type="button"
-          onClick={() => window.open(COURSE_URL, "_blank")}
-          className={`usa-button usa-button--outline ${styles["view-course-btn"]}`}
-        >
-          <div className={`${styles["view-course-text"]}`}>View Course</div>
+        <button type="button"
+                onClick={() => window.open(learningCenter.link, "_blank")}
+                className={`usa-button usa-button--outline ${styles["view-course-btn"]}`}>
+          <div className={`${styles["view-course-text"]}`}>
+            View Course
+          </div>
           <svg
             className={`${styles["view-course-icon"]}`}
             aria-hidden="true"
@@ -138,4 +133,4 @@ const CardLearningCenterTwo = () => {
   );
 };
 
-export default CardLearningCenterTwo;
+export default LearningCenterCard;

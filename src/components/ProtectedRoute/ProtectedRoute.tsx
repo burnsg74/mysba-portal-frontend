@@ -1,25 +1,21 @@
-import * as React from 'react';
-import {useOktaAuth} from '@okta/okta-react';
-import {Outlet} from 'react-router-dom';
-import {useEffect} from "react";
-import {useNavigate} from 'react-router-dom';
-import Layout from "src/components/Layout/Layout";
-
+import * as React from "react";
+import { useEffect } from "react";
+import { useOktaAuth } from "@okta/okta-react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const ProtectedRoute = () => {
-    const {authState} = useOktaAuth();
-    const navigate = useNavigate();
+  const { authState } = useOktaAuth();
+  const navigate = useNavigate();
 
-    useEffect(() => {
-        if (!authState || !authState.isAuthenticated) return navigate("/");
-    }, [authState, navigate]);
+  useEffect(() => {
+    if (!authState || !authState.isAuthenticated) return navigate("/");
+  }, [authState, navigate]);
 
-
-    return <>
-        <Layout>
-            <Outlet/>
-        </Layout>
-    </>;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 export default ProtectedRoute;

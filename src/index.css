@@ -315,7 +315,7 @@
   margin-right: auto;
 }
 
-@media screen and (min-width: 391px) {
+@media screen and (min-width: 1024px) {
   .main-container {
     padding-right: 40px;
     padding-left: 40px;

@@ -18,8 +18,7 @@ import { setUser } from "src/store/user/userSlice";
 import { Dispatch } from "redux";
 import { useDispatch } from "react-redux";
 import DevRoute from "src/components/DevRoute/DevRoute";
-import { createAsyncThunk } from '@reduxjs/toolkit';
-
+import Layout from "src/components/Layout/Layout";
 
 // @TODO Move this to a config file
 const oktaAuth = new OktaAuth({
@@ -61,7 +60,6 @@ const App: React.FC = () => {
     if (window.location.pathname === '/' && isLocal) {
       navigate("/dashboard");
     }
-
   }, [mockUserFilename]);
 
   const routes = (
@@ -78,19 +76,23 @@ const App: React.FC = () => {
     </>
   );
   return isLocal ? (
-    <Routes>
-      <Route element={<DevRoute />}>{routes}</Route>
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route element={<DevRoute />}>{routes}</Route>
+      </Routes>
+    </Layout>
   ) : (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
-      <Routes>
-        <Route path="/" element={<Landing />}></Route>
-        <Route
-          path="/login/callback"
-          element={<LoginCallback loadingElement={<Loading />} />}
-        />
-        <Route element={<ProtectedRoute />}>{routes}</Route>
-      </Routes>
+      <Layout>
+        <Routes>
+          <Route path="/" element={<Landing />}></Route>
+          <Route
+            path="/login/callback"
+            element={<LoginCallback loadingElement={<Loading />} />}
+          />
+          <Route element={<ProtectedRoute />}>{routes}</Route>
+        </Routes>
+      </Layout>
     </Security>
   );
 };

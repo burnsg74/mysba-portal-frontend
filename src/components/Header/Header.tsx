@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "src/components/Header/Header.module.css";
 import SBAlogo from "src/assets/logo-horizontal.png";
-import SBAlogoSm from "src/assets/logo.png";
+import SBAlogoSm from "src/assets/logo-sm.svg";
 import USFlag from "/node_modules/@uswds/uswds/dist/img/us_flag_small.png";
 import DotGov from "/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg";
 import HttpsIcon from "/node_modules/@uswds/uswds/dist/img/icon-https.svg";

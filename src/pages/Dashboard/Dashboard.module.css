@@ -106,10 +106,6 @@
     color: var(--Text-Text, #002e6d);
 }
 
-.businesses__container {
-    padding: 30px 39px 30px 39px;
-}
-
 .business__container {
     display: flex;
     align-items: center;
@@ -185,77 +181,3 @@
     margin-left: 10px;
 }
 
-.resource-location-right {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    width: 390px;
-    border-left: 1px solid var(--Neutrals-Light-Gray-4, #e0e0e0);
-    background: var(--Neutrals-Light-Gray, #fbfcfd);
-    gap: 20px;
-}
-
-.resource-location-bottom {
-    display: none;
-    justify-content: center;
-    flex-direction: column;
-    padding: 40px 20px 20px 30px;
-    border-left: 1px solid var(--Neutrals-Light-Gray-4, #e0e0e0);
-    background: var(--Neutrals-Light-Gray, #fbfcfd);
-}
-
-@media screen and (max-width: 1024px) {
-    .resource-location-right {
-        display: none;
-        width: 390px;
-        border-left: 1px solid lightgray;
-        padding: 40px 20px 20px 30px;
-        border-left: 1px solid var(--Neutrals-Light-Gray-4, #e0e0e0);
-        background: var(--Neutrals-Light-Gray, #fbfcfd);
-    }
-
-    .resource-location-bottom {
-        display: flex;
-        width: unset;
-        border-left: none;
-    }
-}
-
-.resource-location__title {
-    font-family: var(--Font-Secondary);
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 28px;
-    color: var(--Brand-Primary-SBA-Blue);
-    margin-bottom: 20px;
-    padding-top: 40px;
-    padding-bottom: 12px;
-    margin-left: 33px;
-    border-bottom: 1px solid #dfe1e2;
-}
-
-@media screen and (max-width: 1024px) {
-    .resource-location__title {
-        margin-left: 0;
-    }
-}
-
-.resource-location__cards {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-}
-
-@media (min-width: 1024px) {
-    .resource-location__scroll-area {
-        height: 900px;
-        overflow-y: auto;
-        scrollbar-width: none;
-    }
-}
-
-.resource-location__scroll-area::-webkit-scrollbar {
-    display: none;
-}

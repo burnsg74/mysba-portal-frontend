@@ -1,17 +1,14 @@
-import * as React from 'react';
-import {Outlet} from 'react-router-dom';
-import {useNavigate} from 'react-router-dom';
-import Layout from "src/components/Layout/Layout";
-
+import * as React from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 
 const DevRoute = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    return <>
-        <Layout>
-            <Outlet/>
-        </Layout>
-    </>;
+  return (
+    <>
+      <Outlet />
+    </>
+  );
 };
 
 export default DevRoute;
