@@ -30,15 +30,13 @@ resource "aws_cloudfront_distribution" "distribution" {
   }
 
   default_cache_behavior {
-    # disable caching for websites that are not prod ?
+    # caching disabled unless its production
     cache_policy_id        = terraform.workspace == "prod" ? data.aws_cloudfront_cache_policy.cache_optimized.id : data.aws_cloudfront_cache_policy.cache_disabled.id
     viewer_protocol_policy = "redirect-to-https"
     compress               = true
-    # does the application need to allow delete for the front end along with the others?
-    #allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
-    allowed_methods  = ["GET", "HEAD", "OPTIONS"]
-    cached_methods   = ["GET", "HEAD"]
-    target_origin_id = "frontend"
+    allowed_methods        = ["GET", "HEAD", "OPTIONS"]
+    cached_methods         = ["GET", "HEAD"]
+    target_origin_id       = "frontend"
   }
 
   custom_error_response {
