@@ -50,6 +50,7 @@
 
 @media screen and (max-width: 1024px) {
     .resource-location__title {
+        text-align: center;
         margin-left: 0;
         margin-bottom: 20px;
     }
