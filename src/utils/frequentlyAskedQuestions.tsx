@@ -100,17 +100,6 @@ const FrequentlyAskedQuestions: Array<FrequentlyAskedQuestion> = [
       </>
     ),
   },
-  {
-    question: "How do I change my username?",
-    answer: (
-      <>
-        The ability to change your username will be available in future versions
-        with directions available here. If you need more information, email
-        {" "} <a href="mailto:digitalresearch@sba.gov">digitalresearch@SBA.gov</a> and
-        you will receive a reply within two business days.
-      </>
-    ),
-  },
 ];
 
 export { FrequentlyAskedQuestions };

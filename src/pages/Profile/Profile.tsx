@@ -56,7 +56,6 @@ const Profile = () => {
   };
 
   useEffect(() => {
-    console.log("Profile Data", profileData);
     setValue(JSON.stringify(profileData, null, 2));
     if (!profileData?.profile?.portal?.id) {
       dispatch(setNav(false));

@@ -11,6 +11,7 @@ const Businesses = () => {
   const { t } = useTranslation();
 
   const handleToggleDetails = () => {
+    console.log(user)
     setShowDetails(!showDetails);
   };
 
@@ -75,14 +76,19 @@ const Businesses = () => {
                     <>
                       <div className={`grid-row`}>
                         <div className="grid-col">
-                          <div className={`${styles["subtitle"]}`}>
+                          <div className={`${styles["subheader"]}`}>
                             Business Information
                           </div>
                         </div>
                       </div>
                       <Field label="EIN" value={business.ein} />
                       <Field label="UEI" value={business.uei} />
-                      <Field label="Type" value={business.type} />
+                      <Field label="User ID" value={business.user_id} />
+                      <div className={`${styles["subheader-padding"]}`}>
+                        <div className={`${styles["subheader"]}`}>
+                          Contact Information
+                        </div>
+                      </div>
                       <Field
                         label="Mailing Address"
                         value={business.mailing_address}
@@ -95,7 +101,29 @@ const Businesses = () => {
                         label="Phone Number"
                         value={business.phone_number}
                       />
-                      <Field label="Fax" value={business.fax} />
+                      <Field
+                        label="Email"
+                        value={user.profile?.crm.email}
+                      />
+                      <Field
+                        label="Website"
+                        value={business.name}
+                      />
+                      <div className={`${styles["subheader-padding"]}`}>
+                        <div className={`${styles["subheader"]}`}>
+                          Structure
+                        </div>
+                      </div>
+                      <Field label={business.type} value="Holding Business" />
+                      <Field label="Ownership" value={user.certifications[0].name} />
+                      <Field label="Principals" value="Cindy Smith, President" />
+                      <div className={`${styles["subheader-padding"]}`}>
+                        <div className={`${styles["subheader"]}`}>
+                          Products and Services
+                        </div>
+                      </div>
+                      <Field label="Capabilities Narrative" value={user.certifications[0].system} />
+                      <Field label="NAICS Codes" value="1. Food Service" />
                     </>
                   ) : (
                     <div
