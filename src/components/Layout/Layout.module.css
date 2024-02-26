@@ -41,6 +41,7 @@
         overflow-y: auto;
         scrollbar-width: none;
         gap: 20px;
+        height: 100vh;
     }
 }
 
