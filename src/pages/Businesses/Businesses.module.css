@@ -38,6 +38,7 @@
 .subheader-padding{
   margin-top:10px;
 }
+
 .usa-card__row {
   display: flex;
   align-items: center;
@@ -93,6 +94,7 @@
   border-radius: 8px;
   box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
   min-height: 126px;
+  margin-bottom:20px;
 }
 
 .card__header {

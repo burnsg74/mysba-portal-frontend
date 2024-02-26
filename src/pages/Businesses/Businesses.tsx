@@ -11,7 +11,6 @@ const Businesses = () => {
   const { t } = useTranslation();
 
   const handleToggleDetails = () => {
-    console.log(user)
     setShowDetails(!showDetails);
   };
 
