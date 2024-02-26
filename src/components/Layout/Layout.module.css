@@ -6,7 +6,6 @@
 
 .resources-for-you-right {
     display: flex;
-    justify-content: center;
     flex-direction: column;
     width: 390px;
     border-left: 1px solid var(--Neutrals-Light-Gray-4, #E0E0E0);
@@ -39,7 +38,6 @@
 
 @media (min-width: 1024px) {
     .resource-location__scroll-area {
-        height: 900px;
         overflow-y: auto;
         scrollbar-width: none;
         gap: 20px;
