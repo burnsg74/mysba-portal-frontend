@@ -19,7 +19,6 @@
   font-family: var(--Font-Primary);
   font-weight: 600;
   word-wrap: break-word;
-  padding-top: 40px;
   padding-bottom:24px;
 }
 
@@ -79,6 +78,7 @@
 .divider {
   border-top: 1px solid #DCDEE0;
   padding-top: 16px;
+  margin-top:16px;
 }
 
 .divider:last-child {

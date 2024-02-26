@@ -87,20 +87,20 @@ const Profile = () => {
         <h2 className={`${styles["profile-subheading"]}`}>
           Contact Information
         </h2>
-        <p className={`${styles["profile-label"]}`}>Email</p>
-        <p className={`${styles["profile-info"]}`}>
+        <div className={`${styles["profile-label"]}`}>Email</div>
+        <div className={`${styles["profile-info"]}`}>
           {profileData?.profile?.crm?.email}
-        </p>
+        </div>
         <div className={`${styles["divider"]}`} />
-        <p className={`${styles["profile-label"]}`}>First Name</p>
-        <p className={`${styles["profile-info"]}`}>
+        <div className={`${styles["profile-label"]}`}>First Name</div>
+        <div className={`${styles["profile-info"]}`}>
           {profileData?.profile?.crm?.first_name}
-        </p>
+        </div>
         <div className={`${styles["divider"]}`} />
-        <p className={`${styles["profile-label"]}`}>Last Name</p>
-        <p className={`${styles["profile-info"]}`}>
+        <div className={`${styles["profile-label"]}`}>Last Name</div>
+        <div className={`${styles["profile-info"]}`}>
           {profileData?.profile?.crm?.last_name}
-        </p>
+        </div>
         <div className={`${styles["divider"]}`} />
         <div className={`usa-checkbox ${styles["checkbox"]}`}>
           <input
