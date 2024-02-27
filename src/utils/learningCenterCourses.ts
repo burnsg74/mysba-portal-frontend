@@ -140,4 +140,11 @@ let learningCenterCourses = {
   )
 };
 
-export { learningCenterCourses };
+const learningCenterCoursesByPath: {[key: string]: any[]} = {};
+learningCenterCoursesByPath["/dashboard"] = [learningCenterCourses.CompetitiveAdvantage, learningCenterCourses.FinancingYourBusiness];
+learningCenterCoursesByPath["/businesses"] = [learningCenterCourses.PricingModelsForSuccessfulBusiness];
+learningCenterCoursesByPath["/loans"] = [learningCenterCourses.FinancingYourBusiness];
+learningCenterCoursesByPath["/certification"] = [learningCenterCourses.GovernmentAsYourCustomer];
+learningCenterCoursesByPath["/help"] = [learningCenterCourses.LegalRequirements];
+
+export { learningCenterCoursesByPath };

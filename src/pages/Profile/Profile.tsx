@@ -23,16 +23,10 @@ const Profile = () => {
     JSON.stringify(profileData, null, 2)
   );
   const [showMessage, setShowMessage] = React.useState(false);
-  const isLocal = window.location.hostname === "localhost";
-
-  if (!isLocal) {
-    const { oktaAuth } = useOktaAuth();
-  }
+  const { oktaAuth } = useOktaAuth();
 
   const logout = async () => {
-    if (!isLocal) {
       await oktaAuth.signOut();
-    }
   };
 
   const handleSaveClick = () => {

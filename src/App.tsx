@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { OktaAuth } from "@okta/okta-auth-js";
 import { LoginCallback, Security } from "@okta/okta-react";
@@ -16,14 +16,19 @@ import AccountSetup1 from "src/pages/AccountSetup1/AccountSetup1";
 import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
 import { setUser } from "src/store/user/userSlice";
 import { Dispatch } from "redux";
-import { useDispatch } from "react-redux";
-import DevRoute from "src/components/DevRoute/DevRoute";
 import Layout from "src/components/Layout/Layout";
 
-// @TODO Move this to a config file
+const sba2oktaHostnameMapping: { [key: string]: string } = {
+  localhost: "sbadev.okta-gov.com",
+  "dev.mysba.ussba.io": "sbadev.okta-gov.com",
+  "stg.mysba.ussba.io": "sbastg.okta-gov.com",
+  "prod.mysba.ussba.io": "sba.okta-gov.com",
+};
+const hostname = window.location.hostname;
+const oktaDomain = sba2oktaHostnameMapping[hostname] || "sbadev.okta-gov.com";
 const oktaAuth = new OktaAuth({
   clientId: "0oacsfgduKvV9LKa80j6",
-  issuer: "https://sbadev.okta-gov.com/oauth2/default",
+  issuer: `https://${oktaDomain}/oauth2/default`,
   redirectUri: `${window.location.origin}/login/callback`,
   postLogoutRedirectUri: `${window.location.origin}`,
   scopes: ["openid", "profile", "email"],
@@ -32,17 +37,15 @@ const oktaAuth = new OktaAuth({
 
 const App: React.FC = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
   const restoreOriginalUri = () => {
     navigate("/");
   };
-  const isLocal = window.location.hostname === "localhost";
 
-  let mockUserFilename = new URLSearchParams(location.search).get('mock-user');
+  let mockUserFilename = new URLSearchParams(location.search).get("mock-user");
   const fetchUserAndSet = () => {
     return async (dispatch: Dispatch) => {
       try {
-        const url = mockUserFilename // update this condition according to your needs
+        const url = mockUserFilename
           ? `/dev/${mockUserFilename}.json`
           : "/dev/default.json";
         const mockUserData = await fetch(url);
@@ -53,14 +56,6 @@ const App: React.FC = () => {
       }
     };
   };
-
-  useEffect(() => {
-    // @ts-ignore
-    dispatch(fetchUserAndSet());
-    if (window.location.pathname === '/' && isLocal) {
-      navigate("/dashboard");
-    }
-  }, [mockUserFilename]);
 
   const routes = (
     <>
@@ -75,13 +70,7 @@ const App: React.FC = () => {
       <Route path="/help" element={<Help />} />
     </>
   );
-  return isLocal ? (
-    <Layout>
-      <Routes>
-        <Route element={<DevRoute />}>{routes}</Route>
-      </Routes>
-    </Layout>
-  ) : (
+  return (
     <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
       <Layout>
         <Routes>

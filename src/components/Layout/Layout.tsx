@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from 'react';
 import { useSelector } from "react-redux";
+import { useLocation } from 'react-router-dom';
 import Header from "src/components/Header/Header";
 import SideNav from "src/components/SideNav/SideNav";
 import styles from "src/components/Layout/Layout.module.css";
 import { getShowNav } from "src/store/showNav/showNavSlice";
-import ResourcesForYou from "src/components/ResourcesForYou/ResourcesForYou";
+import {learningCenterCoursesByPath} from "src/utils/learningCenterCourses";
+import LearningCenterCard from "src/components/LearningCenterCard/LearningCenterCard";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -12,11 +14,14 @@ type LayoutProps = {
 
 const Layout: React.FC<LayoutProps> = ({ children }) => {
   const showNav: boolean = useSelector(getShowNav);
+  const location = useLocation();
+  const [scrollAreaClass, setScrollAreaClass] = useState<any>('');
+  const [courses, setCourses] = useState<any[]>([]);
 
-  const scrollAreaClass =
-    window.location.pathname === "/dashboard" ? `${styles["resource-location__scroll-area"]}` : "";
-
-  console.log("scrollAreaClass", window.location.pathname , scrollAreaClass);
+  useEffect(() => {
+    setScrollAreaClass(window.location.pathname === "/dashboard" ? `${styles["resource-location__scroll-area"]}` : '');
+    setCourses(learningCenterCoursesByPath[location.pathname]??[])
+  }, [location]);
 
   return (
     <>
@@ -34,18 +39,32 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
         <main className="grid-col">
           {children}
         </main>
-        {showNav && (
+        {showNav  && (courses.length > 0) && (
           <div className={`grid-col-auto ${styles["resources-for-you-right"]}`}>
             <div className={scrollAreaClass}>
-            <ResourcesForYou />
+              <div className={`${styles["resource-location__title"]}`}>
+                Resources for you
+              </div>
+              <div className={`${styles["resource-location__cards"]}`}>
+                {courses.map((course, index) => (
+                  <LearningCenterCard key={index} learningCenter={course} />
+                ))}
+              </div>
             </div>
           </div>
         )}
       </div>
-      {showNav && (
+      {showNav && (courses.length > 0) && (
         <div className={`grid-col-row ${styles["resources-for-you-bottom"]}`}>
           <div className="grid-col">
-            <ResourcesForYou />
+            <div className={`${styles["resource-location__title"]}`}>
+              Resources for you
+            </div>
+            <div className={`${styles["resource-location__cards"]}`}>
+              {courses.map((course, index) => (
+                <LearningCenterCard key={index} learningCenter={course} />
+              ))}
+            </div>
           </div>
         </div>
       )}
