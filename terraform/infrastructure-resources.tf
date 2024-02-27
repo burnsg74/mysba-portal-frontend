@@ -16,3 +16,7 @@ data "aws_acm_certificate" "web" {
   statuses    = ["ISSUED"]
   most_recent = true
 }
+
+data "aws_s3_bucket" "logs" {
+  bucket = "${local.env.account_id}-${local.env.region}-logs"
+}

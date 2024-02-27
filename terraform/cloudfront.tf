@@ -4,6 +4,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   default_root_object = "index.html"
   http_version        = "http2"
   price_class         = "PriceClass_100"
+  web_acl_id          = aws_wafv2_web_acl.waf_cloudfront.arn
 
   aliases = [
     "${terraform.workspace}.mysba.ussba.io"
