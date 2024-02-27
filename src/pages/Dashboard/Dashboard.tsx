@@ -33,7 +33,6 @@ const Dashboard = () => {
 
       {/* Dashboard Content */}
       <div className={`main-container`}>
-        <div className={`${styles["dashboard-content__container"]}`}>
           <div className={`${styles["dashboard-content"]}`}>
             {/* Certifications Alerts */}
             {user.certifications &&
@@ -115,7 +114,6 @@ const Dashboard = () => {
                 ))}
             </div>
           </div>
-        </div>
       </div>
       <AccountSetupModal showModal={location.pathname === "/dashboard/new"} />
     </>
