@@ -125,3 +125,27 @@
 .resource-location__scroll-area::-webkit-scrollbar {
     display: none;
 }
+
+
+
+.resource-location__title-bottom-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 350px;
+    margin: auto;
+}
+
+.resource-location__title-bottom {
+        font-family: var(--Font-Secondary);
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 28px;
+        color: var(--Brand-Primary-SBA-Blue);
+        padding-top: 40px;
+        padding-bottom: 12px;
+        border-bottom: 1px solid #dfe1e2;
+        margin-bottom: 20px;
+    width: 350px;
+}

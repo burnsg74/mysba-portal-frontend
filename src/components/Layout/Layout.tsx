@@ -57,8 +57,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {showNav && (courses.length > 0) && (
         <div className={`grid-col-row ${styles["resources-for-you-bottom"]}`}>
           <div className="grid-col">
-            <div className={`${styles["resource-location__title"]}`}>
+            <div  className={`${styles["resource-location__title-bottom-container"]}`}>
+            <div className={`${styles["resource-location__title-bottom"]}`}>
               Resources for you
+            </div>
             </div>
             <div className={`${styles["resource-location__cards"]}`}>
               {courses.map((course, index) => (
