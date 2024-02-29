@@ -18,6 +18,7 @@ const Header = () => {
     localStorage.getItem("lang") || detectedLang || "en"
   );
   const { i18n } = useTranslation();
+  const { t } = useTranslation();
   const showNav: boolean = useSelector(getShowNav);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navRef = useRef<HTMLDivElement | null>(null);
@@ -88,9 +89,11 @@ const Header = () => {
                 aria-hidden="true"
               >
                 <p className="usa-banner__header-text">
-                  An official website of the United States government
+                  {t("An official website of the United States government")}
                 </p>
-                <p className="usa-banner__header-action">Here’s how you know</p>
+                <p className="usa-banner__header-action">
+                  {t("Here's how you know")}
+                </p>
               </div>
               <button
                 type="button"
@@ -99,7 +102,7 @@ const Header = () => {
                 aria-controls="gov-banner-default"
               >
                 <span className="usa-banner__button-text">
-                  Here’s how you know
+                  {t("Here's how you know")}
                 </span>
               </button>
             </div>
@@ -120,9 +123,9 @@ const Header = () => {
                 />
                 <div className="usa-media-block__body">
                   <p>
-                    <strong>Official websites use .gov</strong>
-                    <br />A<strong>.gov</strong> website belongs to an official
-                    government organization in the United States.
+                    <strong>{t("Official websites use .gov")}</strong>
+                    <br />
+                    {t('A .gov website belongs to an official government organization in the United States.')}
                   </p>
                 </div>
               </div>
@@ -136,8 +139,8 @@ const Header = () => {
                 />
                 <div className="usa-media-block__body">
                   <p>
-                    <strong>Secure .gov websites use HTTPS</strong>
-                    <br />A<strong>lock</strong> (
+                    <strong>{t("Secure .gov websites use HTTPS")}</strong>
+                    <br /> {t('A')} <strong>{t('lock')}</strong> (
                     <span className="icon-lock">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -160,9 +163,8 @@ const Header = () => {
                         />
                       </svg>{" "}
                     </span>
-                    ) or <strong>https://</strong> means you’ve safely connected
-                    to the .gov website. Share sensitive information only on
-                    official, secure websites.
+                    ) {t('or')} <strong>https://</strong>
+                    {t('means you\'ve safely connected to the .gov website. Share sensitive information only on official, secure websites.')}
                   </p>
                 </div>
               </div>

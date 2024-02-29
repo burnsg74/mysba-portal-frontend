@@ -32,8 +32,8 @@ const AccountSetup1 = () => {
                         <img src={OpenSignImage} alt="Open Sign" className={styles['open-sign']}/>
                         <div className={`${styles['title']}`}>{t("Here's what we found about you")}</div>
                         <div className={`${styles['subtitle']}`}>
-                            This information has been linked via your existing certification.
-                            To make changes please edit this in your <a rel="noreferrer" href="https://veterans.certify.sba.gov/" target="_blank">VetCert portal</a>.
+                            {t('This information has been linked via your existing certification.')}<br/>
+                            {t('To make changes please edit this in your')} <a rel="noreferrer" href="https://veterans.certify.sba.gov/" target="_blank">VetCert portal</a>.
                         </div>
                     </div>
                     <div className={`${styles['label']}`}>{t('Your Business')} </div>
@@ -52,14 +52,14 @@ const AccountSetup1 = () => {
                             ))}
                         </div>
                     </div>
-                    <div className={`${styles['checkbox__group']}`}><input  className={`${styles['checkbox']}`} type="checkbox"/><span className={`${styles['checkbox__label']}`}> Notify me about updates regarding my SBA account and upcoming events</span>
+                    <div className={`${styles['checkbox__group']}`}><input  className={`${styles['checkbox']}`} type="checkbox"/><span className={`${styles['checkbox__label']}`}> {t('Notify me about updates regarding my SBA account and upcoming events')}</span>
 
                     </div>
                     <div className={`${styles['footer']}`}>
                         <button type="button"
                                 className={`usa-button ${styles['button__continue']}`}
                                 onClick={handleContinueBtnClick}
-                        >Continue
+                        >{t('Continue')}
                         </button>
                     </div>
                 </div>

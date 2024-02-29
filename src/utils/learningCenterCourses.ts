@@ -77,7 +77,7 @@ let learningCenterCourses = {
   ),
   GovernmentAsYourCustomer: new LearningCenterCourse(
     "Government As Your Customer",
-    "As an entrepreneur you’re constantly on the lookout for new\n" +
+    "As an entrepreneur you're constantly on the lookout for new\n" +
       "customers and untapped markets to grow your business. One potential\n" +
       "market for your product or service is the government. This topic\n" +
       "within the Government Contracting course will guide you through what\n" +

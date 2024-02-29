@@ -85,7 +85,7 @@ const Businesses = () => {
                       <Field label="User ID" value={business.user_id} />
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
-                          Contact Information
+                          {t('Contact Information')}
                         </div>
                       </div>
                       <Field

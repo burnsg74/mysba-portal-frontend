@@ -7,6 +7,7 @@ import Field from "src/components/Field/Field";
 import Alert from "src/components/Alert/Alert";
 import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
 import Pill from "src/components/Pill/Pill";
+import {useTranslation} from 'react-i18next';
 
 const CertificationDetail = () => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const CertificationDetail = () => {
     certification => certification.id.toString() === id?.toString()
   );
   const daysUntilExpiry = certification?.days_until_expiry ?? 0;
+  const {t} = useTranslation();
   const renewalDate = certification
     ? formatDateMMDDYYYY(certification.expire_at)
     : null;
@@ -30,19 +32,26 @@ const CertificationDetail = () => {
             navigate(-1);
           }}
         >
-          Back
+          {t('Back')}
         </button>
       </div>
       {/* Certifications Alerts */}
+      {/*Your {{name}} certification has expired*/}
       {daysUntilExpiry === 0 ? (
         <Alert
           type={"error"}
-          message={`Your ${certification?.name} certification has expired`}
+          message={t('Your {{name}} certification has expired',{ name: certification?.name })}
         />
+        // <Alert
+        //   key={index}
+        //   type="warning"
+        //   message={t('Your {{name}} certification must be renewed by {{date}}', { name: certification.name, date: renewalDate })}
+        // />
+        // days_until_expiry
       ) : daysUntilExpiry <= 90 ? (
         <Alert
           type={"warning"}
-          message={`Your ${certification?.name} certification will expire within 90 days. It must be renewed by ${renewalDate}`}
+          message={t('Your {{name}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{renewalDate}}',{ name: certification?.name, days_until_expiry: daysUntilExpiry, renewalDate })}
         />
       ) : null}
       <div className={`grid-row ${styles["title-banner"]}`}>
@@ -96,7 +105,7 @@ const CertificationDetail = () => {
         <>
           <div className={`${styles["expired-help__container"]}`}>
             <div className={`${styles["expired-help__header"]}`}>
-              Need help getting re-certified?
+              {t('Need help getting re-certified?')}
             </div>
             <div
               className={`grid-row ${styles["expired-help__message__container"]}`}
@@ -115,22 +124,22 @@ const CertificationDetail = () => {
                 className={`grid-col ${styles["expired-help-message__container"]}`}
               >
                 <div className={`${styles["expired-help__message__header"]}`}>
-                  Contact Us
+                  {t('Contact Us')}
                 </div>
                 <div className={`${styles["expired-help__message__body"]}`}>
-                  You can fill out a help request form{" "}
+                  {t('You can fill out a help request form')}{" "}
                   <u>
                     <a
                       href="https://wosb.certify.sba.gov/help-csh/"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      here
+                      {t('here')}
                     </a>
                   </u>{" "}
-                  or contact us at{" "}
+                  {t('or contact us at')}{" "}
                   <u>
-                    <a href="mailto:wosb@sba.gov">wosb@sba.gov</a>
+                    <a href="mailto:wosb@SBA.gov">WOSB@SBA.gov</a>
                   </u>
                   .
                 </div>
@@ -141,7 +150,7 @@ const CertificationDetail = () => {
                     rel="noopener noreferrer"
                     style={{display: 'flex', alignItems: 'center'}}
                   >
-                    Frequently Asked Questions
+                    {t('Frequently Asked Questions')}
                     <svg
                       className="usa-icon"
                       aria-hidden="true"
@@ -164,11 +173,11 @@ const CertificationDetail = () => {
               window.open("https://wosb.certify.sba.gov/", "_blank")
             }
           >
-            Start the re-certification process
+            {t('Start the re-certification process')}
           </button>
         </>
       )}
-      <div className={`${styles["subtitle"]}`}>Details</div>
+      <div className={`${styles["subtitle"]}`}>{t('Details')}</div>
       <Field
         label="Company Certified"
         value={certification?.company_name ?? ""}
@@ -186,7 +195,7 @@ const CertificationDetail = () => {
         label="North American Industry Classification System"
         value={certification?.system ?? ""}
       />
-      <div className={`${styles["subtitle"]}`}>Ownership</div>
+      <div className={`${styles["subtitle"]}`}>{t('Ownership')}</div>
       <Field label="Veteran Owner" value={certification?.owner ?? ""} />
       <Field label="Additional Owners" value={certification?.owner ?? ""} />
     </div>

@@ -7,6 +7,7 @@ import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
 import CardCertification from "src/components/CardCertification/CardCertification";
 import Alert from "src/components/Alert/Alert";
 import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
+import {useTranslation} from 'react-i18next';
 
 type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";
 
@@ -16,6 +17,7 @@ const Certifications = () => {
   const [selectedOption, setSelectedOption] = useState<
     OptionType | undefined
   >();
+  const {t} = useTranslation();
 
   const handleCertApplyModal1Close = () => {
     setShowModal(0);
@@ -46,7 +48,7 @@ const Certifications = () => {
                     <Alert
                       key={index}
                       type={"error"}
-                      message={`Your ${certification.name} certification has expired`}
+                      message={t('Your {{name}} certification has expired',{ name: certification?.name })}
                     />
                   </div>
                 ) : days_until_expiry <= 90 ? (
@@ -54,7 +56,7 @@ const Certifications = () => {
                     <Alert
                       key={index}
                       type={"warning"}
-                      message={`Your ${certification.name} certification will expire within 90 days. It must be renewed by ${renewalDate}`}
+                      message={t('Your {{name}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{renewalDate}}',{ name: certification?.name, days_until_expiry: days_until_expiry, renewalDate })}
                     />
                   </div>
                 ) : null}
@@ -64,7 +66,7 @@ const Certifications = () => {
 
         <div className={`grid-row ${styles["title__row"]}`}>
           <div className={`grid-col grid-col-wrap ${styles["title"]}`}>
-            Certifications
+            {t('Certifications')}
           </div>
           <div className={`grid-col-auto ${styles["btn-group"]}`}>
             <div className="grid-col-auto grid-col-wrap">
@@ -73,7 +75,7 @@ const Certifications = () => {
                 className={`usa-button usa-button--outline ${styles["apply-for-a-certification__btn"]}`}
                 onClick={() => setShowModal(1)}
               >
-                Apply for a Certification
+                {t('Apply for a Certification')}
               </button>
             </div>
             <div className="grid-col-auto grid-col-wrap">
@@ -82,7 +84,7 @@ const Certifications = () => {
                 className={`usa-button usa-button--secondary ${styles["link-a-certification__btn"]}`}
                 disabled={true}
               >
-                Link a Certification
+                {t('Link a Certification')}
               </button>
             </div>
           </div>

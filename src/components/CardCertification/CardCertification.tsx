@@ -2,11 +2,13 @@ import React from "react";
 import styles from "src/components/CardCertification/CardCertification.module.css";
 import { Link } from "react-router-dom";
 import Pill from "src/components/Pill/Pill";
+import {useTranslation} from 'react-i18next';
 
 const CardCertification: React.FC<ICardCertificationProps> = ({
   certification,
   showDetails = true,
 }) => {
+  const {t} = useTranslation();
   const daysUntilExpiry = certification?.days_until_expiry ?? 0;
   return (
     <>
@@ -52,7 +54,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
                   to={`/certification/${certification.id}`}
                   className={`usa-button ${styles["pill-button"]}`}
                 >
-                  Details
+                  {t('Details')}
                 </Link>
               </div>
             )}
@@ -62,16 +64,16 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
           <div className={`grid-row sba-blue ${styles["usa-card__row"]}`}>
             {/* Certifications Pills */}
             {daysUntilExpiry === -1 ? (
-              <Pill type={"in-progress"} message={"In progress"} />
+              <Pill type={"in-progress"} message={t("In progress")} />
             ) : daysUntilExpiry === 0 ? (
-              <Pill type={"error"} message={`Expired`} />
+              <Pill type={"error"}  message={t("Expired")} />
             ) : daysUntilExpiry <= 90 ? (
               <Pill
                 type={"warning"}
-                message={`Renew in ${certification?.days_until_expiry} Days`}
+                message={`${t("Renew in")} ${certification?.days_until_expiry} ${t("Days")}`}
               />
             ) : daysUntilExpiry > 90 ? (
-              <Pill type={"valid"} message={"Certified"} />
+              <Pill type={"valid"} message={t("Certified")} />
             ) : null}
 
             <div

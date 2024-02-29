@@ -8,8 +8,10 @@ import "ace-builds/src-noconflict/mode-json5";
 import "ace-builds/src-noconflict/theme-github";
 import { setNav } from "src/store/showNav/showNavSlice";
 import { useNavigate } from "react-router-dom";
+import {useTranslation} from 'react-i18next';
 
 const Profile = () => {
+  const {t} = useTranslation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const profileData: IUser = useSelector(getUser);
@@ -79,19 +81,19 @@ const Profile = () => {
             profileData?.profile?.crm?.last_name}
         </h1>
         <h2 className={`${styles["profile-subheading"]}`}>
-          Contact Information
+          {t('Contact Information')}
         </h2>
-        <div className={`${styles["profile-label"]}`}>Email</div>
+        <div className={`${styles["profile-label"]}`}>{t('Email')}</div>
         <div className={`${styles["profile-info"]}`}>
           {profileData?.profile?.crm?.email}
         </div>
         <div className={`${styles["divider"]}`} />
-        <div className={`${styles["profile-label"]}`}>First Name</div>
+        <div className={`${styles["profile-label"]}`}>{t('First Name')}</div>
         <div className={`${styles["profile-info"]}`}>
           {profileData?.profile?.crm?.first_name}
         </div>
         <div className={`${styles["divider"]}`} />
-        <div className={`${styles["profile-label"]}`}>Last Name</div>
+        <div className={`${styles["profile-label"]}`}>{t('Last Name')}</div>
         <div className={`${styles["profile-info"]}`}>
           {profileData?.profile?.crm?.last_name}
         </div>
@@ -107,11 +109,11 @@ const Profile = () => {
             htmlFor="updates"
             className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
           >
-            Notify me about updates regarding my SBA account and upcoming events
+            {t('Notify me about updates regarding my SBA account and upcoming events')}
           </label>
         </div>
         <button className={` ${styles["button-style"]}`} onClick={logout}>
-          <span className={`${styles["button-text"]}`}>Log Out</span>
+          <span className={`${styles["button-text"]}`}>{t('Log Out')}</span>
         </button>
         {isDevMode && (
           <div className={`${styles["dev_mode__container"]}`}>
