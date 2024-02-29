@@ -17,6 +17,7 @@ import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
 import { setUser } from "src/store/user/userSlice";
 import { Dispatch } from "redux";
 import Layout from "src/components/Layout/Layout";
+import Error from "src/pages/Error/Error";
 
 const sba2oktaHostnameMapping: { [key: string]: string } = {
   localhost: "sbadev.okta-gov.com",
@@ -68,6 +69,7 @@ const App: React.FC = () => {
       <Route path="/certification/:id" element={<CertificationDetail />} />
       <Route path="/loans" element={<Loans />} />
       <Route path="/help" element={<Help />} />
+      <Route path="/error" element={<Error />} />
     </>
   );
   return (

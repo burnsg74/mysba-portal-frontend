@@ -51,6 +51,10 @@ const Profile = () => {
     setShowMessage(true);
   };
 
+  const goToErrorPage = () => {
+    navigate("/error");
+  };
+
   useEffect(() => {
     setValue(JSON.stringify(profileData, null, 2));
     if (!profileData?.profile?.portal?.id) {
@@ -115,6 +119,9 @@ const Profile = () => {
         <button className={` ${styles["button-style"]}`} onClick={logout}>
           <span className={`${styles["button-text"]}`}>{t('Log Out')}</span>
         </button>
+
+
+
         {isDevMode && (
           <div className={`${styles["dev_mode__container"]}`}>
             <hr style={{ marginTop: "40px", marginBottom: "40px" }} />
@@ -134,6 +141,10 @@ const Profile = () => {
                 {mockUserFilename}
               </button>
             ))}
+            <button onClick={goToErrorPage}>
+              Go to Error Page
+            </button>
+
             {showMessage && (
               <div className={`${styles["update_notice"]}`}>
                 User Data Updated

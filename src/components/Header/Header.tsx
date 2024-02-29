@@ -125,7 +125,9 @@ const Header = () => {
                   <p>
                     <strong>{t("Official websites use .gov")}</strong>
                     <br />
-                    {t('A .gov website belongs to an official government organization in the United States.')}
+                    {t(
+                      "A .gov website belongs to an official government organization in the United States."
+                    )}
                   </p>
                 </div>
               </div>
@@ -140,7 +142,7 @@ const Header = () => {
                 <div className="usa-media-block__body">
                   <p>
                     <strong>{t("Secure .gov websites use HTTPS")}</strong>
-                    <br /> {t('A')} <strong>{t('lock')}</strong> (
+                    <br /> {t("A")} <strong>{t("lock")}</strong> (
                     <span className="icon-lock">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -163,8 +165,10 @@ const Header = () => {
                         />
                       </svg>{" "}
                     </span>
-                    ) {t('or')} <strong>https://</strong>
-                    {t('means you\'ve safely connected to the .gov website. Share sensitive information only on official, secure websites.')}
+                    ) {t("or")} <strong>https://</strong>
+                    {t(
+                      "means you've safely connected to the .gov website. Share sensitive information only on official, secure websites."
+                    )}
                   </p>
                 </div>
               </div>
@@ -203,10 +207,15 @@ const Header = () => {
               </button>
             </div>
 
-            {/* User Profile Buuton*/}
+            {/* User Profile */}
             <div className="usa-nav__inner">
               <Link to="/profile">
-                <img src={ProfileIcon} alt="Menu" />
+                <span className={`${styles["tooltip"]}`}>
+                  <img src={ProfileIcon} alt="Menu" />
+                   <span className={`${styles["tooltiptext"]}`}>
+                    {t("You Profile")}
+                  </span>
+                </span>
               </Link>
             </div>
 
