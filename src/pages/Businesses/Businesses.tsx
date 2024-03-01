@@ -100,10 +100,10 @@ const Businesses = () => {
                         label="Phone Number"
                         value={business.phone_number}
                       />
-                      <Field
-                        label="Email"
-                        value={user.profile?.crm.email}
-                      />
+                      {/*<Field*/}
+                      {/*  label="Email"*/}
+                      {/*  value={user.profile.crm.email}*/}
+                      {/*/>*/}
                       <Field
                         label="Website"
                         value={business.name}
@@ -114,14 +114,14 @@ const Businesses = () => {
                         </div>
                       </div>
                       <Field label={business.type} value="Holding Business" />
-                      <Field label="Ownership" value={user.certifications[0].name} />
+                      {/*<Field label="Ownership" value={user.certifications[0].name} />*/}
                       <Field label="Principals" value="Cindy Smith, President" />
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
                           Products and Services
                         </div>
                       </div>
-                      <Field label="Capabilities Narrative" value={user.certifications[0].system} />
+                      {/*<Field label="Capabilities Narrative" value={user.certifications[0].system} />*/}
                       <Field label="NAICS Codes" value="1. Food Service" />
                     </>
                   ) : (
