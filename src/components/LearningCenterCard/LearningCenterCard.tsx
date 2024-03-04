@@ -3,6 +3,7 @@ import LogoImage from "src/assets/logo-sm.svg";
 import VideoImage from "src/assets/video.png";
 import ArrowNextImage from "src/assets/arrow-next.svg";
 import styles from "src/components/LearningCenterCard/LearningCenterCard.module.css";
+import {useTranslation} from 'react-i18next';
 
 interface LearningCenter {
   title: string;
@@ -23,6 +24,7 @@ interface LearningCenterCardProps {
 const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
   learningCenter,
 }) => {
+  const {t} = useTranslation();
   return (
     <div className={`${styles["usa-card__container"]}`}>
       {/* Header */}
@@ -30,7 +32,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
         <div className={`usa-card__heading ${styles["usa-card__heading"]}`}>
           <div className="grid-row">
             <div className={`grid-col ${styles["header-label"]}`}>
-              Learning Center
+              {t('Learning Center')}
             </div>
             <div className="grid-col-auto">
               <img
@@ -117,7 +119,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
                 onClick={() => window.open(learningCenter.link, "_blank")}
                 className={`usa-button usa-button--outline ${styles["view-course-btn"]}`}>
           <div className={`${styles["view-course-text"]}`}>
-            View Course
+            {t('View Course')}
           </div>
           <svg
             className={`${styles["view-course-icon"]}`}

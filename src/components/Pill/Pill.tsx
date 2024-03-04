@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "src/components/Pill/Pill.module.css";
+import { useTranslation } from "react-i18next";
 
 interface IPillProps {
   message: string;
@@ -7,6 +8,8 @@ interface IPillProps {
 }
 
 const Pill: React.FC<IPillProps> = ({ message, type }) => {
+  const {t} = useTranslation();
+  message = t(message);
   const type2icon = {
     "in-progress": "schedule",
     "valid": "check_circle",

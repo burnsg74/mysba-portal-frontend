@@ -7,6 +7,7 @@ import styles from "src/components/Layout/Layout.module.css";
 import { getShowNav } from "src/store/showNav/showNavSlice";
 import {learningCenterCoursesByPath} from "src/utils/learningCenterCourses";
 import LearningCenterCard from "src/components/LearningCenterCard/LearningCenterCard";
+import { useTranslation } from "react-i18next";
 
 type LayoutProps = {
   children: React.ReactNode;
@@ -17,6 +18,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   const location = useLocation();
   const [scrollAreaClass, setScrollAreaClass] = useState<any>('');
   const [courses, setCourses] = useState<any[]>([]);
+  const {t} = useTranslation();
 
   useEffect(() => {
     setScrollAreaClass(window.location.pathname === "/dashboard" ? `${styles["resource-location__scroll-area"]}` : '');
@@ -43,7 +45,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           <div className={`grid-col-auto ${styles["resources-for-you-right"]}`}>
             <div className={scrollAreaClass}>
               <div className={`${styles["resource-location__title"]}`}>
-                Resources for you
+                {t('Resources for you')}
               </div>
               <div className={`${styles["resource-location__cards"]}`}>
                 {courses.map((course, index) => (
@@ -57,8 +59,10 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       {showNav && (courses.length > 0) && (
         <div className={`grid-col-row ${styles["resources-for-you-bottom"]}`}>
           <div className="grid-col">
-            <div className={`${styles["resource-location__title"]}`}>
-              Resources for you
+            <div  className={`${styles["resource-location__title-bottom-container"]}`}>
+            <div className={`${styles["resource-location__title-bottom"]}`}>
+              {t('Resources for you')}
+            </div>
             </div>
             <div className={`${styles["resource-location__cards"]}`}>
               {courses.map((course, index) => (

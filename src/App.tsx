@@ -17,6 +17,7 @@ import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
 import { setUser } from "src/store/user/userSlice";
 import { Dispatch } from "redux";
 import Layout from "src/components/Layout/Layout";
+import Error from "src/pages/Error/Error";
 
 const sba2oktaHostnameMapping: { [key: string]: string } = {
   localhost: "sbadev.okta-gov.com",
@@ -26,8 +27,17 @@ const sba2oktaHostnameMapping: { [key: string]: string } = {
 };
 const hostname = window.location.hostname;
 const oktaDomain = sba2oktaHostnameMapping[hostname] || "sbadev.okta-gov.com";
+
+const sba2oktaClientIdMapping: { [key: string]: string } = {
+  localhost: "0oacsfgduKvV9LKa80j6",
+  "dev.mysba.ussba.io": "0oacsfgduKvV9LKa80j6",
+  "stg.mysba.ussba.io": "0oaepuej2iLxzo55V0j6",
+  "prod.mysba.ussba.io": "0oaepuej2iLxzo55V0j6",
+};
+const clientId = sba2oktaClientIdMapping[hostname] || "0oacsfgduKvV9LKa80j6";
+
 const oktaAuth = new OktaAuth({
-  clientId: "0oacsfgduKvV9LKa80j6",
+  clientId: clientId,
   issuer: `https://${oktaDomain}/oauth2/default`,
   redirectUri: `${window.location.origin}/login/callback`,
   postLogoutRedirectUri: `${window.location.origin}`,
@@ -68,6 +78,7 @@ const App: React.FC = () => {
       <Route path="/certification/:id" element={<CertificationDetail />} />
       <Route path="/loans" element={<Loans />} />
       <Route path="/help" element={<Help />} />
+      <Route path="/error" element={<Error />} />
     </>
   );
   return (

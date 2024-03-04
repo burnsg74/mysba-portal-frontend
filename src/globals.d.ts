@@ -12,6 +12,7 @@ interface IUserProfile {
 }
 
 interface IBusiness {
+  user_id: string;
   id: string;
   name: string;
   type: string;

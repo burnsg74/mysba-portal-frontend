@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MySBA Portal</title>
+  <style>
+      :root {
+          --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;
+          --Brand-Primary-SBA-Blue: #002E6D;
+      }
+
+      body {
+          height: 100vh;
+      }
+
+      .grid-row {
+          display: flex;
+          flex-wrap: wrap;
+      }
+
+      .grid-col {
+          flex: 1 1 0%;
+          width: auto;
+          max-width: 100%;
+          min-width: 1px;
+      }
+
+      .header-container {
+          border-bottom: 1px solid lightgray;
+          padding-top: 20px;
+          padding-bottom: 20px;
+      }
+
+      .error-container {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          height: calc(100vh - 100px);
+          width: 100%;
+      }
+
+      .error-message {
+          font-family: var(--Font-Primary);
+          color: var(--Brand-Primary-SBA-Blue);
+          text-align: center;
+          padding-top: 5px;
+          line-height: 48px;
+          height: 20px;
+          font-size: 40px;
+          font-style: normal;
+          font-weight: 400;
+      }
+
+      .usa-logo {
+          height: 33px;
+          flex: unset;
+          display: block;
+      }
+  </style>
+</head>
+<body>
+<div class="grid-row">
+  <div class="grid-col">
+    <header class="header-container">
+      <img class="usa-logo" src="/assets/logo.png" alt="Logo">
+    </header>
+  </div>
+</div>
+<div class="error-container">
+  <img
+    src="/assets/error.svg"
+    alt="error"
+    class="error-image"
+  />
+  <div class="error-message">
+    Oops, looks like something went wrong
+  </div>
+</div>
+</body>
+</html>

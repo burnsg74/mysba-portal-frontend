@@ -1,12 +1,14 @@
 import React from "react";
 import styles from "src/pages/Help/Help.module.css";
 import { FrequentlyAskedQuestions } from "src/utils/frequentlyAskedQuestions";
+import {useTranslation} from 'react-i18next';
 
 const Help = () => {
+  const {t} = useTranslation();
   return (
     <>
       <div className={`main-container`}>
-        <div className={styles.title}>Frequently Asked Questions</div>
+        <div className={styles.title}>{t("Frequently Asked Questions")}</div>
         {FrequentlyAskedQuestions.map((faq, index) => (
           <div key={index} className="usa-accordion usa-accordion--bordered">
             <h4 className="usa-accordion__heading">
@@ -16,7 +18,7 @@ const Help = () => {
                 aria-expanded="false"
                 aria-controls={`a${index}`}
               >
-                {faq.question}
+                {t(faq.question)}
               </button>
             </h4>
             <div
@@ -25,7 +27,14 @@ const Help = () => {
               hidden
             >
               <div className={styles.textContent}>
-                <p>{faq.answer}</p>
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: t(faq.answer).replace(
+                      /digitalresearch@SBA.gov/g,
+                      '<a href="mailto:digitalresearch@SBA.gov">digitalresearch@SBA.gov</a>'
+                    ),
+                  }}
+                />
               </div>
             </div>
           </div>
@@ -44,10 +53,10 @@ const Help = () => {
             </svg>
           </div>
           <div className={styles.customTextContainer}>
-            <h3 className="usa-alert__heading">Still need assistance?</h3>
+            <h3 className="usa-alert__heading">{t('Still need assistance?')}</h3>
             <p className="usa-alert__text">
-              The SBA is available over email to help at{" "}
-              <a href="mailto:digitalresearch@sba.gov">
+              {t('The SBA is available over email to help at')} {" "}
+            <a href="mailto:digitalresearch@SBA.gov">
                 digitalresearch@SBA.gov
               </a>
               .

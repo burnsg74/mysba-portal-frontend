@@ -1,0 +1,19 @@
+.error-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: calc(100vh - 102px);
+    width: 100%;
+}
+.error-message {
+    font-family: var(--Font-Primary);
+    color: var(--Brand-Primary-SBA-Blue);
+    text-align: center;
+    padding-top: 5px;
+    line-height: 48px;
+    height: 20px;
+    font-size: 40px;
+    font-style: normal;
+    font-weight: 400;
+}

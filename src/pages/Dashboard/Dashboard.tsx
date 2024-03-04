@@ -8,10 +8,12 @@ import styles from "src/pages/Dashboard/Dashboard.module.css";
 import AccountSetupModal from "src/components/AccountSetupModal/AccountSetupModal";
 import Alert from "src/components/Alert/Alert";
 import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
+import {useTranslation} from 'react-i18next';
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
   const location = useLocation();
+  const {t} = useTranslation();
 
   return (
     <>
@@ -19,11 +21,11 @@ const Dashboard = () => {
       <div className={`banner ${styles["banner"]}`}>
         <div className={`${styles["welcome-message"]}`}>
           {user.profile?.crm && (
-            <span className="username">Hi, {user.profile.crm.first_name}</span>
+            <span className="username">{t('Hi')}, {user.profile.crm.first_name}</span>
           )}
         </div>
-        <div className={`${styles["mysba-message"]}`}>Welcome to your</div>
-        <div className={`${styles["mysba-message"]}`}>MySBA Dashboard</div>
+        <div className={`${styles["mysba-message"]}`}>{t('Welcome to your MySBA Dashboard')}</div>
+        {/*<div className={`${styles["mysba-message"]}`}>MySBA Dashboard</div>*/}
         <img
           className={`${styles["cityscape"]}`}
           src={CityScapeImage}
@@ -46,16 +48,16 @@ const Dashboard = () => {
                       <Alert
                         key={index}
                         type={"error"}
-                        message={`Your ${certification.name} certification has expired`}
+                        message={t('Your {{name}} certification has expired',{ name: certification?.name })}
                       />
                       </div>
                     ) : daysUntilExpiry <= 90 ? (
                         <div className={`${styles["alert__container"]}`}>
-                      <Alert
-                        key={index}
-                        type={"warning"}
-                        message={`Your ${certification.name} certification must be renewed by ${renewalDate}`}
-                      />
+                          <Alert
+                            key={index}
+                            type="warning"
+                            message={t('Your {{name}} certification must be renewed by {{date}}', { name: certification.name, date: renewalDate })}
+                          />
                         </div>
                     ) : null}
                   </React.Fragment>
@@ -83,7 +85,7 @@ const Dashboard = () => {
                     <div className={`grid-row ${styles["cert-header__row"]}`}>
                       <div className="grid-col">
                         <div className={`${styles["certifications"]}`}>
-                          Certifications
+                          {t('Certifications')}
                         </div>
                       </div>
                       <div
@@ -93,7 +95,7 @@ const Dashboard = () => {
                           to="/certification"
                           className={`float-right usa-prose ${styles["certifications-header__link"]}`}
                         >
-                          View
+                          {t('View')}
                         </Link>
                       </div>
                     </div>

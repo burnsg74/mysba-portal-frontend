@@ -37,11 +37,11 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
       <div className={`${styles["container"]}`}>
         <div className={`${styles["header"]}`}>
           <span className={`${styles["header__title"]}`}>
-            Apply for a Certification
+            {t("Apply for a Certification")}
           </span>
           <span className={`${styles["header__close"]}`} onClick={closeModal}>
             {" "}
-            Close
+            {t("Close")}
             <svg
               aria-hidden="true"
               focusable="false"
@@ -54,74 +54,62 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
             </svg>
           </span>
         </div>
-        <div className={`${styles.stepIndicatorContainer}`}>
-          <div
-            className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
-            aria-label="progress"
-          >
-            <ol className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}>
-              <li className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["custom-segment"]} ${styles["usa-step-indicator__segment--complete"]}`}></li>
-              <li className={`usa-step-indicator__segment usa-step-indicator__segment--incomplete ${styles["custom-segment"]} ${styles["usa-step-indicator__segment--incomplete"]}`}></li>
-            </ol>
-          </div>
-        </div>
         <div className={`${styles["content"]}`}>
           {/* Header */}
           <img src={editPaperImg} alt="Edit Paper Image" />
           <div className={`${styles["content__title"]}`}>
-            What kind of certification would you like to apply for?
+            {t("What kind of certification would you like to apply for?")}
           </div>
-          <div
-            className={`usa-alert usa-alert--info usa-alert--slim ${styles.alertCustomContainer}`}
-          >
+          <div className="usa-alert usa-alert--info usa-alert--slim">
             <div className="usa-alert__body">
               <p className="usa-alert__text">
-                Only Woman-Owned Small Business certifications can be linked at
-                this time. You are still invited to apply to any certification
-                through their respective portals, however, it will not appear in
-                this portal in this beta software.
+                {t(
+                  "Only Woman-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software."
+                )}
               </p>
             </div>
           </div>
           <div>
-            {/* WOSB Cert */}
-            <div className={`usa-card__container ${styles["card__container"]}`}>
-              <div className={`usa-card__body ${styles["checkbox__group"]}`}>
-                <input
-                  type="radio"
-                  value="WOSB"
-                  name="certification"
-                  checked={selectedOption === "WOSB"}
-                  onChange={handleOptionChange}
-                  className={`${styles["radio"]}`}
-                  style={{ outline: "none" }}
-                />
-                <span className={`${styles["checkbox_label"]}`}>
-                  Women Owned Business (WOSB) Certification
-                </span>
-                <span className={`${styles["tooltip"]}`}>
-                  <svg
-                    className="usa-icon"
-                    aria-hidden="true"
-                    focusable="false"
-                    role="img"
-                  >
-                    <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
-                  </svg>
-                  <span className={`${styles["tooltiptext"]}`}>
-                    You could qualify if over 51% of your business is owned by
-                    women. <br />
-                    <a
-                      href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program#id-program-eligibility-requirements"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      Learn more.
-                    </a>
-                  </span>
-                </span>
-              </div>
-            </div>
+            {/*/!* WOSB Cert *!/*/}
+            {/*<div className={`usa-card__container ${styles["card__container"]}`}>*/}
+            {/*  <div className={`usa-card__body ${styles["checkbox__group"]}`}>*/}
+            {/*    <input*/}
+            {/*      type="radio"*/}
+            {/*      value="WOSB"*/}
+            {/*      name="certification"*/}
+            {/*      checked={selectedOption === "WOSB"}*/}
+            {/*      onChange={handleOptionChange}*/}
+            {/*      className={`${styles["radio"]}`}*/}
+            {/*      style={{ outline: "none" }}*/}
+            {/*    />*/}
+            {/*    <span className={`${styles["checkbox_label"]}`}>*/}
+            {/*      {t("Women Owned Business (WOSB) Certification")}*/}
+            {/*    </span>*/}
+            {/*    <span className={`${styles["tooltip"]}`}>*/}
+            {/*      <svg*/}
+            {/*        className="usa-icon"*/}
+            {/*        aria-hidden="true"*/}
+            {/*        focusable="false"*/}
+            {/*        role="img"*/}
+            {/*      >*/}
+            {/*        <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>*/}
+            {/*      </svg>*/}
+            {/*      <span className={`${styles["tooltiptext"]}`}>*/}
+            {/*        {t(*/}
+            {/*          "You could qualify if over 51% of your business is owned by women."*/}
+            {/*        )}{" "}*/}
+            {/*        <br />*/}
+            {/*        <a*/}
+            {/*          href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program#id-program-eligibility-requirements"*/}
+            {/*          target="_blank"*/}
+            {/*          rel="noreferrer"*/}
+            {/*        >*/}
+            {/*          {t("Learn more.")}*/}
+            {/*        </a>*/}
+            {/*      </span>*/}
+            {/*    </span>*/}
+            {/*  </div>*/}
+            {/*</div>*/}
 
             {/* 8A Cert */}
             <div className={`usa-card__container ${styles["card__container"]}`}>
@@ -136,8 +124,9 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                   style={{ outline: "none" }}
                 />
                 <span className={`${styles["checkbox_label"]}`}>
-                  Socially and Economically Disadvantaged Business Certification
-                  (8A)
+                  {t(
+                    "Socially and Economically Disadvantaged Business Certification  (8A)"
+                  )}
                 </span>
                 <span className={`${styles["tooltip"]}`}>
                   <svg
@@ -149,15 +138,17 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                   </svg>
                   <span className={`${styles["tooltiptext"]}`}>
-                    You could qualify if 51% of your business is owned by
-                    individuals with a net worth under $850 thousand. <br />
+                    {t(
+                      "You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand."
+                    )}
+                    <br />
                     <a
                       href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program#id-program-qualifications"
                       target="_blank"
                       rel="noreferrer"
                     >
                       {" "}
-                      Learn more.{" "}
+                      {t("Learn more.")}{" "}
                     </a>
                   </span>
                 </span>
@@ -176,8 +167,9 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                   style={{ outline: "none" }}
                 />
                 <span className={`${styles["checkbox_label"]}`}>
-                  Historically Underutilized Business Zone Certification
-                  (HubZone)
+                  {t(
+                    "Historically Underutilized Business Zone Certification (HubZone)"
+                  )}
                 </span>
                 <span className={`${styles["tooltip"]}`}>
                   <svg
@@ -189,47 +181,62 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                   </svg>
                   <span className={`${styles["tooltiptext"]}`}>
-                    You could qualify if your business is located in a HUBZone.{" "}
+                    {t(
+                      "You could qualify if your business is located in a HUBZone."
+                    )}{" "}
                     <br />
                     <a
                       href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program#id-hubzone-program-qualifications"
                       target="_blank"
                       rel="noreferrer"
                     >
-                      Learn more.
+                      {t("Learn more.")}
                     </a>
                   </span>
                 </span>
               </div>
             </div>
 
-            {/* VetCert Cert @TODO Hide existing Certs */}
-            {/*<div className={`usa-card__container ${styles['card__container']}`}>*/}
-            {/*    <div className={`usa-card__body ${styles['checkbox__group']}`}>*/}
-            {/*        <input*/}
-            {/*            type="radio"*/}
-            {/*            name="certification"*/}
-            {/*            onChange={handleOptionChange}*/}
-            {/*            value="VetCert"*/}
-            {/*            disabled={true}*/}
-            {/*            className={`${styles['radio']}`}*/}
-            {/*            style={{outline: 'none'}}*/}
-            {/*        />*/}
-            {/*        <span className={`${styles['checkbox_label']}`}>Veteran Small Business (VetCert) Certification.</span>*/}
-            {/*        <span className={`${styles['tooltip']}`}>*/}
-            {/*                <svg className="usa-icon" aria-hidden="true" focusable="false" role="img">*/}
-            {/*                    <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>*/}
-            {/*                </svg>*/}
-            {/*                <span className={`${styles['tooltiptext']}`}>*/}
-            {/*                You could qualify if over 51% of your business is owned by veterans. <br/>*/}
-            {/*                    <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs#id-veteran-small-business-certification-vetcert-program"*/}
-            {/*                       target="_blank" rel="noreferrer">*/}
-            {/*                Learn more.*/}
-            {/*            </a>*/}
-            {/*                </span>*/}
-            {/*            </span>*/}
-            {/*    </div>*/}
-            {/*</div>*/}
+            {/*VetCert Cert @TODO Hide existing Certs */}
+            <div className={`usa-card__container ${styles["card__container"]}`}>
+              <div className={`usa-card__body ${styles["checkbox__group"]}`}>
+                <input
+                  type="radio"
+                  name="certification"
+                  onChange={handleOptionChange}
+                  value="VetCert"
+                  disabled={true}
+                  className={`${styles["radio"]}`}
+                  style={{ outline: "none" }}
+                />
+                <span className={`${styles["checkbox_label"]}`}>
+                  {t("Veteran Small Business (VetCert) Certification.")}
+                </span>
+                <span className={`${styles["tooltip"]}`}>
+                  <svg
+                    className="usa-icon"
+                    aria-hidden="true"
+                    focusable="false"
+                    role="img"
+                  >
+                    <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
+                  </svg>
+                  <span className={`${styles["tooltiptext"]}`}>
+                    {t(
+                      "You could qualify if over 51% of your business is owned by veterans."
+                    )}{" "}
+                    <br />
+                    <a
+                      href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs#id-veteran-small-business-certification-vetcert-program"
+                      target="_blank"
+                      rel="noreferrer"
+                    >
+                      {t("Learn more.")}
+                    </a>
+                  </span>
+                </span>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -240,14 +247,14 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
             className={`usa-button usa-button--outline  ${styles["footer-btn"]}`}
             onClick={closeModal}
           >
-            Back
+            {t("Back")}
           </button>
           <button
             type="button"
             className={`usa-button ${styles["footer-btn"]}`}
             onClick={NextModal}
           >
-            Continue
+            {t("Continue")}
           </button>
         </div>
       </div>
