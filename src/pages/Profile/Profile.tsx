@@ -54,7 +54,7 @@ const Profile = () => {
   const goToErrorPage = () => {
     navigate("/error");
   };
-
+  /* eslint-disable */
   useEffect(() => {
     setValue(JSON.stringify(profileData, null, 2));
     if (!profileData?.profile?.portal?.id) {
@@ -62,6 +62,7 @@ const Profile = () => {
       navigate("/account-setup/1");
     }
   }, [profileData]);
+  /* eslint-enable */
   React.useEffect(() => {
     let timerId: NodeJS.Timeout | undefined;
 

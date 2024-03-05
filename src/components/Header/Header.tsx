@@ -117,7 +117,6 @@ const Header = () => {
                 <img
                   className="usa-banner__icon usa-media-block__img"
                   src={DotGov}
-                  role="img"
                   alt="Dot Goc Icon"
                   aria-hidden="true"
                 />
@@ -135,7 +134,6 @@ const Header = () => {
                 <img
                   className="usa-banner__icon usa-media-block__img"
                   src={HttpsIcon}
-                  role="img"
                   alt=""
                   aria-hidden="true"
                 />
@@ -198,7 +196,6 @@ const Header = () => {
               <button
                 type="button"
                 className={`usa-button ${styles["pill-button"]}`}
-                role="button"
                 onClick={switchLanguage}
               >
                 <span lang={lang === "en" ? "es" : "en"}>
@@ -239,6 +236,7 @@ const Header = () => {
           className={`${styles["right-side-nav"]} ${isNavOpen ? styles["is-open"] : ""}`}
           onBlur={handleFocusOut}
           onTouchEnd={handleTouchEnd}
+          role="button"
           ref={navRef}
         >
           <div className={`${styles["right-side-nav__header"]}`}>

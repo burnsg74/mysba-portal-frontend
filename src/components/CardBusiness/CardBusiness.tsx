@@ -1,18 +1,23 @@
 import React, {useState} from 'react';
 import styles from "src/components/CardBusiness/CardBusiness.module.css";
-import {Link} from "react-router-dom";
 import Field from "src/components/Field/Field";
 import {useSelector} from "react-redux";
 import {getUser} from "src/store/user/userSlice";
 import {useTranslation} from "react-i18next";
 
 const CardBusiness: React.FC<ICardBusinessProps> = ({business, showDetails = true}) => {
+    // eslint-disable-next-line
     const user: IUser = useSelector(getUser);
     const [toggleDetails, setToggleDetails] = useState(false);
     const {t} = useTranslation();
     const handleToggleDetails = () => {
         setToggleDetails(!toggleDetails);
     };
+    const handleKeyDown = (event: React.KeyboardEvent) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+          setToggleDetails(!toggleDetails);
+        }
+      };
     return (<>
             <div className="usa-card__container">
                 <div className={`usa-card__header ${styles['card__header']}`}>
@@ -33,7 +38,10 @@ const CardBusiness: React.FC<ICardBusinessProps> = ({business, showDetails = tru
                         </div>
                         {showDetails &&
                             <div className={`grid-col-auto ${styles['toggle__icon']}`}
-                                 onClick={handleToggleDetails}>
+                                 onClick={handleToggleDetails}
+                                 onKeyDown={handleKeyDown}
+                                 role="button"
+                                 >
                                 {toggleDetails ? (
                                     <svg width="40" height="40" aria-hidden="true" focusable="false"
                                          role="img">

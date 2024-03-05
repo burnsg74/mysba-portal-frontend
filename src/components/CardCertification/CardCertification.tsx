@@ -81,7 +81,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             >
               {certification.company_name}
             </div>
-            <div className="grid-col-auto">ID: {certification.number}</div>
+            <div className={`grid-col-auto ${styles["usa-card__text-right"]}`}>ID: {certification.number}</div>
           </div>
         </div>
       </div>

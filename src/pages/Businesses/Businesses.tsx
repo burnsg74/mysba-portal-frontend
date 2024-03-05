@@ -14,6 +14,12 @@ const Businesses = () => {
     setShowDetails(!showDetails);
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      setShowDetails(!showDetails);
+    }
+  };
+
   return (
     <div className={`main-container`}>
       <h1 className={`${styles["title"]}`}>{t("Your Business")} </h1>
@@ -45,6 +51,8 @@ const Businesses = () => {
                     <div
                       className={`grid-col-auto ${styles["toggle__icon"]}`}
                       onClick={handleToggleDetails}
+                      onKeyDown={handleKeyDown}
+                      role="button"
                     >
                       {showDetails ? (
                         <svg

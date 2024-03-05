@@ -29,7 +29,7 @@ const Dashboard = () => {
         <img
           className={`${styles["cityscape"]}`}
           src={CityScapeImage}
-          alt="dashboard cityscape image"
+          alt=""
         />
       </div>
 
