@@ -19,6 +19,13 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      setModalOpen(false);
+    }
+  };
+
   return (
     <>
       {modalOpen && (
@@ -28,6 +35,10 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
             <div className={`${styles["header"]}`}>
               <span
                 className={`${styles["header__close"]}`}
+                onKeyDown={handleKeyDown}
+                role="button"
+                tabIndex={0}
+                aria-label="Close modal"
                 onClick={() => setModalOpen(false)}
               >
                 {t('Close')}
@@ -44,7 +55,7 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
               </span>
             </div>
             <div className={`${styles["content"]}`}>
-              <img src={lightBulbImg} alt="Light Buld Image" />
+              <img src={lightBulbImg} alt="Light Bulb" />
               <div className={`${styles["content__title"]}`}>
                 {t('Your account is all set up.')}
               </div>

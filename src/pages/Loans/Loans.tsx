@@ -10,7 +10,7 @@ const Loans = () => {
       <div className={`main-container`}>
         <div className="grid-row">
           <div className="grid-col">
-            <img src={Gears} className={`${styles["title__img"]}`}  alt="Title Image"/>
+            <img src={Gears} className={`${styles["title__img"]}`}  alt="Title"/>
           </div>
         </div>
         <div className="grid-row">
@@ -21,7 +21,7 @@ const Loans = () => {
         <div className="grid-row">
           <div className="grid-col">
             <div className={`sba-blue ${styles["title__text"]}`}>
-              {t('Linking your loans is currently under construction. Check back in our next release for loan functionality.')} <a href="https://lending.sba.gov" target="_blank"> {t('To check on your loans please visit your loan portal')}.</a>
+              {t('Linking your loans is currently under construction. Check back in our next release for loan functionality.')} <a href="https://lending.sba.gov" rel="noreferrer" target="_blank"> {t('To check on your loans please visit your loan portal')}.</a>
               .
             </div>
           </div>

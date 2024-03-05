@@ -186,7 +186,8 @@
 }
 
 .link-a-certification__btn:disabled {
-  color: var(--Base-white, #ffffff);
+  color:#454545;
+  background:#C9C9C9;
   text-align: center;
   font-family: var(--Font-Secondary);
   font-size: 16px;

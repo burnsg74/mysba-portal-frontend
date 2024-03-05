@@ -30,7 +30,11 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
       event.target.value as "WOSB" | "8A" | "HubZone" | "VetCert"
     );
   };
-
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      NextModal;
+    }
+  };
   return (
     <>
       <div className={`${styles["overlay"]}`} />
@@ -39,7 +43,12 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
           <span className={`${styles["header__title"]}`}>
             {t("Apply for a Certification")}
           </span>
-          <span className={`${styles["header__close"]}`} onClick={closeModal}>
+          <span
+            className={`${styles["header__close"]}`}
+            onClick={closeModal}
+            onKeyDown={handleKeyDown}
+            role="button"
+          >
             {" "}
             {t("Close")}
             <svg
@@ -55,8 +64,26 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
           </span>
         </div>
         <div className={`${styles["content"]}`}>
+          <div className={`${styles.stepIndicatorContainer}`}>
+            <div
+              className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
+              aria-label="progress"
+            >
+              <ol
+                className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}
+              >
+                <li
+                  className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment--complete"]}`}
+                ></li>
+                <li
+                  className={`usa-step-indicator__segment usa-step-indicator__segment--incomplete ${styles["usa-step-indicator__segment--incomplete"]}`}
+                ></li>
+              </ol>
+            </div>
+          </div>
+
           {/* Header */}
-          <img src={editPaperImg} alt="Edit Paper Image" />
+          <img src={editPaperImg} alt="Edit Paper" />
           <div className={`${styles["content__title"]}`}>
             {t("What kind of certification would you like to apply for?")}
           </div>

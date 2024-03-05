@@ -145,3 +145,26 @@ input[type="checkbox"]:focus {
 .tooltip:hover .tooltiptext {
     visibility: visible;
 }
+
+.skip-button {
+    background: none;
+    border: none;
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-family: inherit;
+  }
+  
+  .skip-button:hover,
+  .skip-button:focus {
+    color:var(--Brand-Primary-SBA-Blue);
+    text-decoration: none;
+    outline: none;
+  }
+  
+  .skip-button:active {
+    color:var(--Brand-Primary-SBA-Blue);
+  }

@@ -11,7 +11,7 @@ const Error = () => {
       <div className={`${styles["error-container"]}`}>
         <img
           src={errorSVG}
-          alt="error"
+          alt="error occured"
           className={`${styles["error-image"]}`}
         />
         <div className={`${styles["error-message"]}`}>

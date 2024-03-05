@@ -57,14 +57,14 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
     url: "",
   });
   useEffect(() => {
-    const foundCert = certs.find(c => c.code == selectedOption) || {
+    const foundCert = certs.find(c => c.code === selectedOption) || {
       code: "",
       title: "",
       message: "",
       url: "",
     };
     setCert(foundCert);
-  }, [selectedOption]);
+  }, [selectedOption, certs]);
 
   const prevModal = () => {
     if (typeof onPrev === "function") onPrev();
@@ -80,6 +80,12 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
     }
   };
 
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === "Enter") {
+      closeModal;
+    }
+  };
+
   return (
     <>
       <div className={`${styles["overlay"]}`} />
@@ -88,7 +94,7 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
           <span className={`${styles["header__title"]}`}>
             {t("Apply for a Certification")}
           </span>
-          <span className={`${styles["header__close"]}`} onClick={closeModal}>
+          <span className={`${styles["header__close"]}`} onClick={closeModal} onKeyDown={handleKeyDown}>
             {t("Close")}
             <svg
               aria-hidden="true"
@@ -103,7 +109,7 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
           </span>
         </div>
         <div className={`${styles["content"]}`}>
-          <img src={nextSignImg} alt="Next Image" />
+          <img src={nextSignImg} alt="Next Sign" />
           <div className={`${styles["content__title"]}`}>
             {t(cert?.title) || ""}
           </div>

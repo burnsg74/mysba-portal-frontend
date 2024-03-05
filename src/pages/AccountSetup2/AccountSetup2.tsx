@@ -125,7 +125,7 @@ const AccountSetup1 = () => {
             </div>
           </div>
           <div className={`${styles["section_label"]}`}>
-            {t('I am interested in')}...
+            {t("I am interested in")}...
           </div>
           <div className={`${styles["section_message"]}`}>
             {" "}
@@ -218,13 +218,18 @@ const AccountSetup1 = () => {
               {t("Continue")}
             </button>
           </div>
-          <div className={`${styles["button-group"]}`}>
-            <div>
-              <a style={{ cursor: "pointer" }} onClick={handleSkipBtnClick}>
-                {t("Skip")}
-              </a>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={handleSkipBtnClick}
+            className={styles["skip-button"]}
+            onKeyDown={event => {
+              if (event.key === "Enter" || event.key === " ") {
+                handleSkipBtnClick();
+              }
+            }}
+          >
+            {t("Skip")}
+          </button>
         </div>
       </div>
     </>

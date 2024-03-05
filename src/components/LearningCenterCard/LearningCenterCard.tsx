@@ -64,7 +64,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
       <img
         src={learningCenter.image}
         className={`${styles["content-image"]}`}
-        alt="Content Image"
+        alt="Content"
       />
 
       {/* Body */}

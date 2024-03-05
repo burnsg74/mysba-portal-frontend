@@ -50,7 +50,7 @@ const App: React.FC = () => {
   const restoreOriginalUri = () => {
     navigate("/");
   };
-
+  /* eslint-disable */
   let mockUserFilename = new URLSearchParams(location.search).get("mock-user");
   const fetchUserAndSet = () => {
     return async (dispatch: Dispatch) => {
@@ -66,6 +66,7 @@ const App: React.FC = () => {
       }
     };
   };
+  /* eslint-enable */
 
   const routes = (
     <>

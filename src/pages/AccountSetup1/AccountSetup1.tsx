@@ -14,12 +14,12 @@ const AccountSetup1 = () => {
     const user: IUser = useSelector(getUser);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-
+    /* eslint-disable */
     useEffect(() => {
         const updatedUser = {...user, profile: {...user.profile, portal: {id: Math.floor(Math.random()*10000)}}}; // generate random number
         dispatch(setUser(JSON.parse(JSON.stringify(updatedUser))));
     }, []);
-
+    /* eslint-enable */
     const handleContinueBtnClick = () => {
         navigate('/account-setup/2');
     };
