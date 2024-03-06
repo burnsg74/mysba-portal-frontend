@@ -25,8 +25,10 @@ const Certifications = () => {
     const fetchCertifications = async () => {
       try {
         const email = user?.profile?.crm?.email;
+        console.log('email', email);
         const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/certification/wosb/${email}`);
-        const updatedUser = { ...user, certifications: res.data.data };
+        console.log('res', res.data);
+        const updatedUser = { ...user, certifications: res.data };
         dispatch(setUser(updatedUser));
       } catch (error) {
         console.error("Error fetching certifications", error);

@@ -15,9 +15,13 @@ const Businesses = () => {
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
+        console.log('old user', user);
         const email = user?.profile?.crm?.email;
+        console.log('email', email);
         const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/business/${email}`);
-        const updatedUser = { ...user, businesses: res.data.data };
+        console.log('res', res.data);
+        const updatedUser = { ...user, businesses: res.data};
+        console.log('updatedUser', updatedUser);
         dispatch(setUser(updatedUser));
       } catch (error) {
         console.error("Error fetching businesses", error);

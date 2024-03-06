@@ -36,14 +36,16 @@ const Landing = () => {
       console.error(err);
     }
 
+    console.log('businesses',  results[2].data.data);
+
     // TODO: I do not like the data.data here. Need to think of a better name that the backend uses.
     return {
       profile: {
         crm: results[0].data,
         portal: results[1].data
       },
-      businesses: results[2].data.data,
-      certifications: results[3].data.data
+      businesses: results[2].data,
+      certifications: results[3].data
     };
   };
 
