@@ -6,6 +6,13 @@ import { setUser } from "src/store/user/userSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { setNav } from "src/store/showNav/showNavSlice";
 
+// https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/crm/mysba360/jonsmith@email.com
+// https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user/cindysmith@spoonandharvest.com
+// https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/business/1
+// https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/wosb/certification/1
+// https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user/cindysmith@spoonandharvest.com
+// POST https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user
+
 let isWaitingForOktaSign = false;
 const Landing = () => {
   const USER_DATA_API =

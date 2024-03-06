@@ -84,7 +84,7 @@ const Businesses = () => {
                       <div className={`grid-row`}>
                         <div className="grid-col">
                           <div className={`${styles["subheader"]}`}>
-                            Business Information
+                            {t('Business Information')}
                           </div>
                         </div>
                       </div>
@@ -118,7 +118,7 @@ const Businesses = () => {
                       />
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
-                          Structure
+                          {t('Structure')}
                         </div>
                       </div>
                       <Field label={business.type} value="Holding Business" />
@@ -126,7 +126,7 @@ const Businesses = () => {
                       <Field label="Principals" value="Cindy Smith, President" />
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
-                          Products and Services
+                          {t('Products and Services')}
                         </div>
                       </div>
                       {/*<Field label="Capabilities Narrative" value={user.certifications[0].system} />*/}

@@ -210,7 +210,7 @@ const Header = () => {
                 <span className={`${styles["tooltip"]}`}>
                   <img src={ProfileIcon} alt="Menu" />
                    <span className={`${styles["tooltiptext"]}`}>
-                    {t("You Profile")}
+                    {t("Your Profile")}
                   </span>
                 </span>
               </Link>

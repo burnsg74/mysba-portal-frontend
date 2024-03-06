@@ -28,7 +28,7 @@ const Pill: React.FC<IPillProps> = ({ message, type }) => {
       >
         <use xlinkHref={`/assets/img/sprite.svg#${icon}`}></use>
       </svg>
-      <div className={`${styles["pill__message"]}`}>{message}</div>
+      <div className={`${styles["pill__message"]}`}>{t(message)}</div>
     </div>
   );
 };
