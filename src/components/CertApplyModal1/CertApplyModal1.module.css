@@ -196,7 +196,7 @@
   align-items: center;
 }
 
-.usa-step-indicator__segment--complete::after {   background-color: #007dbc};
+.usa-step-indicator__segment--complete::after {   background-color: #007dbc;}
 
-.usa-step-indicator__segment--incomplete::after {   background-color: #e6e6e6};
+.usa-step-indicator__segment--incomplete::after {   background-color: #e6e6e6;}
 
