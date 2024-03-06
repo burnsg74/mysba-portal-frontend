@@ -4,23 +4,32 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import CheckListImage from "src/assets/check-list.png";
 import { setNav } from "src/store/showNav/showNavSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import axios from "axios";
+import { getUser, setUser } from "src/store/user/userSlice";
+
+interface IUser {
+  profile?: object;
+}
+
+interface IState {
+  planningNewBusiness: boolean;
+  launchingNewBusiness: boolean;
+  managingExistingBusiness: boolean;
+  marketingExistingBusiness: boolean;
+  growingExistingBusiness: boolean;
+  govContracting: boolean;
+  businessMentorship: boolean;
+  womenOwnedBusinessContent: boolean;
+  veteranOwnedBusinessContent: boolean;
+}
 
 const AccountSetup1 = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const handleContinueBtnClick = () => {
-    dispatch(setNav(true));
-    navigate("/dashboard/new");
-  };
-  const handleBackBtnClick = () => {
-    navigate("/account-setup/1");
-  };
-  const handleSkipBtnClick = () => {
-    dispatch(setNav(true));
-    navigate("/dashboard");
-  };
+  const user: IUser = useSelector(getUser);
+
   const [state, setState] = useState({
     planningNewBusiness: false,
     launchingNewBusiness: false,
@@ -32,6 +41,54 @@ const AccountSetup1 = () => {
     womenOwnedBusinessContent: false,
     veteranOwnedBusinessContent: false,
   });
+
+
+  const handleContinueBtnClick = () => {
+    dispatch(setNav(true));
+
+    interface UserProfile {
+      portal: object; // Replace object with your actual type for portal
+    }
+
+    console.log('user', user);
+    let portalProfile = {};
+    if (!user.profile) {
+      console.error('user profile is missing');
+    } else {
+      // @ts-ignore
+      portalProfile = {
+        ...(user.profile as UserProfile).portal,
+        ...state
+      };
+    }
+    console.log('portalProfile', portalProfile);
+
+    axios.post('https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user', portalProfile)
+      .then((response) => {
+        let newUser = {
+          ...user,
+          profile: {
+            ...user.profile,
+            portal: portalProfile
+          }
+        };
+        dispatch(setUser(newUser));
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
+    navigate("/dashboard/new");
+  };
+  const handleBackBtnClick = () => {
+    navigate("/account-setup/1");
+  };
+  const handleSkipBtnClick = () => {
+    dispatch(setNav(true));
+    navigate("/dashboard");
+  };
+
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setState({ ...state, [event.target.name]: event.target.checked });

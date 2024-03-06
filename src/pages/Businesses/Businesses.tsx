@@ -1,14 +1,30 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { getUser } from "src/store/user/userSlice";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, setUser } from "src/store/user/userSlice";
 import styles from "src/pages/Businesses/Businesses.module.css";
 import Field from "src/components/Field/Field";
 import { useTranslation } from "react-i18next";
 
 const Businesses = () => {
   const user: IUser = useSelector(getUser);
+  const dispatch = useDispatch();
   const [showDetails, setShowDetails] = useState(false);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const fetchBusinesses = async () => {
+      try {
+        const email = user?.profile?.crm?.email;
+        const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/business/${email}`);
+        const updatedUser = { ...user, businesses: res.data.data };
+        dispatch(setUser(updatedUser));
+      } catch (error) {
+        console.error("Error fetching businesses", error);
+      }
+    }
+    fetchBusinesses();
+  }, [dispatch]);
 
   const handleToggleDetails = () => {
     setShowDetails(!showDetails);

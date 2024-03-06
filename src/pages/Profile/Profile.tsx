@@ -109,6 +109,7 @@ const Profile = () => {
             type="checkbox"
             name="updates"
             className={`usa-checkbox__input`}
+            disabled={true}
           />
           <label
             htmlFor="updates"
@@ -120,8 +121,6 @@ const Profile = () => {
         <button className={` ${styles["button-style"]}`} onClick={logout}>
           <span className={`${styles["button-text"]}`}>{t('Log Out')}</span>
         </button>
-
-
 
         {isDevMode && (
           <div className={`${styles["dev_mode__container"]}`}>

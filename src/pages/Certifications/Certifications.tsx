@@ -1,6 +1,7 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { getUser } from "src/store/user/userSlice";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, setUser } from "src/store/user/userSlice";
 import styles from "src/pages/Certifications/Certifications.module.css";
 import CertApplyModal1 from "src/components/CertApplyModal1/CertApplyModal1";
 import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
@@ -18,6 +19,21 @@ const Certifications = () => {
     OptionType | undefined
   >();
   const {t} = useTranslation();
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    const fetchCertifications = async () => {
+      try {
+        const email = user?.profile?.crm?.email;
+        const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/certification/wosb/${email}`);
+        const updatedUser = { ...user, certifications: res.data.data };
+        dispatch(setUser(updatedUser));
+      } catch (error) {
+        console.error("Error fetching certifications", error);
+      }
+    }
+    fetchCertifications();
+  }, []);
 
   const handleCertApplyModal1Close = () => {
     setShowModal(0);

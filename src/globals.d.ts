@@ -7,6 +7,7 @@ interface IUserProfile {
     allow_notices: boolean;
   };
   portal: {
+    allow_notice: boolean;
     id: string;
   };
 }
