@@ -15,13 +15,9 @@ const Businesses = () => {
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        console.log('old user', user);
         const email = user?.profile?.crm?.email;
-        console.log('email', email);
         const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/business/${email}`);
-        console.log('res', res.data);
         const updatedUser = { ...user, businesses: res.data};
-        console.log('updatedUser', updatedUser);
         dispatch(setUser(updatedUser));
       } catch (error) {
         console.error("Error fetching businesses", error);
@@ -128,31 +124,36 @@ const Businesses = () => {
                         label="Phone Number"
                         value={business.phone_number}
                       />
-                      {/*<Field*/}
-                      {/*  label="Email"*/}
-                      {/*  value={user.profile.crm.email}*/}
-                      {/*/>*/}
                       <Field
-                        label="Website"
-                        value={business.name}
+                        label="Fax Number"
+                        value={business.fax}
                       />
+                      <Field
+                        label="Email"
+                        value={business.email}
+                      />
+                      {/*<Field*/}
+                      {/*  label="Website"*/}
+                      {/*  value={business.name}*/}
+                      {/*/>*/}
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
                           {t('Structure')}
                         </div>
                       </div>
-                      <Field label={business.type} value="Holding Business" />
+                      <Field label="Type" value={business.type} />
                       {/*<Field label="Ownership" value={user.certifications[0].name} />*/}
-                      <Field label="Principals" value="Cindy Smith, President" />
-                      <div className={`${styles["subheader-padding"]}`}>
-                        <div className={`${styles["subheader"]}`}>
-                          {t('Products and Services')}
-                        </div>
-                      </div>
+                      {/*<Field label="Principals" value="Cindy Smith, President" />*/}
+                      {/*<div className={`${styles["subheader-padding"]}`}>*/}
+                      {/*  <div className={`${styles["subheader"]}`}>*/}
+                      {/*    {t('Products and Services')}*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
                       {/*<Field label="Capabilities Narrative" value={user.certifications[0].system} />*/}
-                      <Field label="NAICS Codes" value="1. Food Service" />
+                      {/*<Field label="NAICS Codes" value="1. Food Service" />*/}
                     </>
                   ) : (
+                    // Summary view
                     <div
                       className={`grid-row sba-blue ${styles["usa-card__row"]}`}
                     >

@@ -23,6 +23,7 @@ interface IBusiness {
   business_address: string;
   phone_number: string;
   fax: string;
+  email: string;
 }
 
 interface ICertification {
