@@ -11,7 +11,7 @@
 
 .container {
   max-height: 90vh;
-  max-width: 90vw;
+  max-width: 600px;
   display: flex;
   flex-direction: column;
   position: fixed;
@@ -23,13 +23,28 @@
   height: 888px;
   z-index: 2;
   border-radius: 16px;
+  box-shadow: 0px 7px 15px 0px #1b1e2912;
+}
+
+@media screen and (max-width: 562px) {
+  .container {
+    min-width: 90vw;
+  }
+}
+
+.alertCustomContainer {
+  border-left: 8px solid #007DBC;
+  gap: 14px;
+  text-align:left;
+  background:#D1EBFF;
+
 }
 
 .header {
   height: 56px;
   justify-content: space-between;
   padding: 16px 24px;
-  border-bottom: var(--SBA-CRM-text-text-light) solid 1px;
+  border-bottom: #e6e6e6 solid 1px;
   display: flex;
   align-items: center;
 }
@@ -78,7 +93,7 @@
   line-height: 38px;
   text-align: center;
   padding-bottom: 40px;
-  word-wrap:break-word;
+  word-wrap: break-word;
   color: var(--Brand-Primary-SBA-Blue);
 }
 
@@ -105,6 +120,7 @@
   font-size: 22px;
   font-weight: 400;
   line-height: 26px;
+  padding-left:16px;
   text-align: left;
   color: var(--Brand-Primary-SBA-Blue);
 }
@@ -123,6 +139,7 @@
 }
 
 .footer {
+  min-height:92px;
   height: 92px;
   padding: 24px 16px;
   border-top: #dcdee0 solid 1px;
@@ -157,6 +174,9 @@
   top: 100%;
   left: 50%;
   margin-left: -250px;
+}
+.usa-form a:where(:not(.usa-button)) {
+  color: #fff;
 }
 
 .tooltip .tooltiptext::after {
@@ -196,7 +216,19 @@
   align-items: center;
 }
 
-.usa-step-indicator__segment--complete::after {   background-color: #007dbc};
+.usa-step-indicator__segment--complete::after {
+  background-color: #007dbc;
+}
 
-.usa-step-indicator__segment--incomplete::after {   background-color: #e6e6e6};
+.usa-step-indicator__segment--incomplete::after {
+  background-color: #e6e6e6;
+}
+@media (min-width: 30em) {
+  .usa-form {
+    max-width: none;
+  }
+}
 
+.usa-radio__label::before {
+  margin-left:10px;
+}
