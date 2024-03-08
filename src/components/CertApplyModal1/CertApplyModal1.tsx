@@ -183,7 +183,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     </span>
                   </label>
                 </div>
-                <div className={`usa-radio ${styles["radio-row"]}`}>
+                <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
                   <input
                     className="usa-radio__input usa-radio__input--tile"
                     id="certHubZone"
@@ -193,7 +193,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     checked={selectedOption === "HubZone"}
                     onChange={handleOptionChange}
                   />
-                  <label className="usa-radio__label" htmlFor="certHubZone">
+                  <label className={`usa-radio__label`} htmlFor="certHubZone">
                     <span className={`${styles["checkbox_label"]}`}>
                       {t(
                         "Historically Underutilized Business Zone Certification (HubZone)"
