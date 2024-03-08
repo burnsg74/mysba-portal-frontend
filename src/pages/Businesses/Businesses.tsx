@@ -5,9 +5,11 @@ import { getUser, setUser } from "src/store/user/userSlice";
 import styles from "src/pages/Businesses/Businesses.module.css";
 import Field from "src/components/Field/Field";
 import { useTranslation } from "react-i18next";
+import Alert from "src/components/Alert/Alert";
 
 const Businesses = () => {
   const user: IUser = useSelector(getUser);
+  const [showFetchError, setShowFetchError] = useState(false);
   const dispatch = useDispatch();
   const [showDetails, setShowDetails] = useState(false);
   const { t } = useTranslation();
@@ -15,6 +17,9 @@ const Businesses = () => {
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
+        if(sessionStorage.getItem("businessesFetchError") === "true"){
+          throw new Error("There is a businesses fetch error!");
+        }
         const email = user?.profile?.crm?.email;
         const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/business/${email}`);
         const updatedUser = { ...user, businesses: res.data};
@@ -38,6 +43,16 @@ const Businesses = () => {
 
   return (
     <div className={`main-container`}>
+      {showFetchError && (
+        <div className={`${styles["alert-container"]}`}>
+          <Alert
+            type={"error"}
+            message={
+              "Error: Unable to fetch certifications. Please try again later."
+            }
+          />
+        </div>
+      )}
       <h1 className={`${styles["title"]}`}>{t("Your Business")} </h1>
       <div className="Businesses-content">
         {user.businesses &&

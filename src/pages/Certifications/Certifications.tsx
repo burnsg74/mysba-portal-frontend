@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
 import styles from "src/pages/Certifications/Certifications.module.css";
@@ -8,32 +8,37 @@ import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
 import CardCertification from "src/components/CardCertification/CardCertification";
 import Alert from "src/components/Alert/Alert";
 import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";
 
 const Certifications = () => {
   const user: IUser = useSelector(getUser);
   const [showModal, setShowModal] = useState(0);
+  const [showFetchError, setShowFetchError] = useState(false);
   const [selectedOption, setSelectedOption] = useState<
     OptionType | undefined
   >();
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchCertifications = async () => {
       try {
+        if(sessionStorage.getItem("certFetchError") === "true"){
+          throw new Error("There is a certificate fetch error!");
+        }
         const email = user?.profile?.crm?.email;
-        console.log('email', email);
-        const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/certification/wosb/${email}`);
-        console.log('res', res.data);
+        const res = await axios.get(
+          `https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/certification/wosb/${email}`
+        );
         const updatedUser = { ...user, certifications: res.data };
         dispatch(setUser(updatedUser));
       } catch (error) {
+        setShowFetchError(true)
         console.error("Error fetching certifications", error);
       }
-    }
+    };
     fetchCertifications();
   }, []);
 
@@ -53,6 +58,16 @@ const Certifications = () => {
   return (
     <>
       <div className={`main-container`}>
+        {showFetchError && (
+          <div className={`${styles["alert-container"]}`}>
+            <Alert
+              type={"error"}
+              message={
+                "Error: Unable to fetch certifications. Please try again later."
+              }
+            />
+          </div>
+        )}
         {/* Certifications Alerts */}
         {user.certifications &&
           user.certifications.map((certification, index) => {
@@ -66,7 +81,9 @@ const Certifications = () => {
                     <Alert
                       key={index}
                       type={"error"}
-                      message={t('Your {{name}} certification has expired',{ name: certification?.name })}
+                      message={t("Your {{name}} certification has expired", {
+                        name: certification?.name,
+                      })}
                     />
                   </div>
                 ) : days_until_expiry <= 90 ? (
@@ -74,7 +91,14 @@ const Certifications = () => {
                     <Alert
                       key={index}
                       type={"warning"}
-                      message={t('Your {{name}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{renewalDate}}',{ name: certification?.name, days_until_expiry: days_until_expiry, renewalDate })}
+                      message={t(
+                        "Your {{name}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{renewalDate}}",
+                        {
+                          name: certification?.name,
+                          days_until_expiry: days_until_expiry,
+                          renewalDate,
+                        }
+                      )}
                     />
                   </div>
                 ) : null}
@@ -84,7 +108,7 @@ const Certifications = () => {
 
         <div className={`grid-row ${styles["title__row"]}`}>
           <div className={`grid-col grid-col-wrap ${styles["title"]}`}>
-            {t('Certifications')}
+            {t("Certifications")}
           </div>
           <div className={`grid-col-auto ${styles["btn-group"]}`}>
             <div className="grid-col-auto grid-col-wrap">
@@ -93,7 +117,7 @@ const Certifications = () => {
                 className={`usa-button usa-button--outline ${styles["apply-for-a-certification__btn"]}`}
                 onClick={() => setShowModal(1)}
               >
-                {t('Apply for a Certification')}
+                {t("Apply for a Certification")}
               </button>
             </div>
             <div className="grid-col-auto grid-col-wrap">
@@ -102,7 +126,7 @@ const Certifications = () => {
                 className={`usa-button usa-button--secondary ${styles["link-a-certification__btn"]}`}
                 disabled={true}
               >
-                {t('Link a Certification')}
+                {t("Link a Certification")}
               </button>
             </div>
           </div>
