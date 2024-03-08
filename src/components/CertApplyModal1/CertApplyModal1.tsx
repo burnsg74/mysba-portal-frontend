@@ -91,7 +91,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
             <div className="usa-alert__body">
               <p className="usa-alert__text">
                 {t(
-                  "Only Woman-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software."
+                  "Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software."
                 )}
               </p>
             </div>
@@ -152,7 +152,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                 />
                 <span className={`${styles["checkbox_label"]}`}>
                   {t(
-                    "Socially and Economically Disadvantaged Business Certification  (8A)"
+                    "Socially and Economically Disadvantaged Business Certification (8A)"
                   )}
                 </span>
                 <span className={`${styles["tooltip"]}`}>
@@ -224,7 +224,6 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
               </div>
             </div>
 
-            {/*VetCert Cert @TODO Hide existing Certs */}
             <div className={`usa-card__container ${styles["card__container"]}`}>
               <div className={`usa-card__body ${styles["checkbox__group"]}`}>
                 <input
@@ -237,7 +236,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                   style={{ outline: "none" }}
                 />
                 <span className={`${styles["checkbox_label"]}`}>
-                  {t("Veteran Small Business (VetCert) Certification.")}
+                  {t("Veteran-Owned Small Business (VetCert) certification")}
                 </span>
                 <span className={`${styles["tooltip"]}`}>
                   <svg
