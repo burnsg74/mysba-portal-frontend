@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "src/components/Header/Header.module.css";
-import SBAlogo from "src/assets/logo-horizontal.png";
+import SBAlogoEn from "src/assets/logo-horizontal.png";
+import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
 import USFlag from "/node_modules/@uswds/uswds/dist/img/us_flag_small.png";
 import DotGov from "/node_modules/@uswds/uswds/dist/img/icon-dot-gov.svg";
@@ -180,7 +181,11 @@ const Header = () => {
         <div className={`grid-row ${styles["usa-nav-container"]}`}>
           <div className={`grid-col-auto ${styles["left"]}`}>
             {/* LOGO */}
-            <img className={`${styles["usa-logo"]}`} src={SBAlogo} alt="Logo" />
+            <img
+              className={`${styles["usa-logo"]}`}
+              src={lang === "en" ? SBAlogoEn : SBAlogoEs}
+              alt="Logo"
+            />
             <img
               className={`${styles["usa-logo__sm"]}`}
               src={SBAlogoSm}
@@ -209,8 +214,8 @@ const Header = () => {
               <Link to="/profile">
                 <span className={`${styles["tooltip"]}`}>
                   <img src={ProfileIcon} alt="Menu" />
-                   <span className={`${styles["tooltiptext"]}`}>
-                    {t("You Profile")}
+                  <span className={`${styles["tooltiptext"]}`}>
+                    {t("Your Profile")}
                   </span>
                 </span>
               </Link>

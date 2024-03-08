@@ -91,7 +91,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
             <div className="usa-alert__body">
               <p className="usa-alert__text">
                 {t(
-                  "Only Woman-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software."
+                  "Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software."
                 )}
               </p>
             </div>

@@ -1,14 +1,35 @@
-import React, { useState } from "react";
-import { useSelector } from "react-redux";
-import { getUser } from "src/store/user/userSlice";
+import React, { useState, useEffect } from "react";
+import axios from 'axios';
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, setUser } from "src/store/user/userSlice";
 import styles from "src/pages/Businesses/Businesses.module.css";
 import Field from "src/components/Field/Field";
 import { useTranslation } from "react-i18next";
+import Alert from "src/components/Alert/Alert";
 
 const Businesses = () => {
   const user: IUser = useSelector(getUser);
+  const [showFetchError, setShowFetchError] = useState(false);
+  const dispatch = useDispatch();
   const [showDetails, setShowDetails] = useState(false);
   const { t } = useTranslation();
+
+  useEffect(() => {
+    const fetchBusinesses = async () => {
+      try {
+        if(sessionStorage.getItem("businessesFetchError") === "true"){
+          throw new Error("There is a businesses fetch error!");
+        }
+        const email = user?.profile?.crm?.email;
+        const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/business/${email}`);
+        const updatedUser = { ...user, businesses: res.data};
+        dispatch(setUser(updatedUser));
+      } catch (error) {
+        console.error("Error fetching businesses", error);
+      }
+    }
+    fetchBusinesses();
+  }, [dispatch]);
 
   const handleToggleDetails = () => {
     setShowDetails(!showDetails);
@@ -22,6 +43,16 @@ const Businesses = () => {
 
   return (
     <div className={`main-container`}>
+      {showFetchError && (
+        <div className={`${styles["alert-container"]}`}>
+          <Alert
+            type={"error"}
+            message={
+              "Error: Unable to fetch certifications. Please try again later."
+            }
+          />
+        </div>
+      )}
       <h1 className={`${styles["title"]}`}>{t("Your Business")} </h1>
       <div className="Businesses-content">
         {user.businesses &&
@@ -84,7 +115,7 @@ const Businesses = () => {
                       <div className={`grid-row`}>
                         <div className="grid-col">
                           <div className={`${styles["subheader"]}`}>
-                            Business Information
+                            {t('Business Information')}
                           </div>
                         </div>
                       </div>
@@ -108,31 +139,36 @@ const Businesses = () => {
                         label="Phone Number"
                         value={business.phone_number}
                       />
-                      {/*<Field*/}
-                      {/*  label="Email"*/}
-                      {/*  value={user.profile.crm.email}*/}
-                      {/*/>*/}
                       <Field
-                        label="Website"
-                        value={business.name}
+                        label="Fax Number"
+                        value={business.fax}
                       />
+                      <Field
+                        label="Email"
+                        value={business.email}
+                      />
+                      {/*<Field*/}
+                      {/*  label="Website"*/}
+                      {/*  value={business.name}*/}
+                      {/*/>*/}
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
-                          Structure
+                          {t('Structure')}
                         </div>
                       </div>
-                      <Field label={business.type} value="Holding Business" />
+                      <Field label="Type" value={business.type} />
                       {/*<Field label="Ownership" value={user.certifications[0].name} />*/}
-                      <Field label="Principals" value="Cindy Smith, President" />
-                      <div className={`${styles["subheader-padding"]}`}>
-                        <div className={`${styles["subheader"]}`}>
-                          Products and Services
-                        </div>
-                      </div>
+                      {/*<Field label="Principals" value="Cindy Smith, President" />*/}
+                      {/*<div className={`${styles["subheader-padding"]}`}>*/}
+                      {/*  <div className={`${styles["subheader"]}`}>*/}
+                      {/*    {t('Products and Services')}*/}
+                      {/*  </div>*/}
+                      {/*</div>*/}
                       {/*<Field label="Capabilities Narrative" value={user.certifications[0].system} />*/}
-                      <Field label="NAICS Codes" value="1. Food Service" />
+                      {/*<Field label="NAICS Codes" value="1. Food Service" />*/}
                     </>
                   ) : (
+                    // Summary view
                     <div
                       className={`grid-row sba-blue ${styles["usa-card__row"]}`}
                     >

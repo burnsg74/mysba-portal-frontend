@@ -15,7 +15,7 @@ const Loans = () => {
         </div>
         <div className="grid-row">
           <div className="grid-col">
-            <div className={`${styles["title"]}`}>Under Construction</div>
+            <div className={`${styles["title"]}`}>{t('Under Construction')}</div>
           </div>
         </div>
         <div className="grid-row">

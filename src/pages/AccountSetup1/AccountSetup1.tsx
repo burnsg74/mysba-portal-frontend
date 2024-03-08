@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "src/pages/AccountSetup1/AccountSetup1.module.css";
 import {useTranslation} from 'react-i18next';
 import { useDispatch, useSelector } from "react-redux";
@@ -7,6 +7,7 @@ import CardCertification from "src/components/CardCertification/CardCertificatio
 import {useNavigate} from 'react-router-dom';
 import CardBusiness from "src/components/CardBusiness/CardBusiness";
 import OpenSignImage from "src/assets/open-sign.png";
+import axios from "axios";
 
 
 const AccountSetup1 = () => {
@@ -14,13 +15,39 @@ const AccountSetup1 = () => {
     const user: IUser = useSelector(getUser);
     const navigate = useNavigate();
     const dispatch = useDispatch();
-    /* eslint-disable */
-    useEffect(() => {
-        const updatedUser = {...user, profile: {...user.profile, portal: {id: Math.floor(Math.random()*10000)}}}; // generate random number
-        dispatch(setUser(JSON.parse(JSON.stringify(updatedUser))));
-    }, []);
-    /* eslint-enable */
+    const [allowNotice, setAllowNotice] = useState<boolean>(false);
+
+    const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+        setAllowNotice(event.target.checked);
+    };
+
     const handleContinueBtnClick = () => {
+        console.log('user', user);
+        let portalProfile = {};
+        if (!user.profile) {
+            console.error('user profile is missing');
+        } else {
+            portalProfile = {
+                id: user.profile.crm.email,
+                allow_notice: allowNotice
+            };
+        }
+
+        axios.post('https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user', portalProfile)
+          .then((response) => {
+              let newUser = {
+                  ...user,
+                  profile: {
+                      ...user.profile,
+                      portal: portalProfile
+                  }
+              };
+              dispatch(setUser(newUser));
+              console.log(response.data);
+          })
+          .catch((error) => {
+              console.log(error);
+          });
         navigate('/account-setup/2');
     };
 
@@ -52,7 +79,7 @@ const AccountSetup1 = () => {
                             ))}
                         </div>
                     </div>
-                    <div className={`${styles['checkbox__group']}`}><input  className={`${styles['checkbox']}`} type="checkbox"/><span className={`${styles['checkbox__label']}`}> {t('Notify me about updates regarding my SBA account and upcoming events')}</span>
+                    <div className={`${styles['checkbox__group']}`}><input  className={`${styles['checkbox']}`} type="checkbox" onChange={handleCheckboxChange}/><span className={`${styles['checkbox__label']}`}> {t('Notify me about updates regarding my SBA account and upcoming events')}</span>
 
                     </div>
                     <div className={`${styles['footer']}`}>

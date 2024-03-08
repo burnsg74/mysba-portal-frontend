@@ -25,6 +25,8 @@ const Profile = () => {
     JSON.stringify(profileData, null, 2)
   );
   const [showMessage, setShowMessage] = React.useState(false);
+  const [isCertFetchErrorTriggered, setIsCertFetchErrorTriggered] = React.useState(false);
+  const [isBusinessFetchErrorTriggered, setIsBusinessFetchErrorTriggered] = React.useState(false);
   const { oktaAuth } = useOktaAuth();
 
   const logout = async () => {
@@ -54,6 +56,23 @@ const Profile = () => {
   const goToErrorPage = () => {
     navigate("/error");
   };
+
+  const triggerCertFetchError = () => {
+    const currState = sessionStorage.getItem("certFetchError");
+    const newState = currState === "true" ? "false" : "true";
+
+    sessionStorage.setItem("certFetchError", newState);
+    setIsCertFetchErrorTriggered(newState === "true");
+  };
+
+  const triggerBusinessFetchError = () => {
+    const currState = sessionStorage.getItem("businessesFetchError");
+    const newState = currState === "true" ? "false" : "true";
+
+    sessionStorage.setItem("businessesFetchError", newState);
+    setIsBusinessFetchErrorTriggered(newState === "true");
+  };
+
   /* eslint-disable */
   useEffect(() => {
     setValue(JSON.stringify(profileData, null, 2));
@@ -109,6 +128,7 @@ const Profile = () => {
             type="checkbox"
             name="updates"
             className={`usa-checkbox__input`}
+            disabled={true}
           />
           <label
             htmlFor="updates"
@@ -120,8 +140,6 @@ const Profile = () => {
         <button className={` ${styles["button-style"]}`} onClick={logout}>
           <span className={`${styles["button-text"]}`}>{t('Log Out')}</span>
         </button>
-
-
 
         {isDevMode && (
           <div className={`${styles["dev_mode__container"]}`}>
@@ -145,7 +163,12 @@ const Profile = () => {
             <button onClick={goToErrorPage}>
               Go to Error Page
             </button>
-
+            <button onClick={triggerCertFetchError}>
+              {isCertFetchErrorTriggered ? 'Show Cert Fetch Error' : 'Hide Cert Fetch Error'}
+            </button>
+            <button onClick={triggerBusinessFetchError}>
+              {isBusinessFetchErrorTriggered ? 'Show Businesses Fetch Error' : 'Hide Businesses Fetch Error'}
+            </button>
             {showMessage && (
               <div className={`${styles["update_notice"]}`}>
                 User Data Updated

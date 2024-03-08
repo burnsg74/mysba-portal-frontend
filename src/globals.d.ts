@@ -7,6 +7,7 @@ interface IUserProfile {
     allow_notices: boolean;
   };
   portal: {
+    allow_notice: boolean;
     id: string;
   };
 }
@@ -22,6 +23,7 @@ interface IBusiness {
   business_address: string;
   phone_number: string;
   fax: string;
+  email: string;
 }
 
 interface ICertification {

@@ -196,8 +196,8 @@ const CertificationDetail = () => {
         value={certification?.system ?? ""}
       />
       <div className={`${styles["subtitle"]}`}>{t('Ownership')}</div>
-      <Field label="Veteran Owner" value={certification?.owner ?? ""} />
-      <Field label="Additional Owners" value={certification?.owner ?? ""} />
+      {/*<Field label="Veteran Owner" value={certification?.owner ?? ""} />*/}
+      <Field label="Owner" value={certification?.owner ?? ""} />
     </div>
   );
 };

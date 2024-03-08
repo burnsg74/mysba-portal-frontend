@@ -16,6 +16,7 @@
     "@uswds/uswds": "^3.7.1",
     "@vitejs/plugin-react": "^3.1.0",
     "ace-builds": "^1.32.6",
+    "axios": "^1.6.7",
     "fs-extra": "^11.2.0",
     "i18next": "^23.7.18",
     "i18next-browser-languagedetector": "^7.2.0",
