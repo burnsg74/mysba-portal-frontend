@@ -118,7 +118,6 @@
     "Password": "Contraseña",
     "Phone Number": "Número de teléfono",
     "Planning a new business.": "Planificación de un nuevo negocio.",
-    "Please note that this beta release does not yet support VetCert. Your VetCert certification will not appear in this beta release portal.": "Tenga en cuenta que esta versión beta aún no es compatible con VetCert. Su certificación VetCert no aparecerá en este portal de versión beta.",
     "Please note that this beta release does not yet support VetCert. Your VetCert certification will not": "Tenga en cuenta que esta versión beta aún no es compatible con VetCert. Su certificación VetCert",
     "President": "Presidente",
     "Pricing Models for Successful Business": "Modelos de Precios para Negocios Exitosos",
@@ -184,7 +183,6 @@
     "You can fill out a help request form here or contact us at <wosb@sba.gov>.": "Puede completar un formulario de solicitud de ayuda aquí o contactarnos en wosb@sba.gov.",
     "You can fill out a help request form": "Puede completar un formulario de solicitud de ayuda",
     "You will be able to provide feedback on this test environment and your respective experience via review sessions the SBA will schedule with you and other test users. You are welcome to share additional thoughts by emailing digitalresearch@SBA.gov as well.": "Podrá brindar comentarios sobre este entorno de prueba y su experiencia respectiva a través de sesiones de revisión que la SBA programará con usted y otros usuarios de prueba. También puede compartir ideas adicionales enviando un correo electrónico a digitalresearch@SBA.gov.",
-    "You're being directed to the Veteran-Owned Small Business (VetCert) certification portal.": "Se le dirigirá al portal de certificación de pequeñas empresas propiedad de veteranos (VetCert).",
     "Your Business Certifications": "Certificaciones de su Negocio",
     "Your Business": "Su Negocio",
     "Your Financial needs": "Sus necesidades financieras",
@@ -212,5 +210,13 @@
     "will be available in future versions with directions available email digitalresearch@sba.gov and business days.": "de usuario estará disponible en versiones futuras con instrucciones información, envíe un correo digitalresearch@sba.gov y recibirá",
     "will receive a reply within two": "digitalresearch@SBA.gov y recibirá",
     "Fax Number":"Número de fax",
-    "Type":"Tipo"
+    "Type":"Tipo",
+    "You're being directed to the Women Owned Small Business (WOSB) Certification portal.": "Estás siendo dirigido al portal de certificación de Pequeñas Empresas Propiedad de Mujeres (WOSB).",
+    "Please note that this beta release does not yet support WOSB. Your WOSB certification will not appear in this beta release portal.": "Tenga en cuenta que esta versión beta aún no es compatible con WOSB. Su certificación WOSB no aparecerá en este portal de versión beta.",
+    "You're being directed to the 8A Certification portal.": "Estás siendo dirigido al portal de certificación 8a.",
+    "Please note that this beta release does not yet support 8A. Your 8A certification will not appear in this beta release portal.": "Tenga en cuenta que esta versión beta aún no es compatible con 8A. Su certificación 8A no aparecerá en este portal de versión beta.",
+    "You're being directed to the Historically Underutilized Business Zone (HubZone) portal.": "Estás siendo dirigido al portal de certificación de Pequeñas Empresas en Zonas históricamente Poco Usadas (HubZone).",
+    "Please note that this beta release does not yet support HubZone. Your HubZone certification will not appear in this beta release portal.": "Tenga en cuenta que esta versión beta aún no es compatible con HubZone. Tu certificación de HubZone no aparecerá en este portal de versión beta.",
+    "You're being directed to the Veteran-Owned Small Business (VetCert) certification portal.": "Estás siendo dirigido al portal de certificación de Pequeñas Empresas Propiedad de Veteranos (VetCert).",
+    "Please note that this beta release does not yet support VetCert. Your VetCert certification will not appear in this beta release portal.": "Tenga en cuenta que esta versión beta aún no es compatible con VetCert. Su certificación VetCert no aparecerá en este portal de versión beta."
 }

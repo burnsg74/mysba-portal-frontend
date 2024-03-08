@@ -43,7 +43,7 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
     {
       code: "VetCert",
       title:
-        "You're being directed to the Veteran-Owned Small Business (VetCert) certification portal",
+        "You're being directed to the Veteran-Owned Small Business (VetCert) certification portal.",
       message:
         "Please note that this beta release does not yet support VetCert. Your VetCert certification will not appear in this beta release portal.",
       url: "https://veterans.certify.sba.gov",
