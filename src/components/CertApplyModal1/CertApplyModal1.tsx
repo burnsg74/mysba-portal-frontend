@@ -41,7 +41,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
       <div className={`${styles["container"]}`}>
         <div className={`${styles["header"]}`}>
           <span className={`${styles["header__title"]}`}>
-            {t("Apply htmlFor a Certification")}
+            {t("Apply for a Certification")}
           </span>
           <span
             className={`${styles["header__close"]}`}
@@ -152,7 +152,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                   <label className="usa-radio__label" htmlFor="cert8A">
                     <span className={`${styles["checkbox_label"]}`}>
                       {t(
-                        "Socially and Economically Disadvantaged Business Certification  (8A)"
+                        "Socially and Economically Disadvantaged Business Certification (8A)"
                       )}
                     </span>
                     <span className={`${styles["tooltip"]}`}>
@@ -177,7 +177,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                           rel="noreferrer"
                         >
                           {" "}
-                          {t("Learn more.")}{" "}
+                          {t("Learn more")}{"."}
                         </a>
                       </span>
                     </span>
@@ -220,7 +220,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {t("Learn more.")}
+                          {t("Learn more")}.
                         </a>
                       </span>
                     </span>
@@ -238,7 +238,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                   />
                   <label className="usa-radio__label" htmlFor="certVet">
                     <span className={`${styles["checkbox_label"]}`}>
-                      {t("Veteran-Owned Small Business (VetCert) Certification.")}
+                      {t("Veteran-Owned Small Business (VetCert) Certification")}
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg
@@ -261,7 +261,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                           target="_blank"
                           rel="noreferrer"
                         >
-                          {t("Learn more.")}
+                          {t("Learn more")}.
                         </a>
                       </span>
                     </span>
