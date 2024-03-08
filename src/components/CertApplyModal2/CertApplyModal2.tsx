@@ -94,7 +94,11 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
           <span className={`${styles["header__title"]}`}>
             {t("Apply for a Certification")}
           </span>
-          <span className={`${styles["header__close"]}`} onClick={closeModal} onKeyDown={handleKeyDown}>
+          <span
+            className={`${styles["header__close"]}`}
+            onClick={closeModal}
+            onKeyDown={handleKeyDown}
+          >
             {t("Close")}
             <svg
               aria-hidden="true"
@@ -108,7 +112,25 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
             </svg>
           </span>
         </div>
+
         <div className={`${styles["content"]}`}>
+          <div className={`${styles.stepIndicatorContainer}`}>
+            <div
+              className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
+              aria-label="progress"
+            >
+              <ol
+                className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}
+              >
+                <li
+                  className={`usa-step-indicator__segment usa-step-indicator__segment--incomplete ${styles["usa-step-indicator__segment--incomplete"]}`}
+                ></li>
+                <li
+                  className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment--complete"]}`}
+                ></li>
+              </ol>
+            </div>
+          </div>
           <img src={nextSignImg} alt="Next Sign" />
           <div className={`${styles["content__title"]}`}>
             {t(cert?.title) || ""}

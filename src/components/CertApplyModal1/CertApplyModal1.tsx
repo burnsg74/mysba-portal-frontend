@@ -41,7 +41,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
       <div className={`${styles["container"]}`}>
         <div className={`${styles["header"]}`}>
           <span className={`${styles["header__title"]}`}>
-            {t("Apply for a Certification")}
+            {t("Apply htmlFor a Certification")}
           </span>
           <span
             className={`${styles["header__close"]}`}
@@ -87,7 +87,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
           <div className={`${styles["content__title"]}`}>
             {t("What kind of certification would you like to apply for?")}
           </div>
-          <div className="usa-alert usa-alert--info usa-alert--slim">
+          <div className={`usa-alert usa-alert--info usa-alert--slim ${styles.alertCustomContainer}`}>
             <div className="usa-alert__body">
               <p className="usa-alert__text">
                 {t(
@@ -106,7 +106,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
             {/*      name="certification"*/}
             {/*      checked={selectedOption === "WOSB"}*/}
             {/*      onChange={handleOptionChange}*/}
-            {/*      className={`${styles["radio"]}`}*/}
+            {/*      className={`usa-radio__input usa-radio__input--tile`}*/}
             {/*      style={{ outline: "none" }}*/}
             {/*    />*/}
             {/*    <span className={`${styles["checkbox_label"]}`}>*/}
@@ -137,132 +137,138 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
             {/*    </span>*/}
             {/*  </div>*/}
             {/*</div>*/}
-
-            {/* 8A Cert */}
-            <div className={`usa-card__container ${styles["card__container"]}`}>
-              <div className={`usa-card__body ${styles["checkbox__group"]}`}>
-                <input
-                  type="radio"
-                  name="certification"
-                  value="8A"
-                  checked={selectedOption === "8A"}
-                  onChange={handleOptionChange}
-                  className={`${styles["radio"]}`}
-                  style={{ outline: "none" }}
-                />
-                <span className={`${styles["checkbox_label"]}`}>
-                  {t(
-                    "Socially and Economically Disadvantaged Business Certification (8A)"
-                  )}
-                </span>
-                <span className={`${styles["tooltip"]}`}>
-                  <svg
-                    className="usa-icon"
-                    aria-hidden="true"
-                    focusable="false"
-                    role="img"
-                  >
-                    <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
-                  </svg>
-                  <span className={`${styles["tooltiptext"]}`}>
-                    {t(
-                      "You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand."
-                    )}
-                    <br />
-                    <a
-                      href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program#id-program-qualifications"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {" "}
-                      {t("Learn more.")}{" "}
-                    </a>
-                  </span>
-                </span>
-              </div>
-            </div>
-
-            {/* HubZone Cert */}
-            <div className={`usa-card__container ${styles["card__container"]}`}>
-              <div className={`usa-card__body ${styles["checkbox__group"]}`}>
-                <input
-                  type="radio"
-                  name="certification"
-                  value="HubZone"
-                  onChange={handleOptionChange}
-                  className={`${styles["radio"]}`}
-                  style={{ outline: "none" }}
-                />
-                <span className={`${styles["checkbox_label"]}`}>
-                  {t(
-                    "Historically Underutilized Business Zone Certification (HubZone)"
-                  )}
-                </span>
-                <span className={`${styles["tooltip"]}`}>
-                  <svg
-                    className="usa-icon"
-                    aria-hidden="true"
-                    focusable="false"
-                    role="img"
-                  >
-                    <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
-                  </svg>
-                  <span className={`${styles["tooltiptext"]}`}>
-                    {t(
-                      "You could qualify if your business is located in a HUBZone."
-                    )}{" "}
-                    <br />
-                    <a
-                      href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program#id-hubzone-program-qualifications"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {t("Learn more.")}
-                    </a>
-                  </span>
-                </span>
-              </div>
-            </div>
-
-            <div className={`usa-card__container ${styles["card__container"]}`}>
-              <div className={`usa-card__body ${styles["checkbox__group"]}`}>
-                <input
-                  type="radio"
-                  name="certification"
-                  onChange={handleOptionChange}
-                  value="VetCert"
-                  disabled={true}
-                  className={`${styles["radio"]}`}
-                  style={{ outline: "none" }}
-                />
-                <span className={`${styles["checkbox_label"]}`}>
-                  {t("Veteran-Owned Small Business (VetCert) certification")}
-                </span>
-                <span className={`${styles["tooltip"]}`}>
-                  <svg
-                    className="usa-icon"
-                    aria-hidden="true"
-                    focusable="false"
-                    role="img"
-                  >
-                    <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
-                  </svg>
-                  <span className={`${styles["tooltiptext"]}`}>
-                    {t(
-                      "You could qualify if over 51% of your business is owned by veterans."
-                    )}{" "}
-                    <br />
-                    <a
-                      href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs#id-veteran-small-business-certification-vetcert-program"
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      {t("Learn more.")}
-                    </a>
-                  </span>
-                </span>
-              </div>
-            </div>
+            <form className={`usa-form ${styles["usa-form"]}`}>
+              <fieldset className="usa-fieldset">
+                <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
+                  <input
+                    className="usa-radio__input usa-radio__input--tile"
+                    id="cert8A"
+                    type="radio"
+                    name="cert8A"
+                    value="8A"
+                    checked={selectedOption === "8A"}
+                    onChange={handleOptionChange}
+                  />
+                  <label className="usa-radio__label" htmlFor="cert8A">
+                    <span className={`${styles["checkbox_label"]}`}>
+                      {t(
+                        "Socially and Economically Disadvantaged Business Certification  (8A)"
+                      )}
+                    </span>
+                    <span className={`${styles["tooltip"]}`}>
+                      <svg
+                        className="usa-icon"
+                        aria-hidden="true"
+                        focusable="false"
+                        role="img"
+                        width="24"
+                        height="24"
+                      >
+                        <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
+                      </svg>
+                      <span className={`${styles["tooltiptext"]}`}>
+                        {t(
+                          "You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand."
+                        )}
+                        <br />
+                        <a
+                          href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program#id-program-qualifications"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {" "}
+                          {t("Learn more.")}{" "}
+                        </a>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
+                  <input
+                    className="usa-radio__input usa-radio__input--tile"
+                    id="certHubZone"
+                    type="radio"
+                    name="certHubZone"
+                    value="HubZone"
+                    checked={selectedOption === "HubZone"}
+                    onChange={handleOptionChange}
+                  />
+                  <label className={`usa-radio__label`} htmlFor="certHubZone">
+                    <span className={`${styles["checkbox_label"]}`}>
+                      {t(
+                        "Historically Underutilized Business Zone Certification (HubZone)"
+                      )}
+                    </span>
+                    <span className={`${styles["tooltip"]}`}>
+                      <svg
+                        className="usa-icon"
+                        aria-hidden="true"
+                        focusable="false"
+                        role="img"
+                        width="24"
+                        height="24"
+                      >
+                        <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
+                      </svg>
+                      <span className={`${styles["tooltiptext"]}`}>
+                        {t(
+                          "You could qualify if your business is located in a HUBZone."
+                        )}{" "}
+                        <br />
+                        <a
+                          href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program#id-hubzone-program-qualifications"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t("Learn more.")}
+                        </a>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+                <div className="grid-row usa-radio">
+                  <input
+                     type="radio"
+                     name="certVet"
+                     id="certVet"
+                     value="VetCert"
+                     className={`usa-radio__input usa-radio__input--tile`}
+                     checked={selectedOption === "VetCert"}
+                     onChange={handleOptionChange}
+                  />
+                  <label className="usa-radio__label" htmlFor="certVet">
+                    <span className={`${styles["checkbox_label"]}`}>
+                      {t("Veteran-Owned Small Business (VetCert) Certification.")}
+                    </span>
+                    <span className={`${styles["tooltip"]}`}>
+                      <svg
+                        className="usa-icon"
+                        aria-hidden="true"
+                        focusable="false"
+                        role="img"
+                        width="24"
+                        height="24"
+                      >
+                        <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
+                      </svg>
+                      <span className={`${styles["tooltiptext"]}`}>
+                        {t(
+                          "You could qualify if over 51% of your business is owned by veterans."
+                        )}{" "}
+                        <br />
+                        <a
+                          href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs#id-veteran-small-business-certification-vetcert-program"
+                          target="_blank"
+                          rel="noreferrer"
+                        >
+                          {t("Learn more.")}
+                        </a>
+                      </span>
+                    </span>
+                  </label>
+                </div>
+              </fieldset>
+            </form>
           </div>
         </div>
 
