@@ -5,6 +5,7 @@ dist-ssr
 .*
 !/.gitignore
 !/.github
+!/.env*
 !/.prettierrc
 !.terraform.lock.hcl
 /public/assets/fonts/

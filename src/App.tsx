@@ -1,5 +1,5 @@
-import React from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
 import { OktaAuth } from "@okta/okta-auth-js";
 import { LoginCallback, Security } from "@okta/okta-react";
 import Businesses from "src/pages/Businesses/Businesses";
@@ -14,20 +14,21 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CertificationDetail from "src/pages/CertificationDetail/CertificationDetail";
 import AccountSetup1 from "src/pages/AccountSetup1/AccountSetup1";
 import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
-import { setUser } from "src/store/user/userSlice";
-import { Dispatch } from "redux";
 import Layout from "src/components/Layout/Layout";
 import Error from "src/pages/Error/Error";
+import Callback from "src/pages/Callback/Callback";
+import { useDispatch, useSelector } from "react-redux";
+import { getUser, setUser } from "src/store/user/userSlice";
+import { setNav } from "src/store/showNav/showNavSlice";
 
+const hostname = window.location.hostname;
 const sba2oktaHostnameMapping: { [key: string]: string } = {
   localhost: "sbadev.okta-gov.com",
   "dev.mysba.ussba.io": "sbadev.okta-gov.com",
   "stg.mysba.ussba.io": "sbastg.okta-gov.com",
   "prod.mysba.ussba.io": "sba.okta-gov.com",
 };
-const hostname = window.location.hostname;
 const oktaDomain = sba2oktaHostnameMapping[hostname] || "sbadev.okta-gov.com";
-
 const sba2oktaClientIdMapping: { [key: string]: string } = {
   localhost: "0oacsfgduKvV9LKa80j6",
   "dev.mysba.ussba.io": "0oacsfgduKvV9LKa80j6",
@@ -36,62 +37,62 @@ const sba2oktaClientIdMapping: { [key: string]: string } = {
 };
 const clientId = sba2oktaClientIdMapping[hostname] || "0oacsfgduKvV9LKa80j6";
 
-const oktaAuth = new OktaAuth({
-  clientId: clientId,
-  issuer: `https://${oktaDomain}/oauth2/default`,
-  redirectUri: `${window.location.origin}/login/callback`,
-  postLogoutRedirectUri: `${window.location.origin}`,
-  scopes: ["openid", "profile", "email"],
-  pkce: true,
-});
-
 const App: React.FC = () => {
   const navigate = useNavigate();
-  const restoreOriginalUri = () => {
-    navigate("/");
-  };
-  /* eslint-disable */
-  let mockUserFilename = new URLSearchParams(location.search).get("mock-user");
-  const fetchUserAndSet = () => {
-    return async (dispatch: Dispatch) => {
-      try {
-        const url = mockUserFilename
-          ? `/dev/${mockUserFilename}.json`
-          : "/dev/default.json";
-        const mockUserData = await fetch(url);
-        const data = await mockUserData.json();
-        return dispatch(setUser(data));
-      } catch (error) {
-        console.error("Error:", error);
-      }
-    };
-  };
-  /* eslint-enable */
+  const location = useLocation();
+  const profileData: IUser = useSelector(getUser);
 
-  const routes = (
-    <>
-      <Route path="/account-setup/1" element={<AccountSetup1 />} />
-      <Route path="/account-setup/2" element={<AccountSetup2 />} />
-      <Route path="/dashboard/*" element={<Dashboard />} />
-      <Route path="/profile" element={<Profile />} />
-      <Route path="/businesses" element={<Businesses />} />
-      <Route path="/certification" element={<Certifications />} />
-      <Route path="/certification/:id" element={<CertificationDetail />} />
-      <Route path="/loans" element={<Loans />} />
-      <Route path="/help" element={<Help />} />
-      <Route path="/error" element={<Error />} />
-    </>
-  );
+  useEffect(() => {
+    if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") {
+      return;
+    }
+    if (!profileData?.profile?.crm?.email) {
+      navigate("/");
+    }
+    console.log('Route changed to', location.pathname, 'value in store:',profileData?.profile?.crm?.email);
+  }, [location, profileData?.profile?.crm?.email]);
+
+  const restoreOriginalUri = () => {
+    navigate("/loading");
+  };
+  const oktaAuth = new OktaAuth({
+    clientId: clientId,
+    issuer: `https://${oktaDomain}/oauth2/default`,
+    redirectUri: `${window.location.origin}/login/callback`,
+    postLogoutRedirectUri: `${window.location.origin}`,
+    scopes: ["openid", "profile", "email"],
+    pkce: true,
+  });
+
   return (
-    <Security oktaAuth={oktaAuth} restoreOriginalUri={restoreOriginalUri}>
+    <Security
+      oktaAuth={oktaAuth}
+      onAuthRequired={() => navigate("/")}
+      restoreOriginalUri={restoreOriginalUri}
+    >
       <Layout>
         <Routes>
-          <Route path="/" element={<Landing />}></Route>
+          <Route path="/" element={<Landing />} />
           <Route
             path="/login/callback"
-            element={<LoginCallback loadingElement={<Loading />} />}
+            element={<LoginCallback loadingElement={<Callback />} />}
           />
-          <Route element={<ProtectedRoute />}>{routes}</Route>
+          <Route element={<ProtectedRoute />}>
+            <Route path="/loading" element={<Loading />} />
+            <Route path="/account-setup/1" element={<AccountSetup1 />} />
+            <Route path="/account-setup/2" element={<AccountSetup2 />} />
+            <Route path="/dashboard/*" element={<Dashboard />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/businesses" element={<Businesses />} />
+            <Route path="/certification" element={<Certifications />} />
+            <Route
+              path="/certification/:id"
+              element={<CertificationDetail />}
+            />
+            <Route path="/loans" element={<Loans />} />
+            <Route path="/help" element={<Help />} />
+            <Route path="/error" element={<Error />} />
+          </Route>
         </Routes>
       </Layout>
     </Security>

@@ -1,5 +1,6 @@
 import moment from 'moment';
 
-export const formatDateMMDDYYYY = (dateString: moment.MomentInput) => {
-  return moment(dateString).format("MM/DD/YYYY");
+export const formatDateMMDDYYYY = (dateString: string) => {
+  const ISODate = moment(dateString, "YYYY-MM-DD");
+  return ISODate.format("MM/DD/YYYY");
 };

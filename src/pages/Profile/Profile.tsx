@@ -124,14 +124,15 @@ const Profile = () => {
         <div className={`${styles["divider"]}`} />
         <div className={`usa-checkbox ${styles["checkbox"]}`}>
           <input
-            id="updates"
+            id="allow_notice"
             type="checkbox"
-            name="updates"
+            name="allow_notice"
             className={`usa-checkbox__input`}
+            checked={profileData?.profile?.portal?.allow_notice}
             disabled={true}
           />
           <label
-            htmlFor="updates"
+            htmlFor="allow_notice"
             className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
           >
             {t('Notify me about updates regarding my SBA account and upcoming events')}
@@ -184,9 +185,6 @@ const Profile = () => {
               maxLines={500}
               onChange={newVal => setValue(newVal)}
               setOptions={{
-                enableBasicAutocompletion: true,
-                enableLiveAutocompletion: true,
-                enableSnippets: true,
                 showLineNumbers: true,
                 tabSize: 2,
               }}

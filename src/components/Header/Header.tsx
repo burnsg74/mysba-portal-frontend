@@ -195,44 +195,48 @@ const Header = () => {
           <div className={`grid-col ${styles["left"]}`}></div>
           <div className={`grid-col-auto ${styles["right"]}`}>
             {/* Multi-Language Toggle */}
-            <div
-              className={`usa-language-container ${styles["usa-language-container"]}`}
-            >
-              <button
-                type="button"
-                className={`usa-button ${styles["pill-button"]}`}
-                onClick={switchLanguage}
-              >
-                <span lang={lang === "en" ? "es" : "en"}>
-                  {lang === "en" ? "Español" : "English"}
-                </span>
-              </button>
-            </div>
+            {showNav && (
+              <>
+                <div
+                  className={`usa-language-container ${styles["usa-language-container"]}`}
+                >
+                  <button
+                    type="button"
+                    className={`usa-button ${styles["pill-button"]}`}
+                    onClick={switchLanguage}
+                  >
+                    <span lang={lang === "en" ? "es" : "en"}>
+                      {lang === "en" ? "Español" : "English"}
+                    </span>
+                  </button>
+                </div>
 
-            {/* User Profile */}
-            <div className="usa-nav__inner">
-              <Link to="/profile">
-                <span className={`${styles["tooltip"]}`}>
-                  <img src={ProfileIcon} alt="Menu" />
-                  <span className={`${styles["tooltiptext"]}`}>
-                    {t("Your Profile")}
-                  </span>
-                </span>
-              </Link>
-            </div>
+                {/* User Profile */}
+                <div className="usa-nav__inner">
+                  <Link to="/profile">
+                    <span className={`${styles["tooltip"]}`}>
+                      <img src={ProfileIcon} alt="Menu" />
+                      <span className={`${styles["tooltiptext"]}`}>
+                        {t("Your Profile")}
+                      </span>
+                    </span>
+                  </Link>
+                </div>
 
-            {/* Head Nav for small screens */}
-            <div className={`${styles["header-menu__icon-container"]}`}>
-              <svg
-                className={`${styles["header-menu__icon"]}`}
-                aria-hidden="true"
-                focusable="false"
-                role="img"
-                onClick={handleMenuClick}
-              >
-                <use xlinkHref="/assets/img/sprite.svg#menu"></use>
-              </svg>
-            </div>
+                {/* Head Nav for small screens */}
+                <div className={`${styles["header-menu__icon-container"]}`}>
+                  <svg
+                    className={`${styles["header-menu__icon"]}`}
+                    aria-hidden="true"
+                    focusable="false"
+                    role="img"
+                    onClick={handleMenuClick}
+                  >
+                    <use xlinkHref="/assets/img/sprite.svg#menu"></use>
+                  </svg>
+                </div>
+              </>
+            )}
           </div>
         </div>
       </header>
