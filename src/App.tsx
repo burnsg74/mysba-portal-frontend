@@ -42,6 +42,12 @@ const App: React.FC = () => {
   const location = useLocation();
   const profileData: IUser = useSelector(getUser);
 
+  const VITE_APP_OKTA_DOMAIN = import.meta.env.VITE_APP_BASE_API_URL;
+  const VITE_APP_OKTA_CLIENT_ID = import.meta.env.VITE_APP_OKTA_CLIENT_ID;
+
+  console.log("VITE_APP_OKTA_CLIENT_ID", VITE_APP_OKTA_CLIENT_ID);
+  console.log("VITE_APP_OKTA_DOMAIN", VITE_APP_OKTA_DOMAIN);
+
   useEffect(() => {
     if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") {
       return;
@@ -55,9 +61,12 @@ const App: React.FC = () => {
   const restoreOriginalUri = () => {
     navigate("/loading");
   };
+
+  console.log(`https://${oktaDomain}/oauth2/default`)
+  console.log(`https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`)
   const oktaAuth = new OktaAuth({
-    clientId: clientId,
-    issuer: `https://${oktaDomain}/oauth2/default`,
+    clientId: VITE_APP_OKTA_CLIENT_ID,
+    issuer: `https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`,
     redirectUri: `${window.location.origin}/login/callback`,
     postLogoutRedirectUri: `${window.location.origin}`,
     scopes: ["openid", "profile", "email"],
