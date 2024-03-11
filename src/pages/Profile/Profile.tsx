@@ -165,10 +165,10 @@ const Profile = () => {
               Go to Error Page
             </button>
             <button onClick={triggerCertFetchError}>
-              {isCertFetchErrorTriggered ? 'Show Cert Fetch Error' : 'Hide Cert Fetch Error'}
+              {isCertFetchErrorTriggered ? 'Hide Cert Fetch Error' : 'Show Cert Fetch Error'}
             </button>
             <button onClick={triggerBusinessFetchError}>
-              {isBusinessFetchErrorTriggered ? 'Show Businesses Fetch Error' : 'Hide Businesses Fetch Error'}
+              {isBusinessFetchErrorTriggered ? 'Hide Businesses Fetch Error' : 'Show Businesses Fetch Error'}
             </button>
             {showMessage && (
               <div className={`${styles["update_notice"]}`}>

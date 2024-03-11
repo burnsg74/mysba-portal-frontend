@@ -17,30 +17,35 @@ import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
 import Layout from "src/components/Layout/Layout";
 import Error from "src/pages/Error/Error";
 import Callback from "src/pages/Callback/Callback";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser, setUser } from "src/store/user/userSlice";
-import { setNav } from "src/store/showNav/showNavSlice";
+import { useSelector } from "react-redux";
+import { getUser } from "src/store/user/userSlice";
 
-const hostname = window.location.hostname;
-const sba2oktaHostnameMapping: { [key: string]: string } = {
-  localhost: "sbadev.okta-gov.com",
-  "dev.mysba.ussba.io": "sbadev.okta-gov.com",
-  "stg.mysba.ussba.io": "sbastg.okta-gov.com",
-  "prod.mysba.ussba.io": "sba.okta-gov.com",
-};
-const oktaDomain = sba2oktaHostnameMapping[hostname] || "sbadev.okta-gov.com";
-const sba2oktaClientIdMapping: { [key: string]: string } = {
-  localhost: "0oacsfgduKvV9LKa80j6",
-  "dev.mysba.ussba.io": "0oacsfgduKvV9LKa80j6",
-  "stg.mysba.ussba.io": "0oaepuej2iLxzo55V0j6",
-  "prod.mysba.ussba.io": "0oaepuej2iLxzo55V0j6",
-};
-const clientId = sba2oktaClientIdMapping[hostname] || "0oacsfgduKvV9LKa80j6";
+// const hostname = window.location.hostname;
+// const sba2oktaHostnameMapping: { [key: string]: string } = {
+//   localhost: "sbadev.okta-gov.com",
+//   "dev.mysba.ussba.io": "sbadev.okta-gov.com",
+//   "stg.mysba.ussba.io": "sbastg.okta-gov.com",
+//   "prod.mysba.ussba.io": "sba.okta-gov.com",
+// };
+// const oktaDomain = sba2oktaHostnameMapping[hostname] || "sbadev.okta-gov.com";
+// const sba2oktaClientIdMapping: { [key: string]: string } = {
+//   localhost: "0oacsfgduKvV9LKa80j6",
+//   "dev.mysba.ussba.io": "0oacsfgduKvV9LKa80j6",
+//   "stg.mysba.ussba.io": "0oaepuej2iLxzo55V0j6",
+//   "prod.mysba.ussba.io": "0oaepuej2iLxzo55V0j6",
+// };
+// const clientId = sba2oktaClientIdMapping[hostname] || "0oacsfgduKvV9LKa80j6";
 
 const App: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const profileData: IUser = useSelector(getUser);
+
+  const VITE_APP_OKTA_DOMAIN = import.meta.env.VITE_APP_OKTA_DOMAIN;
+  const VITE_APP_OKTA_CLIENT_ID = import.meta.env.VITE_APP_OKTA_CLIENT_ID;
+
+  console.log("VITE_APP_OKTA_CLIENT_ID", VITE_APP_OKTA_CLIENT_ID);
+  console.log("VITE_APP_OKTA_DOMAIN", VITE_APP_OKTA_DOMAIN);
 
   useEffect(() => {
     if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") {
@@ -55,9 +60,11 @@ const App: React.FC = () => {
   const restoreOriginalUri = () => {
     navigate("/loading");
   };
+
+  console.log(`https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`)
   const oktaAuth = new OktaAuth({
-    clientId: clientId,
-    issuer: `https://${oktaDomain}/oauth2/default`,
+    clientId: VITE_APP_OKTA_CLIENT_ID,
+    issuer: `https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`,
     redirectUri: `${window.location.origin}/login/callback`,
     postLogoutRedirectUri: `${window.location.origin}`,
     scopes: ["openid", "profile", "email"],

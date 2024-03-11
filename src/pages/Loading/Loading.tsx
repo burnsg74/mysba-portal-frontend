@@ -20,7 +20,6 @@ const Loading = () => {
 
   const endpoints = [
     `${BASE_API_URL}crm/mysba360/`,
-    `${BASE_API_URL}portal/user/`,
     `${BASE_API_URL}business/`,
     `${BASE_API_URL}certification/wosb/`,
     `${BASE_API_URL}portal/user/`,
@@ -38,9 +37,9 @@ const Loading = () => {
     }
 
     const crmData = results[0].data;
-    const portalData = results[1].data;
-    const businessData = results[2].data;
-    const certificationData = results[3].data;
+    const businessData = results[1].data;
+    const certificationData = results[2].data;
+    const portalData = results[3].data;
     return {
       profile: {
         crm: crmData,
