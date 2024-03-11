@@ -30,7 +30,7 @@ const SideNav = () => {
   return (
     <>
       <nav aria-label="Side navigation" className={`${styles["container"]}`}> {NAVIGATION_LINKS.map((item, index) =>
-        <Link to={item.url} key={index}
+        <Link to={item.url} key={index} aria-label={item.name} title={item.name}
               className={`grid-row ${styles["row"]} ${window.location.pathname.startsWith(item.url) ? styles["row__active"] : ""}`}>
           <div
             className={`grid-col-auto ${styles["col__bar"]} ${window.location.pathname.startsWith(item.url) ? styles["col__bar-active"] : ""}`} />
