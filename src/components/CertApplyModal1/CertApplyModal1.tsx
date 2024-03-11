@@ -149,7 +149,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     checked={selectedOption === "8A"}
                     onChange={handleOptionChange}
                   />
-                  <label className="usa-radio__label" htmlFor="cert8A">
+                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="cert8A">
                     <span className={`${styles["checkbox_label"]}`}>
                       {t(
                         "Socially and Economically Disadvantaged Business Certification (8A)"
@@ -157,12 +157,10 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg
-                        className="usa-icon"
+                        className={`usa-icon ${styles["info-icon"]}`}
                         aria-hidden="true"
                         focusable="false"
                         role="img"
-                        width="24"
-                        height="24"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
@@ -193,7 +191,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     checked={selectedOption === "HubZone"}
                     onChange={handleOptionChange}
                   />
-                  <label className={`usa-radio__label`} htmlFor="certHubZone">
+                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certHubZone">
                     <span className={`${styles["checkbox_label"]}`}>
                       {t(
                         "Historically Underutilized Business Zone Certification (HubZone)"
@@ -201,12 +199,10 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg
-                        className="usa-icon"
+                        className={`usa-icon ${styles["info-icon"]}`}
                         aria-hidden="true"
                         focusable="false"
                         role="img"
-                        width="24"
-                        height="24"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
@@ -226,7 +222,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     </span>
                   </label>
                 </div>
-                <div className="grid-row usa-radio">
+                <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
                   <input
                      type="radio"
                      name="certVet"
@@ -236,18 +232,16 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                      checked={selectedOption === "VetCert"}
                      onChange={handleOptionChange}
                   />
-                  <label className="usa-radio__label" htmlFor="certVet">
+                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certVet">
                     <span className={`${styles["checkbox_label"]}`}>
                       {t("Veteran-Owned Small Business (VetCert) Certification")}
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg
-                        className="usa-icon"
+                        className={`usa-icon ${styles["info-icon"]}`}
                         aria-hidden="true"
                         focusable="false"
                         role="img"
-                        width="24"
-                        height="24"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
