@@ -130,5 +130,5 @@
 }
 
 .usa-step-indicator__segment--incomplete::after {
-  background-color: #e6e6e6;
+  background-color: #000441;
 }
