@@ -33,8 +33,10 @@ jobs:
         run: npm install
 
       - name: Build
-        run: ./node_modules/.bin/vite build
-
+        run: ./node_modules/.bin/vite build --mode prod
+        env:
+          # Load .env.prod file
+          NODE_ENV: prod
       - name: Copy files to the target S3 bucket
         run: aws s3 sync dist s3://286837973291-us-east-1-prod-mysba-portal-frontend
 
