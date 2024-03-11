@@ -32,19 +32,21 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
         <div className={`usa-card__heading ${styles["usa-card__heading"]}`}>
           <div className="grid-row">
             <div className={`grid-col ${styles["header-label"]}`}>
-              {t('Learning Center')}
+              {t("Learning Center")}
             </div>
             <div className="grid-col-auto">
               <img
                 className={`grid-col ${styles["header-sba_logo"]}`}
                 src={LogoImage}
-                alt="Logo"
+                alt="SBA Logo"
               />
               <a
                 href="https://learn.sba.gov"
                 target="_blank"
                 className={`${styles["header-launch-href"]}`}
                 rel="noopener noreferrer"
+                aria-label={t("Open in a new window")}
+                title={t("Open in a new window")}
               >
                 <svg
                   className="usa-icon"
@@ -52,6 +54,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
                   focusable="false"
                   role="img"
                 >
+                  <title>{t("Open in a new window")}</title>
                   <use xlinkHref="/assets/img/sprite.svg#launch"></use>
                 </svg>
               </a>
@@ -115,11 +118,13 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
         ))}
       </div>
       <div className={`usa-card__footer ${styles["usa-card__footer"]}`}>
-        <button type="button"
-                onClick={() => window.open(learningCenter.link, "_blank")}
-                className={`usa-button usa-button--outline ${styles["view-course-btn"]}`}>
+        <button
+          type="button"
+          onClick={() => window.open(learningCenter.link, "_blank")}
+          className={`usa-button usa-button--outline ${styles["view-course-btn"]}`}
+        >
           <div className={`${styles["view-course-text"]}`}>
-            {t('View Course')}
+            {t("View Course")}
           </div>
           <svg
             className={`${styles["view-course-icon"]}`}

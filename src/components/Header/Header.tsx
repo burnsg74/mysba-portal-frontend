@@ -135,7 +135,7 @@ const Header = () => {
                 <img
                   className="usa-banner__icon usa-media-block__img"
                   src={HttpsIcon}
-                  alt=""
+                  alt="HTTPS Icon"
                   aria-hidden="true"
                 />
                 <div className="usa-media-block__body">
@@ -184,12 +184,12 @@ const Header = () => {
             <img
               className={`${styles["usa-logo"]}`}
               src={lang === "en" ? SBAlogoEn : SBAlogoEs}
-              alt="Logo"
+              alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
             />
             <img
               className={`${styles["usa-logo__sm"]}`}
               src={SBAlogoSm}
-              alt="Logo"
+              alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
             />
           </div>
           <div className={`grid-col ${styles["left"]}`}></div>
@@ -215,7 +215,7 @@ const Header = () => {
                 <div className="usa-nav__inner">
                   <Link to="/profile">
                     <span className={`${styles["tooltip"]}`}>
-                      <img src={ProfileIcon} alt="Menu" />
+                      <img src={ProfileIcon} alt="Profile Icon" />
                       <span className={`${styles["tooltiptext"]}`}>
                         {t("Your Profile")}
                       </span>
@@ -232,6 +232,7 @@ const Header = () => {
                     role="img"
                     onClick={handleMenuClick}
                   >
+                    <title>{t("Menu")}</title>
                     <use xlinkHref="/assets/img/sprite.svg#menu"></use>
                   </svg>
                 </div>
@@ -256,6 +257,7 @@ const Header = () => {
               role="img"
               onClick={handleSvgCloseClick}
             >
+              <title>{t("Close")}</title>
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </div>

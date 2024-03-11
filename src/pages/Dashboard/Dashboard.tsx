@@ -25,11 +25,10 @@ const Dashboard = () => {
           )}
         </div>
         <div className={`${styles["mysba-message"]}`}>{t('Welcome to your MySBA Dashboard')}</div>
-        {/*<div className={`${styles["mysba-message"]}`}>MySBA Dashboard</div>*/}
         <img
           className={`${styles["cityscape"]}`}
           src={CityScapeImage}
-          alt=""
+          alt={t('Decorative Cityscape')}
         />
       </div>
 
