@@ -42,7 +42,7 @@ const App: React.FC = () => {
   const location = useLocation();
   const profileData: IUser = useSelector(getUser);
 
-  const VITE_APP_OKTA_DOMAIN = import.meta.env.VITE_APP_BASE_API_URL;
+  const VITE_APP_OKTA_DOMAIN = import.meta.env.VITE_APP_OKTA_DOMAIN;
   const VITE_APP_OKTA_CLIENT_ID = import.meta.env.VITE_APP_OKTA_CLIENT_ID;
 
   console.log("VITE_APP_OKTA_CLIENT_ID", VITE_APP_OKTA_CLIENT_ID);
