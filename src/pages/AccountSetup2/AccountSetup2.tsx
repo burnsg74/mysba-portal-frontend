@@ -42,7 +42,6 @@ const AccountSetup1 = () => {
     veteranOwnedBusinessContent: false,
   });
 
-
   const handleContinueBtnClick = () => {
     dispatch(setNav(true));
 
@@ -50,32 +49,36 @@ const AccountSetup1 = () => {
       portal: object; // Replace object with your actual type for portal
     }
 
-    console.log('user', user);
+    console.log("user", user);
     let portalProfile = {};
     if (!user.profile) {
-      console.error('user profile is missing');
+      console.error("user profile is missing");
     } else {
       // @ts-ignore
       portalProfile = {
         ...(user.profile as UserProfile).portal,
-        ...state
+        ...state,
       };
     }
-    console.log('portalProfile', portalProfile);
+    console.log("portalProfile", portalProfile);
 
-    axios.post('https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user', portalProfile)
-      .then((response) => {
+    axios
+      .post(
+        "https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user",
+        portalProfile
+      )
+      .then(response => {
         let newUser = {
           ...user,
           profile: {
             ...user.profile,
-            portal: portalProfile
-          }
+            portal: portalProfile,
+          },
         };
         dispatch(setUser(newUser));
         console.log(response.data);
       })
-      .catch((error) => {
+      .catch(error => {
         console.log(error);
       });
 
@@ -89,8 +92,8 @@ const AccountSetup1 = () => {
     navigate("/dashboard");
   };
 
-
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    console.log(event.target.name);
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
@@ -109,12 +112,116 @@ const AccountSetup1 = () => {
               )}
             </div>
           </div>
-          <div className={`${styles["section_label"]}`}>
-            {t("In the current stage of my business I am")}...
-          </div>
-          <div className={`${styles["section_message"]}`}>
-            {" "}
-            {t("Select all that apply")}
+          <div className="content">
+            <div className={`${styles["section_label"]}`}>
+              {t("In the current stage of my business I am")}...
+            </div>
+            <div className={`${styles["section_message"]}`}>
+              {" "}
+              {t("Select all that apply")}
+            </div>
+            <fieldset className="usa-fieldset">
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="plan-new-business"
+                  type="checkbox"
+                  name="planningNewBusiness"
+                  checked={state.planningNewBusiness}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="plan-new-business"
+                >
+                  <span className="usa-checkbox__label-description">
+                    {t("Planning a new business.")}
+                  </span>
+                </label>
+              </div>
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="launch-new-business"
+                  type="checkbox"
+                  name="launchingNewBusiness"
+                  checked={state.launchingNewBusiness}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="launch-new-business"
+                >
+                  <span className="usa-checkbox__label-description">
+                    {t("Launching a new business.")}
+                  </span>
+                </label>
+              </div>
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="manage-existing-business"
+                  type="checkbox"
+                  name="managingExistingBusiness"
+                  checked={state.managingExistingBusiness}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="manage-existing-business"
+                >
+                  <span className="usa-checkbox__label-description">
+                    {t("Managing an existing business.")}
+                  </span>
+                </label>
+              </div>
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="market-existing-business"
+                  type="checkbox"
+                  name="marketingExistingBusiness"
+                  checked={state.marketingExistingBusiness}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="market-existing-business"
+                >
+                  <span className="usa-checkbox__label-description">
+                    {t("Marketing an existing business.")}
+                  </span>
+                </label>
+              </div>
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="grow-existing-business"
+                  type="checkbox"
+                  name="growingExistingBusiness"
+                  checked={state.growingExistingBusiness}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="grow-existing-business"
+                >
+                  <span className="usa-checkbox__label-description">
+                    {t("Growing a established business.")}
+                  </span>
+                </label>
+              </div>
+            </fieldset>
           </div>
           <div className={`usa-card__container ${styles["card__container"]}`}>
             <div className={`usa-card__body ${styles["checkbox__group"]}`}>

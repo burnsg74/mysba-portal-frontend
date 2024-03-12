@@ -60,7 +60,7 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
                 {t('Your account is all set up.')}
               </div>
               <div className={`${styles["content__message"]}`}>
-                {t('Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through <digitalresearch@SBA.gov>.')}
+                {t('Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov.')}
               </div>
             </div>
             <div className={`${styles["footer"]}`}>

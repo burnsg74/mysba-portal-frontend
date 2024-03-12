@@ -1,170 +1,194 @@
 .container-row {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    width: 730px;
-    margin: 40px;
-    max-width: 730px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 730px;
+  margin: 40px;
+  max-width: 730px;
+  gap: 20px;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .open-sign {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
 }
 
 .title {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: #002e6d;
-    font-size: 32px;
-    margin-bottom: 20px;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: #002e6d;
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 .subtitle {
-    color: #002e6d;
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    font-size: 22px;
-    margin-bottom: 20px;
+  color: #002e6d;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 20px;
+}
+
+.content {
+  width: 600px;
 }
 
 .label {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: #002e6d;
-    font-size: 40px;
-    width: 100%;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: #002e6d;
+  font-size: 40px;
+  width: 100%;
 }
 
 .section_label {
-    font-family: var(--Font-Primary);
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 26px;
-    text-align: left;
-    color: var(--Brand-Primary-SBA-Blue);
+  font-family: var(--Font-Primary);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .section_message {
-    font-family: var(--Font-Primary);
-    font-size: 17px;
-    font-weight: 400;
-    line-height: 21px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: var(--Brand-Primary-SBA-Blue);
+  font-family: var(--Font-Primary);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: 21px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .checkbox__group {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 input[type="checkbox"] {
-    width: 24px;
-    height: 24px;
-    margin-right: 16px;
+  width: 24px;
+  height: 24px;
+  margin-right: 16px;
 }
 
 input[type="checkbox"]:focus {
-    outline: none;
+  outline: none;
 }
 
 .checkbox_label {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-family: var(--Font-Primary);
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 26px;
-    text-align: left;
-    color: var(--Brand-Primary-SBA-Blue);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--Font-Primary);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .card__container {
-    margin: 0;
+  margin: 0;
 }
 
 .button-group {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .tooltip {
-    position: relative;
-    display: inline-block;
-    margin-left: auto;
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
 }
 
 .tooltip .tooltiptext {
-    visibility: hidden;
-    font-family: var(--Font-Primary);
-    font-size: 15px;
-    font-weight: 400;
-    line-height: 19px;
-    text-align: left;
-    width: 270px;
-    background-color: var(--Brand-Secondary-Bright-Blue);
-    color: #fff;
-    border-radius: 6px;
-    padding: 10px;
-    position: absolute;
-    z-index: 1;
-    top: 100%;
-    left: 50%;
-    margin-left: -135px;
+  visibility: hidden;
+  font-family: var(--Font-Primary);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19px;
+  text-align: left;
+  width: 270px;
+  background-color: var(--Brand-Secondary-Bright-Blue);
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -135px;
 }
 
 .tooltip .tooltiptext::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent var(--Brand-Secondary-Bright-Blue) transparent;
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--Brand-Secondary-Bright-Blue)
+    transparent;
 }
 
 .tooltip:hover .tooltiptext {
-    visibility: visible;
+  visibility: visible;
 }
 
 .skip-button {
-    background: none;
-    border: none;
-    color: var(--Brand-Secondary-Bright-Blue);
-    text-decoration: underline;
-    cursor: pointer;
-    padding: 0;
-    margin: 0;
-    font-size: inherit;
-    font-family: inherit;
-  }
-  
-  .skip-button:hover,
-  .skip-button:focus {
-    color:var(--Brand-Primary-SBA-Blue);
-    text-decoration: none;
-    outline: none;
-  }
-  
-  .skip-button:active {
-    color:var(--Brand-Primary-SBA-Blue);
-  }
+  background: none;
+  border: none;
+  color: var(--Brand-Secondary-Bright-Blue);
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.skip-button:hover,
+.skip-button:focus {
+  color: var(--Brand-Primary-SBA-Blue);
+  text-decoration: none;
+  outline: none;
+}
+
+.skip-button:active {
+  color: var(--Brand-Primary-SBA-Blue);
+}
+
+.checkbox-row {
+  box-shadow: 0px 7px 15px 0px #1b1e2912;
+  margin-bottom: 20px;
+  border-color: var(--Base-base-lighter);
+  width: 100%;
+}
+
+.usa-checkbox__label {
+  font-family: var(--Font-Primary);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19px;
+  width: 100%;
+  text-align: left;
+  padding-left: 15px;
+  flex-grow: 1;
+  border-color: var(--Base-base-lighter);
+}
