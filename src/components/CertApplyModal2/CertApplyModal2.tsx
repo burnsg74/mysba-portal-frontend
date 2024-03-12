@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "src/components/CertApplyModal1/CertApplyModal1.module.css";
+import styles from "src/components/CertApplyModal2/CertApplyModal2.module.css";
 import { useTranslation } from "react-i18next";
 import nextSignImg from "src/assets/next-sign.png";
 
@@ -123,7 +123,7 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
                 className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}
               >
                 <li
-                  className={`usa-step-indicator__segment usa-step-indicator__segment--incomplete ${styles["usa-step-indicator__segment--incomplete"]}`}
+                  className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment--incomplete"]}`}
                 ></li>
                 <li
                   className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment--complete"]}`}

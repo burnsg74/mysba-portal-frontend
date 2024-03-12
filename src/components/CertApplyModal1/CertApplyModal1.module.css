@@ -26,9 +26,20 @@
   box-shadow: 0px 7px 15px 0px #1b1e2912;
 }
 
-@media screen and (max-width: 562px) {
+@media screen and (max-width: 630px) {
   .container {
-    min-width: 90vw;
+    width: 100vw;
+    height: 100vh;
+    max-width: none;
+    max-height: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: none;
+    border-radius: 0;
+  }
+  .overlay {
+    display:none;
   }
 }
 
@@ -114,7 +125,6 @@
 .radio-row {
   box-shadow: 0px 7px 15px 0px #1B1E2912;
   margin-bottom:20px;
-  border-radius:8px;
   border-color: var(--Base-base-lighter);
 }
 
@@ -127,6 +137,7 @@
   padding-top:20px;
   padding-bottom:20px;
   padding-right:20px;
+  border-radius:0.5rem !important;
 }
 
 .radio:focus {
@@ -141,8 +152,13 @@
   padding-left:35px;
   padding-top:20px;
   padding-bottom:20px;
+  min-width:448px;
+  min-height:92px;
   text-align: left;
   color: var(--Brand-Primary-SBA-Blue);
+  display: flex;
+  flex-direction:row;
+  align-items:center;
 }
 
 .card__container {
