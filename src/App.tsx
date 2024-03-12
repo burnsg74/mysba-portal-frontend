@@ -41,8 +41,6 @@ const App: React.FC = () => {
     navigate("/loading");
   };
 
-  console.log(window.location.origin);
-
   const oktaAuth = new OktaAuth({
     clientId: VITE_APP_OKTA_CLIENT_ID,
     issuer: `https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`,

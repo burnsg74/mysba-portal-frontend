@@ -16,9 +16,7 @@ const Certifications = () => {
   const user: IUser = useSelector(getUser);
   const [showModal, setShowModal] = useState(0);
   const [showFetchError, setShowFetchError] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<
-    OptionType | undefined
-  >();
+  const [selectedOption, setSelectedOption] = useState< OptionType | undefined >();
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
@@ -71,32 +69,29 @@ const Certifications = () => {
         {/* Certifications Alerts */}
         {user.certifications &&
           user.certifications.map((certification, index) => {
-            const renewalDate = formatDateMMDDYYYY(certification.expire_at);
-            const days_until_expiry = certification?.days_until_expiry || 0;
-
             return (
               <React.Fragment key={index}>
-                {days_until_expiry === 0 ? (
+                {certification.days_until_expiry === 0 ? (
                   <div className={`${styles["alert-container"]}`}>
                     <Alert
                       key={index}
                       type={"error"}
-                      message={t("Your {{name}} certification has expired", {
-                        name: certification?.name,
+                      message={t("Your {{cert_type}} certification has expired", {
+                        cert_type:  t(certification.cert_type),
                       })}
                     />
                   </div>
-                ) : days_until_expiry <= 90 ? (
+                ) : certification.days_until_expiry <= 90 ? (
                   <div className={`${styles["alert-container"]}`}>
                     <Alert
                       key={index}
                       type={"warning"}
                       message={t(
-                        "Your {{name}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{renewalDate}}",
+                        "Your {{cert_type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
                         {
-                          name: certification?.name,
-                          days_until_expiry: days_until_expiry,
-                          renewalDate,
+                          cert_type:  t(certification.cert_type),
+                          days_until_expiry: certification.days_until_expiry,
+                          expire_at: certification.expire_at,
                         }
                       )}
                     />

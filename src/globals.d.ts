@@ -27,15 +27,17 @@ interface IBusiness {
 }
 
 interface ICertification {
-  id: string;
-  name: string;
+  email: string;
+  ein: string;
+  cert_type: string;
+  number: string;
   company_name: string;
-  number: number;
   issue_at: string;
   expire_at: string;
-  days_until_expiry?: number;
+  days_until_expiry: number;
+  naics: string;
   owner: string;
-  system: string;
+  cert_business_id: string;
 }
 
 interface INav {

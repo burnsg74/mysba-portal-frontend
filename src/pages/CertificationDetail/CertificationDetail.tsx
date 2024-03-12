@@ -5,22 +5,22 @@ import { getUser } from "src/store/user/userSlice";
 import styles from "src/pages/CertificationDetail/CertificationDetail.module.css";
 import Field from "src/components/Field/Field";
 import Alert from "src/components/Alert/Alert";
-import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
 import Pill from "src/components/Pill/Pill";
 import {useTranslation} from 'react-i18next';
 
 const CertificationDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const {t} = useTranslation();
   const user: IUser = useSelector(getUser);
   const certification: ICertification | undefined = user.certifications?.find(
-    certification => certification.id.toString() === id?.toString()
+    certification => certification.number === id
   );
-  const daysUntilExpiry = certification?.days_until_expiry ?? 0;
-  const {t} = useTranslation();
-  const renewalDate = certification
-    ? formatDateMMDDYYYY(certification.expire_at)
-    : null;
+
+  if (!certification) {
+    navigate("/error");
+    return null;
+  }
 
   return (
     <div className={`${styles["container"]}`}>
@@ -36,22 +36,15 @@ const CertificationDetail = () => {
         </button>
       </div>
       {/* Certifications Alerts */}
-      {/*Your {{name}} certification has expired*/}
-      {daysUntilExpiry === 0 ? (
-        <Alert
-          type={"error"}
-          message={t('Your {{name}} certification has expired',{ name: certification?.name })}
-        />
-        // <Alert
-        //   key={index}
-        //   type="warning"
-        //   message={t('Your {{name}} certification must be renewed by {{date}}', { name: certification.name, date: renewalDate })}
-        // />
-        // days_until_expiry
-      ) : daysUntilExpiry <= 90 ? (
+      {certification.days_until_expiry === 0 ? (
+          <Alert
+            type={"error"}
+            message={t('Your {{cert_type}} certification has expired', { cert_type: t(certification.cert_type) })}
+          />
+      ) : certification.days_until_expiry <= 90 ? (
         <Alert
           type={"warning"}
-          message={t('Your {{name}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{renewalDate}}',{ name: certification?.name, days_until_expiry: daysUntilExpiry, renewalDate })}
+          message={t('Your {{cert_type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}',{ cert_type:  t(certification.cert_type), days_until_expiry: certification.days_until_expiry, expire_at: certification.expire_at })}
         />
       ) : null}
       <div className={`grid-row ${styles["title-banner"]}`}>
@@ -82,26 +75,26 @@ const CertificationDetail = () => {
           </svg>
         </div>
         <div className={`grid-col ${styles["title"]}`}>
-          {certification?.name ?? ""}
+          {t(certification.cert_type)}
         </div>
 
         {/* Certifications Pills */}
-        {daysUntilExpiry === -1 ? (
+        {certification.days_until_expiry === -1 ? (
           <Pill type={"in-progress"} message={"In progress"} />
-        ) : daysUntilExpiry === 0 ? (
+        ) : certification.days_until_expiry === 0 ? (
           <Pill type={"error"} message={`Expired`} />
-        ) : daysUntilExpiry <= 90 ? (
+        ) : certification.days_until_expiry <= 90 ? (
           <Pill
             type={"warning"}
-            message={`Renew in ${certification?.days_until_expiry} Days`}
+            message={`Renew in ${certification.days_until_expiry} Days`}
           />
-        ) : daysUntilExpiry > 90 ? (
+        ) : certification.days_until_expiry > 90 ? (
           <Pill type={"valid"} message={"Certified"} />
         ) : null}
       </div>
 
       {/* Expired Cert Help*/}
-      {certification?.days_until_expiry === 0 && (
+      {certification.days_until_expiry === 0 && (
         <>
           <div className={`${styles["expired-help__container"]}`}>
             <div className={`${styles["expired-help__header"]}`}>
@@ -180,24 +173,23 @@ const CertificationDetail = () => {
       <div className={`${styles["subtitle"]}`}>{t('Details')}</div>
       <Field
         label="Company Certified"
-        value={certification?.company_name ?? ""}
+        value={certification.company_name ?? ""}
       />
       <Field
         label="Certification Number"
-        value={certification?.number.toString() ?? ""}
+        value={certification.number.toString() ?? ""}
       />
       <Field label="Issue Date" value={certification?.issue_at ?? ""} />
       <Field
         label="Expiration/Renewal Date"
-        value={certification?.expire_at ?? ""}
+        value={certification.expire_at ?? ""}
       />
       <Field
         label="North American Industry Classification System"
-        value={certification?.system ?? ""}
+        value={certification.naics ?? ""}
       />
       <div className={`${styles["subtitle"]}`}>{t('Ownership')}</div>
-      {/*<Field label="Veteran Owner" value={certification?.owner ?? ""} />*/}
-      <Field label="Owner" value={certification?.owner ?? ""} />
+      <Field label="Owner" value={certification.owner ?? ""} />
     </div>
   );
 };
