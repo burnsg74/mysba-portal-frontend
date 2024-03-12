@@ -1,45 +1,49 @@
 .title {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: #002e6d;
-    font-size: 40px;
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: #002e6d;
+  font-size: 40px;
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .title__img {
-    margin-top: 50px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  margin-top: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title__text {
-    margin-bottom: 20px;
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    /*color: transparent;*/
-    font-size: 22px;
-    text-align: center;
-    max-width: 600px;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+  margin-bottom: 20px;
+  font-family: var(--Font-Primary);
+  color: var(--Brand-Primary-SBA-Blue);
+  font-weight: 400;
+  font-size: 22px;
+  text-align: center;
+  max-width: 600px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .title__btn {
-    text-align: center;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .pill-button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #007DBC;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #007dbc;
+}
+
+a {
+  color: var(--Brand-Secondary-Bright-Blue);
 }
