@@ -120,9 +120,11 @@ const AccountSetup1 = () => {
                 htmlFor="allow_notice"
                 className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
               >
-                {t(
-                  "Notify me about updates regarding my SBA account and upcoming events"
-                )}
+                <span className="usa-checkbox__label-description">
+                  {t(
+                    "Notify me about updates regarding my SBA account and upcoming events"
+                  )}
+                </span>
               </label>
             </div>
           </div>

@@ -72,9 +72,17 @@ a {
   margin-left: 11px;
 }
 
+.checkbox__group, .usa-checkbox {
+  width: 100%;
+}
+
+.usa-checkbox__input {
+  flex-shrink: 0;
+}
+
 .checkbox {
-  width: 24px;
-  height: 24px;
+  padding-bottom: 41px;
+  padding-left: 25px;
 }
 
 .usa-checkbox__label {
@@ -82,8 +90,10 @@ a {
   font-size: 15px;
   font-weight: 400;
   line-height: 19px;
+  width:100%;
   text-align: left;
   padding-left: 15px;
+  flex-grow:1;
 }
 
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
@@ -93,11 +103,7 @@ a {
 
 .usa-checkbox__label {
   padding-left: 45px;
-}
-
-.checkbox {
-  padding-bottom: 41px;
-  padding-left: 25px;
+  width:100%;
 }
 
 .footer {

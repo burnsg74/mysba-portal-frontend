@@ -183,7 +183,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                 </div>
                 <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
                   <input
-                    className="usa-radio__input usa-radio__input--tile"
+                    className={`usa-radio__input usa-radio__input--tile`}
                     id="certHubZone"
                     type="radio"
                     name="certHubZone"

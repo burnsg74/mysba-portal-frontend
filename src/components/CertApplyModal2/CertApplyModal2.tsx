@@ -123,7 +123,7 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
                 className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}
               >
                 <li
-                  className={`usa-step-indicator__segment usa-step-indicator__segment--incomplete ${styles["usa-step-indicator__segment--incomplete"]}`}
+                  className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment"]}`}
                 ></li>
                 <li
                   className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment--complete"]}`}

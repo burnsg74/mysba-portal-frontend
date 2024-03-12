@@ -26,6 +26,12 @@
   box-shadow: 0px 7px 15px 0px #1b1e2912;
 }
 
+@media screen and (max-width: 630px) {
+  .container {
+    width: 90vw;
+  }
+}
+
 .header {
   height: 56px;
   justify-content: space-between;
@@ -125,10 +131,11 @@
   align-items: center;
 }
 
-.usa-step-indicator__segment--complete::after {
-  background-color: #007dbc;
+
+.usa-step-indicator__segment {
+  max-width:none !important;
 }
 
-.usa-step-indicator__segment--incomplete::after {
-  background-color: #000441;
+.usa-step-indicator__segment--complete::after {
+  background-color: #007dbc;
 }
