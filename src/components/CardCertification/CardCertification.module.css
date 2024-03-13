@@ -103,6 +103,8 @@
 
 .usa-card__text-right {
   flex-grow: 1;
+  align-items:flex-start;
+  display:flex;
   text-align: end;
   margin-right:14px;
 }
