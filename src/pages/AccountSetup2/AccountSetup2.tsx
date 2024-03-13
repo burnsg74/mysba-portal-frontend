@@ -93,7 +93,6 @@ const AccountSetup1 = () => {
   };
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log(event.target.name);
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
@@ -112,7 +111,7 @@ const AccountSetup1 = () => {
               )}
             </div>
           </div>
-          <div className="content">
+          <div className={`${styles["content"]}`}>
             <div className={`${styles["section_label"]}`}>
               {t("In the current stage of my business I am")}...
             </div>
@@ -136,9 +135,7 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="plan-new-business"
                 >
-                  <span className="usa-checkbox__label-description">
-                    {t("Planning a new business.")}
-                  </span>
+                  <span className={`${styles["label-text"]}`}>{t("Planning a new business.")}</span>
                 </label>
               </div>
               <div
@@ -156,9 +153,7 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="launch-new-business"
                 >
-                  <span className="usa-checkbox__label-description">
-                    {t("Launching a new business.")}
-                  </span>
+                  <span className={`${styles["label-text"]}`}>{t("Launching a new business.")}</span>
                 </label>
               </div>
               <div
@@ -176,9 +171,7 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="manage-existing-business"
                 >
-                  <span className="usa-checkbox__label-description">
-                    {t("Managing an existing business.")}
-                  </span>
+                  <span className={`${styles["label-text"]}`}>{t("Managing an existing business.")}</span> 
                 </label>
               </div>
               <div
@@ -196,9 +189,7 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="market-existing-business"
                 >
-                  <span className="usa-checkbox__label-description">
-                    {t("Marketing an existing business.")}
-                  </span>
+                  <span className={`${styles["label-text"]}`}>{t("Marketing an existing business.")}</span>        
                 </label>
               </div>
               <div
@@ -216,87 +207,108 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="grow-existing-business"
                 >
-                  <span className="usa-checkbox__label-description">
-                    {t("Growing a established business.")}
-                  </span>
+                  <span className={`${styles["label-text"]}`}>{t("Growing a established business.")}</span>
                 </label>
               </div>
             </fieldset>
-          </div>
-          <div className={`${styles["section_label"]}`}>
-            {t("I am interested in")}...
-          </div>
-          <div className={`${styles["section_message"]}`}>
-            {" "}
-            {t("Select all that apply")}
-          </div>
-          <div className={`usa-card__container ${styles["card__container"]}`}>
-            <div className={`usa-card__body ${styles["checkbox__group"]}`}>
-              <input
-                type="checkbox"
-                name="govContracting"
-                checked={state.govContracting}
-                onChange={handleChange}
-              />
-              <span className={`${styles["checkbox_label"]}`}>
-                {t("Government contracting")}
-              </span>
-              <span className={`${styles["tooltip"]}`}>
-                <svg
-                  className="usa-icon"
-                  aria-hidden="true"
-                  focusable="false"
-                  role="img"
+            <div className={`${styles["section_label"]}`}>
+              {t("I am interested in")}...
+            </div>
+            <div className={`${styles["section_message"]}`}>
+              {" "}
+              {t("Select all that apply")}
+            </div>
+            <fieldset className="usa-fieldset">
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="government-contracting"
+                  type="checkbox"
+                  name="govContracting"
+                  checked={state.govContracting}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="government-contracting"
                 >
-                  {" "}
-                  <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>{" "}
-                </svg>
-                <span className={`${styles["tooltiptext"]}`}>
-                  {t(
-                    "Government contracting is a term referring to how government purchases goods and services from public businesses."
-                  )}{" "}
-                </span>
-              </span>
-            </div>
-          </div>
-          <div className={`usa-card__container ${styles["card__container"]}`}>
-            <div className={`usa-card__body ${styles["checkbox__group"]}`}>
-              <input
-                type="checkbox"
-                name="businessMentorship"
-                checked={state.businessMentorship}
-                onChange={handleChange}
-              />
-              <span className={`${styles["checkbox_label"]}`}>
-                {t("Business mentorship")}
-              </span>
-            </div>
-          </div>
-          <div className={`usa-card__container ${styles["card__container"]}`}>
-            <div className={`usa-card__body ${styles["checkbox__group"]}`}>
-              <input
-                type="checkbox"
-                name="womenOwnedBusinessContent"
-                checked={state.womenOwnedBusinessContent}
-                onChange={handleChange}
-              />
-              <span className={`${styles["checkbox_label"]}`}>
-                {t("Women-owned business content")}
-              </span>
-            </div>
-          </div>
-          <div className={`usa-card__container ${styles["card__container"]}`}>
-            <div className={`usa-card__body ${styles["checkbox__group"]}`}>
-              <input
-                type="checkbox"
-                name="veteranOwnedBusinessContent"
-                checked={state.veteranOwnedBusinessContent}
-                onChange={handleChange}
-              />
-              <span className={`${styles["checkbox_label"]}`}>
-                {t("Veteran-owned business content")}
-              </span>
-            </div>
+                  <span className={`${styles["label-text"]}`}>{t("Government contracting")}</span>
+                  <span className={`${styles["tooltip"]}`}>
+                    <svg
+                      className="usa-icon"
+                      aria-hidden="true"
+                      focusable="false"
+                      role="img"
+                    >
+                      {" "}
+                      <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>{" "}
+                    </svg>
+                    <span className={`${styles["tooltiptext"]}`}>
+                      {t(
+                        "Government contracting is a term referring to how government purchases goods and services from public businesses."
+                      )}{" "}
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="business-mentorship"
+                  type="checkbox"
+                  name="businessMentorship"
+                  checked={state.businessMentorship}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="business-mentorship"
+                >
+                  <span className={`${styles["label-text"]}`}>{t("Business mentorship")}</span>            
+                </label>
+              </div>
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="woman-owned-business"
+                  type="checkbox"
+                  name="womenOwnedBusinessContent"
+                  checked={state.womenOwnedBusinessContent}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="woman-owned-business"
+                >
+                  <span className={`${styles["label-text"]}`}>{t("Women-owned business content")}</span>
+                </label>
+              </div>
+              <div
+                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+              >
+                <input
+                  className="usa-checkbox__input usa-checkbox__input--tile"
+                  id="veteran-owned-business"
+                  type="checkbox"
+                  name="veteranOwnedBusinessContent"
+                  checked={state.veteranOwnedBusinessContent}
+                  onChange={handleChange}
+                />
+                <label
+                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  htmlFor="veteran-owned-business"
+                >
+                  <span className={`${styles["label-text"]}`}>{t("Veteran-owned business content")}</span>
+                  
+                </label>
+              </div>
+            </fieldset>
           </div>
           <div
             className={`${styles["button-group"]}`}
