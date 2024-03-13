@@ -35,7 +35,6 @@ jobs:
       - name: Build
         run: ./node_modules/.bin/vite build --mode dev
         env:
-          # Load .env.dev file
           NODE_ENV: dev
 
       - name: Copy files to the target S3 bucket
