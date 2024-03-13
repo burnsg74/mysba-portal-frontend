@@ -27,16 +27,17 @@
   ],
   "certifications": [
     {
-      "id": 310,
-      "business_id": 211,
-      "name": "Woman-Owned Small Business",
-      "number": "99182-X",
-      "company_name": "Spoon and Harvest LLC",
-      "issue_at": "2021-08-15",
-      "expire_at": "2025-08-15",
+      "email": "amandag@email.com",
+      "ein": "45-6789012",
+      "cert_type": "Women-Owned Small Business",
+      "number": "99195-K",
+      "company_name": "Designing Spaces",
+      "issue_at": "4/27/2022",
+      "expire_at": "4/23/2026",
       "days_until_expiry": 90,
-      "system": "722000 (Food Services and Drinking Places)",
-      "owner": "Sarah Jones",
+      "naics": "541420 (Interior Design)",
+      "owner": "Amanda Garcia",
+      "cert_business_id": "223",
       "additional_owner": "Mary Collier"
     }
   ]

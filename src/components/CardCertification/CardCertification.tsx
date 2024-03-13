@@ -9,7 +9,6 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
   showDetails = true,
 }) => {
   const {t} = useTranslation();
-  const daysUntilExpiry = certification?.days_until_expiry ?? 0;
   return (
     <>
       <div className={`usa-card__container ${styles["usa-card__container"]}`}>
@@ -43,7 +42,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             </div>
             <div className={`grid-col ${styles["title__container"]}`}>
               <h2 className={`usa-card__heading ${styles["title"]}`}>
-                {certification.name}
+                {t(certification.cert_type)}
               </h2>
             </div>
             {showDetails && (
@@ -51,7 +50,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
                 className={`grid-col-auto  ${styles["card__header__details-btn"]}`}
               >
                 <Link
-                  to={`/certification/${certification.id}`}
+                  to={`/certification/${certification.number}`}
                   className={`usa-button ${styles["pill-button"]}`}
                 >
                   {t('Details')}
@@ -63,16 +62,16 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
         <div className={`${styles["usa-card__body"]}`}>
           <div className={`grid-row sba-blue ${styles["usa-card__row"]}`}>
             {/* Certifications Pills */}
-            {daysUntilExpiry === -1 ? (
+            {certification.days_until_expiry === -1 ? (
               <Pill type={"in-progress"} message={t("In progress")} />
-            ) : daysUntilExpiry === 0 ? (
+            ) : certification.days_until_expiry === 0 ? (
               <Pill type={"error"}  message={t("Expired")} />
-            ) : daysUntilExpiry <= 90 ? (
+            ) : certification.days_until_expiry <= 90 ? (
               <Pill
                 type={"warning"}
                 message={`${t("Renew in")} ${certification?.days_until_expiry} ${t("Days")}`}
               />
-            ) : daysUntilExpiry > 90 ? (
+            ) : certification.days_until_expiry > 90 ? (
               <Pill type={"valid"} message={t("Certified")} />
             ) : null}
 

@@ -21,8 +21,7 @@ const Loans = () => {
         <div className="grid-row">
           <div className="grid-col">
             <div className={`sba-blue ${styles["title__text"]}`}>
-              {t('Linking your loans is currently under construction. Check back in our next release for loan functionality. To check on your loans please visit your ')} <a href="https://lending.sba.gov" rel="noreferrer" target="_blank"> {t('loan portal')}.</a>
-              .
+              {t('Linking your loans is currently under construction. Check back in our next release for loan functionality. To check on your loans please visit your')} <a href="https://lending.sba.gov" rel="noreferrer" target="_blank"> {t('loan portal')}</a>.
             </div>
           </div>
         </div>

@@ -7,7 +7,6 @@ import CardCertification from "src/components/CardCertification/CardCertificatio
 import styles from "src/pages/Dashboard/Dashboard.module.css";
 import AccountSetupModal from "src/components/AccountSetupModal/AccountSetupModal";
 import Alert from "src/components/Alert/Alert";
-import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
 import {useTranslation} from 'react-i18next';
 
 const Dashboard = () => {
@@ -38,24 +37,22 @@ const Dashboard = () => {
             {/* Certifications Alerts */}
             {user.certifications &&
               user.certifications.map((certification, index) => {
-                const renewalDate = formatDateMMDDYYYY(certification.expire_at);
-                const daysUntilExpiry = certification?.days_until_expiry || 0;
                 return (
                   <React.Fragment key={index}>
-                    {daysUntilExpiry === 0 ? (
+                    {certification.days_until_expiry === 0 ? (
                       <div className={`${styles["alert__container"]}`}>
                       <Alert
                         key={index}
                         type={"error"}
-                        message={t('Your {{name}} certification has expired',{ name: certification?.name })}
+                        message={t('Your {{cert_type}} certification has expired',{ cert_type: t(certification.cert_type) })}
                       />
                       </div>
-                    ) : daysUntilExpiry <= 90 ? (
+                    ) : certification.days_until_expiry <= 90 ? (
                         <div className={`${styles["alert__container"]}`}>
                           <Alert
                             key={index}
                             type="warning"
-                            message={t('Your {{name}} certification must be renewed by {{date}}', { name: certification.name, date: renewalDate })}
+                            message={t('Your {{cert_type}} certification must be renewed by {{expire_at}}', { cert_type:  t(certification.cert_type), expire_at: certification.expire_at })}
                           />
                         </div>
                     ) : null}
