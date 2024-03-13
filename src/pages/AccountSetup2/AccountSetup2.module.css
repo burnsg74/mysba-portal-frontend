@@ -184,11 +184,15 @@ input[type="checkbox"]:focus {
 .usa-checkbox__label {
   font-family: var(--Font-Primary);
   font-size: 15px;
+  color:var(--Brand-Primary-SBA-Blue) !important;
   font-weight: 400;
   line-height: 19px;
   width: 100%;
   text-align: left;
   padding-left: 15px;
   flex-grow: 1;
-  border-color: var(--Base-base-lighter);
+}
+
+.usa-checkbox__label::before { 
+  box-shadow: 0 0 0 2px #002E6D;
 }
