@@ -34,8 +34,6 @@ jobs:
 
       - name: Build
         run: ./node_modules/.bin/vite build --mode dev
-        env:
-          NODE_ENV: dev
 
       - name: Copy files to the target S3 bucket
         run: aws s3 sync dist s3://474340895216-us-east-1-dev-mysba-portal-frontend
