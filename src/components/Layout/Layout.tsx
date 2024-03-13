@@ -8,12 +8,9 @@ import { getShowNav } from "src/store/showNav/showNavSlice";
 import {learningCenterCoursesByPath} from "src/utils/learningCenterCourses";
 import LearningCenterCard from "src/components/LearningCenterCard/LearningCenterCard";
 import { useTranslation } from "react-i18next";
+import { Outlet } from 'react-router-dom';
 
-type LayoutProps = {
-  children: React.ReactNode;
-};
-
-const Layout: React.FC<LayoutProps> = ({ children }) => {
+const Layout = () => {
   const showNav: boolean = useSelector(getShowNav);
   const location = useLocation();
   const [scrollAreaClass, setScrollAreaClass] = useState<any>('');
@@ -39,7 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
           </div>
         )}
         <main className="grid-col">
-          {children}
+          <Outlet />
         </main>
         {showNav  && (courses.length > 0) && (
           <div className={`grid-col-auto ${styles["resources-for-you-right"]}`}>

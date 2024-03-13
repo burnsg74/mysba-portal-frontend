@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Route, Routes, useNavigate, useLocation } from "react-router-dom";
+import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
 import { OktaAuth } from "@okta/okta-auth-js";
 import { LoginCallback, Security } from "@okta/okta-react";
 import Businesses from "src/pages/Businesses/Businesses";
@@ -28,13 +28,22 @@ const App: React.FC = () => {
   const VITE_APP_OKTA_CLIENT_ID = import.meta.env.VITE_APP_OKTA_CLIENT_ID;
 
   useEffect(() => {
-    if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") {
+    if (
+      location.pathname === "/" ||
+      location.pathname === "/loading" ||
+      location.pathname === "/login/callback"
+    ) {
       return;
     }
     if (!profileData?.profile?.crm?.email) {
       navigate("/");
     }
-    console.log('Route changed to', location.pathname, 'value in store:',profileData?.profile?.crm?.email);
+    console.log(
+      "Route changed to",
+      location.pathname,
+      "value in store:",
+      profileData?.profile?.crm?.email
+    );
   }, [location, profileData?.profile?.crm?.email]);
 
   const restoreOriginalUri = () => {
@@ -56,14 +65,14 @@ const App: React.FC = () => {
       onAuthRequired={() => navigate("/")}
       restoreOriginalUri={restoreOriginalUri}
     >
-      <Layout>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-          <Route
-            path="/login/callback"
-            element={<LoginCallback loadingElement={<Callback />} />}
-          />
-          <Route element={<ProtectedRoute />}>
+      <Routes>
+        <Route path="/" element={<Landing />} />
+        <Route
+          path="/login/callback"
+          element={<LoginCallback loadingElement={<Callback />} />}
+        />
+        <Route element={<ProtectedRoute />}>
+          <Route element={<Layout />}>
             <Route path="/loading" element={<Loading />} />
             <Route path="/account-setup/1" element={<AccountSetup1 />} />
             <Route path="/account-setup/2" element={<AccountSetup2 />} />
@@ -79,8 +88,8 @@ const App: React.FC = () => {
             <Route path="/help" element={<Help />} />
             <Route path="/error" element={<Error />} />
           </Route>
-        </Routes>
-      </Layout>
+        </Route>
+      </Routes>
     </Security>
   );
 };
