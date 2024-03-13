@@ -76,7 +76,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             ) : null}
 
             <div
-              className={`grid-col-5 text-center ${styles["usa-card__text-center"]}`}
+              className={`grid-col-auto text-center ${styles["usa-card__text-center"]}`}
             >
               {certification.company_name}
             </div>

@@ -98,15 +98,13 @@
 
 .usa-card__text-center {
   flex-grow: 1;
-  text-align: center;
+  text-align: end; 
 }
 
 .usa-card__text-right {
   flex-grow: 1;
   align-items:flex-start;
-  display:flex;
   text-align: end;
-  margin-right:14px;
 }
 
 .container {

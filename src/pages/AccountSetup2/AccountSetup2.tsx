@@ -135,7 +135,9 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="plan-new-business"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Planning a new business.")}</span>
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Planning a new business.")}
+                  </span>
                 </label>
               </div>
               <div
@@ -153,7 +155,9 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="launch-new-business"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Launching a new business.")}</span>
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Launching a new business.")}
+                  </span>
                 </label>
               </div>
               <div
@@ -171,7 +175,9 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="manage-existing-business"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Managing an existing business.")}</span> 
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Managing an existing business.")}
+                  </span>
                 </label>
               </div>
               <div
@@ -189,7 +195,9 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="market-existing-business"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Marketing an existing business.")}</span>        
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Marketing an existing business.")}
+                  </span>
                 </label>
               </div>
               <div
@@ -207,7 +215,9 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="grow-existing-business"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Growing a established business.")}</span>
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Growing a established business.")}
+                  </span>
                 </label>
               </div>
             </fieldset>
@@ -234,10 +244,12 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="government-contracting"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Government contracting")}</span>
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Government contracting")}
+                  </span>
                   <span className={`${styles["tooltip"]}`}>
                     <svg
-                      className="usa-icon"
+                      className={`usa-icon ${styles["info-icon"]}`}
                       aria-hidden="true"
                       focusable="false"
                       role="img"
@@ -268,7 +280,9 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="business-mentorship"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Business mentorship")}</span>            
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Business mentorship")}
+                  </span>
                 </label>
               </div>
               <div
@@ -286,7 +300,9 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="woman-owned-business"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Women-owned business content")}</span>
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Women-owned business content")}
+                  </span>
                 </label>
               </div>
               <div
@@ -304,43 +320,47 @@ const AccountSetup1 = () => {
                   className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
                   htmlFor="veteran-owned-business"
                 >
-                  <span className={`${styles["label-text"]}`}>{t("Veteran-owned business content")}</span>
-                  
+                  <span className={`${styles["label-text"]}`}>
+                    {t("Veteran-owned business content")}
+                  </span>
                 </label>
               </div>
             </fieldset>
           </div>
-          <div
-            className={`${styles["button-group"]}`}
-            style={{ paddingTop: "75px" }}
-          >
-            <button
-              type="button"
-              onClick={handleBackBtnClick}
-              className="usa-button usa-button--outline"
-            >
-              {t("Back")}
-            </button>
-            <button
-              type="button"
-              className="usa-button"
-              onClick={handleContinueBtnClick}
-            >
-              {t("Continue")}
-            </button>
+          <div className={`${styles["button-group"]}`}>
+            <div className="grid-col">
+              <div className={`grid-row`}>
+                <button
+                  type="button"
+                  onClick={handleBackBtnClick}
+                  className="usa-button usa-button--outline"
+                >
+                  {t("Back")}
+                </button>
+                <button
+                  type="button"
+                  className="usa-button"
+                  onClick={handleContinueBtnClick}
+                >
+                  {t("Continue")}
+                </button>
+              </div>
+              <div className={`${styles["skip-button-group"]}`}>
+                <button
+                  type="button"
+                  onClick={handleSkipBtnClick}
+                  className={styles["skip-button"]}
+                  onKeyDown={event => {
+                    if (event.key === "Enter" || event.key === " ") {
+                      handleSkipBtnClick();
+                    }
+                  }}
+                >
+                  {t("Skip")}
+                </button>
+              </div>
+            </div>
           </div>
-          <button
-            type="button"
-            onClick={handleSkipBtnClick}
-            className={styles["skip-button"]}
-            onKeyDown={event => {
-              if (event.key === "Enter" || event.key === " ") {
-                handleSkipBtnClick();
-              }
-            }}
-          >
-            {t("Skip")}
-          </button>
         </div>
       </div>
     </>

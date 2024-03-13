@@ -44,7 +44,7 @@
   height: 56px;
   justify-content: flex-end;
   padding: 16px 24px;
-  border-bottom: var(--SBA-CRM-text-text-light) solid 1px;
+  border-bottom: #E5E6E8 solid 1px;
   display: flex;
   align-items: center;
 }
