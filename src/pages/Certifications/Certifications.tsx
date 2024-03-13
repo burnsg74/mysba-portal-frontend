@@ -7,7 +7,6 @@ import CertApplyModal1 from "src/components/CertApplyModal1/CertApplyModal1";
 import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
 import CardCertification from "src/components/CardCertification/CardCertification";
 import Alert from "src/components/Alert/Alert";
-import { formatDateMMDDYYYY } from "src/utils/dateUtiles";
 import { useTranslation } from "react-i18next";
 
 type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";

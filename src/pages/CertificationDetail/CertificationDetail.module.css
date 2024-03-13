@@ -15,7 +15,7 @@
   display: flex;
   flex-wrap: wrap;
   border-radius: 5px;
-  background: rgba(217, 232, 246, 0.40);
+  background: rgba(217, 232, 246, 0.4);
   align-items: center;
   gap: 10px;
   padding: 20px 40px;
@@ -26,7 +26,7 @@
 .title {
   font-family: var(--Font-Primary);
   font-weight: 400;
-  color: #002E6D;
+  color: #002e6d;
   font-size: 32px;
   letter-spacing: 0;
   line-height: 38.4px;
@@ -87,19 +87,19 @@
 }
 
 .alert__icon {
-    margin-left: 14px;
-    width: 24px;
-    min-width: 24px;
-    height: 24px;
+  margin-left: 14px;
+  width: 24px;
+  min-width: 24px;
+  height: 24px;
 }
 
 .alert__message {
-    padding-left: 16px;
-    font-family: var(--Font-Secondary);
-    font-size: 16px;
-    font-weight: 400;
-    text-align: left;
-    color: var(--Text-Text);
+  padding-left: 16px;
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-weight: 400;
+  text-align: left;
+  color: var(--Text-Text);
 }
 
 .expired-help__container {
@@ -173,4 +173,22 @@
   font-style: normal;
   font-weight: 400;
   line-height: 18px;
+}
+
+.header-buttons__container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.manage-cert-button {
+  font-family: var(--Font-Secondary);
+  background-color: var(--SBA-Celeste);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 14px;
+  height: 38px;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
