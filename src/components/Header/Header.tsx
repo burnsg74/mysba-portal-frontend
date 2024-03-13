@@ -184,33 +184,41 @@ const Header = () => {
             <img
               className={`${styles["usa-logo"]}`}
               src={lang === "en" ? SBAlogoEn : SBAlogoEs}
-              alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
+              alt={
+                lang === "en"
+                  ? "U.S. Small Business Administration"
+                  : "Administración de Pequeñas Empresas de los Estados Unidos"
+              }
             />
             <img
               className={`${styles["usa-logo__sm"]}`}
               src={SBAlogoSm}
-              alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
+              alt={
+                lang === "en"
+                  ? "U.S. Small Business Administration"
+                  : "Administración de Pequeñas Empresas de los Estados Unidos"
+              }
             />
           </div>
           <div className={`grid-col ${styles["left"]}`}></div>
           <div className={`grid-col-auto ${styles["right"]}`}>
+            <div
+              className={`usa-language-container ${styles["usa-language-container"]}`}
+            >
+              <button
+                type="button"
+                className={`usa-button ${styles["pill-button"]}`}
+                onClick={switchLanguage}
+              >
+                <span lang={lang === "en" ? "es" : "en"}>
+                  {lang === "en" ? "Español" : "English"}
+                </span>
+              </button>
+            </div>
+
             {/* Multi-Language Toggle */}
             {showNav && (
               <>
-                <div
-                  className={`usa-language-container ${styles["usa-language-container"]}`}
-                >
-                  <button
-                    type="button"
-                    className={`usa-button ${styles["pill-button"]}`}
-                    onClick={switchLanguage}
-                  >
-                    <span lang={lang === "en" ? "es" : "en"}>
-                      {lang === "en" ? "Español" : "English"}
-                    </span>
-                  </button>
-                </div>
-
                 {/* User Profile */}
                 <div className="usa-nav__inner">
                   <Link to="/profile">

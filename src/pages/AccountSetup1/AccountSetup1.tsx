@@ -21,7 +21,6 @@ const AccountSetup1 = () => {
   };
 
   const handleContinueBtnClick = () => {
-    console.log("user", user);
     let portalProfile = {};
     if (!user.profile) {
       console.error("user profile is missing");
@@ -72,7 +71,7 @@ const AccountSetup1 = () => {
                 "This information has been linked via your existing certification."
               )}
               <br />
-              {t("To make changes please edit this in your")}{" "}
+              {t("To make changes please edit this in:")}{" "}
               <a
                 rel="noreferrer"
                 href="https://veterans.certify.sba.gov/"

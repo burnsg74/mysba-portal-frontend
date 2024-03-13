@@ -42,7 +42,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             </div>
             <div className={`grid-col ${styles["title__container"]}`}>
               <h2 className={`usa-card__heading ${styles["title"]}`}>
-                {t(certification.cert_type)}
+                {t(certification.name)}
               </h2>
             </div>
             {showDetails && (

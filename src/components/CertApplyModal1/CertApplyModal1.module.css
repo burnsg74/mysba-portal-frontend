@@ -232,7 +232,15 @@
   left: 50%;
   margin-left: -250px;
 }
+
+.tooltip .tooltiptext::after{
+  left:240px !important;
+}
 .usa-form a:where(:not(.usa-button)) {
+  color: #fff;
+}
+
+.usa-form a:visited {
   color: #fff;
 }
 
