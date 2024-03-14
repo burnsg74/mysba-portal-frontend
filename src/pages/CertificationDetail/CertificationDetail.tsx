@@ -71,17 +71,17 @@ const CertificationDetail = () => {
         {certification.days_until_expiry === 0 ? (
           <Alert
             type={"error"}
-            message={t("Your {{cert_type}} certification has expired", {
-              cert_type: t(certification.cert_type),
+            message={t("Your {{certification_type}} certification has expired", {
+              certification_type: t(certification.certification_type),
             })}
           />
         ) : certification.days_until_expiry <= 90 ? (
           <Alert
             type={"warning"}
             message={t(
-              "Your {{cert_type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
+              "Your {{certification_type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
               {
-                cert_type: t(certification.cert_type),
+                certification_type: t(certification.certification_type),
                 days_until_expiry: certification.days_until_expiry,
                 expire_at: certification.expire_at,
               }
@@ -116,7 +116,7 @@ const CertificationDetail = () => {
             </svg>
           </div>
           <div className={`grid-col ${styles["title"]}`}>
-            {t(certification.cert_type)}
+            {t(certification.certification_type)}
           </div>
 
           {/* Certifications Pills */}

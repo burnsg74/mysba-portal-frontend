@@ -1,33 +1,33 @@
-import React, { useState, useEffect } from "react";
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getUser, setUser } from "src/store/user/userSlice";
-import styles from "src/pages/Businesses/Businesses.module.css";
-import Field from "src/components/Field/Field";
 import { useTranslation } from "react-i18next";
+import { getUser, setUser } from "src/store/user/userSlice";
+import Field from "src/components/Field/Field";
 import Alert from "src/components/Alert/Alert";
+import axios from "axios";
+import styles from "src/pages/Businesses/Businesses.module.css";
 
 const Businesses = () => {
   const user: IUser = useSelector(getUser);
-  const [showFetchError, setShowFetchError] = useState(false);
   const dispatch = useDispatch();
   const [showDetails, setShowDetails] = useState(false);
+  const [showFetchError, setShowFetchError] = useState(false);
   const { t } = useTranslation();
 
   useEffect(() => {
     const fetchBusinesses = async () => {
       try {
-        if(sessionStorage.getItem("businessesFetchError") === "true"){
-          throw new Error("There is a businesses fetch error!");
-        }
+        setShowFetchError(false);
         const email = user?.profile?.crm?.email;
-        const res = await axios.get(`https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/business/${email}`);
-        const updatedUser = { ...user, businesses: res.data};
+        const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
+        const res = await axios.get(`${BASE_API_URL}business/${email}`);
+        const updatedUser = { ...user, businesses: res.data };
         dispatch(setUser(updatedUser));
       } catch (error) {
         console.error("Error fetching businesses", error);
+        setShowFetchError(true);
       }
-    }
+    };
     fetchBusinesses();
   }, [dispatch]);
 
@@ -36,7 +36,7 @@ const Businesses = () => {
   };
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Enter' || event.key === ' ') {
+    if (event.key === "Enter" || event.key === " ") {
       setShowDetails(!showDetails);
     }
   };
@@ -48,7 +48,7 @@ const Businesses = () => {
           <Alert
             type={"error"}
             message={
-              "Error: Unable to fetch certifications. Please try again later."
+              "Error: Unable to fetch businesses. Please try again later."
             }
           />
         </div>
@@ -115,7 +115,7 @@ const Businesses = () => {
                       <div className={`grid-row`}>
                         <div className="grid-col">
                           <div className={`${styles["subheader"]}`}>
-                            {t('Business Information')}
+                            {t("Business Information")}
                           </div>
                         </div>
                       </div>
@@ -124,7 +124,7 @@ const Businesses = () => {
                       <Field label="User ID" value={business.user_id} />
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
-                          {t('Contact Information')}
+                          {t("Contact Information")}
                         </div>
                       </div>
                       <Field
@@ -139,36 +139,16 @@ const Businesses = () => {
                         label="Phone Number"
                         value={business.phone_number}
                       />
-                      <Field
-                        label="Fax Number"
-                        value={business.fax}
-                      />
-                      <Field
-                        label="Email"
-                        value={business.email}
-                      />
-                      {/*<Field*/}
-                      {/*  label="Website"*/}
-                      {/*  value={business.name}*/}
-                      {/*/>*/}
+                      <Field label="Fax Number" value={business.fax} />
+                      <Field label="Email" value={business.email} />
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
-                          {t('Structure')}
+                          {t("Structure")}
                         </div>
                       </div>
                       <Field label="Type" value={business.type} />
-                      {/*<Field label="Ownership" value={user.certifications[0].name} />*/}
-                      {/*<Field label="Principals" value="Cindy Smith, President" />*/}
-                      {/*<div className={`${styles["subheader-padding"]}`}>*/}
-                      {/*  <div className={`${styles["subheader"]}`}>*/}
-                      {/*    {t('Products and Services')}*/}
-                      {/*  </div>*/}
-                      {/*</div>*/}
-                      {/*<Field label="Capabilities Narrative" value={user.certifications[0].system} />*/}
-                      {/*<Field label="NAICS Codes" value="1. Food Service" />*/}
                     </>
                   ) : (
-                    // Summary view
                     <div
                       className={`grid-row sba-blue ${styles["usa-card__row"]}`}
                     >

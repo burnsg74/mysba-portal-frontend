@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
-import styles from "src/pages/Certifications/Certifications.module.css";
+import { useTranslation } from "react-i18next";
 import CertApplyModal1 from "src/components/CertApplyModal1/CertApplyModal1";
 import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
 import CardCertification from "src/components/CardCertification/CardCertification";
 import Alert from "src/components/Alert/Alert";
-import { useTranslation } from "react-i18next";
+import axios from "axios";
+import styles from "src/pages/Certifications/Certifications.module.css";
 
 type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";
 
@@ -15,24 +15,25 @@ const Certifications = () => {
   const user: IUser = useSelector(getUser);
   const [showModal, setShowModal] = useState(0);
   const [showFetchError, setShowFetchError] = useState(false);
-  const [selectedOption, setSelectedOption] = useState< OptionType | undefined >();
+  const [selectedOption, setSelectedOption] = useState<
+    OptionType | undefined
+  >();
   const { t } = useTranslation();
   const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchCertifications = async () => {
       try {
-        if(sessionStorage.getItem("certFetchError") === "true"){
-          throw new Error("There is a certificate fetch error!");
-        }
+        setShowFetchError(false);
         const email = user?.profile?.crm?.email;
+        const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
         const res = await axios.get(
-          `https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/certification/wosb/${email}`
+          `${BASE_API_URL}certification/wosb/${email}`
         );
         const updatedUser = { ...user, certifications: res.data };
         dispatch(setUser(updatedUser));
       } catch (error) {
-        setShowFetchError(true)
+        setShowFetchError(true);
         console.error("Error fetching certifications", error);
       }
     };
@@ -75,9 +76,14 @@ const Certifications = () => {
                     <Alert
                       key={index}
                       type={"error"}
-                      message={t("Your {{cert_type}} certification has expired", {
-                        cert_type:  t(certification.cert_type),
-                      })}
+                      message={t(
+                        "Your {{certification_type}} certification has expired",
+                        {
+                          certification_type: t(
+                            certification.certification_type
+                          ),
+                        }
+                      )}
                     />
                   </div>
                 ) : certification.days_until_expiry <= 90 ? (
@@ -86,9 +92,11 @@ const Certifications = () => {
                       key={index}
                       type={"warning"}
                       message={t(
-                        "Your {{cert_type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
+                        "Your {{certification_type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
                         {
-                          cert_type:  t(certification.cert_type),
+                          certification_type: t(
+                            certification.certification_type
+                          ),
                           days_until_expiry: certification.days_until_expiry,
                           expire_at: certification.expire_at,
                         }

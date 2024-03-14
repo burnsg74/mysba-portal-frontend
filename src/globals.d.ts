@@ -29,7 +29,7 @@ interface IBusiness {
 interface ICertification {
   email: string;
   ein: string;
-  cert_type: string;
+  certification_type: string;
   number: string;
   company_name: string;
   issue_at: string;

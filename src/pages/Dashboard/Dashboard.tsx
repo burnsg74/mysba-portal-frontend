@@ -44,7 +44,7 @@ const Dashboard = () => {
                       <Alert
                         key={index}
                         type={"error"}
-                        message={t('Your {{cert_type}} certification has expired',{ cert_type: t(certification.cert_type) })}
+                        message={t('Your {{certification_type}} certification has expired',{ certification_type: t(certification.certification_type) })}
                       />
                       </div>
                     ) : certification.days_until_expiry <= 90 ? (
@@ -52,7 +52,7 @@ const Dashboard = () => {
                           <Alert
                             key={index}
                             type="warning"
-                            message={t('Your {{cert_type}} certification must be renewed by {{expire_at}}', { cert_type:  t(certification.cert_type), expire_at: certification.expire_at })}
+                            message={t('Your {{certification_type}} certification must be renewed by {{expire_at}}', { certification_type:  t(certification.certification_type), expire_at: certification.expire_at })}
                           />
                         </div>
                     ) : null}
