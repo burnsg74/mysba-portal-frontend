@@ -162,12 +162,6 @@
   "Veteran": "Veterano",
   "Veteran-Owned Small Business (VetCert) Certification": "Certificación de Pequeñas Empresas Propiedad de Veteranos (VetCert, por sus siglas en inglés)",
   "Veteran-Owned business content": "Contenido sobre empresas propiedad",
-  "Video (0 minutes 21 seconds)": "Vídeo (0 minutos 21 segundos)",
-  "Video (1 minute 10 seconds)": "Vídeo (1 minuto 10 segundos)",
-  "Video (1 minute 28 seconds)": "Vídeo (1 minuto 28 segundos)",
-  "Video (1 minute 35 seconds)": "Vídeo (1 minuto 35 segundos)",
-  "Video (1 minute 37 seconds)": "Vídeo (1 minuto 37 segundos)",
-  "Video (1 minutes)": "Vídeo (1 minuto)",
   "Video": "Vídeo",
   "View Course": "Ver Curso",
   "View Lesson Under Construction": "Ver lección En construcción",
@@ -223,5 +217,11 @@
   "You could qualify if your business is located in a HUBZone.": "Puedes calificar si tu negocio está ubicado en una HUBZone.",
   "You could qualify if over 51% of your business is owned by veterans.": "Puedes calificar si más del 51% de tu negocio es propiedad de veteranos.",
   "Learn more": "Aprende más",
-  "Open in a new window": "Abrir en una ventana nueva"
+  "Open in a new window": "Abrir en una ventana nueva",
+  "Manage Certification": "Gestionar Certificación",
+  "You are leaving MySBA": "Estás saliendo de MiSBA",
+  "You are being taken to the Women-Owned Small Business (WOSB) Certification Portal where you can manage your WOSB certification": "Se le dirigirá al Portal de certificación de pequeñas empresas propiedad de mujeres (WOSB), donde podrá gestionar su certificación de Pequeña Empresa Propiedad de Mujeres (WOSB, por sus siglas en inglés)",
+  "Error: Unable to fetch certifications. Please try again later": "Error: No se pueden recuperar las certificaciones. Por favor, inténtelo de nuevo más tarde",
+  "Error: Unable to fetch businesses. Please try again later": "Error: No se pueden recuperar las empresas. Por favor, inténtelo de nuevo más tarde",
+  "Your Women-Owned Small Business Certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}": "Su certificación de Pequeña Empresa Propiedad de Mujeres caducará en {{days_until_expiry}} días. Debe renovarse antes del {{expire_at}}"
 }

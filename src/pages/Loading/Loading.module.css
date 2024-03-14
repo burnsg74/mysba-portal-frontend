@@ -1,7 +1,40 @@
-.loading-message {
-  font-family: var(--Font-Secondary);
-  color: var(--Brand-Primary-SBA-Blue);
-  font-size: 22px;
-  font-weight: 700;
-  padding: 20px;
+.loading__container {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 20px 54px;
+  gap: 17px;
+}
+
+.loading__icon {
+  width: 100px;
+  height: 100px;
+}
+
+.loading__progressbar-outer {
+  width: 316px;
+  height: 10px;
+  background-color: #FFFFFF;
+  border-radius: 25px;
+}
+.loading__progressbar-inner {
+  height: 100%;
+  width: 316px;
+  background-color: blue;
+  border-radius: 25px;
+}
+
+.loading__text {
+  color: var(--Primary-primary);
+  text-align: center;
+  font-family: var(--Font-Primary);
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }

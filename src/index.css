@@ -16,6 +16,7 @@
   --SBA-Dark-Blue: #000441;
   --Text-Text: #1b1b1b;
   --Success-success-lighter: #ecf3ec;
+  --Primary-primary: #005ea2;
   --Primary-primary-darker: #162e51;
 
   /* Alert Colors */
@@ -50,7 +51,7 @@
   --primaryprimary-lighter: #d9e8f6;
   --primaryprimary-darker: #162e51;
   --primaryprimary-dark: #1a4480;
-  --primaryprimary: #005ea2;
+
   --primarywhite: #ffffff;
 }
 

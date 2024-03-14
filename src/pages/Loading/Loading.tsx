@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { UserClaims } from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
 import axios, { AxiosResponse } from "axios";
 import { setUser } from "src/store/user/userSlice";
@@ -6,10 +6,12 @@ import { setNav } from "src/store/showNav/showNavSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
+import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 
-const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
 const Loading = () => {
+  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
+  const [progress, setProgress] = useState(0);
   const { oktaAuth, authState } = useOktaAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -63,10 +65,19 @@ const Loading = () => {
     }
   }, []);
 
-  return (
-    <div className={`${styles["loading-message"]}`} id="loading-icon">
-      Loading...
-    </div>
-  );
+  useEffect(() => {
+    let interval = setInterval(() => {
+      setProgress(prev => prev < 100 ? prev + ((500/3000) * 100) : prev);
+    }, 500);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (<div className={`${styles["loading__container"]}`}>
+      <img className={`${styles["loading__icon"]}`} src={loadingIcon} alt="Loading" />
+      <div className={`${styles["loading__progressbar-outer"]}`}>
+        <div className={`${styles["loading__progressbar-inner"]}`}  style={{ width: `${progress}%` }}></div>
+      </div>
+      <div className={`${styles["loading__text"]}`}>Fetching Data</div>
+    </div>);
 };
 export default Loading;
