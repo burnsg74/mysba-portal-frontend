@@ -58,7 +58,7 @@ const Loading = () => {
         .getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
-          if (user.profile.crm) {
+          if (!user.profile.crm) {
             window.location.href = "/error.html"
             return;
           }
