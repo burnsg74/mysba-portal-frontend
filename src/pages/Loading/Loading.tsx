@@ -60,7 +60,11 @@ const Loading = () => {
         .then(user => {
           dispatch(setNav(true));
           dispatch(setUser(user));
-          navigate("/dashboard");
+          if (user.profile.crm.email === "john.doe@email.com"){
+            navigate("/account-setup/1")
+          } else {
+            navigate("/dashboard");
+          } 
         });
     }
   }, []);

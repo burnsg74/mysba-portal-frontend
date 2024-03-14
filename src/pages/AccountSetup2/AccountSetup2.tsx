@@ -61,7 +61,10 @@ const AccountSetup1 = () => {
       };
     }
     console.log("portalProfile", portalProfile);
-
+    if (user?.profile?.crm?.email === "john.doe@email.com") {
+      navigate("/dashboard/new")
+      return
+    }
     axios
       .post(
         "https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user",
