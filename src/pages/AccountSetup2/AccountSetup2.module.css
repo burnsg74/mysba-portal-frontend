@@ -118,19 +118,23 @@ input[type="checkbox"]:focus {
 }
 
 .button-group {
-  max-width:600px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  max-width: 600px;
+  margin: auto;
 }
 
-.skip-button-group {
+.button-row, .skip-button-row {
   display: flex;
-  align-items: center;
   justify-content: center;
-  min-width:200px;
-  margin-right:20px;
-  margin-top:16px;
+  width: 100%;
+}
+
+.skip-button-row {
+  margin-top: 16px;
+  margin-right:37px;
 }
 
 .tooltip {

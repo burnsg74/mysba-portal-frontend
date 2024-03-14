@@ -94,7 +94,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border-color:var(--Brand-Secondary-Bright-Blue);
+    box-shadow: inset 0 0 0 2px #007DBC;
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
     font-family: var(--Font-Secondary);

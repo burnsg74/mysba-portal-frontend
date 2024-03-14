@@ -3,7 +3,7 @@ import styles from "src/components/AccountSetupModal/AccountSetupModal.module.cs
 import { useTranslation } from "react-i18next";
 import lightBulbImg from "src/assets/lightbulb.png";
 import Header from "src/components/Header/Header"
-
+import { useNavigate } from "react-router-dom"
 interface AccountSetupModalProps {
   showModal?: boolean;
 }
@@ -11,6 +11,7 @@ interface AccountSetupModalProps {
 const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
   showModal = false,
 }) => {
+  const navigate = useNavigate()
   const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(showModal);
   const [isVisible, setIsVisible] = useState(window.innerWidth > 760);
@@ -86,7 +87,7 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
               <button
                 type="button"
                 className={`usa-button ${styles["footer-btn"]}`}
-                onClick={() => setModalOpen(false)}
+                onClick={() => {setModalOpen(false); navigate("/dashboard")}}
               >
                 {t("All Done")}
               </button>

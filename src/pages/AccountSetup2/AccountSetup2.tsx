@@ -328,37 +328,35 @@ const AccountSetup1 = () => {
             </fieldset>
           </div>
           <div className={`${styles["button-group"]}`}>
-            <div className="grid-col">
-              <div className={`grid-row`}>
-                <button
-                  type="button"
-                  onClick={handleBackBtnClick}
-                  className="usa-button usa-button--outline"
-                >
-                  {t("Back")}
-                </button>
-                <button
-                  type="button"
-                  className="usa-button"
-                  onClick={handleContinueBtnClick}
-                >
-                  {t("Continue")}
-                </button>
-              </div>
-              <div className={`${styles["skip-button-group"]}`}>
-                <button
-                  type="button"
-                  onClick={handleSkipBtnClick}
-                  className={styles["skip-button"]}
-                  onKeyDown={event => {
-                    if (event.key === "Enter" || event.key === " ") {
-                      handleSkipBtnClick();
-                    }
-                  }}
-                >
-                  {t("Skip")}
-                </button>
-              </div>
+            <div className="grid-row button-row">
+              <button
+                type="button"
+                onClick={handleBackBtnClick}
+                className="usa-button usa-button--outline"
+              >
+                {t("Back")}
+              </button>
+              <button
+                type="button"
+                className="usa-button"
+                onClick={handleContinueBtnClick}
+              >
+                {t("Continue")}
+              </button>
+            </div>
+            <div className={`grid-row ${styles["skip-button-row"]}`}>
+              <button
+                type="button"
+                onClick={handleSkipBtnClick}
+                className={styles["skip-button"]}
+                onKeyDown={event => {
+                  if (event.key === "Enter" || event.key === " ") {
+                    handleSkipBtnClick();
+                  }
+                }}
+              >
+                {t("Skip")}
+              </button>
             </div>
           </div>
         </div>
