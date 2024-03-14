@@ -58,30 +58,43 @@ const Loading = () => {
         .getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
+          if (user.profile.crm) {
+            window.location.href = "/error.html"
+            return;
+          }
           dispatch(setNav(true));
           dispatch(setUser(user));
-          if (user.profile.crm.email === "john.doe@email.com"){
-            navigate("/account-setup/1")
+          if (user.profile.crm.email === "emilyj@email.com") {
+            navigate("/account-setup/1");
           } else {
             navigate("/dashboard");
-          } 
+          }
         });
     }
   }, []);
 
   useEffect(() => {
     let interval = setInterval(() => {
-      setProgress(prev => prev < 100 ? prev + ((500/3000) * 100) : prev);
+      setProgress(prev => (prev < 100 ? prev + (500 / 3000) * 100 : prev));
     }, 500);
     return () => clearInterval(interval);
   }, []);
 
-  return (<div className={`${styles["loading__container"]}`}>
-      <img className={`${styles["loading__icon"]}`} src={loadingIcon} alt="Loading" />
+  return (
+    <div className={`${styles["loading__container"]}`}>
+      <img
+        className={`${styles["loading__icon"]}`}
+        src={loadingIcon}
+        alt="Loading"
+      />
       <div className={`${styles["loading__progressbar-outer"]}`}>
-        <div className={`${styles["loading__progressbar-inner"]}`}  style={{ width: `${progress}%` }}></div>
+        <div
+          className={`${styles["loading__progressbar-inner"]}`}
+          style={{ width: `${progress}%` }}
+        ></div>
       </div>
       <div className={`${styles["loading__text"]}`}>Fetching Data</div>
-    </div>);
+    </div>
+  );
 };
 export default Loading;

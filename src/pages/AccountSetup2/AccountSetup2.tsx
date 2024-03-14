@@ -61,7 +61,7 @@ const AccountSetup1 = () => {
       };
     }
     console.log("portalProfile", portalProfile);
-    if (user?.profile?.crm?.email === "john.doe@email.com") {
+    if (user?.profile?.crm?.email === "emilyj@email.com") {
       navigate("/dashboard/new")
       return
     }
