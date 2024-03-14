@@ -65,6 +65,7 @@ const Loading = () => {
           dispatch(setNav(true));
           dispatch(setUser(user));
           if (user.profile.crm.email === "emilyj@email.com") {
+            dispatch(setNav(false));
             navigate("/account-setup/1");
           } else {
             navigate("/dashboard");
