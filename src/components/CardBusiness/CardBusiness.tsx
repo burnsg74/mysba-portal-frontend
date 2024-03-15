@@ -119,7 +119,7 @@ const CardBusiness: React.FC<ICardBusinessProps> = ({
                 UEI: {business.uei}
               </div>
               <div
-                className={`grid-col-auto ${styles["usa-card__text-center"]}`}
+                className={`grid-col-auto ${styles["usa-card__text-end"]}`}
               >
                 EIN: {business.ein}
               </div>

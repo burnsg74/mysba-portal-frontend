@@ -11,6 +11,13 @@
   max-width: 650px;
 }
 
+@media screen and (max-width: 670px) {
+  .container{
+    margin-right:20px;
+    margin-left:20px;
+  }
+}
+
 .header {
   display: flex;
   flex-direction: column;
@@ -135,6 +142,12 @@ input[type="checkbox"]:focus {
   margin-right:25px;
 }
 
+@media screen and (max-width: 500px) {
+  .button-group{
+    margin-right:0px;
+  }
+}
+
 .button-row, .skip-button-row {
   display: flex;
   justify-content: center;
@@ -164,6 +177,19 @@ input[type="checkbox"]:focus {
   top: 100%;
   left: 50%;
   margin-left: -135px;
+}
+
+@media screen and (max-width: 768px) {
+  .tooltip .tooltiptext {
+    bottom: auto;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: normal;
+  }
+  .tooltip .tooltiptext::after {
+    left:98% !important;
+  }
 }
 
 .tooltip .tooltiptext::after {

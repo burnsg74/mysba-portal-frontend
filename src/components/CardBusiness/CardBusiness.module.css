@@ -123,6 +123,24 @@
   margin-left: 0px;
 }
 
+@media screen and (max-width: 600px) {
+  .usa-card__text-center{
+    text-align:start;
+  }
+  .usa-card__text-end {
+    text-align: start !important;
+  }
+}
+
+.usa-card__text-end {
+  color: #002e6d;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  font-size: 16px;
+  flex-grow: 1;
+  text-align: end;
+  margin-left: 0px;
+}
 .usa-card__text-center:last-child {
   text-align: end;
 }
