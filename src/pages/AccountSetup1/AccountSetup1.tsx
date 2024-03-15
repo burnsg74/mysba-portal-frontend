@@ -74,7 +74,7 @@ const AccountSetup1 = () => {
               {t("To make changes please edit this in:")}{" "}
               <a
                 rel="noreferrer"
-                href="https://veterans.certify.sba.gov/"
+                href="https://wosb.certify.sba.gov"
                 target="_blank"
               >
                 WOSB Certify

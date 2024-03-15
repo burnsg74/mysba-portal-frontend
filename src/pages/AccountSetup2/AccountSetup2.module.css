@@ -131,9 +131,8 @@ input[type="checkbox"]:focus {
   align-items: center;
   justify-content: center;
   padding: 24px 16px 24px 16px;
-  width: 370px;
   gap:16px;
-  margin: auto;
+  margin-right:25px;
 }
 
 .button-row, .skip-button-row {

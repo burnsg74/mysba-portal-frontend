@@ -46,7 +46,7 @@ const AccountSetup1 = () => {
     dispatch(setNav(true));
 
     interface UserProfile {
-      portal: object; // Replace object with your actual type for portal
+      portal: object;
     }
 
     console.log("user", user);
@@ -331,7 +331,7 @@ const AccountSetup1 = () => {
             </fieldset>
           </div>
           <div className={`${styles["button-group"]}`}>
-            <div className="grid-row button-row">
+            <div className={`grid-row ${styles["button-row"]}`}>
               <button
                 type="button"
                 onClick={handleBackBtnClick}

@@ -69,7 +69,6 @@ a {
 .checkbox__group {
   display: flex;
   align-items: center;
-  margin-left: 11px;
 }
 
 .checkbox__group, .usa-checkbox {
@@ -119,5 +118,4 @@ a {
 
 .button__continue {
   width: 337px;
-  margin-right:0px;
 }
