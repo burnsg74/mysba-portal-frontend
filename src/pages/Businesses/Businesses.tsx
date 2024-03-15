@@ -162,7 +162,7 @@ const Businesses = () => {
 
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
-                          {t("Products and Services ")}
+                          {t("Products and Services")}
                         </div>
                       </div>
                       <Field label="Capabilities Narrative" value={business.capabilities_narrative} />

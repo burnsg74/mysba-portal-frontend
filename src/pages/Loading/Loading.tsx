@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
+import { useTranslation } from "react-i18next";
 
 const Loading = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
@@ -18,11 +19,12 @@ const Loading = () => {
   const { oktaAuth, authState } = useOktaAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
+  const { t } = useTranslation();
   const loadingMessages = [
-    "Authenticating",
-    "Working Magic",
-    "Fetching Data",
-    "Verifying",
+    t("Authenticating"),
+    t("Working Magic"),
+    t("Fetching Data"),
+    t("Verifying"),
   ];
   const endpoints = [
     `${BASE_API_URL}crm/mysba360/`,
@@ -97,7 +99,7 @@ const Loading = () => {
   useEffect(() => {
     let interval = setInterval(() => {
       setLoadingProgress(prev =>
-        prev < 100 ? prev + (500 / 3000) * 100 : prev
+        Math.min(prev + (500 / 3000) * 100, 100)
       );
       setMessageIndex(prev => (prev < 3 ? prev + 1 : 0));
       setLoadingMessage(loadingMessages[messageIndex]);

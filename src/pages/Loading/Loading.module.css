@@ -25,7 +25,6 @@
 }
 .loading__progressbar-inner {
   height: 100%;
-  width: 316px;
   background-color: #007DBC;
   border-radius: 25px;
 }
