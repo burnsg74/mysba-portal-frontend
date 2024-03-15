@@ -137,7 +137,7 @@
   "Socially and Economically Disadvantaged Business": "Programa de Desarrollo Empresarial 8(a)",
   "Sole proprietorship": "Propietario único",
   "Something is Missing": "Falta algo",
-  "Start the re-certification process": "Puede completar un formulario de",
+  "Start the re-certification process": "Comienza el proceso de re-certificación",
   "Still need assistance?": "¿Aún necesita ayuda?",
   "Structure": "Estructura",
   "Tell us a little about your business.": "Cuéntanos un poco sobre tu negocio.",
@@ -228,5 +228,8 @@
   "Authenticating": "Autenticación",
   "Working Magic": "Magia de trabajo",
   "Fetching Data": "Recuperación de datos",
-  "Verifying": "Verificando"
+  "Verifying": "Verificando",
+  "Business Phone Number": "Número de teléfono laboral",
+  "Legal Structure": "Estructura Legal",
+  "Ownership Type": "Tipo de Propiedad"
 }
