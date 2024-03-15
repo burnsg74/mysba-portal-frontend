@@ -81,7 +81,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             >
               {certification.company_name}
             </div>
-            <div className={`grid-col-auto ${styles["usa-card__text-right"]}`}>Expiration: {expiration_date}</div>
+            <div className={`grid-col-auto ${styles["usa-card__text-right"]}`}>{t('Expiration')}: {expiration_date}</div>
           </div>
         </div>
       </div>

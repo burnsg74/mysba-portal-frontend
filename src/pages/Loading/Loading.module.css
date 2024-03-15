@@ -18,14 +18,13 @@
 }
 
 .loading__progressbar-outer {
-  width: 316px;
+  width: 100%;
   height: 10px;
   background-color: #FFFFFF;
   border-radius: 25px;
 }
 .loading__progressbar-inner {
   height: 100%;
-  width: 316px;
   background-color: #007DBC;
   border-radius: 25px;
 }
