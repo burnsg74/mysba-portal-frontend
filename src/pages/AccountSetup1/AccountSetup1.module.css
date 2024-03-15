@@ -43,7 +43,7 @@ a {
   font-family: var(--Font-Primary);
   font-weight: 400;
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .label {
@@ -82,7 +82,6 @@ a {
 
 .checkbox {
   padding-bottom: 41px;
-  padding-left: 25px;
 }
 
 @media screen and (max-width: 630px) {
@@ -115,8 +114,10 @@ a {
 .footer {
   display: flex;
   justify-content: center;
+  width: 730px;
 }
 
 .button__continue {
   width: 337px;
+  margin-right:0px;
 }

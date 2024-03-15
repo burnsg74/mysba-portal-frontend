@@ -224,7 +224,7 @@ const AccountSetup1 = () => {
                 </label>
               </div>
             </fieldset>
-            <div className={`${styles["section_label"]}`}>
+            <div className={`${styles["section_label_last"]}`}>
               {t("I am interested in")}...
             </div>
             <div className={`${styles["section_message"]}`}>
@@ -335,13 +335,13 @@ const AccountSetup1 = () => {
               <button
                 type="button"
                 onClick={handleBackBtnClick}
-                className="usa-button usa-button--outline"
+                className={`usa-button usa-button--outline ${styles["usa-button"]}`}
               >
                 {t("Back")}
               </button>
               <button
                 type="button"
-                className="usa-button"
+                className={`usa-button ${styles["usa-button"]}`}
                 onClick={handleContinueBtnClick}
               >
                 {t("Continue")}
