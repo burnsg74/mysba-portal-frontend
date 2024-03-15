@@ -225,6 +225,7 @@ input[type="checkbox"]:focus {
 
 .usa-checkbox__input--tile+[class*=__label] {
   border-width:1px;
+  border-radius:8px !important;
 }
 
 .usa-checkbox__label {
@@ -239,6 +240,7 @@ input[type="checkbox"]:focus {
   display:flex;
   flex-direction:row;
   align-items:center;
+  border-radius:8px !important;
 }
 
 .usa-checkbox__label::before { 
