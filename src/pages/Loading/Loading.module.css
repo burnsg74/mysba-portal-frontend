@@ -1,4 +1,5 @@
 .loading__container {
+  width: 316px;
   display: inline-flex;
   flex-direction: column;
   align-items: center;
@@ -25,7 +26,7 @@
 .loading__progressbar-inner {
   height: 100%;
   width: 316px;
-  background-color: blue;
+  background-color: #007DBC;
   border-radius: 25px;
 }
 
