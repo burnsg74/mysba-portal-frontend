@@ -8,21 +8,41 @@ import Alert from "src/components/Alert/Alert";
 import Pill from "src/components/Pill/Pill";
 import { useTranslation } from "react-i18next";
 import ManageCertificationModal from "src/components/ManageCertificationModal/ManageCertificationModal";
+import { formatDate } from "src/utils/formatter";
+
 
 const CertificationDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+
+  const index = calculateIndexFromId(id as string);
+  if (index === null) {
+    navigate("/error");
+    return null;
+  }
+
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
-  const certification: ICertification | undefined = user.certifications?.find(
-    certification => certification.number === id
-  );
+  const certification: ICertification | undefined = user.certifications ? user.certifications[index] : undefined;
   const [showManageCertificationModal, setManageCertificationModal] =
     useState(false);
 
   if (!certification) {
     navigate("/error");
     return null;
+  }
+
+  const issue_date = formatDate(certification.issue_date,'MMMM D, YYYY');
+  const expiration_date = formatDate(certification.expiration_date,'MMMM D, YYYY');
+
+  function calculateIndexFromId(id: string): number | null {
+    let index = Number(id);
+
+    if (isNaN(index)) {
+      return null;
+    }
+
+    return index - 1;
   }
 
   const handleManageCertificationModalClose = () => {
@@ -83,7 +103,7 @@ const CertificationDetail = () => {
               {
                 certification_type: t(certification.certification_type),
                 days_until_expiry: certification.days_until_expiry,
-                expire_at: certification.expire_at,
+                expire_at: expiration_date,
               }
             )}
           />
@@ -216,19 +236,16 @@ const CertificationDetail = () => {
           label="Company Certified"
           value={certification.company_name ?? ""}
         />
+        <Field label="Issue Date" value={issue_date ?? ""} />
         <Field
-          label="Certification Number"
-          value={certification.number.toString() ?? ""}
+          label="Expiration Date"
+          value={expiration_date ?? ""}
         />
-        <Field label="Issue Date" value={certification?.issue_at ?? ""} />
-        <Field
-          label="Expiration/Renewal Date"
-          value={certification.expire_at ?? ""}
-        />
-        <Field
-          label="North American Industry Classification System"
-          value={certification.naics ?? ""}
-        />
+        {/*@TODO : Missing naics from data layer*/}
+        {/*<Field*/}
+        {/*  label="North American Industry Classification System"*/}
+        {/*  value={certification.naics ?? ""}*/}
+        {/*/>*/}
         <div className={`${styles["subtitle"]}`}>{t("Ownership")}</div>
         <Field label="Owner" value={certification.owner ?? ""} />
       </div>

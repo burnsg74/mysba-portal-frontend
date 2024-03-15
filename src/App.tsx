@@ -38,12 +38,6 @@ const App: React.FC = () => {
     if (!profileData?.profile?.crm?.email) {
       navigate("/");
     }
-    console.log(
-      "Route changed to",
-      location.pathname,
-      "value in store:",
-      profileData?.profile?.crm?.email
-    );
   }, [location, profileData?.profile?.crm?.email]);
 
   const restoreOriginalUri = () => {

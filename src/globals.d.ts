@@ -13,35 +13,41 @@ interface IUserProfile {
 }
 
 interface IBusiness {
-  user_id: string;
+  email: string;
+  owner: string;
   id: string;
   name: string;
-  type: string;
+  legal_entity: string;
+  ownership_type: string;
   uei: string;
   ein: string;
-  mailing_address: string;
-  business_address: string;
-  phone_number: string;
+  user_id: string;
+  mailing_address_street: string;
+  mailing_address_city: string;
+  mailing_address_state: string;
+  mailing_address_zipcode: string;
+  business_address_street: string;
+  business_address_city: string;
+  business_address_state: string;
+  business_address_zipcode: string;
+  business_phone_number: string;
   fax: string;
-  email: string;
+  naics_codes: string;
+  capabilities_narrative: string;
+  website: string;
 }
 
 interface ICertification {
   email: string;
   ein: string;
+  certification_id: string;
+  business_id: string;
   certification_type: string;
-  number: string;
-  company_name: string;
-  issue_at: string;
-  expire_at: string;
+  issue_date: string;
+  expiration_date: string;
   days_until_expiry: number;
-  naics: string;
+  company_name: string;
   owner: string;
-  cert_business_id: string;
-}
-
-interface INav {
-  showNav: boolean;
 }
 
 interface IUser {
@@ -51,8 +57,9 @@ interface IUser {
 }
 
 interface ICardCertificationProps {
-  certification: ICertification;
-  showDetails?: boolean;
+  certification: ICertification,
+  showDetails?: boolean,
+  index: number
 }
 
 interface ICardBusinessProps {

@@ -6,6 +6,7 @@ import Field from "src/components/Field/Field";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Businesses/Businesses.module.css";
+import { formatEin, formatUei } from "src/utils/formatter";
 
 const Businesses = () => {
   const user: IUser = useSelector(getUser);
@@ -21,6 +22,11 @@ const Businesses = () => {
         const email = user?.profile?.crm?.email;
         const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
         const res = await axios.get(`${BASE_API_URL}business/${email}`);
+        res.data.forEach((business: IBusiness) => {
+          business.ein = formatEin(business.ein);
+          business.uei = formatUei(business.uei);
+          business.business_phone_number = formatPhoneNumber(business.business_phone_number);
+        });
         const updatedUser = { ...user, businesses: res.data };
         dispatch(setUser(updatedUser));
       } catch (error) {
@@ -40,6 +46,11 @@ const Businesses = () => {
       setShowDetails(!showDetails);
     }
   };
+
+  function formatPhoneNumber(phoneNumber: string): string {
+    const cleanNumber = phoneNumber.replace(/[^0-9]/g, "");
+    return `+1 (${cleanNumber.slice(1, 4)}) ${cleanNumber.slice(4, 7)}-${cleanNumber.slice(7, 11)}`;
+  }
 
   return (
     <div className={`main-container`}>
@@ -121,7 +132,6 @@ const Businesses = () => {
                       </div>
                       <Field label="EIN" value={business.ein} />
                       <Field label="UEI" value={business.uei} />
-                      <Field label="User ID" value={business.user_id} />
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
                           {t("Contact Information")}
@@ -129,24 +139,34 @@ const Businesses = () => {
                       </div>
                       <Field
                         label="Mailing Address"
-                        value={business.mailing_address}
+                        value={[
+                          <div key="street1">{business.mailing_address_street}</div>,
+                          `${business.mailing_address_city}, ${business.mailing_address_state} ${business.mailing_address_zipcode}`
+                        ]}
                       />
                       <Field
                         label="Business Address"
-                        value={business.business_address}
+                        value={[
+                          <div key="street2">{business.business_address_street}</div>,
+                          `${business.business_address_city}, ${business.business_address_state} ${business.business_address_zipcode}`
+                        ]}
                       />
                       <Field
-                        label="Phone Number"
-                        value={business.phone_number}
+                        label="Business Phone Number"
+                        value={business.business_phone_number}
                       />
-                      <Field label="Fax Number" value={business.fax} />
                       <Field label="Email" value={business.email} />
+                      <Field label="Website" value={business.website} />
+                      <Field label="Legal Structure" value={business.legal_entity} />
+                      <Field label="Ownership Type" value={business.ownership_type} />
+
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
-                          {t("Structure")}
+                          {t("Products and Services ")}
                         </div>
                       </div>
-                      <Field label="Type" value={business.type} />
+                      <Field label="Capabilities Narrative" value={business.capabilities_narrative} />
+                      <Field label="NAICS Codes" value={business.naics_codes} />
                     </>
                   ) : (
                     <div
@@ -155,7 +175,7 @@ const Businesses = () => {
                       <div
                         className={`grid-col-auto ${styles["usa-card__text-center"]}`}
                       >
-                        {business.type}
+                        {business.legal_entity}
                       </div>
                       <div
                         className={`grid-col-auto ${styles["usa-card__text-center"]}`}

@@ -3,12 +3,13 @@ import styles from "src/components/CardCertification/CardCertification.module.cs
 import { Link } from "react-router-dom";
 import Pill from "src/components/Pill/Pill";
 import {useTranslation} from 'react-i18next';
+import { formatDate } from "src/utils/formatter";
 
 const CardCertification: React.FC<ICardCertificationProps> = ({
-  certification,
-  showDetails = true,
-}) => {
+                                                                certification, showDetails = true, index
+                                                              }) => {
   const {t} = useTranslation();
+  let expiration_date = formatDate(certification.expiration_date, 'M/D/YY')
   return (
     <>
       <div className={`usa-card__container ${styles["usa-card__container"]}`}>
@@ -42,7 +43,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             </div>
             <div className={`grid-col ${styles["title__container"]}`}>
               <h2 className={`usa-card__heading ${styles["title"]}`}>
-                {t(certification.name)}
+                {t(certification.certification_type)}
               </h2>
             </div>
             {showDetails && (
@@ -50,7 +51,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
                 className={`grid-col-auto  ${styles["card__header__details-btn"]}`}
               >
                 <Link
-                  to={`/certification/${certification.number}`}
+                  to={`/certification/${index}`}
                   className={`usa-button ${styles["pill-button"]}`}
                 >
                   {t('Details')}
@@ -80,7 +81,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             >
               {certification.company_name}
             </div>
-            <div className={`grid-col-auto ${styles["usa-card__text-right"]}`}>Expiration: {certification.expire_at}</div>
+            <div className={`grid-col-auto ${styles["usa-card__text-right"]}`}>Expiration: {expiration_date}</div>
           </div>
         </div>
       </div>

@@ -98,7 +98,7 @@ const Certifications = () => {
                             certification.certification_type
                           ),
                           days_until_expiry: certification.days_until_expiry,
-                          expire_at: certification.expire_at,
+                          expire_at: certification.expiration_date,
                         }
                       )}
                     />
@@ -140,7 +140,7 @@ const Certifications = () => {
               {user.certifications &&
                 user.certifications.map((certification, index) => (
                   <React.Fragment key={index}>
-                    <CardCertification certification={certification} />
+                    <CardCertification certification={certification}  index={index+1}/>
                   </React.Fragment>
                 ))}
             </div>

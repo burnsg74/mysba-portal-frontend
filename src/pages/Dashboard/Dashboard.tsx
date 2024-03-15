@@ -52,7 +52,7 @@ const Dashboard = () => {
                           <Alert
                             key={index}
                             type="warning"
-                            message={t('Your {{certification_type}} certification must be renewed by {{expire_at}}', { certification_type:  t(certification.certification_type), expire_at: certification.expire_at })}
+                            message={t('Your {{certification_type}} certification must be renewed by {{expire_at}}', { certification_type:  t(certification.certification_type), expire_at: certification.expiration_date })}
                           />
                         </div>
                     ) : null}
@@ -60,6 +60,7 @@ const Dashboard = () => {
                 );
               })}
 
+            {/* @TODO Link Businesses and Certs together */}
             {/* Businesses */}
             <div className={`${styles["container"]}`}>
               {user.businesses &&
@@ -102,6 +103,7 @@ const Dashboard = () => {
                           user.certifications.map((certification, index) => (
                             <React.Fragment key={index}>
                               <CardCertification
+                                index={index+1}
                                 certification={certification}
                               />
                             </React.Fragment>

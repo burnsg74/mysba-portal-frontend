@@ -1,10 +1,10 @@
-import React from "react";
+import React, { ReactNode } from "react";
 import styles from "src/components/Field/Field.module.css";
 import {useTranslation} from 'react-i18next';
 
 interface Props {
   label: string;
-  value: string;
+  value: ReactNode;
 }
 
 const Field: React.FC<Props> = ({ label, value }) => {

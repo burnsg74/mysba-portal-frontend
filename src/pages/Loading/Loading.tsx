@@ -11,15 +11,19 @@ import styles from "src/pages/Loading/Loading.module.css";
 
 const Loading = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
-  const [progress, setProgress] = useState(0);
+  const PROGRESS_UPDATE_INTERVAL = 500;
+  const [loadingProgress, setLoadingProgress] = useState(0);
+  const [messageIndex, setMessageIndex] = useState(0);
+  const [loadingMessage, setLoadingMessage] = useState("Authenticating");
   const { oktaAuth, authState } = useOktaAuth();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-
-  useEffect(() => {
-    dispatch(setNav(false));
-  }, [dispatch]);
-
+  const loadingMessages = [
+    "Authenticating",
+    "Working Magic",
+    "Fetching Data",
+    "Verifying",
+  ];
   const endpoints = [
     `${BASE_API_URL}crm/mysba360/`,
     `${BASE_API_URL}business/`,
@@ -39,7 +43,12 @@ const Loading = () => {
     }
 
     const crmData = results[0].data;
-    const businessData = results[1].data;
+    let businessData = results[1].data;
+    businessData.forEach((business: any) => {
+      business.ein = business.ein.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3");
+      business.uei = business.uei.replace(/(\d{6})(\d{4})/, "******$2");
+      business.business_phone_number = formatPhoneNumber(business.business_phone_number);
+    });
     const certificationData = results[2].data;
     const portalData = results[3].data;
     return {
@@ -52,6 +61,15 @@ const Loading = () => {
     };
   };
 
+  function formatPhoneNumber(phoneNumber: string): string {
+    const cleanNumber = phoneNumber.replace(/[^0-9]/g, "");
+    return `+1 (${cleanNumber.slice(1, 4)}) ${cleanNumber.slice(4, 7)}-${cleanNumber.slice(7, 11)}`;
+  }
+
+  useEffect(() => {
+    dispatch(setNav(false));
+  }, [dispatch]);
+
   useEffect(() => {
     if (authState?.isAuthenticated) {
       oktaAuth
@@ -59,8 +77,10 @@ const Loading = () => {
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
           if (!user.profile.crm) {
-            window.location.href = "/error.html"
-            return;
+            return oktaAuth.signOut().then(() => {
+              window.location.href = "/error.html";
+              return;
+            });
           }
           dispatch(setNav(true));
           dispatch(setUser(user));
@@ -76,10 +96,14 @@ const Loading = () => {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      setProgress(prev => (prev < 100 ? prev + (500 / 3000) * 100 : prev));
-    }, 500);
+      setLoadingProgress(prev =>
+        prev < 100 ? prev + (500 / 3000) * 100 : prev
+      );
+      setMessageIndex(prev => (prev < 3 ? prev + 1 : 0));
+      setLoadingMessage(loadingMessages[messageIndex]);
+    }, PROGRESS_UPDATE_INTERVAL);
     return () => clearInterval(interval);
-  }, []);
+  }, [messageIndex]);
 
   return (
     <div className={`${styles["loading__container"]}`}>
@@ -91,10 +115,10 @@ const Loading = () => {
       <div className={`${styles["loading__progressbar-outer"]}`}>
         <div
           className={`${styles["loading__progressbar-inner"]}`}
-          style={{ width: `${progress}%` }}
+          style={{ width: `${loadingProgress}%` }}
         ></div>
       </div>
-      <div className={`${styles["loading__text"]}`}>Fetching Data</div>
+      <div className={`${styles["loading__text"]}`}>{loadingMessage}</div>
     </div>
   );
 };
