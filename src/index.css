@@ -449,6 +449,7 @@ textarea:not([disabled]):focus {
 .usa-button--outline {
   background-color: transparent;
   color: var(--Brand-Secondary-Bright-Blue);
+  box-shadow: inset 0 0 0 2px var(--SBA-Celeste);
 }
 
 .side-nav-link {
