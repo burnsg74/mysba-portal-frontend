@@ -28,7 +28,6 @@ const App: React.FC = () => {
   const VITE_APP_OKTA_CLIENT_ID = import.meta.env.VITE_APP_OKTA_CLIENT_ID;
 
   useEffect(() => {
-    console.log(profileData)
     if (
       location.pathname === "/" ||
       location.pathname === "/loading" ||
