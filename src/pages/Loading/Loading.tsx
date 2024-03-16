@@ -35,7 +35,13 @@ const Loading = () => {
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
     const email = info.email || "";
-    const requests = endpoints.map(endpoint => axios.get(endpoint + email));
+    const { accessToken } = authState?.accessToken ? authState : { accessToken : undefined };
+    console.log('Access Token:', accessToken);
+    const requests = endpoints.map(endpoint => axios.get(endpoint + email, {
+      headers: {
+        Authorization: 'Bearer ' + accessToken
+      }
+    }));
     let results: AxiosResponse<any>[] = [];
     try {
       results = await Promise.all(requests);
