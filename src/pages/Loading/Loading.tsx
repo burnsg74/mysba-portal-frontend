@@ -38,7 +38,7 @@ const Loading = () => {
     const email = info.email || "";
     let accessToken: string | AccessToken | null | undefined = null;
     if (authState && "accessToken" in authState) {
-      accessToken = authState.accessToken;
+      accessToken =authState.accessToken?.accessToken;
     } else {
       accessToken = undefined;
     }
