@@ -9,6 +9,7 @@ import { useDispatch } from "react-redux";
 import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
+import { AccessToken } from "@okta/okta-auth-js";
 
 const Loading = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
@@ -35,13 +36,20 @@ const Loading = () => {
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
     const email = info.email || "";
-    const { accessToken } = authState?.accessToken ? authState : { accessToken : undefined };
-    console.log('Access Token:', accessToken);
-    const requests = endpoints.map(endpoint => axios.get(endpoint + email, {
-      headers: {
-        Authorization: 'Bearer ' + accessToken
-      }
-    }));
+    let accessToken: string | AccessToken | null | undefined = null;
+    if (authState && "accessToken" in authState) {
+      accessToken = authState.accessToken;
+    } else {
+      accessToken = undefined;
+    }
+    console.log("Access Token:", accessToken);
+    const requests = endpoints.map(endpoint =>
+      axios.get(endpoint + email, {
+        headers: {
+          Authorization: "Bearer " + accessToken,
+        },
+      })
+    );
     let results: AxiosResponse<any>[] = [];
     try {
       results = await Promise.all(requests);
@@ -55,7 +63,9 @@ const Loading = () => {
     businessData.forEach((business: any) => {
       business.ein = business.ein.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3");
       business.uei = business.uei.replace(/(\d{6})(\d{4})/, "******$2");
-      business.business_phone_number = formatPhoneNumber(business.business_phone_number);
+      business.business_phone_number = formatPhoneNumber(
+        business.business_phone_number
+      );
     });
     const certificationData = results[2].data;
     const portalData = results[3].data;
@@ -104,9 +114,7 @@ const Loading = () => {
 
   useEffect(() => {
     let interval = setInterval(() => {
-      setLoadingProgress(prev =>
-        Math.min(prev + (500 / 3000) * 100, 100)
-      );
+      setLoadingProgress(prev => Math.min(prev + (500 / 3000) * 100, 100));
       setMessageIndex(prev => (prev < 3 ? prev + 1 : 0));
       setLoadingMessage(loadingMessages[messageIndex]);
     }, PROGRESS_UPDATE_INTERVAL);
