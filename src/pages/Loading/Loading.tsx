@@ -42,7 +42,7 @@ const Loading = () => {
     } else {
       accessToken = undefined;
     }
-    console.log("Access Token:", accessToken);
+    console.log("Access Token2:", accessToken);
     const requests = endpoints.map(endpoint =>
       axios.get(endpoint + email, {
         headers: {
