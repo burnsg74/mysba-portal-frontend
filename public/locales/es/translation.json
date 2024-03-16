@@ -137,7 +137,7 @@
   "Socially and Economically Disadvantaged Business": "Programa de Desarrollo Empresarial 8(a)",
   "Sole proprietorship": "Propietario único",
   "Something is Missing": "Falta algo",
-  "Start the re-certification process": "Puede completar un formulario de",
+  "Start the re-certification process": "Comienza el proceso de re-certificación",
   "Still need assistance?": "¿Aún necesita ayuda?",
   "Structure": "Estructura",
   "Tell us a little about your business.": "Cuéntanos un poco sobre tu negocio.",
@@ -172,7 +172,7 @@
   "Welcome to your MySBA Dashboard": "Bienvenido a su tablero de MiSBA",
   "What happens to my information if I delete my account?": "¿Qué pasa con mi información si elimino mi cuenta?",
   "What kind of certification would you like to apply for?": "¿Qué tipo de certificación le gustaría solicitar?",
-  "Women-Owned Small Business": "Pequeña Empresa Propiedad de",
+  "Women-Owned Small Business": "Pequeña Empresa Propiedad de Mujeres",
   "Women-Owned business content": "Contenido sobre empresas propiedad",
   "You can fill out a help request form here or contact us at <wosb@sba.gov>.": "Puede completar un formulario de solicitud de ayuda aquí o contactarnos en wosb@sba.gov.",
   "You can fill out a help request form": "Puede completar un formulario de solicitud de ayuda",
@@ -223,5 +223,13 @@
   "You are being taken to the Women-Owned Small Business (WOSB) Certification Portal where you can manage your WOSB certification": "Se le dirigirá al Portal de certificación de pequeñas empresas propiedad de mujeres (WOSB), donde podrá gestionar su certificación de Pequeña Empresa Propiedad de Mujeres (WOSB, por sus siglas en inglés)",
   "Error: Unable to fetch certifications. Please try again later": "Error: No se pueden recuperar las certificaciones. Por favor, inténtelo de nuevo más tarde",
   "Error: Unable to fetch businesses. Please try again later": "Error: No se pueden recuperar las empresas. Por favor, inténtelo de nuevo más tarde",
-  "Your Women-Owned Small Business Certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}": "Su certificación de Pequeña Empresa Propiedad de Mujeres caducará en {{days_until_expiry}} días. Debe renovarse antes del {{expire_at}}"
+  "Your Women-Owned Small Business Certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}": "Su certificación de Pequeña Empresa Propiedad de Mujeres caducará en {{days_until_expiry}} días. Debe renovarse antes del {{expire_at}}",
+  "Expiration": "Fecha de vencimiento",
+  "Authenticating": "Autenticación",
+  "Working Magic": "Magia de trabajo",
+  "Fetching Data": "Recuperación de datos",
+  "Verifying": "Verificando",
+  "Business Phone Number": "Número de teléfono laboral",
+  "Legal Structure": "Estructura Legal",
+  "Ownership Type": "Tipo de Propiedad"
 }

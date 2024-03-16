@@ -1,3 +1,8 @@
+html, body {
+  height: 100vh;
+  height: 100dvh;
+}
+
 .container-row {
   display: flex;
   justify-content: center;
@@ -43,7 +48,7 @@ a {
   font-family: var(--Font-Primary);
   font-weight: 400;
   font-size: 22px;
-  margin-bottom: 20px;
+  margin-bottom: 40px;
 }
 
 .label {
@@ -69,7 +74,6 @@ a {
 .checkbox__group {
   display: flex;
   align-items: center;
-  margin-left: 11px;
 }
 
 .checkbox__group, .usa-checkbox {
@@ -82,7 +86,6 @@ a {
 
 .checkbox {
   padding-bottom: 41px;
-  padding-left: 25px;
 }
 
 @media screen and (max-width: 630px) {
@@ -119,4 +122,5 @@ a {
 
 .button__continue {
   width: 337px;
+  margin-right:0px;
 }

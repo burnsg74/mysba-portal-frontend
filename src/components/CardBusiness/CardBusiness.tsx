@@ -93,25 +93,25 @@ const CardBusiness: React.FC<ICardBusinessProps> = ({
                   {t("Contact Information")}
                 </div>
               </div>
-              <Field label="Mailing Address" value={business.mailing_address} />
+              <Field label="Mailing Address" value={business.mailing_address_street} />
               <Field
                 label="Business Address"
-                value={business.business_address}
+                value={business.business_address_street}
               />
-              <Field label="Phone Number" value={business.phone_number} />
+              <Field label="Phone Number" value={business.business_phone_number} />
               <Field label="Fax Number" value={business.fax} />
               <Field label="Email" value={business.email} />
               <div className={`${styles["subheader-padding"]}`}>
                 <div className={`${styles["subheader"]}`}>{t("Structure")}</div>
               </div>
-              <Field label="Type" value={business.type} />
+              <Field label="Type" value={business.legal_entity} />
             </>
           ) : (
             <div className={`grid-row sba-blue ${styles["usa-card__row"]}`}>
               <div
                 className={`grid-col-auto ${styles["usa-card__text-center"]}`}
               >
-                {business.type}
+                {business.legal_entity}
               </div>
               <div
                 className={`grid-col-auto ${styles["usa-card__text-center"]}`}
@@ -119,7 +119,7 @@ const CardBusiness: React.FC<ICardBusinessProps> = ({
                 UEI: {business.uei}
               </div>
               <div
-                className={`grid-col-auto ${styles["usa-card__text-center"]}`}
+                className={`grid-col-auto ${styles["usa-card__text-end"]}`}
               >
                 EIN: {business.ein}
               </div>
