@@ -31,7 +31,6 @@ const Businesses = () => {
         } else {
           accessToken = undefined;
         }
-        console.log("accessToken", accessToken);
         const res = await axios.get(`${BASE_API_URL}business/${email}`, {
           headers: { Authorization: "Bearer " + accessToken },
         });

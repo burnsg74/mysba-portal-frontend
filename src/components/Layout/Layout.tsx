@@ -22,6 +22,11 @@ const Layout = () => {
     setCourses(learningCenterCoursesByPath[location.pathname]??[])
   }, [location]);
 
+  function handleNavLinkClick() {
+    console.log("handleFocusOut");
+    // Layout Ignores this
+  }
+
   return (
     <>
       <div className="grid-row">
@@ -32,7 +37,7 @@ const Layout = () => {
       <div className="grid-row">
         {showNav && (
           <div className={`grid-col-auto ${styles["side-nav"]}`}>
-            <SideNav />
+            <SideNav onNavLinkClick={handleNavLinkClick} />
           </div>
         )}
         <main className="grid-col">

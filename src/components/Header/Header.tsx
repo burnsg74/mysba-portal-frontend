@@ -43,7 +43,13 @@ const Header = () => {
     setIsNavOpen(false);
   }
 
+
+  function handleNavLinkClick() {
+    setIsNavOpen(false);
+  }
+
   function handleTouchEnd(event: React.TouchEvent) {
+    console.log(event.changedTouches[0].clientX, window.innerWidth / 2)
     if (event.changedTouches[0].clientX > window.innerWidth / 2) {
       setIsNavOpen(false);
     }
@@ -253,7 +259,7 @@ const Header = () => {
         <div
           className={`${styles["right-side-nav"]} ${isNavOpen ? styles["is-open"] : ""}`}
           onBlur={handleFocusOut}
-          onTouchEnd={handleTouchEnd}
+          // onTouchEnd={handleTouchEnd}
           role="button"
           ref={navRef}
         >
@@ -269,7 +275,7 @@ const Header = () => {
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </div>
-          <SideNav />
+          <SideNav onNavLinkClick={handleNavLinkClick} />
         </div>
       )}
     </>

@@ -3,7 +3,11 @@ import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "src/components/SideNav/SideNav.module.css";
 
-const SideNav = () => {
+type SideNavProps = {
+  onNavLinkClick: () => void;
+}
+
+const SideNav: React.FC<SideNavProps> = ({onNavLinkClick}) => {
   const { t } = useTranslation();
   const NAVIGATION_LINKS = [
     {
@@ -27,10 +31,15 @@ const SideNav = () => {
       "url": "/help",
     },
   ];
+
+  const handleClick = () => {
+    onNavLinkClick();
+  };
+
   return (
     <>
       <nav aria-label="Side navigation" className={`${styles["container"]}`}> {NAVIGATION_LINKS.map((item, index) =>
-        <Link to={item.url} key={index} aria-label={item.name} title={item.name}
+        <Link to={item.url} key={index} aria-label={item.name} title={item.name} onClick={() => handleClick()}
               className={`grid-row ${styles["row"]} ${window.location.pathname.startsWith(item.url) ? styles["row__active"] : ""}`}>
           <div
             className={`grid-col-auto ${styles["col__bar"]} ${window.location.pathname.startsWith(item.url) ? styles["col__bar-active"] : ""}`} />
