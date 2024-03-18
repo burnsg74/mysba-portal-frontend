@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
-import CityScapeImage from "src/assets/cityscape-updated.png";
+import CityScapeImage from "src/assets/cityscape.png";
 import { Link, useLocation } from "react-router-dom";
 import CardCertification from "src/components/CardCertification/CardCertification";
 import styles from "src/pages/Dashboard/Dashboard.module.css";
