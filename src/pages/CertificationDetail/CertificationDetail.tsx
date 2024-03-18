@@ -205,6 +205,7 @@ const CertificationDetail = () => {
                       style={{ display: "flex", alignItems: "center" }}
                     >
                       {t("Frequently Asked Questions")}
+                    </a>
                       <svg
                         className="usa-icon"
                         aria-hidden="true"
@@ -215,7 +216,6 @@ const CertificationDetail = () => {
                       >
                         <use xlinkHref="/assets/img/sprite.svg#launch"></use>
                       </svg>
-                    </a>
                   </div>
                 </div>
               </div>
