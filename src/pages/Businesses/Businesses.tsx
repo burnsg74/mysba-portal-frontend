@@ -2,12 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { getUser, setUser } from "src/store/user/userSlice";
-import Field from "src/components/Field/Field";
-import Alert from "src/components/Alert/Alert";
-import axios from "axios";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
 import { formatEin, formatUei } from "src/utils/formatter";
+import Field from "src/components/Field/Field";
+import Alert from "src/components/Alert/Alert";
+import axios from "axios";
+
 import styles from "src/pages/Businesses/Businesses.module.css";
 
 const Businesses = () => {

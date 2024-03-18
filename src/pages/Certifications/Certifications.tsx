@@ -11,8 +11,6 @@ import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
 import styles from "src/pages/Certifications/Certifications.module.css";
 
-const { authState } = useOktaAuth();
-
 type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";
 
 const Certifications = () => {
@@ -24,6 +22,7 @@ const Certifications = () => {
   >();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const { authState } = useOktaAuth();
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
 
   useEffect(() => {
