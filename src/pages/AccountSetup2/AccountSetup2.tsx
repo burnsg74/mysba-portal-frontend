@@ -29,6 +29,7 @@ const AccountSetup1 = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
+  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
 
   const [state, setState] = useState({
     planningNewBusiness: false,
@@ -65,11 +66,9 @@ const AccountSetup1 = () => {
       navigate("/dashboard/new")
       return
     }
+    const url = `${BASE_API_URL}portal/user/`;
     axios
-      .post(
-        "https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user",
-        portalProfile
-      )
+      .post( url, portalProfile )
       .then(response => {
         let newUser = {
           ...user,
