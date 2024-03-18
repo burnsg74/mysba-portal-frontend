@@ -9,13 +9,11 @@
 }
 
 .pill__icon {
-  color: #1b1b1b;
-  margin-right: 10px;
-
+  color: var(--Text-Text);
 }
 
 .pill__message {
-  color: #1b1b1b;
+  color: var(--Text-Text);
   font-family: var(--Font-Primary);
   font-size: 13px;
   font-weight: 400;
