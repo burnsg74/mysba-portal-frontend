@@ -68,7 +68,6 @@ const AccountSetup1 = () => {
       navigate("/dashboard/new")
       return
     }
-
     const url = `${BASE_API_URL}portal/user/`;
     let accessToken: string | AccessToken | null | undefined = null;
     if (authState && "accessToken" in authState) {

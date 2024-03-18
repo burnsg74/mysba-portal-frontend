@@ -5,8 +5,10 @@ import { getUser, setUser } from "src/store/user/userSlice";
 import Field from "src/components/Field/Field";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
-import styles from "src/pages/Businesses/Businesses.module.css";
+import { AccessToken } from "@okta/okta-auth-js";
+import { useOktaAuth } from "@okta/okta-react";
 import { formatEin, formatUei } from "src/utils/formatter";
+import styles from "src/pages/Businesses/Businesses.module.css";
 
 const Businesses = () => {
   const user: IUser = useSelector(getUser);
@@ -14,6 +16,8 @@ const Businesses = () => {
   const [showDetails, setShowDetails] = useState(false);
   const [showFetchError, setShowFetchError] = useState(false);
   const { t } = useTranslation();
+  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
+  const { authState } = useOktaAuth();
 
   useEffect(() => {
     const fetchBusinesses = async () => {
@@ -21,11 +25,22 @@ const Businesses = () => {
         setShowFetchError(false);
         const email = user?.profile?.crm?.email;
         const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
-        const res = await axios.get(`${BASE_API_URL}business/${email}`);
+        let accessToken: string | AccessToken | null | undefined;
+        if (authState && "accessToken" in authState) {
+          accessToken = authState.accessToken?.accessToken;
+        } else {
+          accessToken = undefined;
+        }
+        const res = await axios.get(`${BASE_API_URL}business/${email}`, {
+          headers: { Authorization: "Bearer " + accessToken },
+        });
+
         res.data.forEach((business: IBusiness) => {
           business.ein = formatEin(business.ein);
           business.uei = formatUei(business.uei);
-          business.business_phone_number = formatPhoneNumber(business.business_phone_number);
+          business.business_phone_number = formatPhoneNumber(
+            business.business_phone_number
+          );
         });
         const updatedUser = { ...user, businesses: res.data };
         dispatch(setUser(updatedUser));
@@ -140,15 +155,19 @@ const Businesses = () => {
                       <Field
                         label="Mailing Address"
                         value={[
-                          <div key="street1">{business.mailing_address_street}</div>,
-                          `${business.mailing_address_city}, ${business.mailing_address_state} ${business.mailing_address_zipcode}`
+                          <div key="street1">
+                            {business.mailing_address_street}
+                          </div>,
+                          `${business.mailing_address_city}, ${business.mailing_address_state} ${business.mailing_address_zipcode}`,
                         ]}
                       />
                       <Field
                         label="Business Address"
                         value={[
-                          <div key="street2">{business.business_address_street}</div>,
-                          `${business.business_address_city}, ${business.business_address_state} ${business.business_address_zipcode}`
+                          <div key="street2">
+                            {business.business_address_street}
+                          </div>,
+                          `${business.business_address_city}, ${business.business_address_state} ${business.business_address_zipcode}`,
                         ]}
                       />
                       <Field
@@ -157,15 +176,24 @@ const Businesses = () => {
                       />
                       <Field label="Email" value={business.email} />
                       <Field label="Website" value={business.website} />
-                      <Field label="Legal Structure" value={business.legal_entity} />
-                      <Field label="Ownership Type" value={business.ownership_type} />
+                      <Field
+                        label="Legal Structure"
+                        value={business.legal_entity}
+                      />
+                      <Field
+                        label="Ownership Type"
+                        value={business.ownership_type}
+                      />
 
                       <div className={`${styles["subheader-padding"]}`}>
                         <div className={`${styles["subheader"]}`}>
                           {t("Products and Services")}
                         </div>
                       </div>
-                      <Field label="Capabilities Narrative" value={business.capabilities_narrative} />
+                      <Field
+                        label="Capabilities Narrative"
+                        value={business.capabilities_narrative}
+                      />
                       <Field label="NAICS Codes" value={business.naics_codes} />
                     </>
                   ) : (

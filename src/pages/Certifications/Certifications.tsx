@@ -7,7 +7,11 @@ import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
 import CardCertification from "src/components/CardCertification/CardCertification";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
+import { AccessToken } from "@okta/okta-auth-js";
+import { useOktaAuth } from "@okta/okta-react";
 import styles from "src/pages/Certifications/Certifications.module.css";
+
+const { authState } = useOktaAuth();
 
 type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";
 
@@ -20,15 +24,24 @@ const Certifications = () => {
   >();
   const { t } = useTranslation();
   const dispatch = useDispatch();
+  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
 
   useEffect(() => {
     const fetchCertifications = async () => {
       try {
         setShowFetchError(false);
         const email = user?.profile?.crm?.email;
-        const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
+        let accessToken: string | AccessToken | null | undefined;
+        if (authState && "accessToken" in authState) {
+          accessToken = authState.accessToken?.accessToken;
+        } else {
+          accessToken = undefined;
+        }
         const res = await axios.get(
-          `${BASE_API_URL}certification/wosb/${email}`
+          `${BASE_API_URL}certification/wosb/${email}`,
+          {
+            headers: { Authorization: "Bearer " + accessToken },
+          }
         );
         const updatedUser = { ...user, certifications: res.data };
         dispatch(setUser(updatedUser));
@@ -140,7 +153,10 @@ const Certifications = () => {
               {user.certifications &&
                 user.certifications.map((certification, index) => (
                   <React.Fragment key={index}>
-                    <CardCertification certification={certification}  index={index+1}/>
+                    <CardCertification
+                      certification={certification}
+                      index={index + 1}
+                    />
                   </React.Fragment>
                 ))}
             </div>
