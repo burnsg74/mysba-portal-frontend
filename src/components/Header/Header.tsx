@@ -203,7 +203,7 @@ const Header = () => {
           <div className={`grid-col ${styles["left"]}`}></div>
           <div className={`grid-col-auto ${styles["right"]}`}>
             <div
-              className={`usa-language-container ${styles["usa-language-container"]}`}
+              className={`usa-language-container ${showNav ? styles["usa-language-container"] : ''}`}
             >
               <button
                 type="button"
