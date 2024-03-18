@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "src/pages/AccountSetup1/AccountSetup1.module.css";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -17,7 +17,9 @@ const AccountSetup1 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [allowNotice, setAllowNotice] = useState<boolean>(false);
+  const { authState } = useOktaAuth();
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
+  const portal_user_url = `${BASE_API_URL}portal/user/`;
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAllowNotice(event.target.checked);
@@ -34,17 +36,17 @@ const AccountSetup1 = () => {
       };
     }
 
-    const { oktaAuth, authState } = useOktaAuth();
-    const url = `${BASE_API_URL}portal/user/`;
-    let accessToken: string | AccessToken | null | undefined = null;
+    let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
-      accessToken =authState.accessToken?.accessToken;
+      accessToken = authState.accessToken?.accessToken;
     } else {
       accessToken = undefined;
     }
     axios
-      .post( url, portalProfile,{headers: { Authorization: "Bearer " + accessToken}})
-      .then(response => {
+      .post(portal_user_url, portalProfile, {
+        headers: { Authorization: "Bearer " + accessToken },
+      })
+      .then(() => {
         let newUser = {
           ...user,
           profile: {
@@ -53,7 +55,6 @@ const AccountSetup1 = () => {
           },
         };
         dispatch(setUser(newUser));
-        console.log(response.data);
       })
       .catch(error => {
         console.log(error);
