@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import CardBusiness from "src/components/CardBusiness/CardBusiness";
 import OpenSignImage from "src/assets/open-sign.png";
 import axios from "axios";
+import { AccessToken } from "@okta/okta-auth-js";
+import { useOktaAuth } from "@okta/okta-react";
 
 const AccountSetup1 = () => {
   const { t } = useTranslation();
@@ -15,6 +17,7 @@ const AccountSetup1 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [allowNotice, setAllowNotice] = useState<boolean>(false);
+  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAllowNotice(event.target.checked);
@@ -31,11 +34,16 @@ const AccountSetup1 = () => {
       };
     }
 
+    const { oktaAuth, authState } = useOktaAuth();
+    const url = `${BASE_API_URL}portal/user/`;
+    let accessToken: string | AccessToken | null | undefined = null;
+    if (authState && "accessToken" in authState) {
+      accessToken =authState.accessToken?.accessToken;
+    } else {
+      accessToken = undefined;
+    }
     axios
-      .post(
-        "https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user",
-        portalProfile
-      )
+      .post( url, portalProfile,{headers: { Authorization: "Bearer " + accessToken}})
       .then(response => {
         let newUser = {
           ...user,
@@ -100,6 +108,7 @@ const AccountSetup1 = () => {
                     <CardCertification
                       certification={certification}
                       showDetails={false}
+                      index={index + 1}
                     />
                   </React.Fragment>
                 ))}
