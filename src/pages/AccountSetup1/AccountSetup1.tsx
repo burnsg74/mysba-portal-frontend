@@ -79,7 +79,6 @@ const AccountSetup1 = () => {
               {t(
                 "This information has been linked via your existing certification."
               )}
-              <br />
               {t("To make changes please edit this in:")}{" "}
               <a
                 rel="noreferrer"
