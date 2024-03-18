@@ -3,7 +3,7 @@ import LogoImage from "src/assets/logo-sm.svg";
 import VideoImage from "src/assets/video.png";
 import ArrowNextImage from "src/assets/arrow-next.svg";
 import styles from "src/components/LearningCenterCard/LearningCenterCard.module.css";
-import {useTranslation} from 'react-i18next';
+import { useTranslation } from "react-i18next";
 
 interface LearningCenter {
   title: string;
@@ -24,7 +24,7 @@ interface LearningCenterCardProps {
 const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
   learningCenter,
 }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   return (
     <div className={`${styles["usa-card__container"]}`}>
       {/* Header */}
@@ -71,52 +71,50 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
       />
 
       {/* Body */}
-      <div className={`${styles["usa-card__body"]}`}>
-        <div className={`${styles["title_container"]}`}>
-          <div className={`${styles["title"]}`}>{learningCenter.title}</div>
-          <div className={`${styles["description"]}`}>
-            {learningCenter.description}
-          </div>
+      <div className={`${styles["title_container"]}`}>
+        <div className={`${styles["title"]}`}>{learningCenter.title}</div>
+        <div className={`${styles["description"]}`}>
+          {learningCenter.description}
         </div>
-        {/* List of Videos */}
-        {learningCenter.videos.map((video, index) => (
-          <React.Fragment key={index}>
-            <div className={`${styles["video-container"]}`}>
-              <a
-                href={video.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`${styles["video-href"]}`}
-              >
-                <div className={` ${styles["video-row"]}`}>
-                  <div className={` ${styles["video-row__image"]}`}>
-                    <img
-                      src={VideoImage}
-                      alt="Video Icon"
-                      className={`${styles["video-icon"]}`}
-                    />
+      </div>
+      {/* List of Videos */}
+      {learningCenter.videos.map((video, index) => (
+        <React.Fragment key={index}>
+          <div className={`${styles["video-container"]}`}>
+            <a
+              href={video.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`${styles["video-href"]}`}
+            >
+              <div className={` ${styles["video-row"]}`}>
+                <div className={` ${styles["video-row__image"]}`}>
+                  <img
+                    src={VideoImage}
+                    alt="Video Icon"
+                    className={`${styles["video-icon"]}`}
+                  />
+                </div>
+                <div>
+                  <div className={`${styles["video-title"]}`}>
+                    {video.title}
                   </div>
-                  <div>
-                    <div className={`${styles["video-title"]}`}>
-                      {video.title}
-                    </div>
-                    <div className={`${styles["video-subtitle"]}`}>
-                      {video.description}
-                    </div>
-                  </div>
-                  <div className={`${styles["video-right"]}`}>
-                    <img
-                      src={ArrowNextImage}
-                      alt="Next Icon"
-                      className={`${styles["next-icon"]}`}
-                    />
+                  <div className={`${styles["video-subtitle"]}`}>
+                    {video.description}
                   </div>
                 </div>
-              </a>
-            </div>
-          </React.Fragment>
-        ))}
-      </div>
+                <div className={`${styles["video-right"]}`}>
+                  <img
+                    src={ArrowNextImage}
+                    alt="Next Icon"
+                    className={`${styles["next-icon"]}`}
+                  />
+                </div>
+              </div>
+            </a>
+          </div>
+        </React.Fragment>
+      ))}
       <div className={`usa-card__footer ${styles["usa-card__footer"]}`}>
         <button
           type="button"
