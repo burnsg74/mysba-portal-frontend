@@ -24,13 +24,13 @@ const Businesses = () => {
       try {
         setShowFetchError(false);
         const email = user?.profile?.crm?.email;
-        const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
         let accessToken: string | AccessToken | null | undefined;
         if (authState && "accessToken" in authState) {
           accessToken = authState.accessToken?.accessToken;
         } else {
           accessToken = undefined;
         }
+        console.log("accessToken", accessToken);
         const res = await axios.get(`${BASE_API_URL}business/${email}`, {
           headers: { Authorization: "Bearer " + accessToken },
         });
