@@ -9,14 +9,14 @@
 
 .title {
   flex-grow: 1;
-  font-family: var(--Font-Primary);
+  font-family: var(--Font-Secondary);
   font-weight: 400;
   color: #002e6d;
-  font-size: 40px;
+  font-size: 32px;
   letter-spacing: 0;
-  line-height: 120%;
+  line-height: 38px;
   margin-top: 40px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 }
 
 .subtitle {
@@ -24,7 +24,9 @@
   font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;
-  line-height: 120%;
+  line-height: 26px;
+  margin-top: 21px;
+  margin-bottom: 21px;
 }
 .subheader {
   color: var(--Brand-Primary-SBA-Blue);
@@ -61,17 +63,6 @@
 
 .usa-card__text-center:first-child{
   text-align:start;
-}
-
-.subtitle {
-  font-family: var(--Font-Secondary);
-  font-weight: 400;
-  color: #002e6d;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: 24px;
-  margin-top: 20px;
-  margin-bottom: 24px;
 }
 
 .badge {
