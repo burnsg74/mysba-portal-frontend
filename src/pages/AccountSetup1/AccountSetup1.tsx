@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import styles from "src/pages/AccountSetup1/AccountSetup1.module.css";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import CardBusiness from "src/components/CardBusiness/CardBusiness";
 import OpenSignImage from "src/assets/open-sign.png";
 import axios from "axios";
+import { AccessToken } from "@okta/okta-auth-js";
+import { useOktaAuth } from "@okta/okta-react";
 
 const AccountSetup1 = () => {
   const { t } = useTranslation();
@@ -15,6 +17,9 @@ const AccountSetup1 = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [allowNotice, setAllowNotice] = useState<boolean>(false);
+  const { authState } = useOktaAuth();
+  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
+  const portal_user_url = `${BASE_API_URL}portal/user/`;
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAllowNotice(event.target.checked);
@@ -31,12 +36,17 @@ const AccountSetup1 = () => {
       };
     }
 
+    let accessToken: string | AccessToken | null | undefined;
+    if (authState && "accessToken" in authState) {
+      accessToken = authState.accessToken?.accessToken;
+    } else {
+      accessToken = undefined;
+    }
     axios
-      .post(
-        "https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user",
-        portalProfile
-      )
-      .then(response => {
+      .post(portal_user_url, portalProfile, {
+        headers: { Authorization: "Bearer " + accessToken },
+      })
+      .then(() => {
         let newUser = {
           ...user,
           profile: {
@@ -45,7 +55,6 @@ const AccountSetup1 = () => {
           },
         };
         dispatch(setUser(newUser));
-        console.log(response.data);
       })
       .catch(error => {
         console.log(error);
@@ -100,6 +109,7 @@ const AccountSetup1 = () => {
                     <CardCertification
                       certification={certification}
                       showDetails={false}
+                      index={index + 1}
                     />
                   </React.Fragment>
                 ))}

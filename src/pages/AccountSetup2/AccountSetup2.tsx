@@ -7,6 +7,8 @@ import { setNav } from "src/store/showNav/showNavSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getUser, setUser } from "src/store/user/userSlice";
+import { AccessToken } from "@okta/okta-auth-js";
+import { useOktaAuth } from "@okta/okta-react";
 
 interface IUser {
   profile?: object;
@@ -29,6 +31,8 @@ const AccountSetup1 = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
+  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
+  const { oktaAuth, authState } = useOktaAuth();
 
   const [state, setState] = useState({
     planningNewBusiness: false,
@@ -60,16 +64,19 @@ const AccountSetup1 = () => {
         ...state,
       };
     }
-    console.log("portalProfile", portalProfile);
     if (user?.profile?.crm?.email === "emilyj@email.com") {
       navigate("/dashboard/new")
       return
     }
+    const url = `${BASE_API_URL}portal/user/`;
+    let accessToken: string | AccessToken | null | undefined = null;
+    if (authState && "accessToken" in authState) {
+      accessToken =authState.accessToken?.accessToken;
+    } else {
+      accessToken = undefined;
+    }
     axios
-      .post(
-        "https://gsyoehtdjf.execute-api.us-east-1.amazonaws.com/dev/portal/user",
-        portalProfile
-      )
+      .post( url, portalProfile,{headers: { Authorization: "Bearer " + accessToken}})
       .then(response => {
         let newUser = {
           ...user,
