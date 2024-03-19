@@ -120,6 +120,8 @@
   display: flex;
   box-sizing:border-box;
   justify-content: space-between;
+  background: #FFF;
+  box-shadow: 0 -5px 20px 0 rgba(0, 46, 109, 0.10);
 }
 
 .footer-btn {
