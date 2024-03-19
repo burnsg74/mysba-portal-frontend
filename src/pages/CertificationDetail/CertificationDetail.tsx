@@ -88,7 +88,7 @@ const CertificationDetail = () => {
             </svg>
           </button>
         </div>
-        {certification.days_until_expiry === 0 ? (
+        {certification.days_until_expiry <= 0 ? (
           <Alert
             type={"error"}
             message={t("Your {{certification_type}} certification has expired", {
@@ -140,9 +140,7 @@ const CertificationDetail = () => {
           </div>
 
           {/* Certifications Pills */}
-          {certification.days_until_expiry === -1 ? (
-            <Pill type={"in-progress"} message={"In progress"} />
-          ) : certification.days_until_expiry === 0 ? (
+          {certification.days_until_expiry <= 0 ? (
             <Pill type={"error"} message={`Expired`} />
           ) : certification.days_until_expiry <= 90 ? (
             <Pill
@@ -155,7 +153,7 @@ const CertificationDetail = () => {
         </div>
 
         {/* Expired Cert Help*/}
-        {certification.days_until_expiry === 0 && (
+        {certification.days_until_expiry <= 0 && (
           <>
             <div className={`${styles["expired-help__container"]}`}>
               <div className={`${styles["expired-help__header"]}`}>

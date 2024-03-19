@@ -39,7 +39,7 @@ const Dashboard = () => {
               user.certifications.map((certification, index) => {
                 return (
                   <React.Fragment key={index}>
-                    {certification.days_until_expiry === 0 ? (
+                    {certification.days_until_expiry <= 0 ? (
                       <div className={`${styles["alert__container"]}`}>
                       <Alert
                         key={index}

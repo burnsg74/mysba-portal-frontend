@@ -63,9 +63,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
         <div className={`${styles["usa-card__body"]}`}>
           <div className={`grid-row sba-blue ${styles["usa-card__row"]}`}>
             {/* Certifications Pills */}
-            {certification.days_until_expiry === -1 ? (
-              <Pill type={"in-progress"} message={t("In progress")} />
-            ) : certification.days_until_expiry === 0 ? (
+            {certification.days_until_expiry <= 0 ? (
               <Pill type={"error"}  message={t("Expired")} />
             ) : certification.days_until_expiry <= 90 ? (
               <Pill

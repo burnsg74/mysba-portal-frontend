@@ -22,12 +22,13 @@
 }
 
 .alert__message {
-  padding-left: 16px;
+  color: var(--Text-Text);
   font-family: var(--Font-Secondary);
   font-size: 16px;
   font-weight: 400;
+  padding-left: 16px;
+  padding-top: 4px;
   text-align: left;
-  color: var(--Text-Text);
 }
 
 .alert-info {
