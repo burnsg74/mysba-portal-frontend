@@ -3,7 +3,6 @@ import styles from "src/pages/AccountSetup2/AccountSetup2.module.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import CheckListImage from "src/assets/check-list.png";
-import { setNav } from "src/store/showNav/showNavSlice";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { getUser, setUser } from "src/store/user/userSlice";
@@ -47,7 +46,6 @@ const AccountSetup1 = () => {
   });
 
   const handleContinueBtnClick = () => {
-    dispatch(setNav(true));
 
     interface UserProfile {
       portal: object;
@@ -91,14 +89,20 @@ const AccountSetup1 = () => {
       .catch(error => {
         console.log(error);
       });
-
-    navigate("/dashboard/new");
+      function isSmallWindow() {
+        return window.innerWidth < 768;
+      }
+      if (isSmallWindow()) {
+        navigate("/account-setup/3");
+      } else{
+        navigate("/dashboard/new");
+      }
   };
   const handleBackBtnClick = () => {
     navigate("/account-setup/1");
   };
   const handleSkipBtnClick = () => {
-    dispatch(setNav(true));
+    
     navigate("/dashboard");
   };
 
