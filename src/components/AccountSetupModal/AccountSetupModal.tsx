@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import styles from "src/components/AccountSetupModal/AccountSetupModal.module.css";
 import { useTranslation } from "react-i18next";
 import lightBulbImg from "src/assets/lightbulb.png";
-import Header from "src/components/Header/Header"
 import { useNavigate } from "react-router-dom"
 interface AccountSetupModalProps {
   showModal?: boolean;
@@ -45,11 +44,11 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
         <>
           <div className={`${styles["overlay"]}`} />
           <div className={`${styles["container"]}`}>
-            <div className={`grid-row ${styles["mobile-only"]}`}>
-              <div className="grid-col">
-                <Header />
-              </div>
-            </div>
+            {/*<div className={`grid-row ${styles["mobile-only"]}`}>*/}
+            {/*  <div className="grid-col">*/}
+            {/*    <Header />*/}
+            {/*  </div>*/}
+            {/*</div>*/}
             <div className={`${styles["header"]} ${styles["desktop-only"]}`}>
               <span
                 className={`${styles["header__close"]}`}

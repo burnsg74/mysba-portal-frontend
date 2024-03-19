@@ -5,6 +5,7 @@ import ArrowNextImage from "src/assets/arrow-next.svg";
 import styles from "src/components/LearningCenterCard/LearningCenterCard.module.css";
 import { useTranslation } from "react-i18next";
 
+
 interface LearningCenter {
   title: string;
   description: string;
