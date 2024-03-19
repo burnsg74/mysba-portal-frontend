@@ -7,15 +7,17 @@
   display: flex;
   flex-direction: column;
   justify-content:center;
-  width: 730px;
+  align-items:center;
+  width:100%;
   max-width: 650px;
 }
 
-@media screen and (max-width: 670px) {
+@media screen and (max-width: 700px) {
   .container{
     padding-right:20px;
     padding-left:20px;
   }
+
 }
 
 .header {
@@ -24,6 +26,8 @@
   align-items: center;
   text-align: center;
   margin-top:75px;
+  width:100%;
+  max-width:600px;
 }
 
 .open-sign {
@@ -40,7 +44,6 @@
   font-size: 32px;
   margin-bottom: 20px;
   margin-top:20px;
-  max-width:460px;
 }
 
 .subtitle {
@@ -48,14 +51,16 @@
   font-family: var(--Font-Primary);
   font-weight: 400;
   font-size: 22px;
-  max-width:650px;
+  width:100%;
+  text-align:center;
 }
 
 .content {
   display:flex;
   flex-direction:column;
   justify-content:center;
-  max-width: 600px;
+  width: 100%;
+  max-width:600px;
   margin-bottom:50px;
 }
 
@@ -136,9 +141,10 @@ input[type="checkbox"]:focus {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 24px 16px 24px 16px;
   gap:16px;
-  margin-right:25px;
+  width:100%;
+  max-width:369px;
+  padding:24px 16px;
 }
 
 @media screen and (max-width: 500px) {
@@ -147,7 +153,15 @@ input[type="checkbox"]:focus {
   }
 }
 
-.button-row, .skip-button-row {
+
+.button-row {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap:16px;
+}
+
+.skip-button-row {
   display: flex;
   justify-content: center;
   width: 100%;
@@ -209,6 +223,7 @@ input[type="checkbox"]:focus {
 
 .usa-button {
   width:160px;
+  margin-right:0px;
 }
 
 .skip-button {
@@ -225,7 +240,6 @@ input[type="checkbox"]:focus {
 
 .skip-button-row {
   margin-top: 16px;
-  margin-right:10px;
 }
 
 .skip-button:hover,

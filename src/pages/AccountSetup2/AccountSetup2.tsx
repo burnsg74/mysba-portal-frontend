@@ -115,12 +115,12 @@ const AccountSetup1 = () => {
             <div className={`${styles["title"]}`}>
               {t("Tell us a little about your business.")}
             </div>
-            <div className={`${styles["subtitle"]}`}>
+          </div>
+          <div className={`${styles["subtitle"]}`}>
               {t(
                 "The SBA is here to help at any stage of your business. Answering these questions helps us serve you content more relevant to your needs."
               )}
             </div>
-          </div>
           <div className={`${styles["content"]}`}>
             <div className={`${styles["section_label"]}`}>
               {t("In the current stage of my business I am")}...
