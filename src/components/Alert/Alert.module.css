@@ -1,7 +1,6 @@
 .alert__container {
   position: relative;
   display: flex;
-  align-items: center;
   padding: 8px 16px 8px 14px;
 }
 
