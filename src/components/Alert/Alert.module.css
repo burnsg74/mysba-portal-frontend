@@ -30,6 +30,14 @@
   color: var(--Text-Text);
 }
 
+.alert-info {
+  background: var(--Alert-Info-Background);
+}
+
+.alert-info::before {
+  background-color: var(--Alert-Info-Bar);
+}
+
 .alert-warning {
   background: var(--Alert-Warning-Background);
 }

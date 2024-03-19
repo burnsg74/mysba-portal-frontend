@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import styles from "src/components/CertApplyModal1/CertApplyModal1.module.css";
 import { useTranslation } from "react-i18next";
 import editPaperImg from "src/assets/edit-paper.png";
+import Alert from "src/components/Alert/Alert";
 
 interface CertApplyModal1ModalProps {
   onClose?: () => void;
@@ -87,15 +88,12 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
           <div className={`${styles["content__title"]}`}>
             {t("What kind of certification would you like to apply for?")}
           </div>
-          <div className={`usa-alert usa-alert--info usa-alert--slim ${styles.alertCustomContainer}`}>
-            <div className="usa-alert__body">
-              <p className="usa-alert__text">
-                {t(
-                  "Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software"
-                )}.
-              </p>
-            </div>
-          </div>
+          <Alert
+            message={t(
+              "Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software"
+            )}
+            type="info"
+          />
           <div>
             {/*/!* WOSB Cert *!/*/}
             {/*<div className={`usa-card__container ${styles["card__container"]}`}>*/}

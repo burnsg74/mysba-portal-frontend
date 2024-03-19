@@ -20,6 +20,8 @@
   --Primary-primary-darker: #162e51;
 
   /* Alert Colors */
+  --Alert-Info-Bar: #007DBC;
+  --Alert-Info-Background: #D1EBFF;
   --Alert-In-Progress-Bar: #007dbc;
   --Alert-In-Progress-Background: #d1ebff;
   --Alert-Valid-Bar: #197e4e;

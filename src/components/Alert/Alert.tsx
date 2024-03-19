@@ -3,12 +3,12 @@ import styles from "src/components/Alert/Alert.module.css";
 
 interface IAlertProps {
   message: string;
-  type: "success" | "error" | "warning";
+  type: "success" | "error" | "warning" | "info" ;
 }
 
 const Alert: React.FC<IAlertProps> = ({ message, type }) => {
-  return (
 
+  return (
     <div className={`${styles["alert__container"]} ${styles["alert-" + type]}`}>
       <svg
         className={`usa-icon ${styles["alert__icon"]}`}
