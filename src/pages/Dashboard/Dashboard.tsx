@@ -8,6 +8,7 @@ import styles from "src/pages/Dashboard/Dashboard.module.css";
 import AccountSetupModal from "src/components/AccountSetupModal/AccountSetupModal";
 import Alert from "src/components/Alert/Alert";
 import {useTranslation} from 'react-i18next';
+import { formatDate } from "src/utils/formatter";
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
@@ -37,6 +38,7 @@ const Dashboard = () => {
             {/* Certifications Alerts */}
             {user.certifications &&
               user.certifications.map((certification, index) => {
+                const expiration_date = formatDate(certification.expiration_date,'MM/DD/YYYY');
                 return (
                   <React.Fragment key={index}>
                     {certification.days_until_expiry <= 0 ? (
@@ -44,7 +46,7 @@ const Dashboard = () => {
                       <Alert
                         key={index}
                         type={"error"}
-                        message={t('Your {{certification_type}} certification has expired',{ certification_type: t(certification.certification_type) })}
+                        message={t('Your Women-Owned Small Business certification has expired')}
                       />
                       </div>
                     ) : certification.days_until_expiry <= 90 ? (
@@ -52,7 +54,7 @@ const Dashboard = () => {
                           <Alert
                             key={index}
                             type="warning"
-                            message={t('Your {{certification_type}} certification must be renewed by {{expire_at}}', { certification_type:  t(certification.certification_type), expire_at: certification.expiration_date })}
+                            message={t('Your Women-Owned Small Business certification must be renewed by') + " " + expiration_date}
                           />
                         </div>
                     ) : null}
