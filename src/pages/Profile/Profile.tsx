@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import { useTranslation } from "react-i18next";
 import styles from "src/pages/Profile/Profile.module.css";
+import Field from "src/components/Field/Field";
 
 const Profile = () => {
   const { t } = useTranslation();
@@ -17,30 +18,18 @@ const Profile = () => {
   return (
     <div className="grid-row">
       <div className={`grid-col ${styles["container"]}`}>
-        <h1 className={`${styles["profile-name"]}`}>
+        <div className={`${styles["profile-name"]}`}>
           {profileData?.profile?.crm?.first_name +
             " " +
             profileData?.profile?.crm?.last_name}
-        </h1>
-        <h2 className={`${styles["profile-subheading"]}`}>
+        </div>
+        <div className={`${styles["profile-subheading"]}`}>
           {t("Contact Information")}
-        </h2>
-        <div className={`${styles["profile-label"]}`}>{t("Email")}</div>
-        <div className={`${styles["profile-info"]}`}>
-          {profileData?.profile?.crm?.email}
         </div>
-        <div className={`${styles["divider"]}`} />
-        <div className={`${styles["profile-label"]}`}>{t("First Name")}</div>
-        <div className={`${styles["profile-info"]}`}>
-          {profileData?.profile?.crm?.first_name}
-        </div>
-        <div className={`${styles["divider"]}`} />
-        <div className={`${styles["profile-label"]}`}>{t("Last Name")}</div>
-        <div className={`${styles["profile-info"]}`}>
-          {profileData?.profile?.crm?.last_name}
-        </div>
-        <div className={`${styles["divider"]}`} />
-        <div className={`usa-checkbox ${styles["checkbox"]}`}>
+        <Field label="Email" value= {profileData.profile?.crm?.email}/>
+        <Field label="First Name" value= {profileData.profile?.crm?.first_name}/>
+        <Field label="Last Name" value= {profileData.profile?.crm?.last_name}/>
+        <div className={`${styles["checkbox__container"]}`}>
           <input
             id="allow_notice"
             type="checkbox"

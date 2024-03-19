@@ -9,25 +9,24 @@
 .usa-button {
   margin-top: 24px;
 }
+
 .container {
   margin: 40px;
 }
 
 .profile-name {
-  flex-grow: 1;
   font-family: var(--Font-Primary);
   font-weight: 400;
   color: var(--Brand-Primary-SBA-Blue);
   font-size: 40px;
-  letter-spacing: 0;
   line-height: 120%;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
 }
 
 .profile-subheading {
   color: var(--Brand-Primary-SBA-Blue);
   font-size: 22px;
-  font-family: var(--Font-Secondary);
+  font-family: var(--Font-Primary);
   font-weight: 400;
   line-height: 120%;
 }
@@ -39,7 +38,7 @@
   font-weight: 600;
   line-height: 21px;
   padding-top: 16px;
-  padding-bottom:4px;
+  padding-bottom: 4px;
 }
 
 .profile-info {
@@ -56,7 +55,7 @@
   font-family: var(--Font-Primary);
   font-weight: 400;
   word-wrap: break-word;
-  margin-left:25px;
+  margin-left: 25px;
 }
 
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
@@ -64,31 +63,52 @@
   border-color: #007dbc;
 }
 
-.usa-checkbox__label {
-  padding-left: 45px;
+.usa-checkbox__label::before {
+  width: 24px;
+  height: 24px;
 }
 
-.checkbox{ 
+.usa-checkbox__label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 49px;
+  margin-top: unset;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.checkbox {
   padding-bottom: 41px;
   padding-left: 15px;
 }
 
+.checkbox__container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-self: stretch;
+  margin-top: 31px;
+}
+
 .divider {
-  border-top: 1px solid #DCDEE0;
+  border-top: 1px solid #dcdee0;
   padding-top: 16px;
-  margin-top:16px;
+  margin-top: 16px;
 }
 
 .divider:last-child {
-  border-top: 1px solid #DCDEE0;
+  border-top: 1px solid #dcdee0;
   padding-top: 16px;
   padding-bottom: 31px;
 }
 
 .button-style {
-  margin-top:24px;
-  padding: 12px 20px; 
-  background-color: #D54309;
+  margin-top: 24px;
+  padding: 12px 20px;
+  background-color: #d54309;
   border-radius: 4px;
   overflow: hidden;
   display: inline-flex;
@@ -96,8 +116,8 @@
   justify-content: flex-start;
   align-items: center;
   gap: 10px;
-  border: none; 
-  cursor: pointer; 
+  border: none;
+  cursor: pointer;
 }
 
 .button-style .button-text {
