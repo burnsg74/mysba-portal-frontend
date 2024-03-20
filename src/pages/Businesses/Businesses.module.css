@@ -25,8 +25,12 @@
   font-size: 22px;
   font-weight: 400;
   line-height: 26px;
-  margin-top: 21px;
-  margin-bottom: 21px;
+
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 .subheader {
   color: var(--Brand-Primary-SBA-Blue);
@@ -90,9 +94,7 @@
 
 .card__header {
   background: rgba(165, 198, 224, 0.2);
-  margin-left: 5px;
-  margin-top: 5px;
-  margin-right: 5px;
+  margin: 21px 5px;
 }
 
 .card__text {
