@@ -48,6 +48,7 @@ interface ICertification {
   days_until_expiry: number;
   company_name: string;
   owner: string;
+  naics_codes: string;
 }
 
 interface IUser {

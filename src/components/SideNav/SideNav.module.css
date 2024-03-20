@@ -18,14 +18,15 @@
 }
 
 .row {
-  display: flex;
-  padding-bottom: 4px;
   align-items: center;
-  gap: 10px;
   align-self: stretch;
   border-bottom: 1px solid var(--Base-base-lighter);
-  text-decoration: none;
   color: inherit;
+  display: flex;
+  gap: 10px;
+  padding-bottom: 2px;
+  padding-top: 2px;
+  text-decoration: none;
 }
 
 .col__bar {

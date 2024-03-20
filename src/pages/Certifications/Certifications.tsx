@@ -83,18 +83,13 @@ const Certifications = () => {
           user.certifications.map((certification, index) => {
             return (
               <React.Fragment key={index}>
-                {certification.days_until_expiry === 0 ? (
+                {certification.days_until_expiry <= 0 ? (
                   <div className={`${styles["alert-container"]}`}>
                     <Alert
                       key={index}
                       type={"error"}
                       message={t(
-                        "Your {{certification_type}} certification has expired",
-                        {
-                          certification_type: t(
-                            certification.certification_type
-                          ),
-                        }
+                        "Your Women-Owned Small Business certification has expired"
                       )}
                     />
                   </div>
@@ -104,11 +99,8 @@ const Certifications = () => {
                       key={index}
                       type={"warning"}
                       message={t(
-                        "Your {{certification_type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
+                        "Your Women-Owned Small Business certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
                         {
-                          certification_type: t(
-                            certification.certification_type
-                          ),
                           days_until_expiry: certification.days_until_expiry,
                           expire_at: certification.expiration_date,
                         }

@@ -196,3 +196,8 @@
 .usa-card__body {
   padding: 12px 20px 18px 20px;
 }
+
+.alert-container {
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
