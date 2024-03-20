@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
 import { setNav } from "src/store/showNav/showNavSlice";
 import lightBulbImg from "src/assets/lightbulb.png";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 interface AccountSetupModalProps {
   showModal?: boolean;
 }
@@ -14,6 +14,7 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
 }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation()
   const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(showModal);
   function isSmallWindow() {
@@ -21,12 +22,18 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
   }
   const handleResize = () => {
     if (isSmallWindow()) {
+      console.log("removeEventListener; navigate account setup 3")
+      window.removeEventListener("resize", handleResize);
       navigate("/account-setup/3");
     }
   };
   useEffect(() => {
-    handleResize();
-    window.addEventListener("resize", handleResize);
+    console.log("Pathname:", location.pathname)
+    if (location.pathname === "/dashboard/new") {
+      handleResize();
+      console.log("addEventListener;")
+      window.addEventListener("resize", handleResize);
+    }
     return;
   }, []);
 
@@ -40,6 +47,8 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter" || event.key === " ") {
+      console.log("removeEventListener;")
+      window.removeEventListener("resize", handleResize);
       dispatch(setNav(true));
       setModalOpen(false);
     }
@@ -59,6 +68,7 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
                 tabIndex={0}
                 aria-label="Close modal"
                 onClick={() => {
+                  window.removeEventListener("resize", handleResize);
                   dispatch(setNav(true));
                   setModalOpen(false);
                 }}
@@ -92,8 +102,9 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
                 type="button"
                 className={`usa-button ${styles["footer-btn"]}`}
                 onClick={() => {
-                  dispatch(setNav(true));
+                  console.log("removeEventListener;")
                   window.removeEventListener("resize", handleResize);
+                  dispatch(setNav(true));
                   setModalOpen(false);
                   navigate("/dashboard");
                 }}

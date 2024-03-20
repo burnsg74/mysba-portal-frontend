@@ -19,15 +19,14 @@ const AccountSetup3 = () => {
   const handleResize = () => {  
     
     if (isLargeWindow() && location.pathname !== "/dashboard") {
-      console.log("navigate dashboard new")
+      console.log("removeEventListener; /dashboard/new")
+      window.removeEventListener("resize", handleResize);
       navigate("/dashboard/new");
     }
   };
   useEffect(() => {
-    console.log(location.pathname)
-    if (location.pathname === "/dashboard/new") {
+      console.log("addEventListener;")
       window.addEventListener("resize", handleResize);
-    }
     return
   }, []);
 
@@ -50,9 +49,9 @@ const AccountSetup3 = () => {
             type="button"
             className={`usa-button ${styles["footer-btn"]}`}
             onClick={() => {
-              dispatch(setNav(true));
-              console.log("remove event listener")
+              console.log("removeEventListener;")
               window.removeEventListener("resize", handleResize);
+              dispatch(setNav(true));
               navigate("/dashboard");
             }}
           >
