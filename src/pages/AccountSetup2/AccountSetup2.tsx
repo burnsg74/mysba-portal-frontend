@@ -4,6 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import CheckListImage from "src/assets/check-list.png";
 import { useDispatch, useSelector } from "react-redux";
+import { setNav } from "src/store/showNav/showNavSlice";
 import axios from "axios";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { AccessToken } from "@okta/okta-auth-js";
@@ -102,7 +103,7 @@ const AccountSetup1 = () => {
     navigate("/account-setup/1");
   };
   const handleSkipBtnClick = () => {
-    
+    dispatch(setNav(true));
     navigate("/dashboard");
   };
 
