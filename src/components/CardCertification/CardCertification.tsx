@@ -75,9 +75,11 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             ) : null}
 
             <div
-              className={`grid-col-auto text-center ${styles["usa-card__text-center"]}`}
+              className={`grid-col text-center ${styles["usa-card__text-center"]}`}
             >
+              <span  className={` ${styles["company_name__text"]}`}>
               {certification.company_name}
+              </span>
             </div>
             <div className={`grid-col-auto ${styles["usa-card__text-right"]}`}>{t('Expiration')}: {expiration_date}</div>
           </div>
