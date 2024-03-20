@@ -92,19 +92,15 @@ const CertificationDetail = () => {
           <Alert
             type={"error"}
             message={t(
-              "Your {{certification_type}} certification has expired",
-              {
-                certification_type: t(certification.certification_type),
-              }
+              "Your Women-Owned Small Business certification has expired"
             )}
           />
         ) : certification.days_until_expiry <= 90 ? (
           <Alert
             type={"warning"}
             message={t(
-              "Your {{certification_type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
+              "Your Women-Owned Small Business certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
               {
-                certification_type: t(certification.certification_type),
                 days_until_expiry: certification.days_until_expiry,
                 expire_at: expiration_date,
               }
