@@ -107,6 +107,10 @@
   background: var(--Success-success-lighter);
 }
 
+.expired-help__container a {
+  color: var(--Brand-Primary-SBA-Blue);
+}
+
 .expired-help__header {
   font-family: var(--Font-Secondary);
   font-size: 18px;
@@ -179,6 +183,7 @@
 .expired-help__message__body a {
   padding-right: 4px;
 }
+
 .expired-help__message__body svg {
   padding: 3px;
   height: 24px;
@@ -201,4 +206,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
+}
+
+.expired-help__launch-icon {
+  color: black;
+  fill: black;
 }
