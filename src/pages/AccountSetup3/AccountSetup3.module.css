@@ -1,0 +1,72 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 22px 20px;
+}
+
+.header {
+  height: 56px;
+  justify-content: flex-end;
+  padding: 16px 24px;
+  border-bottom: #e5e6e8 solid 1px;
+  display: flex;
+  align-items: center;
+}
+
+.header__close {
+  color: var(--SBA-CRM-text-text-light);
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 18px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.content {
+  flex-grow: 1;
+  padding-top: 24px;
+  padding-bottom: 24px;
+  gap: 48px;
+  text-align: center;
+}
+
+.content img {
+  padding-bottom: 16px;
+}
+
+.content__title {
+  font-family: var(--Font-Primary);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  text-align: center;
+  padding-bottom: 40px;
+  color: var(--Brand-Primary-SBA-Blue);
+}
+
+.content__message {
+  font-family: var(--Font-Primary);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: center;
+  color: var(--Brand-Primary-SBA-Blue);
+}
+
+.footer {
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 92px;
+  padding: 24px 16px;
+}
+
+.footer-btn {
+  width: 100%;
+}

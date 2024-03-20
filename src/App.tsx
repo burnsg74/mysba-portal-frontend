@@ -14,6 +14,7 @@ import ProtectedRoute from "./components/ProtectedRoute/ProtectedRoute";
 import CertificationDetail from "src/pages/CertificationDetail/CertificationDetail";
 import AccountSetup1 from "src/pages/AccountSetup1/AccountSetup1";
 import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
+import AccountSetup3 from "src/pages/AccountSetup3/AccountSetup3";
 import Layout from "src/components/Layout/Layout";
 import Error from "src/pages/Error/Error";
 import Callback from "src/pages/Callback/Callback";
@@ -70,6 +71,7 @@ const App: React.FC = () => {
             <Route path="/loading" element={<Loading />} />
             <Route path="/account-setup/1" element={<AccountSetup1 />} />
             <Route path="/account-setup/2" element={<AccountSetup2 />} />
+            <Route path="/account-setup/3" element={<AccountSetup3 />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/businesses" element={<Businesses />} />

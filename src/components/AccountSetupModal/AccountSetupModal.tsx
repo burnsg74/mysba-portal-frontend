@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "src/components/AccountSetupModal/AccountSetupModal.module.css";
 import { useTranslation } from "react-i18next";
+import { useDispatch } from "react-redux";
+import { setNav } from "src/store/showNav/showNavSlice";
 import lightBulbImg from "src/assets/lightbulb.png";
-import { useNavigate } from "react-router-dom"
+import { useLocation, useNavigate } from "react-router-dom";
 interface AccountSetupModalProps {
   showModal?: boolean;
 }
@@ -10,18 +12,26 @@ interface AccountSetupModalProps {
 const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
   showModal = false,
 }) => {
-  const navigate = useNavigate()
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const location = useLocation()
   const { t } = useTranslation();
   const [modalOpen, setModalOpen] = useState(showModal);
-  const [isVisible, setIsVisible] = useState(window.innerWidth > 760);
-
+  function isSmallWindow() {
+    return window.innerWidth < 768;
+  }
+  const handleResize = () => {
+    if (isSmallWindow()) {
+      window.removeEventListener("resize", handleResize);
+      navigate("/account-setup/3");
+    }
+  };
   useEffect(() => {
-    const handleResize = () => {
-      setIsVisible(window.innerWidth > 760); 
-    };
-
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    if (location.pathname === "/dashboard/new") {
+      handleResize();
+      window.addEventListener("resize", handleResize);
+    }
+    return;
   }, []);
 
   useEffect(() => {
@@ -34,6 +44,9 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter" || event.key === " ") {
+      console.log("removeEventListener;")
+      window.removeEventListener("resize", handleResize);
+      dispatch(setNav(true));
       setModalOpen(false);
     }
   };
@@ -44,11 +57,6 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
         <>
           <div className={`${styles["overlay"]}`} />
           <div className={`${styles["container"]}`}>
-            {/*<div className={`grid-row ${styles["mobile-only"]}`}>*/}
-            {/*  <div className="grid-col">*/}
-            {/*    <Header />*/}
-            {/*  </div>*/}
-            {/*</div>*/}
             <div className={`${styles["header"]} ${styles["desktop-only"]}`}>
               <span
                 className={`${styles["header__close"]}`}
@@ -56,7 +64,11 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
                 role="button"
                 tabIndex={0}
                 aria-label="Close modal"
-                onClick={() => setModalOpen(false)}
+                onClick={() => {
+                  window.removeEventListener("resize", handleResize);
+                  dispatch(setNav(true));
+                  setModalOpen(false);
+                }}
               >
                 {t("Close")}
                 <svg
@@ -86,7 +98,13 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
               <button
                 type="button"
                 className={`usa-button ${styles["footer-btn"]}`}
-                onClick={() => {setModalOpen(false); navigate("/dashboard")}}
+                onClick={() => {
+                  console.log("removeEventListener;")
+                  window.removeEventListener("resize", handleResize);
+                  dispatch(setNav(true));
+                  setModalOpen(false);
+                  navigate("/dashboard");
+                }}
               >
                 {t("All Done")}
               </button>
