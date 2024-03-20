@@ -75,6 +75,7 @@
     margin-right: 24px;
     width: 30px;
     height: 30px;
+    min-width: 30px;
 }
 
 .business__title {
