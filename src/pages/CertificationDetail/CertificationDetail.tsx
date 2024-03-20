@@ -246,11 +246,10 @@ const CertificationDetail = () => {
         />
         <Field label="Issue Date" value={issue_date ?? ""} />
         <Field label="Expiration Date" value={expiration_date ?? ""} />
-        {/*@TODO : Missing naics from data layer*/}
-        {/*<Field*/}
-        {/*  label="North American Industry Classification System"*/}
-        {/*  value={certification.naics ?? ""}*/}
-        {/*/>*/}
+        <Field
+          label="North American Industry Classification System"
+          value={certification.naics_codes ?? ""}
+        />
         <div className={`${styles["subtitle"]}`}>{t("Ownership")}</div>
         <Field label="Owner" value={certification.owner ?? ""} />
       </div>
