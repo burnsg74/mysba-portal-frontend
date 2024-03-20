@@ -496,3 +496,8 @@ a:hover,
 a:visited {
   text-decoration: none;
 }
+
+.sr-only {
+  position: absolute;
+  left: -9999px;
+}

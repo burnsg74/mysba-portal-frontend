@@ -10,18 +10,35 @@ const Loans = () => {
       <div className={`main-container`}>
         <div className="grid-row">
           <div className="grid-col">
-            <img src={Gears} className={`${styles["title__img"]}`}  alt="Title"/>
+            <img
+              src={Gears}
+              className={`${styles["title__img"]}`}
+              alt="Title"
+            />
           </div>
         </div>
         <div className="grid-row">
           <div className="grid-col">
-            <div className={`${styles["title"]}`}>{t('Under Construction')}</div>
+            <div className={`${styles["title"]}`}>
+              {t("Under Construction")}
+            </div>
           </div>
         </div>
         <div className="grid-row">
           <div className="grid-col">
             <div className={`sba-blue ${styles["title__text"]}`}>
-              {t('Linking your loans is currently under construction. Check back in our next release for loan functionality. To check on your loans please visit your')} <a href="https://lending.sba.gov" rel="noreferrer" target="_blank"> {t('loan portal')}</a>.
+              {t(
+                "Linking your loans is currently under construction. Check back in our next release for loan functionality. To check on your loans please visit your"
+              )}{" "}
+              <a
+                href="https://lending.sba.gov"
+                rel="noreferrer"
+                target="_blank"
+              >
+                {" "}
+                {t("loan portal")}
+              </a>
+              .
             </div>
           </div>
         </div>
@@ -35,8 +52,12 @@ const Loans = () => {
                   e.preventDefault();
                   window.open("https://lending.sba.gov", "_blank");
                 }}
+                aria-label={`${t('View MySBA Loan Portal')}. ${t('Opens in a new window')}`}
               >
-                {t('View MySBA Loan Portal')}
+                {t("View MySBA Loan Portal")}
+                <span className="sr-only">
+                  {t("(Opens in a new window)")}
+                </span>
               </button>
             </div>
           </div>
