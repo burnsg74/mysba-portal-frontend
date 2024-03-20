@@ -84,6 +84,11 @@
     line-height: 38px;
     text-align: left;
     color: var(--Brand-Primary-SBA-Blue);
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dashboard-content {

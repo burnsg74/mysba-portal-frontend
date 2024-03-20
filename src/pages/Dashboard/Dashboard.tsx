@@ -79,7 +79,6 @@ const Dashboard = () => {
                       </svg>
                       <span className={`${styles["business__title"]}`}>
                         {business.name}
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                       </span>
                     </div>
                     <div className={`grid-row ${styles["cert-header__row"]}`}>
