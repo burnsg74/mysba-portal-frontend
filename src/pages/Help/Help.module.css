@@ -78,6 +78,11 @@ a {
   gap: 3px;
 }
 
+.customTextContainer a {
+    color: #000;
+    text-decoration: none;
+}
+
 .resource-location-right {
   display: flex;
   justify-content: center;
