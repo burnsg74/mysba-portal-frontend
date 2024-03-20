@@ -78,8 +78,8 @@ const AccountSetup1 = () => {
             <div className={`${styles["subtitle"]}`}>
               {t(
                 "This information has been linked via your existing certification."
-              )}
-              {t(" To make changes please edit this in")}{" "}
+              )}{" "}
+              {t("To make changes please edit this in")}{" "}
               <a
                 rel="noreferrer"
                 href="https://wosb.certify.sba.gov"
