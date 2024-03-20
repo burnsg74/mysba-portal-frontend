@@ -18,11 +18,11 @@ const Profile = () => {
   return (
     <div className="grid-row">
       <div className={`grid-col ${styles["container"]}`}>
-        <div className={`${styles["profile-name"]}`}>
+        <h1 className={`${styles["profile-name"]}`}>
           {profileData?.profile?.crm?.first_name +
             " " +
             profileData?.profile?.crm?.last_name}
-        </div>
+        </h1>
         <div className={`${styles["profile-subheading"]}`}>
           {t("Contact Information")}
         </div>
