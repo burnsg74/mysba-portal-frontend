@@ -19,13 +19,11 @@ const AccountSetup3 = () => {
   const handleResize = () => {  
     
     if (isLargeWindow() && location.pathname !== "/dashboard") {
-      console.log("removeEventListener; /dashboard/new")
       window.removeEventListener("resize", handleResize);
       navigate("/dashboard/new");
     }
   };
   useEffect(() => {
-      console.log("addEventListener;")
       window.addEventListener("resize", handleResize);
     return
   }, []);

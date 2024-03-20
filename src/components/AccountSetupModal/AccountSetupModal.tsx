@@ -22,16 +22,13 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
   }
   const handleResize = () => {
     if (isSmallWindow()) {
-      console.log("removeEventListener; navigate account setup 3")
       window.removeEventListener("resize", handleResize);
       navigate("/account-setup/3");
     }
   };
   useEffect(() => {
-    console.log("Pathname:", location.pathname)
     if (location.pathname === "/dashboard/new") {
       handleResize();
-      console.log("addEventListener;")
       window.addEventListener("resize", handleResize);
     }
     return;
