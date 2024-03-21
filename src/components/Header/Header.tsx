@@ -228,12 +228,7 @@ const Header = () => {
                 {/* User Profile */}
                 <div className="usa-nav__inner">
                   <Link to="/profile">
-                    <span className={`${styles["tooltip"]}`}>
                       <img src={ProfileIcon} alt="Profile Icon" />
-                      <span className={`${styles["tooltiptext"]}`}>
-                        {t("Your Profile")}
-                      </span>
-                    </span>
                   </Link>
                 </div>
 

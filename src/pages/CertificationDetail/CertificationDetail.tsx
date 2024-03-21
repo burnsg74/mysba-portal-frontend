@@ -73,9 +73,7 @@ const CertificationDetail = () => {
           </button>
           <button
             type="button"
-            className={`usa-button usa-button usa-tooltip ${styles["manage-cert-button"]}`}
-            data-position="bottom"
-            title="https://wosb.certify.sba.gov"
+            className={`usa-button usa-button ${styles["manage-cert-button"]}`}
             onClick={() => setManageCertificationModal(true)}
           >
             {t("Manage Certification")}
