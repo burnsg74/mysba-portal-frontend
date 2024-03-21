@@ -90,12 +90,17 @@
   line-height: 120%;
 }
 
+
 .usa-card__row {
-  display: flex;
-  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.usa-card__pill_container {
+
 }
 
 .usa-card__text-center {
@@ -106,14 +111,49 @@
   flex-grow: 1;
 }
 
-@media screen and (min-width: 700px) {
-  .usa-card__text-center {
-    flex: 1 1 0%;
-  }
+.usa-card__text-right {
+  flex: none;
 }
 
-.usa-card__text-right {
+@media (min-width: 500px) {
+  .usa-card__text-right {
+    max-width: 96px;
+  }
+  .usa-card__row {
+    flex-wrap: nowrap;
+  }
+}
+@media (min-width: 640px) {
+  .usa-card__text-right {
+    max-width: none;
+  }
+  .usa-card__row {
+    flex-wrap: nowrap;
+  }
+}
+@media (min-width: 1024px) {
+  .usa-card__text-right {
+    max-width: none;
+  }
+  .usa-card__row {
+    flex-wrap: wrap;
+  }
+}
+@media (min-width: 1280px) {
+  .usa-card__text-right {
+    max-width: 96px;
+  }
+  .usa-card__row {
+    flex-wrap: nowrap;
+  }
+}
+@media (min-width: 1536px) {
+  .usa-card__text-right {
+    max-width: none;
+  }
+  .usa-card__row {
 
+  }
 }
 
 .container {
