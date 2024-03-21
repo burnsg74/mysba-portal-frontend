@@ -238,6 +238,11 @@
 .tooltip .tooltiptext::after{
   left:240px !important;
 }
+
+.usa-form {
+  margin-top:20px;
+}
+
 .usa-form a:where(:not(.usa-button)) {
   color: #fff;
 }
