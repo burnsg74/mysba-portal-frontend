@@ -100,7 +100,7 @@
 }
 
 .usa-card__pill_container {
-
+  flex: none;
 }
 
 .usa-card__text-center {
