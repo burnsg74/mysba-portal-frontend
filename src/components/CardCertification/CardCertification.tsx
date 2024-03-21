@@ -79,7 +79,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             <div
               className={`${styles["usa-card__text-center"]}`}
             >
-              {certification.company_name} Thisifahsfhakdsfhakjdshkjhkjhkjhkjhkjhkjhkjhkjhkjahhhhhstringwhathappens when it's really long
+              {certification.company_name}
             </div>
             <div className={`${styles["usa-card__text-right"]}`}>{t('Expiration')}: {expiration_date}</div>
           </div>
