@@ -32,17 +32,22 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
 .subheader {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-family: var(--Font-Primary);
-  font-size: 22px;
+  color: var(--Primary-primary-darker);
+  font-family: var(--Font-Secondary);
+  font-size: 20px;
+  font-style: normal;
   font-weight: 400;
   line-height: 120%;
-  margin:auto;
 }
 
-.subheader-padding{
-  margin-top:10px;
+.categoryGroup {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
 }
 
 .usa-card__row {
@@ -52,21 +57,21 @@
 }
 
 .usa-card__text-center {
-  color: #002E6D;
+  color: #002e6d;
   font-family: var(--Font-Primary);
   font-weight: 400;
-  font-size:16px;
+  font-size: 16px;
   flex-grow: 1;
   text-align: center;
-  margin-left:0;
+  margin-left: 0;
 }
 
-.usa-card__text-center:last-child{
-  text-align:end;
+.usa-card__text-center:last-child {
+  text-align: end;
 }
 
-.usa-card__text-center:first-child{
-  text-align:start;
+.usa-card__text-center:first-child {
+  text-align: start;
 }
 
 .badge {
@@ -84,17 +89,18 @@
 }
 
 .usa-card__container {
-  border: unset;
-  margin: unset;
   border-radius: 8px;
+  border: unset;
   box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+  gap: 14px;
+  margin: 0 0 20px 0;
   min-height: 126px;
-  margin-bottom:20px;
+  padding-bottom: 20px;
 }
 
 .card__header {
   background: rgba(165, 198, 224, 0.2);
-  margin: 21px 5px;
+  margin: 5px 5px;
 }
 
 .card__text {
@@ -106,18 +112,15 @@
 
 .store_icon {
   fill: var(--Brand-Primary-SBA-Blue);
-  width: 30px;
   height: 30px;
-  margin-right: 10px;
-  margin-left: 20px;
+  width: 30px;
 }
 
 .toggle__icon {
+  cursor: pointer;
   fill: var(--Brand-Primary-SBA-Blue);
-  width: 30px;
   height: 30px;
-  margin-right:20px;
-  cursor: pointer ;
+  width: 30px;
 }
 
 .resource-location-right {
@@ -168,7 +171,7 @@
   padding-bottom: 12px;
   margin-left: 33px;
   border-bottom: 1px solid #dfe1e2;
-  width:80%;
+  width: 80%;
   letter-spacing: 0;
   text-align: left;
 }
@@ -188,15 +191,22 @@
 }
 
 .grid-row-centered {
-  display: flex;
+  align-content: center;
   align-items: center;
   align-self: stretch;
+  display: flex;
   flex-wrap: wrap;
-  height:72px;
+  gap: 10px;
+  padding: 21px 20px;
 }
 
-.usa-card__body {
-  padding: 12px 20px 18px 20px;
+.cardBody {
+  /*padding: 12px 20px 18px 20px;*/
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 0 20px;
 }
 
 .alert-container {

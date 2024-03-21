@@ -10,9 +10,11 @@ interface Props {
 const Field: React.FC<Props> = ({ label, value }) => {
   const {t} = useTranslation();
   return (
-    <div className={`${styles["row"]}`}>
-      <div className={`${styles["label"]}`}>{t(label)}</div>
-      <div className={`${styles["value"]}`}>{value}</div>
+    <div className={`${styles.row}`}>
+      <div className={`${styles.frame}`}>
+      <div className={`${styles.label}`}>{t(label)}</div>
+      <div className={`${styles.value}`}>{value}</div>
+      </div>
     </div>
   );
 };
