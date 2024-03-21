@@ -54,11 +54,15 @@ const Profile = () => {
           {/*  </label>*/}
           {/*</div>*/}
         </div>
-        <button className={` ${styles.buttonStyle}`} onClick={logout}>
+        <button
+          className={` ${styles.buttonStyle}`}
+          onClick={logout}
+          aria-label={t("Log Out")}
+          type="button"
+        >
           <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
         </button>
       </div>
-    </div>
-  );
+    </div>);
 };
 export default Profile;
