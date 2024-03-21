@@ -101,6 +101,14 @@
   text-align: end; 
 }
 
+.company_name__text {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .usa-card__text-right {
   flex-grow: 1;
   align-items:flex-start;

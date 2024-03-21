@@ -1,17 +1,18 @@
 import React from "react";
 import LogoImage from "src/assets/logo-sm.svg";
 import VideoImage from "src/assets/video.png";
+import InfographicImage from "src/assets/infographic.png";
 import ArrowNextImage from "src/assets/arrow-next.svg";
 import styles from "src/components/LearningCenterCard/LearningCenterCard.module.css";
 import { useTranslation } from "react-i18next";
-
 
 interface LearningCenter {
   title: string;
   description: string;
   image: string;
   link: string;
-  videos: {
+  library: {
+    type: string;
     title: string;
     description: string;
     link: string;
@@ -78,12 +79,12 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
           {learningCenter.description}
         </div>
       </div>
-      {/* List of Videos */}
-      {learningCenter.videos.map((video, index) => (
+      {/* List of items in library */}
+      {learningCenter.library.map((item, index) => (
         <React.Fragment key={index}>
           <div className={`${styles["video-container"]}`}>
             <a
-              href={video.link}
+              href={item.link}
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles["video-href"]}`}
@@ -91,17 +92,19 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
               <div className={` ${styles["video-row"]}`}>
                 <div className={` ${styles["video-row__image"]}`}>
                   <img
-                    src={VideoImage}
-                    alt="Video Icon"
+                    src={
+                      item.type === "infographic"
+                        ? InfographicImage
+                        : VideoImage
+                    }
+                    alt="Learning Center Item Icon"
                     className={`${styles["video-icon"]}`}
                   />
                 </div>
                 <div>
-                  <div className={`${styles["video-title"]}`}>
-                    {video.title}
-                  </div>
+                  <div className={`${styles["video-title"]}`}>{item.title}</div>
                   <div className={`${styles["video-subtitle"]}`}>
-                    {video.description}
+                    {item.description}
                   </div>
                 </div>
                 <div className={`${styles["video-right"]}`}>

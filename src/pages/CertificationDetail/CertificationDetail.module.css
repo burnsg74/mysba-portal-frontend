@@ -43,6 +43,14 @@
   line-height: 24px;
 }
 
+.categoryGroup {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: 20px;
+}
+
 .badge {
   display: flex;
   align-items: center;
@@ -131,18 +139,7 @@
 }
 
 .start-recertification__btn {
-  border: 2px solid var(--Brand-Primary-SBA-Blue);
   width: fit-content;
-  margin: 0;
-  padding: 12px 20px;
-  color: var(--Brand-Primary-SBA-Blue);
-  text-align: center;
-  font-family: var(--Font-Primary);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 90%;
-  box-shadow: unset;
 }
 
 .expired-help__icon {

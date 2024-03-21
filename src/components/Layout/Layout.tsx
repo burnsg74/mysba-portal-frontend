@@ -46,9 +46,9 @@ const Layout = () => {
         {showNav  && (courses.length > 0) && (
           <div className={`grid-col-auto ${styles["resources-for-you-right"]}`}>
             <div className={scrollAreaClass}>
-              <div className={`${styles["resource-location__title"]}`}>
+              <h1 className={`${styles["resource-location__title"]}`}>
                 {t('Resources for you')}
-              </div>
+              </h1>
               <div className={`${styles["resource-location__cards"]}`}>
                 {courses.map((course, index) => (
                   <LearningCenterCard key={index} learningCenter={course} />
@@ -62,9 +62,9 @@ const Layout = () => {
         <div className={`grid-col-row ${styles["resources-for-you-bottom"]}`}>
           <div className="grid-col">
             <div  className={`${styles["resource-location__title-bottom-container"]}`}>
-            <div className={`${styles["resource-location__title-bottom"]}`}>
+            <h1 className={`${styles["resource-location__title-bottom"]}`}>
               {t('Resources for you')}
-            </div>
+            </h1>
             </div>
             <div className={`${styles["resource-location__cards"]}`}>
               {courses.map((course, index) => (

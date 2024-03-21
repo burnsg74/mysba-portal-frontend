@@ -3,7 +3,8 @@ class LearningCenterCourse {
   description: string;
   image: string;
   link: string;
-  videos: {
+  library: {
+    type: string;
     title: string;
     description: string;
     link: string;
@@ -14,7 +15,8 @@ class LearningCenterCourse {
     desc: string,
     image: string,
     link: string,
-    videos: {
+    item: {
+      type: string;
       title: string;
       description: string;
       link: string;
@@ -24,7 +26,7 @@ class LearningCenterCourse {
     this.title = title;
     this.description = desc;
     this.link = link;
-    this.videos = videos;
+    this.library = item;
   }
 }
 
@@ -36,16 +38,19 @@ let learningCenterCourses = {
     "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business",
     [
       {
+        type: "video",
         title: "Your Financial needs",
         description: "2 minute 55 seconds",
         link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business/your-financial-needs",
       },
       {
+        type: "video",
         title: "Debt Financing vs Equity Financing",
         description: "1 minute 54 seconds",
         link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business/debt-financing-vs-equity-financing",
       },
       {
+        type: "video",
         title: "Credit History",
         description: "1 minute 20 seconds",
         link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business/credit-history",
@@ -59,16 +64,19 @@ let learningCenterCourses = {
     "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage",
     [
       {
+        type: "video",
         title: "Competitive Advantage Overview",
         description: "Video",
         link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/competitive-advantage-overview",
       },
       {
+        type: "video",
         title: "Define Your Brand",
         description: "Video",
         link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/define-your-brand",
       },
       {
+        type: "video",
         title: "Know Your Competition",
         description: "Video",
         link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/know-your-competition",
@@ -86,6 +94,7 @@ let learningCenterCourses = {
     "https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer",
     [
       {
+        type: "infographic",
         title: "Fact, Fiction and Benefits of Government Contracting",
         description: "Infographic (3 minutes)",
         link: "https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer",
@@ -99,16 +108,19 @@ let learningCenterCourses = {
     "https://learn.sba.gov/learning-center-launch/learning-center-legal-requirements",
     [
       {
+        type: "video",
         title: "Legal Requirements Overview",
         description: "Video (1 minute 35 seconds)",
         link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/legal-requirements-overview",
       },
       {
+        type: "video",
         title: "Determining Your Requirements",
         description: "Video (0 minutes 21 seconds)",
         link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/determining-your-requirements",
       },
       {
+        type: "video",
         title: "Registering and Licensing",
         description: "Video (1 minute 10 seconds)",
         link: "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements/registering-and-licensing",
@@ -122,16 +134,19 @@ let learningCenterCourses = {
     "https://learn.sba.gov/learning-center-grow/learning-center-pricing-models-for-successful-business",
     [
       {
+        type: "video",
         title: "Pricing Models for a Successful Business Overview",
         description: "Video (1 minute 50 seconds)",
         link: "https://learn.sba.gov/learning-center-grow/learning-center-pricing-models-for-successful-business/pricing-models-for-a-successful-business-overview",
       },
       {
+        type: "video",
         title: "How Pricing Relates to Marketing",
         description: "Video (1 minutes)",
         link: "https://learn.sba.gov/learning-center-grow/learning-center-pricing-models-for-successful-business/how-pricing-relates-to-marketing",
       },
       {
+        type: "video",
         title: "Pricing and Sales",
         description: "Video (1 minute 37 seconds)",
         link: "https://learn.sba.gov/learning-center-grow/learning-center-pricing-models-for-successful-business/pricing-and-sales",

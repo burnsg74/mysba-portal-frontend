@@ -113,9 +113,9 @@ const Certifications = () => {
           })}
 
         <div className={`grid-row ${styles["title__row"]}`}>
-          <div className={`grid-col grid-col-wrap ${styles["title"]}`}>
+          <h1 className={`grid-col grid-col-wrap ${styles["title"]}`}>
             {t("Certifications")}
-          </div>
+          </h1>
           <div className={`grid-col-auto ${styles["btn-group"]}`}>
             <div className="grid-col-auto grid-col-wrap">
               <button

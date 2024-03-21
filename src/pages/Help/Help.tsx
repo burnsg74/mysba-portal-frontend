@@ -8,7 +8,7 @@ const Help = () => {
   return (
     <>
       <div className={`main-container`}>
-        <div className={styles.title}>{t("Frequently Asked Questions")}</div>
+        <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>
         {FrequentlyAskedQuestions.map((faq, index) => (
           <div key={index} className="usa-accordion usa-accordion--bordered">
             <h4 className="usa-accordion__heading">

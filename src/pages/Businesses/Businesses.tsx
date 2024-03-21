@@ -101,7 +101,7 @@ const Businesses = () => {
                       </svg>
                     </div>
                     <div className="grid-col">
-                      <h2 className={`usa-card__heading ${styles["subtitle"]}`}>
+                      <h2 className={`usa-card__heading ${styles.subtitle}`}>
                         {business.name}{" "}
                       </h2>
                     </div>
@@ -135,66 +135,74 @@ const Businesses = () => {
                     </div>
                   </div>
                 </div>
-                <div className={`${styles["usa-card__body"]}`}>
+                <div className={`${styles.cardBody}`}>
                   {showDetails ? (
                     <>
-                      <div className={`grid-row`}>
-                        <div className="grid-col">
-                          <div className={`${styles["subheader"]}`}>
-                            {t("Business Information")}
+                      <div className={`${styles.categoryGroup}`}>
+                        <div className={`grid-row`}>
+                          <div className="grid-col">
+                            <h4 className={`${styles["subheader"]}`}>
+                              {t("Business Information")}
+                            </h4>
                           </div>
                         </div>
+                        <Field label="EIN" value={business.ein} />
+                        <Field label="UEI" value={business.uei} />
                       </div>
-                      <Field label="EIN" value={business.ein} />
-                      <Field label="UEI" value={business.uei} />
-                      <div className={`${styles["subheader-padding"]}`}>
-                        <div className={`${styles["subheader"]}`}>
+                      <div className={`${styles.categoryGroup}`}>
+                        <h4 className={`${styles["subheader"]}`}>
                           {t("Contact Information")}
-                        </div>
+                        </h4>
+                        <Field
+                          label="Mailing Address"
+                          value={[
+                            <div key="street1">
+                              {business.mailing_address_street}
+                            </div>,
+                            `${business.mailing_address_city}, ${business.mailing_address_state} ${business.mailing_address_zipcode}`,
+                          ]}
+                        />
+                        <Field
+                          label="Business Address"
+                          value={[
+                            <div key="street2">
+                              {business.business_address_street}
+                            </div>,
+                            `${business.business_address_city}, ${business.business_address_state} ${business.business_address_zipcode}`,
+                          ]}
+                        />
+                        <Field
+                          label="Business Phone Number"
+                          value={business.business_phone_number}
+                        />
+                        <Field label="Email" value={business.email} />
+                        <Field label="Website" value={business.website} />
+                        <Field
+                          label="Legal Structure"
+                          value={business.legal_entity}
+                        />
+                        <Field
+                          label="Ownership Type"
+                          value={business.ownership_type}
+                        />
+                        <Field
+                          label="Owner(s)"
+                          value={business.owner}
+                        />
                       </div>
-                      <Field
-                        label="Mailing Address"
-                        value={[
-                          <div key="street1">
-                            {business.mailing_address_street}
-                          </div>,
-                          `${business.mailing_address_city}, ${business.mailing_address_state} ${business.mailing_address_zipcode}`,
-                        ]}
-                      />
-                      <Field
-                        label="Business Address"
-                        value={[
-                          <div key="street2">
-                            {business.business_address_street}
-                          </div>,
-                          `${business.business_address_city}, ${business.business_address_state} ${business.business_address_zipcode}`,
-                        ]}
-                      />
-                      <Field
-                        label="Business Phone Number"
-                        value={business.business_phone_number}
-                      />
-                      <Field label="Email" value={business.email} />
-                      <Field label="Website" value={business.website} />
-                      <Field
-                        label="Legal Structure"
-                        value={business.legal_entity}
-                      />
-                      <Field
-                        label="Ownership Type"
-                        value={business.ownership_type}
-                      />
-
-                      <div className={`${styles["subheader-padding"]}`}>
-                        <div className={`${styles["subheader"]}`}>
+                      <div className={`${styles.categoryGroup}`}>
+                        <h4 className={`${styles["subheader"]}`}>
                           {t("Products and Services")}
-                        </div>
+                        </h4>
+                        <Field
+                          label="Capabilities Narrative"
+                          value={business.capabilities_narrative}
+                        />
+                        <Field
+                          label="NAICS Codes"
+                          value={business.naics_codes}
+                        />
                       </div>
-                      <Field
-                        label="Capabilities Narrative"
-                        value={business.capabilities_narrative}
-                      />
-                      <Field label="NAICS Codes" value={business.naics_codes} />
                     </>
                   ) : (
                     <div
