@@ -108,22 +108,12 @@
 
 @media screen and (min-width: 700px) {
   .usa-card__text-center {
-    flex: 1 1 0;
+    flex: 1 1 0%;
   }
 }
 
-.company_name__text {
-  /*display: -webkit-box;*/
-  /*-webkit-box-orient: vertical;*/
-  /*-webkit-line-clamp: 2;*/
-  /*overflow: hidden;*/
-  /*text-overflow: ellipsis;*/
-}
-
 .usa-card__text-right {
-  /*flex-grow: 1;*/
-  /*align-items:flex-start;*/
-  /*text-align: end;*/
+
 }
 
 .container {

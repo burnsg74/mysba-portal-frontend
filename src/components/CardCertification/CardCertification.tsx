@@ -60,30 +60,31 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
             )}
           </div>
         </div>
-        <div className={`${styles["usa-card__body"]}`}>
-          <div className={`grid-row sba-blue ${styles["usa-card__row"]}`}>
-            {/* Certifications Pills */}
-            {certification.days_until_expiry <= 0 ? (
-              <Pill type={"error"}  message={t("Expired")} />
-            ) : certification.days_until_expiry <= 90 ? (
-              <Pill
-                type={"warning"}
-                message={`${t("Renew in")} ${certification?.days_until_expiry} ${t("Days")}`}
-              />
-            ) : certification.days_until_expiry > 90 ? (
-              <Pill type={"valid"} message={t("Certified")} />
-            ) : null}
 
-            <div
-              className={`grid-col text-center ${styles["usa-card__text-center"]}`}
-            >
-              <span  className={` ${styles["company_name__text"]}`}>
-              {certification.company_name}
-              </span>
+        <div className={`${styles["usa-card__body"]}`}>
+          <div className={`sba-blue ${styles["usa-card__row"]}`}>
+            <div className={`${styles["pill_container"]}`} >
+              {/* Certifications Pills */}
+              {certification.days_until_expiry <= 0 ? (
+                <Pill type={"error"}  message={t("Expired")} />
+              ) : certification.days_until_expiry <= 90 ? (
+                <Pill
+                  type={"warning"}
+                  message={`${t("Renew in")} ${certification?.days_until_expiry} ${t("Days")}`}
+                />
+              ) : certification.days_until_expiry > 90 ? (
+                <Pill type={"valid"} message={t("Certified")} />
+              ) : null}
             </div>
-            <div className={`grid-col-auto ${styles["usa-card__text-right"]}`}>{t('Expiration')}: {expiration_date}</div>
+            <div
+              className={`${styles["usa-card__text-center"]}`}
+            >
+              {certification.company_name} Thisifahsfhakdsfhakjdshkjhkjhkjhkjhkjhkjhkjhkjhkjahhhhhstringwhathappens when it's really long
+            </div>
+            <div className={`${styles["usa-card__text-right"]}`}>{t('Expiration')}: {expiration_date}</div>
           </div>
         </div>
+
       </div>
     </>
   );
