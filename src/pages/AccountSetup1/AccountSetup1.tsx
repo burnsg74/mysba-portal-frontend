@@ -16,7 +16,7 @@ const AccountSetup1 = () => {
   const user: IUser = useSelector(getUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const [allowNotice, setAllowNotice] = useState<boolean>(false);
+  const [allowNotice, setAllowNotice] = useState<boolean>(user.profile?.portal?.allow_notice || false);
   const { authState } = useOktaAuth();
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const portal_user_url = `${BASE_API_URL}portal/user/`;
