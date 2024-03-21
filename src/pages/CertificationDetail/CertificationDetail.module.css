@@ -206,6 +206,6 @@
 }
 
 .expired-help__launch-icon {
-  color: black;
-  fill: black;
+  color: var(--Brand-Primary-SBA-Blue);
+  fill: var(--Brand-Primary-SBA-Blue);
 }
