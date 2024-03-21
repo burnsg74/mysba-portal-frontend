@@ -88,6 +88,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
               target="_blank"
               rel="noopener noreferrer"
               className={`${styles["video-href"]}`}
+              aria-label={`Go to ${item.title}`}
             >
               <div className={` ${styles["video-row"]}`}>
                 <div className={` ${styles["video-row__image"]}`}>
@@ -97,7 +98,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
                         ? InfographicImage
                         : VideoImage
                     }
-                    alt="Learning Center Item Icon"
+                    alt={item.type === "infographic" ? "Infographic" : "Video"}
                     className={`${styles["video-icon"]}`}
                   />
                 </div>
@@ -110,7 +111,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
                 <div className={`${styles["video-right"]}`}>
                   <img
                     src={ArrowNextImage}
-                    alt="Next Icon"
+                    alt="Go to Next"
                     className={`${styles["next-icon"]}`}
                   />
                 </div>
