@@ -92,27 +92,38 @@
 
 .usa-card__row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  width: 100%;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .usa-card__text-center {
-  flex-grow: 1;
-  text-align: end; 
-}
-
-.company_name__text {
+  overflow: hidden;
   display: -webkit-box;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  flex-grow: 1;
+}
+
+@media screen and (min-width: 700px) {
+  .usa-card__text-center {
+    flex: 1 1 0;
+  }
+}
+
+.company_name__text {
+  /*display: -webkit-box;*/
+  /*-webkit-box-orient: vertical;*/
+  /*-webkit-line-clamp: 2;*/
+  /*overflow: hidden;*/
+  /*text-overflow: ellipsis;*/
 }
 
 .usa-card__text-right {
-  flex-grow: 1;
-  align-items:flex-start;
-  text-align: end;
+  /*flex-grow: 1;*/
+  /*align-items:flex-start;*/
+  /*text-align: end;*/
 }
 
 .container {
