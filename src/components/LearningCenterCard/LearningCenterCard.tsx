@@ -83,10 +83,8 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
       {learningCenter.library.map((item, index) => (
         <React.Fragment key={index}>
           <div className={`${styles["video-container"]}`}>
-            <a
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
+            <button
+              onClick={()=> window.open(item.link, "_blank")}
               className={`${styles["video-href"]}`}
               aria-label={`Go to ${item.title}`}
             >
@@ -116,7 +114,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
                   />
                 </div>
               </div>
-            </a>
+            </button>
           </div>
         </React.Fragment>
       ))}

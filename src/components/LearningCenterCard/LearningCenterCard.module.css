@@ -182,8 +182,11 @@
 }
 
 .video-href {
-  text-decoration: none;
-  color: unset;
+  /*text-decoration: none*/
+  /*color: unset;*/
+  background: transparent;
+  border: unset;
+  width: 100%;
 }
 
 .video-row {

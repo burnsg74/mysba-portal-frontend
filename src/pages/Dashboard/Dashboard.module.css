@@ -107,7 +107,8 @@
     font-weight: 400;
     line-height: normal;
     text-decoration-line: underline;
-    padding-right: 10px;
+    margin-right: 10px;
+    padding: 2px;
     font-family: var(--Font-Secondary);
     color: #002e6d;
 }
