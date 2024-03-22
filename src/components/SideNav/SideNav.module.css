@@ -7,7 +7,7 @@
   padding: 24px 0 24px 10px;
   gap: 4px;
   border-right: 1px solid var(--Base-base-lighter);
-  background: #fff;
+  background: #ffffff;
 }
 
 @media (max-width: 1023px) {
@@ -60,4 +60,8 @@
 .col__bar-active {
   border-radius: 10px;
   background: var(--Brand-Primary-SBA-Blue);
+}
+
+.SkipLink {
+  display: none;
 }

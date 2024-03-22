@@ -40,7 +40,7 @@ const Layout = () => {
             <SideNav onNavLinkClick={handleNavLinkClick} />
           </div>
         )}
-        <main className="grid-col">
+        <main id="main-content" className="grid-col">
           <Outlet />
         </main>
         {showNav  && (courses.length > 0) && (
