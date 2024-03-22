@@ -91,87 +91,53 @@
 }
 
 
+
 .usa-card__row {
-  align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
   display: flex;
   flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  @media (min-width: 640px) {
+    flex-wrap: nowrap;
+  }
+  @media (min-width: 768px) {
+    flex-wrap: wrap;
+  }
+
+  @media (min-width: 1280px) {
+    flex-wrap: nowrap;
+  }
 }
 
 .usa-card__pill_container {
-  flex: none;
-}
-
-.usa-card__text-center {
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  flex-grow: 1;
-  text-align: left;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  display: inline-block;
   white-space: nowrap;
 }
 
+.usa-card__text-center {
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  @media (min-width: 768px) {
+    max-width: 290px;
+  }
+
+  @media (min-width: 1280px) {
+    width: auto;
+  }
+
+}
+
 .usa-card__text-right {
-  flex: none;
+  display: inline-block;
+  white-space: nowrap;
 }
 
-@media (min-width: 500px) {
-  .usa-card__text-right {
-    max-width: 96px;
-  }
-  .usa-card__text-center {
-    text-align: center;
-  }
-  .usa-card__row {
-    flex-wrap: nowrap;
-  }
-}
-@media (min-width: 640px) {
-  .usa-card__text-right {
-    max-width: none;
-  }
-  .usa-card__text-center {
 
-  }
-  .usa-card__row {
-    flex-wrap: nowrap;
-  }
-}
-@media (min-width: 1024px) {
-  .usa-card__text-right {
-    max-width: none;
-  }
-  .usa-card__text-center {
-    text-align: left;
-  }
-  .usa-card__row {
-    flex-wrap: wrap;
-  }
-}
-@media (min-width: 1280px) {
-  .usa-card__text-right {
-    max-width: 96px;
-  }
-  .usa-card__text-center {
-    text-align: center;
-  }
-  .usa-card__row {
-    flex-wrap: nowrap;
-  }
-}
-@media (min-width: 1536px) {
-  .usa-card__text-right {
-    max-width: none;
-  }
-  .usa-card__text-center {
-
-  }
-  .usa-card__row {
-
-  }
-}
 
 .container {
   display: flex;
