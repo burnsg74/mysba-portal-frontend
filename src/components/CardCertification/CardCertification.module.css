@@ -30,7 +30,7 @@
   gap: 10px;
   border-radius: 34px;
   border: 2px solid #f1c400;
-  background: #FAF3D1;
+  background: #faf3d1;
 }
 
 .badge svg {
@@ -90,8 +90,6 @@
   line-height: 120%;
 }
 
-
-
 .usa-card__row {
   display: flex;
   flex-wrap: wrap;
@@ -129,15 +127,12 @@
   @media (min-width: 1280px) {
     width: auto;
   }
-
 }
 
 .usa-card__text-right {
   display: inline-block;
   white-space: nowrap;
 }
-
-
 
 .container {
   display: flex;

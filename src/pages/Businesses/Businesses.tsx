@@ -118,7 +118,9 @@ const Businesses = () => {
                           aria-hidden="true"
                           focusable="false"
                           role="img"
+                          aria-labelledby="expand_less"
                         >
+                          <title id="expand_less">Expand Business Detail</title>
                           <use xlinkHref="/assets/img/sprite.svg#expand_less"></use>
                         </svg>
                       ) : (
@@ -128,7 +130,9 @@ const Businesses = () => {
                           aria-hidden="true"
                           focusable="false"
                           role="img"
+                          aria-labelledby="expand_more"
                         >
+                          <title id="expand_less">Collapsed Business Detail</title>
                           <use xlinkHref="/assets/img/sprite.svg#expand_more"></use>
                         </svg>
                       )}
@@ -185,10 +189,7 @@ const Businesses = () => {
                           label="Ownership Type"
                           value={business.ownership_type}
                         />
-                        <Field
-                          label="Owner(s)"
-                          value={business.owner}
-                        />
+                        <Field label="Owner(s)" value={business.owner} />
                       </div>
                       <div className={`${styles.categoryGroup}`}>
                         <h4 className={`${styles["subheader"]}`}>
