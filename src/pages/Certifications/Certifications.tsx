@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useLocation } from "react-router-dom";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { useTranslation } from "react-i18next";
 import CertApplyModal1 from "src/components/CertApplyModal1/CertApplyModal1";
@@ -14,6 +15,8 @@ import styles from "src/pages/Certifications/Certifications.module.css";
 type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";
 
 const Certifications = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
   const [showModal, setShowModal] = useState(0);
   const [showFetchError, setShowFetchError] = useState(false);
@@ -51,19 +54,57 @@ const Certifications = () => {
     };
     fetchCertifications();
   }, []);
+  function isSmallWindow() {
+    return window.innerWidth < 780;
+  }
+  const handleResize = () => {
+    if (isSmallWindow() && location.pathname !== "/certification") {
+      window.removeEventListener("resize", handleResize);
+      if (location.pathname === "/certification/1") {
+        console.log("certapply 1")
+        navigate("/certification-apply/1");
+      } else if (location.pathname === "/certification/2") {
+        console.log("cert apply 2")
+        navigate("/certification-apply/2");
+      }
+    }
+  };
+  useEffect(() => {
+    window.addEventListener("resize", handleResize);
+    return;
+  }, []);
+
+  const handleApplyCertificationClick = () => {
+    const isMobile = () => window.innerWidth < 780;
+    if (isMobile()) {
+      console.log("navigate step 1 cert");
+      navigate("/certification-apply/1");
+    } else {
+      if (location.pathname === "/certification") {
+        navigate("/certification/1");
+        console.log("navigate to: ", location.pathname);
+      }
+    }
+  };
 
   const handleCertApplyModal1Close = () => {
-    setShowModal(0);
+    navigate("/certification");
   };
   const handleCertApplyModal1Next = (selectedOption: OptionType) => {
-    setShowModal(2);
-    if (selectedOption) setSelectedOption(selectedOption);
+    const isMobile = () => window.innerWidth < 780;
+    if (isMobile()) {
+      console.log("navigate to certification-apply/2");
+      navigate("/certification-apply/2");
+    } else {
+      console.log("navigate to certification/2");
+      navigate("/certification/2");
+    }
   };
   const handleCertApplyModal2Close = () => {
-    setShowModal(0);
+    navigate("/certification");
   };
   const handleCertApplyModal2Prev = () => {
-    setShowModal(1);
+    navigate("/certification/1");
   };
   return (
     <>
@@ -121,7 +162,7 @@ const Certifications = () => {
               <button
                 type="button"
                 className={`usa-button usa-button--outline ${styles["apply-for-a-certification__btn"]}`}
-                onClick={() => setShowModal(1)}
+                onClick={handleApplyCertificationClick}
               >
                 {t("Apply for a Certification")}
               </button>
@@ -154,13 +195,13 @@ const Certifications = () => {
           </div>
         </div>
       </div>
-      {showModal === 1 ? (
+      {location.pathname === "/certification/1" ? (
         <CertApplyModal1
           onClose={handleCertApplyModal1Close}
           onNext={selectedOption => handleCertApplyModal1Next(selectedOption)}
         />
       ) : null}
-      {showModal === 2 && selectedOption !== undefined ? (
+      {location.pathname === "/certification/2" ? (
         <CertApplyModal2
           onClose={handleCertApplyModal2Close}
           onPrev={handleCertApplyModal2Prev}

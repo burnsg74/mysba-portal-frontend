@@ -51,7 +51,7 @@ const CardCertification: React.FC<ICardCertificationProps> = ({
                 className={`grid-col-auto  ${styles["card__header__details-btn"]}`}
               >
                 <Link
-                  to={`/certification/${index}`}
+                  to={`/certification/detail/${index}`}
                   className={`usa-button ${styles["pill-button"]}`}
                 >
                   {t('Details')}

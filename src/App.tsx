@@ -15,6 +15,8 @@ import CertificationDetail from "src/pages/CertificationDetail/CertificationDeta
 import AccountSetup1 from "src/pages/AccountSetup1/AccountSetup1";
 import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
 import AccountSetup3 from "src/pages/AccountSetup3/AccountSetup3";
+import ApplyCert1 from "src/pages/ApplyCert1/ApplyCert1";
+import ApplyCert2 from "src/pages/ApplyCert2/ApplyCert2";
 import Layout from "src/components/Layout/Layout";
 import Error from "src/pages/Error/Error";
 import Callback from "src/pages/Callback/Callback";
@@ -75,11 +77,21 @@ const App: React.FC = () => {
             <Route path="/dashboard/*" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/businesses" element={<Businesses />} />
-            <Route path="/certification" element={<Certifications />} />
+            <Route path="/certification/*" element={<Certifications />} />
             <Route
-              path="/certification/:id"
+              path="/certification-apply/1"
+              element={<ApplyCert1 />}
+            />
+            <Route
+              path="/certification-apply/2"
+              element={<ApplyCert2 />}
+            />
+
+            <Route
+              path="/certification/detail/:id"
               element={<CertificationDetail />}
             />
+
             <Route path="/loans" element={<Loans />} />
             <Route path="/help" element={<Help />} />
             <Route path="/error" element={<Error />} />
