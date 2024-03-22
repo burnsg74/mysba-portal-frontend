@@ -264,7 +264,7 @@ const CertificationDetail = () => {
         </div>
         <div className={`${styles.categoryGroup}`}>
           <h4 className={`${styles["subtitle"]}`}>{t("Ownership")}</h4>
-          <Field label="Owner" value={certification.owner ?? ""} />
+          <Field label="Owner(s)" value={certification.owner ?? ""} />
         </div>
       </div>
       {showManageCertificationModal ? (

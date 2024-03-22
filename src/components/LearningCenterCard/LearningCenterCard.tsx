@@ -51,7 +51,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
                 title={t("Open in a new window")}
               >
                 <svg
-                  className="usa-icon"
+                  className={`usa-icon ${styles.launchIcon}`}
                   aria-hidden="true"
                   focusable="false"
                   role="img"
