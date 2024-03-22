@@ -138,6 +138,7 @@
 .radio-label::before {
   margin-top:35px;
   margin-left:20px;
+  box-shadow:0 0 0 2px #002E6D;
 }
 
 .radio-label {
@@ -194,8 +195,8 @@
 .footer-btn-outline {
   flex: 1;
   border:2px;
-  border-color:var(--Brand-Secondary-Bright-Blue);
-  color:var(--Brand-Secondary-Bright-Blue);
+  box-shadow:inset 0 0 0 2px #002E6D;
+  color:var(--Brand-Primary-SBA-Blue);
 }
 
 .footer-btn {
