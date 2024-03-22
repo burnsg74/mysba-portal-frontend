@@ -202,12 +202,12 @@
 .footer-btn {
   flex: 1;
   border:2px;
-  border-color:var(--Brand-Secondary-Bright-Blue);
 }
 
 .info-icon {
   width:24px;
   height:24px;
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .tooltip {
