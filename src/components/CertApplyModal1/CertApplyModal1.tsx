@@ -147,7 +147,10 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     checked={selectedOption === "8A"}
                     onChange={handleOptionChange}
                   />
-                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="cert8A">
+                  <label
+                    className={`usa-radio__label ${styles["radio-label"]}`}
+                    htmlFor="cert8A"
+                  >
                     <span className={`${styles["checkbox_label"]}`}>
                       {t(
                         "Socially and Economically Disadvantaged Business Certification (8A)"
@@ -173,7 +176,8 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                           rel="noreferrer"
                         >
                           {" "}
-                          {t("Learn more")}{"."}
+                          {t("Learn more")}
+                          {"."}
                         </a>
                       </span>
                     </span>
@@ -189,7 +193,10 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     checked={selectedOption === "HubZone"}
                     onChange={handleOptionChange}
                   />
-                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certHubZone">
+                  <label
+                    className={`usa-radio__label ${styles["radio-label"]}`}
+                    htmlFor="certHubZone"
+                  >
                     <span className={`${styles["checkbox_label"]}`}>
                       {t(
                         "Historically Underutilized Business Zone Certification (HubZone)"
@@ -222,17 +229,22 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                 </div>
                 <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
                   <input
-                     type="radio"
-                     name="certVet"
-                     id="certVet"
-                     value="VetCert"
-                     className={`usa-radio__input usa-radio__input--tile`}
-                     checked={selectedOption === "VetCert"}
-                     onChange={handleOptionChange}
+                    type="radio"
+                    name="certVet"
+                    id="certVet"
+                    value="VetCert"
+                    className={`usa-radio__input usa-radio__input--tile`}
+                    checked={selectedOption === "VetCert"}
+                    onChange={handleOptionChange}
                   />
-                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certVet">
+                  <label
+                    className={`usa-radio__label ${styles["radio-label"]}`}
+                    htmlFor="certVet"
+                  >
                     <span className={`${styles["checkbox_label"]}`}>
-                      {t("Veteran-Owned Small Business (VetCert) Certification")}
+                      {t(
+                        "Veteran-Owned Small Business (VetCert) Certification"
+                      )}
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg
@@ -271,7 +283,8 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
             className={`usa-button usa-button--outline ${styles["footer-btn-outline"]}`}
             onClick={closeModal}
           >
-            {t("Cancel")}
+            <span className={`${styles["desktop-text"]}`}>{t("Back")}</span>
+            <span className={`${styles["mobile-text"]}`}>{t("Cancel")}</span>
           </button>
           <button
             type="button"

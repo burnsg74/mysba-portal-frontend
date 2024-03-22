@@ -318,3 +318,23 @@
   margin-top: 25px;
   padding-left:20px;
 }
+
+/* Default mobile view - show "Cancel", hide "Back" */
+.mobile-text {
+  display: none;
+}
+
+.desktop-text {
+  display: inline;
+}
+
+/* Desktop view */
+@media screen and (max-width: 768px) { /* Adjust the breakpoint as needed */
+  .mobile-text {
+    display: inline;
+  }
+
+  .desktop-text {
+    display: none;
+  }
+}
