@@ -1,3 +1,108 @@
+.card__header {
+  background: rgba(165, 198, 224, 0.2);
+  margin-left: 5px;
+  margin-top: 5px;
+  margin-right: 5px;
+}
+
+.card__header__details {
+  display: flex;
+  padding: 12px 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  border-radius: 4px;
+  background: var(--Brand-Secondary-Bright-Blue);
+}
+
+.usa-card__container {
+  border: unset;
+  margin: unset;
+  border-radius: 8px;
+  box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+}
+
+.badge {
+  display: flex;
+  padding: 5px 20px 5px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 34px;
+  border: 2px solid #f1c400;
+  background: #FAF3D1;
+}
+
+.badge svg {
+  margin-right: 10px;
+}
+
+.badge__text {
+  color: #1b1b1b;
+  font-family: var(--Font-Primary);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.location-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.grid-row-centered {
+  display: flex;
+  align-items: center;
+  padding: 15px 15px 20px;
+  gap: 10px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.card__header__details-btn {
+  margin-right: unset;
+}
+
+.pill-button {
+  color: #ffffff;
+  border-color: var(--Brand-Secondary-Bright-Blue);
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 90%;
+  width: unset;
+}
+
+.usa-card__body {
+  padding: 12px 20px 18px 20px;
+}
+
+.title__container {
+  min-width: 200px;
+}
+
+.title {
+  color: var(--Brand-Primary-SBA-Blue);
+  font-family: var(--Font-Primary);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+
+.usa-card__row {
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.usa-card__pill_container {
+  flex: none;
+}
+
 .usa-card__text-center {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
@@ -6,6 +111,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.usa-card__text-right {
+  flex: none;
 }
 
 @media (min-width: 500px) {
@@ -62,4 +171,18 @@
   .usa-card__row {
 
   }
+}
+
+.container {
+  display: flex;
+  min-width: 550px;
+  padding-bottom: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  flex: 1 0 0;
+  border-radius: 8px;
+  border: 5px solid var(--Base-white);
+  background: var(--Base-white);
+  box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
 }
