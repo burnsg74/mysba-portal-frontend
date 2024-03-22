@@ -233,3 +233,8 @@
     flex: 0 0 auto;
   }
 }
+
+.launchIcon {
+  color: var(--Brand-Primary-SBA-Blue);
+  fill: var(--Brand-Primary-SBA-Blue);
+}
