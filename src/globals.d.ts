@@ -8,7 +8,15 @@ interface IUserProfile {
   };
   portal: {
     allow_notice: boolean;
-    id: string;
+    planningNewBusiness: boolean;
+    launchingNewBusiness: boolean;
+    managingExistingBusiness: boolean;
+    marketingExistingBusiness: boolean;
+    growingExistingBusiness: boolean;
+    govContracting: boolean;
+    businessMentorship: boolean;
+    womenOwnedBusinessContent: boolean;
+    veteranOwnedBusinessContent: boolean;
   };
 }
 

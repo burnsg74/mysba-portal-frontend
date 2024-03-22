@@ -5,141 +5,142 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/uswds/0.11.1/css/uswds.min.css" integrity="sha512-HzCFng/WZ/yK6fFR9OUA5diLNaG8cP5LJzYX80nsCcghGaz3OAW67/yr23CDdp/Tl4y5V+2obIdpWYWRTvOiuQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/uswds/3.8.0/js/uswds.min.js" integrity="sha512-V/eNPuqU6gTDHwQsFL5X12i0TzX5lwVvON6VuEeTXDoSnAeA5nnc53TUEhiUdT16s0nj4MXo6OcUBAvwhdFOAw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/uswds/3.8.0/js/uswds-init.min.js" integrity="sha512-O4/iaC7XNMEYqktWqYtH6Rg++++GZAdUMITJVzu0D1X4ckQyXHJOoC4SC4Ivwsr8YMTjhSnDxem0Ac62IQuG1w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <link rel="stylesheet" href="uswds.min.css"/>
   <style>
-      :root {
-          --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;
-          --Brand-Primary-SBA-Blue: #002E6D;
-      }
+      /*:root {*/
+      /*    --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;*/
+      /*    --Brand-Primary-SBA-Blue: #002E6D;*/
+      /*}*/
 
-      body {
-          height: 100vh;
-      }
+      /*body {*/
+      /*    height: 100vh;*/
+      /*}*/
 
-      /*.grid-row {*/
+      /*!*.grid-row {*!*/
+      /*!*    display: flex;*!*/
+      /*!*    flex-wrap: wrap;*!*/
+      /*!*}*!*/
+
+      /*!*.grid-col {*!*/
+      /*!*    flex: 1 1 0;*!*/
+      /*!*    width: auto;*!*/
+      /*!*    max-width: 100%;*!*/
+      /*!*    min-width: 1px;*!*/
+      /*!*}*!*/
+
+      /*.header-container {*/
+      /*    border-bottom: 1px solid lightgray;*/
+      /*    padding-top: 20px;*/
+      /*    padding-bottom: 20px;*/
+      /*}*/
+
+      /*.error-container {*/
       /*    display: flex;*/
-      /*    flex-wrap: wrap;*/
+      /*    flex-direction: column;*/
+      /*    justify-content: center;*/
+      /*    align-items: center;*/
+      /*    height: calc(100vh - 100px);*/
+      /*    width: 100%;*/
       /*}*/
 
-      /*.grid-col {*/
-      /*    flex: 1 1 0;*/
-      /*    width: auto;*/
-      /*    max-width: 100%;*/
-      /*    min-width: 1px;*/
+      /*.error-message {*/
+      /*    font-family: var(--Font-Primary);*/
+      /*    color: var(--Brand-Primary-SBA-Blue);*/
+      /*    text-align: center;*/
+      /*    padding-top: 5px;*/
+      /*    line-height: 48px;*/
+      /*    height: 20px;*/
+      /*    font-size: 40px;*/
+      /*    font-style: normal;*/
+      /*    font-weight: 400;*/
       /*}*/
 
-      .header-container {
-          border-bottom: 1px solid lightgray;
-          padding-top: 20px;
-          padding-bottom: 20px;
-      }
-
-      .error-container {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          height: calc(100vh - 100px);
-          width: 100%;
-      }
-
-      .error-message {
-          font-family: var(--Font-Primary);
-          color: var(--Brand-Primary-SBA-Blue);
-          text-align: center;
-          padding-top: 5px;
-          line-height: 48px;
-          height: 20px;
-          font-size: 40px;
-          font-style: normal;
-          font-weight: 400;
-      }
-
-      .usa-logo {
-          height: 33px;
-          flex: unset;
-          display: block;
-      }
+      /*.usa-logo {*/
+      /*    height: 33px;*/
+      /*    flex: unset;*/
+      /*    display: block;*/
+      /*}*/
   </style>
 </head>
 <body>
-<section
-  class="usa-banner"
-  aria-label="Official website of the United States government"
->
-  <div class="usa-accordion">
-    <header class="usa-banner__header">
-      <div class="usa-banner__inner">
-        <div class="grid-col-auto">
-          <img
-            aria-hidden="true"
-            class="usa-banner__header-flag"
-            src="/assets/img/us_flag_small.png"
-            alt=""
-          />
-        </div>
-        <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
-          <p class="usa-banner__header-text">
-            An official website of the United States government
-          </p>
-          <p class="usa-banner__header-action">Here’s how you know</p>
-        </div>
-        <button
-          type="button"
-          class="usa-accordion__button usa-banner__button"
-          aria-expanded="false"
-          aria-controls="gov-banner-default"
-        >
-          <span class="usa-banner__button-text">Here’s how you know</span>
-        </button>
-      </div>
-    </header>
-    <div
-      class="usa-banner__content usa-accordion__content"
-      id="gov-banner-default"
+<div class="grid-row">
+  <div class="grid-col">
+
+    <section
+      class="usa-banner"
+      aria-label="Official website of the United States government"
     >
-      <div class="grid-row grid-gap-lg">
-        <div class="usa-banner__guidance tablet:grid-col-6">
-          <img
-            class="usa-banner__icon usa-media-block__img"
-            src="/assets/img/icon-dot-gov.svg"
-            role="img"
-            alt=""
-            aria-hidden="true"
-          />
-          <div class="usa-media-block__body">
-            <p>
-              <strong>Official websites use .gov</strong><br />A
-              <strong>.gov</strong> website belongs to an official government
-              organization in the United States.
-            </p>
+      <div class="usa-accordion">
+        <header class="usa-banner__header">
+          <div class="usa-banner__inner">
+            <div class="grid-col-auto">
+              <img
+                aria-hidden="true"
+                class="usa-banner__header-flag"
+                src="/assets/img/us_flag_small.png"
+                alt=""
+              />
+            </div>
+            <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+              <p class="usa-banner__header-text">
+                An official website of the United States government
+              </p>
+              <p class="usa-banner__header-action">Here’s how you know</p>
+            </div>
+            <button
+              type="button"
+              class="usa-accordion__button usa-banner__button"
+              aria-expanded="false"
+              aria-controls="gov-banner-default"
+            >
+              <span class="usa-banner__button-text">Here’s how you know</span>
+            </button>
           </div>
-        </div>
-        <div class="usa-banner__guidance tablet:grid-col-6">
-          <img
-            class="usa-banner__icon usa-media-block__img"
-            src="/assets/img/icon-https.svg"
-            role="img"
-            alt=""
-            aria-hidden="true"
-          />
-          <div class="usa-media-block__body">
-            <p>
-              <strong>Secure .gov websites use HTTPS</strong><br />A
-              <strong>lock</strong> (
-              <span class="icon-lock"
-              ><svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="52"
-                height="64"
-                viewBox="0 0 52 64"
-                class="usa-banner__lock-image"
+        </header>
+        <div
+          class="usa-banner__content usa-accordion__content"
+          id="gov-banner-default"
+        >
+          <div class="grid-row grid-gap-lg">
+            <div class="usa-banner__guidance tablet:grid-col-6">
+              <img
+                class="usa-banner__icon usa-media-block__img"
+                src="/assets/img/icon-dot-gov.svg"
                 role="img"
-                aria-labelledby="banner-lock-description-default"
-                focusable="false"
-              >
+                alt=""
+                aria-hidden="true"
+              />
+              <div class="usa-media-block__body">
+                <p>
+                  <strong>Official websites use .gov</strong><br />A
+                  <strong>.gov</strong> website belongs to an official government
+                  organization in the United States.
+                </p>
+              </div>
+            </div>
+            <div class="usa-banner__guidance tablet:grid-col-6">
+              <img
+                class="usa-banner__icon usa-media-block__img"
+                src="/assets/img/icon-https.svg"
+                role="img"
+                alt=""
+                aria-hidden="true"
+              />
+              <div class="usa-media-block__body">
+                <p>
+                  <strong>Secure .gov websites use HTTPS</strong><br />A
+                  <strong>lock</strong> (
+                  <span class="icon-lock"
+                  ><svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="52"
+                    height="64"
+                    viewBox="0 0 52 64"
+                    class="usa-banner__lock-image"
+                    role="img"
+                    aria-labelledby="banner-lock-description-default"
+                    focusable="false"
+                  >
                   <title id="banner-lock-title-default">Lock</title>
                   <desc id="banner-lock-description-default">Locked padlock icon</desc>
                   <path
@@ -148,16 +149,18 @@
                     d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
                   />
                 </svg> </span
-              >) or <strong>https://</strong> means you’ve safely connected to
-              the .gov website. Share sensitive information only on official,
-              secure websites.
-            </p>
+                  >) or <strong>https://</strong> means you’ve safely connected to
+                  the .gov website. Share sensitive information only on official,
+                  secure websites.
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </section>
   </div>
-</section>
+</div>
 <div class="grid-row">
   <div class="grid-col">
     <header class="header-container">

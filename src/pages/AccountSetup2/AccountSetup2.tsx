@@ -10,29 +10,13 @@ import { getUser, setUser } from "src/store/user/userSlice";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
 
-interface IUser {
-  profile?: object;
-}
-
-interface IState {
-  planningNewBusiness: boolean;
-  launchingNewBusiness: boolean;
-  managingExistingBusiness: boolean;
-  marketingExistingBusiness: boolean;
-  growingExistingBusiness: boolean;
-  govContracting: boolean;
-  businessMentorship: boolean;
-  womenOwnedBusinessContent: boolean;
-  veteranOwnedBusinessContent: boolean;
-}
-
 const AccountSetup1 = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
-  const { oktaAuth, authState } = useOktaAuth();
+  const { authState } = useOktaAuth();
 
   const [state, setState] = useState({
     planningNewBusiness: false,
@@ -48,18 +32,13 @@ const AccountSetup1 = () => {
 
   const handleContinueBtnClick = () => {
 
-    interface UserProfile {
-      portal: object;
-    }
-
     console.log("user", user);
     let portalProfile = {};
     if (!user.profile) {
       console.error("user profile is missing");
     } else {
-      // @ts-ignore
       portalProfile = {
-        ...(user.profile as UserProfile).portal,
+        ...(user.profile as IUserProfile).portal,
         ...state,
       };
     }
@@ -68,7 +47,7 @@ const AccountSetup1 = () => {
       return
     }
     const url = `${BASE_API_URL}portal/user/`;
-    let accessToken: string | AccessToken | null | undefined = null;
+    let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken =authState.accessToken?.accessToken;
     } else {
