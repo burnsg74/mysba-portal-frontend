@@ -177,10 +177,6 @@
   line-height: 18px;
 }
 
-.expired-help__message__body a {
-  padding-right: 4px;
-}
-
 .expired-help__message__body svg {
   padding: 3px;
   height: 24px;

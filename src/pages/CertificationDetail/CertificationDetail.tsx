@@ -6,7 +6,7 @@ import styles from "src/pages/CertificationDetail/CertificationDetail.module.css
 import Field from "src/components/Field/Field";
 import Alert from "src/components/Alert/Alert";
 import Pill from "src/components/Pill/Pill";
-import { useTranslation } from "react-i18next";
+import { useTranslation, Trans } from 'react-i18next';
 import ManageCertificationModal from "src/components/ManageCertificationModal/ManageCertificationModal";
 import { formatDate } from "src/utils/formatter";
 
@@ -186,22 +186,17 @@ const CertificationDetail = () => {
                     {t("Contact Us")}
                   </div>
                   <div className={`${styles["expired-help__message__body"]}`}>
-                    {t("You can fill out a help request form")}&nbsp;
-                    <u>
-                      <a
-                        href="https://wosb.certify.sba.gov/help-csh/"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {t("here")}
-                      </a>
-                    </u>
-                    &nbsp;
-                    {t("or contact us at")}&nbsp;
-                    <u>
-                      <a href="mailto:wosb@SBA.gov">WOSB@SBA.gov</a>
-                    </u>
-                    .
+                    <div>
+
+                    <Trans
+                      components={{
+                        helpFormLink: <a href="https://wosb.certify.sba.gov/help-csh/" target="_blank" rel="noopener noreferrer">here</a>,
+                        emailLink: <a href="mailto:wosb@SBA.gov">wosb@sba.gov</a>
+                      }}
+                    >
+                      {t('You can fill out a help request form here or contact us at wosb@sba.gov.')}
+                    </Trans>
+                    </div>
                   </div>
                   <div className={`${styles["expired-help__message__body"]}`}>
                     <a
