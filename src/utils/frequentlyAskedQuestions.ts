@@ -37,12 +37,7 @@ const FrequentlyAskedQuestions: Array<FrequentlyAskedQuestion> = [
     question: "What happens to my information if I delete my account?",
     answer:
       "No information is saved in this test environment. Details about what happens to your information after an account is deleted will be available here in future versions. If you no longer want to be part of this test, email digitalresearch@SBA.gov and you will receive a reply within two business days.",
-  },
-  {
-    question: "How do I get help on features in this portal?",
-    answer:
-      "This is a test environment and we are building out the help features. For assistance, email digitalresearch@SBA.gov and you will receive a reply within two business days.",
-  },
+  }
 ];
 
 export { FrequentlyAskedQuestions };
