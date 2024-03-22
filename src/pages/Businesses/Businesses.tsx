@@ -105,7 +105,7 @@ const Businesses = () => {
                         {business.name}{" "}
                       </h2>
                     </div>
-                    <div
+                    <button
                       className={`grid-col-auto ${styles["toggle__icon"]}`}
                       onClick={handleToggleDetails}
                       onKeyDown={handleKeyDown}
@@ -136,7 +136,7 @@ const Businesses = () => {
                           <use xlinkHref="/assets/img/sprite.svg#expand_more"></use>
                         </svg>
                       )}
-                    </div>
+                    </button>
                   </div>
                 </div>
                 <div className={`${styles.cardBody}`}>
