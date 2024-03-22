@@ -283,8 +283,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
             className={`usa-button usa-button--outline ${styles["footer-btn-outline"]}`}
             onClick={closeModal}
           >
-            <span className={`${styles["desktop-text"]}`}>{t("Back")}</span>
-            <span className={`${styles["mobile-text"]}`}>{t("Cancel")}</span>
+            {t("Cancel")}
           </button>
           <button
             type="button"
