@@ -109,6 +109,8 @@ const Businesses = () => {
                       className={`grid-col-auto ${styles["toggle__icon"]}`}
                       onClick={handleToggleDetails}
                       onKeyDown={handleKeyDown}
+                      aria-expanded={showDetails}
+                      aria-controls="BusinessDetail"
                       role="button"
                     >
                       {showDetails ? (
