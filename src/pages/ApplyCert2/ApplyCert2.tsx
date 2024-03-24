@@ -12,7 +12,7 @@ const ApplyCert2 = () => {
   const location = useLocation();
   const [selectedCert, setSelectedCert] = useState(certifications[0]);
   const isLargeWindow = () => window.innerWidth >= 780;
-  const prevPage = () => navigate("/certification-appl/1", { state: { selectedOption: selectedOptionRef.current } });
+  const prevPage = () => navigate("/certification-apply/1", { state: { selectedOption: selectedOptionRef.current } });
   const openCertWebsite = (url: string) => { window.open(url, "_blank"); navigate("/certification"); };
   const handleResize = () => isLargeWindow() && navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
 
