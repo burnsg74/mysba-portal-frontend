@@ -1,86 +1,34 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { certifications } from "src/utils/certifications";
 import styles from "src/pages/ApplyCert2/ApplyCert2.module.css";
 import nextSignImg from "src/assets/next-sign.png";
 
+
 const ApplyCert2 = () => {
-  const location = useLocation();
   const { t } = useTranslation();
   const navigate = useNavigate();
-  const selectedOption = "WOSB";
-  const certs = [
-    {
-      code: "WOSB",
-      title:
-        "You're being directed to the Women Owned Small Business (WOSB) Certification portal.",
-      message:
-        "Please note that this beta release does not yet support WOSB. Your WOSB certification will not appear in this beta release portal.",
-      url: "https://wosb.certify.sba.gov",
-    },
-    {
-      code: "8A",
-      title: "You're being directed to the 8A Certification portal.",
-      message:
-        "Please note that this beta release does not yet support 8A. Your 8A certification will not appear in this beta release portal.",
-      url: "https://certify.sba.gov",
-    },
-    {
-      code: "HubZone",
-      title:
-        "You're being directed to the Historically Underutilized Business Zone (HubZone) portal.",
-      message:
-        "Please note that this beta release does not yet support HubZone. Your HubZone certification will not appear in this beta release portal.",
-      url: "https://connect.sba.gov",
-    },
-    {
-      code: "VetCert",
-      title:
-        "You're being directed to the Veteran-Owned Small Business (VetCert) certification portal.",
-      message:
-        "Please note that this beta release does not yet support VetCert. Your VetCert certification will not appear in this beta release portal.",
-      url: "https://veterans.certify.sba.gov",
-    },
-  ];
+  const location = useLocation();
+  const [selectedCert, setSelectedCert] = useState(certifications[0]);
+  const isLargeWindow = () => window.innerWidth >= 780;
+  const prevPage = () => navigate("/certification-appl/1", { state: { selectedOption: selectedOptionRef.current } });
+  const openCertWebsite = (url: string) => { window.open(url, "_blank"); navigate("/certification"); };
+  const handleResize = () => isLargeWindow() && navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
 
-  const openCertWebsite = (url: string) => {
-    if (selectedOption) {
-      window.open(url, "_blank");
-    }
-  };
+  let cert = certifications[0];
+  let selectedOptionRef = useRef("8A");
 
-  const [cert, setCert] = useState({
-    code: "",
-    title: "",
-    message: "",
-    url: "",
-  });
   useEffect(() => {
-    const foundCert = certs.find(c => c.code === selectedOption) || {
-      code: "",
-      title: "",
-      message: "",
-      url: "",
-    };
-    setCert(foundCert);
-  }, [selectedOption, certs]);
-  function isLargeWindow() {
-    return window.innerWidth >= 768;
-  }
-  const handleResize = () => {  
-    
-    if (isLargeWindow() && location.pathname !== "/certification") {
-      window.removeEventListener("resize", handleResize);
-      navigate("/certification/2");
-    }
-  };
-  useEffect(() => {
+    selectedOptionRef.current = location.state?.selectedOption;
+    cert = certifications.find(cert => cert.code === selectedOptionRef.current) || certifications[0];
+    setSelectedCert(cert);
     window.addEventListener("resize", handleResize);
-    return
-  }, []);
-  const prevModal = () => {
-    navigate("/certification-apply/1");
-  };
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [navigate]);
 
   return (
     <>
@@ -91,9 +39,7 @@ const ApplyCert2 = () => {
               className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
               aria-label="progress"
             >
-              <ol
-                className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}
-              >
+              <ol className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}>
                 <li
                   className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment--incomplete"]}`}
                 ></li>
@@ -104,25 +50,21 @@ const ApplyCert2 = () => {
             </div>
           </div>
           <img src={nextSignImg} alt="Next Sign" />
-          <div className={`${styles["content__title"]}`}>
-            {t(cert?.title) || ""}
-          </div>
-          <div className={`${styles["content__message"]}`}>
-            {t(cert?.message) || ""}
-          </div>
+          <div className={`${styles["content__title"]}`}>{t(selectedCert?.title) || ""}</div>
+          <div className={`${styles["content__message"]}`}>{t(selectedCert?.message) || ""}</div>
         </div>
         <div className={`${styles["footer"]}`}>
           <button
             type="button"
             className={`usa-button usa-button--outline  ${styles["footer-btn"]}`}
-            onClick={prevModal}
+            onClick={prevPage}
           >
             {t("Back")}
           </button>
           <button
             type="button"
             className={`usa-button ${styles["footer-btn"]}`}
-            onClick={() => openCertWebsite(cert?.url)}
+            onClick={() => openCertWebsite(selectedCert?.url)}
           >
             {t("Go")}
           </button>

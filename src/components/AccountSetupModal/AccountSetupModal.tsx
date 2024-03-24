@@ -44,7 +44,6 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
 
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter" || event.key === " ") {
-      console.log("removeEventListener;")
       window.removeEventListener("resize", handleResize);
       dispatch(setNav(true));
       setModalOpen(false);
@@ -100,7 +99,6 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
                 type="button"
                 className={`usa-button ${styles["footer-btn"]}`}
                 onClick={() => {
-                  console.log("removeEventListener;")
                   window.removeEventListener("resize", handleResize);
                   dispatch(setNav(true));
                   setModalOpen(false);

@@ -23,7 +23,6 @@ const Layout = () => {
   }, [location]);
 
   function handleNavLinkClick() {
-    console.log("handleFocusOut");
     // Layout Ignores this
   }
 

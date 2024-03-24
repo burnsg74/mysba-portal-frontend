@@ -31,8 +31,6 @@ const AccountSetup1 = () => {
   });
 
   const handleContinueBtnClick = () => {
-
-    console.log("user", user);
     let portalProfile = {};
     if (!user.profile) {
       console.error("user profile is missing");
@@ -64,7 +62,6 @@ const AccountSetup1 = () => {
           },
         };
         dispatch(setUser(newUser));
-        console.log(response.data);
       })
       .catch(error => {
         console.log(error);

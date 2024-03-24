@@ -49,7 +49,6 @@ const Header = () => {
   }
 
   function handleTouchEnd(event: React.TouchEvent) {
-    console.log(event.changedTouches[0].clientX, window.innerWidth / 2)
     if (event.changedTouches[0].clientX > window.innerWidth / 2) {
       setIsNavOpen(false);
     }

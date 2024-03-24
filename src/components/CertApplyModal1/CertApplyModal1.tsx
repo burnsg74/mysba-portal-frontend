@@ -1,65 +1,52 @@
-import React, { useState } from "react";
-import styles from "src/components/CertApplyModal1/CertApplyModal1.module.css";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
-import editPaperImg from "src/assets/edit-paper.png";
+import { useLocation, useNavigate } from "react-router-dom";
 import Alert from "src/components/Alert/Alert";
+import styles from "src/components/CertApplyModal1/CertApplyModal1.module.css";
+import editPaperImg from "src/assets/edit-paper.png";
 
-interface CertApplyModal1ModalProps {
-  onClose?: () => void;
-  onNext?: (selectedOption: "WOSB" | "8A" | "HubZone" | "VetCert") => void;
-}
-
-const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
-  onClose,
-  onNext,
-}) => {
+const CertApplyModal1 = () => {
   const { t } = useTranslation();
-  const [selectedOption, setSelectedOption] = useState<
-    "WOSB" | "8A" | "HubZone" | "VetCert"
-  >("WOSB");
-
-  const closeModal = () => {
-    if (typeof onClose === "function") onClose();
-  };
-
-  const NextModal = () => {
-    if (typeof onNext === "function") onNext(selectedOption);
-  };
-
-  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSelectedOption(
-      event.target.value as "WOSB" | "8A" | "HubZone" | "VetCert"
-    );
-  };
+  const [selectedOption, setSelectedOption] = useState<"WOSB" | "8A" | "HubZone" | "VetCert">("8A");
+  const selectedOptionRef = useRef(selectedOption);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isSmallWindow = () => window.innerWidth < 780;
+  const closeModal = () => navigate("/certification");
+  const NextModal = () => navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
+  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) =>
+    setSelectedOption(event.target.value as "WOSB" | "8A" | "HubZone" | "VetCert");
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === "Enter") {
-      NextModal;
-    }
+    if (event.key === "Enter") navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
   };
+  const handleResize = () => {
+    if (isSmallWindow()) navigate("/certification-apply/1", { state: { selectedOption: selectedOptionRef.current } });
+  };
+
+  useEffect(() => {
+    selectedOptionRef.current = selectedOption;
+  }, [selectedOption]);
+  useEffect(() => {
+    if (location.state?.selectedOption) {
+      setSelectedOption(location.state.selectedOption);
+    }
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [navigate]);
+
   return (
     <>
       <div className={`${styles["overlay"]}`} />
       <div className={`${styles["container"]}`}>
         <div className={`${styles["header"]}`}>
-          <span className={`${styles["header__title"]}`}>
-            {t("Apply for a Certification")}
-          </span>
-          <span
-            className={`${styles["header__close"]}`}
-            onClick={closeModal}
-            onKeyDown={handleKeyDown}
-            role="button"
-          >
+          <span className={`${styles["header__title"]}`}>{t("Apply for a Certification")}</span>
+          <span className={`${styles["header__close"]}`} onClick={closeModal} onKeyDown={handleKeyDown} role="button">
             {" "}
             {t("Close")}
-            <svg
-              aria-hidden="true"
-              focusable="false"
-              role="img"
-              width="24"
-              height="24"
-              style={{ fill: "#71767A" }}
-            >
+            <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </span>
@@ -70,9 +57,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
               className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
               aria-label="progress"
             >
-              <ol
-                className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}
-              >
+              <ol className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}>
                 <li
                   className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment--complete"]}`}
                 ></li>
@@ -147,14 +132,9 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     checked={selectedOption === "8A"}
                     onChange={handleOptionChange}
                   />
-                  <label
-                    className={`usa-radio__label ${styles["radio-label"]}`}
-                    htmlFor="cert8A"
-                  >
+                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="cert8A">
                     <span className={`${styles["checkbox_label"]}`}>
-                      {t(
-                        "Socially and Economically Disadvantaged Business Certification (8A)"
-                      )}
+                      {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg
@@ -193,14 +173,9 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     checked={selectedOption === "HubZone"}
                     onChange={handleOptionChange}
                   />
-                  <label
-                    className={`usa-radio__label ${styles["radio-label"]}`}
-                    htmlFor="certHubZone"
-                  >
+                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certHubZone">
                     <span className={`${styles["checkbox_label"]}`}>
-                      {t(
-                        "Historically Underutilized Business Zone Certification (HubZone)"
-                      )}
+                      {t("Historically Underutilized Business Zone Certification (HubZone)")}
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg
@@ -212,10 +187,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
                       <span className={`${styles["tooltiptext"]}`}>
-                        {t(
-                          "You could qualify if your business is located in a HUBZone."
-                        )}{" "}
-                        <br />
+                        {t("You could qualify if your business is located in a HUBZone.")} <br />
                         <a
                           href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program#id-hubzone-program-qualifications"
                           target="_blank"
@@ -237,14 +209,9 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                     checked={selectedOption === "VetCert"}
                     onChange={handleOptionChange}
                   />
-                  <label
-                    className={`usa-radio__label ${styles["radio-label"]}`}
-                    htmlFor="certVet"
-                  >
+                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certVet">
                     <span className={`${styles["checkbox_label"]}`}>
-                      {t(
-                        "Veteran-Owned Small Business (VetCert) Certification"
-                      )}
+                      {t("Veteran-Owned Small Business (VetCert) Certification")}
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg
@@ -256,10 +223,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
                       <span className={`${styles["tooltiptext"]}`}>
-                        {t(
-                          "You could qualify if over 51% of your business is owned by veterans."
-                        )}{" "}
-                        <br />
+                        {t("You could qualify if over 51% of your business is owned by veterans.")} <br />
                         <a
                           href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs#id-veteran-small-business-certification-vetcert-program"
                           target="_blank"
@@ -285,11 +249,7 @@ const CertApplyModal1: React.FC<CertApplyModal1ModalProps> = ({
           >
             {t("Cancel")}
           </button>
-          <button
-            type="button"
-            className={`usa-button ${styles["footer-btn"]}`}
-            onClick={NextModal}
-          >
+          <button type="button" className={`usa-button ${styles["footer-btn"]}`} onClick={NextModal}>
             {t("Continue")}
           </button>
         </div>

@@ -47,7 +47,6 @@ const AccountSetup3 = () => {
             type="button"
             className={`usa-button ${styles["footer-btn"]}`}
             onClick={() => {
-              console.log("removeEventListener;")
               window.removeEventListener("resize", handleResize);
               dispatch(setNav(true));
               navigate("/dashboard");

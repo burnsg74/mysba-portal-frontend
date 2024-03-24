@@ -1,90 +1,35 @@
-import React, { useEffect, useState } from "react";
-import styles from "src/components/CertApplyModal2/CertApplyModal2.module.css";
+import React, { useEffect, useRef, useState } from "react";
 import { useTranslation } from "react-i18next";
+import { useLocation, useNavigate } from "react-router-dom";
+import { certifications } from "src/utils/certifications";
+import styles from "src/components/CertApplyModal2/CertApplyModal2.module.css";
 import nextSignImg from "src/assets/next-sign.png";
 
-interface ICertApplyModal2 {
-  onPrev?: () => void;
-  onClose?: () => void;
-  selectedOption: "WOSB" | "8A" | "HubZone" | "VetCert";
-}
-
-const CertApplyModal2: React.FC<ICertApplyModal2> = ({
-  onPrev,
-  onClose,
-  selectedOption,
-}) => {
+const CertApplyModal2 = () => {
   const { t } = useTranslation();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const [selectedCert, setSelectedCert] = useState(certifications[0]);
+  const isSmallWindow = () => window.innerWidth < 780;
+  const prevModal = () => navigate("/certification/1", { state: { selectedOption: selectedOptionRef.current } });
+  const closeModal = () => navigate("/certification");
+  const openCertWebsite = (url: string) => { window.open(url, "_blank"); closeModal(); };
+  const handleKeyDown = (event: React.KeyboardEvent) => { if (event.key === "Enter") closeModal(); };
+  const handleResize = () => isSmallWindow() && navigate("/certification-apply/2", { state: { selectedOption: selectedOptionRef.current } });
 
-  const certs = [
-    {
-      code: "WOSB",
-      title:
-        "You're being directed to the Women Owned Small Business (WOSB) Certification portal.",
-      message:
-        "Please note that this beta release does not yet support WOSB. Your WOSB certification will not appear in this beta release portal.",
-      url: "https://wosb.certify.sba.gov",
-    },
-    {
-      code: "8A",
-      title: "You're being directed to the 8A Certification portal.",
-      message:
-        "Please note that this beta release does not yet support 8A. Your 8A certification will not appear in this beta release portal.",
-      url: "https://certify.sba.gov",
-    },
-    {
-      code: "HubZone",
-      title:
-        "You're being directed to the Historically Underutilized Business Zone (HubZone) portal.",
-      message:
-        "Please note that this beta release does not yet support HubZone. Your HubZone certification will not appear in this beta release portal.",
-      url: "https://connect.sba.gov",
-    },
-    {
-      code: "VetCert",
-      title:
-        "You're being directed to the Veteran-Owned Small Business (VetCert) certification portal.",
-      message:
-        "Please note that this beta release does not yet support VetCert. Your VetCert certification will not appear in this beta release portal.",
-      url: "https://veterans.certify.sba.gov",
-    },
-  ];
+  let cert = certifications[0];
+  let selectedOptionRef = useRef("8A");
 
-  const [cert, setCert] = useState({
-    code: "",
-    title: "",
-    message: "",
-    url: "",
-  });
   useEffect(() => {
-    const foundCert = certs.find(c => c.code === selectedOption) || {
-      code: "",
-      title: "",
-      message: "",
-      url: "",
+    selectedOptionRef.current = location.state?.selectedOption;
+    cert = certifications.find(cert => cert.code === selectedOptionRef.current) || certifications[0];
+    setSelectedCert(cert);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
     };
-    setCert(foundCert);
-  }, [selectedOption, certs]);
-
-  const prevModal = () => {
-    if (typeof onPrev === "function") onPrev();
-  };
-
-  const closeModal = () => {
-    if (typeof onClose === "function") onClose();
-  };
-
-  const openCertWebsite = (url: string) => {
-    if (selectedOption) {
-      window.open(url, "_blank");
-    }
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === "Enter") {
-      closeModal;
-    }
-  };
+  }, [navigate]);
 
   return (
     <>
@@ -133,10 +78,10 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
           </div>
           <img src={nextSignImg} alt="Next Sign" />
           <div className={`${styles["content__title"]}`}>
-            {t(cert?.title) || ""}
+            {t(selectedCert.title) || ""}
           </div>
           <div className={`${styles["content__message"]}`}>
-            {t(cert?.message) || ""}
+            {t(selectedCert.message) || ""}
           </div>
         </div>
         <div className={`${styles["footer"]}`}>
@@ -150,7 +95,7 @@ const CertApplyModal2: React.FC<ICertApplyModal2> = ({
           <button
             type="button"
             className={`usa-button ${styles["footer-btn"]}`}
-            onClick={() => openCertWebsite(cert?.url)}
+            onClick={() => openCertWebsite(selectedCert.url)}
           >
             {t("Go")}
           </button>

@@ -1,32 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { getUser, setUser } from "src/store/user/userSlice";
+import { AccessToken } from "@okta/okta-auth-js";
+import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
 import CertApplyModal1 from "src/components/CertApplyModal1/CertApplyModal1";
 import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
 import CardCertification from "src/components/CardCertification/CardCertification";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
-import { AccessToken } from "@okta/okta-auth-js";
-import { useOktaAuth } from "@okta/okta-react";
 import styles from "src/pages/Certifications/Certifications.module.css";
 
 type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";
 
 const Certifications = () => {
+  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const location = useLocation();
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
-  const [showModal, setShowModal] = useState(0);
-  const [showFetchError, setShowFetchError] = useState(false);
-  const [selectedOption, setSelectedOption] = useState<
-    OptionType | undefined
-  >();
-  const { t } = useTranslation();
   const dispatch = useDispatch();
+  const isSmallWindow = () => window.innerWidth < 780;
+  const [selectedOption, setSelectedOption] = useState<OptionType>("8A");
+  const [showFetchError, setShowFetchError] = useState(false);
+  const { t } = useTranslation();
   const { authState } = useOktaAuth();
-  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
 
   useEffect(() => {
     const fetchCertifications = async () => {
@@ -54,58 +52,15 @@ const Certifications = () => {
     };
     fetchCertifications();
   }, []);
-  function isSmallWindow() {
-    return window.innerWidth < 780;
-  }
-  const handleResize = () => {
-    if (isSmallWindow() && location.pathname !== "/certification") {
-      window.removeEventListener("resize", handleResize);
-      if (location.pathname === "/certification/1") {
-        console.log("certapply 1")
-        navigate("/certification-apply/1");
-      } else if (location.pathname === "/certification/2") {
-        console.log("cert apply 2")
-        navigate("/certification-apply/2");
-      }
-    }
-  };
-  useEffect(() => {
-    window.addEventListener("resize", handleResize);
-    return;
-  }, []);
 
   const handleApplyCertificationClick = () => {
-    const isMobile = () => window.innerWidth < 780;
-    if (isMobile()) {
-      console.log("navigate step 1 cert");
-      navigate("/certification-apply/1");
+    if (isSmallWindow()) {
+      navigate("/certification-apply/1", { state: { selectedOption } });
     } else {
-      if (location.pathname === "/certification") {
-        navigate("/certification/1");
-        console.log("navigate to: ", location.pathname);
-      }
+      navigate("/certification/1", { state: { selectedOption } });
     }
   };
 
-  const handleCertApplyModal1Close = () => {
-    navigate("/certification");
-  };
-  const handleCertApplyModal1Next = (selectedOption: OptionType) => {
-    const isMobile = () => window.innerWidth < 780;
-    if (isMobile()) {
-      console.log("navigate to certification-apply/2");
-      navigate("/certification-apply/2");
-    } else {
-      console.log("navigate to certification/2");
-      navigate("/certification/2");
-    }
-  };
-  const handleCertApplyModal2Close = () => {
-    navigate("/certification");
-  };
-  const handleCertApplyModal2Prev = () => {
-    navigate("/certification/1");
-  };
   return (
     <>
       <div className={`main-container`}>
@@ -195,19 +150,8 @@ const Certifications = () => {
           </div>
         </div>
       </div>
-      {location.pathname === "/certification/1" ? (
-        <CertApplyModal1
-          onClose={handleCertApplyModal1Close}
-          onNext={selectedOption => handleCertApplyModal1Next(selectedOption)}
-        />
-      ) : null}
-      {location.pathname === "/certification/2" ? (
-        <CertApplyModal2
-          onClose={handleCertApplyModal2Close}
-          onPrev={handleCertApplyModal2Prev}
-          selectedOption={selectedOption}
-        />
-      ) : null}
+      {location.pathname === "/certification/1" && <CertApplyModal1 />}
+      {location.pathname === "/certification/2" && <CertApplyModal2 />}
     </>
   );
 };
