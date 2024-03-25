@@ -101,7 +101,7 @@ const Loading = () => {
           }
           dispatch(setNav(true));
           dispatch(setUser(user));
-          if (user.profile.crm.email === "emilyj@email.com") {
+          if (!user.profile.portal.id) {
             dispatch(setNav(false));
             navigate("/account-setup/1");
           } else {

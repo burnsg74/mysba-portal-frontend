@@ -40,10 +40,6 @@ const AccountSetup1 = () => {
         ...state,
       };
     }
-    if (user?.profile?.crm?.email === "emilyj@email.com") {
-      navigate("/dashboard/new")
-      return
-    }
     const url = `${BASE_API_URL}portal/user/`;
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
