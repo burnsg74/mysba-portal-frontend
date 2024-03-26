@@ -12,7 +12,7 @@ import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
 
-type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert";
+type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert" | "none";
 
 const Certifications = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
@@ -21,7 +21,7 @@ const Certifications = () => {
   const user: IUser = useSelector(getUser);
   const dispatch = useDispatch();
   const isSmallWindow = () => window.innerWidth < 780;
-  const [selectedOption, setSelectedOption] = useState<OptionType>("8A");
+  const [selectedOption, setSelectedOption] = useState<OptionType>("none");
   const [showFetchError, setShowFetchError] = useState(false);
   const { t } = useTranslation();
   const { authState } = useOktaAuth();

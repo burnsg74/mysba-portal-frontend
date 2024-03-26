@@ -101,7 +101,6 @@ const Loading = () => {
           }
           dispatch(setNav(true));
           dispatch(setUser(user));
-          console.log(user)
           if (!user.profile.portal) {
             dispatch(setNav(false));
             navigate("/account-setup/1");

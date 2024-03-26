@@ -7,7 +7,7 @@ import editPaperImg from "src/assets/edit-paper.png";
 
 const CertApplyModal1 = () => {
   const { t } = useTranslation();
-  const [selectedOption, setSelectedOption] = useState<"WOSB" | "8A" | "HubZone" | "VetCert">("8A");
+  const [selectedOption, setSelectedOption] = useState<"WOSB" | "8A" | "HubZone" | "VetCert" | "none">("none");
   const selectedOptionRef = useRef(selectedOption);
   const navigate = useNavigate();
   const location = useLocation();
