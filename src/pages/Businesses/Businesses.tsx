@@ -110,7 +110,7 @@ const Businesses = () => {
                       onClick={handleToggleDetails}
                       onKeyDown={handleKeyDown}
                       aria-expanded={showDetails}
-                      aria-controls="BusinessDetail"
+                      aria-label={showDetails ? "Collapse details" : "Expand details"}
                       role="button"
                     >
                       {showDetails ? (
@@ -122,7 +122,7 @@ const Businesses = () => {
                           role="img"
                           aria-labelledby="expand_less"
                         >
-                          <title id="expand_less">Expand Business Detail</title>
+                          <title id="expand_less">Collapse Business Detail</title>
                           <use xlinkHref="/assets/img/sprite.svg#expand_less"></use>
                         </svg>
                       ) : (
@@ -132,9 +132,9 @@ const Businesses = () => {
                           aria-hidden="true"
                           focusable="false"
                           role="img"
-                          aria-labelledby="expand_more"
+                          
                         >
-                          <title id="expand_less">Collapsed Business Detail</title>
+                          <title id="expand_less">Expand Business Detail</title>
                           <use xlinkHref="/assets/img/sprite.svg#expand_more"></use>
                         </svg>
                       )}
