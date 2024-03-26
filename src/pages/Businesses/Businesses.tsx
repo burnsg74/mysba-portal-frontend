@@ -120,7 +120,6 @@ const Businesses = () => {
                           aria-hidden="true"
                           focusable="false"
                           role="img"
-                          aria-labelledby="expand_less"
                         >
                           <title id="expand_less">Collapse Business Detail</title>
                           <use xlinkHref="/assets/img/sprite.svg#expand_less"></use>
@@ -132,7 +131,6 @@ const Businesses = () => {
                           aria-hidden="true"
                           focusable="false"
                           role="img"
-                          
                         >
                           <title id="expand_less">Expand Business Detail</title>
                           <use xlinkHref="/assets/img/sprite.svg#expand_more"></use>
