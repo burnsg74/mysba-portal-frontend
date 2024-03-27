@@ -110,8 +110,8 @@ const Businesses = () => {
                       onClick={handleToggleDetails}
                       onKeyDown={handleKeyDown}
                       aria-expanded={showDetails}
-                      aria-label={showDetails ? "Collapse details" : "Expand details"}
-                      role="button"
+                      aria-controls={`details-${index}`}
+                      aria-label={showDetails ? `Collapse ${business.name} Details` : `Expand ${business.name} Details`}
                     >
                       {showDetails ? (
                         <svg
