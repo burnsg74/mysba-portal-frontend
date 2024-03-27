@@ -20,10 +20,10 @@ const certifications: Array<certifications> = [
     url: "https://certify.sba.gov",
   },
   {
-    code: "HubZone",
-    title: "You're being directed to the Historically Underutilized Business Zone (HubZone) portal.",
+    code: "HUBZone",
+    title: "You're being directed to the Historically Underutilized Business Zone (HUBZone) portal.",
     message:
-      "Please note that this beta release does not yet support HubZone. Your HubZone certification will not appear in this beta release portal.",
+      "Please note that this beta release does not yet support HUBZone. Your HUBZone certification will not appear in this beta release portal.",
     url: "https://connect.sba.gov",
   },
   {

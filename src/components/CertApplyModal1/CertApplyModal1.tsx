@@ -7,7 +7,7 @@ import editPaperImg from "src/assets/edit-paper.png";
 
 const CertApplyModal1 = () => {
   const { t } = useTranslation();
-  const [selectedOption, setSelectedOption] = useState<"WOSB" | "8A" | "HubZone" | "VetCert" | "none">("none");
+  const [selectedOption, setSelectedOption] = useState<"WOSB" | "8A" | "HUBZone" | "VetCert" | "none">("none");
   const selectedOptionRef = useRef(selectedOption);
   const navigate = useNavigate();
   const location = useLocation();
@@ -15,7 +15,7 @@ const CertApplyModal1 = () => {
   const closeModal = () => navigate("/certification");
   const NextModal = () => navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) =>
-    setSelectedOption(event.target.value as "WOSB" | "8A" | "HubZone" | "VetCert");
+    setSelectedOption(event.target.value as "WOSB" | "8A" | "HUBZone" | "VetCert");
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === "Enter") navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
   };
@@ -166,16 +166,16 @@ const CertApplyModal1 = () => {
                 <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
                   <input
                     className={`usa-radio__input usa-radio__input--tile`}
-                    id="certHubZone"
+                    id="certHUBZone"
                     type="radio"
-                    name="certHubZone"
-                    value="HubZone"
-                    checked={selectedOption === "HubZone"}
+                    name="certHUBZone"
+                    value="HUBZone"
+                    checked={selectedOption === "HUBZone"}
                     onChange={handleOptionChange}
                   />
-                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certHubZone">
+                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certHUBZone">
                     <span className={`${styles["checkbox_label"]}`}>
-                      {t("Historically Underutilized Business Zone Certification (HubZone)")}
+                      {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                     </span>
                     <span className={`${styles["tooltip"]}`}>
                       <svg

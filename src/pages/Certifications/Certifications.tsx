@@ -12,7 +12,7 @@ import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
 
-type OptionType = "WOSB" | "8A" | "HubZone" | "VetCert" | "none";
+type OptionType = "WOSB" | "8A" | "HUBZone" | "VetCert" | "none";
 
 const Certifications = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
