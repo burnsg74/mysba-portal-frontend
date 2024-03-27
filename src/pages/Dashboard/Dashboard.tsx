@@ -46,7 +46,7 @@ const Dashboard = () => {
                       <Alert
                         key={index}
                         type={"error"}
-                        message={t('Your Women-Owned Small Business certification has expired')}
+                        message={t('Your' + ' ' +  certification.certification_type + ' ' + 'certification has expired')}
                       />
                       </div>
                     ) : certification.days_until_expiry <= 90 ? (
@@ -54,7 +54,7 @@ const Dashboard = () => {
                           <Alert
                             key={index}
                             type="warning"
-                            message={t('Your Women-Owned Small Business certification must be renewed by') + " " + expiration_date}
+                            message={t('Your' + ' ' +  certification.certification_type + ' ' + 'certification must be renewed by') + " " + expiration_date}
                           />
                         </div>
                     ) : null}
