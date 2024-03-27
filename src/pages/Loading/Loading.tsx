@@ -35,7 +35,7 @@ const Loading = () => {
   ];
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    const email = info.email || "";
+    const email = info.email?.toLowerCase() || "";
     let accessToken: string | AccessToken | null | undefined = null;
     if (authState && "accessToken" in authState) {
       accessToken =authState.accessToken?.accessToken;
@@ -56,7 +56,6 @@ const Loading = () => {
       console.error(err);
       window.location.href = "/error.html";
     }
-
     const crmData = results[0].data;
     let businessData = results[1].data;
     businessData.forEach((business: any) => {
