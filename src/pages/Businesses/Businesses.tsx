@@ -112,6 +112,7 @@ const Businesses = () => {
                       aria-expanded={showDetails}
                       aria-controls={`details-${index}`}
                       aria-label={showDetails ? `Collapse ${business.name} Details` : `Expand ${business.name} Details`}
+                      role="button"
                     >
                       {showDetails ? (
                         <svg
