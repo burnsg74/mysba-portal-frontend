@@ -66,6 +66,7 @@
 }
 
 .video-subtitle {
+  text-align: start;
   font-family: var(--Font-Primary);
   font-size: 15px;
   font-weight: 400;

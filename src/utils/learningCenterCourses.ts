@@ -40,19 +40,19 @@ let learningCenterCourses = {
       {
         type: "video",
         title: "Your Financial needs",
-        description: "2 minute 55 seconds",
+        description: "Video (2 minute 55 seconds)",
         link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business/your-financial-needs",
       },
       {
         type: "video",
         title: "Debt Financing vs Equity Financing",
-        description: "1 minute 54 seconds",
+        description: "Video (1 minute 54 seconds)",
         link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business/debt-financing-vs-equity-financing",
       },
       {
         type: "video",
         title: "Credit History",
-        description: "1 minute 20 seconds",
+        description: "Video (1 minute 20 seconds)",
         link: "https://learn.sba.gov/learning-center-launch/learning-center-financing-your-business/credit-history",
       },
     ]
@@ -66,19 +66,19 @@ let learningCenterCourses = {
       {
         type: "video",
         title: "Competitive Advantage Overview",
-        description: "Video",
+        description: "Video (1 minute 0 seconds)",
         link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/competitive-advantage-overview",
       },
       {
         type: "video",
         title: "Define Your Brand",
-        description: "Video",
+        description: "Video (4 minutes 3 seconds)",
         link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/define-your-brand",
       },
       {
         type: "video",
         title: "Know Your Competition",
-        description: "Video",
+        description: "Video (1 minute 2 seconds)",
         link: "https://learn.sba.gov/learning-center-market/learning-center-competitive-advantage/know-your-competition",
       },
     ]
