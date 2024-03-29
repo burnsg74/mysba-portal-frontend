@@ -57,6 +57,7 @@
 }
 
 .video-title {
+  text-align: start;
   font-family: var(--Font-Secondary);
   font-size: 17px;
   font-weight: 700;
