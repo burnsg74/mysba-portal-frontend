@@ -166,7 +166,8 @@
 .header-launch-href {
   text-decoration: none;
   color: unset;
-  height: 20px;
+  height: 1em;
+  display:inline-block;
 }
 
 .content-image {

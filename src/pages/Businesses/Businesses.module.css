@@ -130,6 +130,7 @@
 }
 
 .toggle__icon {
+  padding:0px;
   cursor: pointer;
   fill: var(--Brand-Primary-SBA-Blue);
   height: 30px;

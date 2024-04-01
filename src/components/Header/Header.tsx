@@ -225,7 +225,7 @@ const Header = () => {
             {showNav && (
               <>
                 {/* User Profile */}
-                <div className="usa-nav__inner">
+                <div className={`usa-nav__inner ${styles["usa-nav__inner"]}`}>
                   <Link to="/profile">
                       <img src={ProfileIcon} alt="Profile Icon" />
                   </Link>

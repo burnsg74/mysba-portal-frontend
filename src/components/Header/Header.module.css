@@ -8,6 +8,12 @@
   padding-right: 20px;
 }
 
+.usa-nav__inner a {
+  display:block;
+  height:auto;
+  width:auto;
+}
+
 .left {
   display: flex;
   align-items: center;
