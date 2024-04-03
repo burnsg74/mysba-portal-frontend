@@ -127,7 +127,7 @@
 }
 
 .view-course-btn:focus {
-  outline: none;
+  box-shadow: inset 0 0 0 3px blue;
   color: var(--Brand-Secondary-Bright-Blue);
   text-align: center;
   font-family: var(--Font-Secondary);
