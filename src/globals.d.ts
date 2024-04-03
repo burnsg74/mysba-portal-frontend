@@ -65,13 +65,20 @@ interface IUser {
   certifications?: ICertification[];
 }
 
-interface ICardCertificationProps {
+
+interface ICardProps {
+  icon: string;
+  title: string;
+  body: JSX.Element;
+  detailsPage: string;
+}
+
+interface ICertificationCardProps {
   certification: ICertification,
-  showDetails?: boolean,
   index: number
 }
 
-interface ICardBusinessProps {
+interface IBusinessCardProps {
   business: IBusiness;
-  showDetails?: boolean;
+  index: number
 }

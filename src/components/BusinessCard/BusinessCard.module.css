@@ -1,0 +1,29 @@
+.bodyRow {
+  display: flex;
+  padding: 20px;
+  align-items: flex-start;
+  gap: 40px;
+  align-self: stretch;
+}
+
+.bodyLegalEntityText{
+  flex: 1 0 0;
+  color: var(--Primary-primary-darker);
+  font-family: var(--Font-Primary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.bodySubGroup {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+.ellipsesIcon {
+  width: 4px;
+  height: 4px;
+  fill: #162E51;
+}

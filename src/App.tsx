@@ -22,6 +22,7 @@ import Error from "src/pages/Error/Error";
 import Callback from "src/pages/Callback/Callback";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
+import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -77,6 +78,10 @@ const App: React.FC = () => {
             <Route path="/dashboard/*" element={<Dashboard />} />
             <Route path="/profile" element={<Profile />} />
             <Route path="/businesses" element={<Businesses />} />
+            <Route
+              path="/business/detail/:id"
+              element={<BusinessDetail />}
+            />
             <Route path="/certification/*" element={<Certifications />} />
             <Route
               path="/certification-apply/1"

@@ -7,10 +7,10 @@ import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
 import CertApplyModal1 from "src/components/CertApplyModal1/CertApplyModal1";
 import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
-import CardCertification from "src/components/CardCertification/CardCertification";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
+import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
 
 type OptionType = "WOSB" | "8A" | "HUBZone" | "VetCert" | "none";
 
@@ -37,12 +37,9 @@ const Certifications = () => {
         } else {
           accessToken = undefined;
         }
-        const res = await axios.get(
-          `${BASE_API_URL}certification/wosb/${email}`,
-          {
-            headers: { Authorization: "Bearer " + accessToken },
-          }
-        );
+        const res = await axios.get(`${BASE_API_URL}certification/wosb/${email}`, {
+          headers: { Authorization: "Bearer " + accessToken },
+        });
         const updatedUser = { ...user, certifications: res.data };
         dispatch(setUser(updatedUser));
       } catch (error) {
@@ -66,12 +63,7 @@ const Certifications = () => {
       <div className={`main-container`}>
         {showFetchError && (
           <div className={`${styles["alert-container"]}`}>
-            <Alert
-              type={"error"}
-              message={
-                "Error: Unable to fetch certifications. Please try again later."
-              }
-            />
+            <Alert type={"error"} message={"Error: Unable to fetch certifications. Please try again later."} />
           </div>
         )}
         {/* Certifications Alerts */}
@@ -84,9 +76,7 @@ const Certifications = () => {
                     <Alert
                       key={index}
                       type={"error"}
-                      message={t(
-                        "Your " + certification.certification_type + " certification has expired"
-                      )}
+                      message={t("Your " + certification.certification_type + " certification has expired")}
                     />
                   </div>
                 ) : certification.days_until_expiry <= 90 ? (
@@ -95,7 +85,9 @@ const Certifications = () => {
                       key={index}
                       type={"warning"}
                       message={t(
-                        "Your " + certification.certification_type + " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
+                        "Your " +
+                          certification.certification_type +
+                          " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
                         {
                           days_until_expiry: certification.days_until_expiry,
                           expire_at: certification.expiration_date,
@@ -109,9 +101,7 @@ const Certifications = () => {
           })}
 
         <div className={`grid-row ${styles["title__row"]}`}>
-          <h1 className={`grid-col grid-col-wrap ${styles["title"]}`}>
-            {t("Certifications")}
-          </h1>
+          <h1 className={`grid-col grid-col-wrap ${styles["title"]}`}>{t("Certifications")}</h1>
           <div className={`grid-col-auto ${styles["btn-group"]}`}>
             <div className="grid-col-auto grid-col-wrap">
               <button
@@ -133,22 +123,14 @@ const Certifications = () => {
             </div>
           </div>
         </div>
-        <div className="Certifications-content">
-          {/* certifications  */}
-          <div className="grid-row">
-            <div className="grid-col">
-              {user.certifications &&
-                user.certifications.map((certification, index) => (
-                  <React.Fragment key={index}>
-                    <CardCertification
-                      certification={certification}
-                      index={index + 1}
-                    />
-                  </React.Fragment>
-                ))}
-            </div>
-          </div>
-        </div>
+        {user.certifications &&
+          user.certifications.map((certification, index) => (
+              <div className={`grid-row ${styles.certificationRow}`}>
+                <div className="grid-col">
+                  <CertificationCard key={index} index={index + 1} certification={certification} />
+                </div>
+              </div>
+          ))}
       </div>
       {location.pathname === "/certification/1" && <CertApplyModal1 />}
       {location.pathname === "/certification/2" && <CertApplyModal2 />}

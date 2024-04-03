@@ -1,0 +1,38 @@
+.bodyRow {
+  align-items: center;
+  display: flex;
+  gap: 24px;
+  padding: 20px;
+}
+
+.bodyCompanyName {
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  color: var(--Primary-primary-darker);
+  display: -webkit-box;
+  flex: 1 0 0;
+  font-family: var(--Font-Primary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  min-width: 200px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.bodyRowRightGroup {
+  align-items: center;
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.bodyRightGroupExpirationDate {
+  color: var(--Primary-primary-darker);
+  font-family: var(--Font-Primary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

@@ -3,13 +3,13 @@ import styles from "src/pages/AccountSetup1/AccountSetup1.module.css";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
-import CardCertification from "src/components/CardCertification/CardCertification";
 import { useNavigate } from "react-router-dom";
-import CardBusiness from "src/components/CardBusiness/CardBusiness";
 import OpenSignImage from "src/assets/open-sign.png";
 import axios from "axios";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
+import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
+import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
 
 const AccountSetup1 = () => {
   const { t } = useTranslation();
@@ -93,9 +93,7 @@ const AccountSetup1 = () => {
           <div className={`${styles["label"]}`}>{t("Your Business")} </div>
           {user.businesses &&
             user.businesses.map((business, index) => (
-              <React.Fragment key={index}>
-                <CardBusiness business={business} showDetails={false} />
-              </React.Fragment>
+              <BusinessCard key={index} index={index + 1} business={business} />
             ))}
           <div className={`${styles["label-certifications"]}`}>
             {t("Your Business Certifications")}{" "}
@@ -104,13 +102,7 @@ const AccountSetup1 = () => {
             <div className="grid-col">
               {user.certifications &&
                 user.certifications.map((certification, index) => (
-                  <React.Fragment key={index}>
-                    <CardCertification
-                      certification={certification}
-                      showDetails={false}
-                      index={index + 1}
-                    />
-                  </React.Fragment>
+                  <CertificationCard key={index} index={index + 1} certification={certification} />
                 ))}
             </div>
           </div>
