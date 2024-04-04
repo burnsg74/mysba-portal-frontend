@@ -22,7 +22,7 @@ function getPillComponents(days_until_expiry: number, t: TFunction): JSX.Element
 export const CertificationCard: React.FC<ICertificationCardProps> = props => {
   const { t } = useTranslation();
   const expiration_date = formatDate(props.certification.expiration_date, "M/D/YY");
-  const icon = "/src/assets/certification-card-icon.svg";
+  const icon = "/assets/img/certification-card-icon.svg";
   const title = t(props.certification.certification_type);
   const body = (
     <>
