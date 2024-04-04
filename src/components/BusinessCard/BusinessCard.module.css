@@ -1,13 +1,15 @@
 .bodyRow {
   display: flex;
   padding: 20px;
-  align-items: flex-start;
+  /* align-items: flex-start; */
   gap: 40px;
-  align-self: stretch;
+  /* align-self: stretch; */
+  justify-content: space-between;
 }
 
 .bodyLegalEntityText{
-  flex: 1 0 0;
+  /* flex: 1 0 0; */
+  flex: none;
   color: var(--Primary-primary-darker);
   font-family: var(--Font-Primary);
   font-size: 16px;

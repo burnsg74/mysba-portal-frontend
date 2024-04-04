@@ -9,12 +9,13 @@
 }
 
 .headerRow {
-  align-items: center;
-  align-self: stretch;
+  /* align-items: center; */
+  /* align-self: stretch; */
   background: rgba(165, 198, 224, 0.2);
   display: flex;
   gap: 10px;
   padding: 20px;
+  @apply flex-col sm:flex-row md:flex-row lg:flex-col xl:flex-row 2xl:flex-row;
 }
 
 .headerIcon {
