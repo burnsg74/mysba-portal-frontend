@@ -9,4 +9,3 @@ dist-ssr
 !/.prettierrc
 !.terraform.lock.hcl
 /public/assets/fonts/
-/public/assets/img/
