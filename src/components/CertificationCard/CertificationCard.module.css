@@ -16,9 +16,9 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  min-width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
+  min-width: min-content;
 }
 
 .bodyRowRightGroup {

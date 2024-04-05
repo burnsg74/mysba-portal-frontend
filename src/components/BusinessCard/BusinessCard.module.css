@@ -1,14 +1,11 @@
 .bodyRow {
   display: flex;
   padding: 20px;
-  /* align-items: flex-start; */
   gap: 40px;
-  /* align-self: stretch; */
   justify-content: space-between;
 }
 
 .bodyLegalEntityText{
-  /* flex: 1 0 0; */
   flex: none;
   color: var(--Primary-primary-darker);
   font-family: var(--Font-Primary);
@@ -16,13 +13,20 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  min-width: min-content;
 }
 
 .bodySubGroup {
-  display: flex;
-  justify-content: flex-end;
   align-items: center;
+  color: var(--Primary-primary-darker);
+  display: flex;
+  font-family: var(--Font-Primary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
   gap: 16px;
+  justify-content: flex-end;
+  line-height: normal;
 }
 .ellipsesIcon {
   width: 4px;
