@@ -47,10 +47,6 @@
     bottom: 0;
 }
 
-.container {
-    padding: 30px 0
-}
-
 .dashboard-right-content__title {
     font-size: 24px;
     font-style: normal;
@@ -63,22 +59,31 @@
     margin-bottom: 20px;
 }
 
-.business__container {
+.businessesContainer {
     display: flex;
-    align-items: center;
-    max-width: 907px;
-    height: 38px;
-    margin-bottom: 40px;
+    flex-direction: column;
+    gap: 20px;
 }
 
-.business__icon {
+.businessContainer {
+    padding: 20px 40px 20px 40px;
+    gap: 20px;
+}
+
+.businessHeaderRow {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+ }
+
+.businessHeaderIcon {
     margin-right: 24px;
     width: 30px;
     height: 30px;
     min-width: 30px;
 }
 
-.business__title {
+.businessHeaderTitle {
     font-family: var(--Font-Primary);
     font-size: 32px;
     font-weight: 400;
@@ -141,3 +146,6 @@
     margin-left: 10px;
 }
 
+.certificationsRow {
+   padding-bottom: 40px;
+}

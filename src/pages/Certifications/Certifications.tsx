@@ -11,10 +11,10 @@ import nextSignImg from "src/assets/next-sign.png";
 import { certifications } from "src/utils/certifications";
 // import CertApplyModal1 from "src/components/CertApplyModal1/CertApplyModal1";
 // import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
-import CardCertification from "src/components/CardCertification/CardCertification";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
+import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
 
 type OptionType = "WOSB" | "8A" | "HUBZone" | "VetCert" | "none";
 
@@ -174,19 +174,14 @@ const Certifications = () => {
             </div>
           </div>
         </div>
-        <div className="Certifications-content">
-          {/* certifications  */}
-          <div className="grid-row">
-            <div className="grid-col">
-              {user.certifications &&
-                user.certifications.map((certification, index) => (
-                  <React.Fragment key={index}>
-                    <CardCertification certification={certification} index={index + 1} />
-                  </React.Fragment>
-                ))}
-            </div>
-          </div>
-        </div>
+        {user.certifications &&
+          user.certifications.map((certification, index) => (
+              <div className={`grid-row ${styles.certificationRow}`}>
+                <div className="grid-col">
+                  <CertificationCard key={index} index={index + 1} certification={certification} />
+                </div>
+              </div>
+          ))}
       </div>
       {isModal1Open && (
         <Modal
