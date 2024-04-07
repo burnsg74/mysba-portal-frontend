@@ -5,13 +5,13 @@ import { useTranslation } from "react-i18next";
 interface ModalProps {
   onClose: () => void;
   showModal?: boolean;
-  isStepIndicator?: boolean;
+  isStepIndicator: boolean;
   totalSteps?: number;
   completedSteps?: number;
   title: string;
-  iconImage?:string
-  imgAlt?:string
-  contentTitle: string;
+  iconImage?: string;
+  imgAlt?: string;
+  contentTitle?: string;
   contentMessage?: string;
   children?: React.ReactNode;
   footerContent?: React.ReactNode;
@@ -34,15 +34,20 @@ const ModalComponent = ({
   const [isModalOpen, setIsModalOpen] = useState(showModal);
   const { t } = useTranslation();
   useEffect(() => {
+    console.log(stepsArray)
     setIsModalOpen(showModal);
   }, [showModal]);
 
   const closeModal = () => {
-    if (onClose) onClose(); // Execute the onClose callback if provided
-    setIsModalOpen(false); // Close the modal
+    if (onClose) onClose();
+    setIsModalOpen(false);
   };
 
-  const stepsArray = Array.from({ length: totalSteps }, (_, index) => index < completedSteps);
+  const stepsArray = Array.from({ length: totalSteps }, (_, index) => {
+    if (index < completedSteps) return "complete";
+    if (index === completedSteps) return "current";
+    return "incomplete";
+  });
 
   return (
     <>
@@ -66,10 +71,10 @@ const ModalComponent = ({
                   aria-label="progress"
                 >
                   <ol className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}>
-                    {stepsArray.map((isComplete, index) => (
+                    {stepsArray.map((stepStatus, index) => (
                       <li
                         key={index}
-                        className={`usa-step-indicator__segment ${isComplete ? styles["usa-step-indicator__segment--complete"] : styles["usa-step-indicator__segment--incomplete"]}`}
+                        className={`usa-step-indicator__segment ${styles[`usa-step-indicator__segment--${stepStatus}`]}`}
                       />
                     ))}
                   </ol>
@@ -77,16 +82,12 @@ const ModalComponent = ({
               </div>
             )}
             <div className={`${styles["content"]}`}>
-              {iconImage && (<img src={iconImage} alt={imgAlt}  />)}
-              {contentTitle && (<div className={`${styles["content-title"]}`}>{t(contentTitle)}</div>)}
-              {contentMessage && (<div className={`${styles["content-message"]}`}>{t(contentMessage)}</div>)}
-              {children} 
+              {iconImage && <img src={iconImage} alt={imgAlt} />}
+              {contentTitle && <div className={`${styles["content-title"]}`}>{t(contentTitle)}</div>}
+              {contentMessage && <div className={`${styles["content-message"]}`}>{t(contentMessage)}</div>}
+              {children}
             </div>
-            {footerContent && (
-              <div className={`${styles["footer"]}`}>
-                {footerContent}
-              </div>
-            )}
+            {footerContent && <div className={`${styles["footer"]}`}>{footerContent}</div>}
           </div>
         </div>
       )}

@@ -54,36 +54,32 @@
     line-height: 28px;
 }
 
-.alert__container {
+.alert-container {
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-.businessesContainer {
+.businesses-container {
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.businessContainer {
     padding: 20px 40px 20px 40px;
-    gap: 20px;
 }
 
-.businessHeaderRow {
+.business-header-row {
     display: flex;
     align-items: center;
     gap: 24px;
  }
 
-.businessHeaderIcon {
+.business-header-icon {
     margin-right: 24px;
     width: 30px;
     height: 30px;
     min-width: 30px;
 }
 
-.businessHeaderTitle {
+.business-header-title {
     font-family: var(--Font-Primary);
     font-size: 32px;
     font-weight: 400;
@@ -146,6 +142,10 @@
     margin-left: 10px;
 }
 
-.certificationsRow {
+.certifications-row {
    padding-bottom: 40px;
 }
+
+.footer-btn {
+    width: 100%;
+  }

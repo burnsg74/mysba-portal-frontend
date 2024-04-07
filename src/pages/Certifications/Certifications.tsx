@@ -30,13 +30,11 @@ const Certifications = () => {
   const [showFetchError, setShowFetchError] = useState(false);
   const { t } = useTranslation();
   const { authState } = useOktaAuth();
-  const selectedOptionRef = useRef(selectedOption);
 
   useEffect(() => {
-    selectedOptionRef.current = location.state?.selectedOption || "none";
-    const cert = certifications.find(cert => cert.code === selectedOptionRef.current) || certifications[0];
+    const cert = certifications.find(cert => cert.code === selectedOption) || certifications[0];
     setSelectedCert(cert);
-  }, [location.state]);
+  }, [selectedOption]);
 
   useEffect(() => {
     const fetchCertifications = async () => {
@@ -74,18 +72,26 @@ const Certifications = () => {
   const isModal2Open = location.pathname === "/certification/2";
 
   const closeModal = () => navigate("/certification");
-  const prevModal = () => navigate("/certification/1", { state: { selectedOption: selectedOptionRef.current } });
-  const NextModal = () => navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
+  const prevModal = () => navigate("/certification/1")
+  const NextModal = () => navigate("/certification/2") 
   const openCertWebsite = url => {
     window.open(url, "_blank");
     closeModal();
   };
 
-  const handleOptionChange = (event) => setSelectedOption(event.target.value);
+  const handleOptionChange = event => {
+    setSelectedOption(event.target.value);
+    const cert = certifications.find(cert => cert.code === event.target.value) || certifications[0];
+    setSelectedCert(cert);
+  };
 
   const modal1FooterContent = (
     <>
-      <button type="button" className={`usa-button usa-button--outline  ${styles["footer-btn-outline"]}`} onClick={closeModal}>
+      <button
+        type="button"
+        className={`usa-button usa-button--outline  ${styles["footer-btn-outline"]}`}
+        onClick={closeModal}
+      >
         {t("Cancel")}
       </button>
       <button type="button" className={`usa-button ${styles["footer-btn"]}`} onClick={NextModal}>
@@ -96,7 +102,11 @@ const Certifications = () => {
 
   const modal2FooterContent = (
     <>
-      <button type="button" className={`usa-button usa-button--outline  ${styles["footer-btn-outline"]}`} onClick={prevModal}>
+      <button
+        type="button"
+        className={`usa-button usa-button--outline  ${styles["footer-btn-outline"]}`}
+        onClick={prevModal}
+      >
         {t("Back")}
       </button>
       <button
@@ -176,11 +186,11 @@ const Certifications = () => {
         </div>
         {user.certifications &&
           user.certifications.map((certification, index) => (
-              <div className={`grid-row ${styles.certificationRow}`}>
-                <div className="grid-col">
-                  <CertificationCard key={index} index={index + 1} certification={certification} />
-                </div>
+            <div className={`grid-row ${styles.certificationRow}`}>
+              <div className="grid-col">
+                <CertificationCard key={index} index={index + 1} certification={certification} />
               </div>
+            </div>
           ))}
       </div>
       {isModal1Open && (
@@ -190,7 +200,7 @@ const Certifications = () => {
           showModal={isModal1Open}
           isStepIndicator={true}
           totalSteps={2}
-          completedSteps={1}
+          completedSteps={0}
           iconImage={editPaperImg}
           imgAlt="Edit Paper"
           contentTitle={t("What kind of certification would you like to apply for?")}
@@ -217,7 +227,7 @@ const Certifications = () => {
                       onChange={handleOptionChange}
                     />
                     <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="cert8A">
-                      <span className={`${styles["checkbox_label"]}`}>
+                      <span className={`${styles["checkbox-label"]}`}>
                         {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                       </span>
                       <span className={`${styles["tooltip"]}`}>
@@ -332,7 +342,7 @@ const Certifications = () => {
           showModal={isModal2Open}
           isStepIndicator={true}
           totalSteps={2}
-          completedSteps={2}
+          completedSteps={1}
           iconImage={nextSignImg}
           imgAlt="Next Sign"
           contentTitle={t(selectedCert.title) || ""}

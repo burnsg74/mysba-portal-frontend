@@ -105,11 +105,6 @@ a {
   border-color: #007dbc;
 }
 
-.usa-checkbox__label {
-  padding-left: 45px;
-  width:100%;
-}
-
 .footer {
   display: flex;
   justify-content: center;
