@@ -268,7 +268,7 @@ const Certifications = () => {
                       onChange={handleOptionChange}
                     />
                     <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certHUBZone">
-                      <span className={`${styles["checkbox_label"]}`}>
+                      <span className={`${styles["checkbox-label"]}`}>
                         {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                       </span>
                       <span className={`${styles["tooltip"]}`}>
@@ -304,7 +304,7 @@ const Certifications = () => {
                       onChange={handleOptionChange}
                     />
                     <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certVet">
-                      <span className={`${styles["checkbox_label"]}`}>
+                      <span className={`${styles["checkbox-label"]}`}>
                         {t("Veteran-Owned Small Business (VetCert) Certification")}
                       </span>
                       <span className={`${styles["tooltip"]}`}>

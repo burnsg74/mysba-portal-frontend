@@ -137,7 +137,7 @@ const Dashboard = () => {
           dispatch(setNav(true));
           navigate("/dashboard");
         }}
-        showModal={location.pathname === "/dashboard"}
+        showModal={location.pathname === "/dashboard/new"}
         iconImage={lightBulbImage}
         contentTitle={t("Your account is all set up.")}
         contentMessage={t(

@@ -62,14 +62,7 @@ const AccountSetup1 = () => {
       .catch(error => {
         console.log(error);
       });
-      function isSmallWindow() {
-        return window.innerWidth < 768;
-      }
-      if (isSmallWindow()) {
-        navigate("/account-setup/3");
-      } else{
-        navigate("/dashboard/new");
-      }
+      navigate("/dashboard/new");
   };
   const handleBackBtnClick = () => {
     navigate("/account-setup/1");
