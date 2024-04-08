@@ -6,7 +6,7 @@ import ellipse from "src/assets/ellipse.svg";
 
 export const BusinessCard: React.FC<IBusinessCardProps> = props => {
   const { t } = useTranslation();
-  const icon = "/assets/img/certification-card-icon.svg";
+  const icon = "/assets/img/business-card-icon.svg";
   const body = (<>
       <div className={`grid-row ${styles.bodyRow}`}>
         <div className={`grid-col  ${styles.bodyLegalEntityText}`}>

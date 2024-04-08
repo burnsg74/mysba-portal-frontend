@@ -418,6 +418,10 @@
     outline: none;
 }
 
+.usa-card__body:last-child {
+    padding: 20px;
+}
+
 *:focus {
     outline: none;
 }

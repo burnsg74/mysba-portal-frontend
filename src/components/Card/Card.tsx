@@ -13,7 +13,7 @@ const Card: React.FC<ICardProps> = props => {
         </div>
         <div className={`grid-col  ${styles.headerTitle}`}>{props.title}</div>
         <div className={`grid-col-auto`}>
-          <Link to={props.detailsPage} className={`usa-button`}>
+          <Link to={props.detailsPage} className={`usa-button  ${styles.detailsButton}`}>
             {t("Details")}
           </Link>
         </div>

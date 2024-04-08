@@ -3,7 +3,6 @@
     border-radius: 8px;
     border: 5px solid var(--Base-white);
     box-shadow: 0 7px 15px 0 var(--Box-Shadow);
-    gap: 14px;
     margin: 0;
 }
 
@@ -39,8 +38,9 @@
 .body {
     width: 100%;
     color: var(--Primary-primary-darker);
+    padding: 20px;
 }
 
-.body:last-child {
-    padding: unset;
+.detailsButton {
+    background-color: var(--SBA-Celeste);
 }
