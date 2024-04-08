@@ -9,14 +9,10 @@ import Modal from "src/components/Modal/Modal";
 import editPaperImg from "src/assets/edit-paper.png";
 import nextSignImg from "src/assets/next-sign.png";
 import { certifications } from "src/utils/certifications";
-// import CertApplyModal1 from "src/components/CertApplyModal1/CertApplyModal1";
-// import CertApplyModal2 from "src/components/CertApplyModal2/CertApplyModal2";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
-
-type OptionType = "WOSB" | "8A" | "HUBZone" | "VetCert" | "none";
 
 const Certifications = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
@@ -25,7 +21,7 @@ const Certifications = () => {
   const user: IUser = useSelector(getUser);
   const dispatch = useDispatch();
   const isSmallWindow = () => window.innerWidth < 780;
-  const [selectedOption, setSelectedOption] = useState<OptionType>("none");
+  const [selectedOption, setSelectedOption] = useState<string>("none");
   const [selectedCert, setSelectedCert] = useState(certifications[0]);
   const [showFetchError, setShowFetchError] = useState(false);
   const { t } = useTranslation();
@@ -61,11 +57,7 @@ const Certifications = () => {
   }, []);
 
   const handleApplyCertificationClick = () => {
-    if (isSmallWindow()) {
-      navigate("/certification-apply/1", { state: { selectedOption } });
-    } else {
-      navigate("/certification/1", { state: { selectedOption } });
-    }
+    navigate("/certification/1", { state: { selectedOption } });
   };
 
   const isModal1Open = location.pathname === "/certification/1";
@@ -74,12 +66,12 @@ const Certifications = () => {
   const closeModal = () => navigate("/certification");
   const prevModal = () => navigate("/certification/1")
   const NextModal = () => navigate("/certification/2") 
-  const openCertWebsite = url => {
+  const openCertWebsite = (url: string) => {
     window.open(url, "_blank");
     closeModal();
   };
 
-  const handleOptionChange = event => {
+  const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSelectedOption(event.target.value);
     const cert = certifications.find(cert => cert.code === event.target.value) || certifications[0];
     setSelectedCert(cert);
@@ -197,12 +189,9 @@ const Certifications = () => {
         <Modal
           title={t("Apply for a Certification")}
           onClose={closeModal}
-          showModal={isModal1Open}
-          isStepIndicator={true}
           totalSteps={2}
           completedSteps={0}
-          iconImage={editPaperImg}
-          imgAlt="Edit Paper"
+          ImageAndAlt={{image: editPaperImg, alt:"Edit Paper"}}
           contentTitle={t("What kind of certification would you like to apply for?")}
           footerContent={modal1FooterContent}
         >
@@ -230,7 +219,7 @@ const Certifications = () => {
                       <span className={`${styles.checkboxLabel}`}>
                         {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                       </span>
-                      <span className={`${styles.tooltip}`}>
+                      <span className={`${styles.toolTip}`}>
                         <svg
                           className={`usa-icon ${styles.infoIcon}`}
                           aria-hidden="true"
@@ -239,7 +228,7 @@ const Certifications = () => {
                         >
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
-                        <span className={`${styles.tooltiptext}`}>
+                        <span className={`${styles.toolTipText}`}>
                           {t(
                             "You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand."
                           )}
@@ -339,12 +328,9 @@ const Certifications = () => {
         <Modal
           title={t("Apply for a Certification")}
           onClose={closeModal}
-          showModal={isModal2Open}
-          isStepIndicator={true}
           totalSteps={2}
           completedSteps={1}
-          iconImage={nextSignImg}
-          imgAlt="Next Sign"
+          ImageAndAlt={{image: nextSignImg, alt: "Next Sign"}}
           contentTitle={t(selectedCert.title) || ""}
           contentMessage={t(selectedCert.message) || ""}
           footerContent={modal2FooterContent}

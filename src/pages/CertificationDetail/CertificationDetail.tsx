@@ -287,8 +287,7 @@ const CertificationDetail = () => {
         <Modal
           title={t("Manage Certification")}
           onClose={handleManageCertificationModalClose}
-          iconImage={nextSignImg}
-          imgAlt="Next Sign"
+          ImageAndAlt={{image:nextSignImg, alt: "Next Sign"}}
           contentTitle={t("You are leaving MySBA")}
           contentMessage={t(
             "You are being taken to the Women-Owned Small Business (WOSB) Certification Portal where you can manage your WOSB certification"

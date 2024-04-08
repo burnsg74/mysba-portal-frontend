@@ -130,21 +130,21 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+      {location.pathname === "/dashboard/new" && (
       <Modal
         title=""
-        isStepIndicator={false}
         onClose={() => {
           dispatch(setNav(true));
           navigate("/dashboard");
         }}
-        showModal={location.pathname === "/dashboard/new"}
-        iconImage={lightBulbImage}
+        ImageAndAlt={{image:lightBulbImage, alt:"Light Bulb"}}
         contentTitle={t("Your account is all set up.")}
         contentMessage={t(
           "Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov."
         )}
         footerContent={modalFooterContent}
       />
+      )}
     </>
   );
 };
