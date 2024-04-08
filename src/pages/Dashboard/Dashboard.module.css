@@ -11,7 +11,7 @@
     white-space: nowrap;
 }
 
-.welcome-message {
+.welcomeMessage {
     font-family: var(--Font-Primary);
     color: var(--Brand-Primary-SBA-Blue);
     text-align: center;
@@ -22,7 +22,7 @@
     line-height: 26px;
 }
 
-.mysba-message {
+.mysbaMessage {
     font-family: var(--Font-Secondary);
     color: var(--Brand-Primary-SBA-Blue);
     text-align: center;
@@ -47,14 +47,7 @@
     bottom: 0;
 }
 
-.dashboard-right-content__title {
-    font-size: 24px;
-    font-style: normal;
-    font-weight: 600;
-    line-height: 28px;
-}
-
-.alert__container {
+.alertContainer {
     margin-top: 20px;
     margin-bottom: 20px;
 }
@@ -63,11 +56,7 @@
     display: flex;
     flex-direction: column;
     gap: 20px;
-}
-
-.businessContainer {
     padding: 20px 40px 20px 40px;
-    gap: 20px;
 }
 
 .businessHeaderRow {
@@ -97,15 +86,11 @@
     text-overflow: ellipsis;
 }
 
-.dashboard-content {
+.dashboardContent {
     color: var(--Brand-Primary-SBA-Blue);
 }
 
-.sba-blue {
-    color: var(--Brand-Primary-SBA-Blue);
-}
-
-.certifications-header__link {
+.certificationsHeaderLink {
     text-align: right;
     font-size: 15px;
     font-style: normal;
@@ -118,19 +103,11 @@
     color: #002e6d;
 }
 
-.dashboard-usa-card__header {
-    background: rgba(165, 198, 224, 0.2);
-}
-
-.usa-card__header {
-    padding: 20px;
-}
-
-.right-container {
+.rightContainer {
     width: 350px;
 }
 
-.cert-header__row {
+.certHeaderRow {
     display: flex;
     align-items: center;
     margin-top: 20px;
@@ -149,3 +126,7 @@
 .certificationsRow {
    padding-bottom: 40px;
 }
+
+.footerBtn {
+    width: 100%;
+  }

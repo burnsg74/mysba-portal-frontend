@@ -205,3 +205,19 @@
   color: var(--Brand-Primary-SBA-Blue);
   fill: var(--Brand-Primary-SBA-Blue);
 }
+
+.footer-btn-outline {
+  margin-right:0px;
+  height:44px;
+  flex: 1;
+  border:2px;
+  box-shadow:inset 0 0 0 2px #002E6D;
+  color:var(--Brand-Primary-SBA-Blue);
+}
+
+.footer-btn {
+  margin-right:0px;
+  height:44px;
+  flex: 1;
+  border:2px;
+}

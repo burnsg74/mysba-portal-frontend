@@ -7,8 +7,9 @@ import Field from "src/components/Field/Field";
 import Alert from "src/components/Alert/Alert";
 import Pill from "src/components/Pill/Pill";
 import { useTranslation, Trans } from 'react-i18next';
-import ManageCertificationModal from "src/components/ManageCertificationModal/ManageCertificationModal";
+import Modal from "src/components/Modal/Modal";
 import { formatDate } from "src/utils/formatter";
+import nextSignImg from "src/assets/next-sign.png";
 
 const CertificationDetail = () => {
   const navigate = useNavigate();
@@ -57,6 +58,21 @@ const CertificationDetail = () => {
     setManageCertificationModal(false);
     window.open("https://wosb.certify.sba.gov/", "_blank");
   };
+
+  const footerContent = (
+    <>
+      <button type="button" className={`usa-button usa-button--outline  ${styles["footer-btn-outline"]}`} onClick={handleManageCertificationModalClose}>
+        {t("Back")}
+      </button>
+      <button
+        type="button"
+        className={`usa-button ${styles["footer-btn"]}`}
+        onClick={handleManageCertificationModalGo}
+      >
+        {t("Go")}
+      </button>
+    </>
+  );
 
   return (
     <>
@@ -267,12 +283,18 @@ const CertificationDetail = () => {
           <Field label="Owner(s)" value={certification.owner ?? ""} />
         </div>
       </div>
-      {showManageCertificationModal ? (
-        <ManageCertificationModal
+      {showManageCertificationModal && (
+        <Modal
+          title={t("Manage Certification")}
           onClose={handleManageCertificationModalClose}
-          onGo={handleManageCertificationModalGo}
+          ImageAndAlt={{image:nextSignImg, alt: "Next Sign"}}
+          contentTitle={t("You are leaving MySBA")}
+          contentMessage={t(
+            "You are being taken to the Women-Owned Small Business (WOSB) Certification Portal where you can manage your WOSB certification"
+          )}
+          footerContent={footerContent}
         />
-      ) : null}
+      ) }
     </>
   );
 };

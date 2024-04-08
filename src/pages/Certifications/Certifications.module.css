@@ -1,4 +1,4 @@
-.title__row {
+.titleRow {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -131,9 +131,8 @@
   color: var(--Text-Text, #002e6d);
 }
 
-.apply-for-a-certification__btn {
+.applyForCertificationBtn {
   border: 2px solid var(--Brand-Secondary-Bright-Blue);
-  /*padding: 11px 20px;*/
   margin: 0;
   color: var(--Brand-Secondary-Bright-Blue, #007dbc);
   text-align: center;
@@ -145,7 +144,7 @@
   box-shadow: unset;
 }
 
-.apply-for-a-certification__btn:active {
+.applyForCertificationBtn:active {
   outline: none;
   color: var(--Brand-Secondary-Bright-Blue);
   text-align: center;
@@ -157,7 +156,7 @@
   box-shadow: unset;
 }
 
-.apply-for-a-certification__btn:hover {
+.applyForCertificationBtn:hover {
   border: 2px solid var(--Brand-Secondary-Bright-Blue);
   color: var(--Brand-Secondary-Bright-Blue);
   text-align: center;
@@ -169,7 +168,7 @@
   box-shadow: unset;
 }
 
-.apply-for-a-certification__btn:focus {
+.applyForCertificationBtn:focus {
   outline: none;
   color: var(--Brand-Secondary-Bright-Blue);
   text-align: center;
@@ -181,7 +180,7 @@
   box-shadow: unset;
 }
 
-.link-a-certification__btn:disabled {
+.linkCertificationBtn:disabled {
   color:#454545;
   background:#C9C9C9;
   text-align: center;
@@ -194,18 +193,150 @@
   margin: 0;
 }
 
-.btn-group {
+.btnGroup {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
 }
 
-.alert-container {
+.alertContainer {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 
 .certificationRow {
  padding-bottom: 40px;
+}
+
+.footerBtnOutline {
+  margin-right:0px;
+  height:44px;
+  flex: 1;
+  border:2px;
+  box-shadow:inset 0 0 0 2px #002E6D;
+  color:var(--Brand-Primary-SBA-Blue);
+}
+
+.footerBtn {
+  margin-right:0px;
+  height:44px;
+  flex: 1;
+  border:2px;
+}
+
+.radio {
+  min-width: 30px;
+  width: 29px;
+  height: 29px;
+  outline: none;
+}
+
+.radioRow {
+  box-shadow: 0px 7px 15px 0px #1B1E2912;
+  min-height:72px;
+  margin-bottom:16px;
+  border-color: var(--Base-base-lighter);
+  flex-shrink:1;
+  display:flex;
+  flex-direction:row;
+}
+
+.radioLabel {
+  width:100%;
+  align-items:center;
+  border-radius:0.5rem !important;
+  word-wrap:break-word;
+}
+
+.radio:focus {
+  outline: none;
+}
+
+.radioLabel::before {
+  margin-left:20px;
+  box-shadow:0 0 0 2px #002E6D;
+}
+
+.usa-radio__label::before {
+  margin-top: 25px;
+  padding-left:20px;
+}
+
+.infoIcon {
+  width:24px;
+  height:24px;
+  color: var(--Brand-Primary-SBA-Blue);
+}
+
+.toolTip {
+  position: relative;
+  display: inline-block;
+  margin: auto;
+  padding-right:20px;
+}
+
+.toolTip .toolTipText {
+  visibility: hidden;
+  font-family: var(--Font-Primary);
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 19px;
+  text-align: left;
+  width: 270px;
+  background-color: var(--Brand-Secondary-Bright-Blue);
+  color: #fff;
+  border-radius: 6px;
+  padding: 10px;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -250px;
+}
+
+.toolTip .toolTipText::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 240px !important;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent var(--Brand-Secondary-Bright-Blue)
+    transparent;
+}
+
+.toolTip:hover .toolTipText {
+  visibility: visible;
+}
+
+.usaForm a:where(:not(.usa-button)) {
+  color: #fff;
+}
+
+.usaForm a:visited {
+  color: #fff;
+}
+
+@media (min-width: 30em) {
+  .usaForm {
+    max-width: none;
+  }
+}
+
+.checkboxLabel {
+  font-family: var(--Font-Primary);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  padding-left:35px;
+  padding-top:20px;
+  padding-bottom:20px;
+  min-height:92px;
+  text-align: left;
+  color: var(--Brand-Primary-SBA-Blue);
+  display: flex;
+  flex-direction:row;
+  align-items:center;
 }
