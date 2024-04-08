@@ -23,7 +23,7 @@ const Dashboard = () => {
     <>
       <button
         type="button"
-        className={`usa-button ${styles["footer-btn"]}`}
+        className={`usa-button ${styles.footerBtn}`}
         onClick={() => {
           dispatch(setNav(true));
           navigate("/dashboard");
@@ -37,21 +37,21 @@ const Dashboard = () => {
   return (
     <>
       {/* Top city banner */}
-      <div className={`banner ${styles["banner"]}`}>
-        <div className={`${styles["welcome-message"]}`}>
+      <div className={`banner ${styles.banner}`}>
+        <div className={`${styles.welcomeMessage}`}>
           {user.profile?.crm && (
             <span className="username">
               {t("Hi")} {user.profile.crm.first_name},{" "}
             </span>
           )}
         </div>
-        <div className={`${styles["mysba-message"]}`}>{t("Welcome to your MySBA Dashboard")}</div>
-        <img className={`${styles["cityscape"]}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
+        <div className={`${styles.mysbaMessage}`}>{t("Welcome to your MySBA Dashboard")}</div>
+        <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
       </div>
 
       {/* Dashboard Content */}
       <div className={`main-container`}>
-        <div className={`${styles["dashboard-content"]}`}>
+        <div className={`${styles.dashboardContent}`}>
           {/* Certifications Alerts */}
           {user.certifications &&
             user.certifications.map((certification, index) => {
@@ -59,7 +59,7 @@ const Dashboard = () => {
               return (
                 <React.Fragment key={index}>
                   {certification.days_until_expiry <= 0 ? (
-                    <div className={`${styles["alert-container"]}`}>
+                    <div className={`${styles.alertContainer}`}>
                       <Alert
                         key={index}
                         type={"error"}
@@ -67,7 +67,7 @@ const Dashboard = () => {
                       />
                     </div>
                   ) : certification.days_until_expiry <= 90 ? (
-                    <div className={`${styles["alert-container"]}`}>
+                    <div className={`${styles.alertContainer}`}>
                       <Alert
                         key={index}
                         type="warning"
@@ -86,29 +86,29 @@ const Dashboard = () => {
             })}
 
           {/* Businesses */}
-          <div className={`${styles["business-container"]}`}>
+          <div className={`${styles.businessContainer}`}>
             {user.businesses &&
               [...user.businesses]
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((business, index) => (
                   <React.Fragment key={index}>
-                    <div className={`${styles["business-container"]}`}>
-                      <div className={`grid-row ${styles["business-header-row"]}`}>
+                    <div className={`${styles.businessContainer}`}>
+                      <div className={`grid-row ${styles.businessHeaderRow}`}>
                         <div className={`grid-col-auto`}>
                           <img src={BusinessCardIcon} alt={"Business Card Icon"} />
                         </div>
                         <div className={`grid-col`}>
-                          <span className={`${styles["business-header-title"]}`}>{business.name}</span>
+                          <span className={`${styles.businessHeaderTitle}`}>{business.name}</span>
                         </div>
                       </div>
-                      <div className={`grid-row ${styles["cert-header__row"]}`}>
+                      <div className={`grid-row ${styles.certHeaderRow}`}>
                         <div className="grid-col">
-                          <div className={`${styles["certifications"]}`}>{t("Certifications")}</div>
+                          <div className={`${styles.certifications}`}>{t("Certifications")}</div>
                         </div>
-                        <div className={`grid-col ${styles["certifications-header__link"]}`}>
+                        <div className={`grid-col ${styles.certificationsHeaderLink}`}>
                           <Link
                             to="/certification"
-                            className={`float-right usa-prose ${styles["certifications-header__link"]}`}
+                            className={`float-right usa-prose ${styles.certificationsHeaderLink}`}
                           >
                             {t("View")}
                           </Link>
@@ -118,7 +118,7 @@ const Dashboard = () => {
                         user.certifications
                           .filter(certification => certification.business_id === business.id)
                           .map((certification, index) => (
-                            <div key={index} className={`grid-row ${styles["certifications-row"]}`}>
+                            <div key={index} className={`grid-row ${styles["certificationsRow"]}`}>
                               <div className="grid-col">
                                 <CertificationCard index={index + 1} certification={certification} />
                               </div>

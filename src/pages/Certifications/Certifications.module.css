@@ -1,4 +1,4 @@
-.title__row {
+.titleRow {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -131,7 +131,7 @@
   color: var(--Text-Text, #002e6d);
 }
 
-.apply-for-a-certification__btn {
+.applyForCertificationBtn {
   border: 2px solid var(--Brand-Secondary-Bright-Blue);
   margin: 0;
   color: var(--Brand-Secondary-Bright-Blue, #007dbc);
@@ -144,7 +144,7 @@
   box-shadow: unset;
 }
 
-.apply-for-a-certification__btn:active {
+.applyForCertificationBtn:active {
   outline: none;
   color: var(--Brand-Secondary-Bright-Blue);
   text-align: center;
@@ -156,7 +156,7 @@
   box-shadow: unset;
 }
 
-.apply-for-a-certification__btn:hover {
+.applyForCertificationBtn:hover {
   border: 2px solid var(--Brand-Secondary-Bright-Blue);
   color: var(--Brand-Secondary-Bright-Blue);
   text-align: center;
@@ -168,7 +168,7 @@
   box-shadow: unset;
 }
 
-.apply-for-a-certification__btn:focus {
+.applyForCertificationBtn:focus {
   outline: none;
   color: var(--Brand-Secondary-Bright-Blue);
   text-align: center;
@@ -180,7 +180,7 @@
   box-shadow: unset;
 }
 
-.link-a-certification__btn:disabled {
+.linkCertificationBtn:disabled {
   color:#454545;
   background:#C9C9C9;
   text-align: center;
@@ -193,14 +193,14 @@
   margin: 0;
 }
 
-.btn-group {
+.btnGroup {
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
   gap: 10px;
 }
 
-.alert-container {
+.alertContainer {
   margin-top: 20px;
   margin-bottom: 20px;
 }
@@ -209,7 +209,7 @@
  padding-bottom: 40px;
 }
 
-.footer-btn-outline {
+.footerBtnOutline {
   margin-right:0px;
   height:44px;
   flex: 1;
@@ -218,7 +218,7 @@
   color:var(--Brand-Primary-SBA-Blue);
 }
 
-.footer-btn {
+.footerBtn {
   margin-right:0px;
   height:44px;
   flex: 1;
@@ -232,7 +232,7 @@
   outline: none;
 }
 
-.radio-row {
+.radioRow {
   box-shadow: 0px 7px 15px 0px #1B1E2912;
   min-height:72px;
   margin-bottom:16px;
@@ -242,18 +242,7 @@
   flex-direction:row;
 }
 
-.radio-label::before {
-  margin-left:20px;
-  box-shadow:0 0 0 2px #002E6D;
-}
-
-
-.usa-radio__label::before {
-  margin-top: 25px;
-  padding-left:20px;
-}
-
-.radio-label {
+.radioLabel {
   width:100%;
   align-items:center;
   border-radius:0.5rem !important;
@@ -264,20 +253,30 @@
   outline: none;
 }
 
-.info-icon {
+.radioLabel::before {
+  margin-left:20px;
+  box-shadow:0 0 0 2px #002E6D;
+}
+
+.usa-radio__label::before {
+  margin-top: 25px;
+  padding-left:20px;
+}
+
+.infoIcon {
   width:24px;
   height:24px;
   color: var(--Brand-Primary-SBA-Blue);
 }
 
-.tooltip {
+.toolTip {
   position: relative;
   display: inline-block;
   margin: auto;
   padding-right:20px;
 }
 
-.tooltip .tooltiptext {
+.toolTip .toolTipText {
   visibility: hidden;
   font-family: var(--Font-Primary);
   font-size: 15px;
@@ -296,29 +295,11 @@
   margin-left: -250px;
 }
 
-.tooltip .tooltiptext::after{
-  left:240px !important;
-}
-
-.usa-form a:where(:not(.usa-button)) {
-  color: #fff;
-}
-
-.usa-form a:visited {
-  color: #fff;
-}
-
-@media (min-width: 30em) {
-  .usa-form {
-    max-width: none;
-  }
-}
-
-.tooltip .tooltiptext::after {
+.toolTip .toolTipText::after {
   content: "";
   position: absolute;
   bottom: 100%;
-  left: 250px;
+  left: 240px !important;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
@@ -326,11 +307,25 @@
     transparent;
 }
 
-.tooltip:hover .tooltiptext {
+.toolTip:hover .toolTipText {
   visibility: visible;
 }
 
-.checkbox-label {
+.usaForm a:where(:not(.usa-button)) {
+  color: #fff;
+}
+
+.usaForm a:visited {
+  color: #fff;
+}
+
+@media (min-width: 30em) {
+  .usaForm {
+    max-width: none;
+  }
+}
+
+.checkboxLabel {
   font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;

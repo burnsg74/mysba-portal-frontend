@@ -33,8 +33,8 @@ const ModalComponent = ({
 }: ModalProps) => {
   const [isModalOpen, setIsModalOpen] = useState(showModal);
   const { t } = useTranslation();
+  
   useEffect(() => {
-    console.log(stepsArray)
     setIsModalOpen(showModal);
   }, [showModal]);
 
@@ -52,11 +52,11 @@ const ModalComponent = ({
   return (
     <>
       {isModalOpen && (
-        <div className={`${styles["overlay"]}`}>
-          <div className={`${styles["container"]}`}>
-            <div className={`${styles["header"]}`}>
-              <span className={`${styles["header__title"]}`}>{t(title)}</span>
-              <span className={`${styles["header__close"]}`} onClick={closeModal} role="button">
+        <div className={`${styles.overlay}`}>
+          <div className={`${styles.container}`}>
+            <div className={`${styles.header}`}>
+              <span className={`${styles.headerTitle}`}>{t(title)}</span>
+              <span className={`${styles.headerClose}`} onClick={closeModal} role="button">
                 {" "}
                 {t("Close")}
                 <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
@@ -70,7 +70,7 @@ const ModalComponent = ({
                   className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
                   aria-label="progress"
                 >
-                  <ol className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}>
+                  <ol className={`usa-step-indicator__segments ${styles.usaStepIndicatorSegments}`}>
                     {stepsArray.map((stepStatus, index) => (
                       <li
                         key={index}
@@ -81,13 +81,13 @@ const ModalComponent = ({
                 </div>
               </div>
             )}
-            <div className={`${styles["content"]}`}>
+            <div className={`${styles.content}`}>
               {iconImage && <img src={iconImage} alt={imgAlt} />}
-              {contentTitle && <div className={`${styles["content-title"]}`}>{t(contentTitle)}</div>}
-              {contentMessage && <div className={`${styles["content-message"]}`}>{t(contentMessage)}</div>}
+              {contentTitle && <div className={`${styles.contentTitle}`}>{t(contentTitle)}</div>}
+              {contentMessage && <div className={`${styles.contentMessage}`}>{t(contentMessage)}</div>}
               {children}
             </div>
-            {footerContent && <div className={`${styles["footer"]}`}>{footerContent}</div>}
+            {footerContent && <div className={`${styles.footer}`}>{footerContent}</div>}
           </div>
         </div>
       )}

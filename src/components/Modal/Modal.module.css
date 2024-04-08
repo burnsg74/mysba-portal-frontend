@@ -48,7 +48,7 @@
   align-items: center;
 }
 
-.header__title {
+.headerTitle {
   font-family: var(--Font-Secondary);
   font-size: 18px;
   font-weight: 600;
@@ -58,7 +58,7 @@
   order: 1;
 }
 
-.header__close {
+.headerClose {
   color: var(--SBA-CRM-text-text-light);
   font-family: var(--Font-Secondary);
   font-size: 16px;
@@ -86,7 +86,7 @@
   margin-bottom:92px;
 }
 
-.content-title {
+.contentTitle {
   font-family: var(--Font-Primary);
   font-size: 32px;
   font-weight: 400;
@@ -96,7 +96,7 @@
   color: var(--Brand-Primary-SBA-Blue);
 }
 
-.content-message {
+.contentMessage {
   font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;
@@ -134,7 +134,7 @@
   width:100%;
 }
 
-.usa-step-indicator__segments {
+.usaStepIndicatorSegments {
   width:100%;
   align-self: center;
   justify-content: center;
