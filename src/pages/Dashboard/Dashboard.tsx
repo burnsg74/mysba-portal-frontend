@@ -131,19 +131,19 @@ const Dashboard = () => {
         </div>
       </div>
       {location.pathname === "/dashboard/new" && (
-      <Modal
-        title=""
-        onClose={() => {
-          dispatch(setNav(true));
-          navigate("/dashboard");
-        }}
-        ImageAndAlt={{image:lightBulbImage, alt:"Light Bulb"}}
-        contentTitle={t("Your account is all set up.")}
-        contentMessage={t(
-          "Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov."
-        )}
-        footerContent={modalFooterContent}
-      />
+        <Modal
+          title=""
+          onClose={() => {
+            dispatch(setNav(true));
+            navigate("/dashboard");
+          }}
+          ImageAndAlt={{ image: lightBulbImage, alt: "Light Bulb" }}
+          contentTitle={t("Your account is all set up.")}
+          contentMessage={t(
+            "Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov."
+          )}
+          footerContent={modalFooterContent}
+        />
       )}
     </>
   );

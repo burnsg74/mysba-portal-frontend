@@ -61,15 +61,19 @@ const CertificationDetail = () => {
 
   const footerContent = (
     <>
-      <button type="button" className={`usa-button usa-button--outline  ${styles["footer-btn-outline"]}`} onClick={handleManageCertificationModalClose}>
+      <button type="button" className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`} onClick={handleManageCertificationModalClose}>
         {t("Back")}
       </button>
       <button
         type="button"
-        className={`usa-button ${styles["footer-btn"]}`}
+        className={`usa-button ${styles.footerBtn}`}
         onClick={handleManageCertificationModalGo}
       >
         {t("Go")}
+        <svg className={`usa-icon  ${styles.usaIcon}`} aria-hidden="true" focusable="false" role="img" height="24px" width="24px">
+          <title>Open in a new window Icon</title>
+          <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+        </svg>
       </button>
     </>
   );

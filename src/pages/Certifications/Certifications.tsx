@@ -64,8 +64,8 @@ const Certifications = () => {
   const isModal2Open = location.pathname === "/certification/2";
 
   const closeModal = () => navigate("/certification");
-  const prevModal = () => navigate("/certification/1")
-  const NextModal = () => navigate("/certification/2") 
+  const prevModal = () => navigate("/certification/1");
+  const NextModal = () => navigate("/certification/2");
   const openCertWebsite = (url: string) => {
     window.open(url, "_blank");
     closeModal();
@@ -107,6 +107,10 @@ const Certifications = () => {
         onClick={() => openCertWebsite(selectedCert.url)}
       >
         {t("Go")}
+        <svg className={`usa-icon  ${styles.usaIcon}`} aria-hidden="true" focusable="false" role="img" height="24px" width="24px">
+          <title>Open in a new window Icon</title>
+          <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+        </svg>
       </button>
     </>
   );
@@ -191,7 +195,7 @@ const Certifications = () => {
           onClose={closeModal}
           totalSteps={2}
           completedSteps={0}
-          ImageAndAlt={{image: editPaperImg, alt:"Edit Paper"}}
+          ImageAndAlt={{ image: editPaperImg, alt: "Edit Paper" }}
           contentTitle={t("What kind of certification would you like to apply for?")}
           footerContent={modal1FooterContent}
         >
@@ -220,12 +224,7 @@ const Certifications = () => {
                         {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                       </span>
                       <span className={`${styles.toolTip}`}>
-                        <svg
-                          className={`usa-icon ${styles.infoIcon}`}
-                          aria-hidden="true"
-                          focusable="false"
-                          role="img"
-                        >
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -261,12 +260,7 @@ const Certifications = () => {
                         {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                       </span>
                       <span className={`${styles.toolTip}`}>
-                        <svg
-                          className={`usa-icon ${styles.infoIcon}`}
-                          aria-hidden="true"
-                          focusable="false"
-                          role="img"
-                        >
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -297,12 +291,7 @@ const Certifications = () => {
                         {t("Veteran-Owned Small Business (VetCert) Certification")}
                       </span>
                       <span className={`${styles.toolTip}`}>
-                        <svg
-                          className={`usa-icon ${styles.infoIcon}`}
-                          aria-hidden="true"
-                          focusable="false"
-                          role="img"
-                        >
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -330,7 +319,7 @@ const Certifications = () => {
           onClose={closeModal}
           totalSteps={2}
           completedSteps={1}
-          ImageAndAlt={{image: nextSignImg, alt: "Next Sign"}}
+          ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
           contentTitle={t(selectedCert.title) || ""}
           contentMessage={t(selectedCert.message) || ""}
           footerContent={modal2FooterContent}

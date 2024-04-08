@@ -77,9 +77,10 @@
   justify-content:start;
   align-items:center;
   overflow-y: auto;
+  scrollbar-width:none;
   margin-top:24px;
   padding-left:48px;
-  padding-right:24px;
+  padding-right:48px;
   gap: 16px;
   text-align: center;
   margin-bottom:92px;
