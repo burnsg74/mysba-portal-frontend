@@ -20,7 +20,6 @@ const Certifications = () => {
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
   const dispatch = useDispatch();
-  const isSmallWindow = () => window.innerWidth < 780;
   const [selectedOption, setSelectedOption] = useState<string>("none");
   const [selectedCert, setSelectedCert] = useState(certifications[0]);
   const [showFetchError, setShowFetchError] = useState(false);
@@ -317,6 +316,7 @@ const Certifications = () => {
         <Modal
           title={t("Apply for a Certification")}
           onClose={closeModal}
+          prevModal={prevModal}
           totalSteps={2}
           completedSteps={1}
           ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}

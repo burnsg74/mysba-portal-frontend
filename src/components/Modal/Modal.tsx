@@ -10,6 +10,7 @@ interface ImageAndAlt
 
 interface ModalProps {
   onClose: () => void;
+  prevModal?: () => void;
   totalSteps?: number;
   completedSteps?: number;
   title: string;
@@ -22,6 +23,7 @@ interface ModalProps {
 
 const ModalComponent = ({
   onClose,
+  prevModal,
   title = "",
   totalSteps = 0,
   completedSteps = 0,
@@ -67,6 +69,9 @@ const ModalComponent = ({
                   {stepsArray.map((stepStatus, index) => (
                     <li
                       key={index}
+                      onClick={stepStatus === 'complete' ? prevModal : undefined}
+                      role={stepStatus === 'complete' ? 'button' : undefined}
+                      tabIndex={stepStatus === 'complete' ? 0 : undefined}
                       className={`usa-step-indicator__segment ${styles[`usa-step-indicator__segment--${stepStatus}`]}`}
                     />
                   ))}
