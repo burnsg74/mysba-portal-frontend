@@ -37,12 +37,6 @@
     transform: none;
     border-radius: 0;
   }
-  .contentTitle {
-    font-size:22px;
-  }
-  .contentMessage {
-    font-size:17px;
-  }
 }
 
 .header {
