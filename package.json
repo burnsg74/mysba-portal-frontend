@@ -2,7 +2,8 @@
   "name": "mysba-portal",
   "version": "0.0.1",
   "scripts": {
-    "dev": "vite --mode localhost",
+    "localhost": "vite --mode localhost",
+    "dev": "vite --mode dev",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",

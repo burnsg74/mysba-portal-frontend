@@ -86,13 +86,11 @@ const Dashboard = () => {
             })}
 
           {/* Businesses */}
-          <div className={`${styles.businessContainer}`}>
             {user.businesses &&
               [...user.businesses]
                 .sort((a, b) => a.name.localeCompare(b.name))
                 .map((business, index) => (
                   <React.Fragment key={index}>
-                    <div className={`${styles.businessContainer}`}>
                       <div className={`grid-row ${styles.businessHeaderRow}`}>
                         <div className={`grid-col-auto`}>
                           <img src={BusinessCardIcon} alt={"Business Card Icon"} />
@@ -124,11 +122,9 @@ const Dashboard = () => {
                               </div>
                             </div>
                           ))}
-                    </div>
                   </React.Fragment>
                 ))}
           </div>
-        </div>
       </div>
       {location.pathname === "/dashboard/new" && (
         <Modal
