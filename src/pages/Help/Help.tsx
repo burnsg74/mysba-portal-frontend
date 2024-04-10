@@ -17,7 +17,6 @@ const Help = () => {
                 className="usa-accordion__button"
                 aria-expanded="false"
                 aria-controls={`a${index}`}
-                tabIndex={index}
               >
                 {t(faq.question)}
               </button>
