@@ -53,9 +53,7 @@ const BusinessDetail = () => {
         </div>
         <div className={`grid-row ${styles.headerRow}`}>
           <div className={`grid-col-auto ${styles.headerIcon}`}>
-            <svg height="30" width="30" aria-hidden="true" focusable="false" role="img">
-              <use xlinkHref="/assets/img/sprite.svg#store"></use>
-            </svg>
+            <img className={`${styles.headerIcon}`} src="/assets/img/business-card-icon.svg" alt={"Card Header Icon"} />
           </div>
           <div className={`grid-col`}>
             <h2 className={`${styles.headerName}`}>{business.name} </h2>
