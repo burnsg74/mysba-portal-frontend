@@ -126,8 +126,7 @@
 }
 
 .stepIndicatorContainer {
-  padding:24px;
-  padding-bottom:0px;
+  padding:10px;
   width: 100%;
   background: white;
   flex-direction: column;
@@ -136,6 +135,7 @@
 }
 .customStepIndicator {
   width:100%;
+  margin-bottom:0px;
 }
 
 .usaStepIndicatorSegments {
