@@ -110,6 +110,8 @@ const CertificationDetail = () => {
             </svg>
           </button>
         </div>
+
+        {/*Alerts*/}
         {certification.days_until_expiry <= 0 ? (
           <Alert
             type={"error"}
@@ -129,6 +131,8 @@ const CertificationDetail = () => {
             )}
           />
         ) : null}
+
+        {/* Certification Detail */}
         <div className={`grid-row ${styles["title-banner"]}`}>
           <div className={`grid-col-auto`}>
             <svg
