@@ -77,7 +77,7 @@ const App: React.FC = () => {
             <Route path="/profile" element={<Profile />} />
             <Route path="/businesses" element={<Businesses />} />
             <Route
-              path="/business/detail/:id"
+              path="/businesses/detail/:id"
               element={<BusinessDetail />}
             />
             <Route path="/certification/*" element={<Certifications />} />
