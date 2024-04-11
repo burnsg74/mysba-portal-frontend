@@ -42,9 +42,8 @@ const Certifications = () => {
         } else {
           accessToken = undefined;
         }
-        const res = await axios.get(`${BASE_API_URL}certification/wosb/${email}`, {
-          headers: { Authorization: "Bearer " + accessToken },
-        });
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        const res = await axios.get(`${BASE_API_URL}certification/wosb/${email}`);
         const updatedUser = { ...user, certifications: res.data };
         dispatch(setUser(updatedUser));
       } catch (error) {
@@ -179,8 +178,9 @@ const Certifications = () => {
             </div>
           </div>
         </div>
-        {user.certifications &&
-          user.certifications.map((certification, index) => (
+        {user.certifications && [...user.certifications]
+          .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
+          .map((certification, index) => (
             <div className={`grid-row ${styles.certificationRow}`}>
               <div className="grid-col">
                 <CertificationCard key={index} index={index + 1} certification={certification} />
