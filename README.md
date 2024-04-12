@@ -16,6 +16,7 @@
 Houses the infrastructure that supports the front end portal. S3, CloudFront, WAF, etc.
   - workspaces that are supported.
     - dev
+    - test
     - stg
     - prod
 
