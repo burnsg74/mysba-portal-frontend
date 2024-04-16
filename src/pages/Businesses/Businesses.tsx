@@ -30,9 +30,9 @@ const Businesses = () => {
         } else {
           accessToken = undefined;
         }
-        const res = await axios.get(`${BASE_API_URL}business/${email}`, {
-          headers: { Authorization: "Bearer " + accessToken },
-        });
+
+        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        const res = await axios.get(`${BASE_API_URL}business/${email}`);
 
         res.data.forEach((business: IBusiness) => {
           business.ein = formatEin(business.ein);
@@ -67,7 +67,7 @@ const Businesses = () => {
         .sort((a, b) => a.name.localeCompare(b.name))
         .map((business, index) => (<div key={index} className={`grid-row ${styles.businessRow}`}>
             <div className="grid-col">
-              <BusinessCard index={index + 1} business={business} />
+              <BusinessCard key={index} business={business} />
             </div>
           </div>))}
     </div>

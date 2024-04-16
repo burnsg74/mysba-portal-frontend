@@ -39,5 +39,5 @@ export const CertificationCard: React.FC<ICertificationCardProps> = props => {
       </div>
     </>
   );
-  return <Card icon={icon} title={title} detailsPage={`/certification/detail/${props.index}`} body={body} />;
+  return <Card icon={icon} title={title} detailsPage={`/certification/detail/${props.certification.certification_id}`} body={body} />;
 };

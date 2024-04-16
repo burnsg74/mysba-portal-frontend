@@ -24,5 +24,5 @@ export const BusinessCard: React.FC<IBusinessCardProps> = props => {
         </div>
       </div>
   </>);
-  return <Card icon={icon} title={props.business.name} detailsPage={`/businesses/detail/${props.index}`} body={body} />;
+  return <Card icon={icon} title={props.business.name} detailsPage={`/businesses/detail/${props.business.id}`} body={body} />;
 };

@@ -18,8 +18,7 @@ const BusinessDetail = () => {
 
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
-  const business: IBusiness | undefined = user.businesses ? user.businesses[index] : undefined;
-
+  const business = user.businesses?.filter((business: IBusiness) => business.id === id)[0];
   if (!business) {
     navigate("/error");
     return null;

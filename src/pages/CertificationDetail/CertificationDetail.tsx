@@ -23,9 +23,8 @@ const CertificationDetail = () => {
 
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
-  const certification: ICertification | undefined = user.certifications
-    ? user.certifications[index]
-    : undefined;
+  // const certification: ICertification | undefined = user.certifications ? user.certifications[index] : undefined;
+  const certification = user.certifications?.filter((certification: ICertification) => certification.certification_id === id)[0];
   const [showManageCertificationModal, setManageCertificationModal] =
     useState(false);
 

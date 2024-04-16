@@ -75,12 +75,10 @@ interface ICardProps {
 
 interface ICertificationCardProps {
   certification: ICertification,
-  index: number
 }
 
 interface IBusinessCardProps {
   business: IBusiness;
-  index: number
 }
 
 declare module '@uswds/uswds' {

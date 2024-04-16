@@ -183,7 +183,7 @@ const Certifications = () => {
           .map((certification, index) => (
             <div className={`grid-row ${styles.certificationRow}`}>
               <div className="grid-col">
-                <CertificationCard key={index} index={index + 1} certification={certification} />
+                <CertificationCard key={index} certification={certification} />
               </div>
             </div>
           ))}
