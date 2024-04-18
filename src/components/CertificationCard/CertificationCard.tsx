@@ -5,6 +5,7 @@ import { TFunction } from "i18next";
 import { formatDate } from "src/utils/formatter";
 import styles from "src/components/CertificationCard/CertificationCard.module.css";
 import Pill from "src/components/Pill/Pill";
+import CertificationCardIcon from "src/assets/certification-card-icon.svg";
 
 function getPillComponents(days_until_expiry: number, t: TFunction): JSX.Element | null {
   if (days_until_expiry <= 0) {
@@ -22,7 +23,6 @@ function getPillComponents(days_until_expiry: number, t: TFunction): JSX.Element
 export const CertificationCard: React.FC<ICertificationCardProps> = props => {
   const { t } = useTranslation();
   const expiration_date = formatDate(props.certification.expiration_date, "M/D/YY");
-  const icon = "/assets/img/certification-card-icon.svg";
   const title = t(props.certification.certification_type);
   const body = (
     <>
@@ -39,5 +39,5 @@ export const CertificationCard: React.FC<ICertificationCardProps> = props => {
       </div>
     </>
   );
-  return <Card icon={icon} title={title} detailsPage={`/certification/detail/${props.certification.certification_id}`} body={body} />;
+  return <Card icon={CertificationCardIcon} title={title} detailsPage={`/certification/detail/${props.certification.certification_id}`} body={body} />;
 };
