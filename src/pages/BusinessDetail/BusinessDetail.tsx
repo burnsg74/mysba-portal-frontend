@@ -5,6 +5,7 @@ import { getUser } from "src/store/user/userSlice";
 import styles from "src/pages/BusinessDetail/BusinessDetail.module.css";
 import Field from "src/components/Field/Field";
 import { useTranslation } from "react-i18next";
+import BusinessCardIcon from "src/assets/business-card-icon.svg";
 
 const BusinessDetail = () => {
   const navigate = useNavigate();
@@ -18,8 +19,7 @@ const BusinessDetail = () => {
 
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
-  const business: IBusiness | undefined = user.businesses ? user.businesses[index] : undefined;
-
+  const business = user.businesses?.filter((business: IBusiness) => business.id === id)[0];
   if (!business) {
     navigate("/error");
     return null;
@@ -53,7 +53,7 @@ const BusinessDetail = () => {
         </div>
         <div className={`grid-row ${styles.headerRow}`}>
           <div className={`grid-col-auto ${styles.headerIcon}`}>
-            <img className={`${styles.headerIcon}`} src="/assets/img/business-card-icon.svg" alt={"Card Header Icon"} />
+            <img className={`${styles.headerIcon}`} src={BusinessCardIcon} alt={"Business Card Icon"} />
           </div>
           <div className={`grid-col`}>
             <h2 className={`${styles.headerName}`}>{business.name} </h2>

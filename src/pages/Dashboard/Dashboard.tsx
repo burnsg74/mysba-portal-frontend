@@ -118,7 +118,7 @@ const Dashboard = () => {
                           .map((certification, index) => (
                             <div key={index} className={`grid-row ${styles["certificationsRow"]}`}>
                               <div className="grid-col">
-                                <CertificationCard index={index + 1} certification={certification} />
+                                <CertificationCard key={index} certification={certification} />
                               </div>
                             </div>
                           ))}

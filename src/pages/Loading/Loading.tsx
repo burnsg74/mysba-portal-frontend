@@ -42,12 +42,9 @@ const Loading = () => {
     } else {
       accessToken = undefined;
     }
+    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
     const requests = endpoints.map(endpoint =>
-      axios.get(endpoint + email, {
-        headers: {
-          Authorization: "Bearer " + accessToken,
-        },
-      })
+      axios.get(endpoint + email)
     );
     let results: AxiosResponse<any>[] = [];
     try {

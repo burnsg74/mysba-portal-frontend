@@ -31,7 +31,6 @@ const AccountSetupModal: React.FC<AccountSetupModalProps> = ({
       handleResize();
       window.addEventListener("resize", handleResize);
     }
-    return;
   }, []);
 
   useEffect(() => {

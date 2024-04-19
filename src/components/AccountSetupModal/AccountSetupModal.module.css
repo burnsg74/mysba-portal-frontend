@@ -102,18 +102,6 @@
   width: 100%;
 }
 
-@media screen and (max-width: 768px) {
-  /*.desktop-only {*/
-  /*  display: none;*/
-  /*}*/
-  /*.content {*/
-  /*  margin-top: 65px;*/
-  /*}*/
-  /*.footer {*/
-  /*  padding-bottom:60px;*/
-  /*}*/
-}
-
 @media screen and (min-width: 769px) {
   .mobile-only {
     display: none;

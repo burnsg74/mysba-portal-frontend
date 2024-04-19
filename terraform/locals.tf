@@ -10,6 +10,11 @@ locals {
       zone_name  = "dev.mysba.ussba.io"
       web_fqdn   = "dev.mysba.ussba.io"
     }
+    test = {
+      account_id = "474340895216"
+      zone_name  = "test.mysba.ussba.io"
+      web_fqdn   = "test.mysba.ussba.io"
+    }
     stg = {
       account_id = "286837973291"
       zone_name  = "stg.mysba.ussba.io"

@@ -17,11 +17,10 @@
 
 .headerIcon {
     display: flex;
-    width: 30px;
-    height: 30px;
     justify-content: center;
     align-items: center;
-    fill: var(--Primary-primary-darker);
+    width: 30px;
+    height: 30px;
 }
 
 .headerTitle {

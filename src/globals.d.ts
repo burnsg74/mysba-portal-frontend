@@ -75,10 +75,14 @@ interface ICardProps {
 
 interface ICertificationCardProps {
   certification: ICertification,
-  index: number
 }
 
 interface IBusinessCardProps {
   business: IBusiness;
-  index: number
+}
+
+declare module '@uswds/uswds' {
+  export const USFlag: any;
+  export const DotGov: any;
+  export const HttpsIcon: any;
 }

@@ -81,14 +81,14 @@ const AccountSetup1 = () => {
           <div className={`${styles["label"]}`}>{t("Your Business")} </div>
           {user.businesses &&
             user.businesses.map((business, index) => (
-              <BusinessCard key={index} index={index + 1} business={business} />
+              <BusinessCard key={index} business={business} />
             ))}
           <div className={`${styles["label-certifications"]}`}>{t("Your Business Certifications")} </div>
           {user.certifications &&
             user.certifications.map((certification, index) => (
               <div className={`grid-row`}>
                 <div className={`grid-col`}>
-                  <CertificationCard key={index} index={index + 1} certification={certification} />
+                  <CertificationCard key={index} certification={certification} />
                 </div>
               </div>
             ))}
