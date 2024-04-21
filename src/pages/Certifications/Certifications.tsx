@@ -177,7 +177,7 @@ const Certifications = () => {
             <div className="grid-col-auto grid-col-wrap">
               <button
                 type="button"
-                className={`usa-button usa-button--secondary ${styles.linkCertificationBtn}`}
+                className={`usa-button ${styles.linkCertificationBtn}`}
                 onClick={linkCert}
               >
                 {t("Link a Certification")}

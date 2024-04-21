@@ -1,28 +1,79 @@
-.contentHeader {
-  width: 100%;
+.mainContainer {
   display: flex;
   justify-content: center;
+  flex-direction:column;
   align-items: center;
+  padding-left:20px;
+  padding-right:20px;
 }
 
-.btnOutline {
-  margin-right: 0px;
+.cornerWrapper {
+  overflow: hidden;
+  border-radius: 32px 32px 0 0;
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
+}
+
+.contentHeader {
+  display: grid;
+  grid-template-areas: 
+    "leftButton text text rightButton";
+  gap: 10px;
+  align-items: center;
+  margin: 15px auto 56px;
+  padding: 0 20px;
+}
+
+.textContainer {
+  grid-area: text;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+}
+
+button.usa-button {
+  justify-self: center;
+}
+
+.title {
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  color: var(--Brand-Primary-SBA-Blue);
+  margin-bottom: 16px;
+}
+
+.message {
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  color: var(--Brand-Primary-SBA-Blue);
+}
+
+@media (max-width: 768px) {
+  .contentHeader {
+    grid-template-areas:
+      "leftButton rightButton" /* Buttons on top of each other */
+      "text text"; /* Text below the buttons */
+    grid-template-columns: 1fr 1fr; /* Equal width columns for buttons */
+    grid-template-rows: auto auto; /* Automatic row height */
+  }
+}
+
+.btnOutline, .btnDisabled {
+  grid-area: leftButton;
+  max-width: 109px;
   height: 44px;
   display: flex;
   align-items: center;
   justify-content: center;
   flex: 1;
   border: 2px;
-  box-shadow: inset 0 0 0 2px #007dbc;
+  box-shadow: inset 0 0 0 2px #007dbc; /* Shadow only necessary for the outline button */
   color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .btnDisabled {
-  margin-right: 0px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex: 1;
-  border: 2px;
+  grid-area: rightButton;
+  box-shadow: none; /* Remove shadow for the disabled button */
 }
