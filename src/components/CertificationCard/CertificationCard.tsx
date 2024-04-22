@@ -20,24 +20,24 @@ function getPillComponents(days_until_expiry: number, t: TFunction): JSX.Element
   return null;
 }
 
-export const CertificationCard: React.FC<ICertificationCardProps> = props => {
+export const CertificationCard: React.FC<ICertificationCardProps> = ({ certification, hideDetails = false }) => {
   const { t } = useTranslation();
-  const expiration_date = formatDate(props.certification.expiration_date, "M/D/YY");
-  const title = t(props.certification.certification_type);
+  const expiration_date = formatDate(certification.expiration_date, "M/D/YY");
+  const title = t(certification.certification_type);
   const body = (
     <>
       <div className={`grid-row ${styles.bodyRow}`}>
-        <div className={`grid-col ${styles.bodyCompanyName}`}>{props.certification.company_name}</div>
+        <div className={`grid-col ${styles.bodyCompanyName}`}>{certification.company_name}</div>
         <div className={`grid-col-auto`}>
           <div className={` ${styles.bodyRowRightGroup}`}>
             <div className={`${styles.bodyRightGroupExpirationDate}`}>
               {t("Expiration")}: {expiration_date}
             </div>
-            {getPillComponents(props.certification.days_until_expiry, t)}
+            {getPillComponents(certification.days_until_expiry, t)}
           </div>
         </div>
       </div>
     </>
   );
-  return <Card icon={CertificationCardIcon} title={title} detailsPage={`/certification/detail/${props.certification.certification_id}`} body={body} />;
+  return <Card icon={CertificationCardIcon} title={title} detailsPage={`/certification/detail/${certification.certification_id}`} body={body} hideDetails={hideDetails} />;
 };

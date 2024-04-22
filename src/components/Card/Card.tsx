@@ -13,9 +13,13 @@ const Card: React.FC<ICardProps> = props => {
         </div>
         <div className={`grid-col  ${styles.headerTitle}`}>{props.title}</div>
         <div className={`grid-col-auto`}>
-          <Link to={props.detailsPage} className={`usa-button  ${styles.detailsButton}`}>
-            {t("Details")}
-          </Link>
+          {props.hideDetails ? null : (
+            <Link to={props.detailsPage}
+                  data-testid='details-button'
+                  className={`usa-button  ${styles.detailsButton}`}>
+              {t("Details")}
+            </Link>
+          )}
         </div>
       </div>
       <div className={`usa-card__body ${styles.body}`}>{props.body}</div>
