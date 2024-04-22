@@ -23,6 +23,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 20px;
 }
 
 .usa-banner__inner {
@@ -48,7 +49,7 @@
   align-items: center;
   justify-content: center;
   background-color: #007dbc;
-  margin-right:0px !important;
+  margin-right:0 !important;
 }
 
 .usa-language-container {
@@ -177,4 +178,28 @@
   .right-side-nav {
     display: none;
   }
+}
+
+.buttonStyle {
+  padding: 12px 20px;
+  background-color: #d54309;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonStyle .buttonText {
+  text-align: center;
+  color: white;
+  font-size: 16px;
+  font-family: var(--Font-Secondary), serif;
+  font-weight: 700;
+  line-height: 14px;
+  word-wrap: break-word;
 }

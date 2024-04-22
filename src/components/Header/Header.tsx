@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import SideNav from "src/components/SideNav/SideNav";
 import { getShowNav } from "src/store/showNav/showNavSlice";
 import { useSelector } from "react-redux";
+import { useOktaAuth } from "@okta/okta-react";
 
 const Header = () => {
   const detectedLang: string = navigator.language.substring(0, 2);
@@ -23,6 +24,7 @@ const Header = () => {
   const showNav: boolean = useSelector(getShowNav);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navRef = useRef<HTMLDivElement | null>(null);
+  const { oktaAuth } = useOktaAuth();
 
   const handleMenuClick = () => {
     setIsNavOpen(true);
@@ -69,6 +71,10 @@ const Header = () => {
       document.removeEventListener("mousedown", handleFocusOut);
     };
   }, [navRef]);
+
+  const logout = async () => {
+    await oktaAuth.signOut();
+  };
 
   return (
     <>
@@ -226,7 +232,7 @@ const Header = () => {
               <>
                 {/* User Profile */}
                 <div className={`usa-nav__inner ${styles["usa-nav__inner"]}`}>
-                  <Link to="/profile">
+                  <Link to="/profile" data-cy='profileLink'>
                       <img src={ProfileIcon} alt="Profile Icon" />
                   </Link>
                 </div>
@@ -246,11 +252,18 @@ const Header = () => {
                 </div>
               </>
             )}
+            {!showNav && (<button
+                className={` ${styles.buttonStyle}`}
+                onClick={logout}
+                aria-label={t("Log Out")}
+                type="button"
+              >
+                <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
+              </button>)}
           </div>
         </div>
       </header>
-      {showNav && (
-        <div
+      {showNav && (<div
           className={`${styles["right-side-nav"]} ${isNavOpen ? styles["is-open"] : ""}`}
           onBlur={handleFocusOut}
           // onTouchEnd={handleTouchEnd}
@@ -269,7 +282,7 @@ const Header = () => {
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </div>
-          <SideNav onNavLinkClick={handleNavLinkClick} />
+          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
         </div>
       )}
     </>

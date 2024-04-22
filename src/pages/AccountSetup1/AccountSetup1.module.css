@@ -1,116 +1,113 @@
 .container-row {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .container {
-  display: flex;
-  flex-direction: column;
-  width: 730px;
-  margin: 40px;
-  max-width: 730px;
-  gap: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 730px;
+    margin: 40px;
+    max-width: 730px;
+    gap: 20px;
 }
 
 .header {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }
 
 .open-sign {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin-bottom: 20px;
+    position: relative;
+    width: 100px;
+    height: 100px;
 }
 
 .title {
-  font-family: var(--Font-Primary);
-  font-weight: 400;
-  color: var(--Brand-Primary-SBA-Blue);
-  font-size: 32px;
-  margin-bottom: 20px;
+    font-weight: 400;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 32px;
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 a {
-  color: var(--Brand-Secondary-Bright-Blue);
+    color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .subtitle {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-family: var(--Font-Primary);
-  font-weight: 400;
-  font-size: 22px;
-  margin-bottom: 40px;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-family: var(--Font-Primary), serif;
+    font-weight: 400;
+    font-size: 22px;
+    margin-bottom: 40px;
 }
 
 .label {
-  font-family: var(--Font-Primary);
-  color: var(--Brand-Primary-SBA-Blue);
-  width: 100%;
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 26px;
-  text-align: left;
-}
-.label-certifications {
-    font-family: var(--Font-Primary);
     color: var(--Brand-Primary-SBA-Blue);
     width: 100%;
     font-size: 22px;
     font-weight: 400;
     line-height: 26px;
     text-align: left;
-    margin-top:40px;
-  }
+}
+
+.label-certifications {
+    color: var(--Brand-Primary-SBA-Blue);
+    width: 100%;
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 26px;
+    text-align: left;
+    margin-top: 40px;
+}
 
 .checkbox__group {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .checkbox__group, .usa-checkbox {
-  width: 100%;
+    width: 100%;
 }
 
 .usa-checkbox__input {
-  flex-shrink: 0;
+    flex-shrink: 0;
 }
 
 .checkbox {
-  padding-bottom: 41px;
+    padding-bottom: 41px;
 }
 
 @media screen and (max-width: 630px) {
-  .checkbox{
-    padding-left:5px;
-  }
+    .checkbox {
+        padding-left: 5px;
+    }
 }
 
 .usa-checkbox__label {
-  font-family: var(--Font-Primary);
-  font-size: 15px;
-  font-weight: 400;
-  line-height: 19px;
-  width:100%;
-  text-align: left;
-  padding-left: 15px;
-  flex-grow:1;
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 19px;
+    width: 100%;
+    text-align: left;
+    padding-left: 45px;
+    flex-grow: 1;
 }
 
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
-  background-color: #007dbc;
-  border-color: #007dbc;
+    background-color: var(--Brand-Secondary-Bright-Blue);
+    border-color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .footer {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
 }
 
 .button__continue {
-  width: 337px;
-  margin-right:0px;
+    width: 337px;
+    margin-right: 0;
 }

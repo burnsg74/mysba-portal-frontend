@@ -117,7 +117,7 @@ const Loading = () => {
   }, [messageIndex]);
 
   return (
-    <div className={`${styles["loading__container"]}`}>
+    <div data-cy={"loadingContainer"} className={`${styles["loading__container"]}`}>
       <img
         className={`${styles["loading__icon"]}`}
         src={loadingIcon}
