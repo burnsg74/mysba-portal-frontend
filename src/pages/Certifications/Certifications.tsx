@@ -86,7 +86,7 @@ const Certifications = () => {
       >
         {t("Cancel")}
       </button>
-      <button type="button" className={`usa-button ${styles.footerBtn}`} onClick={NextModal}>
+      <button type="button" data-testid="modal1-next" className={`usa-button ${styles.footerBtn}`} onClick={NextModal}>
         {t("Continue")}
       </button>
     </>
@@ -168,6 +168,7 @@ const Certifications = () => {
             <div className="grid-col-auto grid-col-wrap">
               <button
                 type="button"
+                data-testid="apply-for-certification"
                 className={`usa-button usa-button--outline ${styles.applyForCertificationBtn}`}
                 onClick={handleApplyCertificationClick}
               >

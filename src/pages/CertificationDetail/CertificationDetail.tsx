@@ -94,6 +94,7 @@ const CertificationDetail = () => {
           </button>
           <button
             type="button"
+            data-testid='manage-certification-button'
             className={`usa-button usa-button ${styles["manage-cert-button"]}`}
             onClick={() => setManageCertificationModal(true)}
           >

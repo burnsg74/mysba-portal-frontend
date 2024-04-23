@@ -5,9 +5,10 @@ import styles from "src/components/SideNav/SideNav.module.css";
 
 type SideNavProps = {
   onNavLinkClick: () => void;
+  forMobile: boolean;
 };
 
-const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick }) => {
+const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile=false }) => {
   const { t } = useTranslation();
   const NAVIGATION_LINKS = [
     {
@@ -36,6 +37,7 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick }) => {
     onNavLinkClick();
   };
 
+
   return (
     <>
       <nav aria-label="Side navigation" className={`${styles["container"]}`}>
@@ -50,6 +52,7 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick }) => {
             title={item.name}
             onClick={() => handleClick()}
             className={`grid-row ${styles["row"]} ${window.location.pathname.startsWith(item.url) ? styles["row__active"] : ""}`}
+            data-testid={`${forMobile ? "mobile-" : "side-"}nav-link-${item.name}`}
           >
             <div
               className={`grid-col-auto ${styles["col__bar"]} ${window.location.pathname.startsWith(item.url) ? styles["col__bar-active"] : ""}`}

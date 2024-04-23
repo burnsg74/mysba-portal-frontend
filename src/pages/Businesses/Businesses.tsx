@@ -59,7 +59,6 @@ const Businesses = () => {
       <Alert type={"error"} message={"Error: Unable to fetch businesses. Please try again later."} />
     </div>)}
     <h1 className={`${styles["title"]}`}>
-      {/*{user.businesses && user.businesses.length > 1 ? t("Your Businesses") : t("Your Business")}*/}
       {t("Businesses")}
     </h1>
     <div className="Businesses-content">

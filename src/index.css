@@ -1,7 +1,3 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
     /* Colors */
     --Base-base-dark: #565C65;
@@ -305,6 +301,11 @@
     src: url("/assets/fonts/public-sans-blackitalic.woff2") format("woff2");
     font-weight: 900;
     font-style: italic;
+}
+
+
+* {
+    font-family: var(--Font-Primary), serif;
 }
 
 .main-container {

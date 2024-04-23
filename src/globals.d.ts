@@ -71,14 +71,17 @@ interface ICardProps {
   title: string;
   body: JSX.Element;
   detailsPage: string;
+  hideDetails?: boolean;
 }
 
 interface ICertificationCardProps {
   certification: ICertification,
+  hideDetails?: boolean;
 }
 
 interface IBusinessCardProps {
   business: IBusiness;
+  hideDetails?: boolean;
 }
 
 declare module '@uswds/uswds' {

@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "scripts": {
     "localhost": "vite --mode localhost",
-    "dev": "vite --mode dev",
+    "dev": "vite --mode dev --open",
     "build": "tsc && vite build",
     "serve": "vite preview",
     "lint": "eslint \"src/**/*.{js,jsx,ts,tsx}\"",

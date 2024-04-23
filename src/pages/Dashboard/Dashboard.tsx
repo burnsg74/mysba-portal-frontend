@@ -41,7 +41,7 @@ const Dashboard = () => {
       <div className={`banner ${styles.banner}`}>
         <div className={`${styles.welcomeMessage}`}>
           {user.profile?.crm && (
-            <span className="username">
+            <span data-test="username" className="username">
               {t("Hi")} {user.profile.crm.first_name},{" "}
             </span>
           )}
