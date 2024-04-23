@@ -1,30 +1,27 @@
 .mainContainer {
   display: flex;
   justify-content: center;
-  flex-direction:column;
+  flex-direction: column;
   align-items: center;
-  justify-items: ;
-  margin-left:138px;
-  margin-right:138px;
+  padding-left: 138px;
+  padding-right: 138px;
 }
 
 .cornerWrapper {
   overflow: hidden;
   border-radius: 32px 32px 0 0;
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.25);
-  width:100%;
+  width: 100%;
 }
 
 .contentHeader {
   display: grid;
-  grid-template-areas: 
-    "leftButton text text rightButton";
+  grid-template-areas: "leftButton text text rightButton";
   margin-top: 15px;
   margin-bottom: 56px;
-  width:100%;
-  max-width:1055px;
+  width: 100%;
+  max-width: 1055px;
 }
-
 
 .contentHeader > div:nth-child(1) {
   justify-self: start; /* Aligns first child to the start of the column */
@@ -39,7 +36,7 @@
 }
 
 .textContainer {
-  max-width:488px;
+  max-width: 488px;
   grid-area: text;
   display: flex;
   flex-direction: column;
@@ -65,22 +62,29 @@ button.usa-button {
   color: var(--Brand-Primary-SBA-Blue);
 }
 
+@media (max-width: 1346px) {
+  .mainContainer {
+    margin: 0px;
+    padding: 0px 20px;
+  }
+}
+
 @media (max-width: 768px) {
   .contentHeader {
     display: grid;
     grid-template-areas:
       "leftButton rightButton"
       "text text";
-    grid-template-columns: 1fr 1fr; /* Two columns for buttons */
-    grid-template-rows: auto auto; /* Automatic height rows */
-    justify-content: space-between; /* Ensures buttons align to edges */
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    justify-content: space-between;
+    grid-row-gap:40px;
   }
-  .mainContainer {
-    margin: 0px;
-    padding:0px 20px;
+  .mainContainer{
+    margin-bottom:40px;
   }
-
-  .btnOutline, .btnDisabled {
+  .btnOutline,
+  .btnDisabled {
     max-width: none; /* Remove max width to allow stretching */
     flex: 1; /* Allow buttons to expand */
     margin: 0; /* Remove any margins that might restrict the buttons */
@@ -95,7 +99,7 @@ button.usa-button {
   }
 }
 
-.btnOutline, .btnDisabled {
+.btnOutline{
   grid-area: leftButton;
   width: 109px;
   height: 38px;
@@ -106,11 +110,27 @@ button.usa-button {
   border: 2px;
   box-shadow: inset 0 0 0 2px #007dbc; /* Shadow only necessary for the outline button */
   color: var(--Brand-Secondary-Bright-Blue);
-  margin-right:0px;
+  margin-right: 0px;
 }
 
-.btnDisabled {
-  grid-area: rightButton;
-  justify-self: end;
-  box-shadow:none;
+.footerBtnOutline {
+  margin-right:0px;
+  height:44px;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  flex: 1;
+  border:2px;
+  box-shadow:inset 0 0 0 2px #007DBC;
+  color:var(--Brand-Secondary-Bright-Blue);
+}
+
+.footerBtn {
+  margin-right:0px;
+  height:44px;
+  display: flex;
+  align-items: center;
+  justify-content:center;
+  flex: 1;
+  border:2px;
 }

@@ -213,7 +213,7 @@ const Header = () => {
                 </div>
               </>
             )}
-            {!showNav && (<button
+            {!showNav && !showProfile && (<button
                 className={` ${styles.buttonStyle}`}
                 onClick={logout}
                 aria-label={t("Log Out")}

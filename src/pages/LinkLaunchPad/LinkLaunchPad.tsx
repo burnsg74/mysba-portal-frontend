@@ -6,13 +6,15 @@ import { setNav } from "src/store/showNav/showNavSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Iframe from "src/components/iFrame/iFrame";
 import styles from "src/pages/LinkLaunchPad/LinkLaunchPad.module.css";
+import nextSignImg from "src/assets/next-sign.png";
+import Modal from "src/components/Modal/Modal";
 
 const LinkLaunchPad = () => {
   const user: IUser = useSelector(getUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
   const [iframeSize, setIframeSize] = useState({ width: 1055, height: 755 });
 
   useEffect(() => {
@@ -40,6 +42,34 @@ const LinkLaunchPad = () => {
     navigate("/certification");
   };
 
+  const handleContinueBtnClick = () => {
+    setIsModalOpen(true)
+  }
+
+  const closeModal = () => {
+    setIsModalOpen(false)
+  }
+
+  const completeModal = () => {
+    dispatch(setNav(true))
+    navigate("/certification")
+  }
+
+  const modalFooterContent = (
+    <>
+      <button
+        type="button"
+        className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
+        onClick={closeModal}
+      >
+        {t("Cancel")}
+      </button>
+      <button type="button" data-testid="modal1-next" className={`usa-button ${styles.footerBtn}`} onClick={completeModal}>
+        {t("All Done")}
+      </button>
+    </>
+  );
+
   return (
     <>
       <div className={` ${styles.mainContainer}`}>
@@ -60,7 +90,7 @@ const LinkLaunchPad = () => {
               )}
             </div>
           </div>
-          <button type="button" disabled={true} className={`usa-button ${styles.btnDisabled}`}>
+          <button type="button" className={`usa-button ${styles.footerBtn}`} onClick={handleContinueBtnClick}>
             {t("Continue")}
           </button>
         </div>
@@ -82,6 +112,17 @@ const LinkLaunchPad = () => {
           />
         </div>
       </div>
+      {isModalOpen && (
+        <Modal
+          title=""
+          onClose={closeModal}
+          prevModal={closeModal}
+          ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
+          contentTitle={t("Success")}
+          contentMessage={t("Your linkage was successful")}
+          footerContent={modalFooterContent}
+        />
+      )}
     </>
   );
 };
