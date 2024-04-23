@@ -13,13 +13,13 @@ const LinkLaunchPad = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
 
-  const [iframeSize, setIframeSize] = useState({ width: 1164, height: 755 });
+  const [iframeSize, setIframeSize] = useState({ width: 1055, height: 755 });
 
   useEffect(() => {
     const handleResize = () => {
       const windowWidth = window.innerWidth;
-      const newWidth = Math.min(Math.max(windowWidth - 40, 300), 1164); // Min width of 300px, adjust as needed
-      let newHeight = (newWidth / 1164) * 755; // Maintain aspect ratio
+      const newWidth = Math.min(Math.max(windowWidth - 40, 300), 1055); // Min width of 300px, adjust as needed
+      let newHeight = (newWidth / 1055) * 755; // Maintain aspect ratio
       if (newHeight < 664) {
         newHeight = 664; // Sets height to minimum if calculated height is less than 664
       }
@@ -71,14 +71,13 @@ const LinkLaunchPad = () => {
           style={{ width: `${iframeSize.width}px`, height: `${iframeSize.height}px` }}
         >
           <Iframe
-            url="http://localhost:5173/certification-apply/1"
+            url="https://veterans.certify.sba.gov/"
             width={`${iframeSize.width}px`}
             height={`${iframeSize.height}px`}
             id=""
             className=""
             display="block"
             position="relative"
-            sandbox={["allow-scripts", "allow-same-origin"]}
             frameBorder={0}
           />
         </div>
