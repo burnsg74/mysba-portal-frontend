@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "src/components/ManageCertificationModal/ManageCertificationModal.module.css";
 import { useTranslation } from "react-i18next";
-import nextSignImg from "src/assets/next-sign.png";
+import nextSignImg from "src/assets/next-sign.svg";
 
 interface ManageCertificationModal {
   onClose?: () => void;

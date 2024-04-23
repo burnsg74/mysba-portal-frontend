@@ -10,7 +10,7 @@ import { certifications } from "src/utils/certifications";
 import { setNav } from "src/store/showNav/showNavSlice";
 import Modal from "src/components/Modal/Modal";
 import editPaperImg from "src/assets/edit-paper.png";
-import nextSignImg from "src/assets/next-sign.png";
+import nextSignImg from "src/assets/next-sign.svg";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";

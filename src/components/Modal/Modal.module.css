@@ -168,3 +168,9 @@
 .usa-step-indicator__segment--incomplete {
   max-width:none;
 }
+
+.imageSize {
+  width: 100px;
+  height: 100px;
+  object-fit: cover; /* This ensures the image covers the area without distorting aspect ratio */
+}

@@ -9,7 +9,7 @@ import Pill from "src/components/Pill/Pill";
 import { useTranslation, Trans } from 'react-i18next';
 import Modal from "src/components/Modal/Modal";
 import { formatDate } from "src/utils/formatter";
-import nextSignImg from "src/assets/next-sign.png";
+import nextSignImg from "src/assets/next-sign.svg";
 import CertificationCardIcon from "src/assets/certification-card-icon.svg";
 import BusinessCardIcon from "src/assets/business-card-icon.svg";
 
@@ -63,7 +63,7 @@ const CertificationDetail = () => {
   const footerContent = (
     <>
       <button type="button" className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`} onClick={handleManageCertificationModalClose}>
-        {t("Back")}
+        {t("Cancel")}
       </button>
       <button
         type="button"

@@ -80,7 +80,7 @@ const ModalComponent = ({
             </div>
           )}
           <div className={`${styles.content}`}>
-            {ImageAndAlt && <img src={ImageAndAlt.image} alt={ImageAndAlt.alt} />}
+            {ImageAndAlt && <img src={ImageAndAlt.image} alt={ImageAndAlt.alt} className={`${styles.imageSize}`}/>}
             {contentTitle && <div className={`${styles.contentTitle}`}>{t(contentTitle)}</div>}
             {contentMessage && <div className={`${styles.contentMessage}`}>{t(contentMessage)}</div>}
             {children}

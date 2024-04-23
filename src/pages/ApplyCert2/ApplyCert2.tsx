@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import { certifications } from "src/utils/certifications";
 import styles from "src/pages/ApplyCert2/ApplyCert2.module.css";
-import nextSignImg from "src/assets/next-sign.png";
+import nextSignImg from "src/assets/next-sign.svg";
 
 
 const ApplyCert2 = () => {

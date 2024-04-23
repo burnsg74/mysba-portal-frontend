@@ -6,7 +6,7 @@ import { setNav } from "src/store/showNav/showNavSlice";
 import { useDispatch, useSelector } from "react-redux";
 import Iframe from "src/components/iFrame/iFrame";
 import styles from "src/pages/LinkLaunchPad/LinkLaunchPad.module.css";
-import nextSignImg from "src/assets/next-sign.png";
+import nextSignImg from "src/assets/next-sign.svg";
 import Modal from "src/components/Modal/Modal";
 
 const LinkLaunchPad = () => {
