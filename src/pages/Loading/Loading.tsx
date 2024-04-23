@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { UserClaims } from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
 import axios, { AxiosResponse } from "axios";
 import { setUser } from "src/store/user/userSlice";
-import { setNav } from "src/store/showNav/showNavSlice";
+import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -81,6 +81,7 @@ const Loading = () => {
 
   useEffect(() => {
     dispatch(setNav(false));
+    dispatch(setShowProfile(false))
   }, [dispatch]);
 
   useEffect(() => {
@@ -96,9 +97,11 @@ const Loading = () => {
             });
           }
           dispatch(setNav(true));
+          dispatch(setShowProfile(true))
           dispatch(setUser(user));
           if (!user.profile.portal) {
             dispatch(setNav(false));
+            dispatch(setShowProfile(false))
             navigate("/account-setup/1");
           } else {
             navigate("/dashboard");

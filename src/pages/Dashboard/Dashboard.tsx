@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { formatDate } from "src/utils/formatter";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
-import { setNav } from "src/store/showNav/showNavSlice";
+import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import styles from "src/pages/Dashboard/Dashboard.module.css";
 import Modal from "src/components/Modal/Modal";
 import Alert from "src/components/Alert/Alert";
@@ -26,6 +26,7 @@ const Dashboard = () => {
         className={`usa-button ${styles.footerBtn}`}
         onClick={() => {
           dispatch(setNav(true));
+          dispatch(setShowProfile(true))
           navigate("/dashboard");
         }}
       >
@@ -131,6 +132,7 @@ const Dashboard = () => {
           title=""
           onClose={() => {
             dispatch(setNav(true));
+            dispatch(setShowProfile(true))
             navigate("/dashboard");
           }}
           ImageAndAlt={{ image: lightBulbImage, alt: "Light Bulb" }}

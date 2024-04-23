@@ -10,18 +10,17 @@ import HttpsIcon from "@uswds/uswds/img/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";
 import { useTranslation } from "react-i18next";
 import SideNav from "src/components/SideNav/SideNav";
-import { getShowNav } from "src/store/showNav/showNavSlice";
+import { getShowNav, getShowProfile } from "src/store/showNav/showNavSlice";
 import { useSelector } from "react-redux";
 import { useOktaAuth } from "@okta/okta-react";
 
 const Header = () => {
   const detectedLang: string = navigator.language.substring(0, 2);
-  const [lang, setLang] = useState(
-    localStorage.getItem("lang") || detectedLang || "en"
-  );
+  const [lang, setLang] = useState(localStorage.getItem("lang") || detectedLang || "en");
   const { i18n } = useTranslation();
   const { t } = useTranslation();
   const showNav: boolean = useSelector(getShowNav);
+  const showProfile: boolean = useSelector(getShowProfile);
   const [isNavOpen, setIsNavOpen] = useState(false);
   const navRef = useRef<HTMLDivElement | null>(null);
   const { oktaAuth } = useOktaAuth();
@@ -45,7 +44,6 @@ const Header = () => {
     setIsNavOpen(false);
   }
 
-
   function handleNavLinkClick() {
     setIsNavOpen(false);
   }
@@ -58,11 +56,7 @@ const Header = () => {
 
   useEffect(() => {
     document.addEventListener("mousedown", event => {
-      if (
-        navRef.current &&
-        event.target instanceof HTMLElement &&
-        !navRef.current.contains(event.target)
-      ) {
+      if (navRef.current && event.target instanceof HTMLElement && !navRef.current.contains(event.target)) {
         setIsNavOpen(false); // If clicked outside, close the navigation
       }
     });
@@ -79,33 +73,16 @@ const Header = () => {
   return (
     <>
       {/* Top Banner : Official website of the United States government */}
-      <section
-        className="usa-banner"
-        aria-label="Official website of the United States government"
-      >
+      <section className="usa-banner" aria-label="Official website of the United States government">
         <div className="usa-accordion">
-          <header
-            className={`usa-banner__header ${styles["usa-banner__header"]}`}
-          >
+          <header className={`usa-banner__header ${styles["usa-banner__header"]}`}>
             <div className={`usa-banner__inner ${styles["usa-banner__inner"]}`}>
               <div className="grid-col-auto">
-                <img
-                  aria-hidden="true"
-                  className="usa-banner__header-flag"
-                  src={USFlag}
-                  alt="US Flag"
-                />
+                <img aria-hidden="true" className="usa-banner__header-flag" src={USFlag} alt="US Flag" />
               </div>
-              <div
-                className="grid-col-fill tablet:grid-col-auto"
-                aria-hidden="true"
-              >
-                <p className="usa-banner__header-text">
-                  {t("An official website of the United States government")}
-                </p>
-                <p className="usa-banner__header-action">
-                  {t("Here's how you know")}
-                </p>
+              <div className="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+                <p className="usa-banner__header-text">{t("An official website of the United States government")}</p>
+                <p className="usa-banner__header-action">{t("Here's how you know")}</p>
               </div>
               <button
                 type="button"
@@ -113,17 +90,11 @@ const Header = () => {
                 aria-expanded="false"
                 aria-controls="gov-banner-default"
               >
-                <span className="usa-banner__button-text">
-                  {t("Here's how you know")}
-                </span>
+                <span className="usa-banner__button-text">{t("Here's how you know")}</span>
               </button>
             </div>
           </header>
-          <div
-            className={`usa-banner__content usa-accordion__content`}
-            id="gov-banner-default"
-            hidden
-          >
+          <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
             <div className="grid-row grid-gap-lg">
               <div className="usa-banner__guidance tablet:grid-col-6">
                 <img
@@ -136,9 +107,7 @@ const Header = () => {
                   <p>
                     <strong>{t("Official websites use .gov")}</strong>
                     <br />
-                    {t(
-                      "A .gov website belongs to an official government organization in the United States."
-                    )}
+                    {t("A .gov website belongs to an official government organization in the United States.")}
                   </p>
                 </div>
               </div>
@@ -165,9 +134,7 @@ const Header = () => {
                         focusable="false"
                       >
                         <title id="banner-lock-title-default">Lock</title>
-                        <desc id="banner-lock-description-default">
-                          Locked padlock icon
-                        </desc>
+                        <desc id="banner-lock-description-default">Locked padlock icon</desc>
                         <path
                           fill="#000000"
                           fillRule="evenodd"
@@ -213,22 +180,12 @@ const Header = () => {
           </div>
           <div className={`grid-col ${styles["left"]}`}></div>
           <div className={`grid-col-auto ${styles["right"]}`}>
-            <div
-              className={`usa-language-container ${showNav ? styles["usa-language-container"] : ''}`}
-            >
-              <button
-                type="button"
-                className={`usa-button ${styles["pill-button"]}`}
-                onClick={switchLanguage}
-              >
-                <span lang={lang === "en" ? "es" : "en"}>
-                  {lang === "en" ? "Español" : "English"}
-                </span>
+            <div className={`usa-language-container ${showProfile ? styles["usa-language-container"] : ""}`}>
+              <button type="button" className={`usa-button ${styles["pill-button"]}`} onClick={switchLanguage}>
+                <span lang={lang === "en" ? "es" : "en"}>{lang === "en" ? "Español" : "English"}</span>
               </button>
             </div>
-
-            {/* Multi-Language Toggle */}
-            {showNav && (
+            {showProfile && (
               <>
                 {/* User Profile */}
                 <div className={`usa-nav__inner ${styles["usa-nav__inner"]}`}>
@@ -236,7 +193,11 @@ const Header = () => {
                       <img src={ProfileIcon} alt="Profile Icon" />
                   </Link>
                 </div>
-
+              </>
+            )}
+            {/* Multi-Language Toggle */}
+            {showNav && (
+              <>
                 {/* Head Nav for small screens */}
                 <div className={`${styles["header-menu__icon-container"]}`}>
                   <svg
@@ -252,7 +213,7 @@ const Header = () => {
                 </div>
               </>
             )}
-            {!showNav && (<button
+            {!showNav && !showProfile && (<button
                 className={` ${styles.buttonStyle}`}
                 onClick={logout}
                 aria-label={t("Log Out")}

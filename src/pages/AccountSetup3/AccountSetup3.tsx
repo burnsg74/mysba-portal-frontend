@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { setNav } from "src/store/showNav/showNavSlice";
+import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
 import lightBulbImg from "src/assets/lightbulb.png";
@@ -49,6 +49,7 @@ const AccountSetup3 = () => {
             onClick={() => {
               window.removeEventListener("resize", handleResize);
               dispatch(setNav(true));
+              dispatch(setShowProfile(true))
               navigate("/dashboard");
             }}
           >

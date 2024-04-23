@@ -5,14 +5,16 @@ import { getUser, setUser } from "src/store/user/userSlice";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
+import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
+import { certifications } from "src/utils/certifications";
+import { setNav } from "src/store/showNav/showNavSlice";
 import Modal from "src/components/Modal/Modal";
 import editPaperImg from "src/assets/edit-paper.png";
 import nextSignImg from "src/assets/next-sign.png";
-import { certifications } from "src/utils/certifications";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
-import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
+
 
 const Certifications = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
@@ -113,6 +115,11 @@ const Certifications = () => {
     </>
   );
 
+  const linkCert = () => {
+    dispatch(setNav(false))
+    navigate("/link-launchpad")
+  }
+
   return (
     <>
       <div className={`main-container`}>
@@ -171,8 +178,8 @@ const Certifications = () => {
             <div className="grid-col-auto grid-col-wrap">
               <button
                 type="button"
-                className={`usa-button usa-button--secondary ${styles.linkCertificationBtn}`}
-                disabled={true}
+                className={`usa-button ${styles.linkCertificationBtn}`}
+                onClick={linkCert}
               >
                 {t("Link a Certification")}
               </button>
