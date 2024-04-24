@@ -11,7 +11,7 @@ import Modal from "src/components/Modal/Modal";
 import { formatDate } from "src/utils/formatter";
 import nextSignImg from "src/assets/next-sign.svg";
 import CertificationCardIcon from "src/assets/certification-card-icon.svg";
-import BusinessCardIcon from "src/assets/business-card-icon.svg";
+import { certifications } from "src/utils/certifications";
 
 const CertificationDetail = () => {
   const navigate = useNavigate();
@@ -27,8 +27,8 @@ const CertificationDetail = () => {
   const user: IUser = useSelector(getUser);
   // const certification: ICertification | undefined = user.certifications ? user.certifications[index] : undefined;
   const certification = user.certifications?.filter((certification: ICertification) => certification.certification_id === id)[0];
-  const [showManageCertificationModal, setManageCertificationModal] =
-    useState(false);
+  const cert = certifications.find(cert => cert.code === certification?.certification_type) || certifications[0];
+  const [showManageCertificationModal, setManageCertificationModal] = useState(false);
 
   if (!certification) {
     navigate("/error");
@@ -57,7 +57,7 @@ const CertificationDetail = () => {
 
   const handleManageCertificationModalGo = () => {
     setManageCertificationModal(false);
-    window.open("https://wosb.certify.sba.gov/", "_blank");
+    window.open(cert.url, "_blank");
   };
 
   const footerContent = (
@@ -275,10 +275,8 @@ const CertificationDetail = () => {
           title={t("Manage Certification")}
           onClose={handleManageCertificationModalClose}
           ImageAndAlt={{image:nextSignImg, alt: "Next Sign"}}
-          contentTitle={t("You are leaving MySBA")}
-          contentMessage={t(
-            "You are being taken to the Women-Owned Small Business (WOSB) Certification Portal where you can manage your WOSB certification"
-          )}
+          contentTitle={t(cert.title)}
+          contentMessage={t(cert.message)}
           footerContent={footerContent}
         />
       ) }
