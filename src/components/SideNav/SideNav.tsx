@@ -40,7 +40,7 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile=false }) =>
 
   return (
     <>
-      <nav aria-label="Side navigation" className={`${styles["container"]}`}>
+      <nav aria-label="Side navigation" className={`${styles.container}`}>
         <a href="#main-content" className={`${styles.SkipLink}`}>
           Skip to Main Content
         </a>

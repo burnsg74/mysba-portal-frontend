@@ -5,7 +5,6 @@
   width: 240px;
   height: 100%;
   padding: 24px 0 24px 10px;
-  gap: 4px;
   border-right: 1px solid var(--Base-base-lighter);
   background: #ffffff;
 }
@@ -18,16 +17,20 @@
 }
 
 .row {
+  height: 34px;
   align-items: center;
   align-self: stretch;
   border-bottom: 1px solid var(--Base-base-lighter);
   color: inherit;
   display: flex;
   gap: 10px;
-  padding-bottom: 2px;
-  padding-top: 2px;
   text-decoration: none;
-  margin: 2px;
+}
+
+@media (max-width: 1023px) {
+  .row {
+    height: 44px;
+  }
 }
 
 .col__bar {
@@ -39,7 +42,6 @@
 
 .col__text {
   color: var(--SBA-Dark-Blue);
-  font-family: var(--Font-Primary);
   font-size: 17px;
   font-style: normal;
   font-weight: 400;
@@ -48,7 +50,6 @@
 
 .col__text-active {
   color: var(--Brand-Primary-SBA-Blue);
-  font-family: var(--Font-Primary);
   font-size: 16px;
   font-weight: 700;
   line-height: 120%;
