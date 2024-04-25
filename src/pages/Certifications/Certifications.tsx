@@ -15,7 +15,6 @@ import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
 
-
 const Certifications = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const location = useLocation();
@@ -44,7 +43,7 @@ const Certifications = () => {
         } else {
           accessToken = undefined;
         }
-        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+        axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
         const res = await axios.get(`${BASE_API_URL}certification/wosb/${email}`);
         const updatedUser = { ...user, certifications: res.data };
         dispatch(setUser(updatedUser));
@@ -107,18 +106,27 @@ const Certifications = () => {
         onClick={() => openCertWebsite(selectedCert.url)}
       >
         {t("Go")}
-        <svg className={`usa-icon  ${styles.usaIcon}`} aria-hidden="true" focusable="false" role="img" height="18px" width="18px">
-          <title>Open in a new window Icon</title>
-          <use xlinkHref="/assets/img/sprite.svg#launch"></use>
-        </svg>
+        <div className={`${styles.iconContainer}`}>
+          <svg
+            className={`usa-icon  ${styles.usaIcon}`}
+            aria-hidden="true"
+            focusable="false"
+            role="img"
+            height="18px"
+            width="18px"
+          >
+            <title>Open in a new window Icon</title>
+            <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+          </svg>
+        </div>
       </button>
     </>
   );
 
   const linkCert = () => {
-    dispatch(setNav(false))
-    navigate("/link-launchpad")
-  }
+    dispatch(setNav(false));
+    navigate("/link-launchpad");
+  };
 
   return (
     <>
@@ -176,25 +184,22 @@ const Certifications = () => {
               </button>
             </div>
             <div className="grid-col-auto grid-col-wrap">
-              <button
-                type="button"
-                className={`usa-button ${styles.linkCertificationBtn}`}
-                onClick={linkCert}
-              >
+              <button type="button" className={`usa-button ${styles.linkCertificationBtn}`} onClick={linkCert}>
                 {t("Link a Certification")}
               </button>
             </div>
           </div>
         </div>
-        {user.certifications && [...user.certifications]
-          .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
-          .map((certification, index) => (
-            <div className={`grid-row ${styles.certificationRow}`}>
-              <div className="grid-col">
-                <CertificationCard key={index} certification={certification} />
+        {user.certifications &&
+          [...user.certifications]
+            .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
+            .map((certification, index) => (
+              <div className={`grid-row ${styles.certificationRow}`}>
+                <div className="grid-col">
+                  <CertificationCard key={index} certification={certification} />
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
       </div>
       {isModal1Open && (
         <Modal

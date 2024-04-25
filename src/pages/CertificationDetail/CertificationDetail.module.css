@@ -229,7 +229,15 @@
 }
 
 .usaIcon {
-  margin-left:10px;
   height:18px;
   width:18px;
+}
+
+.iconContainer {
+  margin-left:10px;
+  height:24px;
+  width:24px;
+  display:flex;
+  justify-items:center;
+  align-items:center;
 }

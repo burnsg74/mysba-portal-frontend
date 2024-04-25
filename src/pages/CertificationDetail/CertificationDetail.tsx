@@ -6,7 +6,7 @@ import styles from "src/pages/CertificationDetail/CertificationDetail.module.css
 import Field from "src/components/Field/Field";
 import Alert from "src/components/Alert/Alert";
 import Pill from "src/components/Pill/Pill";
-import { useTranslation, Trans } from 'react-i18next';
+import { useTranslation, Trans } from "react-i18next";
 import Modal from "src/components/Modal/Modal";
 import { formatDate } from "src/utils/formatter";
 import nextSignImg from "src/assets/next-sign.svg";
@@ -26,7 +26,9 @@ const CertificationDetail = () => {
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
   // const certification: ICertification | undefined = user.certifications ? user.certifications[index] : undefined;
-  const certification = user.certifications?.filter((certification: ICertification) => certification.certification_id === id)[0];
+  const certification = user.certifications?.filter(
+    (certification: ICertification) => certification.certification_id === id
+  )[0];
   const cert = certifications.find(cert => cert.code === certification?.certification_type) || certifications[0];
   const [showManageCertificationModal, setManageCertificationModal] = useState(false);
 
@@ -36,10 +38,7 @@ const CertificationDetail = () => {
   }
 
   const issue_date = formatDate(certification.issue_date, "MMMM D, YYYY");
-  const expiration_date = formatDate(
-    certification.expiration_date,
-    "MMMM D, YYYY"
-  );
+  const expiration_date = formatDate(certification.expiration_date, "MMMM D, YYYY");
 
   function calculateIndexFromId(id: string): number | null {
     let index = Number(id);
@@ -62,19 +61,28 @@ const CertificationDetail = () => {
 
   const footerContent = (
     <>
-      <button type="button" className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`} onClick={handleManageCertificationModalClose}>
-        {t("Cancel")}
-      </button>
       <button
         type="button"
-        className={`usa-button ${styles.footerBtn}`}
-        onClick={handleManageCertificationModalGo}
+        className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
+        onClick={handleManageCertificationModalClose}
       >
+        {t("Cancel")}
+      </button>
+      <button type="button" className={`usa-button ${styles.footerBtn}`} onClick={handleManageCertificationModalGo}>
         {t("Go")}
-        <svg className={`usa-icon  ${styles.usaIcon}`} aria-hidden="true" focusable="false" role="img" height="18px" width="18px">
-          <title>Open in a new window Icon</title>
-          <use xlinkHref="/assets/img/sprite.svg#launch"></use>
-        </svg>
+        <div className={`${styles.iconContainer}`}>
+          <svg
+            className={`usa-icon  ${styles.usaIcon}`}
+            aria-hidden="true"
+            focusable="false"
+            role="img"
+            height="18px"
+            width="18px"
+          >
+            <title>Open in a new window Icon</title>
+            <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+          </svg>
+        </div>
       </button>
     </>
   );
@@ -94,19 +102,12 @@ const CertificationDetail = () => {
           </button>
           <button
             type="button"
-            data-testid='manage-certification-button'
+            data-testid="manage-certification-button"
             className={`usa-button usa-button ${styles["manage-cert-button"]}`}
             onClick={() => setManageCertificationModal(true)}
           >
             {t("Manage Certification")}
-            <svg
-              className="usa-icon"
-              aria-hidden="true"
-              focusable="false"
-              role="img"
-              height="24px"
-              width="24px"
-            >
+            <svg className="usa-icon" aria-hidden="true" focusable="false" role="img" height="24px" width="24px">
               <title>Open in a new window Icon</title>
               <use xlinkHref="/assets/img/sprite.svg#launch"></use>
             </svg>
@@ -117,15 +118,15 @@ const CertificationDetail = () => {
         {certification.days_until_expiry <= 0 ? (
           <Alert
             type={"error"}
-            message={t(
-              "Your " + certification.certification_type + " certification has expired"
-            )}
+            message={t("Your " + certification.certification_type + " certification has expired")}
           />
         ) : certification.days_until_expiry <= 90 ? (
           <Alert
             type={"warning"}
             message={t(
-              "Your " + certification.certification_type + " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
+              "Your " +
+                certification.certification_type +
+                " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
               {
                 days_until_expiry: certification.days_until_expiry,
                 expire_at: expiration_date,
@@ -139,18 +140,13 @@ const CertificationDetail = () => {
           <div className={`grid-col-auto`}>
             <img src={CertificationCardIcon} alt={"Certification Card Icon"} />
           </div>
-          <div className={`grid-col ${styles["title"]}`}>
-            {t(certification.certification_type)}
-          </div>
+          <div className={`grid-col ${styles["title"]}`}>{t(certification.certification_type)}</div>
 
           {/* Certifications Pills */}
           {certification.days_until_expiry <= 0 ? (
             <Pill type={"error"} message={`Expired`} />
           ) : certification.days_until_expiry <= 90 ? (
-            <Pill
-              type={"warning"}
-              message={`Renew in ${certification.days_until_expiry} Days`}
-            />
+            <Pill type={"warning"} message={`Renew in ${certification.days_until_expiry} Days`} />
           ) : certification.days_until_expiry > 90 ? (
             <Pill type={"valid"} message={"Certified"} />
           ) : null}
@@ -160,12 +156,8 @@ const CertificationDetail = () => {
         {certification.days_until_expiry <= 0 && (
           <>
             <div className={`${styles["expired-help__container"]}`}>
-              <div className={`${styles["expired-help__header"]}`}>
-                {t("Need help getting re-certified?")}
-              </div>
-              <div
-                className={`grid-row ${styles["expired-help__message__container"]}`}
-              >
+              <div className={`${styles["expired-help__header"]}`}>{t("Need help getting re-certified?")}</div>
+              <div className={`grid-row ${styles["expired-help__message__container"]}`}>
                 <div className={`grid-col-auto`}>
                   {/* Phone Icon */}
                   <svg
@@ -186,33 +178,21 @@ const CertificationDetail = () => {
                     />
                   </svg>
                 </div>
-                <div
-                  className={`grid-col ${styles["expired-help-message__container"]}`}
-                >
-                  <div className={`${styles["expired-help__message__header"]}`}>
-                    {t("Contact Us")}
-                  </div>
+                <div className={`grid-col ${styles["expired-help-message__container"]}`}>
+                  <div className={`${styles["expired-help__message__header"]}`}>{t("Contact Us")}</div>
                   <div className={`${styles["expired-help__message__body"]}`}>
                     <div>
                       <Trans
                         components={{
                           helpFormLink: (
-                            <a
-                              href="https://wosb.certify.sba.gov/help-csh/"
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
+                            <a href="https://wosb.certify.sba.gov/help-csh/" target="_blank" rel="noopener noreferrer">
                               here
                             </a>
                           ),
-                          emailLink: (
-                            <a href="mailto:wosb@SBA.gov">wosb@sba.gov</a>
-                          ),
+                          emailLink: <a href="mailto:wosb@SBA.gov">wosb@sba.gov</a>,
                         }}
                       >
-                        {t(
-                          "You can fill out a help request form here or contact us at wosb@sba.gov."
-                        )}
+                        {t("You can fill out a help request form here or contact us at wosb@sba.gov.")}
                       </Trans>
                     </div>
                   </div>
@@ -244,9 +224,7 @@ const CertificationDetail = () => {
             <button
               type="button"
               className={`usa-button usa-button--outline ${styles["start-recertification__btn"]}`}
-              onClick={() =>
-                window.open("https://wosb.certify.sba.gov/", "_blank")
-              }
+              onClick={() => window.open("https://wosb.certify.sba.gov/", "_blank")}
             >
               {t("Start the re-certification process")}
             </button>
@@ -254,10 +232,7 @@ const CertificationDetail = () => {
         )}
         <div className={`${styles.categoryGroup}`}>
           <h4 className={`${styles["subtitle"]}`}>{t("Details")}</h4>
-          <Field
-            label="Company Certified"
-            value={certification.company_name ?? ""}
-          />
+          <Field label="Company Certified" value={certification.company_name ?? ""} />
           <Field label="Issue Date" value={issue_date ?? ""} />
           <Field label="Expiration Date" value={expiration_date ?? ""} />
           {/*<Field*/}
@@ -274,12 +249,12 @@ const CertificationDetail = () => {
         <Modal
           title={t("Manage Certification")}
           onClose={handleManageCertificationModalClose}
-          ImageAndAlt={{image:nextSignImg, alt: "Next Sign"}}
+          ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
           contentTitle={t(cert.title)}
           contentMessage={t(cert.message)}
           footerContent={footerContent}
         />
-      ) }
+      )}
     </>
   );
 };
