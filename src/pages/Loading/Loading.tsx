@@ -49,6 +49,9 @@ const Loading = () => {
     let results: AxiosResponse<any>[] = [];
     try {
       results = await Promise.all(requests);
+      if(results.some(result => result.data === null)){
+        throw new Error("One or more requests returned null.");
+      }
     } catch (err) {
       console.error(err);
       window.location.href = "/error.html";
