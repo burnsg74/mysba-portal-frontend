@@ -71,7 +71,7 @@ const CertificationDetail = () => {
         onClick={handleManageCertificationModalGo}
       >
         {t("Go")}
-        <svg className={`usa-icon  ${styles.usaIcon}`} aria-hidden="true" focusable="false" role="img" height="24px" width="24px">
+        <svg className={`usa-icon  ${styles.usaIcon}`} aria-hidden="true" focusable="false" role="img" height="18px" width="18px">
           <title>Open in a new window Icon</title>
           <use xlinkHref="/assets/img/sprite.svg#launch"></use>
         </svg>
