@@ -28,24 +28,24 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
 }) => {
   const { t } = useTranslation();
   return (
-    <div className={`${styles["usa-card__container"]}`}>
+    <div className={`${styles.usaCardContainer}`}>
       {/* Header */}
-      <div className={`usa-card__header ${styles["usa-card__header"]}`}>
-        <div className={`usa-card__heading ${styles["usa-card__heading"]}`}>
+      <div className={`usa-card__header ${styles.usaCardHeader}`}>
+        <div className={`usa-card__heading ${styles.usaCardHeading}`}>
           <div className="grid-row">
-            <div className={`grid-col ${styles["header-label"]}`}>
+            <div className={`grid-col ${styles.headerLabel}`}>
               {t("Learning Center")}
             </div>
             <div className="grid-col-auto">
               <img
-                className={`grid-col ${styles["header-sba_logo"]}`}
+                className={`grid-col ${styles.headerSbaLogo}`}
                 src={LogoImage}
                 alt="SBA Logo"
               />
               <a
                 href="https://learn.sba.gov"
                 target="_blank"
-                className={`${styles["header-launch-href"]}`}
+                className={`${styles.headerLaunchHref}`}
                 rel="noopener noreferrer"
                 aria-label={t("Open in a new window")}
                 title={t("Open in a new window")}
@@ -68,28 +68,28 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
       {/* Lesson Image */}
       <img
         src={learningCenter.image}
-        className={`${styles["content-image"]}`}
+        className={`${styles.contentImage}`}
         alt="Content"
       />
 
       {/* Body */}
-      <div className={`${styles["title_container"]}`}>
-        <div className={`${styles["title"]}`}>{learningCenter.title}</div>
-        <div className={`${styles["description"]}`}>
+      <div className={`${styles.titleContainer}`}>
+        <div className={`${styles.title}`}>{learningCenter.title}</div>
+        <div className={`${styles.description}`}>
           {learningCenter.description}
         </div>
       </div>
       {/* List of items in library */}
       {learningCenter.library.map((item, index) => (
         <React.Fragment key={index}>
-          <div className={`${styles["video-container"]}`}>
+          <div className={`${styles.videoContainer}`}>
             <button
               onClick={()=> window.open(item.link, "_blank")}
-              className={`${styles["video-href"]}`}
+              className={`${styles.videoHref}`}
               aria-label={`Go to ${item.title}`}
             >
-              <div className={` ${styles["video-row"]}`}>
-                <div className={` ${styles["video-row__image"]}`}>
+              <div className={` ${styles.videoRow}`}>
+                <div className={` ${styles.videoRowImage}`}>
                   <img
                     src={
                       item.type === "infographic"
@@ -97,20 +97,20 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
                         : VideoImage
                     }
                     alt={item.type === "infographic" ? "Infographic" : "Video"}
-                    className={`${styles["video-icon"]}`}
+                    className={`${styles.videoIcon}`}
                   />
                 </div>
                 <div>
-                  <div className={`${styles["video-title"]}`}>{item.title}</div>
-                  <div className={`${styles["video-subtitle"]}`}>
+                  <div className={`${styles.videoTitle}`}>{item.title}</div>
+                  <div className={`${styles.videoSubtitle}`}>
                     {item.description}
                   </div>
                 </div>
-                <div className={`${styles["video-right"]}`}>
+                <div className={`${styles.videoRight}`}>
                   <img
                     src={ArrowNextImage}
                     alt="Go to Next"
-                    className={`${styles["next-icon"]}`}
+                    className={`${styles.nextIcon}`}
                   />
                 </div>
               </div>
@@ -118,17 +118,17 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
           </div>
         </React.Fragment>
       ))}
-      <div className={`usa-card__footer ${styles["usa-card__footer"]}`}>
+      <div className={`usa-card__footer ${styles.usaCardFooter}`}>
         <button
           type="button"
           onClick={() => window.open(learningCenter.link, "_blank")}
-          className={`usa-button usa-button--outline ${styles["view-course-btn"]}`}
+          className={`usa-button usa-button--outline ${styles.viewCourseBtn}`}
         >
-          <div className={`${styles["view-course-text"]}`}>
+          <div className={`${styles.viewCourseText}`}>
             {t("View Course")}
           </div>
           <svg
-            className={`${styles["view-course-icon"]}`}
+            className={`${styles.viewCourseIcon}`}
             aria-hidden="true"
             focusable="false"
             role="img"

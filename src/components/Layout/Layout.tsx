@@ -24,7 +24,7 @@ const Layout = () => {
     setCourses(learningCenterCoursesByPath[location.pathname] ?? []);
 
     if (location.pathname === "/dashboard") {
-      setScrollAreaClass(window.location.pathname === "/dashboard" ? `${styles["resource-location__scroll-area"]}` : "");
+      setScrollAreaClass(window.location.pathname === "/dashboard" ? `${styles.resourceLocationScrollArea}` : "");
       let headerElement = headerRef.current;
       let mainContentElement = mainContentRef.current;
       if (mainContentElement && headerElement) {
@@ -49,31 +49,31 @@ const Layout = () => {
         </div>
       </div>
       <div className="grid-row">
-        {showNav && (<div className={`grid-col-auto ${styles["side-nav"]}`}>
+        {showNav && (<div className={`grid-col-auto ${styles.sideNav}`}>
             <SideNav onNavLinkClick={handleNavLinkClick} />
           </div>)}
         <main id="main-content" className="grid-col" ref={mainContentRef}>
           <Outlet />
         </main>
-        {showNav && (courses.length > 0) && (<div className={`grid-col-auto ${styles["resources-for-you-right"]}`}>
+        {showNav && (courses.length > 0) && (<div className={`grid-col-auto ${styles.resourcesForYouRight}`}>
             <div className={scrollAreaClass} style={{ height: `${mainContentHeight}` }}>
-              <h1 className={`${styles["resource-location__title"]}`}>
+              <h1 className={`${styles.resourceLocationTitle}`}>
                 {t("Resources for you")}
               </h1>
-              <div className={`${styles["resource-location__cards"]}`}>
+              <div className={`${styles.resourceLocationCards}`}>
                 {courses.map((course, index) => (<LearningCenterCard key={index} learningCenter={course} />))}
               </div>
             </div>
           </div>)}
       </div>
-      {showNav && (courses.length > 0) && (<div className={`grid-col-row ${styles["resources-for-you-bottom"]}`}>
+      {showNav && (courses.length > 0) && (<div className={`grid-col-row ${styles.resourcesForYouBottom}`}>
           <div className="grid-col">
-            <div className={`${styles["resource-location__title-bottom-container"]}`}>
-              <h1 className={`${styles["resource-location__title-bottom"]}`}>
+            <div className={`${styles.resourceLocationTitleBottomContainer}`}>
+              <h1 className={`${styles.resourceLocationTitleBottom}`}>
                 {t("Resources for you")}
               </h1>
             </div>
-            <div className={`${styles["resource-location__cards"]}`}>
+            <div className={`${styles.resourceLocationCards}`}>
               {courses.map((course, index) => (<LearningCenterCard key={index} learningCenter={course} />))}
             </div>
           </div>
