@@ -1,10 +1,10 @@
-.alert__container {
+.alertContainer {
   position: relative;
   display: flex;
   padding: 8px 16px 8px 14px;
 }
 
-.alert__container::before {
+.alertContainer::before {
   content: "";
   position: absolute;
   left: 0;
@@ -13,7 +13,7 @@
   width: 8px;
 }
 
-.alert__icon {
+.alertIcon {
   margin-left: 14px;
   width: 24px;
   min-width: 24px;
@@ -21,7 +21,7 @@
   fill: var(--Text-Text);
 }
 
-.alert__message {
+.alertMessage {
   color: var(--Text-Text);
   font-family: var(--Font-Secondary);
   font-size: 16px;

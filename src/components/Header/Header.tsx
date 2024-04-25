@@ -75,8 +75,8 @@ const Header = () => {
       {/* Top Banner : Official website of the United States government */}
       <section className="usa-banner" aria-label="Official website of the United States government">
         <div className="usa-accordion">
-          <header className={`usa-banner__header ${styles["usa-banner__header"]}`}>
-            <div className={`usa-banner__inner ${styles["usa-banner__inner"]}`}>
+          <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
+            <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
               <div className="grid-col-auto">
                 <img aria-hidden="true" className="usa-banner__header-flag" src={USFlag} alt="US Flag" />
               </div>
@@ -155,12 +155,12 @@ const Header = () => {
       </section>
 
       {/* MySBA Header*/}
-      <header className={`${styles["usa-header"]}`}>
-        <div className={`grid-row ${styles["usa-nav-container"]}`}>
-          <div className={`grid-col-auto ${styles["left"]}`}>
+      <header className={`${styles.usaHeader}`}>
+        <div className={`grid-row ${styles.usaNavContainer}`}>
+          <div className={`grid-col-auto ${styles.left}`}>
             {/* LOGO */}
             <img
-              className={`${styles["usa-logo"]}`}
+              className={`${styles.usaLogo}`}
               src={lang === "en" ? SBAlogoEn : SBAlogoEs}
               alt={
                 lang === "en"
@@ -169,7 +169,7 @@ const Header = () => {
               }
             />
             <img
-              className={`${styles["usa-logo__sm"]}`}
+              className={`${styles.usaLogoSm}`}
               src={SBAlogoSm}
               alt={
                 lang === "en"
@@ -178,17 +178,17 @@ const Header = () => {
               }
             />
           </div>
-          <div className={`grid-col ${styles["left"]}`}></div>
-          <div className={`grid-col-auto ${styles["right"]}`}>
-            <div className={`usa-language-container ${showProfile ? styles["usa-language-container"] : ""}`}>
-              <button type="button" className={`usa-button ${styles["pill-button"]}`} onClick={switchLanguage}>
+          <div className={`grid-col ${styles.left}`}></div>
+          <div className={`grid-col-auto ${styles.right}`}>
+            <div className={`usa-language-container ${showProfile ? styles.usaLanguageContainer : ""}`}>
+              <button type="button" className={`usa-button ${styles.pillButton}`} onClick={switchLanguage}>
                 <span lang={lang === "en" ? "es" : "en"}>{lang === "en" ? "Español" : "English"}</span>
               </button>
             </div>
             {showProfile && (
               <>
                 {/* User Profile */}
-                <div className={`usa-nav__inner ${styles["usa-nav__inner"]}`}>
+                <div className={`usa-nav__inner ${styles.usaNavInner}`}>
                   <Link to="/profile" data-cy='profileLink'>
                       <img src={ProfileIcon} alt="Profile Icon" />
                   </Link>
@@ -199,9 +199,9 @@ const Header = () => {
             {showNav && (
               <>
                 {/* Head Nav for small screens */}
-                <div className={`${styles["header-menu__icon-container"]}`}>
+                <div className={`${styles.headerMenuIconContainer}`}>
                   <svg
-                    className={`${styles["header-menu__icon"]}`}
+                    className={`${styles.headerMenuIcon}`}
                     aria-hidden="true"
                     focusable="false"
                     role="img"
@@ -225,15 +225,15 @@ const Header = () => {
         </div>
       </header>
       {showNav && (<div
-          className={`${styles["right-side-nav"]} ${isNavOpen ? styles["is-open"] : ""}`}
+          className={`${styles.rightSideNav} ${isNavOpen ? styles.isOpen : ""}`}
           onBlur={handleFocusOut}
           // onTouchEnd={handleTouchEnd}
           role="button"
           ref={navRef}
         >
-          <div className={`${styles["right-side-nav__header"]}`}>
+          <div className={`${styles.rightSideNavHeader}`}>
             <svg
-              className={`${styles["right-side-nav__icon"]}`}
+              className={`${styles.rightSideNavIcon}`}
               aria-hidden="true"
               focusable="false"
               role="img"

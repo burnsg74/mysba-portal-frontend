@@ -9,16 +9,16 @@ interface IAlertProps {
 const Alert: React.FC<IAlertProps> = ({ message, type }) => {
 
   return (
-    <div className={`${styles["alert__container"]} ${styles["alert-" + type]}`}>
+    <div className={`${styles["alertContainer"]} ${styles["alert-" + type]}`}>
       <svg
-        className={`usa-icon ${styles["alert__icon"]}`}
+        className={`usa-icon ${styles["alertIcon"]}`}
         aria-hidden="true"
         focusable="false"
         role="img"
       >
         <use xlinkHref={`/assets/img/sprite.svg#${type}`}></use>
       </svg>
-      <div className={`${styles["alert__message"]}`}>
+      <div className={`${styles["alertMessage"]}`}>
         {message}
       </div>
     </div>
