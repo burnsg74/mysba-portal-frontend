@@ -22,6 +22,7 @@ import Callback from "src/pages/Callback/Callback";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
+import Hello from "src/pages/Hello";
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -38,13 +39,15 @@ const App: React.FC = () => {
     ) {
       return;
     }
-    if (!profileData?.profile?.crm?.email) {
-      navigate("/");
-    }
-  }, [location, profileData?.profile?.crm?.email]);
+    // if (!profileData?.profile?.crm?.email) {
+    //   navigate("/");
+    // }
+  }, [location]);
 
   const restoreOriginalUri = () => {
-    navigate("/loading");
+    // navigate("/loading");
+    console.log("restoreOriginalUri: navigate(/hello)");
+    navigate("/hello");
   };
 
   const oktaAuth = new OktaAuth({
@@ -69,37 +72,38 @@ const App: React.FC = () => {
           element={<LoginCallback loadingElement={<Callback />} />}
         />
         <Route element={<ProtectedRoute />}>
-          <Route element={<Layout />}>
-            <Route path="/loading" element={<Loading />} />
-            <Route path="/account-setup/1" element={<AccountSetup1 />} />
-            <Route path="/account-setup/2" element={<AccountSetup2 />} />
-            <Route path="/dashboard/*" element={<Dashboard />} />
-            <Route path="/profile" element={<Profile />} />
-            <Route path="/businesses" element={<Businesses />} />
-            <Route
-              path="/businesses/detail/:id"
-              element={<BusinessDetail />}
-            />
-            <Route path="/certification/*" element={<Certifications />} />
-            <Route
-              path="/certification-apply/1"
-              element={<ApplyCert1 />}
-            />
-            <Route
-              path="/certification-apply/2"
-              element={<ApplyCert2 />}
-            />
+          {/*<Route element={<Layout />}>*/}
+            <Route path="/hello" element={<Hello />} />
+            {/*<Route path="/loading" element={<Loading />} />*/}
+            {/*<Route path="/account-setup/1" element={<AccountSetup1 />} />*/}
+            {/*<Route path="/account-setup/2" element={<AccountSetup2 />} />*/}
+            {/*<Route path="/dashboard/*" element={<Dashboard />} />*/}
+            {/*<Route path="/profile" element={<Profile />} />*/}
+            {/*<Route path="/businesses" element={<Businesses />} />*/}
+            {/*<Route*/}
+            {/*  path="/businesses/detail/:id"*/}
+            {/*  element={<BusinessDetail />}*/}
+            {/*/>*/}
+            {/*<Route path="/certification/*" element={<Certifications />} />*/}
+            {/*<Route*/}
+            {/*  path="/certification-apply/1"*/}
+            {/*  element={<ApplyCert1 />}*/}
+            {/*/>*/}
+            {/*<Route*/}
+            {/*  path="/certification-apply/2"*/}
+            {/*  element={<ApplyCert2 />}*/}
+            {/*/>*/}
 
-            <Route
-              path="/certification/detail/:id"
-              element={<CertificationDetail />}
-            />
+            {/*<Route*/}
+            {/*  path="/certification/detail/:id"*/}
+            {/*  element={<CertificationDetail />}*/}
+            {/*/>*/}
 
-            <Route path="/loans" element={<Loans />} />
-            <Route path="/help" element={<Help />} />
-            <Route path="/error" element={<Error />} />
+            {/*<Route path="/loans" element={<Loans />} />*/}
+            {/*<Route path="/help" element={<Help />} />*/}
+            {/*<Route path="/error" element={<Error />} />*/}
           </Route>
-        </Route>
+        {/*</Route>*/}
       </Routes>
     </Security>
   );
