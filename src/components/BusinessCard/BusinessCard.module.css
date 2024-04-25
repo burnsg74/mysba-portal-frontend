@@ -1,35 +1,40 @@
 .bodyRow {
-  display: flex;
-  padding: 20px;
-  gap: 40px;
-  justify-content: space-between;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    padding: 20px;
 }
 
-.bodyLegalEntityText{
-  flex: none;
-  color: var(--Primary-primary-darker);
-  font-family: var(--Font-Primary);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  min-width: min-content;
+.bodyLegalEntityText {
+    flex: none;
+    color: var(--Primary-primary-darker);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    min-width: min-content;
 }
 
 .bodySubGroup {
-  align-items: center;
-  color: var(--Primary-primary-darker);
-  display: flex;
-  font-family: var(--Font-Primary);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  gap: 16px;
-  justify-content: flex-end;
-  line-height: normal;
+    align-items: center;
+    color: var(--Primary-primary-darker);
+    display: flex;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    gap: 16px;
+    justify-content: flex-end;
+    line-height: normal;
 }
+
 .ellipsesIcon {
-  width: 4px;
-  height: 4px;
-  fill: #162E51;
+    width: 4px;
+    height: 4px;
+    fill: #162E51;
+}
+
+.smallScreen {
+    flex-direction: column;
+    align-items: start;
+    gap: 24px;
 }

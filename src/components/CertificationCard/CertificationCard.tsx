@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Card from "src/components/Card/Card";
 import { useTranslation } from "react-i18next";
 import { TFunction } from "i18next";
@@ -22,11 +22,28 @@ function getPillComponents(days_until_expiry: number, t: TFunction): JSX.Element
 
 export const CertificationCard: React.FC<ICertificationCardProps> = ({ certification, hideDetails = false }) => {
   const { t } = useTranslation();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
   const expiration_date = formatDate(certification.expiration_date, "M/D/YY");
   const title = t(certification.certification_type);
+
+  useEffect(() => {
+    function updateScreenSize() {
+      if (containerRef.current && containerRef.current.offsetWidth <= 639) {
+        setIsSmallScreen(true);
+      } else {
+        setIsSmallScreen(false);
+      }
+    }
+
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
+
   const body = (
     <>
-      <div className={`grid-row ${styles.bodyRow}`}>
+      <div ref={containerRef} className={`grid-row ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`}>
         <div className={`grid-col ${styles.bodyCompanyName}`}>{certification.company_name}</div>
         <div className={`grid-col-auto`}>
           <div className={` ${styles.bodyRowRightGroup}`}>

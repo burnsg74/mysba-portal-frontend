@@ -1,13 +1,31 @@
-import React from "react";
+import React, { useEffect, useState, useRef } from "react";
 import styles from "src/components/Card/Card.module.css";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 
 const Card: React.FC<ICardProps> = props => {
   const { t } = useTranslation();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
+
+  useEffect(() => {
+    function updateScreenSize() {
+      if (containerRef.current && containerRef.current.offsetWidth <= 649) {
+        setIsSmallScreen(true);
+      } else {
+        setIsSmallScreen(false);
+      }
+    }
+
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
+
+
   return (
-    <div className={`usa-card__container ${styles.container}`}>
-      <div className={`usa-card__header grid-row  ${styles.headerRow}`}>
+    <div ref={containerRef} className={`usa-card__container ${styles.container}`}>
+      <div className={`usa-card__header grid-row ${styles.headerRow} ${isSmallScreen ? styles.smallScreen : ""}`}>
         <div className={`grid-col-auto`}>
           <img className={`${styles.headerIcon}`} src={props.icon} alt={"Card Header Icon"} />
         </div>
@@ -22,7 +40,7 @@ const Card: React.FC<ICardProps> = props => {
           )}
         </div>
       </div>
-      <div className={`usa-card__body ${styles.body}`}>{props.body}</div>
+      <div className={` ${styles.body}  ${isSmallScreen ? styles.smallScreen : ""}`}>{props.body}</div>
     </div>
   );
 };
