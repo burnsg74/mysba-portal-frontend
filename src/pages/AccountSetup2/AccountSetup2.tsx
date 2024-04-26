@@ -79,30 +79,30 @@ const AccountSetup1 = () => {
 
   return (
     <>
-      <div className={`grid-row ${styles["container-row"]}`}>
-        <div className={`grid-col ${styles["container"]}`}>
-          <div className={`${styles["header"]}`}>
+      <div className={`grid-row ${styles.containerRow}`}>
+        <div className={`grid-col ${styles.container}`}>
+          <div className={`${styles.header}`}>
             <img src={CheckListImage} alt="Check List Icon" />
-            <div className={`${styles["title"]}`}>
+            <div className={`${styles.title}`}>
               {t("Tell us a little about your business.")}
             </div>
           </div>
-          <div className={`${styles["subtitle"]}`}>
+          <div className={`${styles.subtitle}`}>
               {t(
                 "The SBA is here to help at any stage of your business. Answering these questions helps us serve you content more relevant to your needs."
               )}
             </div>
-          <div className={`${styles["content"]}`}>
-            <div className={`${styles["section_label"]}`}>
+          <div className={`${styles.content}`}>
+            <div className={`${styles.sectionLabel}`}>
               {t("In the current stage of my business I am")}...
             </div>
-            <div className={`${styles["section_message"]}`}>
+            <div className={`${styles.sectionMessage}`}>
               {" "}
               {t("Select all that apply")}
             </div>
             <fieldset className="usa-fieldset">
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -113,16 +113,16 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="plan-new-business"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Planning a new business.")}
                   </span>
                 </label>
               </div>
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -133,16 +133,16 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="launch-new-business"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Launching a new business.")}
                   </span>
                 </label>
               </div>
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -153,16 +153,16 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="manage-existing-business"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Managing an existing business.")}
                   </span>
                 </label>
               </div>
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -173,16 +173,16 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="market-existing-business"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Marketing an existing business.")}
                   </span>
                 </label>
               </div>
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -193,25 +193,25 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="grow-existing-business"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Growing a established business.")}
                   </span>
                 </label>
               </div>
             </fieldset>
-            <div className={`${styles["section_label_last"]}`}>
+            <div className={`${styles.sectionLabelLast}`}>
               {t("I am interested in")}...
             </div>
-            <div className={`${styles["section_message"]}`}>
+            <div className={`${styles.sectionMessage}`}>
               {" "}
               {t("Select all that apply")}
             </div>
             <fieldset className="usa-fieldset">
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -222,15 +222,15 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="government-contracting"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Government contracting")}
                   </span>
-                  <span className={`${styles["tooltip"]}`}>
+                  <span className={`${styles.toolTip}`}>
                     <svg
-                      className={`usa-icon ${styles["info-icon"]}`}
+                      className={`usa-icon ${styles.infoIcon}`}
                       aria-hidden="true"
                       focusable="false"
                       role="img"
@@ -238,7 +238,7 @@ const AccountSetup1 = () => {
                       {" "}
                       <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>{" "}
                     </svg>
-                    <span className={`${styles["tooltiptext"]}`}>
+                    <span className={`${styles.toolTipText}`}>
                       {t(
                         "Government contracting is a term referring to how government purchases goods and services from public businesses."
                       )}{" "}
@@ -247,7 +247,7 @@ const AccountSetup1 = () => {
                 </label>
               </div>
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -258,16 +258,16 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="business-mentorship"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Business mentorship")}
                   </span>
                 </label>
               </div>
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -278,16 +278,16 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="woman-owned-business"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Women-owned business content")}
                   </span>
                 </label>
               </div>
               <div
-                className={`grid-row usa-checkbox ${styles["checkbox-row"]}`}
+                className={`grid-row usa-checkbox ${styles.checkboxRow}`}
               >
                 <input
                   className="usa-checkbox__input usa-checkbox__input--tile"
@@ -298,38 +298,38 @@ const AccountSetup1 = () => {
                   onChange={handleChange}
                 />
                 <label
-                  className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}
+                  className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
                   htmlFor="veteran-owned-business"
                 >
-                  <span className={`${styles["label-text"]}`}>
+                  <span className={`${styles.labelText}`}>
                     {t("Veteran-owned business content")}
                   </span>
                 </label>
               </div>
             </fieldset>
           </div>
-          <div className={`${styles["button-group"]}`}>
-            <div className={`grid-row ${styles["button-row"]}`}>
+          <div className={`${styles.buttonGroup}`}>
+            <div className={`grid-row ${styles.buttonRow}`}>
               <button
                 type="button"
                 onClick={handleBackBtnClick}
-                className={`usa-button usa-button--outline ${styles["usa-button"]}`}
+                className={`usa-button usa-button--outline ${styles.usaButton}`}
               >
                 {t("Back")}
               </button>
               <button
                 type="button"
-                className={`usa-button ${styles["usa-button"]}`}
+                className={`usa-button ${styles.usaButton}`}
                 onClick={handleContinueBtnClick}
               >
                 {t("Continue")}
               </button>
             </div>
-            <div className={`grid-row ${styles["skip-button-row"]}`}>
+            <div className={`grid-row ${styles.skipButtonRow}`}>
               <button
                 type="button"
                 onClick={handleSkipBtnClick}
-                className={styles["skip-button"]}
+                className={styles.skipButton}
                 onKeyDown={event => {
                   if (event.key === "Enter" || event.key === " ") {
                     handleSkipBtnClick();

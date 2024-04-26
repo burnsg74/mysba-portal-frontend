@@ -1,4 +1,4 @@
-.container-row {
+.containerRow {
     display: flex;
     justify-content: center;
 }
@@ -19,7 +19,7 @@
     text-align: center;
 }
 
-.open-sign {
+.openSign {
     position: relative;
     width: 100px;
     height: 100px;
@@ -54,7 +54,7 @@ a {
     text-align: left;
 }
 
-.label-certifications {
+.labelCertifications {
     color: var(--Brand-Primary-SBA-Blue);
     width: 100%;
     font-size: 22px;
@@ -64,12 +64,12 @@ a {
     margin-top: 40px;
 }
 
-.checkbox__group {
+.checkboxGroup {
     display: flex;
     align-items: center;
 }
 
-.checkbox__group, .usa-checkbox {
+.checkboxGroup, .usa-checkbox {
     width: 100%;
 }
 
@@ -87,7 +87,7 @@ a {
     }
 }
 
-.usa-checkbox__label {
+.usaCheckboxLabel {
     font-size: 15px;
     font-weight: 400;
     line-height: 19px;
@@ -107,7 +107,7 @@ a {
     justify-content: center;
 }
 
-.button__continue {
+.buttonContinue {
     width: 337px;
     margin-right: 0;
 }

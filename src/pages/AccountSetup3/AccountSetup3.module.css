@@ -16,7 +16,7 @@
   align-items: center;
 }
 
-.header__close {
+.headerClose {
   color: var(--SBA-CRM-text-text-light);
   font-family: var(--Font-Secondary);
   font-size: 16px;
@@ -40,7 +40,7 @@
   padding-bottom: 16px;
 }
 
-.content__title {
+.contentTitle {
   font-family: var(--Font-Primary);
   font-size: 32px;
   font-weight: 400;
@@ -50,7 +50,7 @@
   color: var(--Brand-Primary-SBA-Blue);
 }
 
-.content__message {
+.contentMessage {
   font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;
@@ -67,6 +67,6 @@
   padding: 24px 16px;
 }
 
-.footer-btn {
+.footerBtn {
   width: 100%;
 }

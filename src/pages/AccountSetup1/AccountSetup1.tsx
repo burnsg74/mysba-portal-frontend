@@ -64,12 +64,12 @@ const AccountSetup1 = () => {
 
   return (
     <>
-      <div className={`grid-row ${styles["container-row"]}`}>
-        <div className={`grid-col ${styles["container"]}`}>
-          <div className={`${styles["header"]}`}>
-            <img src={OpenSignImage} alt="Open Sign" className={styles["open-sign"]} />
-            <div className={`${styles["title"]}`}>{t("Here's what we found about you")}</div>
-            <div className={`${styles["subtitle"]}`}>
+      <div className={`grid-row ${styles.containerRow}`}>
+        <div className={`grid-col ${styles.container}`}>
+          <div className={`${styles.header}`}>
+            <img src={OpenSignImage} alt="Open Sign" className={styles.openSign} />
+            <div className={`${styles.title}`}>{t("Here's what we found about you")}</div>
+            <div className={`${styles.subtitle}`}>
               {t("This information has been linked via your existing certification.")}{" "}
               {t("To make changes please edit this in")}{" "}
               <a rel="noreferrer" href="https://wosb.certify.sba.gov" target="_blank">
@@ -78,12 +78,12 @@ const AccountSetup1 = () => {
               .
             </div>
           </div>
-          <div className={`${styles["label"]}`}>{t("Your Business")} </div>
+          <div className={`${styles.label}`}>{t("Your Business")} </div>
           {user.businesses &&
             user.businesses.map((business, index) => (
               <BusinessCard key={index} business={business} hideDetails={true}/>
             ))}
-          <div className={`${styles["label-certifications"]}`}>{t("Your Business Certifications")} </div>
+          <div className={`${styles.labelCertifications}`}>{t("Your Business Certifications")} </div>
           {user.certifications &&
             user.certifications.map((certification, index) => (
               <div className={`grid-row`}>
@@ -92,8 +92,8 @@ const AccountSetup1 = () => {
                 </div>
               </div>
             ))}
-          <div className={`${styles["checkbox__group"]}`}>
-            <div className={`usa-checkbox ${styles["checkbox"]}`}>
+          <div className={`${styles.checkboxGroup}`}>
+            <div className={`usa-checkbox ${styles.checkbox}`}>
               <input
                 id="allow_notice"
                 type="checkbox"
@@ -102,17 +102,17 @@ const AccountSetup1 = () => {
                 checked={allowNotice}
                 onChange={handleCheckboxChange}
               />
-              <label htmlFor="allow_notice" className={`usa-checkbox__label ${styles["usa-checkbox__label"]}`}>
+              <label htmlFor="allow_notice" className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}>
                 <span className="usa-checkbox__label-description">
                   {t("Notify me about updates regarding my SBA account and upcoming events")}
                 </span>
               </label>
             </div>
           </div>
-          <div className={`${styles["footer"]}`}>
+          <div className={`${styles.footer}`}>
             <button
               type="button"
-              className={`usa-button ${styles["button__continue"]}`}
+              className={`usa-button ${styles.buttonContinue}`}
               onClick={handleContinueBtnClick}
             >
               {t("Continue")}

@@ -30,22 +30,22 @@ const AccountSetup3 = () => {
 
   return (
     <>
-      <div className={`${styles["container"]}`}>
-        <div className={`${styles["content"]}`}>
+      <div className={`${styles.container}`}>
+        <div className={`${styles.content}`}>
           <img src={lightBulbImg} alt="Light Bulb" />
-          <div className={`${styles["content__title"]}`}>
+          <div className={`${styles.contentTitle}`}>
             {t("Your account is all set up.")}
           </div>
-          <div className={`${styles["content__message"]}`}>
+          <div className={`${styles.contentMessage}`}>
             {t(
               "Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov."
             )}
           </div>
         </div>
-        <div className={`${styles["footer"]}`}>
+        <div className={`${styles.footer}`}>
           <button
             type="button"
-            className={`usa-button ${styles["footer-btn"]}`}
+            className={`usa-button ${styles.footerBtn}`}
             onClick={() => {
               window.removeEventListener("resize", handleResize);
               dispatch(setNav(true));
