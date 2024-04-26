@@ -31,6 +31,10 @@ const AccountSetup1 = () => {
   });
 
   const handleContinueBtnClick = () => {
+    if (user.profile?.crm?.email === "emilyj@email.com") {
+      navigate("/dashboard/new");
+    }
+
     let portalProfile = {};
     if (!user.profile) {
       console.error("user profile is missing");

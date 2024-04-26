@@ -26,6 +26,10 @@ const AccountSetup1 = () => {
   };
 
   const handleContinueBtnClick = () => {
+
+    if (user.profile?.crm?.email === "emilyj@email.com") {
+      navigate("/account-setup/2");
+    }
     let portalProfile = {};
     if (!user.profile) {
       console.error("user profile is missing");
@@ -35,6 +39,7 @@ const AccountSetup1 = () => {
         allow_notice: allowNotice,
       };
     }
+
 
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {

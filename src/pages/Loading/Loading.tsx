@@ -49,14 +49,18 @@ const Loading = () => {
     let results: AxiosResponse<any>[] = [];
     try {
       results = await Promise.all(requests);
-      if(results.some(result => result.data === null)){
-        throw new Error("One or more requests returned null.");
-      }
     } catch (err) {
       console.error(err);
       window.location.href = "/error.html";
     }
     const crmData = results[0].data;
+    if (!crmData) {
+      oktaAuth.signOut().then(() => {
+        window.location.href = "/error.html";
+        return;
+      });
+    }
+
     let businessData = results[1].data;
     businessData.forEach((business: any) => {
       business.ein = business.ein.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3");
@@ -93,12 +97,6 @@ const Loading = () => {
         .getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
-          if (!user.profile.crm) {
-            return oktaAuth.signOut().then(() => {
-              window.location.href = "/error.html";
-              return;
-            });
-          }
           dispatch(setNav(true));
           dispatch(setShowProfile(true))
           dispatch(setUser(user));
