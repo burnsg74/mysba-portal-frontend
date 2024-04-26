@@ -117,7 +117,7 @@ const Dashboard = () => {
                         user.certifications
                           .filter(certification => certification.business_id === business.id)
                           .map((certification, index) => (
-                            <div key={index} className={`grid-row ${styles["certificationsRow"]}`}>
+                            <div key={index} className={`grid-row ${styles.certificationsRow}`}>
                               <div className="grid-col">
                                 <CertificationCard key={index} certification={certification} />
                               </div>

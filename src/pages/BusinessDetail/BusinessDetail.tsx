@@ -61,22 +61,22 @@ const BusinessDetail = () => {
         </div>
         <div className={`grid-row`}>
           <div className="grid-col">
-            <h4 className={`${styles["subheader"]}`}>{t("Business Information")}</h4>
+            <h4 className={`${styles.subheader}`}>{t("Business Information")}</h4>
           </div>
         </div>
         <Field label="EIN" value={business.ein} />
         <Field label="UEI" value={business.uei} />
         <Field label="User ID" value={business.user_id} />
-        <div className={`${styles["subheader-padding"]}`}>
-          <div className={`${styles["subheader"]}`}>{t("Contact Information")}</div>
+        <div className={`${styles.subheaderPadding}`}>
+          <div className={`${styles.subheader}`}>{t("Contact Information")}</div>
         </div>
         <Field label="Mailing Address" value={business.mailing_address_street} />
         <Field label="Business Address" value={business.business_address_street} />
         <Field label="Phone Number" value={business.business_phone_number} />
         <Field label="Fax Number" value={business.fax} />
         <Field label="Email" value={business.email} />
-        <div className={`${styles["subheader-padding"]}`}>
-          <div className={`${styles["subheader"]}`}>{t("Structure")}</div>
+        <div className={`${styles.subheaderPadding}`}>
+          <div className={`${styles.subheader}`}>{t("Structure")}</div>
         </div>
         <Field label="Type" value={business.legal_entity} />
       </div>

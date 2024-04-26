@@ -11,7 +11,7 @@
   }
 }
 
-.title-banner {
+.titleBanner {
   align-items: center;
   background: rgba(217, 232, 246, 0.4);
   border-radius: 5px;
@@ -66,60 +66,16 @@
   border-color: var(--warningwarning);
 }
 
-.badge__text {
-  color: #1b1b1b;
-  font-family: var(--Font-Primary);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: normal;
-  white-space: nowrap;
-}
-
-.alert__container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: #faf3d1;
-  min-height: 40px;
-  padding: 8px 16px 8px 14px;
-}
-
-.alert__container::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 8px;
-  background-color: #f1c400;
-}
-
-.alert__icon {
-  margin-left: 14px;
-  width: 24px;
-  min-width: 24px;
-  height: 24px;
-}
-
-.alert__message {
-  padding-left: 16px;
-  font-family: var(--Font-Secondary);
-  font-size: 16px;
-  font-weight: 400;
-  text-align: left;
-  color: var(--Text-Text);
-}
-
-.expired-help__container {
+.expiredHelpContainer {
   padding: 16px;
   background: var(--Success-success-lighter);
 }
 
-.expired-help__container a {
+.expiredHelpContainer a {
   color: var(--Brand-Primary-SBA-Blue);
 }
 
-.expired-help__header {
+.expiredHelpHeader {
   font-family: var(--Font-Secondary);
   font-size: 18px;
   font-style: normal;
@@ -129,7 +85,7 @@
   padding-bottom: 20px;
 }
 
-.expired-help__message {
+.expiredHelpMessage {
   font-family: var(--Font-Secondary);
   font-size: 16px;
   font-style: normal;
@@ -138,18 +94,18 @@
   line-height: 20px;
 }
 
-.start-recertification__btn {
+.startRecertificationBtn {
   width: fit-content;
 }
 
-.expired-help__icon {
+.expiredHelpIcon {
   width: 24px;
   min-width: 24px;
   height: 24px;
   padding-right: 8px;
 }
 
-.expired-help__message__header {
+.expiredHelpMessageHeader {
   color: var(--Brand-Primary-SBA-Blue);
   font-family: var(--Font-Primary);
   font-size: 18px;
@@ -158,7 +114,7 @@
   line-height: 22px;
 }
 
-.expired-help-message__container {
+.expiredHelpMessageContainer {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -167,7 +123,7 @@
   padding-bottom: 16px;
 }
 
-.expired-help__message__body {
+.expiredHelpMessageBody {
   display: flex;
   color: var(--Brand-Primary-SBA-Blue);
   font-family: var(--Font-Secondary);
@@ -177,18 +133,18 @@
   line-height: 18px;
 }
 
-.expired-help__message__body svg {
+.expiredHelpMessageBody svg {
   padding: 3px;
   height: 24px;
   width: 24px;
 }
 
-.header-buttons__container {
+.headerButtonsContainer {
   display: flex;
   justify-content: space-between;
 }
 
-.manage-cert-button {
+.manageCertButton {
   font-family: var(--Font-Secondary);
   background-color: var(--SBA-Celeste);
   font-size: 16px;
@@ -201,7 +157,7 @@
   gap: 10px;
 }
 
-.expired-help__launch-icon {
+.expiredHelpLaunchIcon {
   color: var(--Brand-Primary-SBA-Blue);
   fill: var(--Brand-Primary-SBA-Blue);
 }

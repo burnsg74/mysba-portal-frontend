@@ -89,8 +89,8 @@ const CertificationDetail = () => {
 
   return (
     <>
-      <div className={`${styles["container"]}`}>
-        <div className={`${styles["header-buttons__container"]}`}>
+      <div className={`${styles.container}`}>
+        <div className={`${styles.headerButtonsContainer}`}>
           <button
             type="button"
             className="usa-button usa-button--outline"
@@ -103,7 +103,7 @@ const CertificationDetail = () => {
           <button
             type="button"
             data-testid="manage-certification-button"
-            className={`usa-button usa-button ${styles["manage-cert-button"]}`}
+            className={`usa-button usa-button ${styles.manageCertButton}`}
             onClick={() => setManageCertificationModal(true)}
           >
             {t("Manage Certification")}
@@ -136,11 +136,11 @@ const CertificationDetail = () => {
         ) : null}
 
         {/* Certification Detail */}
-        <div className={`grid-row ${styles["title-banner"]}`}>
+        <div className={`grid-row ${styles.titleBanner}`}>
           <div className={`grid-col-auto`}>
             <img src={CertificationCardIcon} alt={"Certification Card Icon"} />
           </div>
-          <div className={`grid-col ${styles["title"]}`}>{t(certification.certification_type)}</div>
+          <div className={`grid-col ${styles.title}`}>{t(certification.certification_type)}</div>
 
           {/* Certifications Pills */}
           {certification.days_until_expiry <= 0 ? (
@@ -155,14 +155,14 @@ const CertificationDetail = () => {
         {/* Expired Cert Help*/}
         {certification.days_until_expiry <= 0 && (
           <>
-            <div className={`${styles["expired-help__container"]}`}>
-              <div className={`${styles["expired-help__header"]}`}>{t("Need help getting re-certified?")}</div>
-              <div className={`grid-row ${styles["expired-help__message__container"]}`}>
+            <div className={`${styles.expiredHelpContainer}`}>
+              <div className={`${styles.expiredHelpHeader}`}>{t("Need help getting re-certified?")}</div>
+              <div className={`grid-row`}>
                 <div className={`grid-col-auto`}>
                   {/* Phone Icon */}
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    className={`usa-icon ${styles["expired-help__icon"]}`}
+                    className={`usa-icon ${styles.expiredHelpIcon}`}
                     viewBox="0 0 18 18"
                     fill="none"
                     aria-hidden="true"
@@ -178,9 +178,9 @@ const CertificationDetail = () => {
                     />
                   </svg>
                 </div>
-                <div className={`grid-col ${styles["expired-help-message__container"]}`}>
-                  <div className={`${styles["expired-help__message__header"]}`}>{t("Contact Us")}</div>
-                  <div className={`${styles["expired-help__message__body"]}`}>
+                <div className={`grid-col ${styles.expiredHelpMessageContainer}`}>
+                  <div className={`${styles.expiredHelpMessageHeader}`}>{t("Contact Us")}</div>
+                  <div className={`${styles.expiredHelpMessageBody}`}>
                     <div>
                       <Trans
                         components={{
@@ -196,7 +196,7 @@ const CertificationDetail = () => {
                       </Trans>
                     </div>
                   </div>
-                  <div className={`${styles["expired-help__message__body"]}`}>
+                  <div className={`${styles.expiredHelpMessageBody}`}>
                     <a
                       href="https://wosb.certify.sba.gov/knowledgebase/"
                       target="_blank"
@@ -208,7 +208,7 @@ const CertificationDetail = () => {
                     </a>
 
                     <svg
-                      className={`usa-icon ${styles["expired-help__launch-icon"]}`}
+                      className={`usa-icon ${styles.expiredHelpLaunchIcon}`}
                       aria-hidden="true"
                       focusable="false"
                       role="img"
@@ -223,7 +223,7 @@ const CertificationDetail = () => {
             </div>
             <button
               type="button"
-              className={`usa-button usa-button--outline ${styles["start-recertification__btn"]}`}
+              className={`usa-button usa-button--outline ${styles.startRecertificationBtn}`}
               onClick={() => window.open("https://wosb.certify.sba.gov/", "_blank")}
             >
               {t("Start the re-certification process")}
@@ -231,7 +231,7 @@ const CertificationDetail = () => {
           </>
         )}
         <div className={`${styles.categoryGroup}`}>
-          <h4 className={`${styles["subtitle"]}`}>{t("Details")}</h4>
+          <h4 className={`${styles.subtitle}`}>{t("Details")}</h4>
           <Field label="Company Certified" value={certification.company_name ?? ""} />
           <Field label="Issue Date" value={issue_date ?? ""} />
           <Field label="Expiration Date" value={expiration_date ?? ""} />
@@ -241,7 +241,7 @@ const CertificationDetail = () => {
           {/*/>*/}
         </div>
         <div className={`${styles.categoryGroup}`}>
-          <h4 className={`${styles["subtitle"]}`}>{t("Ownership")}</h4>
+          <h4 className={`${styles.subtitle}`}>{t("Ownership")}</h4>
           <Field label="Owner(s)" value={certification.owner ?? ""} />
         </div>
       </div>
