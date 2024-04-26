@@ -41,7 +41,7 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile=false }) =>
   return (
     <>
       <nav aria-label="Side navigation" className={`${styles.container}`}>
-        <a href="#main-content" className={`${styles.SkipLink}`}>
+        <a href="#main-content" className={`${styles.skipLink}`}>
           Skip to Main Content
         </a>
         {NAVIGATION_LINKS.map((item) => (
@@ -51,14 +51,14 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile=false }) =>
             aria-label={item.name}
             title={item.name}
             onClick={() => handleClick()}
-            className={`grid-row ${styles["row"]} ${window.location.pathname.startsWith(item.url) ? styles["row__active"] : ""}`}
+            className={`grid-row ${styles.row} ${window.location.pathname.startsWith(item.url) ? styles.rowActive : ""}`}
             data-testid={`${forMobile ? "mobile-" : "side-"}nav-link-${item.name}`}
           >
             <div
-              className={`grid-col-auto ${styles["col__bar"]} ${window.location.pathname.startsWith(item.url) ? styles["col__bar-active"] : ""}`}
+              className={`grid-col-auto ${styles.colBar} ${window.location.pathname.startsWith(item.url) ? styles.colBarActive : ""}`}
             />
             <div
-              className={`grid-col ${styles["col__text"]} ${window.location.pathname.startsWith(item.url) ? styles["col__text-active"] : ""}`}
+              className={`grid-col ${styles.colText} ${window.location.pathname.startsWith(item.url) ? styles.colTextActive : ""}`}
             >
               {t(item.name)}
             </div>

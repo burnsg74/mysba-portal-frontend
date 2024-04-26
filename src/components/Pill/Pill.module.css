@@ -1,5 +1,4 @@
-
-.pill__container {
+.pillContainer {
   display: flex;
   padding: 5px 20px 5px 12px;
   justify-content: center;
@@ -8,11 +7,11 @@
   border-radius: 34px;
 }
 
-.pill__icon {
+.pillIcon {
   color: var(--Text-Text);
 }
 
-.pill__message {
+.pillMessage {
   color: var(--Text-Text);
   font-family: var(--Font-Primary);
   font-size: 13px;

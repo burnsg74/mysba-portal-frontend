@@ -33,14 +33,14 @@
   }
 }
 
-.col__bar {
+.colBar {
   width: 4px;
   height: 30px;
   border-radius: 10px;
   background: unset;
 }
 
-.col__text {
+.colText {
   color: var(--SBA-Dark-Blue);
   font-size: 17px;
   font-style: normal;
@@ -48,22 +48,22 @@
   line-height: normal;
 }
 
-.col__text-active {
+.colTextActive {
   color: var(--Brand-Primary-SBA-Blue);
   font-size: 16px;
   font-weight: 700;
   line-height: 120%;
 }
 
-.row__active {
+.rowActive {
   background: #f5f5f5;
 }
 
-.col__bar-active {
+.colBarActive {
   border-radius: 10px;
   background: var(--Brand-Primary-SBA-Blue);
 }
 
-.SkipLink {
+.skipLink {
   display: none;
 }

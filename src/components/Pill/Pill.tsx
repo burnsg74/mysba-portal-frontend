@@ -19,16 +19,16 @@ const Pill: React.FC<IPillProps> = ({ message, type }) => {
   const icon = type2icon[type];
 
   return (
-    <div className={`${styles["pill__container"]} ${styles["pill-" + type]}`}>
+    <div className={`${styles.pillContainer} ${styles["pill-" + type]}`}>
       <svg
-        className={`usa-icon ${styles["pill__icon"]}`}
+        className={`usa-icon ${styles.pillIcon}`}
         aria-hidden="true"
         focusable="false"
         role="img"
       >
         <use xlinkHref={`/assets/img/sprite.svg#${icon}`}></use>
       </svg>
-      <div className={`${styles["pill__message"]}`}>{t(message)}</div>
+      <div className={`${styles.pillMessage}`}>{t(message)}</div>
     </div>
   );
 };
