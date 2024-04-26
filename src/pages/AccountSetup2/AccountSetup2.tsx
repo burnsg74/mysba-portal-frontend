@@ -33,6 +33,7 @@ const AccountSetup1 = () => {
   const handleContinueBtnClick = () => {
     if (user.profile?.crm?.email === "emilyj@email.com") {
       navigate("/dashboard/new");
+      return;
     }
 
     let portalProfile = {};

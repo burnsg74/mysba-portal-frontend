@@ -29,6 +29,7 @@ const AccountSetup1 = () => {
 
     if (user.profile?.crm?.email === "emilyj@email.com") {
       navigate("/account-setup/2");
+      return;
     }
     let portalProfile = {};
     if (!user.profile) {
