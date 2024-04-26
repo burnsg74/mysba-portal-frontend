@@ -121,19 +121,19 @@ const Loading = () => {
   }, [messageIndex]);
 
   return (
-    <div data-cy={"loadingContainer"} className={`${styles["loading__container"]}`}>
+    <div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
       <img
-        className={`${styles["loading__icon"]}`}
+        className={`${styles.loadingIcon}`}
         src={loadingIcon}
         alt="Loading"
       />
-      <div className={`${styles["loading__progressbar-outer"]}`}>
+      <div className={`${styles.loadingProgressbarOuter}`}>
         <div
-          className={`${styles["loading__progressbar-inner"]}`}
+          className={`${styles.loadingProgressbarInner}`}
           style={{ width: `${loadingProgress}%` }}
         ></div>
       </div>
-      <div className={`${styles["loading__text"]}`}>{loadingMessage}</div>
+      <div className={`${styles.loadingText}`}>{loadingMessage}</div>
     </div>
   );
 };

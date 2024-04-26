@@ -8,13 +8,13 @@ const Error = () => {
 
   return (
     <>
-      <div className={`${styles["error-container"]}`}>
+      <div className={`${styles.errorContainer}`}>
         <img
           src={errorSVG}
           alt="error occured"
-          className={`${styles["error-image"]}`}
+          className={`${styles.errorImage}`}
         />
-        <div className={`${styles["error-message"]}`}>
+        <div className={`${styles.errorMessage}`}>
           {t("Oops, looks like something went wrong")}
         </div>
       </div>

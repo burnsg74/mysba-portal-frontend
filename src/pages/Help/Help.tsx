@@ -44,7 +44,7 @@ const Help = () => {
         >
           <div className={styles.iconContainer}>
             <svg
-              className={`usa-icon ${styles["alert__icon"]}`}
+              className={`usa-icon ${styles.alertIcon}`}
               aria-hidden="true"
               focusable="false"
               role="img"
