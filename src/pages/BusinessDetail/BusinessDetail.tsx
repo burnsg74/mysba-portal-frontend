@@ -36,7 +36,6 @@ const BusinessDetail = () => {
   }
 
   return (
-    <>
       <div className={`${styles.container}`}>
         <div className={"grid-row"}>
           <div className={"grid-col"}>
@@ -80,7 +79,6 @@ const BusinessDetail = () => {
         </div>
         <Field label="Type" value={business.legal_entity} />
       </div>
-    </>
   );
 };
 

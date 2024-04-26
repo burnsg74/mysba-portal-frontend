@@ -16,11 +16,7 @@ const ProtectedRoute = () => {
     }
   }, [authState, navigate]);
 
-  return (
-    <>
-      <Outlet />
-    </>
-  );
+  return (<Outlet />);
 };
 
 export default ProtectedRoute;

@@ -46,7 +46,6 @@ const ModalComponent = ({
   });
 
   return (
-    <>
       <div className={`${styles.overlay}`}>
         <div className={`${styles.container}`}>
           <div className={`${styles.header}`}>
@@ -88,7 +87,6 @@ const ModalComponent = ({
           {footerContent && <div className={`${styles.footer}`}>{footerContent}</div>}
         </div>
       </div>
-    </>
   );
 };
 

@@ -6,7 +6,6 @@ import {useTranslation} from 'react-i18next';
 const Loans = () => {
   const {t} = useTranslation();
   return (
-    <>
       <div className={`main-container`}>
         <div className="grid-row">
           <div className="grid-col">
@@ -63,7 +62,6 @@ const Loans = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 
