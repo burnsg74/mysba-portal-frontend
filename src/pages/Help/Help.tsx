@@ -6,7 +6,6 @@ import {useTranslation} from 'react-i18next';
 const Help = () => {
   const {t} = useTranslation();
   return (
-    <>
       <div className={`main-container`}>
         <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>
         {FrequentlyAskedQuestions.map((faq, index) => (
@@ -64,7 +63,6 @@ const Help = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

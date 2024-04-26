@@ -7,7 +7,6 @@ const Error = () => {
   const { t } = useTranslation();
 
   return (
-    <>
       <div className={`${styles.errorContainer}`}>
         <img
           src={errorSVG}
@@ -18,7 +17,6 @@ const Error = () => {
           {t("Oops, looks like something went wrong")}
         </div>
       </div>
-    </>
   );
 };
 

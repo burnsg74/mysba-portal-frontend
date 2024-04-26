@@ -20,7 +20,6 @@ const Dashboard = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const modalFooterContent = (
-    <>
       <button
         type="button"
         className={`usa-button ${styles.footerBtn}`}
@@ -32,7 +31,6 @@ const Dashboard = () => {
       >
         {t("All Done")}
       </button>
-    </>
   );
 
   return (

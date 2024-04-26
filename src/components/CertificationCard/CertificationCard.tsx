@@ -42,19 +42,18 @@ export const CertificationCard: React.FC<ICertificationCardProps> = ({ certifica
   }, []);
 
   const body = (
-    <>
-      <div ref={containerRef} className={`grid-row ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`}>
-        <div className={`grid-col ${styles.bodyCompanyName}`}>{certification.company_name}</div>
-        <div className={`grid-col-auto`}>
-          <div className={` ${styles.bodyRowRightGroup}`}>
-            <div className={`${styles.bodyRightGroupExpirationDate}`}>
-              {t("Expiration")}: {expiration_date}
-            </div>
-            {getPillComponents(certification.days_until_expiry, t)}
+    <div ref={containerRef} className={`grid-row ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`}>
+      <div className={`grid-col ${styles.bodyCompanyName}`}>{certification.company_name}</div>
+      <div className={`grid-col-auto`}>
+        <div className={` ${styles.bodyRowRightGroup}`}>
+          <div className={`${styles.bodyRightGroupExpirationDate}`}>
+            {t("Expiration")}: {expiration_date}
           </div>
+          {getPillComponents(certification.days_until_expiry, t)}
         </div>
       </div>
-    </>
-  );
-  return <Card icon={CertificationCardIcon} title={title} detailsPage={`/certification/detail/${certification.certification_id}`} body={body} hideDetails={hideDetails} />;
+    </div>);
+  return <Card icon={CertificationCardIcon} title={title}
+               detailsPage={`/certification/detail/${certification.certification_id}`} body={body}
+               hideDetails={hideDetails} />;
 };
