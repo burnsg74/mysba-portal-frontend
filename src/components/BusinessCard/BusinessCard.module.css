@@ -30,7 +30,7 @@
 .ellipsesIcon {
     width: 4px;
     height: 4px;
-    fill: #162E51;
+    fill: var(--Primary-primary-darker);
 }
 
 .smallScreen {

@@ -1,69 +1,68 @@
 .titleRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  margin-top: 50px;
-  margin-bottom: 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
 }
 
 .title {
-  flex-grow: 1;
-  font-family: var(--Font-Secondary);
-  font-weight: 400;
-  color: #002e6d;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: 38px;
-  margin-top: 40px;
-  margin-bottom: 20px;
+    flex-grow: 1;
+    font-family: var(--Font-Secondary);
+    font-weight: 400;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: 38px;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 .subtitle {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-family: var(--Font-Primary);
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 26px;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-family: var(--Font-Primary);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 26px;
 
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .subheader {
-  color: var(--Primary-primary-darker);
-  font-family: var(--Font-Secondary);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
+    color: var(--Primary-primary-darker);
+    font-family: var(--Font-Secondary);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
 }
 
 .categoryGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
 }
 
 .cardBody {
-  /*padding: 12px 20px 18px 20px;*/
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 0 20px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 20px;
 }
 
 .alertContainer {
-  margin-top: 40px;
-  margin-bottom: 40px;
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .businessRow {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
 }

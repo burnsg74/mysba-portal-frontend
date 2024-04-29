@@ -30,31 +30,17 @@
     --Alert-Error-Background: #F4E3DB;
 
     /* Fonts */
-    --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;
-    --Font-Secondary: "Public Sans", "Source Sans Pro", "Helvetica", sans-serif;
+    --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif, serif;
+    --Font-Secondary: "Public Sans", "Source Sans Pro", "Helvetica", sans-serif, serif;
 
     /* @TODO Remove or update name */
-    --sba-dark-celeste: #00518B;
-    --sba-light-celeste: #58ACEF;
-    --baseink: #1B1B1B;
-    --basewhite: #FFFFFF;
-    --sba-dark-blue: #000441;
-    --base-ink: #1B1B1B;
-    --base-dark: #565C65;
-    --warningwarning-light: #FEE685;
-    --base-lightest: #F0F0F0;
-    --base-lighter: #DFE1E2;
-    --warningwarning-lighter: #FAF3D1;
-    --warningwarning: #FFBE2E;
-    --successsuccess: #00A91C;
-    --successsuccess-lighter: #ECF3EC;
-    --primaryprimary-lighter: #D9E8F6;
-    --primaryprimary-darker: #162E51;
-    --primaryprimary-dark: #1A4480;
 
-    --primarywhite: #FFFFFF;
+    --warningwarning-lighter: #FAF3D1;
+
+    --warningwarning: #FFBE2E;
 }
 
+/*** FONTS ***/
 /* Source Sans Pro */
 /* 200 Extra Light (Ultra Light) */
 @font-face {
@@ -303,11 +289,40 @@
     font-style: italic;
 }
 
-
+/***** GLOBAL STYLES ******/
 * {
-    font-family: var(--Font-Primary), serif;
+    font-family: var(--Font-Primary);
 }
 
+a,
+a:focus,
+a:active,
+a:hover,
+a:visited {
+    text-decoration: none;
+}
+
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    color: inherit;
+    background: none;
+    border: none;
+}
+
+:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #05FC;
+    border-radius: 2px;
+}
+
+/*** LAYOUT ***/
 .main-container {
     max-width: 1200px;
     padding-right: 20px;
@@ -321,10 +336,6 @@
         padding-right: 40px;
         padding-left: 40px;
     }
-}
-
-.sba-blue {
-    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .container-row {
@@ -358,13 +369,13 @@
 .title {
     font-family: var(--Font-Primary);
     font-weight: 400;
-    color: #002E6D;
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 32px;
     margin-bottom: 20px;
 }
 
 .subtitle {
-    color: #002E6D;
+    color: var(--Brand-Primary-SBA-Blue);
     font-family: var(--Font-Primary);
     font-weight: 400;
     font-size: 22px;
@@ -374,7 +385,7 @@
 .label {
     font-family: var(--Font-Primary);
     font-weight: 400;
-    color: #002E6D;
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 40px;
     width: 100%;
 }
@@ -490,30 +501,3 @@ button {
     flex-wrap: wrap;
 }
 
-a,
-a:focus,
-a:active,
-a:hover,
-a:visited {
-    text-decoration: none;
-}
-
-.sr-only {
-    position: absolute;
-    left: -9999px;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    color: inherit;
-    background: none;
-    border: none;
-}
-
-:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px #05FC;
-    border-radius: 2px;
-}

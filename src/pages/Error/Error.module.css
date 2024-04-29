@@ -6,6 +6,7 @@
     height: calc(100vh - 102px);
     width: 100%;
 }
+
 .errorMessage {
     font-family: var(--Font-Primary);
     color: var(--Brand-Primary-SBA-Blue);

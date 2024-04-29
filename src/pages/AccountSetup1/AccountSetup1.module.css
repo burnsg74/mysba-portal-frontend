@@ -39,7 +39,7 @@ a {
 
 .subtitle {
     color: var(--Brand-Primary-SBA-Blue);
-    font-family: var(--Font-Primary), serif;
+    font-family: var(--Font-Primary);
     font-weight: 400;
     font-size: 22px;
     margin-bottom: 40px;

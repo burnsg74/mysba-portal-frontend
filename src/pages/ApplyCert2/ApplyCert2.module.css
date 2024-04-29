@@ -52,11 +52,11 @@
   height: 92px;
   padding: 24px 16px;
   width: 100%;
-  border-top: #dcdee0 solid 1px;
+  border-top: var(--Base-base-lighter) solid 1px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  background: #fff;
+  background: var(--Base-white);
 }
 
 .footerBtn {
@@ -87,5 +87,5 @@
 }
 
 .usaStepIndicatorSegmentComplete::after {
-  background-color: #007dbc;
+  background-color: var(--Brand-Secondary-Bright-Blue);
 }

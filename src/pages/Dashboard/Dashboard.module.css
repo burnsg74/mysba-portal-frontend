@@ -2,7 +2,7 @@
     position: relative;
     height: 276px;
     padding-top: 20px;
-    background-color: #f3f8fc;
+    background-color: #F3F8FC;
     color: var(--Brand-Primary-SBA-Blue);
     display: flex;
     flex-direction: column;
@@ -63,7 +63,7 @@
     display: flex;
     align-items: center;
     gap: 24px;
- }
+}
 
 .businessHeaderIcon {
     margin-right: 24px;
@@ -100,7 +100,7 @@
     margin-right: 10px;
     padding: 2px;
     font-family: var(--Font-Secondary);
-    color: #002e6d;
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .rightContainer {
@@ -117,16 +117,16 @@
 .certifications {
     font-family: var(--Font-Primary);
     font-weight: 400;
-    color: #002e6d;
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 22px;
     letter-spacing: 0;
     margin-left: 10px;
 }
 
 .certificationsRow {
-   padding-bottom: 40px;
+    padding-bottom: 40px;
 }
 
 .footerBtn {
     width: 100%;
-  }
+}

@@ -25,7 +25,7 @@ const Loans = () => {
         </div>
         <div className="grid-row">
           <div className="grid-col">
-            <div className={`sba-blue ${styles.titleText}`}>
+            <div className={`${styles.titleText}`}>
               {t(
                 "Linking your loans is currently under construction. Check back in our next release for loan functionality. To check on your loans please visit your"
               )}{" "}
