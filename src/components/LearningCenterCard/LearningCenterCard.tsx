@@ -6,23 +6,6 @@ import ArrowNextImage from "src/assets/arrow-next.svg";
 import styles from "src/components/LearningCenterCard/LearningCenterCard.module.css";
 import { useTranslation } from "react-i18next";
 
-interface LearningCenter {
-  title: string;
-  description: string;
-  image: string;
-  link: string;
-  library: {
-    type: string;
-    title: string;
-    description: string;
-    link: string;
-  }[];
-}
-
-interface LearningCenterCardProps {
-  learningCenter: LearningCenter;
-}
-
 const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
   learningCenter,
 }) => {
@@ -54,7 +37,6 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
                   className={`usa-icon ${styles.launchIcon}`}
                   aria-hidden="true"
                   focusable="false"
-                  role="img"
                 >
                   <title>{t("Open in a new window")}</title>
                   <use xlinkHref="/assets/img/sprite.svg#launch"></use>
@@ -80,8 +62,8 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
         </div>
       </div>
       {/* List of items in library */}
-      {learningCenter.library.map((item, index) => (
-        <React.Fragment key={index}>
+      {learningCenter.library.map((item) => (
+        <React.Fragment key={item.id}>
           <div className={`${styles.videoContainer}`}>
             <button
               onClick={()=> window.open(item.link, "_blank")}
@@ -131,7 +113,6 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
             className={`${styles.viewCourseIcon}`}
             aria-hidden="true"
             focusable="false"
-            role="img"
           >
             <use xlinkHref="/assets/img/sprite.svg#launch"></use>
           </svg>

@@ -17,10 +17,9 @@
 }
 
 .alertCustomContainer {
-    border-left: 8px solid var(--Brand-Secondary-Bright-Blue);
-    gap: 14px;
-    text-align: left;
-    background: var(--Alert-Info-Background);
+    border-left: 8px solid var(--SBA-Celeste);
+    display: flex;
+    margin-bottom: 20px;
 }
 
 .header {
@@ -207,7 +206,14 @@
 }
 
 .toolTip .toolTipText::after {
-    left: 240px !important;
+    border-color: transparent transparent var(--Brand-Secondary-Bright-Blue) transparent;
+    border-style: solid;
+    border-width: 5px;
+    bottom: 100%;
+    content: "";
+    left: 250px;
+    margin-left: -5px;
+    position: absolute;
 }
 
 .usaForm {
@@ -222,26 +228,13 @@
     color: var(--Base-white);
 }
 
-.toolTip .toolTipText::after {
-    content: "";
-    position: absolute;
-    bottom: 100%;
-    left: 250px;
-    margin-left: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent var(--Brand-Secondary-Bright-Blue) transparent;
-}
+
 
 .toolTip:hover .toolTipText {
     visibility: visible;
 }
 
-.alertCustomContainer {
-    border-left: 8px solid var(--SBA-Celeste);
-    display: flex;
-    margin-bottom: 20px;
-}
+
 
 .stepIndicatorContainer {
     width: 100%;

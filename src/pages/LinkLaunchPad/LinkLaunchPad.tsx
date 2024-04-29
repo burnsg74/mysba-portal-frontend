@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { getUser } from "src/store/user/userSlice";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { setNav } from "src/store/showNav/showNavSlice";
-import { useDispatch, useSelector } from "react-redux";
-import Iframe from "src/components/iFrame/iFrame";
+import { useDispatch } from "react-redux";
 import styles from "src/pages/LinkLaunchPad/LinkLaunchPad.module.css";
 import nextSignImg from "src/assets/next-sign.svg";
 import Modal from "src/components/Modal/Modal";
 
 const LinkLaunchPad = () => {
-  const user: IUser = useSelector(getUser);
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
@@ -100,16 +97,7 @@ const LinkLaunchPad = () => {
           className={`${styles.cornerWrapper}`}
           style={{ width: `${iframeSize.width}px`, height: `${iframeSize.height}px` }}
         >
-          <Iframe
-            url="https://veterans.certify.sba.gov/"
-            width={`${iframeSize.width}px`}
-            height={`${iframeSize.height}px`}
-            id=""
-            className=""
-            display="block"
-            position="relative"
-            frameBorder={0}
-          />
+          <div className={`${styles.tbd}`}><h1>TBD</h1></div>
         </div>
       </div>
       {isModalOpen && (

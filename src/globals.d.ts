@@ -1,10 +1,6 @@
 interface IUserProfile {
   crm: {
-    id: string;
-    first_name: string;
-    last_name: string;
-    email: string;
-    allow_notices: boolean;
+    id: string; first_name: string; last_name: string; email: string; allow_notices: boolean;
   };
   portal: {
     allow_notice: boolean;
@@ -84,8 +80,23 @@ interface IBusinessCardProps {
   hideDetails?: boolean;
 }
 
-declare module '@uswds/uswds' {
+declare module "@uswds/uswds" {
   export const USFlag: any;
   export const DotGov: any;
   export const HttpsIcon: any;
+}
+
+interface LearningCenter {
+  id: number;
+  title: string;
+  description: string;
+  image: string;
+  link: string;
+  library: {
+    id: number; type: string; title: string; description: string; link: string;
+  }[];
+}
+
+interface LearningCenterCardProps {
+  learningCenter: LearningCenter;
 }

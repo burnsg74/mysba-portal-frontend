@@ -162,6 +162,7 @@ input[type="checkbox"]:focus {
 .skipButtonRow {
   display: flex;
   justify-content: center;
+  margin-top: 16px;
   width: 100%;
 }
 
@@ -236,9 +237,7 @@ input[type="checkbox"]:focus {
   font-family: inherit;
 }
 
-.skipButtonRow {
-  margin-top: 16px;
-}
+
 
 .skipButton:hover,
 .skipButton:focus {

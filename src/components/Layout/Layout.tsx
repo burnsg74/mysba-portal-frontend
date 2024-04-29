@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Outlet } from "react-router-dom";
 import Header from "src/components/Header/Header";
 import SideNav from "src/components/SideNav/SideNav";
 import styles from "src/components/Layout/Layout.module.css";
@@ -8,7 +8,6 @@ import { getShowNav } from "src/store/showNav/showNavSlice";
 import { learningCenterCoursesByPath } from "src/utils/learningCenterCourses";
 import LearningCenterCard from "src/components/LearningCenterCard/LearningCenterCard";
 import { useTranslation } from "react-i18next";
-import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   const showNav: boolean = useSelector(getShowNav);
@@ -50,7 +49,7 @@ const Layout = () => {
       </div>
       <div className="grid-row">
         {showNav && (<div className={`grid-col-auto ${styles.sideNav}`}>
-            <SideNav onNavLinkClick={handleNavLinkClick} />
+            <SideNav onNavLinkClick={handleNavLinkClick}  forMobile={false}/>
           </div>)}
         <main id="main-content" className="grid-col" ref={mainContentRef}>
           <Outlet />
@@ -61,7 +60,7 @@ const Layout = () => {
                 {t("Resources for you")}
               </h1>
               <div className={`${styles.resourceLocationCards}`}>
-                {courses.map((course, index) => (<LearningCenterCard key={index} learningCenter={course} />))}
+                {courses.map((course) => (<LearningCenterCard key={course.id} learningCenter={course} />))}
               </div>
             </div>
           </div>)}
@@ -74,7 +73,7 @@ const Layout = () => {
               </h1>
             </div>
             <div className={`${styles.resourceLocationCards}`}>
-              {courses.map((course, index) => (<LearningCenterCard key={index} learningCenter={course} />))}
+              {courses.map((course) => (<LearningCenterCard key={course.id} learningCenter={course} />))}
             </div>
           </div>
         </div>)}

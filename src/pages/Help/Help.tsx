@@ -46,7 +46,6 @@ const Help = () => {
               className={`usa-icon ${styles.alertIcon}`}
               aria-hidden="true"
               focusable="false"
-              role="img"
             >
               <use xlinkHref="/assets/img/sprite.svg#info"></use>
             </svg>

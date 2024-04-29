@@ -24,7 +24,6 @@ const Pill: React.FC<IPillProps> = ({ message, type }) => {
         className={`usa-icon ${styles.pillIcon}`}
         aria-hidden="true"
         focusable="false"
-        role="img"
       >
         <use xlinkHref={`/assets/img/sprite.svg#${icon}`}></use>
       </svg>

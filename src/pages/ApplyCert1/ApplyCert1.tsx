@@ -31,10 +31,8 @@ const ApplyCert1 = () => {
     };
   }, [navigate]);
 
-  return (
-    <>
-      <div className={`${styles.container}`}>
-        <div className={`${styles.content}`}>
+  return (<div className={`${styles.container}`}>
+      <div className={`${styles.content}`}>
           <div className={`${styles.stepIndicatorContainer}`}>
             <div
               className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
@@ -84,7 +82,6 @@ const ApplyCert1 = () => {
                         className={`usa-icon ${styles.infoIcon}`}
                         aria-hidden="true"
                         focusable="false"
-                        role="img"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
@@ -125,7 +122,6 @@ const ApplyCert1 = () => {
                         className={`usa-icon ${styles.infoIcon}`}
                         aria-hidden="true"
                         focusable="false"
-                        role="img"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
@@ -161,7 +157,6 @@ const ApplyCert1 = () => {
                         className={`usa-icon ${styles.infoIcon}`}
                         aria-hidden="true"
                         focusable="false"
-                        role="img"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
@@ -196,9 +191,7 @@ const ApplyCert1 = () => {
             {t("Continue")}
           </button>
         </div>
-      </div>
-    </>
-  );
+      </div>);
 };
 
 export default ApplyCert1;

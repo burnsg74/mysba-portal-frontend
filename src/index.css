@@ -322,6 +322,16 @@ h1, h2, h3, h4, h5, h6 {
     border-radius: 2px;
 }
 
+button {
+    all: unset;
+    padding: 0;
+    margin: 0;
+}
+
+button:focus {
+    outline: revert;
+}
+
 /*** LAYOUT ***/
 .main-container {
     max-width: 1200px;
@@ -489,10 +499,6 @@ textarea:not([disabled]):focus {
     font-style: normal;
     font-weight: 700;
     line-height: 120%;
-}
-
-button {
-    outline: none;
 }
 
 .grid-col-wrap {

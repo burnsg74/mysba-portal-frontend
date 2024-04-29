@@ -75,7 +75,6 @@ const CertificationDetail = () => {
             className={`usa-icon  ${styles.usaIcon}`}
             aria-hidden="true"
             focusable="false"
-            role="img"
             height="18px"
             width="18px"
           >
@@ -107,7 +106,7 @@ const CertificationDetail = () => {
             onClick={() => setManageCertificationModal(true)}
           >
             {t("Manage Certification")}
-            <svg className="usa-icon" aria-hidden="true" focusable="false" role="img" height="24px" width="24px">
+            <svg className="usa-icon" aria-hidden="true" focusable="false" height="24px" width="24px">
               <title>Open in a new window Icon</title>
               <use xlinkHref="/assets/img/sprite.svg#launch"></use>
             </svg>
@@ -167,7 +166,6 @@ const CertificationDetail = () => {
                     fill="none"
                     aria-hidden="true"
                     focusable="false"
-                    role="img"
                     aria-labelledby="phoneIconTitle"
                     id="phoneIconTitle"
                   >
@@ -211,7 +209,6 @@ const CertificationDetail = () => {
                       className={`usa-icon ${styles.expiredHelpLaunchIcon}`}
                       aria-hidden="true"
                       focusable="false"
-                      role="img"
                       width={24}
                       height={24}
                     >

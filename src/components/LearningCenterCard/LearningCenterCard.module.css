@@ -75,14 +75,7 @@
     color: var(--Base-base-dark);
 }
 
-.headerLabel {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 17px;
-    letter-spacing: 0;
-    line-height: normal;
-}
+
 
 .videoContainer {
     padding: 16px;

@@ -64,9 +64,9 @@ const Businesses = () => {
     <div className="Businesses-content">
       {user.businesses && [...user.businesses]
         .sort((a, b) => a.name.localeCompare(b.name))
-        .map((business, index) => (<div key={index} className={`grid-row ${styles.businessRow}`}>
+        .map((business) => (<div key={business.id} className={`grid-row ${styles.businessRow}`}>
             <div className="grid-col">
-              <BusinessCard key={index} business={business} />
+              <BusinessCard key={business.id} business={business} />
             </div>
           </div>))}
     </div>

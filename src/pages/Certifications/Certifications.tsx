@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getUser, setUser } from "src/store/user/userSlice";
@@ -76,8 +76,7 @@ const Certifications = () => {
     setSelectedCert(cert);
   };
 
-  const modal1FooterContent = (
-    <>
+  const modal1FooterContent = (<>
       <button
         type="button"
         className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
@@ -88,11 +87,9 @@ const Certifications = () => {
       <button type="button" data-testid="modal1-next" className={`usa-button ${styles.footerBtn}`} onClick={NextModal}>
         {t("Continue")}
       </button>
-    </>
-  );
+    </>);
 
-  const modal2FooterContent = (
-    <>
+  const modal2FooterContent = (<>
       <button
         type="button"
         className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
@@ -111,7 +108,6 @@ const Certifications = () => {
             className={`usa-icon  ${styles.usaIcon}`}
             aria-hidden="true"
             focusable="false"
-            role="img"
             height="18px"
             width="18px"
           >
@@ -120,55 +116,38 @@ const Certifications = () => {
           </svg>
         </div>
       </button>
-    </>
-  );
+    </>);
 
   const linkCert = () => {
     dispatch(setNav(false));
     navigate("/link-launchpad");
   };
 
-  return (
-    <>
+  return (<>
       <div className={`main-container`}>
-        {showFetchError && (
-          <div className={`${styles.alertContainer}`}>
+        {showFetchError && (<div className={`${styles.alertContainer}`}>
             <Alert type={"error"} message={"Error: Unable to fetch certifications. Please try again later."} />
-          </div>
-        )}
+          </div>)}
         {/* Certifications Alerts */}
-        {user.certifications &&
-          user.certifications.map((certification, index) => {
-            return (
-              <React.Fragment key={index}>
-                {certification.days_until_expiry <= 0 ? (
-                  <div className={`${styles.alertContainer}`}>
-                    <Alert
-                      key={index}
-                      type={"error"}
-                      message={t("Your " + certification.certification_type + " certification has expired")}
-                    />
-                  </div>
-                ) : certification.days_until_expiry <= 90 ? (
-                  <div className={`${styles.alertContainer}`}>
-                    <Alert
-                      key={index}
-                      type={"warning"}
-                      message={t(
-                        "Your " +
-                          certification.certification_type +
-                          " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
-                        {
-                          days_until_expiry: certification.days_until_expiry,
-                          expire_at: certification.expiration_date,
-                        }
-                      )}
-                    />
-                  </div>
-                ) : null}
-              </React.Fragment>
-            );
-          })}
+        {user.certifications && user.certifications.map((certification, index) => {
+          return (<React.Fragment key={index}>
+              {certification.days_until_expiry <= 0 ? (<div className={`${styles.alertContainer}`}>
+                  <Alert
+                    key={index}
+                    type={"error"}
+                    message={t("Your " + certification.certification_type + " certification has expired")}
+                  />
+                </div>) : certification.days_until_expiry <= 90 ? (<div className={`${styles.alertContainer}`}>
+                  <Alert
+                    key={index}
+                    type={"warning"}
+                    message={t("Your " + certification.certification_type + " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}", {
+                      days_until_expiry: certification.days_until_expiry, expire_at: certification.expiration_date,
+                    })}
+                  />
+                </div>) : null}
+            </React.Fragment>);
+        })}
 
         <div className={`grid-row ${styles.titleRow}`}>
           <h1 className={`grid-col grid-col-wrap ${styles.title}`}>{t("Certifications")}</h1>
@@ -190,19 +169,15 @@ const Certifications = () => {
             </div>
           </div>
         </div>
-        {user.certifications &&
-          [...user.certifications]
-            .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
-            .map((certification, index) => (
-              <div className={`grid-row ${styles.certificationRow}`}>
-                <div className="grid-col">
-                  <CertificationCard key={index} certification={certification} />
-                </div>
+        {user.certifications && [...user.certifications]
+          .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
+          .map((certification) => (<div className={`grid-row ${styles.certificationRow}`}>
+              <div className="grid-col">
+                <CertificationCard key={certification.certification_id} certification={certification} />
               </div>
-            ))}
+            </div>))}
       </div>
-      {isModal1Open && (
-        <Modal
+      {isModal1Open && (<Modal
           title={t("Apply for a Certification")}
           onClose={closeModal}
           totalSteps={2}
@@ -213,9 +188,7 @@ const Certifications = () => {
         >
           <>
             <Alert
-              message={t(
-                "Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software"
-              )}
+              message={t("Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software")}
               type="info"
             />
             <div>
@@ -236,13 +209,11 @@ const Certifications = () => {
                         {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                       </span>
                       <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
-                          {t(
-                            "You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand."
-                          )}
+                          {t("You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand.")}
                           <br />
                           <a
                             href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program#id-program-qualifications"
@@ -272,7 +243,7 @@ const Certifications = () => {
                         {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                       </span>
                       <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -303,7 +274,7 @@ const Certifications = () => {
                         {t("Veteran-Owned Small Business (VetCert) Certification")}
                       </span>
                       <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -323,10 +294,8 @@ const Certifications = () => {
               </form>
             </div>
           </>
-        </Modal>
-      )}
-      {isModal2Open && (
-        <Modal
+        </Modal>)}
+      {isModal2Open && (<Modal
           title={t("Apply for a Certification")}
           onClose={closeModal}
           prevModal={prevModal}
@@ -336,10 +305,8 @@ const Certifications = () => {
           contentTitle={t(selectedCert.title) || ""}
           contentMessage={t(selectedCert.message) || ""}
           footerContent={modal2FooterContent}
-        />
-      )}
-    </>
-  );
+        />)}
+    </>);
 };
 
 export default Certifications;
