@@ -9,7 +9,7 @@ import { CertificationCard } from "src/components/CertificationCard/Certificatio
 import { certifications } from "src/utils/certifications";
 import { setNav } from "src/store/showNav/showNavSlice";
 import Modal from "src/components/Modal/Modal";
-import editPaperImg from "src/assets/edit-paper.png";
+import editPaperImg from "src/assets/edit-paper.svg";
 import nextSignImg from "src/assets/next-sign.svg";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
