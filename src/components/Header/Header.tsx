@@ -1,10 +1,10 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "src/components/Header/Header.module.css";
-import SBAlogoEn from "src/assets/logo-horizontal.png";
+import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
-import USFlag from "@uswds/uswds/img/us_flag_small.png";
+import USFlag from "@uswds/uswds/img/us_flag.svg";
 import DotGov from "@uswds/uswds/img/icon-dot-gov.svg";
 import HttpsIcon from "@uswds/uswds/img/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";

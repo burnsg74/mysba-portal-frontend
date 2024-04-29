@@ -2,7 +2,7 @@ import React, { ChangeEvent, useState } from "react";
 import styles from "src/pages/AccountSetup2/AccountSetup2.module.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
-import CheckListImage from "src/assets/check-list.png";
+import CheckListImage from "src/assets/check-list.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import axios from "axios";

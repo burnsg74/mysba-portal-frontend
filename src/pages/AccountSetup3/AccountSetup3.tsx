@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
-import lightBulbImg from "src/assets/lightbulb.png";
+import lightBulbImg from "src/assets/light-bulb.svg";
 import { useNavigate, useLocation } from "react-router-dom";
 import styles from "src/pages/AccountSetup3/AccountSetup3.module.css";
 

@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { useNavigate } from "react-router-dom";
-import OpenSignImage from "src/assets/open-sign.png";
+import OpenSignImage from "src/assets/open-sign.svg";
 import axios from "axios";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";

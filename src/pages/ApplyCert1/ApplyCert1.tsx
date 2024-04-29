@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import Alert from "src/components/Alert/Alert";
 import styles from "src/pages/ApplyCert1/ApplyCert1.module.css";
-import editPaperImg from "src/assets/edit-paper.png";
+import editPaperImg from "src/assets/edit-paper.svg";
 
 const ApplyCert1 = () => {
   const { t } = useTranslation();

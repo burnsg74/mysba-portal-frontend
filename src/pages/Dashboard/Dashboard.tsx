@@ -11,7 +11,7 @@ import Modal from "src/components/Modal/Modal";
 import Alert from "src/components/Alert/Alert";
 import CityScapeImage from "src/assets/cityscape.png";
 import BusinessCardIcon from "src/assets/business-card-icon.svg";
-import lightBulbImage from "src/assets/lightbulb.png";
+import lightBulbImage from "src/assets/light-bulb.svg";
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
