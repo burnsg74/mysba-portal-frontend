@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 630px) {
-  .checkbox_label {
+  .checkboxLabel {
     min-width: none;
     width: 100%;
   }
@@ -32,7 +32,7 @@
   align-items: center;
 }
 
-.header__title {
+.headerTitle {
   font-family: var(--Font-Secondary);
   font-size: 18px;
   font-weight: 600;
@@ -42,7 +42,7 @@
   order: 1;
 }
 
-.header__close {
+.headerClose {
   color: var(--SBA-CRM-text-text-light);
   font-family: var(--Font-Secondary);
   font-size: 16px;
@@ -70,7 +70,7 @@
   padding-bottom: 16px;
 }
 
-.content__title {
+.contentTitle {
   font-family: var(--Font-Primary);
   font-size: 32px;
   font-weight: 400;
@@ -81,7 +81,7 @@
   color: var(--Brand-Primary-SBA-Blue);
 }
 
-.checkbox__group {
+.checkboxGroup {
   display: flex;
   align-items: center;
   gap: 16px;
@@ -95,7 +95,7 @@
   outline: none;
 }
 
-.radio-row {
+.radioRow {
   box-shadow: 0px 7px 15px 0px #1b1e2912;
   margin-bottom: 20px;
   border-color: var(--Base-base-lighter);
@@ -104,13 +104,13 @@
   flex-direction: row;
 }
 
-.radio-label::before {
+.radioLabel::before {
   margin-top: 35px;
   margin-left: 20px;
   box-shadow: 0 0 0 2px #002e6d;
 }
 
-.radio-label {
+.radioLabel {
   padding-top: 20px;
   padding-bottom: 20px;
   padding-right: 20px;
@@ -121,7 +121,7 @@
   outline: none;
 }
 
-.checkbox_label {
+.checkboxLabel {
   font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;
@@ -137,11 +137,11 @@
   align-items: center;
 }
 
-.card__container {
+.cardContainer {
   margin: 20px 0 0 0;
 }
 
-.content__message {
+.contentMessage {
   font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;
@@ -162,32 +162,32 @@
   background: #fff;
 }
 
-.footer-btn-outline {
+.footerBtnOutline {
   flex: 1;
   border: 2px;
   box-shadow: inset 0 0 0 2px #002e6d;
   color: var(--Brand-Primary-SBA-Blue);
 }
 
-.footer-btn {
+.footerBtn {
   flex: 1;
   border: 2px;
 }
 
-.info-icon {
+.infoIcon {
   width: 24px;
   height: 24px;
   color: var(--Brand-Primary-SBA-Blue);
 }
 
-.tooltip {
+.toolTip {
   position: relative;
   display: inline-block;
   margin: auto;
   padding-right: 20px;
 }
 
-.tooltip .tooltiptext {
+.toolTip .toolTipText {
   visibility: hidden;
   font-family: var(--Font-Primary);
   font-size: 15px;
@@ -206,23 +206,23 @@
   margin-left: -250px;
 }
 
-.tooltip .tooltiptext::after {
+.toolTip .toolTipText::after {
   left: 240px !important;
 }
 
-.usa-form {
+.usaForm {
   margin-top: 20px;
 }
 
-.usa-form a:where(:not(.usa-button)) {
+.usaForm a:where(:not(.usa-button)) {
   color: #fff;
 }
 
-.usa-form a:visited {
+.usaForm a:visited {
   color: #fff;
 }
 
-.tooltip .tooltiptext::after {
+.toolTip .toolTipText::after {
   content: "";
   position: absolute;
   bottom: 100%;
@@ -234,7 +234,7 @@
     transparent;
 }
 
-.tooltip:hover .tooltiptext {
+.toolTip:hover .toolTipText {
   visibility: visible;
 }
 
@@ -256,26 +256,26 @@
   width: 100%;
 }
 
-.usa-step-indicator__segments {
+.usaStepIndicatorSegments {
   width: 100%;
   align-self: center;
   justify-content: center;
   align-items: center;
 }
 
-.usa-step-indicator__segment--complete::after {
+.usaStepIndicatorSegmentComplete::after {
   background-color: #007dbc;
 }
 
-.usa-step-indicator__segment--complete {
+.usaStepIndicatorSegmentComplete {
   max-width: none;
 }
 
-.usa-step-indicator__segment--incomplete::after {
+.usaStepIndicatorSegmentIncomplete::after {
   background-color: #e6e6e6;
 }
 
-.usa-step-indicator__segment--incomplete {
+.usaStepIndicatorSegmentIncomplete {
   max-width: none;
 }
 @media (min-width: 30em) {
