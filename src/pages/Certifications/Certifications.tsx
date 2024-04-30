@@ -14,6 +14,7 @@ import nextSignImg from "src/assets/next-sign.svg";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
+import CertificationAlert from "src/components/CertificationAlert/CertificationAlert";
 
 const Certifications = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
@@ -77,46 +78,46 @@ const Certifications = () => {
   };
 
   const modal1FooterContent = (<>
-      <button
-        type="button"
-        className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
-        onClick={closeModal}
-      >
-        {t("Cancel")}
-      </button>
-      <button type="button" data-testid="modal1-next" className={`usa-button ${styles.footerBtn}`} onClick={NextModal}>
-        {t("Continue")}
-      </button>
-    </>);
+    <button
+      type="button"
+      className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
+      onClick={closeModal}
+    >
+      {t("Cancel")}
+    </button>
+    <button type="button" data-testid="modal1-next" className={`usa-button ${styles.footerBtn}`} onClick={NextModal}>
+      {t("Continue")}
+    </button>
+  </>);
 
   const modal2FooterContent = (<>
-      <button
-        type="button"
-        className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
-        onClick={prevModal}
-      >
-        {t("Back")}
-      </button>
-      <button
-        type="button"
-        className={`usa-button ${styles.footerBtn}`}
-        onClick={() => openCertWebsite(selectedCert.url)}
-      >
-        {t("Go")}
-        <div className={`${styles.iconContainer}`}>
-          <svg
-            className={`usa-icon  ${styles.usaIcon}`}
-            aria-hidden="true"
-            focusable="false"
-            height="18px"
-            width="18px"
-          >
-            <title>Open in a new window Icon</title>
-            <use xlinkHref="/assets/img/sprite.svg#launch"></use>
-          </svg>
-        </div>
-      </button>
-    </>);
+    <button
+      type="button"
+      className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
+      onClick={prevModal}
+    >
+      {t("Back")}
+    </button>
+    <button
+      type="button"
+      className={`usa-button ${styles.footerBtn}`}
+      onClick={() => openCertWebsite(selectedCert.url)}
+    >
+      {t("Go")}
+      <div className={`${styles.iconContainer}`}>
+        <svg
+          className={`usa-icon  ${styles.usaIcon}`}
+          aria-hidden="true"
+          focusable="false"
+          height="18px"
+          width="18px"
+        >
+          <title>Open in a new window Icon</title>
+          <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+        </svg>
+      </div>
+    </button>
+  </>);
 
   const linkCert = () => {
     dispatch(setNav(false));
@@ -124,91 +125,78 @@ const Certifications = () => {
   };
 
   return (<>
-      <div className={`main-container`}>
-        {showFetchError && (<div className={`${styles.alertContainer}`}>
-            <Alert type={"error"} message={"Error: Unable to fetch certifications. Please try again later."} />
-          </div>)}
-        {/* Certifications Alerts */}
-        {user.certifications?.map((certification) => {
-          return (<React.Fragment key={certification.certification_id}>
-              {certification.days_until_expiry <= 0 ? (<div className={`${styles.alertContainer}`}>
-                  <Alert
-                    key={certification.certification_id}
-                    type={"error"}
-                    message={t("Your " + certification.certification_type + " certification has expired")}
-                  />
-                </div>) : certification.days_until_expiry <= 90 ? (<div className={`${styles.alertContainer}`}>
-                  <Alert
-                    key={certification.certification_id}
-                    type={"warning"}
-                    message={t("Your " + certification.certification_type + " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}", {
-                      days_until_expiry: certification.days_until_expiry, expire_at: certification.expiration_date,
-                    })}
-                  />
-                </div>) : null}
-            </React.Fragment>);
-        })}
+    <div className={`main-container`}>
+      {showFetchError && (<div className={`${styles.alertContainer}`}>
+        <Alert type={"error"} message={"Error: Unable to fetch certifications. Please try again later."} />
+      </div>)}
+      {/* Certifications Alerts */}
+      {user.certifications?.map((certification) => {
+        return (<React.Fragment key={certification.certification_id}>
+          <CertificationAlert certification={certification} />
+        </React.Fragment>);
+      })}
 
-        <div className={`grid-row ${styles.titleRow}`}>
-          <h1 className={`grid-col grid-col-wrap ${styles.title}`}>{t("Certifications")}</h1>
-          <div className={`grid-col-auto ${styles.btnGroup}`}>
-            <div className="grid-col-auto grid-col-wrap">
-              <button
-                type="button"
-                data-testid="apply-for-certification"
-                className={`usa-button usa-button--outline ${styles.applyForCertificationBtn}`}
-                onClick={handleApplyCertificationClick}
-              >
-                {t("Apply for a Certification")}
-              </button>
-            </div>
-            <div className="grid-col-auto grid-col-wrap">
-              <button type="button" className={`usa-button ${styles.linkCertificationBtn}`} onClick={linkCert}>
-                {t("Link a Certification")}
-              </button>
-            </div>
+      <div className={`grid-row ${styles.titleRow}`}>
+        <h1 className={`grid-col grid-col-wrap ${styles.title}`}>{t("Certifications")}</h1>
+        <div className={`grid-col-auto ${styles.btnGroup}`}>
+          <div className="grid-col-auto grid-col-wrap">
+            <button
+              type="button"
+              data-testid="apply-for-certification"
+              className={`usa-button usa-button--outline ${styles.applyForCertificationBtn}`}
+              onClick={handleApplyCertificationClick}
+            >
+              {t("Apply for a Certification")}
+            </button>
+          </div>
+          <div className="grid-col-auto grid-col-wrap">
+            <button type="button" className={`usa-button ${styles.linkCertificationBtn}`} onClick={linkCert}>
+              {t("Link a Certification")}
+            </button>
           </div>
         </div>
-        {user.certifications && [...user.certifications]
-          .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
-          .map((certification) => (<div key={certification.certification_id} className={`grid-row ${styles.certificationRow}`}>
-              <div className="grid-col">
-                <CertificationCard key={certification.certification_id} certification={certification} />
-              </div>
-            </div>))}
       </div>
-      {isModal1Open && (<Modal
-          title={t("Apply for a Certification")}
-          onClose={closeModal}
-          totalSteps={2}
-          completedSteps={0}
-          ImageAndAlt={{ image: editPaperImg, alt: "Edit Paper" }}
-          contentTitle={t("What kind of certification would you like to apply for?")}
-          footerContent={modal1FooterContent}
-        >
-          <>
-            <Alert
-              message={t("Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software")}
-              type="info"
-            />
-            <div>
-              <form className={`usa-form ${styles.usaForm}`}>
-                <fieldset className="usa-fieldset">
-                  <div className={`grid-row usa-radio ${styles.radioRow}`}>
-                    <input
-                      className="usa-radio__input usa-radio__input--tile"
-                      id="cert8A"
-                      type="radio"
-                      name="cert8A"
-                      value="8A"
-                      checked={selectedOption === "8A"}
-                      onChange={handleOptionChange}
-                    />
-                    <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="cert8A">
+      {user.certifications && [...user.certifications]
+        .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
+        .map((certification) => (
+          <div key={certification.certification_id} className={`grid-row ${styles.certificationRow}`}>
+            <div className="grid-col">
+              <CertificationCard key={certification.certification_id} certification={certification} />
+            </div>
+          </div>))}
+    </div>
+    {isModal1Open && (<Modal
+      title={t("Apply for a Certification")}
+      onClose={closeModal}
+      totalSteps={2}
+      completedSteps={0}
+      ImageAndAlt={{ image: editPaperImg, alt: "Edit Paper" }}
+      contentTitle={t("What kind of certification would you like to apply for?")}
+      footerContent={modal1FooterContent}
+    >
+      <>
+        <Alert
+          message={t("Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software")}
+          type="info"
+        />
+        <div>
+          <form className={`usa-form ${styles.usaForm}`}>
+            <fieldset className="usa-fieldset">
+              <div className={`grid-row usa-radio ${styles.radioRow}`}>
+                <input
+                  className="usa-radio__input usa-radio__input--tile"
+                  id="cert8A"
+                  type="radio"
+                  name="cert8A"
+                  value="8A"
+                  checked={selectedOption === "8A"}
+                  onChange={handleOptionChange}
+                />
+                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="cert8A">
                       <span className={`${styles.checkboxLabel}`}>
                         {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                       </span>
-                      <span className={`${styles.toolTip}`}>
+                  <span className={`${styles.toolTip}`}>
                         <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
@@ -226,23 +214,23 @@ const Certifications = () => {
                           </a>
                         </span>
                       </span>
-                    </label>
-                  </div>
-                  <div className={`grid-row usa-radio ${styles.radioRow}`}>
-                    <input
-                      className={`usa-radio__input usa-radio__input--tile`}
-                      id="certHUBZone"
-                      type="radio"
-                      name="certHUBZone"
-                      value="HUBZone"
-                      checked={selectedOption === "HUBZone"}
-                      onChange={handleOptionChange}
-                    />
-                    <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certHUBZone">
+                </label>
+              </div>
+              <div className={`grid-row usa-radio ${styles.radioRow}`}>
+                <input
+                  className={`usa-radio__input usa-radio__input--tile`}
+                  id="certHUBZone"
+                  type="radio"
+                  name="certHUBZone"
+                  value="HUBZone"
+                  checked={selectedOption === "HUBZone"}
+                  onChange={handleOptionChange}
+                />
+                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certHUBZone">
                       <span className={`${styles.checkboxLabel}`}>
                         {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                       </span>
-                      <span className={`${styles.toolTip}`}>
+                  <span className={`${styles.toolTip}`}>
                         <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
@@ -257,23 +245,23 @@ const Certifications = () => {
                           </a>
                         </span>
                       </span>
-                    </label>
-                  </div>
-                  <div className={`grid-row usa-radio ${styles.radioRow}`}>
-                    <input
-                      type="radio"
-                      name="certVet"
-                      id="certVet"
-                      value="VetCert"
-                      className={`usa-radio__input usa-radio__input--tile`}
-                      checked={selectedOption === "VetCert"}
-                      onChange={handleOptionChange}
-                    />
-                    <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">
+                </label>
+              </div>
+              <div className={`grid-row usa-radio ${styles.radioRow}`}>
+                <input
+                  type="radio"
+                  name="certVet"
+                  id="certVet"
+                  value="VetCert"
+                  className={`usa-radio__input usa-radio__input--tile`}
+                  checked={selectedOption === "VetCert"}
+                  onChange={handleOptionChange}
+                />
+                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">
                       <span className={`${styles.checkboxLabel}`}>
                         {t("Veteran-Owned Small Business (VetCert) Certification")}
                       </span>
-                      <span className={`${styles.toolTip}`}>
+                  <span className={`${styles.toolTip}`}>
                         <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
@@ -288,25 +276,25 @@ const Certifications = () => {
                           </a>
                         </span>
                       </span>
-                    </label>
-                  </div>
-                </fieldset>
-              </form>
-            </div>
-          </>
-        </Modal>)}
-      {isModal2Open && (<Modal
-          title={t("Apply for a Certification")}
-          onClose={closeModal}
-          prevModal={prevModal}
-          totalSteps={2}
-          completedSteps={1}
-          ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
-          contentTitle={t(selectedCert.title) || ""}
-          contentMessage={t(selectedCert.message) || ""}
-          footerContent={modal2FooterContent}
-        />)}
-    </>);
+                </label>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </>
+    </Modal>)}
+    {isModal2Open && (<Modal
+      title={t("Apply for a Certification")}
+      onClose={closeModal}
+      prevModal={prevModal}
+      totalSteps={2}
+      completedSteps={1}
+      ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
+      contentTitle={t(selectedCert.title) || ""}
+      contentMessage={t(selectedCert.message) || ""}
+      footerContent={modal2FooterContent}
+    />)}
+  </>);
 };
 
 export default Certifications;

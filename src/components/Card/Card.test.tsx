@@ -57,7 +57,7 @@ describe('Card Component', () => {
       detailsPage: "/details-page",
       hideDetails: false
     };
-    const { container } = render(<Card {...props} />);
+    render(<Card {...props} />);
     fireEvent(window, new Event('resize'));
 
     expect(screen.getByTestId('card-header')).toHaveClass('smallScreen');
