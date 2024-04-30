@@ -40,10 +40,9 @@ const AccountSetup2 = () => {
     if (!user.profile) {
       console.error("user profile is missing");
     } else {
-      portalProfile = {
-        ...(user.profile as IUserProfile).portal, ...state,
-      };
+      portalProfile = { ...user.profile.portal, ...state };
     }
+
     const url = `${BASE_API_URL}portal/user/`;
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {

@@ -104,12 +104,11 @@ a {
 
 @media screen and (max-width: 1024px) {
     .resource-location-right {
-        display: none;
-        width: 390px;
-        border-left: 1px solid lightgray;
-        padding: 40px 20px 20px 30px;
-        border-left: 1px solid var(--Neutrals-Light-Gray-4);
         background: var(--Neutrals-Light-Gray);
+        border-left: 1px solid var(--Neutrals-Light-Gray-4);
+        display: none;
+        padding: 40px 20px 20px 30px;
+        width: 390px;
     }
 
     .resource-location-bottom {

@@ -8,20 +8,20 @@ const Help = () => {
   return (
       <div className={`main-container`}>
         <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>
-        {FrequentlyAskedQuestions.map((faq, index) => (
-          <div key={index} className="usa-accordion usa-accordion--bordered">
+        {FrequentlyAskedQuestions.map((faq) => (
+          <div key={faq.id} className="usa-accordion usa-accordion--bordered">
             <h4 className="usa-accordion__heading">
               <button
                 type="button"
                 className="usa-accordion__button"
                 aria-expanded="false"
-                aria-controls={`a${index}`}
+                aria-controls={`a${faq.id}`}
               >
                 {t(faq.question)}
               </button>
             </h4>
             <div
-              id={`a${index}`}
+              id={`a${faq.id}`}
               className="usa-accordion__content usa-prose"
               hidden
             >

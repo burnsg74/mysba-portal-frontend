@@ -3,7 +3,7 @@ import styles from "src/pages/Error/Error.module.css";
 import { useTranslation } from "react-i18next";
 import errorSVG from "src/assets/error.svg";
 
-const Error = () => {
+const ErrorPage = () => {
   const { t } = useTranslation();
 
   return (
@@ -20,4 +20,4 @@ const Error = () => {
   );
 };
 
-export default Error;
+export default ErrorPage;

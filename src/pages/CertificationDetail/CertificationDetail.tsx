@@ -25,7 +25,6 @@ const CertificationDetail = () => {
 
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
-  // const certification: ICertification | undefined = user.certifications ? user.certifications[index] : undefined;
   const certification = user.certifications?.filter(
     (certification: ICertification) => certification.certification_id === id
   )[0];
@@ -232,10 +231,6 @@ const CertificationDetail = () => {
           <Field label="Company Certified" value={certification.company_name ?? ""} />
           <Field label="Issue Date" value={issue_date ?? ""} />
           <Field label="Expiration Date" value={expiration_date ?? ""} />
-          {/*<Field*/}
-          {/*  label="North American Industry Classification System"*/}
-          {/*  value={certification.naics_codes ?? ""}*/}
-          {/*/>*/}
         </div>
         <div className={`${styles.categoryGroup}`}>
           <h4 className={`${styles.subtitle}`}>{t("Ownership")}</h4>

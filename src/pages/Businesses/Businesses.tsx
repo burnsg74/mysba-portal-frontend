@@ -4,10 +4,9 @@ import { useTranslation } from "react-i18next";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
-import { formatEin, formatUei } from "src/utils/formatter";
+import { formatEin, formatUei, formatPhoneNumber } from "src/utils/formatter";
 import Alert from "src/components/Alert/Alert";
 import axios from "axios";
-
 import styles from "src/pages/Businesses/Businesses.module.css";
 import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
 
@@ -48,11 +47,6 @@ const Businesses = () => {
     };
     fetchBusinesses();
   }, [dispatch]);
-
-  function formatPhoneNumber(phoneNumber: string): string {
-    const cleanNumber = phoneNumber.replace(/[^0-9]/g, "");
-    return `+1 (${cleanNumber.slice(1, 4)}) ${cleanNumber.slice(4, 7)}-${cleanNumber.slice(7, 11)}`;
-  }
 
   return (<div className={`main-container`}>
     {showFetchError && (<div className={`${styles.alertContainer}`}>

@@ -129,17 +129,17 @@ const Certifications = () => {
             <Alert type={"error"} message={"Error: Unable to fetch certifications. Please try again later."} />
           </div>)}
         {/* Certifications Alerts */}
-        {user.certifications && user.certifications.map((certification, index) => {
-          return (<React.Fragment key={index}>
+        {user.certifications?.map((certification) => {
+          return (<React.Fragment key={certification.certification_id}>
               {certification.days_until_expiry <= 0 ? (<div className={`${styles.alertContainer}`}>
                   <Alert
-                    key={index}
+                    key={certification.certification_id}
                     type={"error"}
                     message={t("Your " + certification.certification_type + " certification has expired")}
                   />
                 </div>) : certification.days_until_expiry <= 90 ? (<div className={`${styles.alertContainer}`}>
                   <Alert
-                    key={index}
+                    key={certification.certification_id}
                     type={"warning"}
                     message={t("Your " + certification.certification_type + " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}", {
                       days_until_expiry: certification.days_until_expiry, expire_at: certification.expiration_date,
@@ -171,7 +171,7 @@ const Certifications = () => {
         </div>
         {user.certifications && [...user.certifications]
           .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
-          .map((certification) => (<div className={`grid-row ${styles.certificationRow}`}>
+          .map((certification) => (<div key={certification.certification_id} className={`grid-row ${styles.certificationRow}`}>
               <div className="grid-col">
                 <CertificationCard key={certification.certification_id} certification={certification} />
               </div>

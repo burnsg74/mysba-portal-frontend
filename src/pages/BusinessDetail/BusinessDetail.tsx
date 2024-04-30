@@ -10,6 +10,7 @@ import BusinessCardIcon from "src/assets/business-card-icon.svg";
 const BusinessDetail = () => {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { t } = useTranslation();
 
   const index = calculateIndexFromId(id as string);
   if (index === null) {
@@ -17,7 +18,6 @@ const BusinessDetail = () => {
     return null;
   }
 
-  const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
   const business = user.businesses?.filter((business: IBusiness) => business.id === id)[0];
   if (!business) {

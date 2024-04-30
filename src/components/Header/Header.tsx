@@ -199,24 +199,19 @@ const Header = () => {
         </div>
       </div>
     </header>
-    {showNav && (<div
+    {showNav && (<button
       className={`${styles.rightSideNav} ${isNavOpen ? styles.isOpen : ""}`}
       onBlur={handleFocusOut}
-      ref={navRef}
+      onClick={handleSvgCloseClick}
     >
       <div className={`${styles.rightSideNavHeader}`}>
-        <svg
-          className={`${styles.rightSideNavIcon}`}
-          aria-hidden="true"
-          focusable="false"
-          onClick={handleSvgCloseClick}
-        >
+        <svg className={`${styles.rightSideNavIcon}`}>
           <title>{t("Close")}</title>
           <use xlinkHref="/assets/img/sprite.svg#close"></use>
         </svg>
       </div>
       <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
-    </div>)}
+    </button>)}
   </>);
 };
 export default Header;

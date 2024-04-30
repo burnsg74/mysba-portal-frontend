@@ -36,8 +36,7 @@ const Loans = () => {
               >
                 {" "}
                 {t("loan portal")}
-              </a>
-              .
+              </a>.
             </div>
           </div>
         </div>

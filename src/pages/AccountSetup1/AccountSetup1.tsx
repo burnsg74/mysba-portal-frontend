@@ -73,17 +73,15 @@ const AccountSetup1 = () => {
           <div className={`${styles.subtitle}`}>
             {t("This information has been linked via your existing certification.")}{" "}
             {t("To make changes please edit this in")}{" "}
-            <a rel="noreferrer" href="https://wosb.certify.sba.gov" target="_blank">
-              WOSB Certify
-            </a>
-            .
+            <a rel="noreferrer" href="https://wosb.certify.sba.gov" target="_blank">WOSB Certify</a>.
           </div>
         </div>
         <div className={`${styles.label}`}>{t("Your Business")} </div>
-        {user.businesses && user.businesses.map((business) => (
-          <BusinessCard key={business.id} business={business} hideDetails={true} />))}
+        {user.businesses?.map((business) => (
+          <BusinessCard key={business.id} business={business} hideDetails={true} />
+        ))}
         <div className={`${styles.labelCertifications}`}>{t("Your Business Certifications")} </div>
-        {user.certifications && user.certifications.map((certification) => (<div key={certification.certification_id} className={`grid-row`}>
+        {user.certifications?.map((certification) => (<div key={certification.certification_id} className={`grid-row`}>
             <div className={`grid-col`}>
               <CertificationCard key={certification.certification_id} certification={certification} hideDetails={true} />
             </div>

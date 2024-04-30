@@ -18,7 +18,7 @@ import ApplyCert1 from "src/pages/ApplyCert1/ApplyCert1";
 import ApplyCert2 from "src/pages/ApplyCert2/ApplyCert2";
 import LinkLaunchPad from "src/pages/LinkLaunchPad/LinkLaunchPad"
 import Layout from "src/components/Layout/Layout";
-import Error from "src/pages/Error/Error";
+import ErrorPage from "src/pages/Error/ErrorPage";
 import Callback from "src/pages/Callback/Callback";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
@@ -99,7 +99,7 @@ const App: React.FC = () => {
 
             <Route path="/loans" element={<Loans />} />
             <Route path="/help" element={<Help />} />
-            <Route path="/error" element={<Error />} />
+            <Route path="/error" element={<ErrorPage />} />
           </Route>
         </Route>
       </Routes>

@@ -10,6 +10,7 @@ import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
+import { formatPhoneNumber } from "src/utils/formatter";
 
 const Loading = () => {
   const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
@@ -35,7 +36,7 @@ const Loading = () => {
   ];
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    const email = info.email?.toLowerCase() || "";
+    const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined = null;
     if (authState && "accessToken" in authState) {
       accessToken =authState.accessToken?.accessToken;
@@ -57,7 +58,6 @@ const Loading = () => {
     if (!crmData) {
       oktaAuth.signOut().then(() => {
         window.location.href = "/error.html";
-        return;
       });
     }
 
@@ -80,11 +80,6 @@ const Loading = () => {
       certifications: certificationData,
     };
   };
-
-  function formatPhoneNumber(phoneNumber: string): string {
-    const cleanNumber = phoneNumber.replace(/[^0-9]/g, "");
-    return `+1 (${cleanNumber.slice(1, 4)}) ${cleanNumber.slice(4, 7)}-${cleanNumber.slice(7, 11)}`;
-  }
 
   useEffect(() => {
     dispatch(setNav(false));
