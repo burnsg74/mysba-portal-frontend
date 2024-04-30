@@ -42,7 +42,7 @@ export const CertificationCard: React.FC<ICertificationCardProps> = ({ certifica
   }, []);
 
   const body = (
-    <div ref={containerRef} className={`grid-row ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`}>
+    <div ref={containerRef} className={`grid-row ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`} data-testid="certification-card-body">
       <div className={`grid-col ${styles.bodyCompanyName}`}>{certification.company_name}</div>
       <div className={`grid-col-auto`}>
         <div className={` ${styles.bodyRowRightGroup}`}>

@@ -70,6 +70,7 @@ const ModalComponent = ({
                 onKeyDown={stepStatus === "complete" ? prevModal : undefined}
                 tabIndex={stepStatus === "complete" ? 0 : undefined}
                 className={`usa-step-indicator__segment ${segmentStyle}`}
+                data-testid="step-indicator"
               ></li>);
             })}
           </ol>
