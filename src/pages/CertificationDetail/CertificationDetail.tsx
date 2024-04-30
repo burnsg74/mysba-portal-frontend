@@ -15,21 +15,22 @@ import { certifications } from "src/utils/certifications";
 
 const CertificationDetail = () => {
   const navigate = useNavigate();
+  const user: IUser = useSelector(getUser);
   const { id } = useParams();
-
+  const { t } = useTranslation();
   const index = calculateIndexFromId(id as string);
+
+  const [showManageCertificationModal, setManageCertificationModal] = useState(false);
+
   if (index === null) {
     navigate("/error");
     return null;
   }
 
-  const { t } = useTranslation();
-  const user: IUser = useSelector(getUser);
   const certification = user.certifications?.filter(
     (certification: ICertification) => certification.certification_id === id
   )[0];
   const cert = certifications.find(cert => cert.code === certification?.certification_type) || certifications[0];
-  const [showManageCertificationModal, setManageCertificationModal] = useState(false);
 
   if (!certification) {
     navigate("/error");

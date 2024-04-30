@@ -9,21 +9,10 @@ import BusinessCardIcon from "src/assets/business-card-icon.svg";
 
 const BusinessDetail = () => {
   const navigate = useNavigate();
+  const user: IUser = useSelector(getUser);
   const { id } = useParams();
   const { t } = useTranslation();
-
   const index = calculateIndexFromId(id as string);
-  if (index === null) {
-    navigate("/error");
-    return null;
-  }
-
-  const user: IUser = useSelector(getUser);
-  const business = user.businesses?.filter((business: IBusiness) => business.id === id)[0];
-  if (!business) {
-    navigate("/error");
-    return null;
-  }
 
   function calculateIndexFromId(id: string): number | null {
     let index = Number(id);
@@ -33,6 +22,17 @@ const BusinessDetail = () => {
     }
 
     return index - 1;
+  }
+
+  if (index === null) {
+    navigate("/error");
+    return null;
+  }
+
+  const business = user.businesses?.filter((business: IBusiness) => business.id === id)[0];
+  if (!business) {
+    navigate("/error");
+    return null;
   }
 
   return (

@@ -194,28 +194,30 @@
 }
 
 .footerBtnOutline {
-    margin-right: 0;
-    height: 38px;
-    font-size: 18px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    flex: 1;
     border: 2px;
     box-shadow: inset 0 0 0 2px var(--Brand-Secondary-Bright-Blue);
     color: var(--Brand-Secondary-Bright-Blue);
+    display: flex;
+    flex: 1;
+    font-size: 18px;
+    height: 38px;
+    justify-content: center;
+    margin-right: 0;
+    padding: 0;
 }
 
 .footerBtn {
-    margin-right: 0;
-    height: 38px;
-    font-size: 18px;
-    display: flex;
     align-items: center;
-    justify-content: center;
-    flex: 1;
     border: 2px;
+    display: flex;
+    flex: 1;
+    font-size: 18px;
     gap: 10px;
+    height: 38px;
+    justify-content: center;
+    margin-right: 0;
+    padding: 0;
 }
 
 .radio {
