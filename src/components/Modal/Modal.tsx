@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useRef } from "react";
 import styles from "src/components/Modal/Modal.module.css";
 import { useTranslation } from "react-i18next";
 
@@ -34,7 +34,13 @@ const ModalComponent = ({
   footerContent,
 }: ModalProps) => {
   const { t } = useTranslation();
+  const closeButtonRef = React.useRef<HTMLButtonElement>(null);
 
+  React.useEffect(() => {
+    if (closeButtonRef.current) {
+      closeButtonRef.current.focus();
+    }
+  }, []);
   const closeModal = () => {
     if (onClose) onClose();
   };
@@ -51,7 +57,7 @@ const ModalComponent = ({
         <div className={`${styles.container}`}>
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
-            <span className={`${styles.headerClose}`} onClick={closeModal} role="button">
+            <span className={`${styles.headerClose}`} onClick={closeModal} role="button" ref={closeButtonRef} tabIndex={0}>
               {" "}
               {t("Close")}
               <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
