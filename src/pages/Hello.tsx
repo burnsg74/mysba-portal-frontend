@@ -45,7 +45,11 @@ const Hello = () => {
 
   const logout = async () => {
     oktaAuth.signOut();
-  };
+    };
+
+    const gotoToCls = async () => {
+        oktaAuth.signOut(); //POC - Use Case #4
+    };
 
   if (isLoading) {
     return <h1>Loading...</h1>;
@@ -54,7 +58,10 @@ const Hello = () => {
   return (<div style={style.page}>
     <button style={style.button} onClick={logout}>
       Logout
-    </button>
+      </button>
+      <button style={style.button} onClick={gotoToCls}>
+          Go To CLS
+      </button>
     <hr />
     <h1>Hello, {user?.given_name}, This is what I have on you...</h1>
     <table style={style.table} >
