@@ -9,13 +9,13 @@ import axios from "axios";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
+import { BASE_API_URL } from "src/utils/constants";
 
 const AccountSetup2 = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
-  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const { authState } = useOktaAuth();
 
   const [state, setState] = useState({

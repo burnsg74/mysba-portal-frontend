@@ -11,9 +11,9 @@ import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
 import { formatPhoneNumber } from "src/utils/formatter";
+import { BASE_API_URL } from "src/utils/constants";
 
 const Loading = () => {
-  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const PROGRESS_UPDATE_INTERVAL = 500;
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [messageIndex, setMessageIndex] = useState(0);

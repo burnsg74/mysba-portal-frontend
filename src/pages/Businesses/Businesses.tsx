@@ -9,13 +9,13 @@ import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Businesses/Businesses.module.css";
 import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
+import { BASE_API_URL } from "src/utils/constants";
 
 const Businesses = () => {
   const user: IUser = useSelector(getUser);
   const dispatch = useDispatch();
   const [showFetchError, setShowFetchError] = useState(false);
   const { t } = useTranslation();
-  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const { authState } = useOktaAuth();
 
   useEffect(() => {

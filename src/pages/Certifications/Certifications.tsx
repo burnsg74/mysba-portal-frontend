@@ -15,9 +15,9 @@ import Alert from "src/components/Alert/Alert";
 import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
 import CertificationAlert from "src/components/CertificationAlert/CertificationAlert";
+import { BASE_API_URL } from "src/utils/constants";
 
 const Certifications = () => {
-  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const location = useLocation();
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);

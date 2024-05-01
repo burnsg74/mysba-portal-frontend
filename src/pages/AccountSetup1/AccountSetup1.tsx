@@ -10,6 +10,7 @@ import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
 import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
+import { BASE_API_URL } from "src/utils/constants";
 
 const AccountSetup1 = () => {
   const { t } = useTranslation();
@@ -18,7 +19,6 @@ const AccountSetup1 = () => {
   const dispatch = useDispatch();
   const [allowNotice, setAllowNotice] = useState<boolean>(user.profile?.portal?.allow_notice || false);
   const { authState } = useOktaAuth();
-  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const portal_user_url = `${BASE_API_URL}portal/user/`;
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
