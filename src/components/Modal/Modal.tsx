@@ -24,7 +24,7 @@ function useFocusTrap(ref: React.RefObject<HTMLElement>) {
   useEffect(() => {
     const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
     const firstFocusableElement: HTMLElement | null = ref.current?.querySelector(focusableElements);
-    firstFocusableElement?.focus()
+    firstFocusableElement?.focus();
     const focusableContent: NodeListOf<HTMLElement> = ref.current?.querySelectorAll(focusableElements) || [];
     const lastFocusableElement: HTMLElement | null = focusableContent[focusableContent.length - 1];
 
@@ -87,7 +87,17 @@ const ModalComponent = ({
         <div ref={modalRef} className={`${styles.container}`}>
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
-            <span className={`${styles.headerClose}`} onClick={closeModal} role="button" tabIndex={0}>
+            <span
+              className={`${styles.headerClose}`}
+              onClick={closeModal}
+              onKeyDown={event => {
+                if (event.key === "Enter") {
+                  closeModal();
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
               {" "}
               {t("Close")}
               <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
