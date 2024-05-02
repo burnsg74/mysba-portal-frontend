@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import LinkLaunchPad from './LinkLaunchPad';
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
@@ -14,12 +14,12 @@ jest.mock("react-i18next", () => ({
 describe('Page: LinkLaunchPad', () => {
 
   it("It renders", () => {
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <LinkLaunchPad />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("You are connecting an existing account to your new MySBA account. Log in below to finish connecting this account.")).toBeDefined();
+    expect(screen.getByText("You are connecting an existing account to your new MySBA account. Log in below to finish connecting this account.")).toBeDefined();
   });
 });

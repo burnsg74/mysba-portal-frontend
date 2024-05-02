@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import Loans from './Loans';
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
@@ -14,12 +14,12 @@ jest.mock("react-i18next", () => ({
 describe('Page: Loans', () => {
 
   it("It renders", () => {
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Loans />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Under Construction")).toBeDefined();
+    expect(screen.getByText("Under Construction")).toBeDefined();
   });
 });

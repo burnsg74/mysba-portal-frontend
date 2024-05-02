@@ -37,7 +37,7 @@ const Header = () => {
     const newLang = lang === "en" ? "es" : "en";
     setLang(newLang);
     localStorage.setItem("lang", newLang);
-    i18n.changeLanguage(newLang);
+    i18n.changeLanguage(newLang).then();
   };
 
   function handleFocusOut() {

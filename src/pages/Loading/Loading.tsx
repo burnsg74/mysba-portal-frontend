@@ -37,7 +37,7 @@ const Loading = () => {
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
     const email = info.email?.toLowerCase() ?? "";
-    let accessToken: string | AccessToken | null | undefined = null;
+    let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken =authState.accessToken?.accessToken;
     } else {

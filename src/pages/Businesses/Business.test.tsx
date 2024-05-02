@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import Businesses from "./Businesses";
 import { Provider, useSelector } from "react-redux";
 import { store } from "src/store/store";
@@ -68,12 +68,12 @@ describe("Page: BusinessDetail", () => {
       },
     }));
 
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Businesses />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Bloom Marketing Co.")).toBeDefined();
+    expect(screen.getByText("Bloom Marketing Co.")).toBeDefined();
   });
 });

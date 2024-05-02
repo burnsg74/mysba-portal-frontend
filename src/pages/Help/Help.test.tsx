@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import Help from './Help';
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
@@ -14,12 +14,12 @@ jest.mock("react-i18next", () => ({
 describe('Page: Help', () => {
 
   it("It renders", () => {
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Help />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Frequently Asked Questions")).toBeDefined();
+    expect(screen.getByText("Frequently Asked Questions")).toBeDefined();
   });
 });

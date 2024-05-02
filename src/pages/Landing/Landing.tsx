@@ -19,7 +19,7 @@ const Landing = () => {
   };
 
   useEffect(() => {
-    handleAuthStateChange();
+    handleAuthStateChange().then();
   }, [authState?.isAuthenticated]);
 
   return null;

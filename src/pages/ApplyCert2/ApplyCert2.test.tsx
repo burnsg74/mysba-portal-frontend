@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import ApplyCert2 from "./ApplyCert2";
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
@@ -14,12 +14,12 @@ jest.mock("react-i18next", () => ({
 describe("Page: ApplyCert2", () => {
 
   it("It renders", () => {
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <ApplyCert2 />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("You're being directed to the Women Owned Small Business (WOSB) Certification portal.")).toBeDefined();
+    expect(screen.getByText("You're being directed to the Women Owned Small Business (WOSB) Certification portal.")).toBeDefined();
   });
 });

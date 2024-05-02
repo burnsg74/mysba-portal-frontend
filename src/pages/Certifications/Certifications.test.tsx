@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import Certifications from "./Certifications";
 import { Provider, useSelector } from "react-redux";
 import { store } from "src/store/store";
@@ -68,12 +68,12 @@ describe("Page: Certifications", () => {
       },
     }));
 
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Certifications />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Women-Owned Small Business")).toBeDefined();
+    expect(screen.getByText("Women-Owned Small Business")).toBeDefined();
   });
 });

@@ -53,7 +53,7 @@ const Certifications = () => {
         console.error("Error fetching certifications", error);
       }
     };
-    fetchCertifications();
+    fetchCertifications().then();
   }, []);
 
   const handleApplyCertificationClick = () => {
@@ -130,11 +130,13 @@ const Certifications = () => {
         <Alert type={"error"} message={"Error: Unable to fetch certifications. Please try again later."} />
       </div>)}
       {/* Certifications Alerts */}
-      {user.certifications?.map((certification) => {
-        return (<React.Fragment key={certification.certification_id}>
-          <CertificationAlert certification={certification} />
-        </React.Fragment>);
-      })}
+      <div className={`${styles.alertContainer}`}>
+        {user.certifications?.map((certification) => {
+          return (<React.Fragment key={certification.certification_id}>
+            <CertificationAlert certification={certification} />
+          </React.Fragment>);
+        })}
+      </div>
 
       <div className={`grid-row ${styles.titleRow}`}>
         <h1 className={`grid-col grid-col-wrap ${styles.title}`}>{t("Certifications")}</h1>

@@ -2,7 +2,7 @@ import Dashboard from "./Dashboard";
 import React from "react";
 import { BrowserRouter } from "react-router-dom";
 import { Provider, useSelector } from "react-redux";
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import { store } from "src/store/store";
 
 jest.mock("react-redux", () => ({ ...jest.requireActual("react-redux"), useSelector: jest.fn() }));
@@ -23,13 +23,13 @@ describe("Page: Dashboard", () => {
         },
       },
     }));
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Dashboard />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Welcome to your MySBA Dashboard")).toBeDefined();
+    expect(screen.getByText("Welcome to your MySBA Dashboard")).toBeDefined();
   });
 
   it("It says hi to user", () => {
@@ -42,13 +42,13 @@ describe("Page: Dashboard", () => {
       },
     }));
 
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Dashboard />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Hi John,")).toBeDefined();
+    expect(screen.getByText("Hi John,")).toBeDefined();
   });
 
   it("It shows expired cert alert", () => {
@@ -61,13 +61,13 @@ describe("Page: Dashboard", () => {
         }],
       },
     }));
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Dashboard />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Your Women-Owned Small Business certification has expired")).toBeDefined();
+    expect(screen.getByText("Your Women-Owned Small Business certification has expired")).toBeDefined();
   });
 
   it("It shows cert warning", () => {
@@ -81,13 +81,13 @@ describe("Page: Dashboard", () => {
         }],
       },
     }));
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Dashboard />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Your Women-Owned Small Business certification will expire within 60 days. It must be renewed by 2022-01-01")).toBeDefined();
+    expect(screen.getByText("Your Women-Owned Small Business certification will expire within 60 days. It must be renewed by 2022-01-01")).toBeDefined();
   });
 
   it("It does not show alert for >90 days", () => {
@@ -146,13 +146,13 @@ describe("Page: Dashboard", () => {
         }],
       },
     }));
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <Dashboard />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Bloom Marketing Co.")).toBeDefined();
+    expect(screen.getByText("Bloom Marketing Co.")).toBeDefined();
   });
 
 });

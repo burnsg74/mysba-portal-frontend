@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import AccountSetup3 from "./AccountSetup3";
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
@@ -14,12 +14,12 @@ jest.mock("react-i18next", () => ({
 describe("Page: AccountSetup3", () => {
 
   it("It renders", () => {
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <AccountSetup3 />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Your account is all set up.")).toBeDefined();
+    expect(screen.getByText("Your account is all set up.")).toBeDefined();
   });
 });

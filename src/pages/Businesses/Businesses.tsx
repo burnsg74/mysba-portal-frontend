@@ -45,7 +45,7 @@ const Businesses = () => {
         setShowFetchError(true);
       }
     };
-    fetchBusinesses();
+    fetchBusinesses().then();
   }, [dispatch]);
 
   return (<div className={`main-container`}>

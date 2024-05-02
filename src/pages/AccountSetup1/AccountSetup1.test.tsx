@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import AccountSetup1 from "./AccountSetup1";
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
@@ -24,12 +24,12 @@ jest.mock("@okta/okta-react", () => ({
 describe("Page: AccountSetup1", () => {
 
   it("It renders", () => {
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <AccountSetup1 />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Here's what we found about you")).toBeDefined();
+    expect(screen.getByText("Here's what we found about you")).toBeDefined();
   });
 });

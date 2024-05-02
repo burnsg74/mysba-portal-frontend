@@ -1,5 +1,5 @@
 import React from 'react';
-import { render } from "@testing-library/react";
+import { render, screen} from "@testing-library/react";
 import ErrorPage from './ErrorPage';
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
@@ -14,12 +14,12 @@ jest.mock("react-i18next", () => ({
 describe('Page: Error', () => {
 
   it("It renders", () => {
-    const { getByText } = render(<Provider store={store}>
+    render(<Provider store={store}>
       <BrowserRouter>
         <ErrorPage />
       </BrowserRouter>
     </Provider>);
 
-    expect(getByText("Oops, looks like something went wrong")).toBeDefined();
+    expect(screen.getByText("Oops, looks like something went wrong")).toBeDefined();
   });
 });
