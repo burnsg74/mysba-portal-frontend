@@ -13,7 +13,7 @@ jest.mock('src/components/Card/Card', () => ({ icon, title, body, hideDetails }:
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key: string) => key // Mock translation function to return the key itself
+    t: (key: string) => key
   })
 }));
 

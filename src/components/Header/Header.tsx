@@ -4,9 +4,9 @@ import styles from "src/components/Header/Header.module.css";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
-import USFlag from "@uswds/uswds/img/us_flag.svg";
-import DotGov from "@uswds/uswds/img/icon-dot-gov.svg";
-import HttpsIcon from "@uswds/uswds/img/icon-https.svg";
+import USFlag from "src/assets/us_flag.svg";
+import DotGov from "src/assets/icon-dot-gov.svg";
+import HttpsIcon from "src/assets/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";
 import { useTranslation } from "react-i18next";
 import SideNav from "src/components/SideNav/SideNav";
@@ -194,6 +194,7 @@ const Header = () => {
             onClick={logout}
             aria-label={t("Log Out")}
             type="button"
+            data-testid="log-out-button"
           >
             <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
           </button>)}
