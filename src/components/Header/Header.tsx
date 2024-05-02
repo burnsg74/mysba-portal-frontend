@@ -182,6 +182,7 @@ const Header = () => {
                 aria-hidden="true"
                 focusable="false"
                 onClick={handleMenuClick}
+                data-testid="menu-icon"
               >
                 <title>{t("Menu")}</title>
                 <use xlinkHref="/assets/img/sprite.svg#menu"></use>
@@ -204,7 +205,7 @@ const Header = () => {
       onBlur={handleFocusOut}
       onClick={handleSvgCloseClick}
     >
-      <div className={`${styles.rightSideNavHeader}`}>
+      <div className={`${styles.rightSideNavHeader}`} data-testid="right-side-nav-header">
         <svg className={`${styles.rightSideNavIcon}`}>
           <title>{t("Close")}</title>
           <use xlinkHref="/assets/img/sprite.svg#close"></use>
