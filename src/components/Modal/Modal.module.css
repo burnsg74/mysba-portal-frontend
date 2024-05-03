@@ -172,5 +172,5 @@
 .imageSize {
   width: 100px;
   height: 100px;
-  object-fit: cover; /* This ensures the image covers the area without distorting aspect ratio */
+  object-fit: contain;
 }
