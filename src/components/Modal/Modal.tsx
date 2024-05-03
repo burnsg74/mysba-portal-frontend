@@ -23,12 +23,17 @@ interface ModalProps {
 function useFocusTrap(ref: React.RefObject<HTMLElement>) {
   useEffect(() => {
     const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const firstFocusableElement: HTMLElement | null = ref.current?.querySelector(focusableElements);
+    const firstFocusableElement: HTMLElement | null = ref.current?.querySelector(focusableElements) ?? null;
     firstFocusableElement?.focus();
-    const focusableContent: NodeListOf<HTMLElement> = ref.current?.querySelectorAll(focusableElements) || [];
+    let focusableContent: NodeListOf<HTMLElement>;
+    if (ref.current) {
+      focusableContent = ref.current.querySelectorAll(focusableElements);
+    } else {
+      focusableContent = document.querySelectorAll<HTMLElement>("nothing"); // Query something that doesn't exist to get an empty NodeList.
+    }
     const lastFocusableElement: HTMLElement | null = focusableContent[focusableContent.length - 1];
 
-    const handleFocus = (event: FocusEvent) => {
+    const handleFocus = (event: KeyboardEvent) => {
       let isTabPressed = event instanceof KeyboardEvent && event.key === "Tab";
 
       if (!isTabPressed) {
@@ -119,6 +124,7 @@ const ModalComponent = ({
                       role={stepStatus === "complete" ? "button" : undefined}
                       tabIndex={stepStatus === "complete" ? 0 : undefined}
                       className={`usa-step-indicator__segment ${styles[`usa-step-indicator__segment--${stepStatus}`]}`}
+                      data-testid="step-indicator"
                     />
                   ))}
                 </ol>
