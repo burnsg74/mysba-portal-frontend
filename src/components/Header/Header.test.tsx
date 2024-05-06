@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen, fireEvent } from "@testing-library/react";
+import { render, screen, fireEvent, waitFor } from "@testing-library/react";
 import "@testing-library/jest-dom";
 import { Provider } from "react-redux";
 import { Store } from "redux";
@@ -10,10 +10,12 @@ import showNavSlice from "src/store/showNav/showNavSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
 
+const signOutMock = jest.fn(() => Promise.resolve());
+
 jest.mock("@okta/okta-react", () => ({
   useOktaAuth: () => ({
     oktaAuth: {
-      signOut: jest.fn(() => Promise.resolve()),
+      signOut: signOutMock,
     },
   }),
 }));
@@ -63,7 +65,7 @@ describe("Header Component", () => {
     expect(langButton).toBeInTheDocument()
     fireEvent.click(langButton);
     const { i18n } = useTranslation();
-    // expect(i18n.changeLanguage).toHaveBeenCalled();
+    expect(langButton.textContent).toBe("English")
   });
 
   it("shows the profile link if showProfile is true", () => {
@@ -71,13 +73,14 @@ describe("Header Component", () => {
     expect(screen.getByAltText("Profile Icon")).toBeInTheDocument();
   });
 
-  it("handles logout correctly", () => {
+  it("handles logout correctly", async () => {
     setup(mockStoreHidden);
     const logoutButton = screen.getByTestId("log-out-button");
     expect(logoutButton).toBeInTheDocument()
     fireEvent.click(logoutButton);
-    const { oktaAuth } = useOktaAuth();
-    // expect(oktaAuth.signOut).toHaveBeenCalled();
+    await waitFor(() => {
+      expect(signOutMock).toHaveBeenCalled();
+    });
   });
 
   it("toggles navigation visibility on menu icon click", () => {
