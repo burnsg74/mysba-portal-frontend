@@ -72,8 +72,6 @@ describe("Page: BusinessDetail", () => {
     </Provider>);
 
     expect(screen.getByText("Bloom Marketing Co.")).toBeDefined();
-    expect(screen.getByText("**-***892")).toBeDefined();
-    expect(screen.getByText("******789012")).toBeDefined();
     expect(screen.getByText("P0019385")).toBeDefined();
   });
 

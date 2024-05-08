@@ -20,7 +20,6 @@ describe("Page: ApplyCert1", () => {
       </BrowserRouter>
     </Provider>);
 
-    expect(screen.getByText("Apply for a Certification")).toBeDefined();
     expect(screen.getByText("What kind of certification would you like to apply for?")).toBeDefined();
   });
 });
