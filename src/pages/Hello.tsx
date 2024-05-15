@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useOktaAuth } from "@okta/okta-react";
 import axios from "axios";
+import { AccessToken } from "@okta/okta-auth-js";
 
 const style = {
   page: { margin: "10px", fontFamily: "Arial, sans-serif" },
@@ -72,13 +73,22 @@ const Hello = () => {
       return;
     }
 
+    let accessToken: string | AccessToken | null | undefined;
+    if (authState && "accessToken" in authState) {
+      accessToken = authState.accessToken?.accessToken;
+    } else {
+      accessToken = undefined;
+    }
+    console.log("accessToken", accessToken);
+    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+
     const url = "https://serviceapi.dev.mysba.ussba.io/sso-change-password";
     const data = {
       oldPassword: changePasswordData.oldPassword, newPassword: changePasswordData.newPassword1,
     };
 
     try {
-      const response = await axios.post(url, data);
+      const response = await axios.post(url, data );
       if (response.status !== 200) {
         throw new Error(`Error: ${response.statusText}`);
       }
