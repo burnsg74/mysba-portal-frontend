@@ -46,7 +46,7 @@ const Hello = () => {
   const [changePasswordErrorMsg, setChangePasswordErrorMsg] = useState(null);
 
   const [changePasswordData, setChangePasswordData] = useState({
-    oldPassword: "", newPassword1: "", newPassword2: "",
+    clsElevated:"", oldPassword: "", newPassword1: "", newPassword2: "",
   });
 
   const handleInputChange = (e) => {
@@ -84,7 +84,10 @@ const Hello = () => {
 
     const url = "https://serviceapi.dev.mysba.ussba.io/sso-change-password";
     const data = {
-      oldPassword: changePasswordData.oldPassword, newPassword: changePasswordData.newPassword1,
+      userName: user?.email,
+      clsElevated: user?.clsElevated,
+      oldPassword: changePasswordData.oldPassword,
+      newPassword: changePasswordData.newPassword1,
     };
 
     try {
@@ -110,6 +113,7 @@ const Hello = () => {
       }
       if (authState.isAuthenticated) {
         const userInfo = await oktaAuth.getUser();
+        console.log("userInfo", userInfo);
         setUser(userInfo);
         setIsLoading(false);
       }
