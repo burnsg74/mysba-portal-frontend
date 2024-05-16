@@ -6,7 +6,7 @@ import Businesses from "src/pages/Businesses/Businesses";
 import Certifications from "src/pages/Certifications/Certifications";
 import Dashboard from "src/pages/Dashboard/Dashboard";
 import Help from "src/pages/Help/Help";
-import Landing from "src/pages/Landing/Landing";
+import LandingPage from "src/pages/Landing/LandingPage";
 import Loading from "src/pages/Loading/Loading";
 import Loans from "src/pages/Loans/Loans";
 import Profile from "src/pages/Profile/Profile";
@@ -64,7 +64,9 @@ const App: React.FC = () => {
       restoreOriginalUri={restoreOriginalUri}
     >
       <Routes>
-        <Route path="/" element={<Landing />} />
+        <Route element={<Layout />}>
+          <Route path="/" element={<LandingPage />} />
+        </Route>
         <Route
           path="/login/callback"
           element={<LoginCallback loadingElement={<Callback />} />}
