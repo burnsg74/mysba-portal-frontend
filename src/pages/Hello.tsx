@@ -27,12 +27,7 @@ const style = {
   table: { marginLeft: "40px", marginTop: "20px", borderCollapse: "collapse" },
   td: { border: "1px solid #ddd", padding: "8px", verticalAlign: "top", textAlign: "left", fontStyle: "bold" },
   tdError: {
-    color: "red",
-    border: "1px solid #ddd",
-    padding: "8px",
-    verticalAlign: "top",
-    textAlign: "left",
-    fontStyle: "bold",
+    color: "red", border: "1px solid #ddd", padding: "8px", verticalAlign: "top", textAlign: "left", fontStyle: "bold",
   },
   th: { padding: "12px 8px", backgroundColor: "#F2F2F2", textAlign: "right", verticalAlign: "top" },
 };
@@ -46,7 +41,7 @@ const Hello = () => {
   const [changePasswordErrorMsg, setChangePasswordErrorMsg] = useState(null);
 
   const [changePasswordData, setChangePasswordData] = useState({
-    clsElevated:"", oldPassword: "", newPassword1: "", newPassword2: "",
+    clsElevated: "", oldPassword: "", newPassword1: "", newPassword2: "",
   });
 
   const handleInputChange = (e) => {
@@ -59,16 +54,16 @@ const Hello = () => {
 
   const handleChangePasswordSubmit = async () => {
     console.log("handleChangePasswordSubmit");
-    setChangePasswordButtonText("Submitting...")
+    setChangePasswordButtonText("Submitting...");
 
     if (changePasswordData.newPassword1 !== changePasswordData.newPassword2) {
-      setChangePasswordButtonText("Submit")
+      setChangePasswordButtonText("Submit");
       setChangePasswordErrorMsg("Error: New passwords do not match");
       return;
     }
 
     if (changePasswordData.newPassword1.length < 4) {
-      setChangePasswordButtonText("Submit")
+      setChangePasswordButtonText("Submit");
       setChangePasswordErrorMsg("Error: New passwords needs to be at least 4 characters long");
       return;
     }
@@ -80,24 +75,24 @@ const Hello = () => {
       accessToken = undefined;
     }
     console.log("accessToken", accessToken);
-    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
+    axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 
     const url = "https://serviceapi.dev.mysba.ussba.io/sso-change-password";
     const data = {
       userName: user?.email,
-      clsElevated: user?.clsElevated,
+      clsElevated: user?.clsElevated !== undefined ? user?.clsElevated : false,
       oldPassword: changePasswordData.oldPassword,
       newPassword: changePasswordData.newPassword1,
     };
 
     try {
-      const response = await axios.post(url, data );
+      const response = await axios.post(url, data);
       if (response.status !== 200) {
         throw new Error(`Error: ${response.statusText}`);
       }
       setChangePasswordErrorMsg(null);
     } catch (error) {
-      setChangePasswordButtonText("Submit")
+      setChangePasswordButtonText("Submit");
       console.error(error);
       setChangePasswordErrorMsg(`Error: Unable to change password, ${error.message}`);
     }
@@ -160,10 +155,10 @@ const Hello = () => {
       <table style={style.table}>
         <tbody>
         {changePasswordErrorMsg && (<tr>
-            <td style={style.tdError} colSpan={2}>
-              {changePasswordErrorMsg}
-            </td>
-          </tr>)}
+          <td style={style.tdError} colSpan={2}>
+            {changePasswordErrorMsg}
+          </td>
+        </tr>)}
         <tr>
           <th style={style.th}>Old Password:</th>
           <td style={style.td}>
