@@ -175,7 +175,7 @@ const Hello = () => {
           </td>
         </tr>)}
         <tr>
-          <th style={style.th}>Old Password2:</th>
+          <th style={style.th}>Old Password:</th>
           <td style={style.td}>
             <input type="text" name="oldPassword" value={changePasswordData.oldPassword}
                    onChange={handleInputChange} />
