@@ -59,6 +59,7 @@ const Hello = () => {
   const handleChangePasswordSubmit = async () => {
     console.log("handleChangePasswordSubmit2");
     setChangePasswordErrorMsg(null);
+    setChangePasswordSuccessMsg(null);
     setChangePasswordButtonText("Submitting...");
 
     if (changePasswordData.newPassword1 !== changePasswordData.newPassword2) {
