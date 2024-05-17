@@ -507,3 +507,22 @@ textarea:not([disabled]):focus {
     flex-wrap: wrap;
 }
 
+.usa-radio__input--tile:checked + [class*=__label] {
+    background-color: unset;
+    border-color: unset;
+}
+
+.usa-radio__input--tile + [class*=__label] {
+    padding: 20px 20px 20px 66px;
+    background-color: unset;
+    border-radius: unset;
+    border: unset;
+    color: unset;
+    margin-top: unset;
+}
+
+.usa-radio__input--tile+[class*=__label]::before {
+    left: 20px;
+    padding-right: 16px;
+}
+

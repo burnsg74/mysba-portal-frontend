@@ -1,0 +1,35 @@
+.inputGroup {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    text-align: start;
+
+}
+
+.inputLabel {
+    color: var(--Text-Text);
+    font-family: "Public Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.inputHelp {
+    color: var(--Grayscale-gray-50, #757575);
+    font-family: "Public Sans";
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.input {
+    fill: #FFF;
+    height: 40px;
+    stroke-width: 1px;
+    stroke: var(--Text-Text);
+    width: 100%;
+}

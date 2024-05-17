@@ -1,0 +1,23 @@
+.backBtn, .continueBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.inputContainer {
+    display: flex;
+    width: 600px;
+    padding: 0 40px;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.group {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+}
+

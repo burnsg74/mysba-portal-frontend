@@ -27,7 +27,6 @@
     font-size: 16px;
     font-weight: 400;
     padding-left: 16px;
-    padding-top: 4px;
     text-align: left;
 }
 
@@ -53,4 +52,12 @@
 
 .alert-error::before {
     background-color: var(--Alert-Error-Bar);
+}
+
+.alertTitle {
+    color: var(--Text-Text);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
 }
