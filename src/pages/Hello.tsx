@@ -29,6 +29,9 @@ const style = {
   tdError: {
     color: "red", border: "1px solid #ddd", padding: "8px", verticalAlign: "top", textAlign: "left", fontStyle: "bold",
   },
+  tdSuccess: {
+    color: "green", border: "1px solid #ddd", padding: "8px", verticalAlign: "top", textAlign: "left", fontStyle: "bold",
+  },
   th: { padding: "12px 8px", backgroundColor: "#F2F2F2", textAlign: "right", verticalAlign: "top" },
 };
 
@@ -39,6 +42,7 @@ const Hello = () => {
   const [showChangingPasswordForm, setShowChangingPasswordForm] = useState(false);
   const [changePasswordButtonText, setChangePasswordButtonText] = useState("Submit");
   const [changePasswordErrorMsg, setChangePasswordErrorMsg] = useState(null);
+  const [changePasswordSuccessMsg, setChangePasswordSuccessMsg] = useState(null);
 
   const [changePasswordData, setChangePasswordData] = useState({
     clsElevated: "", oldPassword: "", newPassword1: "", newPassword2: "",
@@ -96,6 +100,7 @@ const Hello = () => {
         throw new Error(`Error: ${response.statusText}`);
       }
 
+      setChangePasswordSuccessMsg("Password changed successfully");
     } catch (error) {
       setChangePasswordButtonText("Submit");
       console.error(error);
@@ -162,6 +167,11 @@ const Hello = () => {
         {changePasswordErrorMsg && (<tr>
           <td style={style.tdError} colSpan={2}>
             {changePasswordErrorMsg}
+          </td>
+        </tr>)}
+        {changePasswordSuccessMsg && (<tr>
+          <td style={style.tdSuccess} colSpan={2}>
+            {changePasswordSuccessMsg}
           </td>
         </tr>)}
         <tr>
