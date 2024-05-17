@@ -53,7 +53,7 @@ const Hello = () => {
   };
 
   const handleChangePasswordSubmit = async () => {
-    console.log("handleChangePasswordSubmit");
+    console.log("handleChangePasswordSubmit2");
     setChangePasswordButtonText("Submitting...");
 
     if (changePasswordData.newPassword1 !== changePasswordData.newPassword2) {
@@ -74,16 +74,18 @@ const Hello = () => {
     } else {
       accessToken = undefined;
     }
-    console.log("accessToken", accessToken);
     axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 
+    console.log('User',user)
     const url = "https://serviceapi.dev.mysba.ussba.io/sso-change-password";
     const data = {
       userName: user?.email,
-      clsElevated: user?.clsElevated !== undefined ? user?.clsElevated : false,
+      clsElevated: user?.cls_elevated !== undefined ? user?.cls_elevated : false,
       oldPassword: changePasswordData.oldPassword,
       newPassword: changePasswordData.newPassword1,
     };
+    console.log("data", data);
+
 
     try {
       const response = await axios.post(url, data);
@@ -160,7 +162,7 @@ const Hello = () => {
           </td>
         </tr>)}
         <tr>
-          <th style={style.th}>Old Password:</th>
+          <th style={style.th}>Old Password2:</th>
           <td style={style.td}>
             <input type="text" name="oldPassword" value={changePasswordData.oldPassword}
                    onChange={handleInputChange} />
