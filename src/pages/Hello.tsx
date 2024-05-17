@@ -54,6 +54,7 @@ const Hello = () => {
 
   const handleChangePasswordSubmit = async () => {
     console.log("handleChangePasswordSubmit2");
+    setChangePasswordErrorMsg(null);
     setChangePasswordButtonText("Submitting...");
 
     if (changePasswordData.newPassword1 !== changePasswordData.newPassword2) {
@@ -89,10 +90,12 @@ const Hello = () => {
 
     try {
       const response = await axios.post(url, data);
+      setChangePasswordButtonText("Submit");
+
       if (response.status !== 200) {
         throw new Error(`Error: ${response.statusText}`);
       }
-      setChangePasswordErrorMsg(null);
+
     } catch (error) {
       setChangePasswordButtonText("Submit");
       console.error(error);
