@@ -12,15 +12,14 @@ interface Step3ModalProps {
   handleBack: (stepData: any) => void;
 }
 
+
+
 const Step3Modal: React.FC<Step3ModalProps> = ({ handleClose, handleContinue, handleBack }) => {
   const { t } = useTranslation();
-  const [stepData, setStepData] = useState<{
-    input1: string;
-    input2: string;
-    input3: string;
-    input4: string;
-    input5: string;
-  }>({
+  interface StepData {
+    [key: string]: string;
+  }
+  const [stepData, setStepData] = useState<StepData>({
     input1: "no",
     input2: "no",
     input3: "no",
@@ -30,7 +29,8 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ handleClose, handleContinue, ha
 
   const handleInputChange = (name: keyof typeof stepData) => {
     const value = stepData[name] === "yes" ? "no" : "yes";
-    let updatedStepData: Record<string, typeof stepData[keyof typeof stepData]> = {...stepData, [name]: value };
+    // let updatedStepData: Record<string, typeof stepData[keyof typeof stepData]> = {...stepData, [name]: value };
+    let updatedStepData: StepData = {...stepData, [name]: value };
     console.log("updatedStepData", updatedStepData);
 
     if (name === "input5" && value === "yes") {
@@ -64,20 +64,29 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ handleClose, handleContinue, ha
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("Would any of the following describe your business?")}
     footerContent={(<>
-      <button
-        type="button"
-        className={`usa-button usa-button--outline ${styles.backBtn}`}
-        onClick={() => handleBackBtnClick()}
-      >
-        {t("Back")}
-      </button>
-      <button
-        type="button"
-        className={`usa-button ${styles.continueBtn}`}
-        onClick={() => handleContinueBtnClick()}
-      >
-        {t("Continue")}
-      </button>
+      <div className={styles.footerContainer}>
+        <div className={styles.footerButtonContainer}>
+          <button
+            type="button"
+            className={`usa-button usa-button--outline ${styles.backBtn}`}
+            onClick={() => handleBackBtnClick()}
+          >
+            {t("Back")}
+          </button>
+          <button
+            type="button"
+            className={`usa-button ${styles.continueBtn}`}
+            onClick={() => handleContinueBtnClick()}
+          >
+            {t("Continue")}
+          </button>
+        </div>
+        <div>
+          <a
+            className={`${styles.skipBtn}`}
+            onClick={() => handleContinueBtnClick()}>Skip</a>
+        </div>
+      </div>
     </>)}
   >
     <div className={`${styles.inputContainer}`}>

@@ -23,7 +23,6 @@ const Businesses = () => {
   const [showFetchError, setShowFetchError] = useState(false);
   const [showBusinessAdd, setShowBusinessAdd] = useState(false);
 
-
   const handleAddBusinessBtnClick = () => {
     setShowBusinessAdd(true)
   };

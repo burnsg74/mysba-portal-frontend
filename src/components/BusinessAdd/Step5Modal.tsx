@@ -22,6 +22,7 @@ const Step5Modal: React.FC<Step5ModalProps> = ({ handleClose, handleContinue, ha
 
   return (<Modal
     title={t("Add a Business")}
+    hideCloseButton={true}
     onClose={closeModal}
     totalSteps={5}
     completedSteps={5}

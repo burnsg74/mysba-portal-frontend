@@ -10,12 +10,14 @@ interface ModalInputRadioProps {
   label: string;
   help?: string;
   onChange: (name: string, value: string) => void;
+  disabled?: boolean;
 }
 
-const ModalInputRadio: React.FC<ModalInputRadioProps> = ({ id, name, value, groupValue, label, help, onChange }) => {
+const ModalInputRadio: React.FC<ModalInputRadioProps> = ({ id, name, value, groupValue, label, help, onChange, disabled=false }) => {
   const { t } = useTranslation();
 
   const handleClick = () => {
+    if (disabled) return;
     onChange(name, value);
   };
 
@@ -33,11 +35,13 @@ const ModalInputRadio: React.FC<ModalInputRadioProps> = ({ id, name, value, grou
           value={value}
           checked={groupValue === value}
           onChange={handleChange}
+          disabled={disabled}
         />
         <label
           htmlFor={id}
           className={`usa-radio__label ${styles.label}`}
-          onClick={handleClick}>{t(label)}</label>
+          onClick={handleClick}
+          >{t(label)}</label>
     </div>);
 };
 

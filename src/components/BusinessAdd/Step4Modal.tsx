@@ -13,24 +13,10 @@ interface Step4ModalProps {
 
 const Step4Modal: React.FC<Step4ModalProps> = ({ handleClose, handleContinue, handleBack }) => {
   const { t } = useTranslation();
-  const [stepData, setStepData] = useState<{
-    input6: string;
-    input7: string;
-    input8: string;
-    input9: string;
-    input10: string;
-  }>({
-    input6: "no",
-    input7: "no",
-    input8: "no",
-    input9: "no",
-    input10: "no",
+  const [stepData, setStepData] = useState<Record<string, string>>({
+    input6: "no", input7: "no", input8: "no", input9: "no", input10: "no",
   });
-  //
-  // const handleInputChange = (name: keyof typeof stepData) => {
-  //   let value = stepData[name] === "yes" ? "no" : "yes";
-  //   setStepData({ ...stepData, [name]: value });
-  // };
+
 
   const handleInputChange = (name: keyof typeof stepData) => {
     const value = stepData[name] === "yes" ? "no" : "yes";
@@ -63,20 +49,29 @@ const Step4Modal: React.FC<Step4ModalProps> = ({ handleClose, handleContinue, ha
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("Are you interested in any of these funding options for your business?")}
     footerContent={(<>
-      <button
-        type="button"
-        className={`usa-button usa-button--outline ${styles.backBtn}`}
-        onClick={() => handleBackBtnClick()}
-      >
-        {t("Back")}
-      </button>
-      <button
-        type="button"
-        className={`usa-button ${styles.continueBtn}`}
-        onClick={() => handleContinueBtnClick()}
-      >
-        {t("Continue")}
-      </button>
+      <div className={styles.footerContainer}>
+        <div className={styles.footerButtonContainer}>
+          <button
+            type="button"
+            className={`usa-button usa-button--outline ${styles.backBtn}`}
+            onClick={() => handleBackBtnClick()}
+          >
+            {t("Back")}
+          </button>
+          <button
+            type="button"
+            className={`usa-button ${styles.continueBtn}`}
+            onClick={() => handleContinueBtnClick()}
+          >
+            {t("Continue")}
+          </button>
+        </div>
+        <div>
+          <a
+            className={`${styles.skipBtn}`}
+            onClick={() => handleContinueBtnClick()}>Skip</a>
+        </div>
+      </div>
     </>)}
   >
     <div className={`${styles.inputContainer}`}>

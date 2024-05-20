@@ -57,7 +57,9 @@ const Step1Modal: React.FC<Step1ModalProps> = ({businessData, handleClose, handl
                        label={"Yes, this business has an existing loan or certification account with the SBA"}
                        value={"yes"}
                        groupValue={stepData.workingWithSBA}
-                       onChange={handleInputChange} />
+                       onChange={handleInputChange}
+                       disabled={true}/>
+
       <ModalInputRadio id="2" name={"workingWithSBA"} label={"No, this business does not have a certification or loan"}
                        value={"no"}
                        groupValue={stepData.workingWithSBA}
