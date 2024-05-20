@@ -8,6 +8,7 @@ const Landing = () => {
 
   const handleAuthStateChange = async () => {
     if (authState?.isAuthenticated === undefined) {
+      window.location.href = "/landing.html"
       return;
     }
     if (authState?.isAuthenticated) {
