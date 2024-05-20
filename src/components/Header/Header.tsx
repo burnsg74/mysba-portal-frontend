@@ -189,7 +189,7 @@ const Header = () => {
               </svg>
             </div>
           </>)}
-          {!showNav && !showProfile && location.pathname !== '/' && (<button
+          {!showNav && !showProfile && (<button
             className={` ${styles.buttonStyle}`}
             onClick={logout}
             aria-label={t("Log Out")}
