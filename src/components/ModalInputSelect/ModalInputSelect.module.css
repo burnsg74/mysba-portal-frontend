@@ -5,7 +5,7 @@
     flex-direction: column;
     gap: 8px;
     text-align: start;
-
+    width: 100%;
 }
 
 .inputLabel {
@@ -18,7 +18,7 @@
 }
 
 .inputHelp {
-    color: var(--Grayscale-gray-50, #757575);
+    color: var(--Grayscale-gray-50);
     font-family: "Public Sans";
     font-size: 16px;
     font-style: normal;

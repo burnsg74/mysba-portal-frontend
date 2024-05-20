@@ -33,3 +33,12 @@
     stroke: var(--Text-Text);
     width: 100%;
 }
+
+.redStar {
+    color: var(--Error-error);
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}

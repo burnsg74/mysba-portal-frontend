@@ -32,7 +32,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({businessData, handleClose, handl
   return (<Modal
     title={t("Add a Business")}
     onClose={closeModal}
-    totalSteps={5}
+    totalSteps={4}
     completedSteps={0}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("Are you already working with the SBA?")}
@@ -52,7 +52,6 @@ const Step1Modal: React.FC<Step1ModalProps> = ({businessData, handleClose, handl
     </>)}
   >
     <div  className={`${styles.inputContainer}`} >
-
       <ModalInputRadio id="1" name={"workingWithSBA"}
                        label={"Yes, this business has an existing loan or certification account with the SBA"}
                        value={"yes"}

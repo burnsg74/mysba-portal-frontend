@@ -3,7 +3,6 @@ import Step1Modal from "src/components/BusinessAdd/Step1Modal";
 import Step2Modal from "src/components/BusinessAdd/Step2Modal";
 import Step3Modal from "src/components/BusinessAdd/Step3Modal";
 import Step4Modal from "src/components/BusinessAdd/Step4Modal";
-import Step5Modal from "src/components/BusinessAdd/Step5Modal";
 import axios from "axios";
 import { AccessToken } from "@okta/okta-auth-js";
 import { BASE_API_URL } from "src/utils/constants";
@@ -12,32 +11,21 @@ import { useOktaAuth } from "@okta/okta-react";
 import { useSelector } from "react-redux";
 import { data } from "autoprefixer";
 
-
 interface BusinessAddProps {
   handleCloseModal: () => void;
 }
 
 type data = {
+  name: string
   business_address_city: string
-  business_address_state: string
+  business_address_street1: string
   business_address_street2: string
-  business_address_street: string
+  business_address_state: string
   business_address_zip: string
   county: string
   ein: string
   id: string
-  input10: string
-  input1: string
-  input2: string
-  input3: string
-  input4: string
-  input5: string
-  input6: string
-  input7: string
-  input8: string
-  input9: string
   legal_entity: string
-  name: string
   owner: string
   uei: string
   workingWithSBA: string
@@ -48,26 +36,16 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
   const user: IUser = useSelector(getUser);
   const [currentStep, setCurrentStep] = useState(1);
   const [businessData, setBusinessData] = useState({
+    name: "",
+    business_address_street1: "",
+    business_address_street2: "",
     business_address_city: "",
     business_address_state: "",
-    business_address_street2: "",
-    business_address_street: "",
     business_address_zip: "",
     county: "",
     ein: "",
     id: "",
-    input10: "",
-    input1: "",
-    input2: "",
-    input3: "",
-    input4: "",
-    input5: "",
-    input6: "",
-    input7: "",
-    input8: "",
-    input9: "",
     legal_entity: "",
-    name: "",
     owner: "",
     uei: "",
     workingWithSBA: "no"
@@ -118,26 +96,27 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
   function StepSelector(currentStep: number) {
     switch (currentStep) {
       case 1:
-        return <Step1Modal businessData={businessData}
-                           handleClose={handleCloseModal}
-                           handleContinue={(stepData) => handleContinue(stepData)} />;
+        return <Step1Modal
+          businessData={businessData}
+          handleClose={handleCloseModal}
+          handleContinue={(stepData) => handleContinue(stepData)} />;
       case 2:
-        return <Step2Modal  businessData={businessData}
-                            handleClose={handleCloseModal}
-                           handleContinue={(stepData) => handleContinue(stepData)}
-                           handleBack={(stepData) => handleBack(stepData)} />;
+        return <Step2Modal
+          businessData={businessData}
+          handleClose={handleCloseModal}
+          handleContinue={(stepData) => handleContinue(stepData)}
+          handleBack={(stepData) => handleBack(stepData)} />;
       case 3:
-        return <Step3Modal handleClose={handleCloseModal}
-                           handleContinue={(stepData) => handleContinue(stepData)}
-                           handleBack={(stepData) => handleBack(stepData)} />;
+        return <Step3Modal
+          businessData={businessData}
+          handleClose={handleCloseModal}
+          handleContinue={(stepData) => handleContinue(stepData)}
+          handleBack={(stepData) => handleBack(stepData)} />;
       case 4:
-        return <Step4Modal handleClose={handleCloseModal}
-                           handleContinue={(stepData) => handleContinue(stepData)}
-                           handleBack={(stepData) => handleBack(stepData)} />;
-      case 5:
-        return <Step5Modal handleClose={handleCloseModal}
-                           handleContinue={(stepData) => handleContinue(stepData)}
-                           handleBack={(stepData) => handleBack(stepData)} />;
+        return <Step4Modal
+          handleClose={handleCloseModal}
+          handleContinue={(stepData) => handleContinue(stepData)}
+          handleBack={(stepData) => handleBack(stepData)} />;
       default:
         return null;
     }

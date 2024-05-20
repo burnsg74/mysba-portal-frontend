@@ -1,55 +1,64 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "src/components/Modal/Modal";
-import modalIcon from "src/assets/icon-paper-cert.svg";
+import ModalInputText from "src/components/ModalInputText/ModalInputText";
+import modalIcon from "src/assets/bag.svg";
 import styles from "src/components/BusinessAdd/Step3Modal.module.css";
-import Alert from "src/components/Alert/Alert";
-import ModalInputCheckbox from "src/components/ModalInputCheckbox/ModalInputCheckbox";
+import ModalInputSelect from "src/components/ModalInputSelect/ModalInputSelect";
 
 interface Step3ModalProps {
+  businessData: {
+    name: string;
+    ein: string,
+    uei: string,
+    legal_entity: string,
+    owner: string,
+    business_address_street1: string,
+    business_address_street2: string,
+    business_address_city: string,
+    business_address_state: string,
+    business_address_zip: string,
+    county: string,
+  };
   handleClose: () => void;
   handleContinue: (stepData: any) => void;
   handleBack: (stepData: any) => void;
 }
 
-
-
-const Step3Modal: React.FC<Step3ModalProps> = ({ handleClose, handleContinue, handleBack }) => {
+const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleContinue, handleBack }) => {
   const { t } = useTranslation();
-  interface StepData {
-    [key: string]: string;
-  }
-  const [stepData, setStepData] = useState<StepData>({
-    input1: "no",
-    input2: "no",
-    input3: "no",
-    input4: "no",
-    input5: "no",
+  const [stepData, setStepData] = useState({
+    ein: businessData.ein,
+    uei: businessData.uei,
+    legal_entity: businessData.legal_entity,
   });
 
-  const handleInputChange = (name: keyof typeof stepData) => {
-    const value = stepData[name] === "yes" ? "no" : "yes";
-    // let updatedStepData: Record<string, typeof stepData[keyof typeof stepData]> = {...stepData, [name]: value };
-    let updatedStepData: StepData = {...stepData, [name]: value };
-    console.log("updatedStepData", updatedStepData);
+  useEffect(() => {
+    setStepData({
+      ein: businessData.ein,
+      uei: businessData.uei,
+      legal_entity: businessData.legal_entity,
+    })
+  }, []);
 
-    if (name === "input5" && value === "yes") {
-      ["input1", "input2", "input3", "input4"].forEach(input => {
-        updatedStepData[input] = "no"
-      });
-    }
-    console.log("Step3Modal handleInputChange", name, value, stepData, updatedStepData);
-    setStepData(updatedStepData);
+  const legalEntityOptions = [{ value: "llc", label: "Limited Liability Company" }, {
+    value: "corporation", label: "Corporation",
+  }, { value: "partnership", label: "Partnership" }, {
+    value: "sole_proprietorship", label: "Sole Proprietorship",
+  }, { value: "non_profit", label: "Non-Profit" }, { value: "cooperative", label: "Cooperative" }, {
+    value: "other", label: "Other",
+  }];
+
+  const handleInputChange = (name: string, value: string) => {
+    setStepData({ ...stepData, [name]: value });
   };
 
-  function handleBackBtnClick() {
-    console.log("Step1Modal handleBackBtnClick", stepData);
-    handleBack(stepData);
+  function handleContinueBtnClick() {
+    handleContinue(stepData);
   }
 
-  function handleContinueBtnClick() {
-    console.log("Step1Modal handleContinueBtnClick", stepData);
-    handleContinue(stepData);
+  function handleBackBtnClick() {
+    handleBack(stepData);
   }
 
   const closeModal = () => {
@@ -59,10 +68,10 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ handleClose, handleContinue, ha
   return (<Modal
     title={t("Add a Business")}
     onClose={closeModal}
-    totalSteps={5}
+    totalSteps={4}
     completedSteps={2}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
-    contentTitle={t("Would any of the following describe your business?")}
+    contentTitle={t("Tell us a little about your business.")}
     footerContent={(<>
       <div className={styles.footerContainer}>
         <div className={styles.footerButtonContainer}>
@@ -90,42 +99,14 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ handleClose, handleContinue, ha
     </>)}
   >
     <div className={`${styles.inputContainer}`}>
-      <Alert type={"info"}
-             message={"Why do we ask? Each of these represent a certification you may be eligible for which allows you to bid on set-aside government contracts. "} />
-      <ModalInputCheckbox
-        id={"1"}
-        name={"input1"}
-        value={stepData.input1}
-        label={"Over 51% Women-owned"}
-        onChange={() => handleInputChange("input1")}
-      />
-      <ModalInputCheckbox
-        id={"2"}
-        name={"input2"}
-        value={stepData.input2}
-        label={"Over 51% owned by socially and economically disadvantaged individuals"}
-        onChange={() => handleInputChange("input2")}
-      />
-      <ModalInputCheckbox
-        id={"3"}
-        name={"input3"}
-        value={stepData.input3}
-        label={"Over 51% Veteran-owned"}
-        onChange={() => handleInputChange("input3")} />
-      <ModalInputCheckbox
-        id={"4"}
-        name={"input4"}
-        value={stepData.input4}
-        label={"Located in a historically underutilized business zone"}
-        onChange={() => handleInputChange("input4")}
-      />
-      <ModalInputCheckbox
-        id={"5"}
-        name={"input5"}
-        value={stepData.input5}
-        label={"None of these describe my business"}
-        onChange={() => handleInputChange("input5")}
-      />
+      <ModalInputText name={"ein"} label={"EIN"} value={stepData.ein}
+                      help={"Employer Identification Number. Small businesses run be a single person may not have this yet."}
+                      onChange={handleInputChange} />
+      <ModalInputText name={"uei"} label={"UEI"} value={stepData.uei}
+                      help={"Your business will only have this if you have registered for a UEI (Unique Entity ID) on SAM.gov."}
+                      onChange={handleInputChange} />
+      <ModalInputSelect name={"legal_entity"} label={"Legal Structure"} value={stepData.legal_entity}
+                        options={legalEntityOptions} onChange={handleInputChange} />
     </div>
   </Modal>);
 };

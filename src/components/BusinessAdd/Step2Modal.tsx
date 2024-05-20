@@ -13,7 +13,7 @@ interface Step2ModalProps {
     uei: string,
     legal_entity: string,
     owner: string,
-    business_address_street: string,
+    business_address_street1: string,
     business_address_street2: string,
     business_address_city: string,
     business_address_state: string,
@@ -33,7 +33,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
     uei: businessData.uei,
     legal_entity: businessData.legal_entity,
     owner: businessData.owner,
-    business_address_street: businessData.business_address_street,
+    business_address_street1: businessData.business_address_street1,
     business_address_street2: businessData.business_address_street2,
     business_address_city: businessData.business_address_city,
     business_address_state: businessData.business_address_state,
@@ -48,7 +48,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
       uei: businessData.uei,
       legal_entity: businessData.legal_entity,
       owner: businessData.owner,
-      business_address_street: businessData.business_address_street,
+      business_address_street1: businessData.business_address_street1,
       business_address_street2: businessData.business_address_street2,
       business_address_city: businessData.business_address_city,
       business_address_state: businessData.business_address_state,
@@ -56,13 +56,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
       county: businessData.county,
     })
   }, []);
-  const legalEntityOptions = [{ value: "llc", label: "Limited Liability Company" }, {
-    value: "corporation", label: "Corporation",
-  }, { value: "partnership", label: "Partnership" }, {
-    value: "sole_proprietorship", label: "Sole Proprietorship",
-  }, { value: "non_profit", label: "Non-Profit" }, { value: "cooperative", label: "Cooperative" }, {
-    value: "other", label: "Other",
-  }];
+
   const businessAddressStateOptions = [{ value: "AL", label: "Alabama" }, {
     value: "AK", label: "Alaska",
   }, { value: "AZ", label: "Arizona" }, { value: "AR", label: "Arkansas" }, {
@@ -97,6 +91,19 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
     value: "WA", label: "Washington",
   }, { value: "WV", label: "West Virginia" }, { value: "WI", label: "Wisconsin" }, { value: "WY", label: "Wyoming" }];
 
+  const industryOptions = [{ value: "agriculture", label: "Agriculture, Forestry, Fishing & Hunting" },
+    { value: "arts", label: "Arts, Entertainment & Recreation" },
+    { value: "construction", label: "Construction & Trades" },
+    { value: "education", label: "Education" },
+    { value: "energy", label: "Energy" },
+    { value: "financial", label: "Financial Services" },
+    { value: "food", label: "Food & Lifestyle Health Care" },
+    { value: "manufacturing", label: "Manufacturing" },
+    { value: "media", label: "Media &Marketing Professional Services Retail" },
+    { value: "technology", label: "Technology Transportation" },
+    { value: "travel", label: "Travel & Tourism Wholesale" },
+    { value: "other", label: "Other" }];
+
   const handleInputChange = (name: string, value: string) => {
     setStepData({ ...stepData, [name]: value });
   };
@@ -118,7 +125,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
   return (<Modal
     title={t("Add a Business")}
     onClose={closeModal}
-    totalSteps={5}
+    totalSteps={4}
     completedSteps={1}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("Tell us a little about your business.")}
@@ -138,20 +145,23 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
     </>)}
   >
     <div className={`${styles.inputContainer}`}>
-      <ModalInputText name={"name"} label={"Business Name"} value={stepData.name}
-                      help={"If you don’t yet have a business name, just enter your name."} onChange={handleInputChange} />
-      <ModalInputText name={"ein"} label={"EIN"} value={stepData.ein}
-                      help={"Employer Identification Number. Small businesses run be a single person may not have this yet."}
+      <ModalInputText label={"Business Name"}
+                      name={"name"}
+                      value={stepData.name}
+                      required={true}
+                      help={"If you don’t yet have a business name, just enter your name."}
                       onChange={handleInputChange} />
-      <ModalInputText name={"uei"} label={"UEI"} value={stepData.uei}
-                      help={"Your business will only have this if you have registered for a UEI (Unique Entity ID) on SAM.gov."}
+
+
+      <ModalInputText name={"owner"} label={"Owner(s)"} value={stepData.owner}
+                      help={"If you have multiple owners, please separate by comma."}
                       onChange={handleInputChange} />
-      <ModalInputSelect name={"legal_entity"} label={"Legal Structure"} value={stepData.legal_entity}
-                        options={legalEntityOptions} onChange={handleInputChange} />
-      <ModalInputText name={"owner"} label={"Owner(s)"} value={stepData.owner} onChange={handleInputChange} />
-      <ModalInputText name={"business_address_street"} label={"Business Address"} value={stepData.business_address_street}
+      <ModalInputSelect name={"industry"} label={"Industry"} value={stepData.legal_entity}
+                        options={industryOptions} onChange={handleInputChange} />
+      <div className={`${styles.hr}`}></div>
+      <ModalInputText name={"business_address_street1"} label={"Business Address Line One"} value={stepData.business_address_street1}
                       onChange={handleInputChange} />
-      <ModalInputText name={"business_address_street2"} label={"Address Line 2"} value={stepData.business_address_street2}
+      <ModalInputText name={"business_address_street2"} label={"Business Address Line One"} value={stepData.business_address_street2}
                       onChange={handleInputChange} />
       <div className={`${styles.group}`}>
         <ModalInputText name={"business_address_city"} label={"City"} value={stepData.business_address_city}
@@ -160,7 +170,10 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
                           options={businessAddressStateOptions} onChange={handleInputChange} />
       </div>
       <div className={`${styles.group}`}>
-        <ModalInputText name={"business_address_zip"} label={"Zip Code"} value={stepData.business_address_zip}
+        <ModalInputText name={"business_address_zip"}
+                        label={"Zip Code"}
+                        value={stepData.business_address_zip}
+                        required={true}
                         onChange={handleInputChange} />
         <ModalInputText name={"county"} label={"County"} value={stepData.county} onChange={handleInputChange} />
       </div>

@@ -3,14 +3,15 @@ import styles from "src/components/ModalInputText/ModalInputText.module.css";
 import { useTranslation } from "react-i18next";
 
 interface ModalInputTextProps {
-  name: string;
-  value: string;
-  label: string;
-  help?: string;
-  onChange: (name: string, value: string) => void;
+  name: string,
+  value: string,
+  label: string,
+  help?: string,
+  onChange: (name: string, value: string) => void,
+  required?: boolean
 }
 
-const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, help, onChange }) => {
+const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, help, onChange, required }) => {
   const { t } = useTranslation();
   console.log("ModalRadioInput value", value);
 
@@ -20,7 +21,7 @@ const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, hel
   };
 
   return (<div className={` ${styles.inputGroup}`}>
-    <label className={`${styles.inputLabel}`}>{label}</label>
+    <label className={`${styles.inputLabel}`}>{label} {required && <span className={`${styles.redStar}`}>*</span>}</label>
     {help && <div className={`${styles.inputHelp}`}>{help}</div>}
     <input name={name}
            value={value}
