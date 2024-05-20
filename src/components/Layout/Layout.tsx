@@ -43,7 +43,7 @@ const Layout = () => {
 
   return (<>
       <div className="grid-row" id="header__container" ref={headerRef}>
-        <div className="grid-col">
+        <div className={`grid-col ${styles.headerIndex}`}>
           <Header />
         </div>
       </div>

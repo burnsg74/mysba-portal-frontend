@@ -1,0 +1,293 @@
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F3F8FC;
+    z-index: -2;
+    padding: 0px 20px;
+}
+
+.banner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
+    max-width: 480px;
+    z-index: 2;
+    padding-top: 92px;
+    word-wrap: break-word;
+}
+
+.welcomeMessage {
+    font-family: var(--Font-Primary);
+    color: var(--Brand-Primary-SBA-Blue);
+    text-align: center;
+    padding-top: 5px;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.bold {
+    color: var(--Brand-Primary-SBA-Blue, #002E6D);
+    font-family: var(--Font-Primary);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.mysbaMessage {
+    font-family: var(--Font-Primary);
+    color: var(--Brand-Primary-SBA-Blue);
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    overflow-wrap: break-word;
+    margin-top: 6px;
+    max-width: 460px;
+}
+
+.cityscape {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    min-width: 1022px;
+}
+
+.cloudImage {
+    position: fixed;
+    top: -10%;
+    min-width: 1177px;
+    min-height: 252px;
+    z-index: 0;
+    overflow: hidden;
+}
+
+.footerBtn {
+    width: 100%;
+}
+
+.buttonGroup {
+    margin-top: 22px;
+    width: 100%;
+    gap: 16px;
+    display: flex;
+    justify-content: center;
+}
+
+.signupBtn {
+    align-items: center;
+    border: 2px;
+    box-shadow: inset 0 0 0 2px var(--Brand-Secondary-Bright-Blue);
+    color: var(--Brand-Secondary-Bright-Blue);
+    display: flex;
+    flex-shrink: 0;
+    max-width: 100px;
+    max-height: 38px;
+    padding: 12px 20px;
+    justify-content: center;
+    margin-right: 0;
+}
+
+.signupBtn:focus {
+    box-shadow: 0 0 0 3px #05fc;
+    border-radius: 2px;
+    color: var(--Brand-Secondary-Bright-Blue);
+}
+
+.loginBtn {
+    border: 2px;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 18px;
+    gap: 10px;
+    width: 100px;
+    height: 38px;
+    padding: 12px 20px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    padding: 0;
+}
+
+.usaNavContainer {
+    width: 100%;
+    margin: 0;
+    max-width: unset;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+.usaNavInner a {
+    display: block;
+    height: auto;
+    width: auto;
+}
+
+.left {
+    display: flex;
+    align-items: center;
+}
+
+.right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+}
+
+.usaBannerInner {
+    width: 100vw;
+    margin: 0;
+    max-width: unset;
+    justify-content: start;
+    padding-left: 16px;
+}
+
+.usaHeader {
+    position: sticky;
+    border-bottom: 1px solid lightgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    z-index: 2;
+}
+
+.usaBannerHeader {
+    text-align: left;
+}
+
+.pillButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--Alert-Info-Bar);
+    margin-right: 0 !important;
+}
+
+.usaLanguageContainer {
+    padding-right: 20px;
+}
+
+.pillButton img {
+    width: 20px;
+    height: auto;
+}
+
+.headerMenuIconContainer {
+    padding-left: 20px;
+    display: none;
+}
+
+.headerMenuIcon {
+    cursor: pointer;
+    width: 24px;
+    height: 24px;
+}
+
+.usaLogo {
+    height: 38px;
+    flex: unset;
+    display: block;
+}
+
+.usaLogoSm {
+    height: 38px;
+    flex: unset;
+    display: none;
+}
+
+@media screen and (max-width: 1023px) {
+    .headerMenuIconContainer {
+        display: block;
+    }
+
+    .usaLogoSm {
+        display: block;
+    }
+
+    .usaLogo {
+        display: none;
+    }
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    margin-left: auto;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    white-space: nowrap;
+    background-color: black;
+    color: var(--Base-white);
+    text-align: center;
+    padding: 8px;
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: auto;
+    right: 150%;
+    opacity: 0;
+    transition: opacity 0.08s ease-in-out;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
+
+.tooltip .tooltiptext::after {
+    content: '';
+    position: absolute;
+    width: 10px;
+    top: 50%;
+    left: 100%;
+    margin-top: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: transparent transparent transparent black;
+}
+
+.buttonStyle {
+    padding: 12px 20px;
+    background-color: #d54309;
+    border-radius: 4px;
+    overflow: hidden;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 10px;
+    border: none;
+    cursor: pointer;
+}
+
+.buttonStyle .buttonText {
+    text-align: center;
+    color: var(--Base-white);
+    font-size: 16px;
+    font-family: var(--Font-Secondary), serif;
+    font-weight: 700;
+    line-height: 14px;
+    word-wrap: break-word;
+}
+
+section {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    z-index: 2;
+}
