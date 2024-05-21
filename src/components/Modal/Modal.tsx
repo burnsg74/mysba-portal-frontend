@@ -18,6 +18,7 @@ interface ModalProps {
   contentMessage?: string;
   children?: React.ReactNode;
   footerContent?: React.ReactNode;
+  hideCloseButton?: boolean;
 }
 
 function useFocusTrap(ref: React.RefObject<HTMLElement>) {
@@ -71,6 +72,7 @@ const ModalComponent = ({
   contentMessage,
   children,
   footerContent,
+  hideCloseButton=false,
 }: ModalProps) => {
   const { t } = useTranslation();
   const modalRef = React.useRef(null);
@@ -92,23 +94,23 @@ const ModalComponent = ({
         <div ref={modalRef} className={`${styles.container}`}>
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
-            <span
-              className={`${styles.headerClose}`}
-              onClick={closeModal}
-              onKeyDown={event => {
-                if (event.key === "Enter") {
-                  closeModal();
-                }
-              }}
-              role="button"
-              tabIndex={0}
-            >
+            {!hideCloseButton && (<span
+                className={`${styles.headerClose}`}
+                onClick={closeModal}
+                onKeyDown={event => {
+                  if (event.key === "Enter") {
+                    closeModal();
+                  }
+                }}
+                role="button"
+                tabIndex={0}
+              >
               {" "}
-              {t("Close")}
-              <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
+                {t("Close")}
+                <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
                 <use xlinkHref="/assets/img/sprite.svg#close"></use>
               </svg>
-            </span>
+            </span>)}
           </div>
           {totalSteps > 0 && (
             <div className={`${styles.stepIndicatorContainer}`}>
