@@ -128,14 +128,16 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
 
   function formValidation() {
     let isValid = true;
+    let newErrors = {...errors};
     if (stepData.name.length < 1) {
-      setErrors({ ...errors, name: "Required Field" });
+      newErrors.name = 'Required Field';
       isValid = false;
     }
     if (!isValidZip(stepData.business_address_zip)) {
-      setErrors({ ...errors, business_address_zip: "Required Field" });
+      newErrors.business_address_zip = 'Required Field';
       isValid = false;
     }
+    setErrors(newErrors);
     return isValid;
   }
 
