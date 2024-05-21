@@ -24,7 +24,7 @@ const ModalInputSelect: React.FC<ModalInputSelectProps> = ({ name, value, option
       <label className={`${styles.inputLabel}`}>{label}</label>
       {help && <div className={`${styles.inputHelp}`}>{help}</div>}
     <select
-      className={`${styles.input}`}
+      className={`usa-select ${styles.input}`}
       name={name}
       value={value}
       onChange={handleChange}

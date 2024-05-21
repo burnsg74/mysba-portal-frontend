@@ -104,17 +104,51 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
     { value: "travel", label: "Travel & Tourism Wholesale" },
     { value: "other", label: "Other" }];
 
+  const [errors, setErrors] = useState({ name: '', business_address_zip: ''});
+
   const handleInputChange = (name: string, value: string) => {
     setStepData({ ...stepData, [name]: value });
-  };
+
+    if (name === "name") {
+      if (value.length < 1) {
+        setErrors({ ...errors, [name]: value ? '' : "Required Field" });
+      } else {
+        setErrors({ ...errors, [name]: '' });
+      }
+    }
+
+    if (name === "business_address_zip") {
+      if (isValidZip(value)) {
+        setErrors({ ...errors, [name]: '' });
+      } else {
+        setErrors({ ...errors, [name]: "Required Field" });
+      }
+    }
+  }
+
+  function formValidation() {
+    let isValid = true;
+    if (stepData.name.length < 1) {
+      setErrors({ ...errors, name: "Required Field" });
+      isValid = false;
+    }
+    if (!isValidZip(stepData.business_address_zip)) {
+      setErrors({ ...errors, business_address_zip: "Required Field" });
+      isValid = false;
+    }
+    return isValid;
+  }
+
+  function isValidZip(zip) {
+    return /^\d{5}(-\d{4})?$/.test(zip);
+  }
 
   function handleContinueBtnClick() {
-    console.log("Step1Modal handleContinueBtnClick", stepData);
+    if (!formValidation()) return;
     handleContinue(stepData);
   }
 
   function handleBackBtnClick() {
-    console.log("Step1Modal handleBackBtnClick", stepData);
     handleBack(stepData);
   }
 
@@ -150,6 +184,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
                       value={stepData.name}
                       required={true}
                       help={"If you don’t yet have a business name, just enter your name."}
+                      errorMessage={errors.name}
                       onChange={handleInputChange} />
 
 
@@ -174,6 +209,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
                         label={"Zip Code"}
                         value={stepData.business_address_zip}
                         required={true}
+                        errorMessage={errors.business_address_zip}
                         onChange={handleInputChange} />
         <ModalInputText name={"county"} label={"County"} value={stepData.county} onChange={handleInputChange} />
       </div>

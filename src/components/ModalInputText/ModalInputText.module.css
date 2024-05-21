@@ -6,6 +6,21 @@
     gap: 8px;
     text-align: start;
     width: 100%;
+    position: relative;
+}
+
+.inputGroup.error {
+    padding-left: 20px;
+}
+
+.inputGroup.error::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 4px;
+    background-color: #B50909;
 }
 
 .inputLabel {
@@ -40,5 +55,14 @@
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
+    line-height: normal;
+}
+
+.errorMessage {
+    color: var(--Error-error-dark);
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
     line-height: normal;
 }
