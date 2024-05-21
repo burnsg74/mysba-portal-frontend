@@ -21,16 +21,6 @@
     fill: var(--Text-Text);
 }
 
-.alertMessage {
-    color: var(--Text-Text);
-    font-family: var(--Font-Secondary);
-    font-size: 16px;
-    font-weight: 400;
-    padding-left: 16px;
-    padding-top: 4px;
-    text-align: left;
-}
-
 .alert-info {
     background: var(--Alert-Info-Background);
 }
@@ -53,4 +43,22 @@
 
 .alert-error::before {
     background-color: var(--Alert-Error-Bar);
+}
+
+.alertTitle {
+    color: var(--Text-Text);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
+}
+
+.alertMessage {
+    color: var(--Text-Text);
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-weight: 400;
+    padding-left: 16px;
+    text-align: left;
+    line-height: 150%;
 }

@@ -1,0 +1,49 @@
+.backBtn, .continueBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.inputContainer {
+    display: flex;
+    width: 600px;
+    padding: 0 40px;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.group {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.hr {
+    width: 100%;
+    height: 1px;
+    background: var(--Base-base-lighter);
+}
+
+
+.footerContainer{
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+}
+
+.footerButtonContainer {
+    display: flex;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.skipBtn {
+    color: var(--Primary-primary-darker);
+    text-decoration-line: underline;
+    cursor: pointer;
+}
