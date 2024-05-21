@@ -23,12 +23,14 @@ const LandingPage = () => {
     const { i18n } = useTranslation();
     const { t } = useTranslation();
 
-    const login = () => {
+    document.body.style.overflow = "hidden"
+
+    const login = () => { 
         oktaAuth.signInWithRedirect();
     };
 
     const signUp = () => {
-        console.log("Sign Up Clicked!"); // Dummy function for logging purposes
+        console.log("Sign Up Clicked!");
     };
 
     const switchLanguage = () => {
@@ -36,7 +38,7 @@ const LandingPage = () => {
         setLang(newLang);
         localStorage.setItem("lang", newLang);
         i18n.changeLanguage(newLang).then();
-      };
+    };
 
     useEffect(() => {
         if (authState?.isAuthenticated) {
@@ -160,13 +162,13 @@ const LandingPage = () => {
                     </div>
                     <div className={`${styles.mysbaMessage}`}>{t("Loans, certifications, and resources tailored to your business all in one place.")}</div>
                     <div className={`${styles.buttonGroup}`}>
-                        <button
+                        {location.href !== "https://prod.mysba.ussba.io/" && (<button
                             type="button"
                             className={`usa-button usa-button--outline  ${styles.signupBtn}`}
                             onClick={signUp}
                         >
                             {t("Sign Up")}
-                        </button>
+                        </button>)}
                         <button
                             type="button"
                             data-testid="modal1-next"

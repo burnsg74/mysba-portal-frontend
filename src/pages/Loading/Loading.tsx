@@ -51,15 +51,14 @@ const Loading = () => {
     try {
       results = await Promise.all(requests);
     } catch (err) {
-      console.error(err);
       oktaAuth.signOut().then(() => {
-        window.location.href = "/error.html";
+        navigate("/error");
       });
     }
     const crmData = results[0].data;
     if (!crmData) {
       oktaAuth.signOut().then(() => {
-        window.location.href = "/error.html";
+        navigate("/error");
       });
     }
 
