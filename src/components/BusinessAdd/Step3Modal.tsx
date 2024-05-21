@@ -85,11 +85,11 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
     return isValid;
   }
 
-  function isNineDigitNumber(value) {
+  function isNineDigitNumber(value: string) {
     return /^\d{9}$/.test(String(value));
   }
 
-  function isTwelveChars(value) {
+  function isTwelveChars(value: string) {
     return (value.length === 12)
   }
 

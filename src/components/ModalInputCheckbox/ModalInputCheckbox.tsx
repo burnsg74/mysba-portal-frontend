@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React  from "react";
 import styles from "src/components/ModalInputCheckbox/ModalInputCheckbox.module.css";
 import { useTranslation } from "react-i18next";
 
@@ -11,7 +11,7 @@ interface ModalInputCheckboxProps {
   onChange: (name: string, value: string) => void;
 }
 
-const ModalInputCheckbox: React.FC<ModalInputCheckboxProps> = ({ id, name, value, label, help, onChange }) => {
+const ModalInputCheckbox: React.FC<ModalInputCheckboxProps> = ({ id, name, value, label, onChange }) => {
   const { t } = useTranslation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {

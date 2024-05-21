@@ -139,7 +139,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
     return isValid;
   }
 
-  function isValidZip(zip) {
+  function isValidZip(zip: string) {
     return /^\d{5}(-\d{4})?$/.test(zip);
   }
 

@@ -13,7 +13,7 @@ interface ModalInputRadioProps {
   disabled?: boolean;
 }
 
-const ModalInputRadio: React.FC<ModalInputRadioProps> = ({ id, name, value, groupValue, label, help, onChange, disabled=false }) => {
+const ModalInputRadio: React.FC<ModalInputRadioProps> = ({ id, name, value, groupValue, label, onChange, disabled=false }) => {
   const { t } = useTranslation();
 
   const handleClick = () => {

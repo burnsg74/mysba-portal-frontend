@@ -1,6 +1,6 @@
 import React  from "react";
 import styles from "src/components/ModalInputSelect/ModalInputSelect.module.css";
-import { useTranslation } from "react-i18next";
+// import { useTranslation } from "react-i18next";
 
 interface Option { value: string; label: string; }
 interface ModalInputSelectProps {
@@ -13,7 +13,7 @@ interface ModalInputSelectProps {
 }
 
 const ModalInputSelect: React.FC<ModalInputSelectProps> = ({ name, value, options, label, help, onChange }) => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     console.log("ModalInputSelect Changed", name, event.target.value);

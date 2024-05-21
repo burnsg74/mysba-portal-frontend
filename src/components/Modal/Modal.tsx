@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React, { useEffect } from "react";
 import styles from "src/components/Modal/Modal.module.css";
 import { useTranslation } from "react-i18next";
 
