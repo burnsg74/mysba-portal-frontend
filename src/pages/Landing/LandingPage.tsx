@@ -30,7 +30,7 @@ const LandingPage = () => {
     };
 
     const signUp = () => {
-        console.log("Sign Up Clicked!");
+        oktaAuth.signInWithRedirect();
     };
 
     const switchLanguage = () => {
