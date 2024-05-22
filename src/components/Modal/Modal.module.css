@@ -83,11 +83,11 @@
   overflow-y: auto;
   scrollbar-width:none;
   padding-top:24px;
-  padding-left:48px;
-  padding-right:48px;
+  padding-left:40px;
+  padding-right:40px;
   gap: 16px;
   text-align: center;
-  margin-bottom:92px;
+  margin-bottom:131px;
 }
 
 .contentTitle {

@@ -120,8 +120,10 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
     if (name === "business_address_zip") {
       if (isValidZip(value)) {
         setErrors({ ...errors, [name]: '' });
-      } else {
+      } else if (value.length < 1) {
         setErrors({ ...errors, [name]: "Required Field" });
+      } else {
+        setErrors({ ...errors, [name]: "Not a valid zip code" });
       }
     }
   }

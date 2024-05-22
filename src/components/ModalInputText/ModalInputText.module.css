@@ -47,6 +47,7 @@
     stroke-width: 1px;
     stroke: var(--Text-Text);
     width: 100%;
+    max-width: unset;
 }
 
 .redStar {
