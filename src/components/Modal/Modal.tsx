@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "src/components/Modal/Modal.module.css";
 import { useTranslation } from "react-i18next";
 
@@ -75,8 +75,16 @@ const ModalComponent = ({
   hideCloseButton=false,
 }: ModalProps) => {
   const { t } = useTranslation();
-  const modalRef = React.useRef(null);
-  useFocusTrap(modalRef);
+  const footerRef = useRef<HTMLDivElement>(null);
+  const contentRef = useRef<HTMLDivElement>(null);
+  useFocusTrap(contentRef);
+
+  // Adjust the margin of the content to accommodate the fix footer size
+  useEffect(() => {
+    if (footerRef.current && contentRef.current) {
+      contentRef.current.style.marginBottom = `${footerRef.current.getBoundingClientRect().height + 40}px`
+    }
+  }, [footerContent])
 
   const closeModal = () => {
     if (onClose) onClose();
@@ -91,7 +99,7 @@ const ModalComponent = ({
   return (
     <>
       <div className={`${styles.overlay}`}>
-        <div ref={modalRef} className={`${styles.container}`}>
+        <div className={`${styles.container}`}>
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
             {!hideCloseButton && (<span
@@ -133,13 +141,13 @@ const ModalComponent = ({
               </div>
             </div>
           )}
-          <div className={`${styles.content}`}>
+          <div ref={contentRef} className={`${styles.content}`}>
             {ImageAndAlt && <img src={ImageAndAlt.image} alt={ImageAndAlt.alt} className={`${styles.imageSize}`} />}
             {contentTitle && <div className={`${styles.contentTitle}`}>{t(contentTitle)}</div>}
             {contentMessage && <div className={`${styles.contentMessage}`}>{t(contentMessage)}</div>}
             {children}
           </div>
-          {footerContent && <div className={`${styles.footer}`}>{footerContent}</div>}
+          {footerContent && <div ref={footerRef} className={`${styles.footer}`}>{footerContent}</div>}
         </div>
       </div>
     </>

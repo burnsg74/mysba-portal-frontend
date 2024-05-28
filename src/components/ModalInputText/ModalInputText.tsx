@@ -15,8 +15,6 @@ interface ModalInputTextProps {
 const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, help, onChange, required, errorMessage="" }) => {
   // const { t } = useTranslation();
 
-  console.log(name, value, required, errorMessage)
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(name, event.target.value);
   };
