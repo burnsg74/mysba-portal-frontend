@@ -25,7 +25,7 @@ const LandingPage = () => {
 
     document.body.style.overflow = "hidden"
 
-    const login = () => { 
+    const login = () => {
         oktaAuth.signInWithRedirect();
     };
 
@@ -40,11 +40,21 @@ const LandingPage = () => {
         i18n.changeLanguage(newLang).then();
     };
 
-    useEffect(() => {
-        if (authState?.isAuthenticated) {
-            navigate("/dashboard");
+    const handleAuthStateChange = async () => {
+        if (authState?.isAuthenticated === undefined) {
+            return;
         }
-    }, [authState, navigate]);
+        if (authState?.isAuthenticated) {
+            navigate("/loading");
+            return;
+        }
+
+        await oktaAuth.signInWithRedirect();
+    };
+
+    useEffect(() => {
+        handleAuthStateChange().then();
+    }, [authState?.isAuthenticated]);
 
     useEffect(() => {
         dispatch(setNav(false))
