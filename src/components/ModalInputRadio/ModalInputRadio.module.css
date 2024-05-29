@@ -33,6 +33,10 @@
     width: 100%;
 }
 
+.input+[class*=__label]::before {
+    left: 20px;
+}
+
 .value {
     color: var(--Brand-Primary-SBA-Blue);
     font-family: var(--Font-Primary);
