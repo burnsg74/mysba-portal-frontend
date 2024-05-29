@@ -6,11 +6,11 @@
 }
 
 .inputContainer {
+    align-items: flex-start;
+    align-self: stretch;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    gap: 20px;
-    align-self: stretch;
+    gap: 30px;
 }
 
 .input {

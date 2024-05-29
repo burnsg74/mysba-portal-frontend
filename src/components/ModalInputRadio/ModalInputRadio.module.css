@@ -18,7 +18,7 @@
     border: 1px solid var(--Base-base-lighter, #DCDEE0);
     background: var(--Base-white, #FFFFFF);
     box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
-
+    margin-bottom: 7px;
 }
 
 .label {
@@ -31,6 +31,10 @@
     line-height: 120%;
     text-align: start;
     width: 100%;
+}
+
+.input+[class*=__label]::before {
+    left: 20px;
 }
 
 .value {
