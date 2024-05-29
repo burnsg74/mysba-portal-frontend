@@ -526,7 +526,7 @@ textarea:not([disabled]):focus {
 }
 
 .usa-radio__input--tile+[class*=__label]::before {
-    left: 20px;
+    left: unset;
     padding-right: 16px;
 }
 
