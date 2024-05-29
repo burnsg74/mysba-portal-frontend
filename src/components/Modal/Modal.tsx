@@ -121,29 +121,31 @@ const ModalComponent = ({
             </span>)}
           </div>
           {totalSteps > 0 && (<div className={`${styles.stepIndicatorContainer}`}>
-              <div
-                className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
-                aria-label="progress"
-              >
-                <ol className={`usa-step-indicator__segments ${styles.usaStepIndicatorSegments}`}>
-                  {stepsArray.map((stepStatus, index) => (<li
-                      key={index}
-                      onClick={stepStatus === "complete" ? prevModal : undefined}
-                      role={stepStatus === "complete" ? "button" : undefined}
-                      tabIndex={stepStatus === "complete" ? 0 : undefined}
-                      className={`usa-step-indicator__segment ${styles[`usa-step-indicator__segment--${stepStatus}`]}`}
-                      data-testid="step-indicator"
-                    />))}
-                </ol>
-              </div>
-            </div>)}
-          <div ref={contentRef} className={`${styles.contentHeader}`}>
-            {ImageAndAlt && <img src={ImageAndAlt.image} alt={ImageAndAlt.alt} className={`${styles.imageSize}`} />}
-            {contentTitle && <div className={`${styles.contentTitle}`}>{t(contentTitle)}</div>}
-            {contentMessage && <div className={`${styles.contentMessage}`}>{t(contentMessage)}</div>}
-          </div>
-          <div ref={contentRef} className={`${styles.content}`}>
-            {children}
+            <div
+              className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
+              aria-label="progress"
+            >
+              <ol className={`usa-step-indicator__segments ${styles.usaStepIndicatorSegments}`}>
+                {stepsArray.map((stepStatus, index) => (<li
+                  key={index}
+                  onClick={stepStatus === "complete" ? prevModal : undefined}
+                  role={stepStatus === "complete" ? "button" : undefined}
+                  tabIndex={stepStatus === "complete" ? 0 : undefined}
+                  className={`usa-step-indicator__segment ${styles[`usa-step-indicator__segment--${stepStatus}`]}`}
+                  data-testid="step-indicator"
+                />))}
+              </ol>
+            </div>
+          </div>)}
+          <div ref={contentRef} className={`${styles.contentContainer}`}>
+            <div className={`${styles.contentHeader}`}>
+              {ImageAndAlt && <img src={ImageAndAlt.image} alt={ImageAndAlt.alt} className={`${styles.imageSize}`} />}
+              {contentTitle && <div className={`${styles.contentTitle}`}>{t(contentTitle)}</div>}
+              {contentMessage && <div className={`${styles.contentMessage}`}>{t(contentMessage)}</div>}
+            </div>
+            <div className={`${styles.content}`}>
+              {children}
+            </div>
           </div>
           {footerContent && <div ref={footerRef} className={`${styles.footer}`}>{footerContent}</div>}
         </div>
