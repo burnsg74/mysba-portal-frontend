@@ -60,8 +60,9 @@ const Certifications = () => {
     navigate("/certification/1", { state: { selectedOption } });
   };
 
-  const isModal1Open = location.pathname === "/certification/1";
-  const isModal2Open = location.pathname === "/certification/2";
+  const isApplyCertModal1Open = location.pathname === "/certification/1";
+  const isApplyCertModal2Open = location.pathname === "/certification/2";
+  const isLinkCertModalOpen = location.pathname === "/certification/link-certification";
 
   const closeModal = () => navigate("/certification");
   const prevModal = () => navigate("/certification/1");
@@ -120,8 +121,7 @@ const Certifications = () => {
   </>);
 
   const linkCert = () => {
-    dispatch(setNav(false));
-    navigate("/link-launchpad");
+    navigate("/certification/link-certification");
   };
 
   return (<>
@@ -167,7 +167,7 @@ const Certifications = () => {
             </div>
           </div>))}
     </div>
-    {isModal1Open && (<Modal
+    {isApplyCertModal1Open && (<Modal
       title={t("Apply for a Certification")}
       onClose={closeModal}
       totalSteps={2}
@@ -285,8 +285,8 @@ const Certifications = () => {
         </div>
       </>
     </Modal>)}
-    {isModal2Open && (<Modal
-      title={t("Apply for a Certification")}
+    {isApplyCertModal2Open && (<Modal
+      title={t("Link a Certification")}
       onClose={closeModal}
       prevModal={prevModal}
       totalSteps={2}
@@ -296,6 +296,18 @@ const Certifications = () => {
       contentMessage={t(selectedCert.message) || ""}
       footerContent={modal2FooterContent}
     />)}
+    {isLinkCertModalOpen && (<Modal
+      title={t("Apply for a Certification")}
+      onClose={closeModal}
+      prevModal={prevModal}
+      totalSteps={2}
+      completedSteps={1}
+      ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
+      contentTitle={t(selectedCert.title) || ""}
+      contentMessage={t("Enter the UEI associated with your business and certification.")}
+      footerContent={modal2FooterContent}
+    >
+      </Modal>)}
   </>);
 };
 
