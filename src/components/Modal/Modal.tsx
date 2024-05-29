@@ -103,48 +103,46 @@ const ModalComponent = ({
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
             {!hideCloseButton && (<span
-                className={`${styles.headerClose}`}
-                onClick={closeModal}
-                onKeyDown={event => {
-                  if (event.key === "Enter") {
-                    closeModal();
-                  }
-                }}
-                role="button"
-                tabIndex={0}
-              >
+              className={`${styles.headerClose}`}
+              onClick={closeModal}
+              onKeyDown={event => {
+                if (event.key === "Enter") {
+                  closeModal();
+                }
+              }}
+              role="button"
+              tabIndex={0}
+            >
               {" "}
-                {t("Close")}
-                <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
+              {t("Close")}
+              <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
                 <use xlinkHref="/assets/img/sprite.svg#close"></use>
               </svg>
             </span>)}
           </div>
-          {totalSteps > 0 && (
-            <div className={`${styles.stepIndicatorContainer}`}>
+          {totalSteps > 0 && (<div className={`${styles.stepIndicatorContainer}`}>
               <div
                 className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
                 aria-label="progress"
               >
                 <ol className={`usa-step-indicator__segments ${styles.usaStepIndicatorSegments}`}>
-                  {stepsArray.map((stepStatus, index) => (
-                    <li
+                  {stepsArray.map((stepStatus, index) => (<li
                       key={index}
                       onClick={stepStatus === "complete" ? prevModal : undefined}
                       role={stepStatus === "complete" ? "button" : undefined}
                       tabIndex={stepStatus === "complete" ? 0 : undefined}
                       className={`usa-step-indicator__segment ${styles[`usa-step-indicator__segment--${stepStatus}`]}`}
                       data-testid="step-indicator"
-                    />
-                  ))}
+                    />))}
                 </ol>
               </div>
-            </div>
-          )}
-          <div ref={contentRef} className={`${styles.content}`}>
+            </div>)}
+          <div ref={contentRef} className={`${styles.contentHeader}`}>
             {ImageAndAlt && <img src={ImageAndAlt.image} alt={ImageAndAlt.alt} className={`${styles.imageSize}`} />}
             {contentTitle && <div className={`${styles.contentTitle}`}>{t(contentTitle)}</div>}
             {contentMessage && <div className={`${styles.contentMessage}`}>{t(contentMessage)}</div>}
+          </div>
+          <div ref={contentRef} className={`${styles.content}`}>
             {children}
           </div>
           {footerContent && <div ref={footerRef} className={`${styles.footer}`}>{footerContent}</div>}

@@ -75,6 +75,15 @@
   order: 2;
 }
 
+.contentHeader {
+  display: flex;
+  max-width: 600px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
 .content {
   align-items: center;
   display: flex;
@@ -85,7 +94,7 @@
   overflow-y: auto;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 24px;
+  padding-top: 20px;
   scrollbar-width: none;
   text-align: center;
 }
