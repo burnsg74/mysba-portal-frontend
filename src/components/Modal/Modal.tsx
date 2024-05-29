@@ -82,7 +82,7 @@ const ModalComponent = ({
   // Adjust the margin of the content to accommodate the fix footer size
   useEffect(() => {
     if (footerRef.current && contentRef.current) {
-      contentRef.current.style.marginBottom = `${footerRef.current.getBoundingClientRect().height + 40}px`
+      contentRef.current.style.paddingBottom = `${footerRef.current.getBoundingClientRect().height + 40}px`
     }
   }, [footerContent])
 
