@@ -48,8 +48,10 @@ const LandingPage = () => {
             navigate("/loading");
             return;
         }
-
-        await oktaAuth.signInWithRedirect();
+        if (location.pathname !== "/") {
+            await oktaAuth.signInWithRedirect();
+        }
+        
     };
 
     useEffect(() => {
