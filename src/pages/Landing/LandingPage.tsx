@@ -30,7 +30,7 @@ const LandingPage = () => {
     };
 
     const signUp = () => {
-        oktaAuth.signInWithRedirect();
+        window.location.assign("https://login.dev.mysba.ussba.io/signin/register")
     };
 
     const switchLanguage = () => {
