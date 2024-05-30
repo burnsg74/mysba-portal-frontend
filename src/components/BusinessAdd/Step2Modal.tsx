@@ -108,24 +108,6 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
 
   const handleInputChange = (name: string, value: string) => {
     setStepData({ ...stepData, [name]: value });
-
-    if (name === "name") {
-      if (value.length < 1) {
-        setErrors({ ...errors, [name]: value ? '' : "Required Field" });
-      } else {
-        setErrors({ ...errors, [name]: '' });
-      }
-    }
-
-    if (name === "business_address_zip") {
-      if (isValidZip(value)) {
-        setErrors({ ...errors, [name]: '' });
-      } else if (value.length < 1) {
-        setErrors({ ...errors, [name]: "Required Field" });
-      } else {
-        setErrors({ ...errors, [name]: "Not a valid zip code" });
-      }
-    }
   }
 
   function formValidation() {
@@ -162,6 +144,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
 
   return (<Modal
     title={t("Add a Business")}
+    prevModal={handleBackBtnClick}
     onClose={closeModal}
     totalSteps={4}
     completedSteps={1}

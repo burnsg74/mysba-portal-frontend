@@ -88,9 +88,9 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
     setCurrentStep(currentStep + 1);
   };
 
-  const handleBack = (stepData: {}) => {
+  const handleBack = (stepData: {}, step: number = 1) => {
     setBusinessData({ ...businessData, ...stepData });
-    setCurrentStep(currentStep - 1);
+    setCurrentStep(currentStep - step);
   };
 
   function StepSelector(currentStep: number) {

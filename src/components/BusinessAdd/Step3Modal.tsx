@@ -55,20 +55,6 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
 
   const handleInputChange = (name: string, value: string) => {
     setStepData({ ...stepData, [name]: value });
-    if (name === "ein") {
-      if (isNineDigitNumber(value) || value === ''){
-        setErrors({ ...errors, ein: '' });
-      } else {
-        setErrors({ ...errors, ein: "Your EIN must be a 9 digit number" });
-      }
-    }
-    if (name === "uei") {
-      if (isTwelveChars(value) || value === ''){
-        setErrors({ ...errors, uei: '' });
-      } else {
-        setErrors({ ...errors, uei: "Your UEI must be 12 characters long" });
-      }
-    }
   };
 
   function formValidation() {
@@ -98,6 +84,11 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
     handleContinue(stepData);
   }
 
+  function handleSkipClick() {
+    setStepData({ ein: "", uei: "", legal_entity: "" });
+    handleContinue(stepData);
+  }
+
   function handleBackBtnClick() {
     handleBack(stepData);
   }
@@ -108,6 +99,7 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
 
   return (<Modal
     title={t("Add a Business")}
+    prevModal={handleBackBtnClick}
     onClose={closeModal}
     totalSteps={4}
     completedSteps={2}
@@ -134,7 +126,7 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
         <div>
           <a
             className={`${styles.skipBtn}`}
-            onClick={() => handleContinueBtnClick()}>Skip</a>
+            onClick={() => handleSkipClick()}>Skip</a>
         </div>
       </div>
     </>)}
