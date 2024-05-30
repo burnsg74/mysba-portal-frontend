@@ -25,12 +25,12 @@ const LandingPage = () => {
 
     document.body.style.overflow = "hidden"
 
-    const login = () => { 
+    const login = () => {
         oktaAuth.signInWithRedirect();
     };
 
     const signUp = () => {
-        oktaAuth.signInWithRedirect();
+        window.location.assign("https://login.dev.mysba.ussba.io/signin/register")
     };
 
     const switchLanguage = () => {
@@ -40,11 +40,23 @@ const LandingPage = () => {
         i18n.changeLanguage(newLang).then();
     };
 
-    useEffect(() => {
-        if (authState?.isAuthenticated) {
-            navigate("/dashboard");
+    const handleAuthStateChange = async () => {
+        if (authState?.isAuthenticated === undefined) {
+            return;
         }
-    }, [authState, navigate]);
+        if (authState?.isAuthenticated) {
+            navigate("/loading");
+            return;
+        }
+        if (location.pathname !== "/") {
+            await oktaAuth.signInWithRedirect();
+        }
+        
+    };
+
+    useEffect(() => {
+        handleAuthStateChange().then();
+    }, [authState?.isAuthenticated]);
 
     useEffect(() => {
         dispatch(setNav(false))

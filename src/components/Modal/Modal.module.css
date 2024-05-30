@@ -74,19 +74,28 @@
   gap: 5px;
   order: 2;
 }
-
+.contentContainer {
+  overflow-y: auto;
+  scrollbar-width: none;
+}
+.contentHeader {
+  display: flex;
+  max-width: 600px;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  align-self: stretch;
+}
 .content {
   align-items: center;
   display: flex;
   flex-direction: column;
   gap: 16px;
   justify-content: start;
-  margin-bottom: 131px;
-  overflow-y: auto;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 24px;
-  scrollbar-width: none;
+  padding-top: 20px;
   text-align: center;
 }
 
