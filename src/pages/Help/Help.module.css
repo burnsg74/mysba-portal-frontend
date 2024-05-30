@@ -1,5 +1,10 @@
 .container {
-    margin: 40px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    gap: 40px;
+    padding: 40px;
 }
 
 .grid-row {

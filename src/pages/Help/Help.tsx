@@ -2,11 +2,15 @@ import React from "react";
 import styles from "src/pages/Help/Help.module.css";
 import { FrequentlyAskedQuestions } from "src/utils/frequentlyAskedQuestions";
 import { useTranslation } from "react-i18next";
+import LocalResources from "src/components/LocalResources/LocalResources";
 
 const Help = () => {
   const { t } = useTranslation();
-  return (<div className={`main-container`}>
-      <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>
+  return (<div className={`${styles.container}`}>
+    <LocalResources />
+    <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>
+    <div>
+
       {FrequentlyAskedQuestions.map((faq) => (<div key={faq.id} className="usa-accordion usa-accordion--bordered">
           <h4 className="usa-accordion__heading">
             <button
@@ -32,6 +36,7 @@ const Help = () => {
             </div>
           </div>
         </div>))}
+    </div>
       <div
         className={`usa-alert usa-alert--info ${styles.alertCustomContainer}`}
       >
