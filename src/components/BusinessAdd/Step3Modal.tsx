@@ -58,15 +58,19 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
   };
 
   function formValidation() {
+    let newErrors = {};
     let isValid = true;
     if (!(isNineDigitNumber(stepData.ein)  || stepData.ein === '')){
       console.log('formValidation', stepData.ein)
-      setErrors({ ...errors, ein: "Your EIN must be a 9 digit number" });
+      newErrors = { ...newErrors, ein: "Your EIN must be a 9 digit number" };
       isValid = false;
     }
     if (!(isTwelveChars(stepData.uei) || stepData.uei === '')){
-      setErrors({ ...errors, uei: "Your UEI must be 12 characters long" });
+      newErrors = { ...newErrors, uei: "Your UEI must be 12 characters long" };
       isValid = false;
+    }
+    if (!isValid) {
+      setErrors({ ...errors, ...newErrors });
     }
     return isValid;
   }
