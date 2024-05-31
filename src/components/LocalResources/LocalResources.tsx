@@ -14,46 +14,39 @@ const LocalResources = () => {
       "name"     : "Seattle District",
       "map"      : "https://www.sba.gov/sites/default/files/2022-06/SBA_DOMap_WA_Seattle.svg",
       "website"  : "https://www.sba.gov/district/seattle",
+      "contact"  : "https://www.sba.gov/contact/contact_your_district_office?district=10",
       "office_directory": "info@sba.gov",
       "twitter": "https://www.sba.gov/district/seattle",
       "linkedin": "https://www.sba.gov/district/seattle",
+      "guide": "https://www.sba.gov/district/seattle/doing-business-seattle-district"
     },
     "offices": [
       {
         "title": "Seattle - Main office",
+        "image": "https://www.sba.gov/sites/default/files/styles/district_office_icon/public/2022-11/district-office-icon-2022.png.webp?itok=B9bk7nGC",
+        "appointment_only": true,
+        "phone": "503-326-2682",
+        "address": "419 SW 11th Avenue \nSuite 310 \nSeattle, WA 97205"
       },
       {
-        "title": "Seattle - Main office2",
-      }
-      ,
-      {
-        "title": "Seattle - Main office3",
+        "title": "Spokane",
+        "image": "https://www.sba.gov/sites/default/files/styles/district_office_icon/public/2022-11/branch-office-icon.png.webp?itok=vwy3ufUc",
+        "appointment_only": true,
+        "phone": "453-326-1231",
+        "address": "132451 11th Avenue \nSuite 310 \nSpokane, WA 97191"
       }
     ]
-
-//       "name": "Seattle - Main office",
-//       "appointmentOnly": true,
-//       "phone": "503-326-2682",
-//       "address": {
-//         "street": "419 SW 11th Avenue",
-//         "suite": "Suite 310",
-//         "city": "Seattle",
-//         "state": "WA",
-//         "zip": "97205"
-//       }
-//     }
   };
   const [data, setData] = useState(mockData);
-  console.log(data);
 
   return (<>
     <div className={`${styles.localResourcesContainer}`}>
       {/* Title Row */}
-      <div className={`grid-row ${styles.titleRow}`}>
-        <div className={`grid-col ${styles.title}`}>
+      <div className={`${styles.titleRow}`}>
+        <div className={`${styles.title}`}>
           Local Resources
         </div>
-        <div className={`grid-col-auto ${styles.titleZipContainer}`}>
+        <div className={` ${styles.titleZipContainer}`}>
           <label className={`${styles.titleZipLabel}`}>
             Zip Code
           </label>
@@ -71,7 +64,8 @@ const LocalResources = () => {
       </div>
 
       {data && data.zip_code && (<>
-        <div className={`grid-row ${styles.bodyDistrictCard}`}>
+        <div className={`${styles.localResourcesContentContainer}`}>
+          <div className={`${styles.bodyDistrictCard}`}>
           <div className={`${styles.bodyDistrictCardImgContainer}`}>
             <img
               className={`${styles.bodyDistrictCardImg}`}
@@ -86,7 +80,7 @@ const LocalResources = () => {
               </a>
             </div>
             <div className={`${styles.bodyDistrictCardDetailsLinksContainer}`}>
-              <div className={`grid-row ${styles.bodyDistrictCardDetailsLinksGroup}`}>
+              <div className={`${styles.bodyDistrictCardDetailsLinksGroup}`}>
                 <svg
                   className={`usa-icon ${styles.launchIcon}`}
                   aria-hidden="true"
@@ -96,6 +90,8 @@ const LocalResources = () => {
                   <use xlinkHref="/assets/img/sprite.svg#launch"></use>
                 </svg>
                 <a href={data.district.website} target="_blank"> Website </a>
+              </div>
+              <div className={`${styles.bodyDistrictCardDetailsLinksGroup}`}>
                 <svg
                   className={`usa-icon ${styles.launchIcon}`}
                   aria-hidden="true"
@@ -106,7 +102,7 @@ const LocalResources = () => {
                 </svg>
                 <a href={"mailto:" + data.district.office_directory}>Office Directory</a>
               </div>
-              <div className={`grid-rwo ${styles.bodyDistrictCardDetailsLinksGroup}`}>
+              <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
                 <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path
                     d="M11.9047 8.46958L19.3513 0H17.5873L11.1187 7.35251L5.956 0H0L7.80867 11.1194L0 19.9999H1.764L8.59067 12.2338L14.044 19.9999H20M2.40067 1.30158H5.11067L17.586 18.7623H14.8753"
@@ -118,37 +114,39 @@ const LocalResources = () => {
                   </defs>
                 </svg>
                 <a href={data.district.twitter} target="_blank"> Follow us on X </a>
+              </div>
+              <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
                 <img src={linkedInLogo} alt="linkedIn logo" className={styles.linkedInLogo} />
                 <a href={data.district.linkedin} target="_blank"> Follow us on LinkedIn </a>
               </div>
             </div>
-            <button type="button" className={`usa-button ${styles.linkCertificationBtn}`}>
-              {t("Make an Appointment")}
-              <svg
-                className={`usa-icon ${styles.launchIcon}`}
-                aria-hidden="true"
-                focusable="false"
-              >
-                <title>{t("Open in a new window")}</title>
-                <use xlinkHref="/assets/img/sprite.svg#launch"></use>
-              </svg>
-            </button>
+            <a href="https://www.sba.gov/contact/contact_your_district_office?district=10"
+               className={`${styles.districtContactLink}`}
+               target="_blank"
+               rel="noopener noreferrer">
+              <button type="button" className={`usa-button ${styles.linkCertificationBtn}`}>
+                {t("Make an Appointment")}
+                <svg
+                  className={`usa-icon ${styles.launchIcon}`}
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <title>{t("Open in a new window")}</title>
+                  <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+                </svg>
+              </button>
+            </a>
           </div>
         </div>
-
-        <div className={`grid-row`}>
-          {data.offices.map((office, index) => (
-            <div key={index} className={`${styles.officeCardsContainer}`}>
-              <div className={`grid-col-6 ${styles.officeCard}`}>
-                <div className={`grid-row ${styles.officeCardTitle}`}>
-                  <div className={`grid-col-auto ${styles.officeCardTitleText}`}>
+          <div  className={`${styles.officeCardsContainer}`}>
+            {data.offices.map((office, index) => (<div key={index} className={`${styles.officeCard}`}>
                     <img
-                      src={buildingIcon}
+                      className={`${styles.officeCardsImg}`}
+                      src={office.image}
                       alt="office icon" />
-                  </div>
-                  <div className={`grid-col ${styles.officeCardDetailsContainer}`}>
+                  <div className={`${styles.officeCardDetailsContainer}`}>
                     <div className={`${styles.officeCardDetailsTitle}`}>{office.title}</div>
-                    <div className={`${styles.officeCardDetailsAptOnly}`}>Appointment Only</div>
+                    {office.appointment_only && <div className={`${styles.officeCardDetailsAptOnly}`}>Appointment Only</div>}
                     <div className={`${styles.officeCardDetailsPhone}`}>
                       <svg
                         className={`usa-icon ${styles.launchIcon}`}
@@ -158,7 +156,7 @@ const LocalResources = () => {
                         <title>{t("Open in email")}</title>
                         <use xlinkHref="/assets/img/sprite.svg#phone"></use>
                       </svg>
-                      503-326-2682
+                      <a href={`tel:${office.phone}`}>{office.phone}</a>
                     </div>
                     <div className={`${styles.officeCardDetailsAddress}`}>
                       <svg
@@ -169,32 +167,35 @@ const LocalResources = () => {
                         <title>{t("Open in email")}</title>
                         <use xlinkHref="/assets/img/sprite.svg#map"></use>
                       </svg>
-                      419 SW 11th Avenue <br />
-                      Suite 310 <br />
-                      Seattle, WA 97205
+                      <a href={'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(office.address)} target="_blank" rel="noopener noreferrer">
+                        {office.address}
+                      </a>
                     </div>
                   </div>
-                </div>
               </div>
-            </div>))}
+              ))}
         </div>
         <div className={`${styles.guideContainer}`}>
           <div className={`${styles.guideTitle}`}>
             Explore your local business guide
           </div>
           <div className={`${styles.guideButton}`}>
-            <button type="button" className={`usa-button ${styles.linkCertificationBtn}`}>
-              {t("Local Business Guide")}
-              <svg
-                className={`usa-icon ${styles.launchIcon}`}
-                aria-hidden="true"
-                focusable="false"
-              >
-                <title>{t("Open in a new window")}</title>
-                <use xlinkHref="/assets/img/sprite.svg#launch"></use>
-              </svg>
-            </button>
+            <a href={data.district.guide} target="_blank"
+               rel="noopener noreferrer">
+              <button type="button" className={`usa-button ${styles.linkCertificationBtn}`}>
+                {t("Local Business Guide")}
+                <svg
+                  className={`usa-icon ${styles.launchIcon}`}
+                  aria-hidden="true"
+                  focusable="false"
+                >
+                  <title>{t("Open in a new window")}</title>
+                  <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+                </svg>
+              </button>
+            </a>
           </div>
+        </div>
         </div>
       </>)}
     </div>

@@ -2,11 +2,14 @@
     align-self: stretch;
     display: flex;
     flex-direction: column;
-    gap: 41px;
+    gap: 40px;
 }
 
 .titleRow {
+    display: flex;
     align-items: flex-end;
+    gap: 40px;
+    align-self: stretch;
 }
 
 .title {
@@ -40,6 +43,14 @@
     height: 40px;
 }
 
+.localResourcesContentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    align-self: stretch;
+}
+
 .BodyContainer {
     display: flex;
     flex-direction: column;
@@ -56,6 +67,10 @@
     display: flex;
     gap: 20px;
     padding: 20px;
+    min-width: 208px;
+    @media (max-width: 1364px) {
+        flex-direction: column;
+    }
 }
 
 .bodyDistrictCardImgContainer {
@@ -98,7 +113,6 @@
 }
 
 .bodyDistrictCardDetailsLinksContainer {
-    flex-direction: column;
     align-items: flex-start;
     display: flex;
     gap: 8px;
@@ -130,19 +144,23 @@
     align-items: flex-start;
     align-self: stretch;
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
 }
 
 .officeCard {
     align-items: flex-start;
+    align-self: stretch;
+    background: #FFF;
     border-radius: 8px;
     border: 1px solid var(--Base-base-lighter);
     box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+    box-sizing: border-box;
     display: flex;
     flex: 1 0 0;
     gap: 20px;
+    min-width: 310px;
     padding: 20px;
-    margin: 10px;
 }
 
 .officeCardDetailsContainer {
@@ -150,6 +168,7 @@
     flex-direction: column;
     align-items: flex-start;
     gap: 8px;
+    overflow: hidden;
 }
 
 .officeCardDetailsTitle {
@@ -158,6 +177,11 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    max-width: 100%;
+    max-height: 100%;
 }
 
 .officeCardDetailsAptOnly {
@@ -185,6 +209,17 @@
     gap: 8px;
     line-height: normal;
     text-decoration-line: underline;
+
+
+}
+.officeCardDetailsPhone a {
+    color: var(--Brand-Primary-SBA-Blue, #002E6D);
+    font-family: "Source Sans Pro";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-decoration-line: underline;
 }
 
 .officeCardDetailsAddress {
@@ -196,6 +231,16 @@
     font-style: normal;
     font-weight: 400;
     gap: 8px;
+    line-height: normal;
+    text-decoration-line: underline;
+    white-space: pre-line;
+}
+.officeCardDetailsAddress a {
+    color: var(--Brand-Primary-SBA-Blue, #002E6D);
+    font-family: "Source Sans Pro";
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
     line-height: normal;
     text-decoration-line: underline;
 }
@@ -217,4 +262,27 @@
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+}
+
+.districtContactLink {
+    text-decoration: none;
+    color: inherit;
+}
+
+.officeCardContentContainer {
+    display: flex;
+    min-width: 300px;
+    padding: 20px;
+    align-items: flex-start;
+    gap: 20px;
+    flex: 1 0 0;
+    border-radius: 8px;
+    border: 1px solid var(--Base-base-lighter, #DCDEE0);
+    background: #FFF;
+    box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+}
+
+.officeCardsImg {
+    width: 100px;
+    height: 100px;
 }

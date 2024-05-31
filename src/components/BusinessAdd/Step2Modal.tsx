@@ -178,7 +178,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
       <ModalInputText name={"owner"} label={"Owner(s)"} value={stepData.owner}
                       help={"If you have multiple owners, please separate by comma."}
                       onChange={handleInputChange} />
-      <ModalInputSelect name={"industry"} label={"Industry"} value={stepData.legal_entity}
+      <ModalInputSelect name={"legal_entity"} label={"Industry"} value={stepData.legal_entity}
                         options={industryOptions} onChange={handleInputChange} />
       <div className={`${styles.hr}`}></div>
       <ModalInputText name={"business_address_street1"} label={"Business Address Line One"} value={stepData.business_address_street1}
