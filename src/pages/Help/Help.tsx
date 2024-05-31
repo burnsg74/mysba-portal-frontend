@@ -10,7 +10,6 @@ const Help = () => {
     <LocalResources />
     <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>
     <div>
-
       {FrequentlyAskedQuestions.map((faq) => (<div key={faq.id} className="usa-accordion usa-accordion--bordered">
           <h4 className="usa-accordion__heading">
             <button
