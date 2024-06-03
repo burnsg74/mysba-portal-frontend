@@ -7,7 +7,7 @@ import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
 import { certifications } from "src/utils/certifications";
-import { setNav } from "src/store/showNav/showNavSlice";
+import LinkCertModalGroup from "src/components/LinkCertModalGroup/LinkCertModalGroup";
 import Modal from "src/components/Modal/Modal";
 import editPaperImg from "src/assets/edit-paper.svg";
 import nextSignImg from "src/assets/next-sign.svg";
@@ -25,6 +25,7 @@ const Certifications = () => {
   const [selectedOption, setSelectedOption] = useState<string>("none");
   const [selectedCert, setSelectedCert] = useState(certifications[0]);
   const [showFetchError, setShowFetchError] = useState(false);
+  const [isLinkCertModalOpen, setIsLinkCertModalOpen] = useState(false);
   const { t } = useTranslation();
   const { authState } = useOktaAuth();
 
@@ -60,8 +61,8 @@ const Certifications = () => {
     navigate("/certification/1", { state: { selectedOption } });
   };
 
-  const isModal1Open = location.pathname === "/certification/1";
-  const isModal2Open = location.pathname === "/certification/2";
+  const isApplyCertModal1Open = location.pathname === "/certification/1";
+  const isApplyCertModal2Open = location.pathname === "/certification/2";
 
   const closeModal = () => navigate("/certification");
   const prevModal = () => navigate("/certification/1");
@@ -120,8 +121,11 @@ const Certifications = () => {
   </>);
 
   const linkCert = () => {
-    dispatch(setNav(false));
-    navigate("/link-launchpad");
+    setIsLinkCertModalOpen(true)
+  };
+
+  const handleLinkCertModalClose = () => {
+    setIsLinkCertModalOpen(false)
   };
 
   return (<>
@@ -167,7 +171,7 @@ const Certifications = () => {
             </div>
           </div>))}
     </div>
-    {isModal1Open && (<Modal
+    {isApplyCertModal1Open && (<Modal
       title={t("Apply for a Certification")}
       onClose={closeModal}
       totalSteps={2}
@@ -285,8 +289,8 @@ const Certifications = () => {
         </div>
       </>
     </Modal>)}
-    {isModal2Open && (<Modal
-      title={t("Apply for a Certification")}
+    {isApplyCertModal2Open && (<Modal
+      title={t("Link a Certification")}
       onClose={closeModal}
       prevModal={prevModal}
       totalSteps={2}
@@ -296,6 +300,19 @@ const Certifications = () => {
       contentMessage={t(selectedCert.message) || ""}
       footerContent={modal2FooterContent}
     />)}
+    {/* {isLinkCertModalOpen && (<Modal
+      title={t("Apply for a Certification")}
+      onClose={closeModal}
+      prevModal={prevModal}
+      totalSteps={2}
+      completedSteps={1}
+      ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
+      contentTitle={t(selectedCert.title) || ""}
+      contentMessage={t("Enter the UEI associated with your business and certification.")}
+      footerContent={modal2FooterContent}
+    >
+      </Modal>)} */}
+    {isLinkCertModalOpen && ( <LinkCertModalGroup handleCloseModal={handleLinkCertModalClose}/>)}
   </>);
 };
 

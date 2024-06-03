@@ -77,14 +77,20 @@
 .contentContainer {
   overflow-y: auto;
   scrollbar-width: none;
+  padding-top:40px;
+  gap: 16px;
+  display:flex;
+  flex-direction: column;
 }
 .contentHeader {
   display: flex;
+  gap: 16px;
   max-width: 600px;
-  padding: 20px;
+  padding-top:20px;
+  padding-left: 20px;
+  padding-right: 20px;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
   align-self: stretch;
 }
 .content {
@@ -95,7 +101,7 @@
   justify-content: start;
   padding-left: 20px;
   padding-right: 20px;
-  padding-top: 20px;
+  padding-bottom:20px;
   text-align: center;
 }
 
