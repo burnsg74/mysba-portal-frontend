@@ -1,0 +1,39 @@
+.cancelBtn,
+.continueBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+}
+
+.inputContainer {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    text-align:left;
+    gap: 8px;
+}
+
+.input {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+    padding: 16px;
+}
+
+.greyLabel {
+    color: var(--Grayscale-gray-50, #757575);
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+}
+
+.textInput {
+    height:40px;
+    max-width:560px;
+    width:100%;
+}

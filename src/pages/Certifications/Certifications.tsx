@@ -7,7 +7,7 @@ import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
 import { certifications } from "src/utils/certifications";
-import { setNav } from "src/store/showNav/showNavSlice";
+import LinkCertModalGroup from "src/components/LinkCertModalGroup/LinkCertModalGroup";
 import Modal from "src/components/Modal/Modal";
 import editPaperImg from "src/assets/edit-paper.svg";
 import nextSignImg from "src/assets/next-sign.svg";
@@ -25,6 +25,7 @@ const Certifications = () => {
   const [selectedOption, setSelectedOption] = useState<string>("none");
   const [selectedCert, setSelectedCert] = useState(certifications[0]);
   const [showFetchError, setShowFetchError] = useState(false);
+  const [isLinkCertModalOpen, setIsLinkCertModalOpen] = useState(false);
   const { t } = useTranslation();
   const { authState } = useOktaAuth();
 
@@ -62,7 +63,6 @@ const Certifications = () => {
 
   const isApplyCertModal1Open = location.pathname === "/certification/1";
   const isApplyCertModal2Open = location.pathname === "/certification/2";
-  const isLinkCertModalOpen = location.pathname === "/certification/link-certification";
 
   const closeModal = () => navigate("/certification");
   const prevModal = () => navigate("/certification/1");
@@ -121,7 +121,11 @@ const Certifications = () => {
   </>);
 
   const linkCert = () => {
-    navigate("/certification/link-certification");
+    setIsLinkCertModalOpen(true)
+  };
+
+  const handleLinkCertModalClose = () => {
+    setIsLinkCertModalOpen(false)
   };
 
   return (<>
@@ -296,7 +300,7 @@ const Certifications = () => {
       contentMessage={t(selectedCert.message) || ""}
       footerContent={modal2FooterContent}
     />)}
-    {isLinkCertModalOpen && (<Modal
+    {/* {isLinkCertModalOpen && (<Modal
       title={t("Apply for a Certification")}
       onClose={closeModal}
       prevModal={prevModal}
@@ -307,7 +311,8 @@ const Certifications = () => {
       contentMessage={t("Enter the UEI associated with your business and certification.")}
       footerContent={modal2FooterContent}
     >
-      </Modal>)}
+      </Modal>)} */}
+    {isLinkCertModalOpen && ( <LinkCertModalGroup handleCloseModal={handleLinkCertModalClose}/>)}
   </>);
 };
 

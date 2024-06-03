@@ -21,16 +21,16 @@ interface ModalProps {
   hideCloseButton?: boolean;
 }
 
-function useFocusTrap(ref: React.RefObject<HTMLElement>) {
+function useFocusTrap(ref: React.RefObject<HTMLElement>, initialFocusRef: React.RefObject<HTMLElement>) {
   useEffect(() => {
     const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const firstFocusableElement: HTMLElement | null = ref.current?.querySelector(focusableElements) ?? null;
+    const firstFocusableElement: HTMLElement | null = initialFocusRef.current ?? ref.current?.querySelector(focusableElements) ?? null;
     firstFocusableElement?.focus();
     let focusableContent: NodeListOf<HTMLElement>;
     if (ref.current) {
       focusableContent = ref.current.querySelectorAll(focusableElements);
     } else {
-      focusableContent = document.querySelectorAll<HTMLElement>("nothing"); // Query something that doesn't exist to get an empty NodeList.
+      focusableContent = document.querySelectorAll<HTMLElement>("nothing");
     }
     const lastFocusableElement: HTMLElement | null = focusableContent[focusableContent.length - 1];
 
@@ -77,9 +77,9 @@ const ModalComponent = ({
   const { t } = useTranslation();
   const footerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  useFocusTrap(contentRef);
+  const closeButtonRef = useRef<HTMLSpanElement>(null);
+  useFocusTrap(contentRef, closeButtonRef);
 
-  // Adjust the margin of the content to accommodate the fix footer size
   useEffect(() => {
     if (footerRef.current && contentRef.current) {
       contentRef.current.style.paddingBottom = `${footerRef.current.getBoundingClientRect().height + 40}px`
@@ -112,6 +112,7 @@ const ModalComponent = ({
               }}
               role="button"
               tabIndex={0}
+              ref={closeButtonRef}
             >
               {" "}
               {t("Close")}
