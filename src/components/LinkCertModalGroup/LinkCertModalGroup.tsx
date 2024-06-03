@@ -15,8 +15,9 @@ interface BusinessAddProps {
 }
 
 type data = {
-    name: string
-    id: string
+    id:string,
+    businessName: string
+    certName: string
     uei: string
 };
 
@@ -25,13 +26,13 @@ const LinkCertModalGroup: React.FC<BusinessAddProps> = ({ handleCloseModal }) =>
     const user: IUser = useSelector(getUser);
     const [currentStep, setCurrentStep] = useState(1);
     const [businessData, setBusinessData] = useState({
-        name: "",
-        id: "",
+        id:"",
+        businessName: "",
+        certName: "",
         uei: "",
     });
 
     const saveNewBusinesses = async (data: data) => {
-        console.log("saveNewBusinesses", data);
 
         try {
             const email = user?.profile?.crm?.email;

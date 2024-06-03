@@ -5,8 +5,8 @@ import styles from "src/components/LinkCertModalGroup/LinkCertModal.module.css";
 import modalIcon from "src/assets/light-bulb.svg";
 
 interface Step3ModalProps {
-    businessData: { name: string
-        id: string
+    businessData: { businessName: string
+        certName: string
         uei: string };
     handleClose: () => void;
     handleContinue: (stepData: any) => void;
@@ -15,7 +15,7 @@ interface Step3ModalProps {
 
 const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleContinue }) => {
     const { t } = useTranslation();
-    const [stepData, setStepData] = useState<{ businessData: string; }>({ businessData: businessData.name });
+    const [stepData, setStepData] = useState<{ uei:string, businessName: string, certName:string; }>({  uei: businessData.uei, businessName: businessData.businessName,certName: businessData.certName });
 
     function handleContinueBtnClick() {
         handleContinue(stepData);
