@@ -13,7 +13,7 @@ interface Step3ModalProps {
     handleBack: (stepData: any) => void;
 }
 
-const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleContinue }) => {
+const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleContinue, handleBack }) => {
     const { t } = useTranslation();
     const [stepData, setStepData] = useState<{ uei:string, businessName: string, certName:string; }>({  uei: businessData.uei, businessName: businessData.businessName,certName: businessData.certName });
 
@@ -25,9 +25,14 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
         handleClose();
     };
 
+    const handleBackButtonClick = () => {
+        handleBack(stepData);
+    };
+
     return (<Modal
         title={t("Link a Certification")}
         onClose={closeModal}
+        prevModal={handleBackButtonClick}
         totalSteps={3}
         completedSteps={3}
         ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}

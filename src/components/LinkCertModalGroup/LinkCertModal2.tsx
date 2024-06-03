@@ -31,6 +31,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
     return (<Modal
         title={t("Link a Certification")}
         onClose={closeModal}
+        prevModal={handleBackButtonClick}
         totalSteps={3}
         completedSteps={1}
         ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}

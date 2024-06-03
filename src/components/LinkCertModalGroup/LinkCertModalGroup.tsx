@@ -32,39 +32,9 @@ const LinkCertModalGroup: React.FC<BusinessAddProps> = ({ handleCloseModal }) =>
         uei: "",
     });
 
-    const saveNewBusinesses = async (data: data) => {
-
-        try {
-            const email = user?.profile?.crm?.email;
-            if (!email) {
-                throw new Error("Email is not defined");
-            }
-            let accessToken: string | AccessToken | null | undefined;
-
-            if (authState && "accessToken" in authState) {
-                accessToken = authState.accessToken?.accessToken;
-            } else {
-                accessToken = undefined;
-            }
-            data.id = email;
-            axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-            const res = await axios.post(`${BASE_API_URL}business`, data);
-            console.log("saveNewBusinesses res", res);
-        } catch (error) {
-            console.error("Error saving new business", error);
-        }
-    }
-
     const handleContinue = (stepData: {}) => {
         const newBusinessData: data = { ...businessData, ...stepData };
         setBusinessData(newBusinessData);
-
-        if (currentStep === 4) {
-            console.log("BusinessAdd handleContinue businessData", newBusinessData);
-            console.log("Save data")
-            saveNewBusinesses(newBusinessData).then()
-        }
-
         setCurrentStep(currentStep + 1);
     };
 
