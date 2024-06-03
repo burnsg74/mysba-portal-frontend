@@ -26,10 +26,12 @@ const LandingPage = () => {
     document.body.style.overflow = "hidden"
 
     const login = () => {
+        document.body.style.overflow = "auto"
         oktaAuth.signInWithRedirect();
     };
 
     const signUp = () => {
+        document.body.style.overflow = "auto"
         window.location.assign("https://login.dev.mysba.ussba.io/signin/register")
     };
 
