@@ -3,6 +3,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-right: 0px !important;
     flex: 1;
 }
 
@@ -11,7 +12,7 @@
     align-self: stretch;
     display: flex;
     flex-direction: column;
-    text-align:left;
+    text-align: left;
     gap: 8px;
 }
 
@@ -33,7 +34,16 @@
 }
 
 .textInput {
-    height:40px;
-    max-width:560px;
-    width:100%;
+    height: 40px;
+    max-width: 560px;
+    width: 100%;
+}
+
+.error {
+    color: var(--Error-error-dark, #B50909);
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
 }
