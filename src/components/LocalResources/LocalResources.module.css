@@ -83,6 +83,9 @@
     height: 165px;
     justify-content: center;
     width: 252px;
+    @media (max-width: 1364px) {
+        width: 100%;
+    }
 }
 
 .bodyDistrictCardImg {
@@ -112,6 +115,15 @@
     text-decoration-line: underline;
 }
 
+.bodyDistrictCardDetailsTitle a {
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    text-decoration-line: underline;
+}
+
 .bodyDistrictCardDetailsLinksContainer {
     align-items: flex-start;
     display: flex;
@@ -123,6 +135,12 @@
 .launchIcon {
     width: 18px;
     height: 18px;
+}
+
+.districtCardDetailsLinkIcon {
+    width: 18px;
+    height: 18px;
+    fill: #002E6D;
 }
 
 .bodyDistrictCardDetailsLinksGroup {
@@ -247,6 +265,8 @@
 
 .guideContainer {
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     padding: 20px;
     justify-content: space-between;
     align-items: center;

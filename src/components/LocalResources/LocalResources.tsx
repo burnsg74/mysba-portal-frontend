@@ -47,17 +47,20 @@ const LocalResources = () => {
           Local Resources
         </div>
         <div className={` ${styles.titleZipContainer}`}>
-          <label className={`${styles.titleZipLabel}`}>
+          <label
+            htmlFor="zipCode"
+            className={`usa-label ${styles.titleZipLabel}`}>
             Zip Code
           </label>
           <input
             type="text"
+            id={"zipCode"}
             name={"zipCode"}
             value={data.zip_code}
             onChange={(event) => {
               setData({ ...data, zip_code: event.target.value });
             }}
-            className={`${styles.titleZipInput}`}
+            className={`usa-input ${styles.titleZipInput}`}
             placeholder="Enter Zip Code"
           />
         </div>
@@ -82,7 +85,7 @@ const LocalResources = () => {
             <div className={`${styles.bodyDistrictCardDetailsLinksContainer}`}>
               <div className={`${styles.bodyDistrictCardDetailsLinksGroup}`}>
                 <svg
-                  className={`usa-icon ${styles.launchIcon}`}
+                  className={`usa-icon ${styles.districtCardDetailsLinkIcon}`}
                   aria-hidden="true"
                   focusable="false"
                 >
@@ -93,7 +96,7 @@ const LocalResources = () => {
               </div>
               <div className={`${styles.bodyDistrictCardDetailsLinksGroup}`}>
                 <svg
-                  className={`usa-icon ${styles.launchIcon}`}
+                  className={`usa-icon ${styles.districtCardDetailsLinkIcon}`}
                   aria-hidden="true"
                   focusable="false"
                 >
@@ -103,7 +106,9 @@ const LocalResources = () => {
                 <a href={"mailto:" + data.district.office_directory}>Office Directory</a>
               </div>
               <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <svg
+                  className={`usa-icon ${styles.districtCardDetailsLinkIcon}`}
+                  xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
                   <path
                     d="M11.9047 8.46958L19.3513 0H17.5873L11.1187 7.35251L5.956 0H0L7.80867 11.1194L0 19.9999H1.764L8.59067 12.2338L14.044 19.9999H20M2.40067 1.30158H5.11067L17.586 18.7623H14.8753"
                     fill="black" />
@@ -144,42 +149,43 @@ const LocalResources = () => {
                       className={`${styles.officeCardsImg}`}
                       src={office.image}
                       alt="office icon" />
-                  <div className={`${styles.officeCardDetailsContainer}`}>
-                    <div className={`${styles.officeCardDetailsTitle}`}>{office.title}</div>
-                    {office.appointment_only && <div className={`${styles.officeCardDetailsAptOnly}`}>Appointment Only</div>}
-                    <div className={`${styles.officeCardDetailsPhone}`}>
-                      <svg
-                        className={`usa-icon ${styles.launchIcon}`}
-                        aria-hidden="true"
-                        focusable="false"
-                      >
-                        <title>{t("Open in email")}</title>
-                        <use xlinkHref="/assets/img/sprite.svg#phone"></use>
-                      </svg>
-                      <a href={`tel:${office.phone}`}>{office.phone}</a>
-                    </div>
-                    <div className={`${styles.officeCardDetailsAddress}`}>
-                      <svg
-                        className={`usa-icon ${styles.launchIcon}`}
-                        aria-hidden="true"
-                        focusable="false"
-                      >
-                        <title>{t("Open in email")}</title>
-                        <use xlinkHref="/assets/img/sprite.svg#map"></use>
-                      </svg>
-                      <a href={'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(office.address)} target="_blank" rel="noopener noreferrer">
-                        {office.address}
-                      </a>
-                    </div>
+                <div className={`${styles.officeCardDetailsContainer}`}>
+                  <div className={`${styles.officeCardDetailsTitle}`}>{office.title}</div>
+                  {office.appointment_only &&
+                    <div className={`usa-tag ${styles.officeCardDetailsAptOnly}`}>Appointment Only</div>}
+                  <div className={`${styles.officeCardDetailsPhone}`}>
+                    <svg
+                      className={`usa-icon ${styles.launchIcon}`}
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <title>{t("Open in email")}</title>
+                      <use xlinkHref="/assets/img/sprite.svg#phone"></use>
+                    </svg>
+                    <a href={`tel:${office.phone}`}>{office.phone}</a>
                   </div>
-              </div>
-              ))}
+                  <div className={`${styles.officeCardDetailsAddress}`}>
+                    <svg
+                      className={`usa-icon ${styles.launchIcon}`}
+                      aria-hidden="true"
+                      focusable="false"
+                    >
+                      <title>{t("Open in email")}</title>
+                      <use xlinkHref="/assets/img/sprite.svg#map"></use>
+                    </svg>
+                    <a href={'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(office.address)}
+                       target="_blank" rel="noopener noreferrer">
+                      {office.address}
+                    </a>
+                  </div>
+                </div>
+              </div>))}
         </div>
         <div className={`${styles.guideContainer}`}>
           <div className={`${styles.guideTitle}`}>
             Explore your local business guide
           </div>
-          <div className={`${styles.guideButton}`}>
+          <div>
             <a href={data.district.guide} target="_blank"
                rel="noopener noreferrer">
               <button type="button" className={`usa-button ${styles.linkCertificationBtn}`}>

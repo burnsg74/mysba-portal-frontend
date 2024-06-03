@@ -9,12 +9,12 @@ const Help = () => {
   return (<div className={`${styles.container}`}>
     <LocalResources />
     <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>
-    <div>
+    <div className={`${styles.faqContainer}`}>
       {FrequentlyAskedQuestions.map((faq) => (<div key={faq.id} className="usa-accordion usa-accordion--bordered">
           <h4 className="usa-accordion__heading">
             <button
               type="button"
-              className="usa-accordion__button"
+              className={`usa-accordion__button ${styles.faqButton}`}
               aria-expanded="false"
               aria-controls={`a${faq.id}`}
             >
