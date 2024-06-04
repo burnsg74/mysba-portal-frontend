@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 import styles from "src/pages/Error/Error.module.css";
 import { useTranslation } from "react-i18next";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import errorSVG from "src/assets/error.svg";
 
 const ErrorPage = () => {

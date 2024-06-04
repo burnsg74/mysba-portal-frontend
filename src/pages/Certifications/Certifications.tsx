@@ -300,18 +300,6 @@ const Certifications = () => {
       contentMessage={t(selectedCert.message) || ""}
       footerContent={modal2FooterContent}
     />)}
-    {/* {isLinkCertModalOpen && (<Modal
-      title={t("Apply for a Certification")}
-      onClose={closeModal}
-      prevModal={prevModal}
-      totalSteps={2}
-      completedSteps={1}
-      ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
-      contentTitle={t(selectedCert.title) || ""}
-      contentMessage={t("Enter the UEI associated with your business and certification.")}
-      footerContent={modal2FooterContent}
-    >
-      </Modal>)} */}
     {isLinkCertModalOpen && ( <LinkCertModalGroup handleCloseModal={handleLinkCertModalClose}/>)}
   </>);
 };

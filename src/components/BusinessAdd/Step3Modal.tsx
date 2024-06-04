@@ -109,7 +109,7 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
     completedSteps={2}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("Do you have these details yet? \n" + "If not, just skip.")}
-    footerContent={(<>
+    footerContent={(
       <div className={styles.footerContainer}>
         <div className={styles.footerButtonContainer}>
           <button
@@ -133,7 +133,7 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
             onClick={() => handleSkipClick()}>Skip</a>
         </div>
       </div>
-    </>)}
+    )}
   >
     <div className={`${styles.inputContainer}`}>
       <ModalInputText name={"ein"} label={"EIN"}

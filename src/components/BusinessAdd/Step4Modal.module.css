@@ -2,7 +2,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-right:0px;
     flex: 1;
     margin-right: unset;
 }

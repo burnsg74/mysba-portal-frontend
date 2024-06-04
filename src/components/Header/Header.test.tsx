@@ -7,8 +7,6 @@ import { MemoryRouter } from "react-router-dom";
 import { configureStore } from "@reduxjs/toolkit";
 import Header from "./Header";
 import showNavSlice from "src/store/showNav/showNavSlice";
-import { useOktaAuth } from "@okta/okta-react";
-import { useTranslation } from "react-i18next";
 
 const signOutMock = jest.fn(() => Promise.resolve());
 
@@ -64,7 +62,6 @@ describe("Header Component", () => {
     const langButton = screen.getByText("Español");
     expect(langButton).toBeInTheDocument()
     fireEvent.click(langButton);
-    const { i18n } = useTranslation();
     expect(langButton.textContent).toBe("English")
   });
 

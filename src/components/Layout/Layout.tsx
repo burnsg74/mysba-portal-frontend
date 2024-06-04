@@ -47,7 +47,7 @@ const Layout = () => {
           <Header />
         </div>
       </div>
-      <div className="grid-row">
+      <div className={`grid-row ${styles.contentRow}`}>
         {showNav && (<div className={`grid-col-auto ${styles.sideNav}`}>
             <SideNav onNavLinkClick={handleNavLinkClick}  forMobile={false}/>
           </div>)}

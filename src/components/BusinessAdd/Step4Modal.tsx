@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React  from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "src/components/Modal/Modal";
 import modalIcon from "src/assets/light-bulb.svg";
@@ -10,11 +10,8 @@ interface Step5ModalProps {
   handleBack: (stepData: any) => void;
 }
 
-const Step4Modal: React.FC<Step5ModalProps> = ({ handleClose, handleContinue, handleBack }) => {
+const Step4Modal: React.FC<Step5ModalProps> = ({ handleClose}) => {
   const { t } = useTranslation();
-  const [stepData, setStepData] = useState({
-    name: "",
-  });
 
   const closeModal = () => {
     handleClose();
@@ -28,7 +25,7 @@ const Step4Modal: React.FC<Step5ModalProps> = ({ handleClose, handleContinue, ha
     completedSteps={4}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("Your business has been successfully added.")}
-    footerContent={(<>
+    footerContent={(
       <button
         type="button"
         className={`usa-button ${styles.continueBtn}`}
@@ -36,7 +33,7 @@ const Step4Modal: React.FC<Step5ModalProps> = ({ handleClose, handleContinue, ha
       >
         {t("Continue")}
       </button>
-    </>)}
+    )}
   >
     <div className={`${styles.inputContainer}`}>
 

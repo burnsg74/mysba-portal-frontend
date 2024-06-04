@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "src/components/Modal/Modal";
 import styles from "src/components/BusinessAdd/Step1Modal.module.css";

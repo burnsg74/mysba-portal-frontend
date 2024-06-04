@@ -4,7 +4,7 @@
 
 1. [Architecture](#architecture)
 2. [Terraform-States](#terraform-states)
-2. [Logging](#logging)
+3. [Logging](#logging)
 
 ## Architecture
 
