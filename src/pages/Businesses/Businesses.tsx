@@ -68,7 +68,8 @@ const Businesses = () => {
       </div>)}
       <div className={`${styles.titleContainer}`}><h1 className={`${styles.title}`}> {t("Businesses")} </h1>
         <button type="button" onClick={handleAddBusinessBtnClick}
-                className={`usa-button usa-button--outline ${styles.usaButton}`}> {t("Add a Business")} </button>
+                className={`usa-button usa-button--outline ${styles.usaButton}`}
+        disabled={true}> {t("Add a Business")} </button>
       </div>
 
       {user.businesses && user.businesses.length === 0 && (<div>
