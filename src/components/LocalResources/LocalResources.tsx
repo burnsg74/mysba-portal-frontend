@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import styles from "src/components/LocalResources/LocalResources.module.css";
 import { useTranslation } from "react-i18next";
 import linkedInLogo from "src/assets/linkedIn-logo.png";
-import buildingIcon from "src/assets/building-icon.svg";
 import { getUser } from "src/store/user/userSlice";
 import { useSelector } from "react-redux";
 

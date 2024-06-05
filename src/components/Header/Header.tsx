@@ -51,7 +51,7 @@ const Header = () => {
   useEffect(() => {
     document.addEventListener("mousedown", event => {
       if (navRef.current && event.target instanceof HTMLElement && !navRef.current.contains(event.target)) {
-        setIsNavOpen(false); // If clicked outside, close the navigation
+        setIsNavOpen(false);
       }
     });
 

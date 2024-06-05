@@ -50,6 +50,7 @@ const Loading = () => {
     let results: AxiosResponse<any>[] = [];
     try {
       results = await Promise.all(requests);
+      console.log('results', results);
     } catch (err) {
       oktaAuth.signOut().then(() => {
         navigate("/error");

@@ -23,6 +23,9 @@ import Callback from "src/pages/Callback/Callback";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
+// @ts-ignore
+import { MockOktaAuth } from "src/mock/MockOktaAuth";
+
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -48,14 +51,23 @@ const App: React.FC = () => {
     navigate("/loading");
   };
 
-  const oktaAuth = new OktaAuth({
-    clientId: VITE_APP_OKTA_CLIENT_ID,
-    issuer: `https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`,
-    redirectUri: `${window.location.origin}/login/callback`,
-    postLogoutRedirectUri: `${window.location.origin}`,
-    scopes: ["openid", "profile", "email"],
-    pkce: true,
-  });
+  const oktaAuth = import.meta.env.MODE === 'localhost'
+    ? new MockOktaAuth({
+      clientId: VITE_APP_OKTA_CLIENT_ID,
+      issuer: `https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`,
+      redirectUri: `${window.location.origin}/login/callback`,
+      postLogoutRedirectUri: `${window.location.origin}`,
+      scopes: ["openid", "profile", "email"],
+      pkce: true
+    })
+    : new OktaAuth({
+      clientId: VITE_APP_OKTA_CLIENT_ID,
+      issuer: `https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`,
+      redirectUri: `${window.location.origin}/login/callback`,
+      postLogoutRedirectUri: `${window.location.origin}`,
+      scopes: ["openid", "profile", "email"],
+      pkce: true
+    });
 
   return (
     <Security

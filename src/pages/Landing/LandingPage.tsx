@@ -63,6 +63,9 @@ const LandingPage = () => {
     useEffect(() => {
         dispatch(setNav(false))
         dispatch(setShowProfile(false))
+        return () => {
+            document.body.style.overflow = "auto"
+        }
     }, []);
 
     return (

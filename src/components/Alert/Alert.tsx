@@ -3,7 +3,7 @@ import styles from "src/components/Alert/Alert.module.css";
 
 interface IAlertProps {
   title?: string;
-  message: string;
+  message: string|JSX.Element;
   type: "success" | "error" | "warning" | "info";
 }
 

@@ -12,6 +12,14 @@ import "./i18n";
 const container = document.getElementById("root");
 if (!container) throw new Error("Could not find root element with id 'root'");
 
+if (import.meta.env.MODE === 'localhost') {
+  const urlParams = new URLSearchParams(window.location.search);
+  const user = urlParams.get('user');
+  if (user) {
+    sessionStorage.setItem('user', user);
+  }
+}
+
 const root = createRoot(container);
 root.render(
   <Provider store={store}>

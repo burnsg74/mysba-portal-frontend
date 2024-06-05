@@ -24,6 +24,7 @@ const Layout = () => {
 
     if (location.pathname === "/dashboard") {
       setScrollAreaClass(window.location.pathname === "/dashboard" ? `${styles.resourceLocationScrollArea}` : "");
+
       let headerElement = headerRef.current;
       let mainContentElement = mainContentRef.current;
       if (mainContentElement && headerElement) {
@@ -34,6 +35,8 @@ const Layout = () => {
           setMainContentHeight(`${window.innerHeight - headerHeight}px`)
         }
       }
+    } else {
+      setScrollAreaClass("");
     }
   }, [location]);
 
