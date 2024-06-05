@@ -1,18 +1,14 @@
 import React from 'react';
-import { render, fireEvent, screen } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { Provider } from 'react-redux';
 import { MemoryRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import showNavSlice from 'src/store/showNav/showNavSlice';
 import Layout from 'src/components/Layout/Layout';
-import { useTranslation } from 'react-i18next';
 import "@testing-library/jest-dom";
 
 jest.mock('react-router-dom', () => ({
   ...jest.requireActual('react-router-dom'),
-  useLocation: () => ({
-    pathname: '/dashboard',
-  }),
 }));
 
 jest.mock('src/components/Header/Header', () => () => <div>MockHeader</div>);

@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import { useOktaAuth } from "@okta/okta-react";
 import Modal from "src/components/Modal/Modal";
 import styles from "src/components/LinkCertModalGroup/LinkCertModal.module.css";
 import modalIcon from "src/assets/MySBAIllustrationsIcons.svg";
-import { useSelector } from "react-redux";
-import { getUser } from "src/store/user/userSlice";
 
 interface Step1ModalProps {
     businessData: {
@@ -16,30 +13,11 @@ interface Step1ModalProps {
     handleClose: () => void;
     handleContinue: (stepData: any) => void;
 }
-
-type data = {
-    name: string
-    business_address_city: string
-    business_address_street1: string
-    business_address_street2: string
-    business_address_state: string
-    business_address_zip: string
-    county: string
-    ein: string
-    id: string
-    legal_entity: string
-    owner: string
-    uei: string
-    workingWithSBA: string
-  };
-
-const LinkCertModal1: React.FC<Step1ModalProps> = ({ businessData, handleClose, handleContinue }) => {
+const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) => {
     const { t } = useTranslation();
-    const user: IUser = useSelector(getUser);
     const [stepData, setStepData] = useState<{ uei: string, businessName:string, certName:string; }>({ uei: "", businessName: "", certName:"" });
     const [error, setError] = useState<string | null>(null);
-    const { authState } = useOktaAuth();
-    
+
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         const updatedStepData = { ...stepData, uei: value, businessName:"Mock Business", certName:"Mock Cert Title" };

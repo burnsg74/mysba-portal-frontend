@@ -9,7 +9,7 @@ interface ICertificationProps {
 const CertificationPill = ({ certification }: ICertificationProps): ReactElement | null => {
   const { t } = useTranslation();
   let pillType: "in-progress" | "valid" | "warning" | "error";
-  let message: string = "";
+  let message: string;
 
   if (certification.days_until_expiry <= 0) {
     pillType = "error";

@@ -15,7 +15,7 @@ interface Step3ModalProps {
 
 const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleContinue, handleBack }) => {
     const { t } = useTranslation();
-    const [stepData, setStepData] = useState<{ uei:string, businessName: string, certName:string; }>({  uei: businessData.uei, businessName: businessData.businessName,certName: businessData.certName });
+    const [stepData] = useState<{ uei:string, businessName: string, certName:string; }>({  uei: businessData.uei, businessName: businessData.businessName,certName: businessData.certName });
 
     function handleContinueBtnClick() {
         handleContinue(stepData);
