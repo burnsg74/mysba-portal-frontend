@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "src/components/ModalInputText/ModalInputText.module.css";
-// import { useTranslation } from "react-i18next";
 
 interface ModalInputTextProps {
   name: string,
@@ -13,7 +12,6 @@ interface ModalInputTextProps {
 }
 
 const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, help, onChange, required, errorMessage="" }) => {
-  // const { t } = useTranslation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(name, event.target.value);

@@ -34,25 +34,6 @@ const Profile = () => {
               label="Last Name"
               value={profileData.profile?.crm?.last_name}
             />
-          {/* MAT-1408 Hide for MVP, we will add it back once we allow user profile updates*/}
-          {/*<div className={`${styles.checkbox_container}`}>*/}
-          {/*  <input*/}
-          {/*    id="allow_notice"*/}
-          {/*    type="checkbox"*/}
-          {/*    name="allow_notice"*/}
-          {/*    className={`usa-checkbox__input`}*/}
-          {/*    checked={profileData?.profile?.portal?.allow_notice}*/}
-          {/*    disabled={true}*/}
-          {/*  />*/}
-          {/*  <label*/}
-          {/*    htmlFor="allow_notice"*/}
-          {/*    className={`usa-checkbox__label ${styles.usaCheckbox_label}`}`*/}
-          {/*  >*/}
-          {/*    {t(*/}
-          {/*      "Notify me about updates regarding my SBA account and upcoming events"*/}
-          {/*    )}*/}
-          {/*  </label>*/}
-          {/*</div>*/}
         </div>
         <button
           className={` ${styles.buttonStyle}`}

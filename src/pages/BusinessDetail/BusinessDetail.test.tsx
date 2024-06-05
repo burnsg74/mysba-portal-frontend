@@ -3,7 +3,7 @@ import { fireEvent, render, screen } from "@testing-library/react";
 import BusinessDetail from "./BusinessDetail";
 import { Provider, useSelector } from "react-redux";
 import { store } from "src/store/store";
-import { BrowserRouter, useNavigate } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 
 jest.mock("react-redux", () => ({ ...jest.requireActual("react-redux"), useSelector: jest.fn() }));
 const mockedUseSelector = useSelector as jest.Mock;

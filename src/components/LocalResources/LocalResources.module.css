@@ -220,7 +220,6 @@
     align-items: start;
     color: var(--Brand-Primary-SBA-Blue);
     display: flex;
-    font-family: "Source Sans Pro";
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -231,8 +230,7 @@
 
 }
 .officeCardDetailsPhone a {
-    color: var(--Brand-Primary-SBA-Blue, #002E6D);
-    font-family: "Source Sans Pro";
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -244,7 +242,6 @@
     align-items: start;
     color: var(--Brand-Primary-SBA-Blue);
     display: flex;
-    font-family: "Source Sans Pro";
     font-size: 14px;
     font-style: normal;
     font-weight: 400;
@@ -254,8 +251,7 @@
     white-space: pre-line;
 }
 .officeCardDetailsAddress a {
-    color: var(--Brand-Primary-SBA-Blue, #002E6D);
-    font-family: "Source Sans Pro";
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 14px;
     font-style: normal;
     font-weight: 400;

@@ -2,12 +2,6 @@ import React, { useState } from "react";
 import LinkCertModal1 from "./LinkCertModal1";
 import LinkCertModal2 from "./LinkCertModal2";
 import LinkCertModal3 from "./LinkCertModal3";
-import axios from "axios";
-import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL } from "src/utils/constants";
-import { getUser } from "src/store/user/userSlice";
-import { useOktaAuth } from "@okta/okta-react";
-import { useSelector } from "react-redux";
 import { data } from "autoprefixer";
 
 interface BusinessAddProps {
@@ -22,8 +16,6 @@ type data = {
 };
 
 const LinkCertModalGroup: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
-    const { authState } = useOktaAuth();
-    const user: IUser = useSelector(getUser);
     const [currentStep, setCurrentStep] = useState(1);
     const [businessData, setBusinessData] = useState({
         id:"",

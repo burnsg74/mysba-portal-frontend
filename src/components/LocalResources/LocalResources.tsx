@@ -38,7 +38,7 @@ const LocalResources = () => {
   };
   const [data, setData] = useState(mockData);
 
-  return (<>
+  return (
     <div className={`${styles.localResourcesContainer}`}>
       {/* Title Row */}
       <div className={`${styles.titleRow}`}>
@@ -65,14 +65,14 @@ const LocalResources = () => {
         </div>
       </div>
 
-      {data && data.zip_code && (<>
+      {data?.zip_code && (
         <div className={`${styles.localResourcesContentContainer}`}>
           <div className={`${styles.bodyDistrictCard}`}>
           <div className={`${styles.bodyDistrictCardImgContainer}`}>
             <img
               className={`${styles.bodyDistrictCardImg}`}
               src={data.district.map}
-              alt="district image"
+              alt="district"
             />
           </div>
           <div className={`${styles.bodyDistrictCardDetailsContainer}`}>
@@ -202,9 +202,9 @@ const LocalResources = () => {
           </div>
         </div>
         </div>
-      </>)}
+      )}
     </div>
-  </>);
+  );
 };
 
 export default LocalResources;

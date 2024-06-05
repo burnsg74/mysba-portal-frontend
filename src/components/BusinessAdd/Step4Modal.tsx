@@ -6,8 +6,6 @@ import styles from "src/components/BusinessAdd/Step4Modal.module.css";
 
 interface Step5ModalProps {
   handleClose: () => void;
-  handleContinue: (stepData: any) => void;
-  handleBack: (stepData: any) => void;
 }
 
 const Step4Modal: React.FC<Step5ModalProps> = ({ handleClose}) => {

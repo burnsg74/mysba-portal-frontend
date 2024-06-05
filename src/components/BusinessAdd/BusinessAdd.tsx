@@ -113,10 +113,7 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
           handleContinue={(stepData) => handleContinue(stepData)}
           handleBack={(stepData) => handleBack(stepData)} />;
       case 4:
-        return <Step4Modal
-          handleClose={handleCloseModal}
-          handleContinue={(stepData) => handleContinue(stepData)}
-          handleBack={(stepData) => handleBack(stepData)} />;
+        return <Step4Modal handleClose={handleCloseModal} />;
       default:
         return null;
     }

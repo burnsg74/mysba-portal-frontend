@@ -10,7 +10,7 @@
 
 .inputLabel {
     color: var(--Text-Text);
-    font-family: "Public Sans";
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -19,7 +19,7 @@
 
 .inputHelp {
     color: var(--Grayscale-gray-50);
-    font-family: "Public Sans";
+    font-family: var(--Font-Secondary);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;

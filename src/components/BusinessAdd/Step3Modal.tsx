@@ -128,9 +128,9 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
           </button>
         </div>
         <div>
-          <a
+          <button
             className={`${styles.skipBtn}`}
-            onClick={() => handleSkipClick()}>Skip</a>
+            onClick={() => handleSkipClick()}>Skip</button>
         </div>
       </div>
     )}

@@ -4,11 +4,8 @@ import { useOktaAuth } from "@okta/okta-react";
 import Modal from "src/components/Modal/Modal";
 import styles from "src/components/LinkCertModalGroup/LinkCertModal.module.css";
 import modalIcon from "src/assets/MySBAIllustrationsIcons.svg";
-import axios from "axios";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
-import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL } from "src/utils/constants";
 
 interface Step1ModalProps {
     businessData: {
@@ -43,31 +40,6 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ businessData, handleClose, 
     const [error, setError] = useState<string | null>(null);
     const { authState } = useOktaAuth();
     
-    const linkNewCert = async (data:data) => {
-        console.log("linkNewCert", data);
-    
-        try {
-          const email = user?.profile?.crm?.email;
-          if (!email) {
-            throw new Error("Email is not defined");
-          }
-          let accessToken: string | AccessToken | null | undefined;
-    
-          if (authState && "accessToken" in authState) {
-            accessToken = authState.accessToken?.accessToken;
-          } else {
-            accessToken = undefined;
-          }
-          data.id=email;
-          //   axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-          //   const res = await axios.post(`${BASE_API_URL}business`, data);
-          console.log("saveNewBusinesses res");
-        } catch (error) {
-          console.error("Link New Cert Error", error);
-          setError("UEI could not be linked to an existing business.");
-        }
-      }
-
     const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         const value = event.target.value;
         const updatedStepData = { ...stepData, uei: value, businessName:"Mock Business", certName:"Mock Cert Title" };
@@ -75,7 +47,6 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ businessData, handleClose, 
     };
 
     const handleContinueBtnClick = () => {
-        console.log(stepData)
         if (stepData.uei.length === 12) {
             setError(null);
             handleContinue(stepData);
