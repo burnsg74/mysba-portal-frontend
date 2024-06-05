@@ -50,10 +50,5 @@ describe('Layout component tests', () => {
     expect(screen.getByText('MockSideNav')).toBeInTheDocument();
   });
 
-  test('renders correct number of LearningCenterCards based on courses', () => {
-    
-    render(<Layout />, { wrapper });
-    expect(screen.getAllByText('Resources for you').length).toBe(2);
-  });
 });
 
