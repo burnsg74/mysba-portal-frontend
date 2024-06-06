@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import styles from "src/components/LocalResources/LocalResources.module.css";
 import { useTranslation } from "react-i18next";
-import linkedInLogo from "src/assets/linkedIn-logo.png";
 import { getUser } from "src/store/user/userSlice";
 import { useSelector } from "react-redux";
+import iconOfficeLg from "src/assets/icon-office-lg.svg";
+import iconOfficeSm from "src/assets/icon-office-sm.svg";
+import iconOfficeVirtaul from "src/assets/icon-office-virtual.svg";
+import logoLinkedIn from "src/assets/logo-linkedIn.svg";
 
 const LocalResources = () => {
   const { t } = useTranslation();
@@ -22,6 +25,7 @@ const LocalResources = () => {
     "offices": [
       {
         "title": "Seattle - Main office",
+        "type": "Main office",
         "image": "https://www.sba.gov/sites/default/files/styles/district_office_icon/public/2022-11/district-office-icon-2022.png.webp?itok=B9bk7nGC",
         "appointment_only": true,
         "phone": "503-326-2682",
@@ -29,12 +33,25 @@ const LocalResources = () => {
       },
       {
         "title": "Spokane",
+        "type": "Branch office",
         "image": "https://www.sba.gov/sites/default/files/styles/district_office_icon/public/2022-11/branch-office-icon.png.webp?itok=vwy3ufUc",
         "appointment_only": true,
         "phone": "453-326-1231",
         "address": "132451 11th Avenue \nSuite 310 \nSpokane, WA 97191"
       }
     ]
+  };
+
+  const getIconForOfficeType = (type: string) => {
+    switch (type) {
+      case "Branch office":
+        return iconOfficeSm;
+      case "Virtual office":
+        return iconOfficeVirtaul;
+      case "Main office":
+      default:
+        return iconOfficeLg;
+    }
   };
   const [data, setData] = useState(mockData);
 
@@ -120,7 +137,7 @@ const LocalResources = () => {
                 <a href={data.district.twitter} target="_blank"> Follow us on X </a>
               </div>
               <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
-                <img src={linkedInLogo} alt="linkedIn logo" className={styles.linkedInLogo} />
+                <img src={logoLinkedIn} alt="linkedIn logo" className={styles.linkedInLogo} />
                 <a href={data.district.linkedin} target="_blank"> Follow us on LinkedIn </a>
               </div>
             </div>
@@ -146,8 +163,8 @@ const LocalResources = () => {
             {data.offices.map((office, index) => (<div key={index} className={`${styles.officeCard}`}>
                     <img
                       className={`${styles.officeCardsImg}`}
-                      src={office.image}
-                      alt="office icon" />
+                      src={getIconForOfficeType(office.type)}
+                      alt="office" />
                 <div className={`${styles.officeCardDetailsContainer}`}>
                   <div className={`${styles.officeCardDetailsTitle}`}>{office.title}</div>
                   {office.appointment_only &&
