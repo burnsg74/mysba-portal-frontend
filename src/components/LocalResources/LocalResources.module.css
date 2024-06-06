@@ -75,8 +75,8 @@
 
 .bodyDistrictCardImgContainer {
     align-items: center;
-    background: #E6E6E6;
     border-radius: 8px;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     gap: 10px;
