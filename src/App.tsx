@@ -94,7 +94,7 @@ const App: React.FC = () => {
               path="/businesses/detail/:id"
               element={<BusinessDetail />}
             />
-            <Route path="/certification/*" element={<Certifications />} />
+            <Route path="/certifications/*" element={<Certifications />} />
             <Route
               path="/certification-apply/1"
               element={<ApplyCert1 />}

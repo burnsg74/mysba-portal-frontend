@@ -14,7 +14,7 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile = false }) 
   }, {
     name: "Businesses", url: "/businesses",
   }, {
-    name: "Certifications", url: "/certification",
+    name: "Certifications", url: "/certifications",
   }, {
     name: "Loans", url: "/loans",
   }, {

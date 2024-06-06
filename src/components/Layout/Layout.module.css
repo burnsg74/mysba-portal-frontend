@@ -1,5 +1,6 @@
 .contentRow {
     height: 100%;
+    min-height: calc(100vh - 102px);
 }
 
 @media screen and (max-width: 1023px) {

@@ -73,7 +73,7 @@
     margin-bottom: 40px;
 }
 
-.temp {
+.noBusinessesMessageContainer {
     display: flex;
     padding: 24px 0;
     flex-direction: column;
@@ -82,7 +82,7 @@
     align-self: stretch;
 }
 
-.temp2 {
+.noBusinessesText {
     color: var(--Brand-Primary-SBA-Blue);
     text-align: center;
     font-size: 22px;

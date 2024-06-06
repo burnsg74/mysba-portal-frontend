@@ -1,19 +1,50 @@
-.titleRow {
+.pageContainer {
     display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
+    flex-direction: column;
+    gap: 40px;
     margin-top: 40px;
-    margin-bottom: 40px;
+}
+
+.titleContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
 }
 
 .title {
     flex-grow: 1;
+    font-family: var(--Font-Secondary);
     font-weight: 400;
     color: var(--Brand-Primary-SBA-Blue);
-    font-size: 40px;
+    font-size: 32px;
     letter-spacing: 0;
-    line-height: 120%;
+    line-height: 38px;
+}
+
+.noCertificationMessageContainer {
+    display: flex;
+    padding: 24px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.learnMore {
+
+}
+
+.learnMore a {
+    align-self: stretch;
+    color: var(--Text-Text);
+    display: flex;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    gap: 8px;
+    line-height: 150%;
+    text-align: center;
+    text-decoration-line: underline;
 }
 
 .resource-location-right {
@@ -187,6 +218,29 @@
 .alertContainer {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.noCertsContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0;
+}
+
+.noCertsIcon {
+    height: 100px;
+    width: 100px;
+}
+
+.noCertsText {
+    align-self: stretch;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    text-align: center;
 }
 
 .certificationRow {

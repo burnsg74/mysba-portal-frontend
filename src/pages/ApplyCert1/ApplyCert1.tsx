@@ -12,7 +12,7 @@ const ApplyCert1 = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const isLargeWindow = () => window.innerWidth >= 780;
-  const closePage = () => navigate("/certification");
+  const closePage = () => navigate("/certifications");
   const NextPage = () => navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setSelectedOption(event.target.value as "WOSB" | "8A" | "HUBZone" | "VetCert");

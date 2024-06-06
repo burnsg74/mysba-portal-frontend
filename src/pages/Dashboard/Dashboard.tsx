@@ -74,7 +74,7 @@ const Dashboard = () => {
               </div>
               <div className={`grid-col ${styles.certificationsHeaderLink}`}>
                 <Link
-                  to="/certification"
+                  to="/certifications"
                   className={`float-right usa-prose ${styles.certificationsHeaderLink}`}
                 >
                   {t("View")}

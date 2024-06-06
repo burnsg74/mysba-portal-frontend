@@ -36,7 +36,7 @@ const LinkLaunchPad = () => {
 
   const handleBackBtnClick = () => {
     dispatch(setNav(true));
-    navigate("/certification");
+    navigate("/certifications");
   };
 
   const handleContinueBtnClick = () => {
@@ -49,7 +49,7 @@ const LinkLaunchPad = () => {
 
   const completeModal = () => {
     dispatch(setNav(true))
-    navigate("/certification")
+    navigate("/certifications")
   }
 
   const modalFooterContent = (

@@ -15,7 +15,7 @@ const ApplyCert2 = () => {
   const prevPage = () => navigate("/certification-apply/1", { state: { selectedOption: selectedOptionRef.current } });
   const openCertWebsite = (url: string) => {
     window.open(url, "_blank");
-    navigate("/certification");
+    navigate("/certifications");
   };
   const handleResize = () => isLargeWindow() && navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
 

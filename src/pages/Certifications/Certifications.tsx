@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getUser, setUser } from "src/store/user/userSlice";
-import { AccessToken } from "@okta/okta-auth-js";
+import { getUser } from "src/store/user/userSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
@@ -12,10 +11,10 @@ import Modal from "src/components/Modal/Modal";
 import editPaperImg from "src/assets/edit-paper.svg";
 import nextSignImg from "src/assets/next-sign.svg";
 import Alert from "src/components/Alert/Alert";
-import axios from "axios";
 import styles from "src/pages/Certifications/Certifications.module.css";
 import CertificationAlert from "src/components/CertificationAlert/CertificationAlert";
-import { BASE_API_URL } from "src/utils/constants";
+import IconPaperCert from "src/assets/icon-paper-cert.svg";
+import IconOpenInNew from "src/assets/icon-open-in-new.svg";
 
 const Certifications = () => {
   const location = useLocation();
@@ -34,29 +33,6 @@ const Certifications = () => {
     setSelectedCert(cert);
   }, [selectedOption]);
 
-  useEffect(() => {
-    const fetchCertifications = async () => {
-      try {
-        setShowFetchError(false);
-        const email = user?.profile?.crm?.email;
-        let accessToken: string | AccessToken | null | undefined;
-        if (authState && "accessToken" in authState) {
-          accessToken = authState.accessToken?.accessToken;
-        } else {
-          accessToken = undefined;
-        }
-        axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-        const res = await axios.get(`${BASE_API_URL}certification/wosb/${email}`);
-        const updatedUser = { ...user, certifications: res.data };
-        dispatch(setUser(updatedUser));
-      } catch (error) {
-        setShowFetchError(true);
-        console.error("Error fetching certifications", error);
-      }
-    };
-    fetchCertifications().then();
-  }, []);
-
   const handleApplyCertificationClick = () => {
     navigate("/certification/1", { state: { selectedOption } });
   };
@@ -64,7 +40,7 @@ const Certifications = () => {
   const isApplyCertModal1Open = location.pathname === "/certification/1";
   const isApplyCertModal2Open = location.pathname === "/certification/2";
 
-  const closeModal = () => navigate("/certification");
+  const closeModal = () => navigate("/certifications");
   const prevModal = () => navigate("/certification/1");
   const NextModal = () => navigate("/certification/2");
   const openCertWebsite = (url: string) => {
@@ -121,28 +97,24 @@ const Certifications = () => {
   </>);
 
   const linkCert = () => {
-    setIsLinkCertModalOpen(true)
+    setIsLinkCertModalOpen(true);
   };
 
   const handleLinkCertModalClose = () => {
-    setIsLinkCertModalOpen(false)
+    setIsLinkCertModalOpen(false);
   };
 
   return (<>
-    <div className={`main-container`}>
-      {showFetchError && (<div className={`${styles.alertContainer}`}>
-        <Alert type={"error"} message={"Error: Unable to fetch certifications. Please try again later."} />
-      </div>)}
+    <div data-testid="page-certifications" className={`main-container ${styles.pageContainer}`}>
       {/* Certifications Alerts */}
-      <div className={`${styles.alertContainer}`}>
         {user.certifications?.map((certification) => {
           return (<React.Fragment key={certification.certification_id}>
             <CertificationAlert certification={certification} />
           </React.Fragment>);
         })}
-      </div>
 
-      <div className={`grid-row ${styles.titleRow}`}>
+      {/* Title Row */}
+      <div className={`${styles.titleContainer}`}>
         <h1 className={`grid-col grid-col-wrap ${styles.title}`}>{t("Certifications")}</h1>
         <div className={`grid-col-auto ${styles.btnGroup}`}>
           <div className="grid-col-auto grid-col-wrap">
@@ -162,6 +134,30 @@ const Certifications = () => {
           </div>
         </div>
       </div>
+      {/* No Certification Message */}
+      {! user.certifications?.length && (<>
+        <div className={`${styles.noCertificationMessageContainer}`}>
+          <img src={IconPaperCert} alt={"No Cert"} className={`${styles.noCertsIcon}`} />
+          <div className={` ${styles.noCertsText}`}>
+            You haven’t linked any certifications.
+          </div>
+        </div>
+
+        <Alert
+          type={"info"}
+          title={"Why should I get certified?"}
+          message={<>
+            {"SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs. "}
+            <div className={`${styles.learnMore}`}>
+            <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank">Learn more
+              about certifications
+              <img src={IconOpenInNew} alt={"Open in New Tab"} />
+            </a>
+            </div>
+          </>}
+        />
+      </>)}
+
       {user.certifications && [...user.certifications]
         .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
         .map((certification) => (
@@ -170,7 +166,9 @@ const Certifications = () => {
               <CertificationCard key={certification.certification_id} certification={certification} />
             </div>
           </div>))}
-    </div>
+      </div>
+
+    {/* Apply for a Certification Modal */}
     {isApplyCertModal1Open && (<Modal
       title={t("Apply for a Certification")}
       onClose={closeModal}
@@ -300,7 +298,7 @@ const Certifications = () => {
       contentMessage={t(selectedCert.message) || ""}
       footerContent={modal2FooterContent}
     />)}
-    {isLinkCertModalOpen && ( <LinkCertModalGroup handleCloseModal={handleLinkCertModalClose}/>)}
+    {isLinkCertModalOpen && (<LinkCertModalGroup handleCloseModal={handleLinkCertModalClose} />)}
   </>);
 };
 
