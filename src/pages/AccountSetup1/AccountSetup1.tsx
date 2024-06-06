@@ -65,7 +65,7 @@ const AccountSetup1 = () => {
     navigate("/account-setup/2");
   };
 
-  return (<div className={`grid-row ${styles.containerRow}`}>
+  return (<div data-testid="accountSetup1" className={`grid-row ${styles.containerRow}`}>
       <div className={`grid-col ${styles.container}`}>
         <div className={`${styles.header}`}>
           <img src={OpenSignImage} alt="Open Sign" className={styles.openSign} />

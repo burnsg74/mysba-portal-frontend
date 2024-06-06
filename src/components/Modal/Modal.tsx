@@ -97,11 +97,12 @@ const ModalComponent = ({
   });
 
   return (
-      <div className={`${styles.overlay}`}>
+      <div data-testid="modal" className={`${styles.overlay}`}>
         <div className={`${styles.container}`}>
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
             {!hideCloseButton && (<span
+              data-testid="close-button"
               className={`${styles.headerClose}`}
               onClick={closeModal}
               onKeyDown={event => {

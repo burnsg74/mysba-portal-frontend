@@ -62,13 +62,13 @@ const Businesses = () => {
   };
 
   return (<>
-    <div className={`main-container`}>
+    <div data-testid="page-businesses" className={`main-container`}>
       {showFetchError && (<div className={`${styles.alertContainer}`}>
         <Alert type={"error"} message={"Error: Unable to fetch businesses. Please try again later."} />
       </div>)}
       <div className={`${styles.titleContainer}`}><h1 className={`${styles.title}`}> {t("Businesses")} </h1>
         <button type="button" onClick={handleAddBusinessBtnClick}
-                className={`usa-button usa-button--outline ${styles.usaButton}`}
+                className={`usa-button usa-button--outline`}
         disabled={true}> {t("Add a Business")} </button>
       </div>
 

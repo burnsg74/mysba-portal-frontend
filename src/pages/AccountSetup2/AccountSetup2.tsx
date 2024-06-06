@@ -71,7 +71,7 @@ const AccountSetup2 = () => {
     setState({ ...state, [event.target.name]: event.target.checked });
   };
 
-  return (<div className={`grid-row ${styles.containerRow}`}>
+  return (<div data-testid="accountSetup2" className={`grid-row ${styles.containerRow}`}>
     <div className={`grid-col ${styles.container}`}>
       <div className={`${styles.header}`}>
         <img src={CheckListImage} alt="Check List Icon" />

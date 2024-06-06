@@ -14,7 +14,7 @@ const Profile = () => {
     await oktaAuth.signOut();
   };
   return (
-    <div className={`grid-row ${styles.row}`}>
+    <div data-testid="page-profile" className={`grid-row ${styles.row}`}>
       <div className={`grid-col ${styles.container}`}>
         <h1 className={`${styles.profileName}`}>
           {profileData?.profile?.crm?.first_name +

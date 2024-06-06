@@ -160,15 +160,26 @@ const Header = () => {
         </div>
         <div className={`grid-col ${styles.left}`}></div>
         <div className={`grid-col-auto ${styles.right}`}>
+
+          {/* Toggle Language Button */}
           <div className={`usa-language-container ${showProfile ? styles.usaLanguageContainer : ""}`}>
-            <button type="button" className={`usa-button ${styles.pillButton}`} onClick={switchLanguage}>
-              <span lang={lang === "en" ? "es" : "en"}>{lang === "en" ? "Español" : "English"}</span>
+            <button
+              type="button"
+              data-testid="language-toggle"
+              className={`usa-button ${styles.pillButton}`}
+              onClick={switchLanguage}>
+              <span
+                data-testid="language-toggle-label"
+                lang={lang === "en" ? "es" : "en"}>
+                {lang === "en" ? "Español" : "English"}
+              </span>
             </button>
           </div>
+
           {showProfile && (<>
             {/* User Profile */}
             <div className={`usa-nav__inner ${styles.usaNavInner}`}>
-              <Link to="/profile" data-cy="profileLink">
+              <Link to="/profile" data-testid="profile-link">
                 <img src={ProfileIcon} alt="Profile Icon" />
               </Link>
             </div>

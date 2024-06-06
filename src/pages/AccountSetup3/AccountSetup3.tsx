@@ -27,7 +27,7 @@ const AccountSetup3 = () => {
     window.addEventListener("resize", handleResize);
   }, []);
 
-  return (<div className={`${styles.container}`}>
+  return (<div data-testid="accountSetup3" className={`${styles.container}`}>
     <div className={`${styles.content}`}>
       <img src={lightBulbImg} alt="Light Bulb" />
       <div className={`${styles.contentTitle}`}>
