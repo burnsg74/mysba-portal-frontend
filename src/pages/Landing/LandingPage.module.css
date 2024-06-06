@@ -1,12 +1,3 @@
-section {
-    position: relative;
-    top: 0;
-    width: 100%;
-    display: flex;
-    flex-wrap: wrap;
-    z-index: 2;
-}
-
 .mainContainer {
     position:relative;
     display: flex;
@@ -18,15 +9,21 @@ section {
     background-color: #F3F8FC;
 }
 
+.fixedTopGroup {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
 .banner {
+    align-items: center;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    white-space: normal;
-    max-width: 480px;
-    z-index: 2;
-    word-wrap: break-word;
-    margin-bottom:150px;
+    flex: 1;
+    justify-content: center;
+    padding: 0 10px;
+    top: 33%;
+    z-index: 1;
 }
 
 .welcomeMessage {
@@ -40,7 +37,7 @@ section {
 }
 
 .bold {
-    color: var(--Brand-Primary-SBA-Blue, #002E6D);
+    color: var(--Brand-Primary-SBA-Blue);
     font-family: var(--Font-Primary);
     font-size: 48px;
     font-style: normal;
@@ -70,46 +67,16 @@ section {
     max-width: 1022px;
 }
 
-@media (max-height: 610px) {
-    .cityscape {
-        bottom:-5%;
-    }
-}
-
-@media (max-height: 550px) {
-    .cityscape {
-        bottom:-10%;
-    }
-}
-@media (max-height: 505px) {
-    .cityscape {
-        bottom:-15%;
-    }
-}
-
-@media (max-height: 465px) {
-    .cityscape {
-        bottom:-20%;
-    }
-}
-
-@media (max-height: 425px) {
-    .cityscape {
-        bottom:-25%;
-    }
-}
-
 .cloudImage {
     position: fixed;
-    top: -5%;
-    min-width: 1177px;
-    max-width: 1177px;
-    max-height:252px;
-    min-height:252px;
-}
-
-.footerBtn {
-    width: 100%;
+    top: 100px;
+    min-width: 1337px;
+    max-width: 1337px;
+    max-height:181px;
+    min-height:181px;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .buttonGroup {
@@ -134,12 +101,6 @@ section {
     margin-right: 0;
 }
 
-.signupBtn:focus {
-    box-shadow: 0 0 0 3px #05fc;
-    border-radius: 2px;
-    color: var(--Brand-Secondary-Bright-Blue);
-}
-
 .loginBtn {
     border: 2px;
     display: flex;
@@ -162,12 +123,6 @@ section {
     justify-content: space-between;
     padding-left: 20px;
     padding-right: 20px;
-}
-
-.usaNavInner a {
-    display: block;
-    height: auto;
-    width: auto;
 }
 
 .left {
@@ -196,19 +151,13 @@ section {
     padding-top: 20px;
     padding-bottom: 20px;
     z-index: 2;
+    background: var(--Base-white);
 }
 
 .usaBannerHeader {
     text-align: left;
 }
 
-.pillButton {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--Alert-Info-Bar);
-    margin-right: 0 !important;
-}
 
 .usaLanguageContainer {
     padding-right: 20px;
@@ -217,17 +166,6 @@ section {
 .pillButton img {
     width: 20px;
     height: auto;
-}
-
-.headerMenuIconContainer {
-    padding-left: 20px;
-    display: none;
-}
-
-.headerMenuIcon {
-    cursor: pointer;
-    width: 24px;
-    height: 24px;
 }
 
 .usaLogo {
@@ -243,10 +181,6 @@ section {
 }
 
 @media screen and (max-width: 1023px) {
-    .headerMenuIconContainer {
-        display: block;
-    }
-
     .usaLogoSm {
         display: block;
     }
@@ -254,68 +188,4 @@ section {
     .usaLogo {
         display: none;
     }
-}
-
-.tooltip {
-    position: relative;
-    display: inline-block;
-    margin-left: auto;
-}
-
-.tooltip .tooltiptext {
-    visibility: hidden;
-    white-space: nowrap;
-    background-color: black;
-    color: var(--Base-white);
-    text-align: center;
-    padding: 8px;
-    border-radius: 6px;
-    position: absolute;
-    z-index: 1;
-    top: 0;
-    left: auto;
-    right: 150%;
-    opacity: 0;
-    transition: opacity 0.08s ease-in-out;
-}
-
-.tooltip:hover .tooltiptext {
-    visibility: visible;
-    opacity: 1;
-}
-
-.tooltip .tooltiptext::after {
-    content: '';
-    position: absolute;
-    width: 10px;
-    top: 50%;
-    left: 100%;
-    margin-top: -5px;
-    border-width: 5px;
-    border-style: solid;
-    border-color: transparent transparent transparent black;
-}
-
-.buttonStyle {
-    padding: 12px 20px;
-    background-color: #d54309;
-    border-radius: 4px;
-    overflow: hidden;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    gap: 10px;
-    border: none;
-    cursor: pointer;
-}
-
-.buttonStyle .buttonText {
-    text-align: center;
-    color: var(--Base-white);
-    font-size: 16px;
-    font-family: var(--Font-Secondary), serif;
-    font-weight: 700;
-    line-height: 14px;
-    word-wrap: break-word;
 }

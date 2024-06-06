@@ -29,13 +29,6 @@
   max-width:600px;
 }
 
-.openSign {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin-bottom: 20px;
-}
-
 .title {
   font-family: var(--Font-Primary);
   font-weight: 400;
@@ -103,11 +96,6 @@
   margin-bottom:20px;
 }
 
-.checkboxGroup {
-  display: flex;
-  align-items: center;
-}
-
 input[type="checkbox"] {
   width: 24px;
   height: 24px;
@@ -116,23 +104,6 @@ input[type="checkbox"] {
 
 input[type="checkbox"]:focus {
   outline: none;
-}
-
-.checkboxLabel {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--Font-Primary);
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 26px;
-  text-align: left;
-  color: var(--Brand-Primary-SBA-Blue);
-  padding:20px;
-}
-
-.cardContainer {
-  margin: 0;
 }
 
 .buttonGroup {
@@ -257,10 +228,6 @@ input[type="checkbox"]:focus {
   border-width:1px;
   width: 100%;
   height:92px;
-}
-
-.usa-checkbox__input--tile+[class*=__label] {
-  border-width:1px;
 }
 
 .usaCheckboxLabel {

@@ -21,6 +21,7 @@ export class MockOktaAuth {
   }
 
   async signIn() {
+    this.authState.isAuthenticated = true;
     return {
       status: "SUCCESS",
       sessionToken: "mock-session-token",
