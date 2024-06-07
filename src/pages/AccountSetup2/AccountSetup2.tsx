@@ -298,13 +298,18 @@ const AccountSetup2 = () => {
       </div>
       <div className={`${styles.buttonGroup}`}>
         <div className={`${styles.buttonRow}`}>
-          <button
-            type="button"
-            onClick={handleBackBtnClick}
-            className={`usa-button usa-button--outline ${styles.usaButton}`}
-          >
-            {t("Back")}
-          </button>
+
+          {
+            user.businesses && user.businesses.length > 0 ? (
+              <button
+                type="button"
+                onClick={handleBackBtnClick}
+                className={`usa-button usa-button--outline ${styles.usaButton}`}
+              >
+                {t("Back")}
+              </button>
+            ) : null
+          }
           <button
             type="button"
             className={`usa-button ${styles.usaButton}`}
