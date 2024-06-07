@@ -11,6 +11,7 @@ import { useOktaAuth } from "@okta/okta-react";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
 import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
 import { BASE_API_URL } from "src/utils/constants";
+import { useEffect } from "react";
 
 const AccountSetup1 = () => {
   const { t } = useTranslation();
@@ -24,6 +25,12 @@ const AccountSetup1 = () => {
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAllowNotice(event.target.checked);
   };
+
+  useEffect(() => {
+    if (!user.businesses || user.businesses.length === 0) {
+      navigate("/account-setup/2");
+    }
+  }, []);
 
   const handleContinueBtnClick = () => {
 
