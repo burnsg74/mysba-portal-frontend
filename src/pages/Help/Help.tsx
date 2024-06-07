@@ -7,7 +7,7 @@ import Alert from "src/components/Alert/Alert";
 
 const Help = () => {
   const { t } = useTranslation();
-  return (<div className={`main-container`}>
+  return (<div data-testid="page-help" className={`main-container`}>
     <div className={`${styles.container}`}>
       <LocalResources />
       <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>

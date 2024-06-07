@@ -6,7 +6,7 @@ import {useTranslation} from 'react-i18next';
 const Loans = () => {
   const {t} = useTranslation();
   return (
-      <div className={`main-container`}>
+      <div data-testid="page-loans" className={`main-container`}>
         <div className="grid-row">
           <div className="grid-col">
             <img

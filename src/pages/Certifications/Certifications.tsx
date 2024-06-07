@@ -34,11 +34,11 @@ const Certifications = () => {
   }, [selectedOption]);
 
   const handleApplyCertificationClick = () => {
-    navigate("/certification/1", { state: { selectedOption } });
+    navigate("/certifications/1", { state: { selectedOption } });
   };
 
-  const isApplyCertModal1Open = location.pathname === "/certification/1";
-  const isApplyCertModal2Open = location.pathname === "/certification/2";
+  const isApplyCertModal1Open = location.pathname === "/certifications/1";
+  const isApplyCertModal2Open = location.pathname === "/certifications/2";
 
   const closeModal = () => navigate("/certifications");
   const prevModal = () => navigate("/certification/1");
