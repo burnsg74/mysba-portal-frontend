@@ -41,8 +41,8 @@ const Certifications = () => {
   const isApplyCertModal2Open = location.pathname === "/certifications/2";
 
   const closeModal = () => navigate("/certifications");
-  const prevModal = () => navigate("/certification/1");
-  const NextModal = () => navigate("/certification/2");
+  const prevModal = () => navigate("/certifications/1");
+  const NextModal = () => navigate("/certifications/2");
   const openCertWebsite = (url: string) => {
     window.open(url, "_blank");
     closeModal();

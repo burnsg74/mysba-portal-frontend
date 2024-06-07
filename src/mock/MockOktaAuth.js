@@ -18,6 +18,16 @@ export class MockOktaAuth {
         window.location.replace(originalUri || '/');
       },
     };
+
+    this._oktaUserAgent = {
+      addEnvironment: () => {},
+      getHttpHeader: () => {
+        return {
+          'X-Okta-User-Agent-Extended': 'okta-auth-localhost:6343'
+        };
+      },
+      getVersion: () => '7.6.0',
+    };
   }
 
   async signIn() {
