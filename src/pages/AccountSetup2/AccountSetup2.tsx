@@ -297,7 +297,7 @@ const AccountSetup2 = () => {
         </fieldset>
       </div>
       <div className={`${styles.buttonGroup}`}>
-        <div className={`grid-row ${styles.buttonRow}`}>
+        <div className={`${styles.buttonRow}`}>
           <button
             type="button"
             onClick={handleBackBtnClick}
