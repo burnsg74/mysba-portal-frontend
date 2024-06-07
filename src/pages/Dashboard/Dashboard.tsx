@@ -11,6 +11,7 @@ import CityScapeImage from "src/assets/cityscape.png";
 import BusinessCardIcon from "src/assets/business-card-icon.svg";
 import lightBulbImage from "src/assets/light-bulb.svg";
 import CertificationAlert from "src/components/CertificationAlert/CertificationAlert";
+import IconMagnifier from "src/assets/icon-magnifier.svg";
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
@@ -55,6 +56,17 @@ const Dashboard = () => {
               <CertificationAlert certification={certification} />
             </div>);
         })}
+
+        {/* No Businesses */}
+        {! user.businesses?.length && (<div className={`${styles.noBusinessesMessageContainer}`}>
+            <img src={IconMagnifier} alt={"No Cert"} className={`${styles.noBusinesseIcon}`} />
+            <div className={` ${styles.noBusinessesText1}`}>
+              It looks like you haven’t added anything.
+            </div>
+            <div className={` ${styles.noBusinessesText2}`}>
+              Navigate to Businesses or Certifications to add your information.
+            </div>
+          </div>)}
 
         {/* Businesses */}
         {user.businesses && [...user.businesses]

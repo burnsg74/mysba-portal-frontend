@@ -27,7 +27,7 @@ const Businesses = () => {
       <div className={`${styles.titleContainer}`}>
         <h1 className={`${styles.title}`}> {t("Businesses")} </h1>
         <button type="button" onClick={handleAddBusinessBtnClick}
-                className={`usa-button usa-button--outline`}
+                className={`usa-button usa-button--outline ${styles.addBusinessBtn}`}
         disabled={true}> {t("Add a Business")} </button>
       </div>
 

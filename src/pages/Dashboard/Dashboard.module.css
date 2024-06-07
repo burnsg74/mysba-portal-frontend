@@ -102,6 +102,37 @@
     font-family: var(--Font-Secondary);
     color: var(--Brand-Primary-SBA-Blue);
 }
+.noBusinessesMessageContainer {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    height: 100%;
+    justify-content: center;
+}
+
+.noBusinesseIcon {
+    height: 100px;
+    width: 100px;
+}
+
+.noBusinessesText1 {
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    text-align: center;
+}
+
+.noBusinessesText2 {
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 17px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+}
 
 .rightContainer {
     width: 350px;
