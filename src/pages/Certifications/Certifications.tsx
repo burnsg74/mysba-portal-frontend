@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import { getUser } from "src/store/user/userSlice";
-import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
 import { certifications } from "src/utils/certifications";
@@ -20,13 +19,10 @@ const Certifications = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
-  const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState<string>("none");
   const [selectedCert, setSelectedCert] = useState(certifications[0]);
-  const [showFetchError, setShowFetchError] = useState(false);
   const [isLinkCertModalOpen, setIsLinkCertModalOpen] = useState(false);
   const { t } = useTranslation();
-  const { authState } = useOktaAuth();
 
   useEffect(() => {
     const cert = certifications.find(cert => cert.code === selectedOption) || certifications[0];

@@ -44,7 +44,7 @@ const Dashboard = () => {
     </div>
 
     {/* Dashboard Content */}
-    <div className={`main-container`}>
+    <div data-testid="page-dashboard" className={`main-container`}>
       <div className={`${styles.dashboardContent}`}>
         {/* Certifications Alerts */}
         {user.certifications?.map((certification) => {

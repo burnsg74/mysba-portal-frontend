@@ -17,6 +17,8 @@ const CertificationAlert = ({ certification }: ICertificationProps): ReactElemen
   } else if (certification.days_until_expiry <= 90) {
     alertType = "warning";
     alertMessage = `Your ${certification.certification_type} certification will expire within ${certification.days_until_expiry} days. It must be renewed by ${certification.expiration_date}`;
+  } else {
+    return null;
   }
 
   return alertType ? <Alert type={alertType} message={t(alertMessage)} /> : null;
