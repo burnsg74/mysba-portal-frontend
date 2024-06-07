@@ -95,12 +95,15 @@
 }
 
 .radioRow {
-    box-shadow: 0 7px 15px 0 #1B1E2912;
     margin-bottom: 20px;
     border-color: var(--Base-base-lighter);
     flex-shrink: 1;
     display: flex;
     flex-direction: row;
+    border: 1px solid var(--Base-base-lighter);
+    border-radius: 8px;
+    background: var(--Base-white, #FFF);
+    box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
 }
 
 .radioLabel::before {
