@@ -192,3 +192,72 @@
     justify-items: center;
     align-items: center;
 }
+
+.applyForCertificationBtn {
+    border: 2px solid var(--Brand-Secondary-Bright-Blue);
+    margin: 0;
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+}
+
+.applyForCertificationBtn:active {
+    outline: none;
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+}
+
+.applyForCertificationBtn:hover {
+    border: 2px solid var(--Brand-Secondary-Bright-Blue);
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+}
+
+.applyForCertificationBtn:focus {
+    outline: none;
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+}
+
+.linkCertificationBtn:disabled {
+    color: #454545;
+    background: #C9C9C9;
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+    margin: 0;
+}
+
+.btnGroup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
+}

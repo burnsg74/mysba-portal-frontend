@@ -67,7 +67,7 @@ const CertificationDetail = () => {
       {t("Go")}
       <div className={`${styles.iconContainer}`}>
         <svg
-          className={`usa-icon  ${styles.usaIcon}`}
+          className={`usa-icon ${styles.usaIcon}`}
           aria-hidden="true"
           focusable="false"
           height="18px"
@@ -81,11 +81,11 @@ const CertificationDetail = () => {
   </>);
 
   return (<>
-    <div className={`${styles.container}`}>
+    <div data-testid="page-certification-details" className={`${styles.container}`}>
       <div className={`${styles.headerButtonsContainer}`}>
         <button
           type="button"
-          className="usa-button usa-button--outline"
+          className={`usa-button usa-button--outline ${styles.applyForCertificationBtn}`}
           onClick={() => {
             navigate(-1);
           }}
@@ -93,7 +93,8 @@ const CertificationDetail = () => {
         <button
           type="button"
           data-testid="manage-certification-button"
-          className={`usa-button usa-button ${styles.manageCertButton}`}
+          className={`usa-button ${styles.linkCertificationBtn}`}
+          // className={`usa-button usa-button ${styles.manageCertButton}`}
           onClick={() => setShowManageCertificationModal(true)}
         >{t("Manage Certification")}
           <svg className="usa-icon" aria-hidden="true" focusable="false" height="24px" width="24px">

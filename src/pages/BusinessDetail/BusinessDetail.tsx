@@ -35,7 +35,7 @@ const BusinessDetail = () => {
     return null;
   }
 
-  return (<div className={`${styles.container}`}>
+  return (<div data-testid="page-business-details" className={`${styles.container}`}>
       <div className={"grid-row"}>
         <div className={"grid-col"}>
           <button
