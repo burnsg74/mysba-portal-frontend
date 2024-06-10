@@ -132,11 +132,13 @@ const ModalComponent = ({
                       // role={isComplete ? "button" : undefined}
                       // tabIndex={isComplete ? 0 : undefined}
                       className={`usa-step-indicator__segment ${statusClassName}`}
-                      data-testid="step-indicator"
                     >
-                      <button onClick={isComplete ? prevModal : undefined}
+                      <button
+                        data-testid="step-indicator"
+                        className={`usa-step-indicator__segment ${statusClassName}`}
+                        onClick={isComplete ? prevModal : undefined}
                                onKeyDown={prevModal}
-                              style={{ width: "100%" }}
+                              style={{ width: "100%", display: "block", zIndex: 100, cursor: "pointer"}}
                       > &nbsp;</button>
                     </li>
                   );
