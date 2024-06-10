@@ -39,7 +39,6 @@ const LinkCertModalGroup: React.FC<BusinessAddProps> = ({ handleCloseModal }) =>
         switch (currentStep) {
             case 1:
                 return <LinkCertModal1
-                    businessData={businessData}
                     handleClose={handleCloseModal}
                     handleContinue={(stepData) => handleContinue(stepData)} />;
             case 2:

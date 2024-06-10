@@ -29,7 +29,8 @@ describe('ModalComponent', () => {
 
   it('renders step indicators and prevModal is called when completed step is clicked', () => {
     render(<ModalComponent title="Step Modal" totalSteps={3} completedSteps={1} prevModal={prevModal} onClose={onClose} />);
-    
+
+    // step-indicator"
     const completeStep = screen.getAllByTestId('step-indicator')[0];
     fireEvent.click(completeStep);
     expect(prevModal).toHaveBeenCalled();
