@@ -8,7 +8,6 @@ interface ModalInputRadioProps {
   value: string;
   groupValue: string;
   label: string;
-  help?: string;
   onChange: (name: string, value: string) => void;
   disabled?: boolean;
 }
@@ -40,8 +39,9 @@ const ModalInputRadio: React.FC<ModalInputRadioProps> = ({ id, name, value, grou
         <label
           htmlFor={id}
           className={`usa-radio__label ${styles.label}`}
-          onClick={handleClick}
-          >{t(label)}</label>
+          >
+          <button onClick={handleClick}>{t(label)}</button>
+        </label>
     </div>);
 };
 

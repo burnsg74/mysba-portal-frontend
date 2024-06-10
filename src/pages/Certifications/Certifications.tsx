@@ -147,7 +147,8 @@ const Certifications = () => {
             <div className={`${styles.learnMore}`}>
             <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank">Learn more
               about certifications
-              <img src={IconOpenInNew} alt={"Open in New Tab"} />
+              {' '}
+              <img src={IconOpenInNew} alt={"Open in New Tab"}/>
             </a>
             </div>
           </>}

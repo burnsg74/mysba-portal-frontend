@@ -35,22 +35,16 @@ function useFocusTrap(ref: React.RefObject<HTMLElement>, initialFocusRef: React.
     const lastFocusableElement: HTMLElement | null = focusableContent[focusableContent.length - 1];
 
     const handleFocus = (event: KeyboardEvent) => {
-      let isTabPressed = event instanceof KeyboardEvent && event.key === "Tab";
+      const isTabPressed = event instanceof KeyboardEvent && event.key === "Tab";
+      const isShiftPressed = event.shiftKey;
+      const isFirstElementFocused = document.activeElement === firstFocusableElement;
+      const isLastElementFocused = document.activeElement === lastFocusableElement;
 
-      if (!isTabPressed) {
-        return;
-      }
-
-      if (event.shiftKey) {
-        if (document.activeElement === firstFocusableElement) {
-          lastFocusableElement?.focus();
-          event.preventDefault();
-        }
-      } else {
-        if (document.activeElement === lastFocusableElement) {
-          firstFocusableElement?.focus();
-          event.preventDefault();
-        }
+      if (!isTabPressed) { return; }
+      if ((isShiftPressed && isFirstElementFocused) || (!isShiftPressed && isLastElementFocused)) {
+        const focusTarget = isShiftPressed ? lastFocusableElement : firstFocusableElement;
+        focusTarget?.focus();
+        event.preventDefault();
       }
     };
 
@@ -77,7 +71,7 @@ const ModalComponent = ({
   const { t } = useTranslation();
   const footerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
-  const closeButtonRef = useRef<HTMLSpanElement>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
   useFocusTrap(contentRef, closeButtonRef);
 
   useEffect(() => {
@@ -91,9 +85,9 @@ const ModalComponent = ({
   };
 
   const stepsArray = Array.from({ length: totalSteps }, (_, index) => {
-    if (index < completedSteps) return "complete";
-    if (index === completedSteps) return "current";
-    return "incomplete";
+    if (index < completedSteps) return { id: `step-${index}`, status: "complete" };
+    if (index === completedSteps) return { id: `step-${index}`, status: "current" };
+    return { id: `step-${index}`, status: "incomplete" };
   });
 
   return (
@@ -101,7 +95,7 @@ const ModalComponent = ({
         <div className={`${styles.container}`}>
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
-            {!hideCloseButton && (<span
+            {!hideCloseButton && (<button
               data-testid="close-button"
               className={`${styles.headerClose}`}
               onClick={closeModal}
@@ -110,16 +104,15 @@ const ModalComponent = ({
                   closeModal();
                 }
               }}
-              role="button"
               tabIndex={0}
               ref={closeButtonRef}
             >
               {" "}
               {t("Close")}
-              <svg aria-hidden="true" focusable="false" role="img" width="24" height="24" style={{ fill: "#71767A" }}>
+              <svg aria-hidden="true" focusable="false" width="24" height="24" style={{ fill: "#71767A" }}>
                 <use xlinkHref="/assets/img/sprite.svg#close"></use>
               </svg>
-            </span>)}
+            </button>)}
           </div>
           {totalSteps > 0 && (<div className={`${styles.stepIndicatorContainer}`}>
             <div
@@ -127,14 +120,27 @@ const ModalComponent = ({
               aria-label="progress"
             >
               <ol className={`usa-step-indicator__segments ${styles.usaStepIndicatorSegments}`}>
-                {stepsArray.map((stepStatus, index) => (<li
-                  key={index}
-                  onClick={stepStatus === "complete" ? prevModal : undefined}
-                  role={stepStatus === "complete" ? "button" : undefined}
-                  tabIndex={stepStatus === "complete" ? 0 : undefined}
-                  className={`usa-step-indicator__segment ${styles[`usa-step-indicator__segment--${stepStatus}`]}`}
-                  data-testid="step-indicator"
-                />))}
+                {stepsArray.map((step) => {
+                  const { status } = step;
+                  const isComplete = status === "complete";
+                  const statusClass = `usa-step-indicator__segment--${status}`;
+                  const statusClassName = styles[statusClass];
+
+                  return (
+                    <li
+                      key={step.id}
+                      // role={isComplete ? "button" : undefined}
+                      // tabIndex={isComplete ? 0 : undefined}
+                      className={`usa-step-indicator__segment ${statusClassName}`}
+                      data-testid="step-indicator"
+                    >
+                      <button onClick={isComplete ? prevModal : undefined}
+                               onKeyDown={prevModal}
+                              style={{ width: "100%" }}
+                      > &nbsp;</button>
+                    </li>
+                  );
+                })}
               </ol>
             </div>
           </div>)}

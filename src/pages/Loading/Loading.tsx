@@ -74,11 +74,6 @@ const Loading = () => {
     const certificationData = results[2].data;
     const portalData = results[3].data;
 
-    // let url = `${import.meta.env.VITE_APP_DISTRICT_URL}district/rest/zipcode_to_district/12167`;
-    // await  axios.get(url).then((response) => {
-    //   console.log('response', response)
-    // })
-
     return {
       profile: {
         crm: crmData,

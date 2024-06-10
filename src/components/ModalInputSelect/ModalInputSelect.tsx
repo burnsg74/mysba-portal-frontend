@@ -13,7 +13,6 @@ interface ModalInputSelectProps {
 
 const ModalInputSelect: React.FC<ModalInputSelectProps> = ({ name, value, options, label, help, onChange }) => {
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    console.log("ModalInputSelect Changed", name, event.target.value);
     onChange(name, event.target.value);
   };
 
@@ -27,7 +26,7 @@ const ModalInputSelect: React.FC<ModalInputSelectProps> = ({ name, value, option
       onChange={handleChange}
     >
       <option>- Select -</option>
-      {options.map((option, index) => (<option key={index} value={option.value}>{option.label}</option>))}
+      {options.map((option) => (<option key={value} value={option.value}>{option.label}</option>))}
     </select>
   </div>);
 };

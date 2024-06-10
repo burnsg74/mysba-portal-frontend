@@ -8,7 +8,7 @@ interface ICertificationProps {
 
 const CertificationAlert = ({ certification }: ICertificationProps): ReactElement | null => {
   const { t } = useTranslation();
-  let alertType: "error" | "warning" | "success" | "info" = "info";
+  let alertType: "error" | "warning" | "success" | "info";
   let alertMessage: string = "";
 
   if (certification.days_until_expiry <= 0) {
@@ -21,7 +21,7 @@ const CertificationAlert = ({ certification }: ICertificationProps): ReactElemen
     return null;
   }
 
-  return alertType ? <Alert type={alertType} message={t(alertMessage)} /> : null;
+  return <Alert type={alertType} message={t(alertMessage)} />;
 };
 
 export default CertificationAlert;

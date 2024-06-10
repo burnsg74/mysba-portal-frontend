@@ -5,11 +5,6 @@ import styles from "src/components/LinkCertModalGroup/LinkCertModal.module.css";
 import modalIcon from "src/assets/MySBAIllustrationsIcons.svg";
 
 interface Step1ModalProps {
-    businessData: {
-        businessName: string
-        certName: string
-        uei: string
-    };
     handleClose: () => void;
     handleContinue: (stepData: any) => void;
 }

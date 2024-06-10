@@ -160,7 +160,7 @@ const LocalResources = () => {
           </div>
         </div>
           <div  className={`${styles.officeCardsContainer}`}>
-            {data.offices.map((office, index) => (<div key={index} className={`${styles.officeCard}`}>
+            {data.offices.map((office) => (<div key={office.title} className={`${styles.officeCard}`}>
                     <img
                       className={`${styles.officeCardsImg}`}
                       src={getIconForOfficeType(office.type)}

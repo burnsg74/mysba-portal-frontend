@@ -7,7 +7,6 @@ interface ModalInputCheckboxProps {
   name: string;
   label: string;
   value: string;
-  help?: string;
   onChange: (name: string, value: string) => void;
 }
 

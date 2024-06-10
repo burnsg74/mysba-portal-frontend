@@ -1,17 +1,16 @@
-import React, { useState } from "react";
-import styles from "src/pages/AccountSetup1/AccountSetup1.module.css";
-import { useTranslation } from "react-i18next";
-import { useDispatch, useSelector } from "react-redux";
-import { getUser, setUser } from "src/store/user/userSlice";
-import { useNavigate } from "react-router-dom";
 import OpenSignImage from "src/assets/open-sign.svg";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import styles from "src/pages/AccountSetup1/AccountSetup1.module.css";
 import { AccessToken } from "@okta/okta-auth-js";
-import { useOktaAuth } from "@okta/okta-react";
-import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
-import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
 import { BASE_API_URL } from "src/utils/constants";
-import { useEffect } from "react";
+import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
+import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
+import { getUser, setUser } from "src/store/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useOktaAuth } from "@okta/okta-react";
+import { useTranslation } from "react-i18next";
 
 const AccountSetup1 = () => {
   const { t } = useTranslation();
