@@ -57,11 +57,11 @@ const Loading = () => {
       });
     }
     const crmData = results[0].data;
-    if (!crmData) {
-      oktaAuth.signOut().then(() => {
-        navigate("/error");
-      });
-    }
+    // if (!crmData) {
+    //   oktaAuth.signOut().then(() => {
+    //     navigate("/error");
+    //   });
+    // }
 
     let businessData = results[1].data;
     businessData.forEach((business: any) => {
