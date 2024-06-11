@@ -56,12 +56,13 @@ const Loading = () => {
         navigate("/error");
       });
     }
-    const crmData = results[0].data;
-    // if (!crmData) {
-    //   oktaAuth.signOut().then(() => {
-    //     navigate("/error");
-    //   });
-    // }
+    let crmData = results[0].data;
+    if (!crmData) {
+      crmData = {
+        "id"   : "003Hv000007zHkvIAE", "accountid": "001Hv000007r78NIAQ", "last_name": "Smith", "first_name": "Cindy",
+        "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA",
+      };
+    }
 
     let businessData = results[1].data;
     businessData.forEach((business: any) => {
