@@ -36,7 +36,7 @@ const Dashboard = () => {
     <div className={`banner ${styles.banner}`}>
       <div className={`${styles.welcomeMessage}`}>
         {user.profile?.crm && (<span data-testid="welcome-first_name" className="first_name">
-              {t("Hi")} {user.profile.crm.first_name},{" "}
+              {t("Hi")} {user.profile?.crm?.first_name},{" "}
             </span>)}
       </div>
       <div className={`${styles.mysbaMessage}`}>{t("Welcome to your MySBA Dashboard")}</div>

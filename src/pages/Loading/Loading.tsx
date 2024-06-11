@@ -74,9 +74,10 @@ const Loading = () => {
     const certificationData = results[2].data;
     const portalData = results[3].data;
 
+    console.log('crmData', crmData);
     return {
       profile: {
-        crm: crmData,
+        crm: (crmData === undefined) ? null : crmData,
         portal: portalData,
       },
       businesses: businessData,
