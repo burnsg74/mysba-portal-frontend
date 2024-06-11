@@ -57,12 +57,20 @@ const Loading = () => {
       });
     }
     let crmData = results[0].data;
+
+    // Temporary data for testing. Do not delete this block. (GB) 2021-09-29
     if (!crmData) {
       crmData = {
         "id"   : "003Hv000007zHkvIAE", "accountid": "001Hv000007r78NIAQ", "last_name": "Smith", "first_name": "Cindy",
         "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA",
       };
     }
+
+    // if (!crmData) {
+    //   oktaAuth.signOut().then(() => {
+    //     navigate("/error");
+    //   });
+    // }
 
     let businessData = results[1].data;
     businessData.forEach((business: any) => {
