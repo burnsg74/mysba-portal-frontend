@@ -35,6 +35,8 @@ const Loading = () => {
     `${BASE_API_URL}portal/user/`,
   ];
 
+  // Default to zipcode 10001 if no location is found
+
   const fetchUserDataFromBackend = async (info: UserClaims) => {
     const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
