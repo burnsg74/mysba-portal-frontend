@@ -25,6 +25,7 @@ import { getUser } from "src/store/user/userSlice";
 import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
 // @ts-ignore
 import { MockOktaAuth } from "src/mock/MockOktaAuth";
+import ChangePassword from "src/pages/ChangePassword/ChangePassword";
 
 
 const App: React.FC = () => {
@@ -84,6 +85,7 @@ const App: React.FC = () => {
         <Route element={<ProtectedRoute />}>
           <Route element={<Layout />}>
             <Route path="/loading" element={<Loading />} />
+            <Route path="/change-password" element={<ChangePassword />} />
             <Route path="/account-setup/1" element={<AccountSetup1 />} />
             <Route path="/account-setup/2" element={<AccountSetup2 />} />
             <Route path="/dashboard/*" element={<Dashboard />} />

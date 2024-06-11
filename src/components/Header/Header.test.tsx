@@ -67,7 +67,7 @@ describe("Header Component", () => {
 
   it("shows the profile link if showProfile is true", () => {
     setup(mockStore);
-    expect(screen.getByAltText("Profile Icon")).toBeInTheDocument();
+    expect(screen.getByAltText("ChangePassword Icon")).toBeInTheDocument();
   });
 
   it("handles logout correctly", async () => {

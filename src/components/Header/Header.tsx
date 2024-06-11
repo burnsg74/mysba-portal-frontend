@@ -177,7 +177,7 @@ const Header = () => {
           </div>
 
           {showProfile && (<>
-            {/* User Profile */}
+            {/* User ChangePassword */}
             <div className={`usa-nav__inner ${styles.usaNavInner}`}>
               <Link to="/profile" data-testid="profile-link">
                 <img src={ProfileIcon} alt="Profile Icon" />

@@ -17,7 +17,7 @@ jest.mock("@okta/okta-react", () => ({
   }),
 }));
 
-describe('Page: Profile', () => {
+describe('Page: ChangePassword', () => {
 
   it("It renders", () => {
     render(<Provider store={store}>
