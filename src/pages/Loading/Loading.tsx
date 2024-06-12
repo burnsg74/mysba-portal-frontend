@@ -11,7 +11,7 @@ import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
 import { formatPhoneNumber } from "src/utils/formatter";
-import { BASE_API_URL } from "src/utils/constants";
+import { BASE_API_URL,DISTRICT_URL } from "src/utils/constants";
 
 const Loading = () => {
   const PROGRESS_UPDATE_INTERVAL = 500;
@@ -29,10 +29,10 @@ const Loading = () => {
     t("Verifying"),
   ];
   const endpoints = [
-    `${BASE_API_URL}crm/mysba360/`,
-    `${BASE_API_URL}business/`,
-    `${BASE_API_URL}certification/wosb/`,
-    `${BASE_API_URL}portal/user/`,
+    `${BASE_API_URL}/crm/mysba360/`,
+    `${BASE_API_URL}/business/`,
+    `${BASE_API_URL}/certification/wosb/`,
+    `${BASE_API_URL}/portal/user/`,
   ];
 
   // Default to zipcode 10001 if no location is found
@@ -85,10 +85,15 @@ const Loading = () => {
     const certificationData = results[2].data;
     const portalData = results[3].data;
 
-    console.log('crmData', crmData);
+    const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
+    axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
+      businessData[0].district = response.data.district;
+      console.log("district", response);
+    });
+
     return {
       profile: {
-        crm: (crmData === undefined) ? null : crmData,
+        crm: crmData,
         portal: portalData,
       },
       businesses: businessData,

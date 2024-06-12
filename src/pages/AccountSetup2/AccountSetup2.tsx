@@ -43,7 +43,7 @@ const AccountSetup2 = () => {
       portalProfile = { ...user.profile.portal, ...state };
     }
 
-    const url = `${BASE_API_URL}portal/user/`;
+    const url = `${BASE_API_URL}/portal/user/`;
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;

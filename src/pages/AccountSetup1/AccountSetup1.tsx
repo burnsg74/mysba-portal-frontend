@@ -19,7 +19,7 @@ const AccountSetup1 = () => {
   const dispatch = useDispatch();
   const [allowNotice, setAllowNotice] = useState<boolean>(user.profile?.portal?.allow_notice || false);
   const { authState } = useOktaAuth();
-  const portal_user_url = `${BASE_API_URL}portal/user/`;
+  const portal_user_url = `${BASE_API_URL}/portal/user/`;
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAllowNotice(event.target.checked);

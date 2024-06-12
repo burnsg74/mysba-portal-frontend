@@ -23,17 +23,16 @@ import Callback from "src/pages/Callback/Callback";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
+import ChangePassword from "src/pages/ChangePassword/ChangePassword";
+import { OKTA_DOMAIN, OKTA_CLIENT_ID, } from "src/utils/constants"
+
 // @ts-ignore
 import { MockOktaAuth } from "src/mock/MockOktaAuth";
-import ChangePassword from "src/pages/ChangePassword/ChangePassword";
-
 
 const App: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const profileData: IUser = useSelector(getUser);
-  const VITE_APP_OKTA_DOMAIN = import.meta.env.VITE_APP_OKTA_DOMAIN;
-  const VITE_APP_OKTA_CLIENT_ID = import.meta.env.VITE_APP_OKTA_CLIENT_ID;
 
   useEffect(() => {
     if (
@@ -54,16 +53,16 @@ const App: React.FC = () => {
 
   const oktaAuth = import.meta.env.MODE === 'localhost'
     ? new MockOktaAuth({
-      clientId: VITE_APP_OKTA_CLIENT_ID,
-      issuer: `https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`,
+      clientId: OKTA_CLIENT_ID,
+      issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
       redirectUri: `${window.location.origin}/login/callback`,
       postLogoutRedirectUri: `${window.location.origin}`,
       scopes: ["openid", "profile", "email"],
       pkce: true
     })
     : new OktaAuth({
-      clientId: VITE_APP_OKTA_CLIENT_ID,
-      issuer: `https://${VITE_APP_OKTA_DOMAIN}/oauth2/default`,
+      clientId: OKTA_CLIENT_ID,
+      issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
       redirectUri: `${window.location.origin}/login/callback`,
       postLogoutRedirectUri: `${window.location.origin}`,
       scopes: ["openid", "profile", "email"],

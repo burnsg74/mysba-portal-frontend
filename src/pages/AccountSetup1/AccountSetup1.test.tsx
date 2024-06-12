@@ -12,7 +12,7 @@ jest.mock("react-i18next", () => ({
 }));
 
 jest.mock("src/utils/constants", () => ({
-  BASE_API_URL: "http://localhost/",
+  BASE_API_URL: "http://localhost",
 }));
 
 jest.mock("@okta/okta-react", () => ({
