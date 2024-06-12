@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { UserClaims } from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
 import axios, { AxiosResponse } from "axios";
-import { setUser } from "src/store/user/userSlice";
+import { getUser, setUser } from "src/store/user/userSlice";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
 import { formatPhoneNumber } from "src/utils/formatter";
 import { BASE_API_URL,DISTRICT_URL } from "src/utils/constants";
+import { useSelector } from "react-redux";
 
 const Loading = () => {
   const PROGRESS_UPDATE_INTERVAL = 500;
@@ -95,20 +96,14 @@ const Loading = () => {
     });
 
     axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
+      const user: IUser = useSelector(getUser);
       businessData[0].district = response.data.district;
-      console.log("district", response);
-
-      const user = {
-        profile: {
-          crm: crmData,
-          portal: portalData,
-        },
-        businesses: businessData,
-        certifications: certificationData,
-        district: response.data.district[0]
-      }
-      console.log("user", user);
-      dispatch(setUser(user));
+      console.log("Response", response);
+      console.log("User", user);
+      let district = response.data.district[0];
+      console.log("District", district);
+      const newUserData = { ...user, district: district };
+      dispatch(setUser(newUserData));
     });
 
     return {
@@ -133,6 +128,7 @@ const Loading = () => {
         .then(user => {
           dispatch(setNav(true));
           dispatch(setShowProfile(true))
+          dispatch(setUser(user));
           if (!user.profile.portal) {
             dispatch(setNav(false));
             dispatch(setShowProfile(false))

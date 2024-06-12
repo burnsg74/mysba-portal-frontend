@@ -4,8 +4,13 @@ import { FrequentlyAskedQuestions } from "src/utils/frequentlyAskedQuestions";
 import { useTranslation } from "react-i18next";
 import LocalResources from "src/components/LocalResources/LocalResources";
 import Alert from "src/components/Alert/Alert";
+import { useSelector } from "react-redux";
+import { getUser } from "src/store/user/userSlice";
+
 
 const Help = () => {
+  const user: IUser = useSelector(getUser);
+  console.log('user', user);
   const { t } = useTranslation();
   return (<div data-testid="page-help" className={`main-container`}>
     <div className={`${styles.container}`}>
