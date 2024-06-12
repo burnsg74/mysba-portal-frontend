@@ -90,11 +90,25 @@ const Loading = () => {
     axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
       businessData[0].district = response.data.district;
       console.log("district", response);
+      // Append to user object
+      dispatch(setUser({ ...crmData, district: response.data.district}));
     });
 
     axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
       businessData[0].district = response.data.district;
       console.log("district", response);
+
+      const user = {
+        profile: {
+          crm: crmData,
+          portal: portalData,
+        },
+        businesses: businessData,
+        certifications: certificationData,
+        district: response.data.district[0]
+      }
+      console.log("user", user);
+      dispatch(setUser(user));
     });
 
     return {
@@ -119,7 +133,6 @@ const Loading = () => {
         .then(user => {
           dispatch(setNav(true));
           dispatch(setShowProfile(true))
-          dispatch(setUser(user));
           if (!user.profile.portal) {
             dispatch(setNav(false));
             dispatch(setShowProfile(false))
