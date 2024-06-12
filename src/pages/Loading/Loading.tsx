@@ -85,7 +85,8 @@ const Loading = () => {
     });
     const certificationData = results[2].data;
     const portalData = results[3].data;
-    const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
+    // const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
+    const zipcodeToDistrict = businessData[0]?.mailing_address_zipcode ?? 10001;
 
     axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
       businessData[0].district = response.data.district;
