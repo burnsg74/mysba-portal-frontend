@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "src/components/LocalResources/LocalResources.module.css";
 import { useTranslation } from "react-i18next";
 import { getUser } from "src/store/user/userSlice";
@@ -11,6 +11,13 @@ import logoLinkedIn from "src/assets/logo-linkedIn.svg";
 const LocalResources = () => {
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
+  const [districtData, setDistrictData] = useState(user?.district);
+
+  useEffect(() => {
+    console.log('User from the redux state changed', user);
+  }, [user]);
+  console.log('user', user);
+
   const mockData = {
     "zip_code": user?.businesses?.[0]?.business_address_zipcode ?? "", "district": {
       "name"     : "Seattle District",
