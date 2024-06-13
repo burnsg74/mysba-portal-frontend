@@ -77,7 +77,7 @@ interface District {
 
 interface IUserProfile {
   crm: {
-    id: string; first_name: string; last_name: string; email: string; allow_notices: boolean;
+    id: string; accountid:string; first_name: string; last_name: string; email: string; allow_notices: boolean; ownerid: string;
   };
   portal: {
     allow_notice: boolean;
