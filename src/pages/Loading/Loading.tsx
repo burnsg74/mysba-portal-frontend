@@ -86,26 +86,30 @@ const Loading = () => {
     const certificationData = results[2].data;
     const portalData = results[3].data;
     // const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
-    const zipcodeToDistrict = businessData[0]?.mailing_address_zipcode ?? 10001;
+    const zipcodeToDistrict = businessData[0]?.mailing_address_zipcode ?? 20416;
 
-    axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
-      businessData[0].district = response.data.district;
-      console.log("district", response);
-      // Append to user object
-      dispatch(setUser({ ...crmData, district: response.data.district}));
-    });
+    // Getting CORS error
+    // axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
+    //   businessData[0].district = response.data.district;
+    //   console.log("district", response);
+    //   // Append to user object
+    //   dispatch(setUser({ ...crmData, district: response.data.district}));
+    // });
 
-    axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
-      const user: IUser = useSelector(getUser);
-      businessData[0].district = response.data.district;
+    let district = {};
+    await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
       console.log("Response", response);
-      console.log("User", user);
-      let district = response.data.district[0];
+      district = response.data[0];
       console.log("District", district);
-      const newUserData = { ...user, district: district };
-      dispatch(setUser(newUserData));
     });
 
+    console.log(
+      {
+      profile: { crm: crmData, portal: portalData, },
+      businesses: businessData,
+      certifications: certificationData,
+      district: district
+      } )
     return {
       profile: {
         crm: crmData,
@@ -113,6 +117,7 @@ const Loading = () => {
       },
       businesses: businessData,
       certifications: certificationData,
+      district: district,
     };
   };
 

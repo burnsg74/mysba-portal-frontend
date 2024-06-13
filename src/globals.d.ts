@@ -37,6 +37,8 @@ interface FieldDistrictOffice {
   telephone: string;
   uid: string;
   created: string;
+  googleMapUrl: string;
+  typeIcon: any;
 }
 
 interface FieldDistrictStaff {
