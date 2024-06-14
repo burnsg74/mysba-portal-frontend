@@ -8,7 +8,7 @@ resource "aws_cloudfront_response_headers_policy" "custom_policy" {
     }
 
     content_security_policy {
-      content_security_policy = "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' https://www.sba.gov; connect-src 'self';"
+      content_security_policy = "default-src 'self' login.dev.mysba.ussba.io; script-src 'self' login.dev.mysba.ussba.io; style-src 'self' login.dev.mysba.ussba.io; 'self' serviceapi.dev.mysba.ussba.io; img-src 'self' https://www.sba.gov login.dev.mysba.ussba.io; connect-src 'self' login.dev.mysba.ussba.io serviceapi.dev.mysba.ussba.io;"
       override                = true
     }
 
@@ -70,7 +70,7 @@ resource "aws_cloudfront_distribution" "distribution" {
     allowed_methods            = ["GET", "HEAD", "OPTIONS"]
     cached_methods             = ["GET", "HEAD"]
     target_origin_id           = "mysba-portal-frontend"
-    response_headers_policy_id = aws_cloudfront_response_headers_policy.custom_policy.id
+    response_headers_policy_id = "67f7725c-6f97-4210-82d7-5512b31e9d03"
   }
 
   custom_error_response {
