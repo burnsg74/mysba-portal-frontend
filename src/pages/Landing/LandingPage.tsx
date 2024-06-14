@@ -24,7 +24,9 @@ const LandingPage = () => {
   const { t } = useTranslation();
 
   const login = () => {
+    console.log("login Before")
     oktaAuth.signInWithRedirect();
+    console.log("login After")
   };
 
   const signUp = () => {
