@@ -7,7 +7,7 @@ import modalIcon from "src/assets/light-bulb.svg";
 interface Step3ModalProps {
   businessData: {
     businessName: string
-    certName: string
+    certName: string[]
     uei: string
   };
   handleClose: () => void;
@@ -17,7 +17,7 @@ interface Step3ModalProps {
 
 const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleContinue, handleBack }) => {
   const { t } = useTranslation();
-  const [stepData] = useState<{ uei: string, businessName: string, certName: string; }>({
+  const [stepData] = useState<{ uei: string, businessName: string, certName: string[]; }>({
     uei: businessData.uei, businessName: businessData.businessName, certName: businessData.certName,
   });
 
@@ -40,7 +40,7 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
     totalSteps={3}
     completedSteps={3}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
-    contentTitle={t("Your [title of certification] has been successfully added!")}
+    contentTitle={t(`Your ${stepData.certName[0]} has been successfully added!`)}
     footerContent={(<button type="button"
                             className={`usa-button ${styles.continueBtn}`}
                             onClick={() => handleContinueBtnClick()}>

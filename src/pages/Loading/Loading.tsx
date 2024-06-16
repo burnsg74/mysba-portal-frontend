@@ -11,7 +11,7 @@ import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
 import { formatPhoneNumber } from "src/utils/formatter";
-import { BASE_API_URL,DISTRICT_URL } from "src/utils/constants";
+import { BASE_API_URL, DISTRICT_URL } from "src/utils/constants";
 import { useSelector } from "react-redux";
 
 const Loading = () => {
@@ -29,59 +29,39 @@ const Loading = () => {
     t("Fetching Data"),
     t("Verifying"),
   ];
-  const endpoints = [
-    `${BASE_API_URL}/crm/mysba360/`,
-    `${BASE_API_URL}/business/`,
-    `${BASE_API_URL}/certification/wosb/`,
-    `${BASE_API_URL}/portal/user/`,
-  ];
 
   // Default to zipcode 10001 if no location is found
-
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    const email = info.email?.toLowerCase() ?? "";
+    // const email = info.email?.toLowerCase() ?? "";
+    const email = "johnson.anthony21@outlook.com"
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
-      accessToken =authState.accessToken?.accessToken;
+      accessToken = authState.accessToken?.accessToken;
     } else {
       accessToken = undefined;
     }
 
-    const data = {
-      individuals: [
+    let data = JSON.stringify({
+      "individuals": [
         {
-          firstName: "",
-          lastName: "",
-          email: "johnson.anthony21@outlook.com"
+          "firstName": "",
+          "lastName": "",
+          "email": email
         }
       ]
-    };
-    
-    const config = {
+    });
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${BASE_API_URL}/individuals/individual?task=read`,
       headers: {
-        "Content-Type": "application/json",
-        "Authorization": `Bearer ${accessToken}`
+        'Content-Type': 'application/json'
       },
       data: data
     };
-    
-    // axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-    // const requests = endpoints.map(endpoint =>
-    //   axios.get(endpoint + email)
-    // );
-    let results: AxiosResponse<any>[] = [];
-    try {
-      results = await axios.get(`${BASE_API_URL}/individuals/individual`, config)
-      // results = await Promise.all(requests);
-      console.log('results', results);
-    } catch (err) {
-      console.log(err)
-      // oktaAuth.signOut().then(() => {
-      //   navigate("/error");
-      // });
-    }
-    let individual = results[0].data;
-    // let crmData = results[0].data;
+    let results = await axios.request(config).catch((error) => {console.log(error);});
+    let individual = results?.data.individuals[0]
     let crmData: IUserProfile['crm'] = {
       id: individual.userId ?? '003Hv000007zHkvIAE',
       accountid: "001Hv000007r78NIAQ" ?? '001Hv000007r78NIAQ',
@@ -89,14 +69,14 @@ const Loading = () => {
       last_name: individual.lastName ?? 'Cindy',
       email: individual.email ?? 'cindy@example.com',
       ownerid: "005Hv000000v6z0IAA",
-      allow_notices:false,
+      allow_notice: false,
     };
-
     // Temporary data for testing. Do not delete this block. (GB) 2021-09-29
     if (!crmData) {
+      console.log("crm data replace")
       crmData = {
-        "id"   : "003Hv000007zHkvIAE", "accountid": "001Hv000007r78NIAQ", "last_name": "Smith", "first_name": "Cindy",
-        "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA","allow_notices":false,
+        "id": "003Hv000007zHkvIAE", "accountid": "001Hv000007r78NIAQ", "last_name": "Smith", "first_name": "Cindy",
+        "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA", "allow_notice": false,
       };
     }
 
@@ -106,16 +86,34 @@ const Loading = () => {
     //   });
     // }
 
-    // let businessData = results[1].data;
-    // businessData.forEach((business: any) => {
-    //   business.ein = business.ein.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3");
-    //   business.uei = business.uei.replace(/(\d{6})(\d{4})/, "******$2");
-    //   business.business_phone_number = formatPhoneNumber(
-    //     business.business_phone_number
-    //   );
-    // });
+    data = JSON.stringify({
+      "individuals": [
+        {
+           "firstName": "",
+           "lastName": "",
+           "email": email,
+           "linkedOrganization":{
+            "organizations":[{
+                "organizationUei": "RUBUNW5VV185"
+            }]
+           }
+        }  
+    ]
+    });
 
-    const businessData: IBusiness[] = individual.business.organizations.map((business: any) => {
+    config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${BASE_API_URL}/organizations/organization?task=read`,
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      data: data
+    };
+    results = await axios.request(config).catch((error) => {console.log(error);});
+
+    individual = results?.data
+    const businessData: IBusiness[] = individual.organizations.map((business: any) => {
       return {
         email: business.organizationEmail ?? '',
         owner: `${individual.firstName ?? ''} ${individual.lastName ?? ''}`,
@@ -142,8 +140,7 @@ const Loading = () => {
       };
     });
 
-    // const certificationData = results[2].data;
-    const certificationData: ICertification[] = individual.business.organizations.map((business: any) => {
+    const certificationData: ICertification[] = individual.organizations.map((business: any) => {
       const certification = business.certification;
       return {
         email: individual.email ?? '',
@@ -159,7 +156,7 @@ const Loading = () => {
         naics_codes: business.organizationNaicsCodes ?? '',
       };
     });
-    // const portalData = results[3].data;
+
     const portalData: IUserProfile['portal'] = {
       allow_notice: false,
       planningNewBusiness: false,
@@ -184,19 +181,24 @@ const Loading = () => {
     // });
 
     let district = {};
-    await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
-      console.log("Response", response);
-      district = response.data[0];
-      console.log("District", district);
-    });
-
+    try {
+      console.log("get district resouces")
+      await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
+        district = response.data[0];
+      });
+    } catch (err) {
+      console.log(err)
+      // oktaAuth.signOut().then(() => {
+      //   navigate("/error");
+      // });
+    }
     console.log(
       {
-      profile: { crm: crmData, portal: portalData, },
-      businesses: businessData,
-      certifications: certificationData,
-      district: district
-      } )
+        profile: { crm: crmData, portal: portalData, },
+        businesses: businessData,
+        certifications: certificationData,
+        district: district
+      })
     return {
       profile: {
         crm: crmData,
@@ -228,6 +230,7 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log("get user", authState?.isAuthenticated)
     if (authState?.isAuthenticated) {
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
@@ -244,8 +247,6 @@ const Loading = () => {
           }
         });
     }
-
-
   }, []);
 
   useEffect(() => {
