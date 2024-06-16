@@ -39,6 +39,8 @@ interface FieldDistrictOffice {
   created: string;
   googleMapUrl: string;
   typeIcon: any;
+  is_virtual_office: boolean;
+  appointment_only: boolean;
 }
 
 interface FieldDistrictStaff {
@@ -90,6 +92,7 @@ interface IUserProfile {
     businessMentorship: boolean;
     womenOwnedBusinessContent: boolean;
     veteranOwnedBusinessContent: boolean;
+    zipcode: string;
   };
 }
 

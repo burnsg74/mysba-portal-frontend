@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import styles from "src/components/LocalResources/LocalResources.module.css";
 import { useTranslation } from "react-i18next";
-import { getUser } from "src/store/user/userSlice";
-import { useSelector } from "react-redux";
+import { getUser, setUser } from "src/store/user/userSlice";
+import { useDispatch, useSelector } from "react-redux";
 import iconOfficeLg from "src/assets/icon-office-lg.svg";
 import iconOfficeSm from "src/assets/icon-office-sm.svg";
-import iconOfficeVirtaul from "src/assets/icon-office-virtual.svg";
-import logoLinkedIn from "src/assets/logo-linkedIn.svg";
+import iconOfficeVirtual from "src/assets/icon-office-virtual.svg";
+import logoLinkedIn from "src/assets/logo-linkedIn.png";
 import axios from "axios";
 import { BASE_API_URL } from "src/utils/constants";
+import { AccessToken } from "@okta/okta-auth-js";
+import { useOktaAuth } from "@okta/okta-react";
 
 const LocalResources = () => {
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
-  console.log("user", user);
   const [district, setDistrict] = useState(user.district ?? null);
-  const [zipcode, setZipcode] = useState(user?.businesses?.[0]?.business_address_zipcode ?? "10278");
+  const [zipcode, setZipcode] = useState(user.profile?.portal.zipcode ?? user?.businesses?.[0]?.business_address_zipcode ?? "10001");
+  const dispatch = useDispatch();
+  const { authState } = useOktaAuth();
 
   useEffect(() => {
     console.log("LR Zip useEffect:", zipcode);
@@ -27,6 +30,7 @@ const LocalResources = () => {
         newData.field_district_offices = newData.field_district_offices.map((office: {
           office_type: { id: any; };
           appointment_only: boolean;
+          is_virtual_office: boolean;
           geo_location: {
             replace: (arg0: string, arg1: string) => {
               (): any;
@@ -42,20 +46,24 @@ const LocalResources = () => {
             };
           };
         }) => {
+          saveZipCode(zipcode);
+
           let appointment_only = false;
+          let is_virtual_office = false;
           if (office.office_type.id === 149 || office.office_type.id === 147) {
             appointment_only = true;
           }
           let icon;
-          if (office.office_type.office_type_icon.media_image.includes('district_office_icon')) {
-            icon = iconOfficeLg;
-          } else if (office.office_type.office_type_icon.media_image.includes('branch-office-icon')) {
+          if (office.office_type.office_type_icon.media_image.includes('branch-office-icon')) {
             icon = iconOfficeSm;
+          } else if (office.office_type.office_type_icon.media_image.includes('headset_icon.png')) {
+            icon = iconOfficeVirtual;
+            is_virtual_office = true;
           } else {
-            icon = iconOfficeVirtaul;
+            icon = iconOfficeLg;
           }
          let googleMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.address.address_line1 + ", " + office.address.locality + ", " + office.address.administrative_area.code + " " + office.address.postal_code)}`;
-          return { ...office, typeIcon: icon, googleMapUrl: googleMapUrl, appointment_only: appointment_only};
+          return { ...office, typeIcon: icon, googleMapUrl: googleMapUrl, appointment_only: appointment_only, is_virtual_office: is_virtual_office };
         });
         console.log("setDistrict newData", newData);
         setDistrict(newData);
@@ -80,6 +88,33 @@ const LocalResources = () => {
   });
 
   console.log("district2", district);
+
+  function saveZipCode(zipcode: string) {
+    console.log("saveZipCode", zipcode)
+    let portalProfile = {};
+    if (!user.profile) {
+      console.error("user profile is missing");
+    } else {
+      console.log("user profile", user.profile)
+      portalProfile = { ...user.profile.portal, zipcode };
+      console.log("portalProfile", portalProfile);
+    }
+
+    let accessToken: string | AccessToken | null | undefined;
+    if (authState && "accessToken" in authState) {
+      accessToken = authState.accessToken?.accessToken;
+    } else {
+      accessToken = undefined;
+    }
+
+    const url = `${BASE_API_URL}/portal/user/` + user.profile?.crm.email;
+    axios.post(url, portalProfile, { headers: { Authorization: "Bearer " + accessToken } }).then(() => {
+      let newUser = { ...user, profile: { ...user.profile, portal: portalProfile } };
+      dispatch(setUser(newUser));
+    }).catch(error => {
+      console.log(error);
+    });
+  }
 
   return (<div className={`${styles.localResourcesContainer}`}>
     {/* Title Row */}
@@ -207,13 +242,14 @@ const LocalResources = () => {
               </svg>
               <a href={`tel:${office.telephone}`}>{office.telephone}</a>
             </div>
+            {!office.is_virtual_office && (
             <div className={`${styles.officeCardDetailsAddress}`}>
               <svg
                 className={`usa-icon ${styles.launchIcon}`}
                 aria-hidden="true"
                 focusable="false"
               >
-                <title>{t("Open in email")}</title>
+                <title>{t("Open")}</title>
                 <use xlinkHref="/assets/img/sprite.svg#map"></use>
               </svg>
               <a href={office.googleMapUrl}
@@ -225,6 +261,7 @@ const LocalResources = () => {
                 {office.address.locality}, {office.address.administrative_area.code} {office.address.postal_code} <br />
               </a>
             </div>
+            )}
           </div>
         </div>))}
       </div>

@@ -178,7 +178,7 @@
     display: flex;
     flex: 1 0 0;
     gap: 20px;
-    min-width: 360px;
+    min-width: 314px;
     padding: 20px;
 }
 
@@ -215,6 +215,7 @@
     font-weight: 400;
     line-height: 100%;
     padding: 2px 8px;
+    white-space: nowrap;
 }
 
 .officeCardDetailsPhone {
@@ -302,4 +303,9 @@
 .officeCardsImg {
     width: 100px;
     height: 100px;
+}
+
+.linkedInLogo {
+    width: 18px;
+    height: 18px;
 }
