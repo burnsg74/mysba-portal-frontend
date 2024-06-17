@@ -86,77 +86,6 @@ const Loading = () => {
     //   });
     // }
 
-    data = JSON.stringify({
-      "individuals": [
-        {
-           "firstName": "",
-           "lastName": "",
-           "email": email,
-           "linkedOrganization":{
-            "organizations":[{
-                "organizationUei": "RUBUNW5VV185"
-            }]
-           }
-        }  
-    ]
-    });
-
-    config = {
-      method: 'post',
-      maxBodyLength: Infinity,
-      url: `${BASE_API_URL}/organizations/organization?task=read`,
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      data: data
-    };
-    results = await axios.request(config).catch((error) => {console.log(error);});
-
-    individual = results?.data
-    const businessData: IBusiness[] = individual.organizations.map((business: any) => {
-      return {
-        email: business.organizationEmail ?? '',
-        owner: `${individual.firstName ?? ''} ${individual.lastName ?? ''}`,
-        id: business.userId ?? '',
-        name: business.organizationName ?? '',
-        legal_entity: business.organizationLegalEntity ?? '',
-        ownership_type: business.organizationOwnerShipType ?? '',
-        uei: business.organizationUei?.replace(/(\d{6})(\d{4})/, "******$2") ?? '',
-        ein: business.organizationEin?.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3") ?? '',
-        user_id: business.userId ?? '',
-        mailing_address_street: business.organizationMailingAddressStreet ?? '',
-        mailing_address_city: business.organizationMailingAddressCity ?? '',
-        mailing_address_state: business.organizationMailingAddressState ?? '',
-        mailing_address_zipcode: business.organizationMailingAddressZip ?? '',
-        business_address_street: business.organizationAddressStreet ?? '',
-        business_address_city: business.organizationAddressCity ?? '',
-        business_address_state: business.organizationAddressState ?? '',
-        business_address_zipcode: business.organizationAddressZip ?? '',
-        business_phone_number: formatPhoneNumber(business.organizationPhone ?? ''),
-        fax: business.organizationFax ?? '',
-        naics_codes: business.organizationNaicsCodes ?? '',
-        capabilities_narrative: business.organizationCapabilityNarratives ?? '',
-        website: business.organizationWebsite ?? '',
-      };
-    });
-
-    const certificationData: ICertification[] = individual.organizations.map((business: any) => {
-      const certification = business.certification;
-      return {
-        email: individual.email ?? '',
-        ein: business.organizationEin?.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3") ?? '',
-        certification_id: certification.certificationId ?? '',
-        business_id: business.userId ?? '',
-        certification_type: certification.certificationType ?? '8(a)', // Assuming only 8(a) certification here. Adjust as needed.
-        issue_date: certification['8aCertificationEntranceDate'] ?? '',
-        expiration_date: certification['8aCertificationExitDate'] ?? '',
-        days_until_expiry: calculateDaysUntilExpiry(certification['8aCertificationExitDate']),
-        company_name: business.organizationName ?? '',
-        owner: `${individual.firstName ?? ''} ${individual.lastName ?? ''}`,
-        naics_codes: business.organizationNaicsCodes ?? '',
-      };
-    });
-
     const portalData: IUserProfile['portal'] = {
       allow_notice: false,
       planningNewBusiness: false,
@@ -168,9 +97,10 @@ const Loading = () => {
       businessMentorship: false,
       womenOwnedBusinessContent: false,
       veteranOwnedBusinessContent: false,
+      zipcode:""
     };
     // const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
-    const zipcodeToDistrict = businessData[0]?.mailing_address_zipcode ?? 20416;
+    const zipcodeToDistrict = 20416;
 
     // Getting CORS error
     // axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
@@ -195,8 +125,6 @@ const Loading = () => {
     console.log(
       {
         profile: { crm: crmData, portal: portalData, },
-        businesses: businessData,
-        certifications: certificationData,
         district: district
       })
     return {
@@ -204,8 +132,6 @@ const Loading = () => {
         crm: crmData,
         portal: portalData,
       },
-      businesses: businessData,
-      certifications: certificationData,
       district: district,
     };
   };
