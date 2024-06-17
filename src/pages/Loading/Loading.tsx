@@ -36,8 +36,6 @@ const Loading = () => {
     `${BASE_API_URL}/portal/user/`,
   ];
 
-  // Default to zipcode 10001 if no location is found
-
   const fetchUserDataFromBackend = async (info: UserClaims) => {
     const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
@@ -53,7 +51,6 @@ const Loading = () => {
     let results: AxiosResponse<any>[] = [];
     try {
       results = await Promise.all(requests);
-      console.log('results', results);
     } catch (err) {
       oktaAuth.signOut().then(() => {
         navigate("/error");
@@ -85,8 +82,6 @@ const Loading = () => {
     });
     const certificationData = results[2].data;
     const portalData = results[3].data;
-
-    // const zipcodeToDistrict = businessData[0]?.mailing_address_zipcode ?? 10001;
     const zipcodeToDistrict = portalData.zipcode ?? businessData[0]?.mailing_address_zipcode ?? 10001;
 
     // Getting CORS error
@@ -97,29 +92,22 @@ const Loading = () => {
     //   dispatch(setUser({ ...crmData, district: response.data.district}));
     // });
 
-    let district = {};
-    await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
-      console.log("Response", response);
-      district = response.data[0];
-      console.log("District", district);
-    });
-
-    console.log(
-      {
-      profile: { crm: crmData, portal: portalData, },
-      businesses: businessData,
-      certifications: certificationData,
-      district: district
-      } )
-    return {
+    let user = {
       profile: {
         crm: crmData,
         portal: portalData,
       },
       businesses: businessData,
       certifications: certificationData,
-      district: district,
+      district: { loading: true },
     };
+
+    axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
+      let district = response.data[0];
+      dispatch(setUser({...user, district: district}));
+    });
+
+    return user;
   };
 
   useEffect(() => {
@@ -144,8 +132,6 @@ const Loading = () => {
           }
         });
     }
-
-
   }, []);
 
   useEffect(() => {

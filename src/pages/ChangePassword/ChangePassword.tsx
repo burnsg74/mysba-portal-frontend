@@ -25,7 +25,6 @@ const ChangePassword = () => {
   };
 
   const toggleShowChangingPasswordForm = async () => {
-    console.log("setShowChangingPasswordForm");
     setShowChangingPasswordForm(!showChangingPasswordForm);
   };
 
@@ -64,14 +63,12 @@ const ChangePassword = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    console.log(name, value);
     setChangePasswordData((prevInputValues) => ({
       ...prevInputValues, [name]: value,
     }));
   };
 
   const handleChangePasswordSubmit = async () => {
-    console.log("handleChangePasswordSubmit2");
     setChangePasswordErrorMsg(null);
     setChangePasswordSuccessMsg(null);
     setChangePasswordButtonText("Submitting...");
@@ -96,7 +93,6 @@ const ChangePassword = () => {
     }
     axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 
-    console.log('User',user)
     const url = "https://serviceapi.dev.mysba.ussba.io/sso-change-password";
     const data = {
       userName: user?.email,
@@ -104,8 +100,6 @@ const ChangePassword = () => {
       oldPassword: changePasswordData.oldPassword,
       newPassword: changePasswordData.newPassword1,
     };
-    console.log("data", data);
-
 
     try {
       const response = await axios.post(url, data);
@@ -133,7 +127,6 @@ const ChangePassword = () => {
       }
       if (authState.isAuthenticated) {
         const userInfo = await oktaAuth.getUser();
-        console.log("userInfo", userInfo);
         setUser(userInfo);
         setIsLoading(false);
       }

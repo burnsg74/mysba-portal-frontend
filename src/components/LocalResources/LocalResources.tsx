@@ -12,6 +12,8 @@ import { BASE_API_URL } from "src/utils/constants";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
 
+// TODO: Save new zipcode to user redux store
+
 const LocalResources = () => {
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
@@ -21,14 +23,18 @@ const LocalResources = () => {
   const { authState } = useOktaAuth();
 
   useEffect(() => {
-    console.log("LR Zip useEffect:", zipcode);
     const fetchDistrict = async () => {
       let response = await axios.get(`${BASE_API_URL}/localresources/${zipcode}`);
-      console.log("Response", response);
       if (response.data[0]) {
         let newData = { ...response.data[0] };
         newData.field_district_offices = newData.field_district_offices.map((office: {
-          office_type: { id: any; };
+          office_type: { id: any; office_type_icon?: { media_image: string }},
+          address: {
+            address_line1: string;
+            locality: string;
+            administrative_area: { code: string };
+            postal_code: string;
+          }
           appointment_only: boolean;
           is_virtual_office: boolean;
           geo_location: {
@@ -54,9 +60,9 @@ const LocalResources = () => {
             appointment_only = true;
           }
           let icon;
-          if (office.office_type.office_type_icon.media_image.includes('branch-office-icon')) {
+          if (office.office_type.office_type_icon?.media_image.includes('branch-office-icon')) {
             icon = iconOfficeSm;
-          } else if (office.office_type.office_type_icon.media_image.includes('headset_icon.png')) {
+          } else if (office.office_type.office_type_icon?.media_image.includes('headset_icon.png')) {
             icon = iconOfficeVirtual;
             is_virtual_office = true;
           } else {
@@ -65,12 +71,11 @@ const LocalResources = () => {
          let googleMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.address.address_line1 + ", " + office.address.locality + ", " + office.address.administrative_area.code + " " + office.address.postal_code)}`;
           return { ...office, typeIcon: icon, googleMapUrl: googleMapUrl, appointment_only: appointment_only, is_virtual_office: is_virtual_office };
         });
-        console.log("setDistrict newData", newData);
         setDistrict(newData);
+        dispatch(setUser({...user, district: newData}));
       }
     };
     if (zipcode.length === 5) {
-      console.log("LR Zip useEffect:", zipcode);
       fetchDistrict();
     }
   }, [zipcode]);
@@ -78,8 +83,7 @@ const LocalResources = () => {
   let socialMediaXUrl = null;
   let socialMediaLinkedinUrl = null;
 
-  district?.field_district_social_media.forEach((socialMedia) => {
-    console.log(socialMedia.social_media_service.name, socialMedia.social_media_account);
+  district?.field_district_social_media?.forEach((socialMedia) => {
     if (socialMedia.social_media_service.name === "X") {
       socialMediaXUrl = "https://x.com/" + socialMedia.social_media_account;
     } else if (socialMedia.social_media_service.name === "LinkedIn") {
@@ -87,17 +91,11 @@ const LocalResources = () => {
     }
   });
 
-  console.log("district2", district);
-
   function saveZipCode(zipcode: string) {
-    console.log("saveZipCode", zipcode)
     let portalProfile = {};
     if (!user.profile) {
-      console.error("user profile is missing");
     } else {
-      console.log("user profile", user.profile)
       portalProfile = { ...user.profile.portal, zipcode };
-      console.log("portalProfile", portalProfile);
     }
 
     let accessToken: string | AccessToken | null | undefined;

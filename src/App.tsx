@@ -68,15 +68,6 @@ const App: React.FC = () => {
       scopes: ["openid", "profile", "email"],
       pkce: true
     });
-  console.log('SSO', {
-    clientId: OKTA_CLIENT_ID,
-    issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
-    redirectUri: `${window.location.origin}/login/callback`,
-    postLogoutRedirectUri: `${window.location.origin}`,
-    scopes: ["openid", "profile", "email"],
-    pkce: true
-  }, oktaAuth)
-
 
   return (
     <Security
