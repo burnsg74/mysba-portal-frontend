@@ -19,7 +19,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
   const [hasErrors, setHasErrors] = useState(false);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
   const [saveBtnLabel, setSaveBtnLabel] = useState("Save");
-  const [changePasswordErrorMsg, setChangePasswordErrorMsg] = useState("Test");
+  const [changePasswordErrorMsg, setChangePasswordErrorMsg] = useState("");
   const [user, setUser] = useState(null);
   const { oktaAuth, authState } = useOktaAuth();
   const { t } = useTranslation();
