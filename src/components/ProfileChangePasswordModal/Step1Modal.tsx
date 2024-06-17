@@ -14,7 +14,7 @@ interface Step1ModalProps {
   handleContinue: () => void;
 }
 
-const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) => {
+const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) => {
   const change_password_url = `${BASE_API_URL}/sso-change-password`;
   const [hasErrors, setHasErrors] = useState(false);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
@@ -24,17 +24,10 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
   const { oktaAuth, authState } = useOktaAuth();
   const { t } = useTranslation();
   const [stepData, setStepData] = useState({
-    currentPassword: "",
-    newPassword1: "",
-    newPassword2: "",
+    currentPassword: "", newPassword1: "", newPassword2: "",
   });
   const [highlightInvalid, setHighlightInvalid] = useState({
-    minLength: false,
-    lowerCase: false,
-    upperCase: false,
-    number: false,
-    username: false,
-    lastPasswords: false,
+    minLength     : false, lowerCase: false, upperCase: false, number: false, username: false, lastPasswords: false,
     passwordsMatch: false,
   });
 
@@ -54,7 +47,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
   }, [authState]);
 
   const handleInputChange = (name: string, value: string) => {
-    const updatedStepData = {...stepData, [name]: value };
+    const updatedStepData = { ...stepData, [name]: value };
     setStepData(updatedStepData);
   };
 
@@ -62,7 +55,15 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
     setIsSaveDisabled(true);
     setSaveBtnLabel("Saving...");
     console.log(stepData, stepData.newPassword1);
-    checkPasswordConditions(stepData.newPassword1);
+    if (!isPasswordValid(stepData.newPassword1)) {
+      console.log("Password is invalid");
+      setHasErrors(true);
+      setIsSaveDisabled(false);
+      setSaveBtnLabel("Save");
+      return;
+    }
+
+    console.log("Password is valid");
 
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
@@ -73,10 +74,8 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
     axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 
     const data = {
-      userName: user?.email,
-      clsElevated: user?.cls_elevated !== undefined ? user?.cls_elevated : false,
-      oldPassword: stepData.currentPassword,
-      newPassword: stepData.newPassword1,
+      userName   : user?.email, clsElevated: user?.cls_elevated !== undefined ? user?.cls_elevated : false,
+      oldPassword: stepData.currentPassword, newPassword: stepData.newPassword1,
     };
 
     try {
@@ -95,7 +94,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
       });
 
     } catch (error: string | any) {
-      console.error('Axios Error',error);
+      console.error("Axios Error", error);
       setChangePasswordErrorMsg(`Error: Unable to change password, ${error.message}`);
     }
 
@@ -103,19 +102,18 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
     setSaveBtnLabel("Save");
   }
 
-  const checkPasswordConditions = (password: string) => {
+  const isPasswordValid = (password: string) => {
     console.log("password", password);
-    // NOTE: What about check for password match
     setHighlightInvalid({
       minLength: !(password.length >= 8),
       lowerCase: !(/[a-z]/.test(password)),
       upperCase: !(/[A-Z]/.test(password)),
-      number: !(/[0-9]/.test(password)),
-      username: !password.toLowerCase().includes(stepData.currentPassword.toLowerCase()),
-      // lastPasswords: !prevPasswords.includes(password),
-      lastPasswords: false,
-      passwordsMatch: !(stepData.newPassword1 === stepData.newPassword2),
+      number   : !(/[0-9]/.test(password)),
+      username : !password.toLowerCase().includes(stepData.currentPassword.toLowerCase()), // lastPasswords: !prevPasswords.includes(password),
+      lastPasswords: false, passwordsMatch: !(stepData.newPassword1 === stepData.newPassword2),
     });
+
+    return Object.values(highlightInvalid).includes(true);
   };
 
   const closeModal = () => {
@@ -154,14 +152,15 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
                       errorMessage=""
                       onChange={handleInputChange} />
       <div className={`${styles.passwordRequirements}`}>
-          Password requirements:
+        Password requirements:
         <ul>
           <li className={highlightInvalid.minLength ? `${styles.error}` : ""}>At least 8 characters</li>
           <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>A lowercase letter</li>
           <li className={highlightInvalid.upperCase ? `${styles.error}` : ""}>An uppercase letter</li>
           <li className={highlightInvalid.number ? `${styles.error}` : ""}>A number</li>
           <li className={highlightInvalid.username ? `${styles.error}` : ""}>No parts of your username</li>
-          <li className={highlightInvalid.lastPasswords ? `${styles.error}` : ""}>Password can't be the same as your last 4
+          <li className={highlightInvalid.lastPasswords ? `${styles.error}` : ""}>Password can't be the same as your
+            last 4
             passwords
           </li>
         </ul>
