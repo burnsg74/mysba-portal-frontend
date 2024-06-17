@@ -1,5 +1,5 @@
 resource "aws_cloudfront_response_headers_policy" "custom_policy" {
-  name = "custom-policy-including-x-frame-options"
+  name = "${terraform.workspace}-custom-policy-including-x-frame-options"
 
   security_headers_config {
     frame_options {
