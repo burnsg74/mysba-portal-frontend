@@ -32,15 +32,13 @@ const Loading = () => {
 
   // Default to zipcode 10001 if no location is found
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    // const email = info.email?.toLowerCase() ?? "";
-    const email = "johnson.anthony21@outlook.com"
+    const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;
     } else {
       accessToken = undefined;
     }
-
     let data = JSON.stringify({
       "individuals": [
         {
@@ -56,7 +54,8 @@ const Loading = () => {
       maxBodyLength: Infinity,
       url: `${BASE_API_URL}/individuals/individual?task=read`,
       headers: {
-        'Content-Type': 'application/json'
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
       },
       data: data
     };
