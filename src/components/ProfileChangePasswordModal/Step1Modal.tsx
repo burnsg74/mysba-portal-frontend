@@ -19,6 +19,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
   const [hasErrors, setHasErrors] = useState(false);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
   const [saveBtnLabel, setSaveBtnLabel] = useState("Save");
+  const [changePasswordErrorMsg, setChangePasswordErrorMsg] = useState("Test");
   const [user, setUser] = useState(null);
   const { oktaAuth, authState } = useOktaAuth();
   const { t } = useTranslation();
@@ -62,7 +63,6 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
     setSaveBtnLabel("Saving...");
     console.log(stepData, stepData.newPassword1);
     checkPasswordConditions(stepData.newPassword1);
-    // handleContinue();
 
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
@@ -80,17 +80,23 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
     };
 
     try {
+      setChangePasswordErrorMsg("");
       console.log("Make Change Password Ajax with data:", data);
       axios.post(change_password_url, data).then((response) => {
         console.log("response", response);
         if (response.status !== 200) {
+          console.log("Error", response.statusText);
           throw new Error(`Error: ${response.statusText}`);
         }
+        handleContinue();
+      }).catch((error) => {
+        console.error("Axios Error", error);
+        setChangePasswordErrorMsg(`Error: Unable to change password, ${error.message}`);
       });
 
-    } catch (error) {
-      console.error(error);
-      // setChangePasswordErrorMsg(`Error: Unable to change password, ${error.message}`);
+    } catch (error: string | any) {
+      console.error('Axios Error',error);
+      setChangePasswordErrorMsg(`Error: Unable to change password, ${error.message}`);
     }
 
     setIsSaveDisabled(false);
@@ -139,6 +145,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({handleClose, handleContinue }) =
     </>)}
   >
     <div className={`${styles.inputContainer}`}>
+      <p className={styles.error}>{changePasswordErrorMsg}</p>
       <ModalInputText label={"Current Password"}
                       name={"currentPassword"}
                       isPassword={true}
