@@ -1,3 +1,7 @@
+.mainContainer {
+    margin-bottom: 40px;
+}
+
 .container {
     align-items: flex-start;
     display: flex;
