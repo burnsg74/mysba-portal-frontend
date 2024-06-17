@@ -1,233 +1,263 @@
 .container {
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-  padding: 40px 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 40px 20px;
 }
 
 @media screen and (min-width: 1024px) {
-  .container {
-    padding: 40px;
-  }
+    .container {
+        padding: 40px;
+    }
 }
 
-.title-banner {
-  align-items: center;
-  background: rgba(217, 232, 246, 0.4);
-  border-radius: 5px;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  overflow: hidden;
-  padding: 20px 40px;
-  position: relative;
+.titleBanner {
+    align-items: center;
+    background: rgba(217, 232, 246, 0.4);
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    overflow: hidden;
+    padding: 20px 40px;
+    position: relative;
 }
 
 .title {
-  font-family: var(--Font-Primary);
-  font-weight: 400;
-  color: #002e6d;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: 38.4px;
-  flex-grow: 1;
-  min-width: 250px;
+    font-family: var(--Font-Primary);
+    font-weight: 400;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: 38px;
+    flex-grow: 1;
+    min-width: 250px;
 }
 
 .subtitle {
-  font-family: var(--Font-Secondary);
-  font-weight: 400;
-  color: #002e6d;
-  font-size: 20px;
-  letter-spacing: 0;
-  line-height: 24px;
+    font-family: var(--Font-Secondary);
+    font-weight: 400;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 20px;
+    letter-spacing: 0;
+    line-height: 24px;
 }
 
 .categoryGroup {
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  flex: 1 0 0;
-  gap: 20px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 0;
+    gap: 20px;
 }
 
-.badge {
-  display: flex;
-  align-items: center;
-  background: var(--warningwarning-lighter);
-  justify-content: center;
-  gap: 10px;
-  padding: 5px 20px 5px 12px;
-  position: relative;
-  background-color: var(--warningwarning-lighter);
-  border-radius: 34px;
-  overflow: hidden;
-  border: 2px solid;
-  border-color: var(--warningwarning);
+.expiredHelpContainer {
+    padding: 16px;
+    background: var(--Success-success-lighter);
 }
 
-.badge__text {
-  color: #1b1b1b;
-  font-family: var(--Font-Primary);
-  font-size: 13px;
-  font-weight: 400;
-  line-height: normal;
-  white-space: nowrap;
+.expiredHelpContainer a {
+    color: var(--Brand-Primary-SBA-Blue);
 }
 
-.alert__container {
-  position: relative;
-  display: flex;
-  align-items: center;
-  background: #faf3d1;
-  min-height: 40px;
-  padding: 8px 16px 8px 14px;
+.expiredHelpHeader {
+    font-family: var(--Font-Secondary);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    color: var(--Brand-Primary-SBA-Blue);
+    line-height: 22px;
+    padding-bottom: 20px;
 }
 
-.alert__container::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 8px;
-  background-color: #f1c400;
+.expiredHelpMessage {
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    color: var(--Text-Text);
+    line-height: 20px;
 }
 
-.alert__icon {
-  margin-left: 14px;
-  width: 24px;
-  min-width: 24px;
-  height: 24px;
+.startRecertificationBtn {
+    width: fit-content;
 }
 
-.alert__message {
-  padding-left: 16px;
-  font-family: var(--Font-Secondary);
-  font-size: 16px;
-  font-weight: 400;
-  text-align: left;
-  color: var(--Text-Text);
+.expiredHelpIcon {
+    width: 24px;
+    min-width: 24px;
+    height: 24px;
+    padding-right: 8px;
 }
 
-.expired-help__container {
-  padding: 16px;
-  background: var(--Success-success-lighter);
+.expiredHelpMessageHeader {
+    color: var(--Brand-Primary-SBA-Blue);
+    font-family: var(--Font-Primary);
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 22px;
 }
 
-.expired-help__container a {
-  color: var(--Brand-Primary-SBA-Blue);
+.expiredHelpMessageContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 19px;
+    flex: 1 0 0;
+    padding-bottom: 16px;
 }
 
-.expired-help__header {
-  font-family: var(--Font-Secondary);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  color: var(--Brand-Primary-SBA-Blue);
-  line-height: 22px;
-  padding-bottom: 20px;
+.expiredHelpMessageBody {
+    display: flex;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 18px;
 }
 
-.expired-help__message {
-  font-family: var(--Font-Secondary);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  color: var(--Text-Text);
-  line-height: 20px;
+.expiredHelpMessageBody svg {
+    padding: 3px;
+    height: 24px;
+    width: 24px;
 }
 
-.start-recertification__btn {
-  width: fit-content;
+.headerButtonsContainer {
+    display: flex;
+    justify-content: space-between;
 }
 
-.expired-help__icon {
-  width: 24px;
-  min-width: 24px;
-  height: 24px;
-  padding-right: 8px;
+.manageCertButton {
+    font-family: var(--Font-Secondary);
+    background-color: var(--SBA-Celeste);
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 14px;
+    height: 38px;
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.expired-help__message__header {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-family: var(--Font-Primary);
-  font-size: 18px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 22px;
-}
-
-.expired-help-message__container {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 19px;
-  flex: 1 0 0;
-  padding-bottom: 16px;
-}
-
-.expired-help__message__body {
-  display: flex;
-  color: var(--Brand-Primary-SBA-Blue);
-  font-family: var(--Font-Secondary);
-  font-size: 16px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 18px;
-}
-
-.expired-help__message__body svg {
-  padding: 3px;
-  height: 24px;
-  width: 24px;
-}
-
-.header-buttons__container {
-  display: flex;
-  justify-content: space-between;
-}
-
-.manage-cert-button {
-  font-family: var(--Font-Secondary);
-  background-color: var(--SBA-Celeste);
-  font-size: 16px;
-  font-weight: 700;
-  line-height: 14px;
-  height: 38px;
-  padding: 12px 20px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.expired-help__launch-icon {
-  color: var(--Brand-Primary-SBA-Blue);
-  fill: var(--Brand-Primary-SBA-Blue);
+.expiredHelpLaunchIcon {
+    color: var(--Brand-Primary-SBA-Blue);
+    fill: var(--Brand-Primary-SBA-Blue);
 }
 
 .footerBtnOutline {
-  margin-right:0px;
-  height:44px;
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  flex: 1;
-  border:2px;
-  box-shadow:inset 0 0 0 2px #007DBC;
-  color:var(--Brand-Secondary-Bright-Blue);
+    margin-right: 0;
+    height: 38px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border: 2px;
+    box-shadow: inset 0 0 0 2px var(--Brand-Secondary-Bright-Blue);
+    color: var(--Brand-Secondary-Bright-Blue);
+    padding: 0;
+}
+
+.footerBtnOutline:focus {
+  box-shadow: 0 0 0 3px #05fc;
+  border-radius: 2px;
+  color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .footerBtn {
-  margin-right:0px;
-  height:44px;
-  display: flex;
-  align-items: center;
-  justify-content:center;
-  flex: 1;
-  border:2px;
+    margin-right: 0;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    border: 2px;
+    font-size: 18px;
+    gap: 10px;
+    padding: 0;
 }
 
 .usaIcon {
-  margin-left:10px;
+    height: 18px;
+    width: 18px;
+}
+
+.iconContainer {
+    height: 24px;
+    width: 24px;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+}
+
+.applyForCertificationBtn {
+    border: 2px solid var(--Brand-Secondary-Bright-Blue);
+    margin: 0;
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+}
+
+.applyForCertificationBtn:active {
+    outline: none;
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+}
+
+.applyForCertificationBtn:hover {
+    border: 2px solid var(--Brand-Secondary-Bright-Blue);
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+}
+
+.applyForCertificationBtn:focus {
+    outline: none;
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+}
+
+.linkCertificationBtn:disabled {
+    color: #454545;
+    background: #C9C9C9;
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
+    box-shadow: unset;
+    margin: 0;
+}
+
+.btnGroup {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 10px;
 }

@@ -6,27 +6,26 @@ import {useTranslation} from 'react-i18next';
 const Loans = () => {
   const {t} = useTranslation();
   return (
-    <>
-      <div className={`main-container`}>
+      <div data-testid="page-loans" className={`main-container`}>
         <div className="grid-row">
           <div className="grid-col">
             <img
               src={Gears}
-              className={`${styles["title__img"]}`}
+              className={`${styles.titleImg}`}
               alt="Title"
             />
           </div>
         </div>
         <div className="grid-row">
           <div className="grid-col">
-            <div className={`${styles["title"]}`}>
+            <div className={`${styles.title}`}>
               {t("Under Construction")}
             </div>
           </div>
         </div>
         <div className="grid-row">
           <div className="grid-col">
-            <div className={`sba-blue ${styles["title__text"]}`}>
+            <div className={`${styles.titleText}`}>
               {t(
                 "Linking your loans is currently under construction. Check back in our next release for loan functionality. To check on your loans please visit your"
               )}{" "}
@@ -37,17 +36,16 @@ const Loans = () => {
               >
                 {" "}
                 {t("loan portal")}
-              </a>
-              .
+              </a>.
             </div>
           </div>
         </div>
         <div className="grid-row">
           <div className="grid-col">
-            <div className={`${styles["title__btn"]}`}>
+            <div className={`${styles.titleBtn}`}>
               <button
                 type="button"
-                className={`usa-button ${styles["pill-button"]}`}
+                className={`usa-button ${styles.pillButton}`}
                 onClick={e => {
                   e.preventDefault();
                   window.open("https://lending.sba.gov", "_blank");
@@ -63,7 +61,6 @@ const Loans = () => {
           </div>
         </div>
       </div>
-    </>
   );
 };
 

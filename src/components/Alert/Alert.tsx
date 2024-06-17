@@ -2,27 +2,27 @@ import React from "react";
 import styles from "src/components/Alert/Alert.module.css";
 
 interface IAlertProps {
-  message: string;
-  type: "success" | "error" | "warning" | "info" ;
+  title?: string;
+  message: string|JSX.Element;
+  type: "success" | "error" | "warning" | "info";
 }
 
-const Alert: React.FC<IAlertProps> = ({ message, type }) => {
+const Alert: React.FC<IAlertProps> = ({ message, type, title=null }) => {
 
-  return (
-    <div className={`${styles["alert__container"]} ${styles["alert-" + type]}`}>
+  return (<div className={`${styles.alertContainer} ${styles["alert-" + type]}`}>
       <svg
-        className={`usa-icon ${styles["alert__icon"]}`}
+        className={`usa-icon ${styles.alertIcon}`}
         aria-hidden="true"
-        focusable="false"
-        role="img"
+        focusable="false" 
+        data-testid="alert-icon"
       >
         <use xlinkHref={`/assets/img/sprite.svg#${type}`}></use>
       </svg>
-      <div className={`${styles["alert__message"]}`}>
+      <div className={`${styles.alertMessage}`}>
+        {title && <div className={`${styles.alertTitle}`}>{title}</div>}
         {message}
       </div>
-    </div>
-  );
+    </div>);
 };
 
 export default Alert;

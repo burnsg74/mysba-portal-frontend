@@ -1,10 +1,15 @@
+.contentRow {
+    height: 100%;
+    min-height: calc(100vh - 102px);
+}
+
 @media screen and (max-width: 1023px) {
-    .side-nav {
+    .sideNav {
         display: none;
     }
 }
 
-.resources-for-you-right {
+.resourcesForYouRight {
     display: flex;
     flex-direction: column;
     width: 390px;
@@ -14,12 +19,12 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .resources-for-you-right {
+    .resourcesForYouRight {
         display: none;
     }
 }
 
-.resources-for-you-bottom {
+.resourcesForYouBottom {
     display: none;
     justify-content: center;
     flex-direction: column;
@@ -30,24 +35,24 @@
 }
 
 @media screen and (max-width: 1023px) {
-    .resources-for-you-bottom {
+    .resourcesForYouBottom {
         display: flex;
     }
 }
 
-.resource-location__scroll-area::-webkit-scrollbar {
+.resourceLocationScrollArea::-webkit-scrollbar {
     display: none;
 }
 
 @media (min-width: 1024px) {
-    .resource-location__scroll-area {
+    .resourceLocationScrollArea {
         height: 100vh;
         overflow-y: auto;
         scrollbar-width: none;
     }
 }
 
-.resource-location-right {
+.resourceLocationRight {
     display: flex;
     flex-direction: column;
     width: 390px;
@@ -55,7 +60,7 @@
     background: var(--Neutrals-Light-Gray);
 }
 
-.resource-location-bottom {
+.resourceLocationBottom {
     display: none;
     justify-content: center;
     flex-direction: column;
@@ -65,7 +70,7 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .resource-location-right {
+    .resourceLocationRight {
         display: none;
         width: 390px;
         padding: 40px 20px 20px 30px;
@@ -73,14 +78,14 @@
         background: var(--Neutrals-Light-Gray);
     }
 
-    .resource-location-bottom {
+    .resourceLocationBottom {
         display: flex;
         width: unset;
         border-left: none;
     }
 }
 
-.resource-location__title {
+.resourceLocationTitle {
     font-family: var(--Font-Secondary);
     font-size: 24px;
     font-style: normal;
@@ -96,14 +101,14 @@
 }
 
 @media screen and (max-width: 1024px) {
-    .resource-location__title {
+    .resourceLocationTitle {
         text-align: center;
         margin-left: 0;
         margin-bottom: 20px;
     }
 }
 
-.resource-location__cards {
+.resourceLocationCards {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -111,8 +116,7 @@
 }
 
 
-
-.resource-location__title-bottom-container {
+.resourceLocationTitleBottomContainer {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -120,7 +124,7 @@
     margin: auto;
 }
 
-.resource-location__title-bottom {
+.resourceLocationTitleBottom {
     font-family: var(--Font-Secondary);
     font-size: 24px;
     font-style: normal;

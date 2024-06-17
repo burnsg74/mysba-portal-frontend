@@ -1,235 +1,97 @@
-.title__row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  align-items: center;
-  margin-top: 50px;
-  margin-bottom: 40px;
+.titleRow {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    margin-top: 50px;
+    margin-bottom: 40px;
+}
+
+.titleContainer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    margin-bottom: 20px;
 }
 
 .title {
-  flex-grow: 1;
-  font-family: var(--Font-Secondary);
-  font-weight: 400;
-  color: #002e6d;
-  font-size: 32px;
-  letter-spacing: 0;
-  line-height: 38px;
-  margin-top: 40px;
-  margin-bottom: 20px;
+    flex-grow: 1;
+    font-family: var(--Font-Secondary);
+    font-weight: 400;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 32px;
+    letter-spacing: 0;
+    line-height: 38px;
+    margin-right: 5px;
 }
 
 .subtitle {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-family: var(--Font-Primary);
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 26px;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-family: var(--Font-Primary);
+    font-size: 22px;
+    font-weight: 400;
+    line-height: 26px;
 
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  overflow: hidden;
-  text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .subheader {
-  color: var(--Primary-primary-darker);
-  font-family: var(--Font-Secondary);
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
+    color: var(--Primary-primary-darker);
+    font-family: var(--Font-Secondary);
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+}
+
+.addBusinessBtn {
+    white-space: nowrap;
 }
 
 .categoryGroup {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 16px;
-  align-self: stretch;
-}
-
-.usa-card__row {
-  display: flex;
-  align-items: center;
-  width: 100%;
-  gap: 10px;
-}
-
-.usa-card__text-center {
-  color: #002e6d;
-  font-family: var(--Font-Primary);
-  font-weight: 400;
-  font-size: 16px;
-  flex-grow: 1;
-  text-align: center;
-  margin-left: 0;
-}
-
-.usa-card__text-center:last-child {
-  text-align: end;
-}
-
-.usa-card__text-center:first-child {
-  text-align: start;
-}
-
-@media screen and (max-width: 1140px) {
-  .usa-card__text-center:last-child {
-    text-align: start;
-  }
-}
-
-@media screen and (max-width: 1045px) {
-  .usa-card__text-center {
-    text-align: start;
-  }
-}
-
-.badge {
-  background: var(--warningwarning-lighter, #faf3d1);
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  padding: 5px 20px 5px 12px;
-  position: relative;
-  background-color: var(--warningwarning-lighter);
-  border-radius: 34px;
-  overflow: hidden;
-  border: 2px solid;
-  border-color: var(--warningwarning);
-}
-
-.usa-card__container {
-  border-radius: 8px;
-  border: unset;
-  box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
-  gap: 14px;
-  margin: 0 0 20px 0;
-  min-height: 126px;
-  padding-bottom: 20px;
-}
-
-.card__header {
-  background: rgba(165, 198, 224, 0.2);
-  margin: 5px 5px;
-}
-
-.card__text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--Brand-Primary-SBA-Blue);
-}
-
-.store_icon {
-  fill: var(--Brand-Primary-SBA-Blue);
-  height: 30px;
-  width: 30px;
-}
-
-.toggle__icon {
-  padding:0px;
-  cursor: pointer;
-  fill: var(--Brand-Primary-SBA-Blue);
-  height: 30px;
-  width: 30px;
-  background: transparent;
-  border: unset;
-}
-
-.resource-location-right {
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  width: 390px;
-  border-left: 1px solid var(--Neutrals-Light-Gray-4, #e0e0e0);
-  background: var(--Neutrals-Light-Gray, #fbfcfd);
-  gap: 20px;
-}
-
-.resource-location-bottom {
-  display: none;
-  justify-content: center;
-  flex-direction: column;
-  padding: 40px 20px 20px 30px;
-  border-left: 1px solid var(--Neutrals-Light-Gray-4, #e0e0e0);
-  background: var(--Neutrals-Light-Gray, #fbfcfd);
-}
-
-@media screen and (max-width: 1024px) {
-  .resource-location-right {
-    display: none;
-    width: 390px;
-    border-left: 1px solid lightgray;
-    padding: 40px 20px 20px 30px;
-    border-left: 1px solid var(--Neutrals-Light-Gray-4, #e0e0e0);
-    background: var(--Neutrals-Light-Gray, #fbfcfd);
-  }
-
-  .resource-location-bottom {
     display: flex;
-    width: unset;
-    border-left: none;
-  }
-}
-
-.resource-location__title {
-  font-family: var(--Font-Secondary);
-  font-size: 24px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: 28px;
-  color: var(--Brand-Primary-SBA-Blue);
-  margin-bottom: 20px;
-  padding-top: 40px;
-  padding-bottom: 12px;
-  margin-left: 33px;
-  border-bottom: 1px solid #dfe1e2;
-  width: 80%;
-  letter-spacing: 0;
-  text-align: left;
-}
-
-.resource-location__cards {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-
-@media (min-width: 1024px) {
-  .resource-location__scroll-area {
-    height: auto;
-    overflow-y: visible;
-  }
-}
-
-.grid-row-centered {
-  align-content: center;
-  align-items: center;
-  align-self: stretch;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  padding: 21px 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
 }
 
 .cardBody {
-  /*padding: 12px 20px 18px 20px;*/
-  align-items: flex-start;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  padding: 0 20px;
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0 20px;
 }
 
-.alert-container {
-  margin-top: 40px;
-  margin-bottom: 40px;
+.alertContainer {
+    margin-top: 40px;
+    margin-bottom: 40px;
 }
 
 .businessRow {
-  margin-bottom: 40px;
+    margin-bottom: 40px;
+}
+
+.noBusinessesMessageContainer {
+    display: flex;
+    padding: 24px 0;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+}
+
+.noBusinessesText {
+    color: var(--Brand-Primary-SBA-Blue);
+    text-align: center;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
 }

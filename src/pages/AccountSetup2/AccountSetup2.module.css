@@ -1,4 +1,4 @@
-.container-row {
+.containerRow {
   display: flex;
   justify-content: center;
 }
@@ -17,7 +17,6 @@
     padding-right:20px;
     padding-left:20px;
   }
-
 }
 
 .header {
@@ -25,29 +24,22 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-top:75px;
+  margin-top:40px;
   width:100%;
   max-width:600px;
-}
-
-.open-sign {
-  position: relative;
-  width: 100px;
-  height: 100px;
-  margin-bottom: 20px;
 }
 
 .title {
   font-family: var(--Font-Primary);
   font-weight: 400;
-  color: #002e6d;
+  color: var(--Brand-Primary-SBA-Blue);
   font-size: 32px;
   margin-bottom: 20px;
   margin-top:20px;
 }
 
 .subtitle {
-  color: #002e6d;
+  color: var(--Brand-Primary-SBA-Blue);
   font-family: var(--Font-Primary);
   font-weight: 400;
   font-size: 22px;
@@ -67,12 +59,12 @@
 .label {
   font-family: var(--Font-Primary);
   font-weight: 400;
-  color: #002e6d;
+  color: var(--Brand-Primary-SBA-Blue);
   font-size: 40px;
   width: 100%;
 }
 
-.section_label {
+.sectionLabel {
   font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;
@@ -82,7 +74,7 @@
   margin-top:75px;
 }
 
-.section_label_last {
+.sectionLabelLast {
   font-family: var(--Font-Primary);
   font-size: 22px;
   font-weight: 400;
@@ -92,21 +84,16 @@
   margin-top:50px;
 }
 
-.section_message {
+.sectionMessage {
   font-family: var(--Font-Primary);
   font-size: 17px;
   font-weight: 400;
   line-height: 21px;
-  letter-spacing: 0em;
+  letter-spacing: 0;
   text-align: left;
   color: var(--Brand-Primary-SBA-Blue);
   margin-top:20px;
   margin-bottom:20px;
-}
-
-.checkbox__group {
-  display: flex;
-  align-items: center;
 }
 
 input[type="checkbox"] {
@@ -119,24 +106,7 @@ input[type="checkbox"]:focus {
   outline: none;
 }
 
-.checkbox_label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  font-family: var(--Font-Primary);
-  font-size: 22px;
-  font-weight: 400;
-  line-height: 26px;
-  text-align: left;
-  color: var(--Brand-Primary-SBA-Blue);
-  padding:20px;
-}
-
-.card__container {
-  margin: 0;
-}
-
-.button-group {
+.buttonGroup {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -148,32 +118,32 @@ input[type="checkbox"]:focus {
 }
 
 @media screen and (max-width: 500px) {
-  .button-group{
-    margin-right:0px;
+  .buttonGroup{
+    margin-right:0;
   }
 }
 
-
-.button-row {
+.buttonRow {
   display: flex;
   justify-content: center;
   width: 100%;
   gap:16px;
 }
 
-.skip-button-row {
+.skipButtonRow {
   display: flex;
   justify-content: center;
+  margin-top: 16px;
   width: 100%;
 }
 
-.tooltip {
+.toolTip {
   position: relative;
   display: inline-block;
   margin-left: auto;
 }
 
-.tooltip .tooltiptext {
+.toolTip .toolTipText {
   visibility: hidden;
   font-family: var(--Font-Primary);
   font-size: 15px;
@@ -182,7 +152,7 @@ input[type="checkbox"]:focus {
   text-align: left;
   width: 270px;
   background-color: var(--Brand-Secondary-Bright-Blue);
-  color: #fff;
+  color: var(--Base-white);
   border-radius: 6px;
   padding: 10px;
   position: absolute;
@@ -193,19 +163,19 @@ input[type="checkbox"]:focus {
 }
 
 @media screen and (max-width: 768px) {
-  .tooltip .tooltiptext {
+  .toolTip .toolTipText {
     bottom: auto;
     top: 100%;
     left: 50%;
     transform: translateX(-50%);
     white-space: normal;
   }
-  .tooltip .tooltiptext::after {
+  .toolTip .toolTipText::after {
     left:98% !important;
   }
 }
 
-.tooltip .tooltiptext::after {
+.toolTip .toolTipText::after {
   content: "";
   position: absolute;
   bottom: 100%;
@@ -217,16 +187,16 @@ input[type="checkbox"]:focus {
     transparent;
 }
 
-.tooltip:hover .tooltiptext {
+.toolTip:hover .toolTipText {
   visibility: visible;
 }
 
-.usa-button {
+.usaButton {
   width:160px;
-  margin-right:0px;
+  margin-right:0;
 }
 
-.skip-button {
+.skipButton {
   background: none;
   border: none;
   color: var(--Brand-Secondary-Bright-Blue);
@@ -238,23 +208,21 @@ input[type="checkbox"]:focus {
   font-family: inherit;
 }
 
-.skip-button-row {
-  margin-top: 16px;
-}
 
-.skip-button:hover,
-.skip-button:focus {
+
+.skipButton:hover,
+.skipButton:focus {
   color: var(--Brand-Primary-SBA-Blue);
   text-decoration: none;
   outline: none;
 }
 
-.skip-button:active {
+.skipButton:active {
   color: var(--Brand-Primary-SBA-Blue);
 }
 
-.checkbox-row {
-  box-shadow: 0px 7px 15px 0px #1b1e2912;
+.checkboxRow {
+  box-shadow: 0 7px 15px 0 #1b1e2912;
   margin-bottom: 20px;
   border-color: var(--Base-base-lighter);
   border-width:1px;
@@ -262,11 +230,7 @@ input[type="checkbox"]:focus {
   height:92px;
 }
 
-.usa-checkbox__input--tile+[class*=__label] {
-  border-width:1px;
-}
-
-.usa-checkbox__label {
+.usaCheckboxLabel {
   font-family: var(--Font-Primary);
   font-size: 22px;
   color:var(--Brand-Primary-SBA-Blue) !important;
@@ -281,16 +245,16 @@ input[type="checkbox"]:focus {
   border-radius:8px !important;
 }
 
-.usa-checkbox__label::before { 
-  box-shadow: 0 0 0 2px #002E6D;
+.usaCheckboxLabel::before { 
+  box-shadow: 0 0 0 2px var(--Brand-Primary-SBA-Blue);
   margin-left:20px;
 }
 
-.label-text{
+.labelText{
   margin-left:30px;
 }
 
-.info-icon {
+.infoIcon {
   width:24px;
   height:24px;
 }

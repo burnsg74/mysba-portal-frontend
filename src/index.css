@@ -1,25 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
 :root {
     /* Colors */
     --Base-base-dark: #565C65;
     --Base-base-lighter: #DCDEE0;
     --Base-white: #FFFFFF;
+    --Box-Shadow: rgba(27, 30, 41, 0.07);
     --Brand-Primary-SBA-Blue: #002E6D;
     --Brand-Secondary-Bright-Blue: #007DBC;
+    --Card-Header-Background: rgba(165, 198, 224, 0.2);
+    --Grayscale-gray-50: #757575;
     --Neutrals-Light-Gray-4: #E0E0E0;
     --Neutrals-Light-Gray: #FBFCFD;
+    --Primary-primary-darker: #162E51;
+    --Primary-primary: #005EA2;
     --SBA-CRM-text-text-light: #71767A;
     --SBA-Celeste: #007DBC;
     --SBA-Dark-Blue: #000441;
-    --Text-Text: #1B1B1B;
     --Success-success-lighter: #ECF3EC;
-    --Primary-primary: #005EA2;
-    --Primary-primary-darker: #162E51;
-    --Box-Shadow: rgba(27, 30, 41, 0.07);
-    --Card-Header-Background: rgba(165, 198, 224, 0.2);
+    --Text-Text: #1B1B1B;
+    --Error-error: #D54309;
+    --Error-error-dark: #B50909;
 
     /* Alert Colors */
     --Alert-Info-Bar: #007DBC;
@@ -33,32 +32,19 @@
     --Alert-Error-Bar: #CC0000;
     --Alert-Error-Background: #F4E3DB;
 
+
     /* Fonts */
-    --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;
-    --Font-Secondary: "Public Sans", "Source Sans Pro", "Helvetica", sans-serif;
+    --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif, serif;
+    --Font-Secondary: "Public Sans", "Source Sans Pro", "Helvetica", sans-serif, serif;
 
     /* @TODO Remove or update name */
-    --sba-dark-celeste: #00518B;
-    --sba-light-celeste: #58ACEF;
-    --baseink: #1B1B1B;
-    --basewhite: #FFFFFF;
-    --sba-dark-blue: #000441;
-    --base-ink: #1B1B1B;
-    --base-dark: #565C65;
-    --warningwarning-light: #FEE685;
-    --base-lightest: #F0F0F0;
-    --base-lighter: #DFE1E2;
-    --warningwarning-lighter: #FAF3D1;
-    --warningwarning: #FFBE2E;
-    --successsuccess: #00A91C;
-    --successsuccess-lighter: #ECF3EC;
-    --primaryprimary-lighter: #D9E8F6;
-    --primaryprimary-darker: #162E51;
-    --primaryprimary-dark: #1A4480;
 
-    --primarywhite: #FFFFFF;
+    --warningwarning-lighter: #FAF3D1;
+
+    --warningwarning: #FFBE2E;
 }
 
+/*** FONTS ***/
 /* Source Sans Pro */
 /* 200 Extra Light (Ultra Light) */
 @font-face {
@@ -307,6 +293,61 @@
     font-style: italic;
 }
 
+/***** GLOBAL STYLES ******/
+* {
+    font-family: var(--Font-Primary);
+}
+
+html, body {
+    height: 100%;
+}
+
+body {
+    min-height: 100vh;
+}
+
+#root {
+    min-height: 100vh;
+}
+a,
+a:focus,
+a:active,
+a:hover,
+a:visited {
+    text-decoration: none;
+}
+
+.sr-only {
+    position: absolute;
+    left: -9999px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+    padding: 0;
+    font-weight: normal;
+    color: inherit;
+    background: none;
+    border: none;
+}
+
+:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px #05FC;
+    border-radius: 2px;
+}
+
+button {
+    all: unset;
+    padding: 0;
+    margin: 0;
+}
+
+button:focus {
+    outline: revert;
+}
+
+/*** LAYOUT ***/
 .main-container {
     max-width: 1200px;
     padding-right: 20px;
@@ -320,10 +361,6 @@
         padding-right: 40px;
         padding-left: 40px;
     }
-}
-
-.sba-blue {
-    color: var(--Brand-Primary-SBA-Blue);
 }
 
 .container-row {
@@ -357,13 +394,13 @@
 .title {
     font-family: var(--Font-Primary);
     font-weight: 400;
-    color: #002E6D;
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 32px;
     margin-bottom: 20px;
 }
 
 .subtitle {
-    color: #002E6D;
+    color: var(--Brand-Primary-SBA-Blue);
     font-family: var(--Font-Primary);
     font-weight: 400;
     font-size: 22px;
@@ -373,7 +410,7 @@
 .label {
     font-family: var(--Font-Primary);
     font-weight: 400;
-    color: #002E6D;
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 40px;
     width: 100%;
 }
@@ -479,40 +516,28 @@ textarea:not([disabled]):focus {
     line-height: 120%;
 }
 
-button {
-    outline: none;
-}
-
 .grid-col-wrap {
     flex: unset;
     display: flex;
     flex-wrap: wrap;
 }
 
-a,
-a:focus,
-a:active,
-a:hover,
-a:visited {
-    text-decoration: none;
+.usa-radio__input--tile:checked + [class*=__label] {
+    background-color: unset;
+    border-color: unset;
 }
 
-.sr-only {
-    position: absolute;
-    left: -9999px;
+.usa-radio__input--tile + [class*=__label] {
+    padding: 20px 20px 20px 66px;
+    background-color: unset;
+    border-radius: unset;
+    border: unset;
+    color: unset;
+    margin-top: unset;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    color: inherit;
-    background: none;
-    border: none;
+.usa-radio__input--tile+[class*=__label]::before {
+    left: unset;
+    padding-right: 16px;
 }
 
-:focus {
-    outline: none;
-    box-shadow: 0 0 0 3px #05FC;
-    border-radius: 2px;
-}

@@ -1,4 +1,4 @@
-.error-container {
+.errorContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -6,7 +6,8 @@
     height: calc(100vh - 102px);
     width: 100%;
 }
-.error-message {
+
+.errorMessage {
     font-family: var(--Font-Primary);
     color: var(--Brand-Primary-SBA-Blue);
     text-align: center;

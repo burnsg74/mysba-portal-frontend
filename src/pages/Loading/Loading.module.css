@@ -1,4 +1,4 @@
-.loading__container {
+.loadingContainer {
   width: 316px;
   display: inline-flex;
   flex-direction: column;
@@ -12,24 +12,24 @@
   gap: 17px;
 }
 
-.loading__icon {
+.loadingIcon {
   width: 100px;
   height: 100px;
 }
 
-.loading__progressbar-outer {
+.loadingProgressbarOuter {
   width: 316px;
   height: 10px;
-  background-color: #FFFFFF;
+  background-color: var(--Base-white);
   border-radius: 25px;
 }
-.loading__progressbar-inner {
+.loadingProgressbarInner {
   height: 100%;
-  background-color: #007DBC;
+  background-color: var(--Brand-Secondary-Bright-Blue);
   border-radius: 25px;
 }
 
-.loading__text {
+.loadingText {
   color: var(--Primary-primary);
   text-align: center;
   font-family: var(--Font-Primary);

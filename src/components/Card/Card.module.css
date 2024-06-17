@@ -17,17 +17,15 @@
 
 .headerIcon {
     display: flex;
-    width: 30px;
-    height: 30px;
     justify-content: center;
     align-items: center;
-    fill: var(--Primary-primary-darker);
+    width: 30px;
+    height: 30px;
 }
 
 .headerTitle {
     flex: 1 0 0;
     color: var(--Primary-primary-darker);
-    font-family: var(--Font-Primary);
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
@@ -38,9 +36,13 @@
 .body {
     width: 100%;
     color: var(--Primary-primary-darker);
-    padding: 20px;
 }
 
 .detailsButton {
     background-color: var(--SBA-Celeste);
+}
+
+.smallScreen {
+    flex-direction: column;
+    align-items: start;
 }

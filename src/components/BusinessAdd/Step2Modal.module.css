@@ -1,0 +1,28 @@
+.backBtn, .continueBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    margin-right: unset;
+}
+
+.inputContainer {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.group {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+.hr {
+    width: 100%;
+    height: 1px;
+    background: var(--Base-base-lighter);
+}

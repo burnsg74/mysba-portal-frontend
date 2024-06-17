@@ -1,28 +1,45 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Card from "src/components/Card/Card";
-import { useTranslation } from 'react-i18next';
+import { useTranslation } from "react-i18next";
 import styles from "src/components/BusinessCard/BusinessCard.module.css";
 import ellipse from "src/assets/ellipse.svg";
+import BusinessCardIcon from "src/assets/business-card-icon.svg";
 
-export const BusinessCard: React.FC<IBusinessCardProps> = props => {
+export const BusinessCard: React.FC<IBusinessCardProps> = ({ business, hideDetails = false }) => {
   const { t } = useTranslation();
-  const icon = "/assets/img/business-card-icon.svg";
-  const body = (<>
-      <div className={`grid-row ${styles.bodyRow}`}>
-        <div className={`grid-col  ${styles.bodyLegalEntityText}`}>
-          {t(props.business.legal_entity)}
-        </div>
-        <div className={`grid-col-auto ${styles.bodySubGroup}`}>
-          {t('UEI')}: {props.business.uei}
-          <img
-            className={`${styles.ellipsesIcon}`}
-            src={ellipse}
-            alt={"Ellipsis icon"}
-          />
-          {t('EIN')}: {props.business.ein}
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
 
-        </div>
+  useEffect(() => {
+    function updateScreenSize() {
+      if (containerRef.current && containerRef.current.offsetWidth <= 639) {
+        setIsSmallScreen(true);
+      } else {
+        setIsSmallScreen(false);
+      }
+    }
+
+    updateScreenSize();
+    window.addEventListener("resize", updateScreenSize);
+    return () => window.removeEventListener("resize", updateScreenSize);
+  }, []);
+
+  const body = (<div ref={containerRef}
+                     className={`grid-row ${styles.bodyRow} ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`}>
+      <div className={`grid-col  ${styles.bodyLegalEntityText}`}>
+        {t(business.legal_entity)}
       </div>
-  </>);
-  return <Card icon={icon} title={props.business.name} detailsPage={`/businesses/detail/${props.index}`} body={body} />;
+      <div className={`grid-col-auto ${styles.bodySubGroup}`}>
+        {t("UEI")}: {business.uei}
+        <img
+          className={`${styles.ellipsesIcon}`}
+          src={ellipse}
+          alt={"Ellipsis icon"}
+        />
+        {t("EIN")}: {business.ein}
+
+      </div>
+    </div>);
+  return <Card icon={BusinessCardIcon} title={business.name} detailsPage={`/businesses/detail/${business.id}`}
+               body={body} hideDetails={hideDetails} />;
 };

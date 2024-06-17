@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Outlet } from "react-router-dom";
 import Header from "src/components/Header/Header";
 import SideNav from "src/components/SideNav/SideNav";
 import styles from "src/components/Layout/Layout.module.css";
@@ -8,7 +8,6 @@ import { getShowNav } from "src/store/showNav/showNavSlice";
 import { learningCenterCoursesByPath } from "src/utils/learningCenterCourses";
 import LearningCenterCard from "src/components/LearningCenterCard/LearningCenterCard";
 import { useTranslation } from "react-i18next";
-import { Outlet } from "react-router-dom";
 
 const Layout = () => {
   const showNav: boolean = useSelector(getShowNav);
@@ -24,7 +23,8 @@ const Layout = () => {
     setCourses(learningCenterCoursesByPath[location.pathname] ?? []);
 
     if (location.pathname === "/dashboard") {
-      setScrollAreaClass(window.location.pathname === "/dashboard" ? `${styles["resource-location__scroll-area"]}` : "");
+      setScrollAreaClass(window.location.pathname === "/dashboard" ? `${styles.resourceLocationScrollArea}` : "");
+
       let headerElement = headerRef.current;
       let mainContentElement = mainContentRef.current;
       if (mainContentElement && headerElement) {
@@ -35,6 +35,8 @@ const Layout = () => {
           setMainContentHeight(`${window.innerHeight - headerHeight}px`)
         }
       }
+    } else {
+      setScrollAreaClass("");
     }
   }, [location]);
 
@@ -44,37 +46,37 @@ const Layout = () => {
 
   return (<>
       <div className="grid-row" id="header__container" ref={headerRef}>
-        <div className="grid-col">
+        <div className={`grid-col`}>
           <Header />
         </div>
       </div>
-      <div className="grid-row">
-        {showNav && (<div className={`grid-col-auto ${styles["side-nav"]}`}>
-            <SideNav onNavLinkClick={handleNavLinkClick} />
+      <div className={`grid-row ${styles.contentRow}`}>
+        {showNav && (<div className={`grid-col-auto ${styles.sideNav}`}>
+            <SideNav onNavLinkClick={handleNavLinkClick}  forMobile={false}/>
           </div>)}
         <main id="main-content" className="grid-col" ref={mainContentRef}>
           <Outlet />
         </main>
-        {showNav && (courses.length > 0) && (<div className={`grid-col-auto ${styles["resources-for-you-right"]}`}>
+        {showNav && (courses.length > 0) && (<div className={`grid-col-auto ${styles.resourcesForYouRight}`}>
             <div className={scrollAreaClass} style={{ height: `${mainContentHeight}` }}>
-              <h1 className={`${styles["resource-location__title"]}`}>
+              <h1 className={`${styles.resourceLocationTitle}`}>
                 {t("Resources for you")}
               </h1>
-              <div className={`${styles["resource-location__cards"]}`}>
-                {courses.map((course, index) => (<LearningCenterCard key={index} learningCenter={course} />))}
+              <div className={`${styles.resourceLocationCards}`}>
+                {courses.map((course) => (<LearningCenterCard key={course.id} learningCenter={course} />))}
               </div>
             </div>
           </div>)}
       </div>
-      {showNav && (courses.length > 0) && (<div className={`grid-col-row ${styles["resources-for-you-bottom"]}`}>
+      {showNav && (courses.length > 0) && (<div className={`grid-col-row ${styles.resourcesForYouBottom}`}>
           <div className="grid-col">
-            <div className={`${styles["resource-location__title-bottom-container"]}`}>
-              <h1 className={`${styles["resource-location__title-bottom"]}`}>
+            <div className={`${styles.resourceLocationTitleBottomContainer}`}>
+              <h1 className={`${styles.resourceLocationTitleBottom}`}>
                 {t("Resources for you")}
               </h1>
             </div>
-            <div className={`${styles["resource-location__cards"]}`}>
-              {courses.map((course, index) => (<LearningCenterCard key={index} learningCenter={course} />))}
+            <div className={`${styles.resourceLocationCards}`}>
+              {courses.map((course) => (<LearningCenterCard key={course.id} learningCenter={course} />))}
             </div>
           </div>
         </div>)}

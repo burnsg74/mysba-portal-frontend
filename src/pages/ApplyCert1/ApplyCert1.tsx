@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { useLocation, useNavigate } from "react-router-dom";
 import Alert from "src/components/Alert/Alert";
 import styles from "src/pages/ApplyCert1/ApplyCert1.module.css";
-import editPaperImg from "src/assets/edit-paper.png";
+import editPaperImg from "src/assets/edit-paper.svg";
 
 const ApplyCert1 = () => {
   const { t } = useTranslation();
@@ -12,7 +12,7 @@ const ApplyCert1 = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const isLargeWindow = () => window.innerWidth >= 780;
-  const closePage = () => navigate("/certification");
+  const closePage = () => navigate("/certifications");
   const NextPage = () => navigate("/certification/2", { state: { selectedOption: selectedOptionRef.current } });
   const handleOptionChange = (event: React.ChangeEvent<HTMLInputElement>) =>
     setSelectedOption(event.target.value as "WOSB" | "8A" | "HUBZone" | "VetCert");
@@ -31,21 +31,19 @@ const ApplyCert1 = () => {
     };
   }, [navigate]);
 
-  return (
-    <>
-      <div className={`${styles["container"]}`}>
-        <div className={`${styles["content"]}`}>
+  return (<div className={`${styles.container}`}>
+      <div className={`${styles.content}`}>
           <div className={`${styles.stepIndicatorContainer}`}>
             <div
               className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
               aria-label="progress"
             >
-              <ol className={`usa-step-indicator__segments ${styles["usa-step-indicator__segments"]}`}>
+              <ol className={`usa-step-indicator__segments ${styles.usaStepIndicatorSegments}`}>
                 <li
-                  className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles["usa-step-indicator__segment--complete"]}`}
+                  className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles.usaStepIndicatorSegmentComplete}`}
                 ></li>
                 <li
-                  className={`usa-step-indicator__segment usa-step-indicator__segment--incomplete ${styles["usa-step-indicator__segment--incomplete"]}`}
+                  className={`usa-step-indicator__segment usa-step-indicator__segment--incomplete ${styles.usaStepIndicatorSegmentIncomplete}`}
                 ></li>
               </ol>
             </div>
@@ -53,7 +51,7 @@ const ApplyCert1 = () => {
 
           {/* Header */}
           <img src={editPaperImg} alt="Edit Paper" />
-          <div className={`${styles["content__title"]}`}>
+          <div className={`${styles.contentTitle}`}>
             {t("What kind of certification would you like to apply for?")}
           </div>
           <Alert
@@ -63,9 +61,9 @@ const ApplyCert1 = () => {
             type="info"
           />
           <div>
-            <form className={`usa-form ${styles["usa-form"]}`}>
+            <form className={`usa-form ${styles.usaForm}`}>
               <fieldset className="usa-fieldset">
-                <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
+                <div className={`grid-row usa-radio ${styles.radioRow}`}>
                   <input
                     className="usa-radio__input usa-radio__input--tile"
                     id="cert8A"
@@ -75,20 +73,19 @@ const ApplyCert1 = () => {
                     checked={selectedOption === "8A"}
                     onChange={handleOptionChange}
                   />
-                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="cert8A">
-                    <span className={`${styles["checkbox_label"]}`}>
+                  <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="cert8A">
+                    <span className={`${styles.checkboxLabel}`}>
                       {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                     </span>
-                    <span className={`${styles["tooltip"]}`}>
+                    <span className={`${styles.toolTip}`}>
                       <svg
-                        className={`usa-icon ${styles["info-icon"]}`}
+                        className={`usa-icon ${styles.infoIcon}`}
                         aria-hidden="true"
                         focusable="false"
-                        role="img"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
-                      <span className={`${styles["tooltiptext"]}`}>
+                      <span className={`${styles.toolTipText}`}>
                         {t(
                           "You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand."
                         )}
@@ -106,7 +103,7 @@ const ApplyCert1 = () => {
                     </span>
                   </label>
                 </div>
-                <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
+                <div className={`grid-row usa-radio ${styles.radioRow}`}>
                   <input
                     className={`usa-radio__input usa-radio__input--tile`}
                     id="certHUBZone"
@@ -116,20 +113,19 @@ const ApplyCert1 = () => {
                     checked={selectedOption === "HUBZone"}
                     onChange={handleOptionChange}
                   />
-                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certHUBZone">
-                    <span className={`${styles["checkbox_label"]}`}>
+                  <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certHUBZone">
+                    <span className={`${styles.checkboxLabel}`}>
                       {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                     </span>
-                    <span className={`${styles["tooltip"]}`}>
+                    <span className={`${styles.toolTip}`}>
                       <svg
-                        className={`usa-icon ${styles["info-icon"]}`}
+                        className={`usa-icon ${styles.infoIcon}`}
                         aria-hidden="true"
                         focusable="false"
-                        role="img"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
-                      <span className={`${styles["tooltiptext"]}`}>
+                      <span className={`${styles.toolTipText}`}>
                         {t("You could qualify if your business is located in a HUBZone.")} <br />
                         <a
                           href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/hubzone-program#id-hubzone-program-qualifications"
@@ -142,7 +138,7 @@ const ApplyCert1 = () => {
                     </span>
                   </label>
                 </div>
-                <div className={`grid-row usa-radio ${styles["radio-row"]}`}>
+                <div className={`grid-row usa-radio ${styles.radioRow}`}>
                   <input
                     type="radio"
                     name="certVet"
@@ -152,20 +148,19 @@ const ApplyCert1 = () => {
                     checked={selectedOption === "VetCert"}
                     onChange={handleOptionChange}
                   />
-                  <label className={`usa-radio__label ${styles["radio-label"]}`} htmlFor="certVet">
-                    <span className={`${styles["checkbox_label"]}`}>
+                  <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">
+                    <span className={`${styles.checkboxLabel}`}>
                       {t("Veteran-Owned Small Business (VetCert) Certification")}
                     </span>
-                    <span className={`${styles["tooltip"]}`}>
+                    <span className={`${styles.toolTip}`}>
                       <svg
-                        className={`usa-icon ${styles["info-icon"]}`}
+                        className={`usa-icon ${styles.infoIcon}`}
                         aria-hidden="true"
                         focusable="false"
-                        role="img"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                       </svg>
-                      <span className={`${styles["tooltiptext"]}`}>
+                      <span className={`${styles.toolTipText}`}>
                         {t("You could qualify if over 51% of your business is owned by veterans.")} <br />
                         <a
                           href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/veteran-contracting-assistance-programs#id-veteran-small-business-certification-vetcert-program"
@@ -184,21 +179,19 @@ const ApplyCert1 = () => {
         </div>
 
         {/* Footer */}
-        <div className={`${styles["footer"]}`}>
+        <div className={`${styles.footer}`}>
           <button
             type="button"
-            className={`usa-button usa-button--outline ${styles["footer-btn-outline"]}`}
+            className={`usa-button usa-button--outline ${styles.footerBtnOutline}`}
             onClick={closePage}
           >
             {t("Cancel")}
           </button>
-          <button type="button" className={`usa-button ${styles["footer-btn"]}`} onClick={NextPage}>
+          <button type="button" className={`usa-button ${styles.footerBtn}`} onClick={NextPage}>
             {t("Continue")}
           </button>
         </div>
-      </div>
-    </>
-  );
+      </div>);
 };
 
 export default ApplyCert1;

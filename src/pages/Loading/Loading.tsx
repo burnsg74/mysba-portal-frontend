@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { UserClaims } from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
 import axios, { AxiosResponse } from "axios";
-import { setUser } from "src/store/user/userSlice";
-import { setNav } from "src/store/showNav/showNavSlice";
+import { getUser, setUser } from "src/store/user/userSlice";
+import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -10,9 +10,11 @@ import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
+import { formatPhoneNumber } from "src/utils/formatter";
+import { BASE_API_URL,DISTRICT_URL } from "src/utils/constants";
+import { useSelector } from "react-redux";
 
 const Loading = () => {
-  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const PROGRESS_UPDATE_INTERVAL = 500;
   const [loadingProgress, setLoadingProgress] = useState(0);
   const [messageIndex, setMessageIndex] = useState(0);
@@ -28,15 +30,15 @@ const Loading = () => {
     t("Verifying"),
   ];
   const endpoints = [
-    `${BASE_API_URL}crm/mysba360/`,
-    `${BASE_API_URL}business/`,
-    `${BASE_API_URL}certification/wosb/`,
-    `${BASE_API_URL}portal/user/`,
+    `${BASE_API_URL}/crm/mysba360/`,
+    `${BASE_API_URL}/business/`,
+    `${BASE_API_URL}/certification/wosb/`,
+    `${BASE_API_URL}/portal/user/`,
   ];
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    const email = info.email?.toLowerCase() || "";
-    let accessToken: string | AccessToken | null | undefined = null;
+    const email = info.email?.toLowerCase() ?? "";
+    let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken =authState.accessToken?.accessToken;
     } else {
@@ -50,10 +52,26 @@ const Loading = () => {
     try {
       results = await Promise.all(requests);
     } catch (err) {
-      console.error(err);
-      window.location.href = "/error.html";
+      oktaAuth.signOut().then(() => {
+        navigate("/error");
+      });
     }
-    const crmData = results[0].data;
+    let crmData = results[0].data;
+
+    // Temporary data for testing. Do not delete this block. (GB) 2021-09-29
+    if (!crmData) {
+      crmData = {
+        "id"   : "003Hv000007zHkvIAE", "accountid": "001Hv000007r78NIAQ", "last_name": "Smith", "first_name": "Cindy",
+        "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA",
+      };
+    }
+
+    // if (!crmData) {
+    //   oktaAuth.signOut().then(() => {
+    //     navigate("/error");
+    //   });
+    // }
+
     let businessData = results[1].data;
     businessData.forEach((business: any) => {
       business.ein = business.ein.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3");
@@ -64,41 +82,51 @@ const Loading = () => {
     });
     const certificationData = results[2].data;
     const portalData = results[3].data;
-    return {
+    // const zipcodeToDistrict = portalData.zipcode ?? businessData[0]?.mailing_address_zipcode ?? 10001;
+    const zipcodeToDistrict = 10001;
+
+    // Getting CORS error
+    // axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
+    //   businessData[0].district = response.data.district;
+    //   console.log("district", response);
+    //   // Append to user object
+    //   dispatch(setUser({ ...crmData, district: response.data.district}));
+    // });
+
+    let user = {
       profile: {
         crm: crmData,
         portal: portalData,
       },
       businesses: businessData,
       certifications: certificationData,
+      district: { loading: true },
     };
-  };
 
-  function formatPhoneNumber(phoneNumber: string): string {
-    const cleanNumber = phoneNumber.replace(/[^0-9]/g, "");
-    return `+1 (${cleanNumber.slice(1, 4)}) ${cleanNumber.slice(4, 7)}-${cleanNumber.slice(7, 11)}`;
-  }
+    axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
+      let district = response.data[0];
+      dispatch(setUser({...user, district: district}));
+    });
+
+    return user;
+  };
 
   useEffect(() => {
     dispatch(setNav(false));
+    dispatch(setShowProfile(false))
   }, [dispatch]);
 
   useEffect(() => {
     if (authState?.isAuthenticated) {
-      oktaAuth
-        .getUser()
+      oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
-          if (!user.profile.crm) {
-            return oktaAuth.signOut().then(() => {
-              window.location.href = "/error.html";
-              return;
-            });
-          }
           dispatch(setNav(true));
+          dispatch(setShowProfile(true))
           dispatch(setUser(user));
           if (!user.profile.portal) {
             dispatch(setNav(false));
+            dispatch(setShowProfile(false))
             navigate("/account-setup/1");
           } else {
             navigate("/dashboard");
@@ -117,19 +145,19 @@ const Loading = () => {
   }, [messageIndex]);
 
   return (
-    <div className={`${styles["loading__container"]}`}>
+    <div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
       <img
-        className={`${styles["loading__icon"]}`}
+        className={`${styles.loadingIcon}`}
         src={loadingIcon}
         alt="Loading"
       />
-      <div className={`${styles["loading__progressbar-outer"]}`}>
+      <div className={`${styles.loadingProgressbarOuter}`}>
         <div
-          className={`${styles["loading__progressbar-inner"]}`}
+          className={`${styles.loadingProgressbarInner}`}
           style={{ width: `${loadingProgress}%` }}
         ></div>
       </div>
-      <div className={`${styles["loading__text"]}`}>{loadingMessage}</div>
+      <div className={`${styles.loadingText}`}>{loadingMessage}</div>
     </div>
   );
 };

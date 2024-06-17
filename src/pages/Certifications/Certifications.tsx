@@ -1,69 +1,44 @@
-import React, { useEffect, useState, useRef } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
-import { getUser, setUser } from "src/store/user/userSlice";
-import { AccessToken } from "@okta/okta-auth-js";
-import { useOktaAuth } from "@okta/okta-react";
+import { getUser } from "src/store/user/userSlice";
 import { useTranslation } from "react-i18next";
-import Modal from "src/components/Modal/Modal";
-import editPaperImg from "src/assets/edit-paper.png";
-import nextSignImg from "src/assets/next-sign.png";
-import { certifications } from "src/utils/certifications";
-import Alert from "src/components/Alert/Alert";
-import axios from "axios";
-import styles from "src/pages/Certifications/Certifications.module.css";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
+import { certifications } from "src/utils/certifications";
+import LinkCertModalGroup from "src/components/LinkCertModalGroup/LinkCertModalGroup";
+import Modal from "src/components/Modal/Modal";
+import editPaperImg from "src/assets/edit-paper.svg";
+import nextSignImg from "src/assets/next-sign.svg";
+import Alert from "src/components/Alert/Alert";
+import styles from "src/pages/Certifications/Certifications.module.css";
+import CertificationAlert from "src/components/CertificationAlert/CertificationAlert";
+import IconPaperCert from "src/assets/icon-paper-cert.svg";
+import IconOpenInNew from "src/assets/icon-open-in-new.svg";
 
 const Certifications = () => {
-  const BASE_API_URL = import.meta.env.VITE_APP_BASE_API_URL;
   const location = useLocation();
   const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
-  const dispatch = useDispatch();
   const [selectedOption, setSelectedOption] = useState<string>("none");
   const [selectedCert, setSelectedCert] = useState(certifications[0]);
-  const [showFetchError, setShowFetchError] = useState(false);
+  const [isLinkCertModalOpen, setIsLinkCertModalOpen] = useState(false);
   const { t } = useTranslation();
-  const { authState } = useOktaAuth();
 
   useEffect(() => {
     const cert = certifications.find(cert => cert.code === selectedOption) || certifications[0];
     setSelectedCert(cert);
   }, [selectedOption]);
 
-  useEffect(() => {
-    const fetchCertifications = async () => {
-      try {
-        setShowFetchError(false);
-        const email = user?.profile?.crm?.email;
-        let accessToken: string | AccessToken | null | undefined;
-        if (authState && "accessToken" in authState) {
-          accessToken = authState.accessToken?.accessToken;
-        } else {
-          accessToken = undefined;
-        }
-        axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-        const res = await axios.get(`${BASE_API_URL}certification/wosb/${email}`);
-        const updatedUser = { ...user, certifications: res.data };
-        dispatch(setUser(updatedUser));
-      } catch (error) {
-        setShowFetchError(true);
-        console.error("Error fetching certifications", error);
-      }
-    };
-    fetchCertifications();
-  }, []);
-
   const handleApplyCertificationClick = () => {
-    navigate("/certification/1", { state: { selectedOption } });
+    navigate("/certifications/1", { state: { selectedOption } });
   };
 
-  const isModal1Open = location.pathname === "/certification/1";
-  const isModal2Open = location.pathname === "/certification/2";
+  const isApplyCertModal1Open = location.pathname === "/certifications/1";
+  const isApplyCertModal2Open = location.pathname === "/certifications/2";
 
-  const closeModal = () => navigate("/certification");
-  const prevModal = () => navigate("/certification/1");
-  const NextModal = () => navigate("/certification/2");
+  const closeModal = () => navigate("/certifications");
+  const prevModal = () => navigate("/certifications/1");
+  const NextModal = () => navigate("/certifications/2");
   const openCertWebsite = (url: string) => {
     window.open(url, "_blank");
     closeModal();
@@ -75,161 +50,159 @@ const Certifications = () => {
     setSelectedCert(cert);
   };
 
-  const modal1FooterContent = (
-    <>
-      <button
-        type="button"
-        className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
-        onClick={closeModal}
-      >
-        {t("Cancel")}
-      </button>
-      <button type="button" className={`usa-button ${styles.footerBtn}`} onClick={NextModal}>
-        {t("Continue")}
-      </button>
-    </>
-  );
+  const modal1FooterContent = (<>
+    <button
+      type="button"
+      className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
+      onClick={closeModal}
+    >
+      {t("Cancel")}
+    </button>
+    <button type="button" data-testid="modal1-next" className={`usa-button ${styles.footerBtn}`} onClick={NextModal}>
+      {t("Continue")}
+    </button>
+  </>);
 
-  const modal2FooterContent = (
-    <>
-      <button
-        type="button"
-        className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
-        onClick={prevModal}
-      >
-        {t("Back")}
-      </button>
-      <button
-        type="button"
-        className={`usa-button ${styles.footerBtn}`}
-        onClick={() => openCertWebsite(selectedCert.url)}
-      >
-        {t("Go")}
-        <svg className={`usa-icon  ${styles.usaIcon}`} aria-hidden="true" focusable="false" role="img" height="24px" width="24px">
+  const modal2FooterContent = (<>
+    <button
+      type="button"
+      className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
+      onClick={prevModal}
+    >
+      {t("Back")}
+    </button>
+    <button
+      type="button"
+      className={`usa-button ${styles.footerBtn}`}
+      onClick={() => openCertWebsite(selectedCert.url)}
+    >
+      {t("Go")}
+      <div className={`${styles.iconContainer}`}>
+        <svg
+          className={`usa-icon  ${styles.usaIcon}`}
+          aria-hidden="true"
+          focusable="false"
+          height="18px"
+          width="18px"
+        >
           <title>Open in a new window Icon</title>
           <use xlinkHref="/assets/img/sprite.svg#launch"></use>
         </svg>
-      </button>
-    </>
-  );
+      </div>
+    </button>
+  </>);
 
-  return (
-    <>
-      <div className={`main-container`}>
-        {showFetchError && (
-          <div className={`${styles.alertContainer}`}>
-            <Alert type={"error"} message={"Error: Unable to fetch certifications. Please try again later."} />
+  const linkCert = () => {
+    setIsLinkCertModalOpen(true);
+  };
+
+  const handleLinkCertModalClose = () => {
+    setIsLinkCertModalOpen(false);
+  };
+
+  return (<>
+    <div data-testid="page-certifications" className={`main-container ${styles.pageContainer}`}>
+      {/* Certifications Alerts */}
+        {user.certifications?.map((certification) => {
+          return (<React.Fragment key={certification.certification_id}>
+            <CertificationAlert certification={certification} />
+          </React.Fragment>);
+        })}
+
+      {/* Title Row */}
+      <div className={`${styles.titleContainer}`}>
+        <h1 className={`grid-col grid-col-wrap ${styles.title}`}>{t("Certifications")}</h1>
+        <div className={`grid-col-auto ${styles.btnGroup}`}>
+          <div className="grid-col-auto grid-col-wrap">
+            <button
+              type="button"
+              data-testid="apply-for-certification"
+              className={`usa-button usa-button--outline ${styles.applyForCertificationBtn}`}
+              onClick={handleApplyCertificationClick}
+            >
+              {t("Apply for a Certification")}
+            </button>
           </div>
-        )}
-        {/* Certifications Alerts */}
-        {user.certifications &&
-          user.certifications.map((certification, index) => {
-            return (
-              <React.Fragment key={index}>
-                {certification.days_until_expiry <= 0 ? (
-                  <div className={`${styles.alertContainer}`}>
-                    <Alert
-                      key={index}
-                      type={"error"}
-                      message={t("Your " + certification.certification_type + " certification has expired")}
-                    />
-                  </div>
-                ) : certification.days_until_expiry <= 90 ? (
-                  <div className={`${styles.alertContainer}`}>
-                    <Alert
-                      key={index}
-                      type={"warning"}
-                      message={t(
-                        "Your " +
-                          certification.certification_type +
-                          " certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}",
-                        {
-                          days_until_expiry: certification.days_until_expiry,
-                          expire_at: certification.expiration_date,
-                        }
-                      )}
-                    />
-                  </div>
-                ) : null}
-              </React.Fragment>
-            );
-          })}
-
-        <div className={`grid-row ${styles.titleRow}`}>
-          <h1 className={`grid-col grid-col-wrap ${styles.title}`}>{t("Certifications")}</h1>
-          <div className={`grid-col-auto ${styles.btnGroup}`}>
-            <div className="grid-col-auto grid-col-wrap">
-              <button
-                type="button"
-                className={`usa-button usa-button--outline ${styles.applyForCertificationBtn}`}
-                onClick={handleApplyCertificationClick}
-              >
-                {t("Apply for a Certification")}
-              </button>
-            </div>
-            <div className="grid-col-auto grid-col-wrap">
-              <button
-                type="button"
-                className={`usa-button usa-button--secondary ${styles.linkCertificationBtn}`}
-                disabled={true}
-              >
-                {t("Link a Certification")}
-              </button>
-            </div>
+          <div className="grid-col-auto grid-col-wrap">
+            <button type="button" className={`usa-button ${styles.linkCertificationBtn}`} onClick={linkCert}>
+              {t("Link a Certification")}
+            </button>
           </div>
         </div>
-        {user.certifications && [...user.certifications]
-          .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
-          .map((certification, index) => (
-            <div className={`grid-row ${styles.certificationRow}`}>
-              <div className="grid-col">
-                <CertificationCard key={index} index={index + 1} certification={certification} />
-              </div>
-            </div>
-          ))}
       </div>
-      {isModal1Open && (
-        <Modal
-          title={t("Apply for a Certification")}
-          onClose={closeModal}
-          totalSteps={2}
-          completedSteps={0}
-          ImageAndAlt={{ image: editPaperImg, alt: "Edit Paper" }}
-          contentTitle={t("What kind of certification would you like to apply for?")}
-          footerContent={modal1FooterContent}
-        >
-          <>
-            <Alert
-              message={t(
-                "Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software"
-              )}
-              type="info"
-            />
-            <div>
-              <form className={`usa-form ${styles.usaForm}`}>
-                <fieldset className="usa-fieldset">
-                  <div className={`grid-row usa-radio ${styles.radioRow}`}>
-                    <input
-                      className="usa-radio__input usa-radio__input--tile"
-                      id="cert8A"
-                      type="radio"
-                      name="cert8A"
-                      value="8A"
-                      checked={selectedOption === "8A"}
-                      onChange={handleOptionChange}
-                    />
-                    <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="cert8A">
+      {/* No Certification Message */}
+      {! user.certifications?.length && (<>
+        <div className={`${styles.noCertificationMessageContainer}`}>
+          <img src={IconPaperCert} alt={"No Cert"} className={`${styles.noCertsIcon}`} />
+          <div className={` ${styles.noCertsText}`}>
+            You haven’t linked any certifications.
+          </div>
+        </div>
+
+        <Alert
+          type={"info"}
+          title={"Why should I get certified?"}
+          message={<>
+            {"SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs. "}
+            <div className={`${styles.learnMore}`}>
+            <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank">Learn more
+              about certifications
+              {' '}
+              <img src={IconOpenInNew} alt={"Open in New Tab"}/>
+            </a>
+            </div>
+          </>}
+        />
+      </>)}
+
+      {user.certifications && [...user.certifications]
+        .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
+        .map((certification) => (
+          <div key={certification.certification_id} className={`grid-row ${styles.certificationRow}`}>
+            <div className="grid-col">
+              <CertificationCard key={certification.certification_id} certification={certification} />
+            </div>
+          </div>))}
+      </div>
+
+    {/* Apply for a Certification Modal */}
+    {isApplyCertModal1Open && (<Modal
+      title={t("Apply for a Certification")}
+      onClose={closeModal}
+      totalSteps={2}
+      completedSteps={0}
+      ImageAndAlt={{ image: editPaperImg, alt: "Edit Paper" }}
+      contentTitle={t("What kind of certification would you like to apply for?")}
+      footerContent={modal1FooterContent}
+    >
+      <>
+        <Alert
+          message={t("Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software")}
+          type="info"
+        />
+        <div>
+          <form className={`usa-form ${styles.usaForm}`}>
+            <fieldset className="usa-fieldset">
+              <div className={`grid-row usa-radio ${styles.radioRow}`}>
+                <input
+                  className="usa-radio__input usa-radio__input--tile"
+                  id="cert8A"
+                  type="radio"
+                  name="cert8A"
+                  value="8A"
+                  checked={selectedOption === "8A"}
+                  onChange={handleOptionChange}
+                />
+                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="cert8A">
                       <span className={`${styles.checkboxLabel}`}>
                         {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                       </span>
-                      <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
+                  <span className={`${styles.toolTip}`}>
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
-                          {t(
-                            "You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand."
-                          )}
+                          {t("You could qualify if 51% of your business is owned by individuals with a net worth under $850 thousand.")}
                           <br />
                           <a
                             href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/8a-business-development-program#id-program-qualifications"
@@ -242,24 +215,24 @@ const Certifications = () => {
                           </a>
                         </span>
                       </span>
-                    </label>
-                  </div>
-                  <div className={`grid-row usa-radio ${styles.radioRow}`}>
-                    <input
-                      className={`usa-radio__input usa-radio__input--tile`}
-                      id="certHUBZone"
-                      type="radio"
-                      name="certHUBZone"
-                      value="HUBZone"
-                      checked={selectedOption === "HUBZone"}
-                      onChange={handleOptionChange}
-                    />
-                    <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certHUBZone">
+                </label>
+              </div>
+              <div className={`grid-row usa-radio ${styles.radioRow}`}>
+                <input
+                  className={`usa-radio__input usa-radio__input--tile`}
+                  id="certHUBZone"
+                  type="radio"
+                  name="certHUBZone"
+                  value="HUBZone"
+                  checked={selectedOption === "HUBZone"}
+                  onChange={handleOptionChange}
+                />
+                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certHUBZone">
                       <span className={`${styles.checkboxLabel}`}>
                         {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                       </span>
-                      <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
+                  <span className={`${styles.toolTip}`}>
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -273,24 +246,24 @@ const Certifications = () => {
                           </a>
                         </span>
                       </span>
-                    </label>
-                  </div>
-                  <div className={`grid-row usa-radio ${styles.radioRow}`}>
-                    <input
-                      type="radio"
-                      name="certVet"
-                      id="certVet"
-                      value="VetCert"
-                      className={`usa-radio__input usa-radio__input--tile`}
-                      checked={selectedOption === "VetCert"}
-                      onChange={handleOptionChange}
-                    />
-                    <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">
+                </label>
+              </div>
+              <div className={`grid-row usa-radio ${styles.radioRow}`}>
+                <input
+                  type="radio"
+                  name="certVet"
+                  id="certVet"
+                  value="VetCert"
+                  className={`usa-radio__input usa-radio__input--tile`}
+                  checked={selectedOption === "VetCert"}
+                  onChange={handleOptionChange}
+                />
+                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">
                       <span className={`${styles.checkboxLabel}`}>
                         {t("Veteran-Owned Small Business (VetCert) Certification")}
                       </span>
-                      <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false" role="img">
+                  <span className={`${styles.toolTip}`}>
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -304,29 +277,26 @@ const Certifications = () => {
                           </a>
                         </span>
                       </span>
-                    </label>
-                  </div>
-                </fieldset>
-              </form>
-            </div>
-          </>
-        </Modal>
-      )}
-      {isModal2Open && (
-        <Modal
-          title={t("Apply for a Certification")}
-          onClose={closeModal}
-          prevModal={prevModal}
-          totalSteps={2}
-          completedSteps={1}
-          ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
-          contentTitle={t(selectedCert.title) || ""}
-          contentMessage={t(selectedCert.message) || ""}
-          footerContent={modal2FooterContent}
-        />
-      )}
-    </>
-  );
+                </label>
+              </div>
+            </fieldset>
+          </form>
+        </div>
+      </>
+    </Modal>)}
+    {isApplyCertModal2Open && (<Modal
+      title={t("Link a Certification")}
+      onClose={closeModal}
+      prevModal={prevModal}
+      totalSteps={2}
+      completedSteps={1}
+      ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
+      contentTitle={t(selectedCert.title) || ""}
+      contentMessage={t(selectedCert.message) || ""}
+      footerContent={modal2FooterContent}
+    />)}
+    {isLinkCertModalOpen && (<LinkCertModalGroup handleCloseModal={handleLinkCertModalClose} />)}
+  </>);
 };
 
 export default Certifications;
