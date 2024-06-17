@@ -32,7 +32,8 @@ const Loading = () => {
 
   // Default to zipcode 10001 if no location is found
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    const email = info.email?.toLowerCase() ?? "";
+    // const email = info.email?.toLowerCase() ?? "";
+    const email = "johnson.anthony21@outlook.com";
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;
@@ -62,8 +63,8 @@ const Loading = () => {
     let results = await axios.request(config).catch((error) => {console.log(error);});
     let individual = results?.data.individuals[0]
     let crmData: IUserProfile['crm'] = {
-      id: individual.userId ?? '003Hv000007zHkvIAE',
-      accountid: "001Hv000007r78NIAQ" ?? '001Hv000007r78NIAQ',
+      id: '003Hv000007zHkvIAE',
+      accountid: '001Hv000007r78NIAQ',
       first_name: individual.firstName ?? 'Smith',
       last_name: individual.lastName ?? 'Cindy',
       email: individual.email ?? 'cindy@example.com',
