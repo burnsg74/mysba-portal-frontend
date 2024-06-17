@@ -61,7 +61,6 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
     let newErrors = {};
     let isValid = true;
     if (!(isNineDigitNumber(stepData.ein)  || stepData.ein === '')){
-      console.log('formValidation', stepData.ein)
       newErrors = { ...newErrors, ein: "Your EIN must be a 9 digit number" };
       isValid = false;
     }

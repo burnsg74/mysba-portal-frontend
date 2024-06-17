@@ -14,7 +14,6 @@ const ModalInputCheckbox: React.FC<ModalInputCheckboxProps> = ({ id, name, value
   const { t } = useTranslation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    console.log("ModalInputCheckbox Changed", name, event.target.value);
     onChange(name, event.target.value);
   };
 

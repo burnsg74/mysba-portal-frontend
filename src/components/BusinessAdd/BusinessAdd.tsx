@@ -52,8 +52,6 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
   });
 
   const saveNewBusinesses = async (data:data) => {
-    console.log("saveNewBusinesses", data);
-
     try {
       const email = user?.profile?.crm?.email;
       if (!email) {
@@ -80,8 +78,6 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
     setBusinessData(newBusinessData);
 
     if (currentStep === 4) {
-      console.log("BusinessAdd handleContinue businessData", newBusinessData);
-      console.log("Save data")
       saveNewBusinesses(newBusinessData).then()
     }
 
