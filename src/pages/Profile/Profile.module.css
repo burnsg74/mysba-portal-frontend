@@ -150,3 +150,7 @@
     box-shadow: unset;
     margin-left: 10px;
 }
+
+.changePasswordBtn:hover {
+    border:unset;
+}

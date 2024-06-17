@@ -8,10 +8,11 @@ interface ModalInputTextProps {
   help?: string,
   onChange: (name: string, value: string) => void,
   required?: boolean
+  isPassword?: boolean
   errorMessage?: string
 }
 
-const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, help, onChange, required, errorMessage="" }) => {
+const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, help, onChange, required, isPassword=false, errorMessage="" }) => {
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(name, event.target.value);
@@ -22,6 +23,7 @@ const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, hel
     {help && <div className={`${styles.inputHelp}`}>{help}</div>}
     {errorMessage?.length > 0 && <div className={`${styles.errorMessage}`}>{errorMessage}</div>}
     <input name={name}
+           type={isPassword ? 'password' : 'text'}
            value={value}
            className={`usa-input ${errorMessage ? 'usa-input--error' : ''} ${styles.input}`}
            onChange={handleChange}
