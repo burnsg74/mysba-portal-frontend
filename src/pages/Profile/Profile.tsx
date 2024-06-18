@@ -6,12 +6,24 @@ import { useTranslation } from "react-i18next";
 import styles from "src/pages/Profile/Profile.module.css";
 import Field from "src/components/Field/Field";
 import { useNavigate } from 'react-router-dom';
+import BusinessAdd from "src/components/BusinessAdd/BusinessAdd";
+import ProfileChangePasswordModal from "src/components/ProfileChangePasswordModal/ProfileChangePasswordModal";
+
 
 const Profile = () => {
   const { t } = useTranslation();
   const profileData: IUser = useSelector(getUser);
   const { oktaAuth } = useOktaAuth();
   const navigate = useNavigate();;
+  const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
+
+  const handleChangePasswordBtnClick = () => {
+    setShowChangePasswordModal(true)
+  };
+
+  const handleCloseModal = () => {
+    setShowChangePasswordModal(false);
+  };
 
   const logout = async () => {
     await oktaAuth.signOut();
@@ -38,21 +50,22 @@ const Profile = () => {
           />
         </div>
         <button
-          className={` ${styles.buttonStyle}`}
+          className={`usa-button usa-button--secondary ${styles.buttonStyle}`}
           onClick={logout}
           aria-label={t("Log Out")}
           type="button"
         >
-          <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
+          <span className={` ${styles.buttonText2}`}>{t("Log Out")}</span>
         </button>
         <button
           type="button"
           className={`usa-button usa-button--outline ${styles.changePasswordBtn}`}
-          onClick={() => navigate("/change-password")}
+          onClick={handleChangePasswordBtnClick}
         >
           {t("Change Password")}
         </button>
       </div>
+      {showChangePasswordModal && ( <ProfileChangePasswordModal handleCloseModal={handleCloseModal}/>)}
     </div>);
 };
 export default Profile;
