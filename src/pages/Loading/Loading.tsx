@@ -32,8 +32,7 @@ const Loading = () => {
 
   // Default to zipcode 10001 if no location is found
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    // const email = info.email?.toLowerCase() ?? "";
-    const email = "johnson.anthony21@outlook.com";
+    const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;
