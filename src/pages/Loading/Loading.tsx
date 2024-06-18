@@ -63,6 +63,9 @@ const Loading = () => {
     };
     let results = await axios.request(config).catch((error) => {console.log(error);});
     let individual = results?.data.individuals[0]
+    if (!individual) {
+      window.location.href = "/error.html";
+    }
     let crmData: IUserProfile['crm'] = {
       id: '003Hv000007zHkvIAE',
       accountid: '001Hv000007r78NIAQ',
@@ -80,12 +83,6 @@ const Loading = () => {
         "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA", "allow_notice": false,
       };
     }
-
-    // if (!crmData) {
-    //   oktaAuth.signOut().then(() => {
-    //     navigate("/error");
-    //   });
-    // }
 
     const portalData: IUserProfile['portal'] = {
       allow_notice: false,
