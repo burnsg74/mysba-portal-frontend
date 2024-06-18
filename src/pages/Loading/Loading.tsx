@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { UserClaims } from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
-import axios, { AxiosResponse } from "axios";
-import { getUser, setUser } from "src/store/user/userSlice";
+import axios from "axios";
+import { setUser } from "src/store/user/userSlice";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
@@ -10,9 +10,7 @@ import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
-import { formatPhoneNumber } from "src/utils/formatter";
-import { BASE_API_URL, DISTRICT_URL } from "src/utils/constants";
-import { useSelector } from "react-redux";
+import { BASE_API_URL } from "src/utils/constants";
 
 const Loading = () => {
   const PROGRESS_UPDATE_INTERVAL = 500;
@@ -32,7 +30,8 @@ const Loading = () => {
 
   // Default to zipcode 10001 if no location is found
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    const email = info.email?.toLowerCase() ?? "";
+    // const email = info.email?.toLowerCase() ?? "";
+    const email = "johnson.anthony21@outlook.com";
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;
@@ -67,22 +66,10 @@ const Loading = () => {
       window.location.href = "/error.html";
     }
     let crmData: IUserProfile['crm'] = {
-      id: '003Hv000007zHkvIAE',
-      accountid: '001Hv000007r78NIAQ',
-      first_name: individual.firstName ?? 'Smith',
-      last_name: individual.lastName ?? 'Cindy',
-      email: individual.email ?? 'cindy@example.com',
-      ownerid: "005Hv000000v6z0IAA",
-      allow_notice: false,
+      first_name: individual.firstName ?? '',
+      last_name: individual.lastName ?? '',
+      email: individual.email ?? '',
     };
-    // Temporary data for testing. Do not delete this block. (GB) 2021-09-29
-    if (!crmData) {
-      console.log("crm data replace")
-      crmData = {
-        "id": "003Hv000007zHkvIAE", "accountid": "001Hv000007r78NIAQ", "last_name": "Smith", "first_name": "Cindy",
-        "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA", "allow_notice": false,
-      };
-    }
 
     const portalData: IUserProfile['portal'] = {
       allow_notice: false,
@@ -132,20 +119,6 @@ const Loading = () => {
       },
       district: district,
     };
-  };
-
-  // Utility function for formatting phone numbers
-  const formatPhoneNumber = (phoneNumber: string) => {
-    const phoneNumberStr = phoneNumber.toString();
-    return phoneNumberStr.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
-  };
-
-  // Utility function to calculate days until expiry
-  const calculateDaysUntilExpiry = (expiryDate: string): number => {
-    const expiry = new Date(expiryDate);
-    const today = new Date();
-    const diffTime = Math.abs(expiry.getTime() - today.getTime());
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   };
 
   useEffect(() => {
