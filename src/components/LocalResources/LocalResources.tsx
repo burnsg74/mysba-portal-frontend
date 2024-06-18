@@ -12,103 +12,119 @@ import { BASE_API_URL } from "src/utils/constants";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
 
-// TODO: Save new zipcode to user redux store
-
 const LocalResources = () => {
   const { t } = useTranslation();
   const user: IUser = useSelector(getUser);
-  const [district, setDistrict] = useState(user.district ?? null);
-  const [zipcode, setZipcode] = useState(user.profile?.portal.zipcode ?? user?.businesses?.[0]?.business_address_zipcode ?? "10001");
+  const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
+  const [zipcode, setZipcode] = useState(user.profile?.portal.district.zipcode ?? user?.businesses?.[0]?.business_address_zipcode ?? "10001");
   const dispatch = useDispatch();
   const { authState } = useOktaAuth();
 
   useEffect(() => {
-    const fetchDistrict = async () => {
-      let response = await axios.get(`${BASE_API_URL}/localresources/${zipcode}`);
-      if (response.data[0]) {
-        let newData = { ...response.data[0] };
-        newData.field_district_offices = newData.field_district_offices.map((office: {
-          office_type: { id: any; office_type_icon?: { media_image: string }},
-          address: {
-            address_line1: string;
-            locality: string;
-            administrative_area: { code: string };
-            postal_code: string;
-          }
-          appointment_only: boolean;
-          is_virtual_office: boolean;
-          geo_location: {
-            replace: (arg0: string, arg1: string) => {
-              (): any;
-              new(): any;
-              replace: {
-                (arg0: string, arg1: string): {
-                  (): any;
-                  new(): any;
-                  split: { (arg0: string): [any, any]; new(): any; };
-                };
-                new(): any;
-              };
-            };
-          };
-        }) => {
-          saveZipCode(zipcode);
+    let accessToken =authState?.accessToken?.accessToken;
+    if (!accessToken) {
+      return;
+    }
+    refreshDistrict(zipcode)
+  }, []);
 
-          let appointment_only = false;
-          let is_virtual_office = false;
-          if (office.office_type.id === 149 || office.office_type.id === 147) {
-            appointment_only = true;
-          }
-          let icon;
-          if (office.office_type.office_type_icon?.media_image.includes('branch-office-icon')) {
-            icon = iconOfficeSm;
-          } else if (office.office_type.office_type_icon?.media_image.includes('headset_icon.png')) {
-            icon = iconOfficeVirtual;
-            is_virtual_office = true;
-          } else {
-            icon = iconOfficeLg;
-          }
-         let googleMapUrl = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(office.address.address_line1 + ", " + office.address.locality + ", " + office.address.administrative_area.code + " " + office.address.postal_code)}`;
-          return { ...office, typeIcon: icon, googleMapUrl: googleMapUrl, appointment_only: appointment_only, is_virtual_office: is_virtual_office };
-        });
-        setDistrict(newData);
-        dispatch(setUser({...user, district: newData}));
-      }
-    };
-    if (zipcode.length === 5) {
-      fetchDistrict();
+  useEffect(() => {
+    let accessToken = authState?.accessToken?.accessToken;
+    if (accessToken && zipcode && zipcode.toString().length === 5) {
+      refreshDistrict(zipcode);
     }
   }, [zipcode]);
 
-  let socialMediaXUrl = null;
-  let socialMediaLinkedinUrl = null;
+  function refreshDistrict(zipcode: string) {
+    axios.get(`${BASE_API_URL}/localresources/${zipcode}`).then((response) => {
+      if (!response.data[0]) {
+        return;
+      }
+      const apiDistrict = response.data[0];
 
-  district?.field_district_social_media?.forEach((socialMedia) => {
-    if (socialMedia.social_media_service.name === "X") {
-      socialMediaXUrl = "https://x.com/" + socialMedia.social_media_account;
-    } else if (socialMedia.social_media_service.name === "LinkedIn") {
-      socialMediaLinkedinUrl = "https://www.linkedin.com/showcase/" + socialMedia.social_media_account;
+      let newDistrict: District = {
+        zipcode: zipcode,
+        title: apiDistrict.title,
+        website: apiDistrict.website,
+        field_district_map_svg: apiDistrict.field_district_map_svg,
+        field_district_staff_directory: apiDistrict.field_district_staff_directory,
+        field_district_business_link: apiDistrict.field_district_business_link,
+        social_media_x_url: getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
+        social_media_linkedin_url: getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
+        field_district_offices: apiDistrict.field_district_offices.map((office:any) => {
+          let newOffice: DistrictOffice = {
+            title: office.title,
+            typeIcon: getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
+            appointment_only: (office.office_type.id === 149 || office.office_type.id === 147),
+            is_virtual_office: getIsVirtualFromMediaImage(office.office_type.office_type_icon?.media_image),
+            address_line1: office.address.address_line1,
+            address_line2: office.address.address_line2,
+            address_city: office.address.locality,
+            address_state: office.address.administrative_area.code,
+            address_zipcode: office.address.postal_code,
+            telephone: office.telephone,
+            google_map_url: getGoogleMapUrlFromAddress(office.address),
+          }
+          return newOffice;
+        }),
+      };
+      setDistrict(newDistrict);
+      updateAndSaveUserPortalProfileWithNewDistrict(newDistrict)
+
+    }).catch(error => {
+      console.log(error);
+      window.location.href = "/error";
+    });
+  }
+
+  function getSocialMediaXUrlFrom(field_district_social_media: any[]) {
+    const xSocialMedia = field_district_social_media?.find((socialMedia) => {
+      return socialMedia.social_media_service.name === "X";
+    });
+
+    return xSocialMedia ? `https://www.linkedin.com/showcase/${xSocialMedia.social_media_account}` : null;
+  }
+
+  function getSocialMediaLinkedinUrlFrom(field_district_social_media: any[]) {
+    const linkedInSocialMedia = field_district_social_media?.find((socialMedia) =>
+      socialMedia.social_media_service.name === "LinkedIn"
+    );
+    return linkedInSocialMedia ? `https://www.linkedin.com/showcase/${linkedInSocialMedia.social_media_account}` : null;
+  }
+
+  function getTypeIconFromMediaImage(mediaImage: string) {
+
+    if (mediaImage.includes('branch-office-icon')) {
+      return iconOfficeSm;
     }
-  });
 
-  function saveZipCode(zipcode: string) {
-    let portalProfile = {};
-    if (!user.profile) {
-    } else {
-      portalProfile = { ...user.profile.portal, zipcode };
+    if (mediaImage.includes('headset_icon.png')) {
+      return iconOfficeVirtual;
     }
 
+    return iconOfficeLg;
+  }
+
+  function getIsVirtualFromMediaImage(mediaImage: string) {
+    return mediaImage.includes('headset_icon.png');
+  }
+
+  function getGoogleMapUrlFromAddress(address: any) {
+    return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address.address_line1 + ", " + address.locality + ", " + address.administrative_area.code + " " + address.postal_code)}`;
+  }
+
+  function updateAndSaveUserPortalProfileWithNewDistrict(newDistrict: District) {
+    const newPortalProfile = { ...user.profile?.portal,district: newDistrict };
+    const url = `${BASE_API_URL}/portal/user/` + user.profile?.crm?.email;
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;
     } else {
-      accessToken = undefined;
+      console.log('No accessToken');
+      return;
     }
-
-    const url = `${BASE_API_URL}/portal/user/` + user.profile?.crm.email;
-    axios.post(url, portalProfile, { headers: { Authorization: "Bearer " + accessToken } }).then(() => {
-      let newUser = { ...user, profile: { ...user.profile, portal: portalProfile } };
-      dispatch(setUser(newUser));
+    axios.post(url, newPortalProfile, { headers: { Authorization: "Bearer " + accessToken } }).then(() => {
+      dispatch(setUser({ ...user, profile: { ...user.profile, portal: newPortalProfile } }));
     }).catch(error => {
       console.log(error);
     });
@@ -132,10 +148,14 @@ const LocalResources = () => {
           name={"zipCode"}
           value={zipcode}
           onChange={(event) => {
-            setZipcode(event.target.value);
+            const enteredZipcode = event.target.value;
+            if (/^\d{0,5}$/.test(enteredZipcode)) {
+              setZipcode(enteredZipcode);
+            }
           }}
           className={`usa-input ${styles.titleZipInput}`}
           placeholder="Enter Zip Code"
+          maxLength={5}
         />
       </div>
     </div>
@@ -152,7 +172,7 @@ const LocalResources = () => {
         <div className={`${styles.bodyDistrictCardDetailsContainer}`}>
           <div className={`${styles.bodyDistrictCardDetailsTitle}`}>
             <a href={district.website} target="_blank" rel="noopener noreferrer">
-              {district.page_title}
+              {district.title}
             </a>
           </div>
           <div className={`${styles.bodyDistrictCardDetailsLinksContainer}`}>
@@ -181,7 +201,7 @@ const LocalResources = () => {
                 <a href={district.field_district_staff_directory} target="_blank">Office Directory</a>
               </>}
             </div>
-            <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
+            {district.social_media_x_url && <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
               <svg
                 className={`usa-icon ${styles.districtCardDetailsLinkIcon}`}
                 xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none">
@@ -194,12 +214,12 @@ const LocalResources = () => {
                   </clipPath>
                 </defs>
               </svg>
-              {socialMediaXUrl && <a href={socialMediaXUrl} target="_blank"> Follow us on X </a>}
-            </div>
-            <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
+              <a href={district.social_media_x_url} target="_blank"> Follow us on X </a>
+            </div>}
+            {district.social_media_linkedin_url && <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
               <img src={logoLinkedIn} alt="linkedIn logo" className={styles.linkedInLogo} />
-              {socialMediaLinkedinUrl && <a href={socialMediaLinkedinUrl} target="_blank"> Follow us on LinkedIn </a>}
-            </div>
+              <a href={district.social_media_linkedin_url} target="_blank"> Follow us on LinkedIn </a>
+            </div>}
           </div>
           <a href="https://www.sba.gov/contact/contact_your_district_office?district=10"
              className={`${styles.districtContactLink}`}
@@ -250,13 +270,13 @@ const LocalResources = () => {
                 <title>{t("Open")}</title>
                 <use xlinkHref="/assets/img/sprite.svg#map"></use>
               </svg>
-              <a href={office.googleMapUrl}
+              <a href={office.google_map_url}
                  target="_blank" rel="noopener noreferrer">
-                {office.address.address_line1}<br />
-                {office.address.address_line2 !== "" && (<>
-                    {office.address.address_line2}<br />
+                {office.address_line1}<br />
+                {office.address_line2 !== "" && (<>
+                    {office.address_line2}<br />
                   </>)}
-                {office.address.locality}, {office.address.administrative_area.code} {office.address.postal_code} <br />
+                {office.address_city}, {office.address_state} {office.address_zipcode} <br />
               </a>
             </div>
             )}
