@@ -149,14 +149,15 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
         };
       });
       let newUser = { ...user, business: businessData, certifications: certificationData, };
+      console.log(stepData)
       dispatch(setUser(newUser));
+      handleContinue(stepData);
     } catch (error) {
       console.error("Error saving new business", error);
     }
   }
   function handleContinueBtnClick() {
     linkCert()
-    handleContinue(stepData);
   }
 
   const closeModal = () => {

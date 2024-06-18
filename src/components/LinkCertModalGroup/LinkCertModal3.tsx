@@ -15,14 +15,22 @@ interface Step3ModalProps {
   handleBack: (stepData: any) => void;
 }
 
-const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleContinue, handleBack }) => {
+const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleBack }) => {
   const { t } = useTranslation();
   const [stepData] = useState<{ uei: string, businessName: string, certName: string[]; }>({
     uei: businessData.uei, businessName: businessData.businessName, certName: businessData.certName,
   });
 
+  let modalTitle
+
+  if (stepData.certName.length > 0) {
+    modalTitle = t(`Your ${stepData.certName[0]} has been successfully added!`)
+  } else {
+    modalTitle = t(`There is no certification data associated with ${stepData.businessName}`)
+  }
+
   function handleContinueBtnClick() {
-    handleContinue(stepData);
+    handleClose()
   }
 
   const closeModal = () => {
@@ -40,7 +48,7 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
     totalSteps={3}
     completedSteps={3}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
-    contentTitle={t(`Your ${stepData.certName[0]} has been successfully added!`)}
+    contentTitle={modalTitle}
     footerContent={(<button type="button"
                             className={`usa-button ${styles.continueBtn}`}
                             onClick={() => handleContinueBtnClick()}>

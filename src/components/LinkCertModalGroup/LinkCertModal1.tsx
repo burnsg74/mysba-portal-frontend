@@ -79,9 +79,11 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
         data: data
       };
       let results = await axios.request(config).catch((error) => { console.log(error); });
+      console.log(results)
       const org = results?.data.organizations[0]
       const certs = parseAndCheckActive(org.certification)
       const updatedStepData = { ...stepData, uei: org.organizationUei, businessName: org.organizationName, certName: certs };
+      console.log(certs)
       handleContinue(updatedStepData);
     } catch (error) {
       console.error("Error saving new business", error);

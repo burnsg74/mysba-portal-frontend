@@ -40,6 +40,7 @@ const Loading = () => {
     } else {
       accessToken = undefined;
     }
+
     let data = JSON.stringify({
       "individuals": [
         {
@@ -54,6 +55,7 @@ const Loading = () => {
       method: 'post',
       maxBodyLength: Infinity,
       url: `${BASE_API_URL}/individuals/individual?task=read`,
+      agent:false,
       headers: {
         'Content-Type': 'application/json',
         'Authorization': `Bearer ${accessToken}`
