@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { getUser } from "src/store/user/userSlice";
@@ -20,10 +20,6 @@ const Businesses = () => {
   const handleCloseModal = () => {
     setShowBusinessAdd(false);
   };
-
-  useEffect(() => {
-    console.log(user.businesses)
-  }, []);
 
   return (<>
     <div data-testid="page-businesses" className={`main-container`}>

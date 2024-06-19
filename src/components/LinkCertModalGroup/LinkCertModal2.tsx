@@ -177,7 +177,6 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
           };
         });
       });
-      console.log(certificationData)
       let newUser = { ...user, businesses: businessData, certifications: certificationData };
       dispatch(setUser(newUser));
       handleContinue(stepData);

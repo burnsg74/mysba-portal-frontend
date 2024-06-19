@@ -97,7 +97,6 @@ const Loading = () => {
 
     let district = {};
     try {
-      console.log("get district resouces")
       await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
         district = response.data[0];
       });
@@ -127,7 +126,6 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("get user", authState?.isAuthenticated)
     if (authState?.isAuthenticated) {
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
