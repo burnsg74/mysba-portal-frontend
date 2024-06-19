@@ -69,7 +69,18 @@ const Loading = () => {
       last_name: individual.lastName ?? '',
       email: individual.email ?? '',
     };
-    let district = {};
+    let district = {
+      zipcode: "",
+      county_code: "",
+      district_nid: "",
+      title: "",
+      website: "",
+      field_district_map_svg: "",
+      field_district_staff_directory: "",
+      field_district_business_link: "",
+      social_media_x_url: "",
+      social_media_linkedin_url: "",
+      field_district_offices: [],};
     // const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
     const zipcodeToDistrict = 20416;
 
