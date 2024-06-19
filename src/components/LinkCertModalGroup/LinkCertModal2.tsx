@@ -162,11 +162,12 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
           const certificationId = (certificationIdCounter++).toString();
           const ownersArray = business.organizationOwnerName ?? []; // Assume business.owners is an array of strings
           const owner = ownersArray.join(', ');
+          console.log(business.organizationUei)
           return {
             email: business.organizationEmail ?? '',
             ein: business.organizationEin?.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3") ?? 'No EIN Provided',
             certification_id:certificationId,
-            business_id: business.userId ?? 'No UEI Provided',
+            business_id: business.organizationUei ?? '',
             certification_type: certification.certificationType ?? cert.type,
             issue_date: certification[`${cert.type}CertificationEntranceDate`] ?? '',
             expiration_date: certification[cert.expirationKey] ?? '',

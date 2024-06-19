@@ -70,20 +70,7 @@ const Loading = () => {
       last_name: individual.lastName ?? '',
       email: individual.email ?? '',
     };
-
-    const portalData: IUserProfile['portal'] = {
-      allow_notice: false,
-      planningNewBusiness: false,
-      launchingNewBusiness: false,
-      managingExistingBusiness: false,
-      marketingExistingBusiness: false,
-      growingExistingBusiness: false,
-      govContracting: false,
-      businessMentorship: false,
-      womenOwnedBusinessContent: false,
-      veteranOwnedBusinessContent: false,
-      zipcode:""
-    };
+    let district = {};
     // const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
     const zipcodeToDistrict = 20416;
 
@@ -95,10 +82,10 @@ const Loading = () => {
     //   dispatch(setUser({ ...crmData, district: response.data.district}));
     // });
 
-    let district = {};
     try {
       await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
         district = response.data[0];
+        console.log(district)
       });
     } catch (err) {
       console.log(err)
@@ -106,17 +93,27 @@ const Loading = () => {
       //   navigate("/error");
       // });
     }
-    console.log(
-      {
-        profile: { crm: crmData, portal: portalData, },
-        district: district
-      })
+    
+    const portalData: IUserProfile['portal'] = {
+      allow_notice: false,
+      planningNewBusiness: false,
+      launchingNewBusiness: false,
+      managingExistingBusiness: false,
+      marketingExistingBusiness: false,
+      growingExistingBusiness: false,
+      govContracting: false,
+      businessMentorship: false,
+      womenOwnedBusinessContent: false,
+      veteranOwnedBusinessContent: false,
+      district: district
+    };
+
     return {
       profile: {
         crm: crmData,
         portal: portalData,
       },
-      district: district,
+      district: { loading: true },
     };
   };
 
