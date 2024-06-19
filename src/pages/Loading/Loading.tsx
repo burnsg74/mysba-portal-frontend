@@ -58,19 +58,11 @@ const Loading = () => {
     }
     let crmData = results[0].data;
 
-    // Temporary data for testing. Do not delete this block. (GB) 2021-09-29
     if (!crmData) {
-      crmData = {
-        "id"   : "003Hv000007zHkvIAE", "accountid": "001Hv000007r78NIAQ", "last_name": "Smith", "first_name": "Cindy",
-        "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA",
-      };
+      oktaAuth.signOut().then(() => {
+        navigate("/error");
+      });
     }
-
-    // if (!crmData) {
-    //   oktaAuth.signOut().then(() => {
-    //     navigate("/error");
-    //   });
-    // }
 
     let businessData = results[1].data;
     businessData.forEach((business: any) => {
@@ -82,8 +74,6 @@ const Loading = () => {
     });
     const certificationData = results[2].data;
     const portalData = results[3].data;
-    // const zipcodeToDistrict = portalData.zipcode ?? businessData[0]?.mailing_address_zipcode ?? 10001;
-    const zipcodeToDistrict = 10001;
 
     // Getting CORS error
     // axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
@@ -102,11 +92,6 @@ const Loading = () => {
       certifications: certificationData,
       district: { loading: true },
     };
-
-    axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
-      let district = response.data[0];
-      dispatch(setUser({...user, district: district}));
-    });
 
     return user;
   };

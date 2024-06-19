@@ -104,6 +104,8 @@ interface LearningCenterCardProps {
 
 interface District {
   zipcode: string,
+  county_code: string,
+  district_nid: string,
   title: string,
   website: string,
   field_district_map_svg: string,

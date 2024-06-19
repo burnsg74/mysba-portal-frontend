@@ -1,49 +1,47 @@
 import React, { useEffect, useState } from "react";
-import styles from "src/components/LocalResources/LocalResources.module.css";
-import { useTranslation } from "react-i18next";
+import { AccessToken } from "@okta/okta-auth-js";
+import { BASE_API_URL } from "src/utils/constants";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { useOktaAuth } from "@okta/okta-react";
+import { useTranslation } from "react-i18next";
+import axios from "axios";
 import iconOfficeLg from "src/assets/icon-office-lg.svg";
 import iconOfficeSm from "src/assets/icon-office-sm.svg";
 import iconOfficeVirtual from "src/assets/icon-office-virtual.svg";
 import logoLinkedIn from "src/assets/logo-linkedIn.png";
-import axios from "axios";
-import { BASE_API_URL } from "src/utils/constants";
-import { AccessToken } from "@okta/okta-auth-js";
-import { useOktaAuth } from "@okta/okta-react";
+import styles from "src/components/LocalResources/LocalResources.module.css";
 
 const LocalResources = () => {
-  const { t } = useTranslation();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
+  const { authState } = useOktaAuth();
+  const { t } = useTranslation();
   const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
   const [zipcode, setZipcode] = useState(user.profile?.portal.district.zipcode ?? user?.businesses?.[0]?.business_address_zipcode ?? "10001");
-  const dispatch = useDispatch();
-  const { authState } = useOktaAuth();
-
-  useEffect(() => {
-    let accessToken =authState?.accessToken?.accessToken;
-    if (!accessToken) {
-      return;
-    }
-    refreshDistrict(zipcode)
-  }, []);
 
   useEffect(() => {
     let accessToken = authState?.accessToken?.accessToken;
     if (accessToken && zipcode && zipcode.toString().length === 5) {
       refreshDistrict(zipcode);
     }
-  }, [zipcode]);
+  }, [authState?.accessToken?.accessToken, zipcode]);
 
   function refreshDistrict(zipcode: string) {
     axios.get(`${BASE_API_URL}/localresources/${zipcode}`).then((response) => {
-      if (!response.data[0]) {
+      console.log("API Response",response);
+      if (!response.data) {
         return;
       }
-      const apiDistrict = response.data[0];
+      const apiDistrict = response.data;
+      console.log("API Results",apiDistrict);
 
       let newDistrict: District = {
         zipcode: zipcode,
+        county_code: apiDistrict.county_code,
+        district_nid: apiDistrict.district_nid,
         title: apiDistrict.title,
         website: apiDistrict.website,
         field_district_map_svg: apiDistrict.field_district_map_svg,
@@ -51,7 +49,7 @@ const LocalResources = () => {
         field_district_business_link: apiDistrict.field_district_business_link,
         social_media_x_url: getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
         social_media_linkedin_url: getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
-        field_district_offices: apiDistrict.field_district_offices.map((office:any) => {
+        field_district_offices: apiDistrict.field_district_offices?.map((office: any) => {
           let newOffice: DistrictOffice = {
             title: office.title,
             typeIcon: getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
@@ -64,16 +62,16 @@ const LocalResources = () => {
             address_zipcode: office.address.postal_code,
             telephone: office.telephone,
             google_map_url: getGoogleMapUrlFromAddress(office.address),
-          }
+          };
           return newOffice;
-        }),
+        }) || [],
       };
       setDistrict(newDistrict);
       updateAndSaveUserPortalProfileWithNewDistrict(newDistrict)
 
     }).catch(error => {
       console.log(error);
-      window.location.href = "/error";
+      navigate('/error');
     });
   }
 
@@ -81,8 +79,7 @@ const LocalResources = () => {
     const xSocialMedia = field_district_social_media?.find((socialMedia) => {
       return socialMedia.social_media_service.name === "X";
     });
-
-    return xSocialMedia ? `https://www.linkedin.com/showcase/${xSocialMedia.social_media_account}` : null;
+    return xSocialMedia ? `https://www.twitter.com/${xSocialMedia.social_media_account}` : null;
   }
 
   function getSocialMediaLinkedinUrlFrom(field_district_social_media: any[]) {
@@ -221,7 +218,7 @@ const LocalResources = () => {
               <a href={district.social_media_linkedin_url} target="_blank"> Follow us on LinkedIn </a>
             </div>}
           </div>
-          <a href="https://www.sba.gov/contact/contact_your_district_office?district=10"
+          <a href={`https://www.sba.gov/contact/contact_your_district_office?district=${district.district_nid}`}
              className={`${styles.districtContactLink}`}
              target="_blank"
              rel="noopener noreferrer">
