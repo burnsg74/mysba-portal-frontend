@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { UserClaims } from "@okta/okta-auth-js/types/lib/oidc/types/UserClaims";
-import axios, { AxiosResponse } from "axios";
-import { getUser, setUser } from "src/store/user/userSlice";
+import axios from "axios";
+import { setUser } from "src/store/user/userSlice";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
@@ -10,9 +10,7 @@ import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
-import { formatPhoneNumber } from "src/utils/formatter";
-import { BASE_API_URL,DISTRICT_URL } from "src/utils/constants";
-import { useSelector } from "react-redux";
+import { BASE_API_URL } from "src/utils/constants";
 
 const Loading = () => {
   const PROGRESS_UPDATE_INTERVAL = 500;
@@ -29,61 +27,62 @@ const Loading = () => {
     t("Fetching Data"),
     t("Verifying"),
   ];
-  const endpoints = [
-    `${BASE_API_URL}/crm/mysba360/`,
-    `${BASE_API_URL}/business/`,
-    `${BASE_API_URL}/certification/wosb/`,
-    `${BASE_API_URL}/portal/user/`,
-  ];
 
+  // Default to zipcode 10001 if no location is found
   const fetchUserDataFromBackend = async (info: UserClaims) => {
     const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
-      accessToken =authState.accessToken?.accessToken;
+      accessToken = authState.accessToken?.accessToken;
     } else {
       accessToken = undefined;
     }
-    axios.defaults.headers.common['Authorization'] = `Bearer ${accessToken}`;
-    const requests = endpoints.map(endpoint =>
-      axios.get(endpoint + email)
-    );
-    let results: AxiosResponse<any>[] = [];
-    try {
-      results = await Promise.all(requests);
-    } catch (err) {
-      oktaAuth.signOut().then(() => {
-        navigate("/error");
-      });
-    }
-    let crmData = results[0].data;
 
-    // Temporary data for testing. Do not delete this block. (GB) 2021-09-29
-    if (!crmData) {
-      crmData = {
-        "id"   : "003Hv000007zHkvIAE", "accountid": "001Hv000007r78NIAQ", "last_name": "Smith", "first_name": "Cindy",
-        "email": "cindy@example.com", "ownerid": "005Hv000000v6z0IAA",
-      };
-    }
-
-    // if (!crmData) {
-    //   oktaAuth.signOut().then(() => {
-    //     navigate("/error");
-    //   });
-    // }
-
-    let businessData = results[1].data;
-    businessData.forEach((business: any) => {
-      business.ein = business.ein.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3");
-      business.uei = business.uei.replace(/(\d{6})(\d{4})/, "******$2");
-      business.business_phone_number = formatPhoneNumber(
-        business.business_phone_number
-      );
+    let data = JSON.stringify({
+      "individuals": [
+        {
+          "firstName": "",
+          "lastName": "",
+          "email": email
+        }
+      ]
     });
-    const certificationData = results[2].data;
-    const portalData = results[3].data;
-    // const zipcodeToDistrict = portalData.zipcode ?? businessData[0]?.mailing_address_zipcode ?? 10001;
-    const zipcodeToDistrict = 10001;
+
+    let config = {
+      method: 'post',
+      maxBodyLength: Infinity,
+      url: `${BASE_API_URL}/individuals/individual?task=read`,
+      agent:false,
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${accessToken}`
+      },
+      data: data
+    };
+    let results = await axios.request(config).catch((error) => {console.log(error);});
+    let individual = results?.data.individuals[0]
+    if (!individual) {
+      window.location.href = "/error.html";
+    }
+    let crmData: IUserProfile['crm'] = {
+      first_name: individual.firstName ?? '',
+      last_name: individual.lastName ?? '',
+      email: individual.email ?? '',
+    };
+    let district = {
+      zipcode: "",
+      county_code: "",
+      district_nid: "",
+      title: "",
+      website: "",
+      field_district_map_svg: "",
+      field_district_staff_directory: "",
+      field_district_business_link: "",
+      social_media_x_url: "",
+      social_media_linkedin_url: "",
+      field_district_offices: [],};
+    // const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
+    const zipcodeToDistrict = 20416;
 
     // Getting CORS error
     // axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
@@ -93,22 +92,39 @@ const Loading = () => {
     //   dispatch(setUser({ ...crmData, district: response.data.district}));
     // });
 
-    let user = {
+    try {
+      await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
+        district = response.data[0];
+        console.log(district)
+      });
+    } catch (err) {
+      console.log(err)
+      // oktaAuth.signOut().then(() => {
+      //   navigate("/error");
+      // });
+    }
+    
+    const portalData: IUserProfile['portal'] = {
+      allow_notice: false,
+      planningNewBusiness: false,
+      launchingNewBusiness: false,
+      managingExistingBusiness: false,
+      marketingExistingBusiness: false,
+      growingExistingBusiness: false,
+      govContracting: false,
+      businessMentorship: false,
+      womenOwnedBusinessContent: false,
+      veteranOwnedBusinessContent: false,
+      district: district
+    };
+
+    return {
       profile: {
         crm: crmData,
         portal: portalData,
       },
-      businesses: businessData,
-      certifications: certificationData,
       district: { loading: true },
     };
-
-    axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
-      let district = response.data[0];
-      dispatch(setUser({...user, district: district}));
-    });
-
-    return user;
   };
 
   useEffect(() => {

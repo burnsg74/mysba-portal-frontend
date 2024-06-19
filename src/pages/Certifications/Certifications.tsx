@@ -176,10 +176,6 @@ const Certifications = () => {
       footerContent={modal1FooterContent}
     >
       <>
-        <Alert
-          message={t("Only Women-Owned Small Business certifications can be linked at this time. You are still invited to apply to any certification through their respective portals, however, it will not appear in this portal in this beta software")}
-          type="info"
-        />
         <div>
           <form className={`usa-form ${styles.usaForm}`}>
             <fieldset className="usa-fieldset">
@@ -279,6 +275,37 @@ const Certifications = () => {
                       </span>
                 </label>
               </div>
+              <div className={`grid-row usa-radio ${styles.radioRow}`}>
+                <input
+                  type="radio"
+                  name="certWosb"
+                  id="certWosb"
+                  value="WOSB"
+                  className={`usa-radio__input usa-radio__input--tile`}
+                  checked={selectedOption === "WOSB"}
+                  onChange={handleOptionChange}
+                />
+                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">
+                      <span className={`${styles.checkboxLabel}`}>
+                        {t("Woman-Owned Small Business (WOSB) Certification")}
+                      </span>
+                  <span className={`${styles.toolTip}`}>
+                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
+                          <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
+                        </svg>
+                        <span className={`${styles.toolTipText}`}>
+                          {t("You could qualify if over 51% of your business is owned by women.")} <br />
+                          <a
+                            href="https://www.sba.gov/federal-contracting/contracting-assistance-programs/women-owned-small-business-federal-contract-program"
+                            target="_blank"
+                            rel="noreferrer"
+                          >
+                            {t("Learn more")}.
+                          </a>
+                        </span>
+                      </span>
+                </label>
+              </div>
             </fieldset>
           </form>
         </div>
@@ -292,7 +319,6 @@ const Certifications = () => {
       completedSteps={1}
       ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
       contentTitle={t(selectedCert.title) || ""}
-      contentMessage={t(selectedCert.message) || ""}
       footerContent={modal2FooterContent}
     />)}
     {isLinkCertModalOpen && (<LinkCertModalGroup handleCloseModal={handleLinkCertModalClose} />)}

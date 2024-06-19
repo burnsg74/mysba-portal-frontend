@@ -4,23 +4,23 @@ import LinkCertModal2 from "./LinkCertModal2";
 import LinkCertModal3 from "./LinkCertModal3";
 import { data } from "autoprefixer";
 
-interface BusinessAddProps {
+interface LinkCertProps {
     handleCloseModal: () => void;
 }
 
 type data = {
     id:string,
     businessName: string
-    certName: string
+    certName: string[]
     uei: string
 };
 
-const LinkCertModalGroup: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
+const LinkCertModalGroup: React.FC<LinkCertProps> = ({ handleCloseModal }) => {
     const [currentStep, setCurrentStep] = useState(1);
     const [businessData, setBusinessData] = useState({
         id:"",
         businessName: "",
-        certName: "",
+        certName: [''],
         uei: "",
     });
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -30,6 +30,10 @@ const Dashboard = () => {
   >
     {t("All Done")}
   </button>);
+
+  useEffect(() => {
+    console.log(user)
+  }, []);
 
   return (<>
     {/* Top city banner */}
@@ -93,7 +97,7 @@ const Dashboard = () => {
                 </Link>
               </div>
             </div>
-            {user.certifications?.map((certification) => certification.business_id === business.id ? (
+            {user.certifications?.map((certification) => certification.business_id === business.uei ? (
               <div key={certification.certification_id} className={`grid-row ${styles.certificationsRow}`}>
                 <div className="grid-col">
                   <CertificationCard key={certification.certification_id} certification={certification} />

@@ -174,7 +174,7 @@ const LandingPage = () => {
       <div className={`banner ${styles.banner}`}>
 
         <div className={`${styles.welcomeMessage}`}>
-          Welcome to <span className={`${styles.bold}`}>MySBA</span>
+          {t("Welcome to")}<span className={`${styles.bold}`}> MySBA</span>
         </div>
         <div
           className={`${styles.mysbaMessage}`}>{t("Loans, certifications, and resources tailored to your business all in one place.")}</div>
