@@ -1,82 +1,3 @@
-interface Address {
-  given_name: string;
-  additional_name: string;
-  family_name: string;
-  organization: string;
-  address_line1: string;
-  address_line2: string;
-  postal_code: string;
-  sorting_code: string;
-  administrative_area: {
-    code: string;
-    name: string;
-  };
-  locality: string;
-  dependent_locality: string;
-  country: {
-    code: string;
-    name: string;
-  };
-}
-
-interface OfficeType {
-  id: number;
-  office_type_icon: {
-    media_image: string;
-  };
-  name: string;
-}
-
-interface FieldDistrictOffice {
-  title: string;
-  address: Address;
-  geo_location: string;
-  hours_of_operation: string;
-  office_areas_served: string;
-  office_type: OfficeType;
-  telephone: string;
-  uid: string;
-  created: string;
-  googleMapUrl: string;
-  typeIcon: any;
-  is_virtual_office: boolean;
-  appointment_only: boolean;
-}
-
-interface FieldDistrictStaff {
-  display_name: string;
-  job_title: string;
-}
-
-interface SocialMediaService {
-  social_media_icon: {
-    media_svg: string;
-  };
-  social_media_url: string;
-  name: string;
-}
-
-interface FieldDistrictSocialMedia {
-  social_media_account: string;
-  social_media_service: SocialMediaService;
-}
-
-interface District {
-  title: string;
-  page_title: string;
-  website: string;
-  field_district_map_svg: string;
-  field_district_services: string;
-  field_district_areas: string;
-  contact_link: string;
-  field_district_offices: FieldDistrictOffice[];
-  field_district_staff: FieldDistrictStaff[];
-  field_district_staff_directory: string;
-  field_district_business_link: string;
-  field_district_social_media: FieldDistrictSocialMedia[];
-  field_vanity_url: string;
-}
-
 interface IUserProfile {
   crm: {
     first_name: string;
@@ -94,7 +15,7 @@ interface IUserProfile {
     businessMentorship: boolean;
     womenOwnedBusinessContent: boolean;
     veteranOwnedBusinessContent: boolean;
-    zipcode: string;
+    district: District;
   };
 }
 
@@ -144,7 +65,6 @@ interface IUser {
   district?: District;
 }
 
-
 interface ICardProps {
   icon: string;
   title: string;
@@ -182,4 +102,32 @@ interface LearningCenter {
 
 interface LearningCenterCardProps {
   learningCenter: LearningCenter;
+}
+
+interface District {
+  zipcode: string,
+  county_code: string,
+  district_nid: string,
+  title: string,
+  website: string,
+  field_district_map_svg: string,
+  field_district_staff_directory: string,
+  field_district_business_link: string,
+  social_media_x_url: string | null,
+  social_media_linkedin_url: string | null,
+  field_district_offices: DistrictOffice[],
+}
+
+interface DistrictOffice {
+  title: string,
+  typeIcon: string,
+  appointment_only: boolean,
+  is_virtual_office: boolean,
+  address_line1: string,
+  address_line2: string,
+  address_city: string,
+  address_state: string,
+  address_zipcode: string,
+  telephone: string,
+  google_map_url: string,
 }
