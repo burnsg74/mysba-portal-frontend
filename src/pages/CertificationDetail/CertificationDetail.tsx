@@ -26,8 +26,10 @@ const CertificationDetail = () => {
     return null;
   }
 
-  const certification: ICertification | undefined = user.certifications?.filter((certification: ICertification) => certification.certification_id === id)[0];
+  // const certification: ICertification | undefined = user.certifications?.filter((certification: ICertification) => certification.certification_id === id)[0];
+  const certification: ICertification | undefined = user.certifications?.find((certification: ICertification) => certification.certification_id === id);
   if (!certification) {
+    console.log(certification)
     navigate("/error");
     return null;
   }

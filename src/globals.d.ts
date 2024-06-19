@@ -1,6 +1,8 @@
 interface IUserProfile {
   crm: {
-    id: string; first_name: string; last_name: string; email: string; allow_notices: boolean;
+    first_name: string;
+    last_name: string;
+    email: string;
   };
   portal: {
     allow_notice: boolean;
