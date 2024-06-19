@@ -9,6 +9,7 @@ import axios from "axios";
 import { useOktaAuth } from "@okta/okta-react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
+import { formatDate } from "src/utils/formatter";
 
 interface Step2ModalProps {
   businessData: {
@@ -19,6 +20,10 @@ interface Step2ModalProps {
   handleClose: () => void;
   handleContinue: (stepData: any) => void;
   handleBack: (stepData: any) => void;
+}
+
+interface Certification {
+  [key: string]: string | null;
 }
 
 const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, handleContinue, handleBack }) => {
@@ -32,6 +37,23 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
     const phoneNumberStr = phoneNumber.toString();
     return phoneNumberStr.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
   };
+
+  function parseAndCheckActive(data: Certification): { type: string, expirationKey: string }[] {
+    const activeCertifications: { type: string, expirationKey: string }[] = [];
+    const keywords = ["8a","8aJointVenture", "WOSB", "SDVOSB", "SDVOSBJointVenture", "HUBZone", "VOSB","VOSBJointVenture", "EDWOSB"];
+  
+    keywords.forEach(keyword => {
+      const statusKey = `${keyword}CertificationStatus`;
+      if (data[statusKey] && data[statusKey]!.toString().toLowerCase() === 'active') {
+        activeCertifications.push({
+          type: keyword,
+          expirationKey: `${keyword}CertificationExitDate`
+        });
+      }
+    });
+  
+    return activeCertifications;
+  }
 
   const calculateDaysUntilExpiry = (expiryDate: string): number => {
     const expiry = new Date(expiryDate);
@@ -103,13 +125,14 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
         data: data
       };
       results = await axios.request(config).catch((error) => { console.log(error); });
-
+      let businessIdCounter = 1
       let individual = results?.data
       const businessData: IBusiness[] = individual.organizations.map((business: any) => {
+        const businessId = (businessIdCounter++).toString();
         return {
           email: business.organizationEmail ?? '',
           owner: `${individual.firstName ?? ''} ${individual.lastName ?? ''}`,
-          id: business.userId ?? '',
+          id: businessId ?? '',
           name: business.organizationName ?? '',
           legal_entity: business.organizationLegalEntity ?? '',
           ownership_type: business.organizationOwnerShipType ?? '',
@@ -131,25 +154,31 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
           website: business.organizationWebsite ?? '',
         };
       });
-
-      const certificationData: ICertification[] = individual.organizations.map((business: any) => {
+      const certs = parseAndCheckActive(results?.data.organizations[0].certification)
+      let certificationIdCounter = 1
+      const certificationData: ICertification[] = individual.organizations.flatMap((business: any) => {
         const certification = business.certification;
-        return {
-          email: individual.email ?? '',
-          ein: business.organizationEin?.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3") ?? '',
-          certification_id: certification.certificationId ?? '',
-          business_id: business.userId ?? '',
-          certification_type: certification.certificationType ?? '8(a)', // Assuming only 8(a) certification here. Adjust as needed.
-          issue_date: certification['8aCertificationEntranceDate'] ?? '',
-          expiration_date: certification['8aCertificationExitDate'] ?? '',
-          days_until_expiry: calculateDaysUntilExpiry(certification['8aCertificationExitDate']),
-          company_name: business.organizationName ?? '',
-          owner: `${individual.firstName ?? ''} ${individual.lastName ?? ''}`,
-          naics_codes: business.organizationNaicsCodes ?? '',
-        };
+        return certs.map(cert => {
+          const certificationId = (certificationIdCounter++).toString();
+          const ownersArray = business.organizationOwnerName ?? []; // Assume business.owners is an array of strings
+          const owner = ownersArray.join(', ');
+          return {
+            email: business.organizationEmail ?? '',
+            ein: business.organizationEin?.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3") ?? 'No EIN Provided',
+            certification_id:certificationId,
+            business_id: business.userId ?? 'No UEI Provided',
+            certification_type: certification.certificationType ?? cert.type,
+            issue_date: certification[`${cert.type}CertificationEntranceDate`] ?? '',
+            expiration_date: certification[cert.expirationKey] ?? '',
+            days_until_expiry: calculateDaysUntilExpiry(certification[cert.expirationKey]),
+            company_name: business.organizationName ?? '',
+            owner: owner,
+            naics_codes: business.organizationNaicsCodes ?? '',
+          };
+        });
       });
-      let newUser = { ...user, business: businessData, certifications: certificationData, };
-      console.log(stepData)
+      console.log(certificationData)
+      let newUser = { ...user, businesses: businessData, certifications: certificationData };
       dispatch(setUser(newUser));
       handleContinue(stepData);
     } catch (error) {
