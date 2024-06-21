@@ -28,7 +28,6 @@ const Loading = () => {
     t("Verifying"),
   ];
 
-  // Default to zipcode 10001 if no location is found
   const fetchUserDataFromBackend = async (info: UserClaims) => {
     const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
@@ -71,61 +70,11 @@ const Loading = () => {
       last_name: individual.lastName ?? '',
       email: individual.email ?? '',
     };
-    let district = {
-      zipcode: "",
-      county_code: "",
-      district_nid: "",
-      title: "",
-      website: "",
-      field_district_map_svg: "",
-      field_district_staff_directory: "",
-      field_district_business_link: "",
-      social_media_x_url: "",
-      social_media_linkedin_url: "",
-      field_district_offices: [],};
-    // const zipcodeToDistrict = businessData[0].mailing_address_zipcode ? businessData[0].mailing_address_zipcode : 10001;
-    const zipcodeToDistrict = 20416;
-
-    // Getting CORS error
-    axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
-      // businessData[0].district = response.data.district;
-      console.log("district", response);
-      // // Append to user object
-      // dispatch(setUser({ ...crmData, district: response.data.district}));
-    });
-
-    try {
-      await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
-        district = response.data[0];
-        console.log(district)
-      });
-    } catch (err) {
-      console.log(err)
-      // oktaAuth.signOut().then(() => {
-      //   navigate("/error");
-      // });
-    }
-    
-    const portalData: IUserProfile['portal'] = {
-      allow_notice: false,
-      planningNewBusiness: false,
-      launchingNewBusiness: false,
-      managingExistingBusiness: false,
-      marketingExistingBusiness: false,
-      growingExistingBusiness: false,
-      govContracting: false,
-      businessMentorship: false,
-      womenOwnedBusinessContent: false,
-      veteranOwnedBusinessContent: false,
-      district: district
-    };
 
     return {
       profile: {
-        crm: crmData,
-        portal: portalData,
-      },
-      district: { loading: true },
+        crm: crmData, portal: false,
+      }
     };
   };
 

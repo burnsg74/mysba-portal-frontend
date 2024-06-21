@@ -59,17 +59,6 @@ const LandingPage = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
-    const zipcodeToDistrict = 20416;
-
-    // Getting CORS error
-    console.log("Test zipcode_to_district")
-    axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
-      // businessData[0].district = response.data.district;
-      console.log("district", response);
-      // // Append to user object
-      // dispatch(setUser({ ...crmData, district: response.data.district}));
-    });
-
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
   }, []);
