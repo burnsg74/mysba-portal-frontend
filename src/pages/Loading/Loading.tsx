@@ -10,7 +10,7 @@ import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL } from "src/utils/constants";
+import { BASE_API_URL, DISTRICT_URL } from "src/utils/constants";
 
 const Loading = () => {
   const PROGRESS_UPDATE_INTERVAL = 500;
@@ -87,12 +87,12 @@ const Loading = () => {
     const zipcodeToDistrict = 20416;
 
     // Getting CORS error
-    // axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
-    //   businessData[0].district = response.data.district;
-    //   console.log("district", response);
-    //   // Append to user object
-    //   dispatch(setUser({ ...crmData, district: response.data.district}));
-    // });
+    axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
+      // businessData[0].district = response.data.district;
+      console.log("district", response);
+      // // Append to user object
+      // dispatch(setUser({ ...crmData, district: response.data.district}));
+    });
 
     try {
       await axios.get(`${BASE_API_URL}/localresources/${zipcodeToDistrict}`).then((response) => {
