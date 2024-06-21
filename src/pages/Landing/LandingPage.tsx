@@ -13,6 +13,8 @@ import HttpsIcon from "src/assets/icon-https.svg";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
+import axios from "axios";
+import { DISTRICT_URL } from "src/utils/constants";
 
 const LandingPage = () => {
   const { oktaAuth, authState } = useOktaAuth();
@@ -57,6 +59,17 @@ const LandingPage = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
+    const zipcodeToDistrict = 20416;
+
+    // Getting CORS error
+    console.log("Test zipcode_to_district")
+    axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
+      // businessData[0].district = response.data.district;
+      console.log("district", response);
+      // // Append to user object
+      // dispatch(setUser({ ...crmData, district: response.data.district}));
+    });
+
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
   }, []);
