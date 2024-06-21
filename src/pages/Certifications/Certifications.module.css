@@ -245,6 +245,11 @@
     padding-bottom: 40px;
 }
 
+.certificationRow:last-child {
+    /*Add effort padding so that box shadow does not get cut off.*/
+    padding-bottom: 15px;
+}
+
 .footerBtnOutline {
     align-items: center;
     border: 2px;
