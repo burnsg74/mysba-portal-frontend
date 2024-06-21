@@ -59,10 +59,12 @@ const Loading = () => {
       },
       data: data
     };
-    let results = await axios.request(config).catch((error) => {console.log(error);});
+    let results = await axios.request(config).catch((error) => {
+      throw new Error("Unable to get individual from crm")
+    });
     let individual = results?.data.individuals[0]
     if (!individual) {
-      window.location.href = "/error.html";
+      throw new Error("No individual found");
     }
     let crmData: IUserProfile['crm'] = {
       first_name: individual.firstName ?? '',
@@ -147,7 +149,12 @@ const Loading = () => {
           } else {
             navigate("/dashboard");
           }
-        });
+        }).catch((error) => {
+          console.log('Catch Error 1', error);
+          oktaAuth.signOut().then(() => {
+            window.location.href = "/error.html";
+          });
+      });
     }
   }, []);
 

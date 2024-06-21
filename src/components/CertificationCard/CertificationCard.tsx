@@ -54,6 +54,6 @@ export const CertificationCard: React.FC<ICertificationCardProps> = ({ certifica
       </div>
     </div>);
   return <Card icon={CertificationCardIcon} title={title}
-               detailsPage={`/certification/detail/${certification.certification_id}`} body={body}
+               detailsPage={`/certifications/detail/${certification.certification_id}`} body={body}
                hideDetails={hideDetails} />;
 };

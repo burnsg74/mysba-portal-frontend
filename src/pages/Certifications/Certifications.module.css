@@ -8,8 +8,9 @@
 .titleContainer {
     align-items: center;
     display: flex;
-    justify-content: space-between;
     flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
 }
 
 .title {
