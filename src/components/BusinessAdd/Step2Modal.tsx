@@ -183,7 +183,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
       <div className={`${styles.hr}`}></div>
       <ModalInputText name={"business_address_street1"} label={"Business Address Line One"} value={stepData.business_address_street1}
                       onChange={handleInputChange} />
-      <ModalInputText name={"business_address_street2"} label={"Business Address Line One"} value={stepData.business_address_street2}
+      <ModalInputText name={"business_address_street2"} label={"Business Address Line Two"} value={stepData.business_address_street2}
                       onChange={handleInputChange} />
       <div className={`${styles.group}`}>
         <ModalInputText name={"business_address_city"} label={"City"} value={stepData.business_address_city}
