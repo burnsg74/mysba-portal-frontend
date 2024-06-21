@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styles from "src/components/Modal/Modal.module.css";
 import { useTranslation } from "react-i18next";
+import ReactFocusLock from "react-focus-lock";
 
 interface ImageAndAlt {
   image: string;
@@ -92,6 +93,7 @@ const ModalComponent = ({
 
   return (
       <div data-testid="modal" className={`${styles.overlay}`}>
+        <ReactFocusLock>
         <div className={`${styles.container}`}>
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
@@ -136,7 +138,6 @@ const ModalComponent = ({
                           data-testid="step-indicator"
                           className={styles.stepIndicatorbutton}
                           onClick={prevModal}
-                          onKeyDown={prevModal}
                         >&nbsp;</button>
                       )}
                     </li>
@@ -157,6 +158,7 @@ const ModalComponent = ({
           </div>
           {footerContent && <div ref={footerRef} className={`${styles.footer}`}>{footerContent}</div>}
         </div>
+        </ReactFocusLock>
       </div>
   );
 };
