@@ -20,7 +20,23 @@ const LocalResources = () => {
   const { authState } = useOktaAuth();
   const { t } = useTranslation();
   const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
-  const [zipcode, setZipcode] = useState(user.profile?.portal?.district?.zipcode ?? user?.businesses?.[0]?.business_address_zipcode ?? "10001");
+
+  // Zipcode can only be a 5-digit number
+  const formatZipcode = (value: string | undefined): string | undefined => {
+    if (value) {
+      const formattedZipcode = value.replace(/\D/g, '').slice(0, 5);
+      if (formattedZipcode.length === 5) {
+        return formattedZipcode;
+      }
+    }
+    return undefined;
+  };
+
+  const [zipcode, setZipcode] = useState(
+    formatZipcode(user.profile?.portal?.district?.zipcode) ??
+    formatZipcode(user?.businesses?.[0]?.business_address_zipcode) ??
+    "10001"
+  );
 
   useEffect(() => {
     let accessToken = authState?.accessToken?.accessToken;
