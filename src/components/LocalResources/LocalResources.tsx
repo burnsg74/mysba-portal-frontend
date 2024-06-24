@@ -19,6 +19,7 @@ const LocalResources = () => {
   const user: IUser = useSelector(getUser);
   const { authState } = useOktaAuth();
   const { t } = useTranslation();
+  const [apiError, setApiError] = useState(false);
   const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
 
   // Zipcode can only be a 5-digit number
@@ -53,13 +54,16 @@ const LocalResources = () => {
   }, [authState?.accessToken?.accessToken, zipcode]);
 
   function refreshDistrict(zipcode: string) {
+    setApiError(false);
     axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcode}`).then((response) => {
       if (!response.data) {
+        setApiError(true);
         return;
       }
 
       axios.get(`${DISTRICT_URL}/rest/district_details/${response.data['district_nid']}`).then((response) => {
         if (!response.data) {
+          setApiError(true);
           return;
         }
 
@@ -92,11 +96,13 @@ const LocalResources = () => {
         updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
       }).catch(error => {
         console.log(error);
+        setApiError(true);
         // @TODO, show error alert instead of error page
         // navigate("/error");
       });
     }).catch(error => {
       console.log(error);
+      setApiError(true);
       // @TODO, show error alert instead of error page
       // navigate("/error");
     });
@@ -175,7 +181,8 @@ const LocalResources = () => {
               setZipcode(enteredZipcode);
             }
           }}
-          className={`usa-input ${styles.titleZipInput}`}
+          // className={`usa-input ${styles.titleZipInput}`}
+          className={`usa-input ${apiError ? 'usa-input--error' : ''} ${styles.titleZipInput}`}
           placeholder="Enter Zip Code"
           maxLength={5}
         />
