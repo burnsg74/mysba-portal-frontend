@@ -104,12 +104,13 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
 
   const isPasswordValid = (password: string) => {
     console.log("password", password);
+    // username : !password.toLowerCase().includes(stepData.currentPassword.toLowerCase()), // lastPasswords: !prevPasswords.includes(password),
     setHighlightInvalid({
       minLength: !(password.length >= 8),
       lowerCase: !(/[a-z]/.test(password)),
       upperCase: !(/[A-Z]/.test(password)),
       number   : !(/[0-9]/.test(password)),
-      username : !password.toLowerCase().includes(stepData.currentPassword.toLowerCase()), // lastPasswords: !prevPasswords.includes(password),
+      username : false,
       lastPasswords: false, passwordsMatch: !(stepData.newPassword1 === stepData.newPassword2),
     });
 
