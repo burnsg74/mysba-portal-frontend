@@ -7,18 +7,21 @@
 
 .titleRow {
     display: flex;
-    align-items: flex-end;
+    align-items: flex-start;
     gap: 40px;
     align-self: stretch;
+    justify-content: space-between;
 }
 
 .title {
     color: var(--Brand-Primary-SBA-Blue);
-    flex: 1 0 0;
     font-size: 40px;
     font-style: normal;
     font-weight: 400;
     line-height: 120%;
+    width: 100%;
+    flex-grow: 2;
+    flex-basis: auto;
 }
 
 .titleZipContainer {
@@ -26,7 +29,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    width: 120px;
+    flex: 1 1 auto;
 }
 
 .titleZipLabel {
@@ -36,6 +39,7 @@
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-top: unset;
 }
 
 .titleZipInput {

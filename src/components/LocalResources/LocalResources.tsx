@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL, DISTRICT_URL, PORTAL_API_URL } from "src/utils/constants";
+import { DISTRICT_URL, PORTAL_API_URL } from "src/utils/constants";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -15,11 +15,11 @@ import styles from "src/components/LocalResources/LocalResources.module.css";
 
 const LocalResources = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const user: IUser = useSelector(getUser);
   const { authState } = useOktaAuth();
   const { t } = useTranslation();
   const [apiError, setApiError] = useState(false);
+  const [apiErrorMessage, setApiErrorMessage] = useState('');
   const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
 
   // Zipcode can only be a 5-digit number
@@ -57,12 +57,14 @@ const LocalResources = () => {
     setApiError(false);
     axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcode}`).then((response) => {
       if (!response.data) {
+        setApiErrorMessage('Error')
         setApiError(true);
         return;
       }
 
       axios.get(`${DISTRICT_URL}/rest/district_details/${response.data['district_nid']}`).then((response) => {
         if (!response.data) {
+          setApiErrorMessage('Error')
           setApiError(true);
           return;
         }
@@ -96,12 +98,14 @@ const LocalResources = () => {
         updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
       }).catch(error => {
         console.log(error);
+        setApiErrorMessage(error.response.data.message)
         setApiError(true);
         // @TODO, show error alert instead of error page
         // navigate("/error");
       });
     }).catch(error => {
-      console.log(error);
+      console.log(error, error.response.data.message);
+      setApiErrorMessage(error.response.data.message)
       setApiError(true);
       // @TODO, show error alert instead of error page
       // navigate("/error");
@@ -165,27 +169,32 @@ const LocalResources = () => {
         Local Resources
       </div>
       <div className={` ${styles.titleZipContainer}`}>
-        <label
-          htmlFor="zipCode"
-          className={`usa-label ${styles.titleZipLabel}`}>
-          Zip Code
-        </label>
-        <input
-          type="text"
-          id={"zipCode"}
-          name={"zipCode"}
-          value={zipcode}
-          onChange={(event) => {
-            const enteredZipcode = event.target.value;
-            if (/^\d{0,5}$/.test(enteredZipcode)) {
-              setZipcode(enteredZipcode);
-            }
-          }}
-          // className={`usa-input ${styles.titleZipInput}`}
-          className={`usa-input ${apiError ? 'usa-input--error' : ''} ${styles.titleZipInput}`}
-          placeholder="Enter Zip Code"
-          maxLength={5}
-        />
+        <div className={`${apiError ? "usa-form-group--error" : ""}`}>
+          <label
+            htmlFor="zipCode"
+            className={`usa-label ${styles.titleZipLabel}`}>
+            Zip Code
+          </label>
+          {apiError ?
+            <span className="usa-error-message text-no-wrap" id="input-error-message" role="alert">{apiErrorMessage}</span>
+            : null}
+          <input
+            type="text"
+            id={"zipCode"}
+            name={"zipCode"}
+            value={zipcode}
+            onChange={(event) => {
+              const enteredZipcode = event.target.value;
+              if (/^\d{0,5}$/.test(enteredZipcode)) {
+                setZipcode(enteredZipcode);
+              }
+            }}
+            // className={`usa-input ${styles.titleZipInput}`}
+            className={`usa-input ${apiError ? "usa-input--error" : ""} ${styles.titleZipInput}`}
+            placeholder="Enter Zip Code"
+            maxLength={5}
+          />
+        </div>
       </div>
     </div>
 
