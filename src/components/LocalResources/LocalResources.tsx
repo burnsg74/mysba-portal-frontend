@@ -3,7 +3,6 @@ import { AccessToken } from "@okta/okta-auth-js";
 import { DISTRICT_URL, PORTAL_API_URL } from "src/utils/constants";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
 import { useOktaAuth } from "@okta/okta-react";
 import { useTranslation } from "react-i18next";
 import axios from "axios";

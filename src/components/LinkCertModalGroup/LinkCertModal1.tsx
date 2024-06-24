@@ -24,6 +24,7 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
   const { authState } = useOktaAuth();
   const user: IUser = useSelector(getUser);
   const [stepData, setStepData] = useState<{ uei: string, businessName: string, certName: Array<string>; }>({ uei: "", businessName: "", certName: [] });
+  const [hasError, setHasError] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   function parseAndCheckActive(data: Certification) {
@@ -80,6 +81,17 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
         data: data
       };
       let results = await axios.request(config).catch((error) => { console.log(error); });
+      console.log(results)
+
+      if (!results?.data.organizations || results?.data.organizations.length === 0) {
+        setError("No data found for organizations");
+        setHasError(true)
+        throw new Error("No data found for organizations");
+      } else {
+        setError("");
+        setHasError(false)
+      }
+
       const org = results?.data.organizations[0]
       const certs = parseAndCheckActive(org.certification)
       const updatedStepData = { ...stepData, uei: org.organizationUei, businessName: org.organizationName, certName: certs };
@@ -98,9 +110,11 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
   const handleContinueBtnClick = () => {
     if (stepData.uei.length === 12) {
       setError(null);
+      setHasError(false)
       linkCert()
     } else {
       setError("UEI must be 12 characters");
+      setHasError(true)
     }
   };
 
@@ -109,40 +123,41 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
   };
 
   return (<Modal
-    title={t("Link a Certification")}
-    onClose={closeModal}
-    totalSteps={3}
-    completedSteps={0}
-    ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
-    contentTitle={t("Enter the UEI associated with your business and certification.")}
-    footerContent={(<>
-      <button
-        type="button"
-        className={`usa-button usa-button--outline ${styles.cancelBtn}`}
-        onClick={closeModal}
-      >
-        {t("Cancel")}
-      </button>
-      <button type="button"
-        className={`usa-button ${styles.continueBtn}`}
-        onClick={() => handleContinueBtnClick()}>
-        {t("Continue")}
-      </button>
-    </>)}
-  >
-    <div className={`${styles.inputContainer}`} >
-      <label className={`usa-label`} htmlFor="input-type-text">
-        <span >
-          UEI<span style={{ color: '#D54309' }}>*</span>
-        </span>
-        <br />
-        <span className={`${styles.greyLabel}`}>Unique Entity Identifier (12 Characters)</span>
-        <br />
-        {error && <span className={styles.error}>{error}</span>}
-      </label>
-      <input className={`usa-input ${styles.textInput}`} id="input-type-text" name="input-type-text" onChange={handleInputChange} />
-    </div>
-  </Modal>);
+      title={t("Link a Certification")}
+      onClose={closeModal}
+      totalSteps={3}
+      completedSteps={0}
+      ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
+      contentTitle={t("Enter the UEI associated with your business and certification.")}
+      footerContent={(<>
+        <button
+          type="button"
+          className={`usa-button usa-button--outline ${styles.cancelBtn}`}
+          onClick={closeModal}
+        >
+          {t("Cancel")}
+        </button>
+        <button type="button"
+                className={`usa-button ${styles.continueBtn}`}
+                onClick={() => handleContinueBtnClick()}>
+          {t("Continue")}
+        </button>
+      </>)}
+    >
+      <div className={`${hasError ? "usa-form-group--error" : ""} ${styles.inputContainer}`}>
+        <label className={`usa-label`} htmlFor="input-type-text">
+      <span>
+        UEI<span style={{ color: "#D54309" }}>*</span>
+      </span>
+          <br />
+          <span className={`${styles.greyLabel}`}>Unique Entity Identifier (12 Characters)</span>
+          <br />
+          {error && <span className={styles.error}>{error}</span>}
+        </label>
+        <input className={`usa-input ${hasError ? "usa-input--error" : ""} ${styles.textInput}`} id="input-type-text" name="input-type-text"
+               onChange={handleInputChange} maxLength={12} />
+      </div>
+    </Modal>);
 };
 
 export default LinkCertModal1;
