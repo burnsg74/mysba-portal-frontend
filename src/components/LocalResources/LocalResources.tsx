@@ -24,7 +24,13 @@ const LocalResources = () => {
 
   useEffect(() => {
     let accessToken = authState?.accessToken?.accessToken;
-    refreshDistrict(zipcode);
+    if (accessToken && zipcode && zipcode.toString().length === 5) {
+      refreshDistrict(zipcode);
+    }
+  }, []);
+
+  useEffect(() => {
+    let accessToken = authState?.accessToken?.accessToken;
     if (accessToken && zipcode && zipcode.toString().length === 5) {
       refreshDistrict(zipcode);
     }
