@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL, DISTRICT_URL } from "src/utils/constants";
+import { BASE_API_URL, DISTRICT_URL, PORTAL_API_URL } from "src/utils/constants";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -119,7 +119,7 @@ const LocalResources = () => {
 
   function updateAndSaveUserPortalProfileWithNewDistrict(newDistrict: District) {
     const newPortalProfile = { ...user.profile?.portal, district: newDistrict };
-    const url = `${BASE_API_URL}/portal/user/` + user.profile?.crm?.email;
+    const url = `${PORTAL_API_URL}/portal/user/` + user.profile?.crm?.email;
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;
