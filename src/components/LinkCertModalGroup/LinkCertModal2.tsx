@@ -9,7 +9,6 @@ import axios from "axios";
 import { useOktaAuth } from "@okta/okta-react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
-import { formatDate } from "src/utils/formatter";
 
 interface Step2ModalProps {
   businessData: {
@@ -95,7 +94,8 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
         maxBodyLength: Infinity,
         url: `${BASE_API_URL}/individuals/individual`,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
         },
         data: data
       };
@@ -116,13 +116,10 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
       });
 
       config = {
-        method: 'post',
-        maxBodyLength: Infinity,
-        url: `${BASE_API_URL}/organizations/organization?task=read`,
+        method : "post", maxBodyLength: Infinity, url: `${BASE_API_URL}/organizations/organization?task=read`,
         headers: {
-          'Content-Type': 'application/json'
-        },
-        data: data
+          "Content-Type": "application/json", "Authorization": `Bearer ${accessToken}`,
+        }, data: data,
       };
       results = await axios.request(config).catch((error) => { console.log(error); });
       let businessIdCounter = 1

@@ -74,7 +74,8 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
         maxBodyLength: Infinity,
         url: `${BASE_API_URL}/organizations/organization?task=read`,
         headers: {
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${accessToken}`
         },
         data: data
       };
