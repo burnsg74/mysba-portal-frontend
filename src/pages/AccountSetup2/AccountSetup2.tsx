@@ -9,7 +9,7 @@ import axios from "axios";
 import { getUser, setUser } from "src/store/user/userSlice";
 import { AccessToken } from "@okta/okta-auth-js";
 import { useOktaAuth } from "@okta/okta-react";
-import { BASE_API_URL } from "src/utils/constants";
+import { PORTAL_API_URL } from "src/utils/constants";
 
 const AccountSetup2 = () => {
   const dispatch = useDispatch();
@@ -31,11 +31,6 @@ const AccountSetup2 = () => {
   });
 
   const handleContinueBtnClick = () => {
-    if (user.profile?.crm?.email === "emilyj@email.com") {
-      navigate("/dashboard/new");
-      return;
-    }
-
     let portalProfile = {};
     if (!user.profile) {
       console.error("user profile is missing");
@@ -43,7 +38,7 @@ const AccountSetup2 = () => {
       portalProfile = { ...user.profile.portal, ...state };
     }
 
-    const url = `${BASE_API_URL}/portal/user/` + user.profile?.crm?.email;
+    const url = `${PORTAL_API_URL}/portal/user/` + user.profile?.crm?.email;
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;

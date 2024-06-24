@@ -10,7 +10,7 @@ import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL, DISTRICT_URL } from "src/utils/constants";
+import { BASE_API_URL, DISTRICT_URL, PORTAL_API_URL } from "src/utils/constants";
 
 const Loading = () => {
   const PROGRESS_UPDATE_INTERVAL = 500;
@@ -70,10 +70,18 @@ const Loading = () => {
       last_name: individual.lastName ?? '',
       email: individual.email ?? '',
     };
+    
+    let portalData
+    try {
+      await axios.get(`${PORTAL_API_URL}/portal/user/${email}`, { headers: {"Authorization" : `Bearer ${accessToken}`} }).then((response) => { portalData = response.data});
+    } catch (err) {
+      console.log(err)
+    }
+    console.log(portalData)
 
     return {
       profile: {
-        crm: crmData, portal: false,
+        crm: crmData, portal: portalData,
       }
     };
   };

@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import styles from "src/pages/AccountSetup1/AccountSetup1.module.css";
 import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL } from "src/utils/constants";
+import {PORTAL_API_URL } from "src/utils/constants";
 import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
 import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
 import { getUser, setUser } from "src/store/user/userSlice";
@@ -19,7 +19,7 @@ const AccountSetup1 = () => {
   const dispatch = useDispatch();
   const [allowNotice, setAllowNotice] = useState<boolean>(user.profile?.portal?.allow_notice || false);
   const { authState } = useOktaAuth();
-  const portal_user_url = `${BASE_API_URL}/portal/user/`;
+  const portal_user_url = `${PORTAL_API_URL}/portal/user/`;
 
   const handleCheckboxChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setAllowNotice(event.target.checked);
@@ -32,11 +32,6 @@ const AccountSetup1 = () => {
   }, []);
 
   const handleContinueBtnClick = () => {
-
-    if (user.profile?.crm?.email === "emilyj@email.com") {
-      navigate("/account-setup/2");
-      return;
-    }
     let portalProfile = {};
     if (!user.profile) {
       console.error("user profile is missing");
