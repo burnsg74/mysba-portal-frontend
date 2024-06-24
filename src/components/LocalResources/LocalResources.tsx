@@ -76,11 +76,13 @@ const LocalResources = () => {
         updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
       }).catch(error => {
         console.log(error);
-        navigate("/error");
+        // @TODO, show error alert instead of error page
+        // navigate("/error");
       });
     }).catch(error => {
       console.log(error);
-      navigate("/error");
+      // @TODO, show error alert instead of error page
+      // navigate("/error");
     });
   }
 
