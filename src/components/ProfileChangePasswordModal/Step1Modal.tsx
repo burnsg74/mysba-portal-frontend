@@ -7,7 +7,7 @@ import ModalInputText from "src/components/ModalInputText/ModalInputText";
 import { AccessToken } from "@okta/okta-auth-js";
 import axios from "axios";
 import { useOktaAuth } from "@okta/okta-react";
-import { BASE_API_URL } from "src/utils/constants";
+import { PORTAL_API_URL } from "src/utils/constants";
 
 interface Step1ModalProps {
   handleClose: () => void;
@@ -15,7 +15,7 @@ interface Step1ModalProps {
 }
 
 const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) => {
-  const change_password_url = `${BASE_API_URL}/sso-change-password`;
+  const change_password_url = `${PORTAL_API_URL}/sso-change-password`;
   const [hasErrors, setHasErrors] = useState(false);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
   const [saveBtnLabel, setSaveBtnLabel] = useState("Save");
@@ -61,6 +61,9 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
       return;
+    } else {
+      setHasErrors(false);
+      setIsSaveDisabled(true);
     }
 
     console.log("Password is valid");
@@ -80,7 +83,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
 
     try {
       setChangePasswordErrorMsg("");
-      console.log("Make Change Password Ajax with data:", data);
+      console.log("Make Change Password Ajax with data:", change_password_url, data);
       axios.post(change_password_url, data).then((response) => {
         console.log("response", response);
         if (response.status !== 200) {
@@ -114,7 +117,9 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       lastPasswords: false, passwordsMatch: !(stepData.newPassword1 === stepData.newPassword2),
     });
 
-    return Object.values(highlightInvalid).includes(true);
+    console.log(Object.values(highlightInvalid),Object.values(highlightInvalid).includes(true))
+
+    return !Object.values(highlightInvalid).includes(true);
   };
 
   const closeModal = () => {
