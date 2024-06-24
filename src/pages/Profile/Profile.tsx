@@ -27,6 +27,11 @@ const Profile = () => {
 
   const logout = async () => {
     await oktaAuth.signOut();
+    document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    sessionStorage.clear();
+    localStorage.clear();
   };
 
   return (

@@ -109,6 +109,11 @@ const Loading = () => {
         }).catch((error) => {
           console.log('Catch Error 1', error);
           oktaAuth.signOut().then(() => {
+            document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+            sessionStorage.clear();
+            localStorage.clear();
             window.location.href = "/error.html";
           });
       });
