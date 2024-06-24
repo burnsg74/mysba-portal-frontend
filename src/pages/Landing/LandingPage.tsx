@@ -14,7 +14,7 @@ import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
 import axios from "axios";
-import { DISTRICT_URL } from "src/utils/constants";
+import { PORTAL_SIGNUP_URL } from "src/utils/constants";
 
 const LandingPage = () => {
   const { oktaAuth, authState } = useOktaAuth();
@@ -30,7 +30,7 @@ const LandingPage = () => {
   };
 
   const signUp = () => {
-    window.location.assign("https://login.dev.mysba.ussba.io/signin/register");
+    window.location.assign(PORTAL_SIGNUP_URL);
   };
 
   const switchLanguage = () => {
