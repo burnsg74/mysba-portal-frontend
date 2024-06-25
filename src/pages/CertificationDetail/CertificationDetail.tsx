@@ -36,7 +36,7 @@ const CertificationDetail = () => {
 
   const certModelData = certifications.find(cert => cert.code === certification?.certification_type) || certifications[0];
   const issue_date = formatDate(certification.issue_date, "MMMM D, YYYY");
-  const expiration_date = formatDate(certification.expiration_date, "MMMM D, YYYY");
+  const expiration_date: string | null = certification.expiration_date ? formatDate(certification.expiration_date, "MMMM D, YYYY") : null;
 
   function calculateIndexFromId(id: string): number | null {
     let index = Number(id);
@@ -195,7 +195,7 @@ const CertificationDetail = () => {
         <h4 className={`${styles.subtitle}`}>{t("Details")}</h4>
         <Field label="Company Certified" value={certification.company_name ?? ""} />
         <Field label="Issue Date" value={issue_date ?? ""} />
-        <Field label="Expiration Date" value={expiration_date ?? ""} />
+        {expiration_date && <Field label="Expiration Date" value={expiration_date ?? ""} />}
       </div>
       <div className={`${styles.categoryGroup}`}>
         <h4 className={`${styles.subtitle}`}>{t("Ownership")}</h4>

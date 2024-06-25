@@ -24,7 +24,7 @@ export const CertificationCard: React.FC<ICertificationCardProps> = ({ certifica
   const { t } = useTranslation();
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isSmallScreen, setIsSmallScreen] = useState<boolean>(false);
-  const expiration_date = formatDate(certification.expiration_date, "M/D/YY");
+  const expiration_date: string | null = certification.expiration_date ? formatDate(certification.expiration_date, "M/D/YY") : null;
   const title = t(certification.certification_type);
 
   useEffect(() => {
@@ -47,7 +47,7 @@ export const CertificationCard: React.FC<ICertificationCardProps> = ({ certifica
       <div className={`grid-col-auto`}>
         <div className={` ${styles.bodyRowRightGroup}`}>
           <div className={`${styles.bodyRightGroupExpirationDate}`}>
-            {t("Expiration")}: {expiration_date}
+            {expiration_date && `${t("Expiration")}: ${expiration_date}`}
           </div>
           {getPillComponents(certification.days_until_expiry, t)}
         </div>
