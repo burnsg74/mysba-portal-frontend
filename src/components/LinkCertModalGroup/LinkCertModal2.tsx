@@ -43,21 +43,20 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
   
     keywords.forEach(keyword => {
       const statusKey = `${keyword}CertificationStatus`;
-      if (data[statusKey] && data[statusKey]!.toString().toLowerCase() === 'active') {
+      if (data[statusKey] && (data[statusKey]!.toString().toLowerCase() === 'active' || data[statusKey]!.toString().toLowerCase() === 'previously certified')) {
         activeCertifications.push({
           type: keyword,
           expirationKey: `${keyword}CertificationExitDate`
         });
       }
     });
-  
     return activeCertifications;
   }
 
   const calculateDaysUntilExpiry = (expiryDate: string): number => {
     const expiry = new Date(expiryDate);
     const today = new Date();
-    const diffTime = Math.abs(expiry.getTime() - today.getTime());
+    const diffTime = expiry.getTime() - today.getTime();
     return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
   };
 
@@ -159,7 +158,6 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
           const certificationId = (certificationIdCounter++).toString();
           const ownersArray = business.organizationOwnerName ?? []; // Assume business.owners is an array of strings
           const owner = ownersArray.join(', ');
-          console.log(business.organizationUei)
           return {
             email: business.organizationEmail ?? '',
             ein: business.organizationEin?.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3") ?? 'No EIN Provided',
