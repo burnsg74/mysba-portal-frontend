@@ -285,7 +285,7 @@ const Certifications = () => {
                   checked={selectedOption === "WOSB"}
                   onChange={handleOptionChange}
                 />
-                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">
+                <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certWosb">
                       <span className={`${styles.checkboxLabel}`}>
                         {t("Woman-Owned Small Business (WOSB) Certification")}
                       </span>
