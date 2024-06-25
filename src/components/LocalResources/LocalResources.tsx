@@ -18,13 +18,13 @@ const LocalResources = () => {
   const { authState } = useOktaAuth();
   const { t } = useTranslation();
   const [apiError, setApiError] = useState(false);
-  const [apiErrorMessage, setApiErrorMessage] = useState('');
+  const [apiErrorMessage, setApiErrorMessage] = useState("");
   const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
 
   // Zipcode can only be a 5-digit number
   const formatZipcode = (value: string | undefined): string | undefined => {
     if (value) {
-      const formattedZipcode = value.replace(/\D/g, '').slice(0, 5);
+      const formattedZipcode = value.replace(/\D/g, "").slice(0, 5);
       if (formattedZipcode.length === 5) {
         return formattedZipcode;
       }
@@ -32,11 +32,7 @@ const LocalResources = () => {
     return undefined;
   };
 
-  const [zipcode, setZipcode] = useState(
-    formatZipcode(user.profile?.portal?.district?.zipcode) ??
-    formatZipcode(user?.businesses?.[0]?.business_address_zipcode) ??
-    "10001"
-  );
+  const [zipcode, setZipcode] = useState(formatZipcode(user.profile?.portal?.district?.zipcode) ?? formatZipcode(user?.businesses?.[0]?.business_address_zipcode) ?? "10001");
 
   useEffect(() => {
     let accessToken = authState?.accessToken?.accessToken;
@@ -56,55 +52,63 @@ const LocalResources = () => {
     setApiError(false);
     axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcode}`).then((response) => {
       if (!response.data) {
-        setApiErrorMessage('Error')
+        setApiErrorMessage("Error");
         setApiError(true);
         return;
       }
 
-      axios.get(`${DISTRICT_URL}/rest/district_details/${response.data['district_nid']}`).then((response) => {
-        if (!response.data) {
-          setApiErrorMessage('Error')
+      axios.get(`${DISTRICT_URL}/rest/district_details/${response.data["district_nid"]}`).then((response) => {
+        try {
+          if (!response.data) {
+            setApiErrorMessage("Error");
+            setApiError(true);
+            return;
+          }
+
+          // We also have office locations that are virtual. Those have office type ID numbers of 148 and 270.
+          const apiDistrict = response.data[0];
+
+          let newDistrict: District = {
+            zipcode                       : zipcode, county_code: apiDistrict.county_code,
+            district_nid                  : apiDistrict.district_nid, title: apiDistrict.title,
+            website                       : apiDistrict.website,
+            field_district_map_svg        : apiDistrict.field_district_map_svg,
+            field_district_staff_directory: apiDistrict.field_district_staff_directory,
+            field_district_business_link  : apiDistrict.field_district_business_link,
+            social_media_x_url            : getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
+            social_media_linkedin_url     : getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
+            field_district_offices        : apiDistrict.field_district_offices?.map((office: any) => {
+              let newOffice: DistrictOffice = {
+                title            : office.title,
+                typeIcon         : getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
+                appointment_only : (office.office_type.id === 149 || office.office_type.id === 147),
+                // is_virtual_office: getIsVirtualFromMediaImage(office.office_type.office_type_icon?.media_image),
+                is_virtual_office: (office.office_type.id === 148 || office.office_type.id === 270),
+                address_line1    : office.address?.address_line1, address_line2: office.address?.address_line2,
+                address_city     : office.address?.locality, address_state: office.address?.administrative_area.code,
+                address_zipcode  : office.address?.postal_code, telephone: office.telephone,
+                google_map_url   : getGoogleMapUrlFromAddress(office.address),
+              };
+              return newOffice;
+            }) || [],
+          };
+          setDistrict(newDistrict);
+          updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
+        } catch (error) {
+          console.error("An error occurred:", error);
+          setApiErrorMessage("Error fetching local resources for given zipcode.");
           setApiError(true);
-          return;
         }
-
-        const apiDistrict = response.data[0];
-
-        let newDistrict: District = {
-          zipcode                       : zipcode, county_code: apiDistrict.county_code,
-          district_nid                  : apiDistrict.district_nid, title: apiDistrict.title,
-          website                       : apiDistrict.website,
-          field_district_map_svg        : apiDistrict.field_district_map_svg,
-          field_district_staff_directory: apiDistrict.field_district_staff_directory,
-          field_district_business_link  : apiDistrict.field_district_business_link,
-          social_media_x_url            : getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
-          social_media_linkedin_url     : getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
-          field_district_offices        : apiDistrict.field_district_offices?.map((office: any) => {
-            let newOffice: DistrictOffice = {
-              title            : office.title,
-              typeIcon         : getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
-              appointment_only : (office.office_type.id === 149 || office.office_type.id === 147),
-              is_virtual_office: getIsVirtualFromMediaImage(office.office_type.office_type_icon?.media_image),
-              address_line1    : office.address.address_line1, address_line2: office.address.address_line2,
-              address_city     : office.address.locality, address_state: office.address.administrative_area.code,
-              address_zipcode  : office.address.postal_code, telephone: office.telephone,
-              google_map_url   : getGoogleMapUrlFromAddress(office.address),
-            };
-            return newOffice;
-          }) || [],
-        };
-        setDistrict(newDistrict);
-        updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
       }).catch(error => {
         console.log(error);
-        setApiErrorMessage(error.response.data.message)
+        setApiErrorMessage(error.response.data.message);
         setApiError(true);
         // @TODO, show error alert instead of error page
         // navigate("/error");
       });
     }).catch(error => {
       console.log(error, error.response.data.message);
-      setApiErrorMessage(error.response.data.message)
+      setApiErrorMessage(error.response.data.message);
       setApiError(true);
       // @TODO, show error alert instead of error page
       // navigate("/error");
@@ -141,6 +145,9 @@ const LocalResources = () => {
   }
 
   function getGoogleMapUrlFromAddress(address: any) {
+    if (!address || !address.address_line1) {
+      return "";
+    }
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address.address_line1 + ", " + address.locality + ", " + address.administrative_area.code + " " + address.postal_code)}`;
   }
 
@@ -174,9 +181,8 @@ const LocalResources = () => {
             className={`usa-label ${styles.titleZipLabel}`}>
             Zip Code
           </label>
-          {apiError ?
-            <span className="usa-error-message text-no-wrap" id="input-error-message" role="alert">{apiErrorMessage}</span>
-            : null}
+          {apiError ? <span className="usa-error-message text-no-wrap" id="input-error-message"
+                            role="alert">{apiErrorMessage}</span> : null}
           <input
             type="text"
             id={"zipCode"}
@@ -298,23 +304,23 @@ const LocalResources = () => {
               <a href={`tel:${office.telephone}`}>{office.telephone}</a>
             </div>
             {!office.is_virtual_office && (<div className={`${styles.officeCardDetailsAddress}`}>
-                <svg
-                  className={`usa-icon ${styles.launchIcon}`}
-                  aria-hidden="true"
-                  focusable="false"
-                >
-                  <title>{t("Open")}</title>
-                  <use xlinkHref="/assets/img/sprite.svg#map"></use>
-                </svg>
-                <a href={office.google_map_url}
-                   target="_blank" rel="noopener noreferrer">
-                  {office.address_line1}<br />
-                  {office.address_line2 !== "" && (<>
-                    {office.address_line2}<br />
-                  </>)}
-                  {office.address_city}, {office.address_state} {office.address_zipcode} <br />
-                </a>
-              </div>)}
+              <svg
+                className={`usa-icon ${styles.launchIcon}`}
+                aria-hidden="true"
+                focusable="false"
+              >
+                <title>{t("Open")}</title>
+                <use xlinkHref="/assets/img/sprite.svg#map"></use>
+              </svg>
+              <a href={office.google_map_url}
+                 target="_blank" rel="noopener noreferrer">
+                {office.address_line1}<br />
+                {office.address_line2 !== "" && (<>
+                  {office.address_line2}<br />
+                </>)}
+                {office.address_city}, {office.address_state} {office.address_zipcode} <br />
+              </a>
+            </div>)}
           </div>
         </div>))}
       </div>
