@@ -26,15 +26,13 @@ const CertificationDetail = () => {
     return null;
   }
 
-  // const certification: ICertification | undefined = user.certifications?.filter((certification: ICertification) => certification.certification_id === id)[0];
   const certification: ICertification | undefined = user.certifications?.find((certification: ICertification) => certification.certification_id === id);
   if (!certification) {
-    console.log(certification)
     navigate("/error");
     return null;
   }
 
-  const certModelData = certifications.find(cert => cert.code === certification?.certification_type) || certifications[0];
+  const certModelData = certifications.find(cert => cert.code === certification?.certification_type.toUpperCase()) || certifications[0];
   const issue_date = formatDate(certification.issue_date, "MMMM D, YYYY");
   const expiration_date: string | null = certification.expiration_date ? formatDate(certification.expiration_date, "MMMM D, YYYY") : null;
 

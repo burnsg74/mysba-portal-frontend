@@ -50,27 +50,31 @@ const LocalResources = () => {
 
   function refreshDistrict(zipcode: string) {
     setApiError(false);
-    axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcode}`).then((response) => {
-      if (!response.data) {
+    axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcode}`).then((response1) => {
+      if (!response1.data) {
         setApiErrorMessage("Error");
         setApiError(true);
         return;
       }
 
-      axios.get(`${DISTRICT_URL}/rest/district_details/${response.data["district_nid"]}`).then((response) => {
+      const zipcodeDistrictData = response1.data;
+      axios.get(`${DISTRICT_URL}/rest/district_details/${zipcodeDistrictData["district_nid"]}`).then((response2) => {
         try {
-          if (!response.data) {
+          if (!response2.data) {
             setApiErrorMessage("Error");
             setApiError(true);
             return;
           }
 
           // We also have office locations that are virtual. Those have office type ID numbers of 148 and 270.
-          const apiDistrict = response.data[0];
+          const apiDistrict = response2.data[0];
 
+          // district.district_nid
           let newDistrict: District = {
-            zipcode                       : zipcode, county_code: apiDistrict.county_code,
-            district_nid                  : apiDistrict.district_nid, title: apiDistrict.title,
+            zipcode                       : zipcodeDistrictData.zipcode,
+            county_code                   : zipcodeDistrictData.county_code,
+            district_nid                  : zipcodeDistrictData.district_nid,
+            title                         : apiDistrict.title,
             website                       : apiDistrict.website,
             field_district_map_svg        : apiDistrict.field_district_map_svg,
             field_district_staff_directory: apiDistrict.field_district_staff_directory,
@@ -92,6 +96,7 @@ const LocalResources = () => {
               return newOffice;
             }) || [],
           };
+          console.log('newDistrict',newDistrict)
           setDistrict(newDistrict);
           updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
         } catch (error) {
@@ -138,10 +143,6 @@ const LocalResources = () => {
     }
 
     return iconOfficeLg;
-  }
-
-  function getIsVirtualFromMediaImage(mediaImage: string) {
-    return mediaImage.includes("headset_icon.png");
   }
 
   function getGoogleMapUrlFromAddress(address: any) {
