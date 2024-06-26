@@ -312,7 +312,7 @@ const Certifications = () => {
       </>
     </Modal>)}
     {isApplyCertModal2Open && (<Modal
-      title={t("Link a Certification")}
+      title={t("Apply for a Certification")}
       onClose={closeModal}
       prevModal={prevModal}
       totalSteps={2}
