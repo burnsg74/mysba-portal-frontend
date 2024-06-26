@@ -81,12 +81,11 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
         data: data
       };
       let results = await axios.request(config).catch((error) => { console.log(error); });
-      console.log(results)
 
       if (!results?.data.organizations || results?.data.organizations.length === 0) {
-        setError("No data found for organizations");
+        setError("UEI could not be linked to an existing business. ");
         setHasError(true)
-        throw new Error("No data found for organizations");
+        throw new Error("UEI could not be linked to an existing business. ");
       } else {
         setError("");
         setHasError(false)
