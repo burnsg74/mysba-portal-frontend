@@ -117,7 +117,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     totalSteps={2}
     completedSteps={0}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
-    contentTitle={t("Let’s Change Your Password")}
+    contentTitle={t("Let's Change Your Password")}
     footerContent={(<>
       <button
         type="button"
@@ -146,10 +146,10 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       <div className={`${styles.passwordRequirements}`}>
         Password requirements:
         <ul>
-          <li className={highlightInvalid.minLength ? `${styles.error}` : ""}>At least 8 characters</li>
-          <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>A lowercase letter</li>
-          <li className={highlightInvalid.upperCase ? `${styles.error}` : ""}>An uppercase letter</li>
-          <li className={highlightInvalid.number ? `${styles.error}` : ""}>A number</li>
+          <li className={highlightInvalid.minLength ? `${styles.error}` : ""}>{t("At least 8 characters")}</li>
+          <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>{t("A lowercase letter")}</li>
+          <li className={highlightInvalid.upperCase ? `${styles.error}` : ""}>{t("An uppercase letter")}</li>
+          <li className={highlightInvalid.number ? `${styles.error}` : ""}>{t("A number")}</li>
         </ul>
       </div>
       <ModalInputText label={"New Password"}

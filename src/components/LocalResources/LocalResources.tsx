@@ -173,14 +173,14 @@ const LocalResources = () => {
     {/* Title Row */}
     <div className={`${styles.titleRow}`}>
       <div className={`${styles.title}`}>
-        Local Resources
+        {t("Local Resources")}
       </div>
       <div className={` ${styles.titleZipContainer}`}>
         <div className={`${apiError ? "usa-form-group--error" : ""}`}>
           <label
             htmlFor="zipCode"
             className={`usa-label ${styles.titleZipLabel}`}>
-            Zip Code
+            {t("Zip Code")}
           </label>
           {apiError ? <span className="usa-error-message text-no-wrap" id="input-error-message"
                             role="alert">{apiErrorMessage}</span> : null}

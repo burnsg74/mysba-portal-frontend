@@ -243,5 +243,24 @@
   "If you add your business to MySBA, you can then manage your certifications, like the Women-Owned Small Business (WOSB) or Veteran Small Business (VetCert) certification, and loans—all in one place.": "Si agrega su empresa a MySBA, puede administrar sus certificaciones, como la certificación de Pequeña Empresa Propiedad de Mujeres (WOSB) o Pequeña Empresa de Veteranos (VetCert), y préstamos, todo en un solo lugar.",
   "You haven’t linked any certifications.": "No ha vinculado ninguna certificación.",
   "Why should I get certified?": "¿Por qué debería certificarme?",
-  "SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs.": "La certificación de la SBA es esencial para las empresas que buscan contratos gubernamentales, ya que un porcentaje de estos contratos están reservados para pequeñas empresas certificadas. Esta designación, otorgada por la Administración de Pequeñas Empresas, verifica el tamaño, la propiedad y los estándares de una empresa, lo que proporciona una ventaja competitiva en el acceso a oportunidades exclusivas y programas de apoyo personalizados."
+  "SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs.": "La certificación de la SBA es esencial para las empresas que buscan contratos gubernamentales, ya que un porcentaje de estos contratos están reservados para pequeñas empresas certificadas. Esta designación, otorgada por la Administración de Pequeñas Empresas, verifica el tamaño, la propiedad y los estándares de una empresa, lo que proporciona una ventaja competitiva en el acceso a oportunidades exclusivas y programas de apoyo personalizados.",
+  "Learn more about certifications": "Más información sobre las certificaciones",
+  "Local Resources": "Recursos locales",
+  "Zip Code": "Código Postal",
+  "What is MySBA?": "¿Que es MySBA?",
+  "Change My Password": "Cambiar Mi Contraseña",
+  "Let's Change Your Password": "Cambiemos Tu Contraseña",
+  "Current Password": "Contraseña Actual",
+  "Password requirements": "Requisitos de contraseña",
+  "At least 8 characters": "Al menos 8 caracteres",
+  "A lowercase letter": "Una letra Minúscula",
+  "An uppercase letter": "Una letra Mayúscula",
+  "A number": "Un Numero",
+  "Save": "Guardar",
+  "New Password": "Nueva Contraseña",
+  "Re-Enter New Password": "Vuelva a ingresar la nueva contraseña",
+  "You have successfully changed your password.": "Ha cambiado correctamente su contraseña.",
+  "New password must meet the above requirements": "La nueva contraseña debera cumplir con los requisitos anteriores",
+  "Passwords much match": "Las contraseñas deberan coincidir"
+
 }

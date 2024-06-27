@@ -145,9 +145,8 @@ const Certifications = () => {
           message={<>
             {t("SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs.")}
             <div className={`${styles.learnMore}`}>
-            <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank">Learn more
-              about certifications
-              {' '}
+            <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank">
+              {t("Learn more about certifications") }
               <img src={IconOpenInNew} alt={"Open in New Tab"}/>
             </a>
             </div>
