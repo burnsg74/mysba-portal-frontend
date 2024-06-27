@@ -26,15 +26,14 @@ const Help = () => {
           </h4>
           <div
             id={`a${faq.id}`}
-            className="usa-accordion__content usa-prose"
+            className={`usa-accordion__content usa-prose ${styles.faqContent}`}
             hidden
           >
-            <div className={styles.textContent}>
-              <p
+            <div className={styles.textContent}
                 dangerouslySetInnerHTML={{
                   __html: t(faq.answer).replace(/digitalresearch@SBA.gov/g, "<a href=\"mailto:digitalresearch@SBA.gov\">digitalresearch@SBA.gov</a>"),
                 }}
-              />
+            >
             </div>
           </div>
         </div>))}
