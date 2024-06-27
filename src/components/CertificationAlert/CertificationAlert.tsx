@@ -11,6 +11,10 @@ const CertificationAlert = ({ certification }: ICertificationProps): ReactElemen
   let alertType: "error" | "warning" | "success" | "info";
   let alertMessage: string = "";
 
+  if (!certification.days_until_expiry) {
+    return null;
+  }
+
   if (certification.days_until_expiry <= 0) {
     alertType = "error";
     alertMessage = `Your ${certification.certification_type} certification has expired`;
