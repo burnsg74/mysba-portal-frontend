@@ -184,7 +184,7 @@ const CertificationDetail = () => {
         <button
           type="button"
           className={`usa-button usa-button--outline ${styles.startRecertificationBtn}`}
-          onClick={() => window.open("https://wosb.certify.sba.gov/", "_blank")}
+          onClick={() => window.open(certModelData.url, "_blank")}
         >
           {t("Start the re-certification process")}
         </button>
