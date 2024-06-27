@@ -8,16 +8,20 @@ import Pill from "src/components/Pill/Pill";
 import CertificationCardIcon from "src/assets/certification-card-icon.svg";
 
 function getPillComponents(days_until_expiry: number, t: TFunction): JSX.Element | null {
+  
   if (days_until_expiry <= 0) {
-    return <Pill type={"error"} message={t("Expired")} />;
-  }
-  if (days_until_expiry <= 90) {
+    if (!days_until_expiry) {
+      return <Pill type={"valid"} message={t("Certified")} />;
+    } else {
+      return <Pill type={"error"} message={t("Expired")} />;
+    }
+  } else if (days_until_expiry <= 90) {
     return <Pill type={"warning"} message={`${t("Renew in")} ${days_until_expiry} ${t("Days")}`} />;
-  }
-  if (days_until_expiry > 90) {
+  } else if (days_until_expiry > 90) {
     return <Pill type={"valid"} message={t("Certified")} />;
+  }else{
+    return null
   }
-  return null;
 }
 
 export const CertificationCard: React.FC<ICertificationCardProps> = ({ certification, hideDetails = false }) => {

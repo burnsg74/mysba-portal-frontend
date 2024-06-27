@@ -53,11 +53,15 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
     return activeCertifications;
   }
 
-  const calculateDaysUntilExpiry = (expiryDate: string): number => {
-    const expiry = new Date(expiryDate);
-    const today = new Date();
-    const diffTime = expiry.getTime() - today.getTime();
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const calculateDaysUntilExpiry = (expiryDate: string): number | null => {
+    if (expiryDate) {
+      const expiry = new Date(expiryDate);
+      const today = new Date();
+      const diffTime = expiry.getTime() - today.getTime();
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    } else {
+      return null
+    }
   };
 
   const linkCert = async () => {
@@ -133,7 +137,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
           legal_entity: business.organizationLegalEntity ?? '',
           ownership_type: business.organizationOwnerShipType ?? '',
           uei: business.organizationUei?.replace(/(\d{6})(\d{4})/, "******$2") ?? '',
-          ein: business.organizationEin?.replace(/(\d{2})-(\d{4})(\d{2})/, "**-***$3") ?? '',
+          ein: business.organizationEin ?? '',
           user_id: business.userId ?? '',
           mailing_address_street: business.organizationMailingAddressStreet ?? '',
           mailing_address_city: business.organizationMailingAddressCity ?? '',
@@ -166,7 +170,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
             certification_type: certification.certificationType ?? cert.type,
             issue_date: certification[`${cert.type}CertificationEntranceDate`] ?? '',
             expiration_date: certification[cert.expirationKey] ?? '',
-            days_until_expiry: calculateDaysUntilExpiry(certification[cert.expirationKey]),
+            days_until_expiry: calculateDaysUntilExpiry(certification[cert.expirationKey]) ?? null,
             company_name: business.organizationName ?? '',
             owner: owner,
             naics_codes: business.organizationNaicsCodes ?? '',
