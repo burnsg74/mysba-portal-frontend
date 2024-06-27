@@ -27,20 +27,20 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
   const [hasError, setHasError] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  function parseAndCheckActive(data: Certification) {
-    const activeKeywords: string[] = [];
-    const keywords = ["8a", "WOSB", "SDVOSB", "HUBZone", "VOSB", "EDWOSB"];
-    for (const key in data) {
-        if (data[key] && data[key]!.toString().toLowerCase() === 'active') {
-            keywords.forEach(keyword => {
-                if (key.toLowerCase().includes(keyword.toLowerCase())) {
-                    activeKeywords.push(keyword);
-                }
-            });
+  function parseAndCheckActive(data: Certification): string[] {
+    const activeCertifications: string[] = [];
+    const keywords = ["8a", "8aJointVenture", "WOSB", "SDVOSB", "SDVOSBJointVenture", "HUBZone", "VOSB", "VOSBJointVenture", "EDWOSB"];
+  
+    keywords.forEach(keyword => {
+        const statusKey = `${keyword}CertificationStatus`;
+        if (data[statusKey] && (data[statusKey]!.toString().toLowerCase() === 'active' || data[statusKey]!.toString().toLowerCase() === 'previously certified')) {
+            activeCertifications.push(keyword);
         }
-    }
-    return activeKeywords;
+    });
+  
+    return activeCertifications;
 }
+
 
   const linkCert = async () => {
     try {
@@ -93,6 +93,7 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
 
       const org = results?.data.organizations[0]
       const certs = parseAndCheckActive(org.certification)
+      console.log(certs)
       const updatedStepData = { ...stepData, uei: org.organizationUei, businessName: org.organizationName, certName: certs };
       handleContinue(updatedStepData);
     } catch (error) {
