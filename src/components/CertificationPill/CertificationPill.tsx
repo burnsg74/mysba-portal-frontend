@@ -11,6 +11,10 @@ const CertificationPill = ({ certification }: ICertificationProps): ReactElement
   let pillType: "in-progress" | "valid" | "warning" | "error";
   let message: string;
 
+  if (!certification.days_until_expiry) {
+    return null;
+  }
+
   if (certification.days_until_expiry <= 0) {
     pillType = "error";
     message = "Expired";
