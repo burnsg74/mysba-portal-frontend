@@ -191,14 +191,16 @@ const CertificationDetail = () => {
       </>)}
       <div className={`${styles.categoryGroup}`}>
         <h4 className={`${styles.subtitle}`}>{t("Details")}</h4>
-        <Field label="Company Certified" value={certification.company_name ?? ""} />
-        <Field label="Issue Date" value={issue_date ?? ""} />
-        {expiration_date && <Field label="Expiration Date" value={expiration_date ?? ""} />}
+        {certification.company_name && (<Field label="Company Certified" value={certification.company_name} />)}
+        {issue_date && (<Field label="Issue Date" value={issue_date} />)}
+        {expiration_date && (<Field label="Expiration Date" value={expiration_date} />)}
       </div>
-      <div className={`${styles.categoryGroup}`}>
-        <h4 className={`${styles.subtitle}`}>{t("Ownership")}</h4>
-        <Field label="Owner(s)" value={certification.owner ?? ""} />
-      </div>
+      {certification.owner && (
+        <div className={`${styles.categoryGroup}`}>
+          <h4 className={`${styles.subtitle}`}>{t("Ownership")}</h4>
+          <Field label="Owner(s)" value={certification.owner} />
+        </div>
+      )}
     </div>
     {showManageCertificationModal && (<Modal
       title={t("Manage Certification")}
