@@ -35,43 +35,52 @@ const BusinessDetail = () => {
     return null;
   }
 
+  const mailing_address = (<>{business?.mailing_address_street}<br/>
+    {business?.mailing_address_city}, {business?.mailing_address_state} {business?.mailing_address_zipcode}</>);
+
+  const business_address = (<>{business?.business_address_street}<br/>
+    {business?.business_address_city}, {business?.business_address_state} {business?.business_address_zipcode}</>);
+
   return (<div data-testid="page-business-details" className={`${styles.container}`}>
-      <div className={"grid-row"}>
-        <div className={"grid-col"}>
-          <button
-            type="button"
-            className="usa-button usa-button--outline"
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            {t("Back")}
-          </button>
-        </div>
+    <div className={"grid-row"}>
+      <div className={"grid-col"}>
+        <button
+          type="button"
+          className="usa-button usa-button--outline"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          {t("Back")}
+        </button>
       </div>
-      <div className={`grid-row ${styles.headerRow}`}>
-        <div className={`grid-col-auto ${styles.headerIcon}`}>
-          <img className={`${styles.headerIcon}`} src={BusinessCardIcon} alt={"Business Card Icon"} />
-        </div>
-        <div className={`grid-col`}>
-          <h2 className={`${styles.headerName}`}>{business.name} </h2>
-        </div>
+    </div>
+    <div className={`grid-row ${styles.headerRow}`}>
+      <div className={`grid-col-auto ${styles.headerIcon}`}>
+        <img className={`${styles.headerIcon}`} src={BusinessCardIcon} alt={"Business Card Icon"} />
       </div>
-      <div className={`grid-row`}>
-        <div className="grid-col">
-          <h4 className={`${styles.subheader}`}>{t("Business Information")}</h4>
-        </div>
+      <div className={`grid-col`}>
+        <h2 className={`${styles.headerName}`}>{business.name} </h2>
       </div>
-      <Field label="User ID" value={business.user_id} />
-      <div className={`${styles.subheader}`}>{t("Contact Information")}</div>
-      <Field label="Mailing Address" value={business.mailing_address_street} />
-      <Field label="Business Address" value={business.business_address_street} />
-      <Field label="Phone Number" value={business.business_phone_number} />
-      <Field label="Fax Number" value={business.fax} />
-      <Field label="Email" value={business.email} />
+    </div>
+    <div className={`grid-row`}>
+      <div className="grid-col">
+        <h4 className={`${styles.subheader}`}>{t("Business Information")}</h4>
+      </div>
+    </div>
+    {business.user_id && <Field label="User ID" value={business.user_id} />}
+
+    <div className={`${styles.subheader}`}>{t("Contact Information")}</div>
+    {business.mailing_address_street && <Field label="Mailing Address" value={mailing_address} />}
+    {business.business_address_street && <Field label="Business Address" value={business_address} />}
+    {business.business_phone_number && <Field label="Phone Number" value={business.business_phone_number} />}
+    {business.fax && <Field label="Fax Number" value={business.fax} />}
+    {business.email && <Field label="Email" value={business.email} />}
+    {business.legal_entity && <>
       <div className={`${styles.subheader}`}>{t("Structure")}</div>
       <Field label="Type" value={business.legal_entity} />
-    </div>);
+    </>}
+  </div>);
 };
 
 export default BusinessDetail;
