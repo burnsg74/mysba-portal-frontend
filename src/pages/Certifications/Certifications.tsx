@@ -218,8 +218,8 @@ const Certifications = () => {
                   id="certHUBZone"
                   type="radio"
                   name="certHUBZone"
-                  value="HUBZone"
-                  checked={selectedOption === "HUBZone"}
+                  value="HUBZONE"
+                  checked={selectedOption === "HUBZONE"}
                   onChange={handleOptionChange}
                 />
                 <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certHUBZone">
@@ -248,9 +248,9 @@ const Certifications = () => {
                   type="radio"
                   name="certVet"
                   id="certVet"
-                  value="VetCert"
+                  value="VOSB"
                   className={`usa-radio__input usa-radio__input--tile`}
-                  checked={selectedOption === "VetCert"}
+                  checked={selectedOption === "VOSB"}
                   onChange={handleOptionChange}
                 />
                 <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">

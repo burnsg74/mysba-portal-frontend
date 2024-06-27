@@ -47,7 +47,7 @@ const FrequentlyAskedQuestions: Array<FrequentlyAskedQuestion> = [
   {
     "id": 9,
     "question": "I'm affected by a disaster. Am I able to find out if I’m eligible for a loan (and apply) through MySBA?",
-    "answer": "Confirming your eligibility for and applying for disaster assistance will be available in future versions with directions available here. If you need more information, email digitalresearch@sba.gov and you will receive a reply within two business days."
+    "answer": "Confirming your eligibility for and applying for disaster assistance will be available in future versions with directions available here. If you need more information, email digitalresearch@SBA.gov and you will receive a reply within two business days."
   }
 ];
 
