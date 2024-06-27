@@ -97,15 +97,16 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   }
 
   const isPasswordValid = (password: string) => {
-    setHighlightInvalid({
+    const invalidConditions = {
       minLength: !(password.length >= 8),
       lowerCase: !(/[a-z]/.test(password)),
       upperCase: !(/[A-Z]/.test(password)),
       number   : !(/[0-9]/.test(password)),
       passwordsMatch: !(stepData.newPassword1 === stepData.newPassword2),
-    });
+    };
+    setHighlightInvalid(invalidConditions);
 
-    return !Object.values(highlightInvalid).includes(true);
+    return !Object.values(invalidConditions).includes(true);
   };
 
   const closeModal = () => {
