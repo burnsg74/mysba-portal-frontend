@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "src/components/Alert/Alert.module.css";
+import { useTranslation } from "react-i18next";
 
 interface IAlertProps {
   title?: string;
@@ -8,6 +9,7 @@ interface IAlertProps {
 }
 
 const Alert: React.FC<IAlertProps> = ({ message, type, title=null }) => {
+  const { t } = useTranslation();
 
   return (<div className={`${styles.alertContainer} ${styles["alert-" + type]}`}>
       <svg
@@ -19,8 +21,8 @@ const Alert: React.FC<IAlertProps> = ({ message, type, title=null }) => {
         <use xlinkHref={`/assets/img/sprite.svg#${type}`}></use>
       </svg>
       <div className={`${styles.alertMessage}`}>
-        {title && <div className={`${styles.alertTitle}`}>{title}</div>}
-        {message}
+        {title && <div className={`${styles.alertTitle}`}>{t(title)}</div>}
+        {typeof message === "string" ? t(message) : message}
       </div>
     </div>);
 };

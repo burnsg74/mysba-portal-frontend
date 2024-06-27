@@ -36,12 +36,12 @@ const Businesses = () => {
         <div className={`${styles.noBusinessesMessageContainer}`}>
           <img src={bagIcon} alt="No Businesses" />
           <div className={`${styles.noBusinessesText}`}>
-            You haven’t added any businesses
+            {t("You haven’t added any businesses")}
           </div>
         </div>
 
         <Alert type={"info"}
-               title={"Add your business and customize your experience "}
+               title={"Add your business and customize your experience"}
                message={"If you add your business to MySBA, you can then manage your certifications, like the Women-Owned Small Business (WOSB) or Veteran Small Business (VetCert) certification, and loans—all in one place."} />
       </div>)}
 

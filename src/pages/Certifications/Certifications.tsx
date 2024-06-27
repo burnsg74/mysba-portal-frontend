@@ -135,7 +135,7 @@ const Certifications = () => {
         <div className={`${styles.noCertificationMessageContainer}`}>
           <img src={IconPaperCert} alt={"No Cert"} className={`${styles.noCertsIcon}`} />
           <div className={` ${styles.noCertsText}`}>
-            You haven’t linked any certifications.
+            {t("You haven’t linked any certifications.")}
           </div>
         </div>
 
@@ -143,7 +143,7 @@ const Certifications = () => {
           type={"info"}
           title={"Why should I get certified?"}
           message={<>
-            {"SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs. "}
+            {t("SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs.")}
             <div className={`${styles.learnMore}`}>
             <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank">Learn more
               about certifications
