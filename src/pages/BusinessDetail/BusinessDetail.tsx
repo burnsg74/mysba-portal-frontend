@@ -62,8 +62,6 @@ const BusinessDetail = () => {
           <h4 className={`${styles.subheader}`}>{t("Business Information")}</h4>
         </div>
       </div>
-      <Field label="EIN" value={business.ein} />
-      <Field label="UEI" value={business.uei} />
       <Field label="User ID" value={business.user_id} />
       <div className={`${styles.subheader}`}>{t("Contact Information")}</div>
       <Field label="Mailing Address" value={business.mailing_address_street} />

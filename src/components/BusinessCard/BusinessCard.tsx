@@ -31,13 +31,6 @@ export const BusinessCard: React.FC<IBusinessCardProps> = ({ business, hideDetai
       </div>
       <div className={`grid-col-auto ${styles.bodySubGroup}`}>
         {t("UEI")}: {business.uei}
-        <img
-          className={`${styles.ellipsesIcon}`}
-          src={ellipse}
-          alt={"Ellipsis icon"}
-        />
-        {t("EIN")}: {business.ein}
-
       </div>
     </div>);
   return <Card icon={BusinessCardIcon} title={business.name} detailsPage={`/businesses/detail/${business.id}`}
