@@ -254,7 +254,7 @@ const AccountSetup2 = () => {
           >
             <input
               className="usa-checkbox__input usa-checkbox__input--tile"
-              id="woman-owned-business"
+              id="women-owned-business"
               type="checkbox"
               name="womenOwnedBusinessContent"
               checked={state.womenOwnedBusinessContent}
@@ -262,7 +262,7 @@ const AccountSetup2 = () => {
             />
             <label
               className={`usa-checkbox__label ${styles.usaCheckboxLabel}`}
-              htmlFor="woman-owned-business"
+              htmlFor="women-owned-business"
             >
                   <span className={`${styles.labelText}`}>
                     {t("Women-owned business content")}
