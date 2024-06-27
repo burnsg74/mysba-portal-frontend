@@ -97,7 +97,7 @@ let learningCenterCourses = {
         type: "infographic",
         title: "Fact, Fiction and Benefits of Government Contracting",
         description: "Infographic (3 minutes)",
-        link: "https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer",
+        link: "https://learn.sba.gov/lc-government-contracting/lc-government-as-your-customer/lc-fact-fiction-and-benefits-of-government-contracting-1",
       },
     ]
   ),
