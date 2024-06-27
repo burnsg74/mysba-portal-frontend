@@ -171,3 +171,7 @@ a {
     min-width: 24px;
     height: 32px;
 }
+
+.faqContent {
+    padding: 16px 24px;
+}
