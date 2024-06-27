@@ -255,7 +255,7 @@ const Certifications = () => {
                 />
                 <label className={`usa-radio__label ${styles.radioLabel}`} htmlFor="certVet">
                       <span className={`${styles.checkboxLabel}`}>
-                        {t("Veteran-Owned Small Business (VetCert) Certification")}
+                        {t("Veteran-Owned Small Business (VOSB) Certification")}
                       </span>
                   <span className={`${styles.toolTip}`}>
                         <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
