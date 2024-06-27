@@ -53,11 +53,15 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
     return activeCertifications;
   }
 
-  const calculateDaysUntilExpiry = (expiryDate: string): number => {
-    const expiry = new Date(expiryDate);
-    const today = new Date();
-    const diffTime = expiry.getTime() - today.getTime();
-    return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+  const calculateDaysUntilExpiry = (expiryDate: string): number | null => {
+    if (expiryDate) {
+      const expiry = new Date(expiryDate);
+      const today = new Date();
+      const diffTime = expiry.getTime() - today.getTime();
+      return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    } else {
+      return null
+    }
   };
 
   const linkCert = async () => {
