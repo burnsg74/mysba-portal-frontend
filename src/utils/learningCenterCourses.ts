@@ -106,7 +106,7 @@ let learningCenterCourses = {
     "Legal Requirements",
     "Review how small business legal requirements can impact your business.",
     "/assets/learning-center-legal-requirements.png",
-    "https://learn.sba.gov/learning-center-launch/learning-center-legal-requirements",
+    "https://learn.sba.gov/learning-center-plan/learning-center-learning-requirements",
     [
       {
         id: 1,
