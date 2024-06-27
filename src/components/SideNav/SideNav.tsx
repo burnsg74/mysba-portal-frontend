@@ -33,8 +33,8 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile = false }) 
       {NAVIGATION_LINKS.map((item) => (<Link
           to={item.url}
           key={item.name}
-          aria-label={item.name}
-          title={item.name}
+          aria-label={t(item.name)}
+          title={t(item.name)}
           onClick={() => handleClick()}
           className={`grid-row ${styles.row} ${window.location.pathname.startsWith(item.url) ? styles.rowActive : ""}`}
           data-testid={`${forMobile ? "mobile-" : "side-"}nav-link-${item.name}`}
