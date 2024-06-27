@@ -41,17 +41,17 @@ const Help = () => {
       <div style={{ width: "100%", marginBottom: "40px" }}>
         <Alert
           type={"info"}
-          title={"Still need assistance? "}
+          title={"Still need assistance?"}
           message={<>
-            The SBA is available over phone and email to help.<br />
+          {t("The SBA is available over phone and email to help.")}<br />
             <br />
-            Contact us today:<br />
+          {t("Contact us today")}:<br />
             <ul style={{ margin: 0 }}>
               <li>
                 <a href="tel:18008275722">Tel: 1 (800) 827-5722</a><br />
               </li>
               <li>
-                <a href="mailto:answerdesk@sba.gov">Email: answerdesk@sba.gov</a>
+                <a href="mailto:answerdesk@sba.gov">{t("Email")}: answerdesk@sba.gov</a>
               </li>
             </ul>
           </>} />

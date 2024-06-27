@@ -202,7 +202,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
     totalSteps={3}
     completedSteps={1}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
-    contentTitle={t(`Is ${businessData.businessName} your business?`)}
+    contentTitle={t('Is {{businessName}} your business?', { businessName: businessData.businessName })}
     contentMessage={t("If this business name doesn't match, please go back to the previous step and make sure you entered your UEI correctly.")}
     footerContent={(<>
       <button

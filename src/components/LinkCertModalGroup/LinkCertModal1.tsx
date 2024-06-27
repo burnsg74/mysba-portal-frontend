@@ -149,7 +149,7 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
         UEI<span style={{ color: "#D54309" }}>*</span>
       </span>
           <br />
-          <span className={`${styles.greyLabel}`}>Unique Entity Identifier (12 Characters)</span>
+          <span className={`${styles.greyLabel}`}>{t("Unique Entity Identifier (12 Characters)")}</span>
           <br />
           {error && <span className={styles.error}>{error}</span>}
         </label>

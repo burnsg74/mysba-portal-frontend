@@ -261,6 +261,16 @@
   "Re-Enter New Password": "Vuelva a ingresar la nueva contraseña",
   "You have successfully changed your password.": "Ha cambiado correctamente su contraseña.",
   "New password must meet the above requirements": "La nueva contraseña debera cumplir con los requisitos anteriores",
-  "Passwords much match": "Las contraseñas deberan coincidir"
-
+  "Passwords much match": "Las contraseñas deberan coincidir",
+  "Unique Entity Identifier (12 Characters)": "Identificador único de entidad (12 caracteres)",
+  "If this business name doesn't match, please go back to the previous step and make sure you entered your UEI correctly.": "Si el nombre de esta empresa no coincide, vuelva al paso anterior y asegúrese de haber introducido correctamente el UEI.",
+  "Is {{businessName}} your business?": "¿Es {{businessName}} su empresa?",
+  "Confirm": "Confirmar",
+  "How do I get help on features in MySBA?": "¿Cómo obtengo ayuda sobre las funciones de MySBA?",
+  "I don't have SBA loans or contracting certifications yet. Will I be able to connect them in MySBA when/if I do get them?": "Todavía no tengo préstamos de la SBA ni certificaciones de contratación. ¿Podré conectarlos en MySBA cuando los reciba?",
+  "I'm affected by a disaster. Am I able to find out if I’m eligible for a loan (and apply) through MySBA?": "He sido afectado por un desastre. ¿Puedo averiguar si soy elegible para un préstamo (y solicitarlo) a través de MySBA?",
+  "Yes. Via MySBA, you will be able to link to and connect additional SBA products and services, including new businesses, certifications and loans, as you engage with them.": "Si. A través de MySBA, usted podrá vincular y conectar productos y servicios adicionales de la SBA, incluyendo nuevos negocios, certificaciones y préstamos, a medida que usted interactúa con ellos.",
+  "Confirming your eligibility for and applying for disaster assistance will be available future versions with directions available here. If you need more information, email digitalresearch@sba.gov and you will receive a reply within two business days.": "La confirmación de su elegibilidad, y la solicitud de asistencia por desastre estarán disponibles en versiones futuras con instrucciones disponibles aquí. Si necesita más información, envíe un correo electrónico a digitalresearch@sba.gov  y recibirá una respuesta en un plazo de dos días laborables.",
+  "The SBA is available over phone and email to help.": "La SBA está disponible por teléfono y correo electrónico para ayudarle.",
+  "Contact us today": "Póngase en contacto con nosotros hoy"
 }
