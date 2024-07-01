@@ -129,7 +129,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
         if (userFriendlyMessage === "Password has been used too recently. Please choose a different password.") {
           setHighlightInvalid(prevState => ({ ...prevState, lastPasswords: true }));
           setHasNewPasswordErrors(true);
-          setChangePasswordErrorMsg("Password has been used too recently. Please choose a different password.");
+          setChangePasswordErrorMsg("New password must meet password requirements");
         } else if (userFriendlyMessage === "The current password you entered is incorrect. Please try again.") {
           setCurrentPasswordErrorMsg(userFriendlyMessage)
           setChangePasswordErrorMsg(userFriendlyMessage)
