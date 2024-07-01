@@ -29,6 +29,19 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   const [highlightInvalid, setHighlightInvalid] = useState({
     minLength     : false, lowerCase: false, upperCase: false, number: false, passwordsMatch: false });
 
+
+  interface ApiErrorMessages {
+    [key: string]: string;
+  }
+  const apiErrorMessages: ApiErrorMessages = {
+    "Okta password update aborted: Previous password is incorrect.": "The current password you entered is incorrect. Please try again.",
+    "Okta HTTP 403 E0000006 You do not have permission to perform the requested action": "Okta Admin: You can't use this interface to change your password.",
+    "Okta HTTP 400 E0000001 Api validation failed: password password: Password has been used too recently": "Password has been used too recently. Please choose a different password.",
+  };
+  const getUserFriendlyError = (apiError: string): string => {
+    return apiErrorMessages[apiError] || "An unexpected error occurred. Please try again later.";
+  };
+
   useEffect(() => {
     async function fetchUser() {
       if (!authState?.isAuthenticated) {
@@ -50,16 +63,19 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   };
 
   function handleSaveBtnClick() {
+    console.log("MAT-2175 handleSaveBtnClick")
     setIsSaveDisabled(true);
     setSaveBtnLabel("Saving...");
+    console.log("Saving")
     if (!isPasswordValid(stepData.newPassword1)) {
+      console.log("Local Invalid ")
       setHasErrors(true);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
       return;
-    } else {
-      setHasErrors(false);
-      setIsSaveDisabled(true);
+    // } else {
+    //   setHasErrors(false);
+    //   setIsSaveDisabled(true);
     }
 
     let accessToken: string | AccessToken | null | undefined;
@@ -81,19 +97,25 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
         if (response.status !== 200) {
           throw new Error(`Error: ${response.statusText}`);
         }
+        setIsSaveDisabled(false);
+        setSaveBtnLabel("Save");
         handleContinue();
       }).catch((error) => {
-        console.error("Axios Error", error);
-        setChangePasswordErrorMsg(`Error: Unable to change password, ${error.message}`);
+        console.error("Axios Error 2", error.response.data);
+        const apiErrorMessage = (error?.response?.data?.['Error'] ?? null)?.replace(/\r?\n|\r/g, '');
+        console.log("apiErrorMessage", apiErrorMessage)
+        const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
+        setChangePasswordErrorMsg(userFriendlyMessage);
+        setIsSaveDisabled(false);
+        setSaveBtnLabel("Save");
       });
 
     } catch (error: string | any) {
-      console.error("Axios Error", error);
+      console.error("APP Error 1", error);
       setChangePasswordErrorMsg(`Error: Unable to change password, ${error.message}`);
+      setIsSaveDisabled(false);
+      setSaveBtnLabel("Save");
     }
-
-    setIsSaveDisabled(false);
-    setSaveBtnLabel("Save");
   }
 
   const isPasswordValid = (password: string) => {
@@ -119,6 +141,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     completedSteps={0}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("Let's Change Your Password")}
+    errorMessage={changePasswordErrorMsg}
     footerContent={(<>
       <button
         type="button"
@@ -136,7 +159,6 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     </>)}
   >
     <div className={`${styles.inputContainer}`}>
-      <p className={styles.error}>{changePasswordErrorMsg}</p>
       <ModalInputText label={"Current Password"}
                       name={"currentPassword"}
                       isPassword={true}

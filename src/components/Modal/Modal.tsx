@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "src/components/Modal/Modal.module.css";
 import { useTranslation } from "react-i18next";
 import ReactFocusLock from "react-focus-lock";
+import Alert from "src/components/Alert/Alert";
 
 interface ImageAndAlt {
   image: string;
@@ -20,6 +21,7 @@ interface ModalProps {
   children?: React.ReactNode;
   footerContent?: React.ReactNode;
   hideCloseButton?: boolean;
+  errorMessage?: string;
 }
 
 function useFocusTrap(ref: React.RefObject<HTMLElement>, initialFocusRef: React.RefObject<HTMLElement>) {
@@ -68,6 +70,7 @@ const ModalComponent = ({
   children,
   footerContent,
   hideCloseButton=false,
+  errorMessage
 }: ModalProps) => {
   const { t } = useTranslation();
   const footerRef = useRef<HTMLDivElement>(null);
@@ -145,6 +148,9 @@ const ModalComponent = ({
                 })}
               </ol>
             </div>
+            {errorMessage && <div  className={`${styles.alertContainer}`}>
+              <Alert message={errorMessage} type={"error"}/>
+            </div>}
           </div>)}
           <div ref={contentRef} className={`${styles.contentContainer}`}>
             <div className={`${styles.contentHeader}`}>

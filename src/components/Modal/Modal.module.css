@@ -197,3 +197,7 @@
   width: 100%;
   z-index: 100;
 }
+
+.alertContainer {
+  padding-top: 5px;
+}
