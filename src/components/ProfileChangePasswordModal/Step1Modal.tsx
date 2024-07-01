@@ -17,9 +17,12 @@ interface Step1ModalProps {
 const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) => {
   const change_password_url = `${PORTAL_API_URL}/sso-change-password`;
   const [hasErrors, setHasErrors] = useState(false);
+  const [hasNewPasswordErrors, setHasNewPasswordErrors] = useState(false);
+  const [hasPasswordMatchErrors, setHasPasswordMatchErrors] = useState(false);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
   const [saveBtnLabel, setSaveBtnLabel] = useState("Save");
   const [changePasswordErrorMsg, setChangePasswordErrorMsg] = useState("");
+  const [currentPasswordErrorMsg, setCurrentPasswordErrorMsg] = useState("");
   const [user, setUser] = useState(null);
   const { oktaAuth, authState } = useOktaAuth();
   const { t } = useTranslation();
@@ -27,7 +30,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     currentPassword: "", newPassword1: "", newPassword2: "",
   });
   const [highlightInvalid, setHighlightInvalid] = useState({
-    minLength     : false, lowerCase: false, upperCase: false, number: false, passwordsMatch: false });
+    minLength: false, lowerCase: false, upperCase: false, number: false, lastPasswords: false });
 
 
   interface ApiErrorMessages {
@@ -37,6 +40,8 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     "Okta password update aborted: Previous password is incorrect.": "The current password you entered is incorrect. Please try again.",
     "Okta HTTP 403 E0000006 You do not have permission to perform the requested action": "Okta Admin: You can't use this interface to change your password.",
     "Okta HTTP 400 E0000001 Api validation failed: password password: Password has been used too recently": "Password has been used too recently. Please choose a different password.",
+    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password has been used too recently": "Password has been used too recently. Please choose a different password.",
+    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password cannot be your current password": "Password has been used too recently. Please choose a different password.",
   };
   const getUserFriendlyError = (apiError: string): string => {
     return apiErrorMessages[apiError] || "An unexpected error occurred. Please try again later.";
@@ -66,16 +71,26 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     console.log("MAT-2175 handleSaveBtnClick")
     setIsSaveDisabled(true);
     setSaveBtnLabel("Saving...");
+    setHasErrors(false)
+    setHasNewPasswordErrors(false)
+    setCurrentPasswordErrorMsg("")
+    setChangePasswordErrorMsg("")
+
     console.log("Saving")
     if (!isPasswordValid(stepData.newPassword1)) {
       console.log("Local Invalid ")
-      setHasErrors(true);
+      setHasNewPasswordErrors(true);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
       return;
     // } else {
     //   setHasErrors(false);
     //   setIsSaveDisabled(true);
+    }
+
+    if (!doesPasswordsMatch()) {
+      setHasPasswordMatchErrors(true)
+      return;
     }
 
     let accessToken: string | AccessToken | null | undefined;
@@ -99,13 +114,29 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
         }
         setIsSaveDisabled(false);
         setSaveBtnLabel("Save");
+        setHasErrors(false)
+        setCurrentPasswordErrorMsg("")
         handleContinue();
       }).catch((error) => {
         console.error("Axios Error 2", error.response.data);
         const apiErrorMessage = (error?.response?.data?.['Error'] ?? null)?.replace(/\r?\n|\r/g, '');
         console.log("apiErrorMessage", apiErrorMessage)
         const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
-        setChangePasswordErrorMsg(userFriendlyMessage);
+
+        // Password has been used too recently. Please choose a different password.
+        // lastPasswords
+
+        if (userFriendlyMessage === "Password has been used too recently. Please choose a different password.") {
+          setHighlightInvalid(prevState => ({ ...prevState, lastPasswords: true }));
+          setHasNewPasswordErrors(true);
+        } else if (userFriendlyMessage === "The current password you entered is incorrect. Please try again.") {
+          setCurrentPasswordErrorMsg(userFriendlyMessage)
+          setChangePasswordErrorMsg(userFriendlyMessage)
+        } else {
+          setChangePasswordErrorMsg(userFriendlyMessage);
+          setHasErrors(true)
+        }
+
         setIsSaveDisabled(false);
         setSaveBtnLabel("Save");
       });
@@ -124,12 +155,16 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       lowerCase: !(/[a-z]/.test(password)),
       upperCase: !(/[A-Z]/.test(password)),
       number   : !(/[0-9]/.test(password)),
-      passwordsMatch: !(stepData.newPassword1 === stepData.newPassword2),
+      lastPasswords: false
     };
     setHighlightInvalid(invalidConditions);
 
     return !Object.values(invalidConditions).includes(true);
   };
+
+  const doesPasswordsMatch = () => {
+   return  (stepData.newPassword1 === stepData.newPassword2)
+  }
 
   const closeModal = () => {
     handleClose();
@@ -164,7 +199,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
                       isPassword={true}
                       value={stepData.currentPassword}
                       required={true}
-                      errorMessage=""
+                      errorMessage={currentPasswordErrorMsg}
                       onChange={handleInputChange} />
       <div className={`${styles.passwordRequirements}`}>
         Password requirements:
@@ -173,6 +208,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>{t("A lowercase letter")}</li>
           <li className={highlightInvalid.upperCase ? `${styles.error}` : ""}>{t("An uppercase letter")}</li>
           <li className={highlightInvalid.number ? `${styles.error}` : ""}>{t("A number")}</li>
+          <li className={highlightInvalid.lastPasswords ? `${styles.error}` : ""}>Password can't be the same as your last 4 passwords </li>
         </ul>
       </div>
       <ModalInputText label={"New Password"}
@@ -180,14 +216,14 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
                       isPassword={true}
                       value={stepData.newPassword1}
                       required={true}
-                      errorMessage={hasErrors ? "New password must meet the above requirements" : ""}
+                      errorMessage={hasNewPasswordErrors ? "New password must meet the above requirements" : ""}
                       onChange={handleInputChange} />
       <ModalInputText label={"Re-Enter New Password"}
                       name={"newPassword2"}
                       isPassword={true}
                       required={true}
                       value={stepData.newPassword2}
-                      errorMessage={highlightInvalid.passwordsMatch ? "Passwords must match" : ""}
+                      errorMessage={!doesPasswordsMatch() ? "Passwords must match" : ""}
                       onChange={handleInputChange} />
     </div>
   </Modal>);
