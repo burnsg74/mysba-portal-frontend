@@ -82,6 +82,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       setHasNewPasswordErrors(true);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
+      setChangePasswordErrorMsg("New password must meet password requirements");
       return;
     // } else {
     //   setHasErrors(false);
@@ -124,9 +125,6 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
         const apiErrorMessage = (error?.response?.data?.['Error'] ?? null)?.replace(/\r?\n|\r/g, '');
         console.log("apiErrorMessage", apiErrorMessage)
         const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
-
-        // Password has been used too recently. Please choose a different password.
-        // lastPasswords
 
         if (userFriendlyMessage === "Password has been used too recently. Please choose a different password.") {
           setHighlightInvalid(prevState => ({ ...prevState, lastPasswords: true }));
