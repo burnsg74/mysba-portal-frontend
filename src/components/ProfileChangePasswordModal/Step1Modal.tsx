@@ -90,6 +90,8 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
 
     if (!doesPasswordsMatch()) {
       setHasPasswordMatchErrors(true)
+      setIsSaveDisabled(false);
+      setSaveBtnLabel("Save");
       return;
     }
 
