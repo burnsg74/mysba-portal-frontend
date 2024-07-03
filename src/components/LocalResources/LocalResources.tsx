@@ -229,7 +229,7 @@ const LocalResources = () => {
                 <title>{t("Open in a new window")}</title>
                 <use xlinkHref="/assets/img/sprite.svg#launch"></use>
               </svg>
-              <a href={district.website} target="_blank"> Website </a>
+              <a href={district.website} target="_blank">{t("Website")}</a>
             </div>
             <div className={`${styles.bodyDistrictCardDetailsLinksGroup}`}>
 
@@ -258,11 +258,11 @@ const LocalResources = () => {
                   </clipPath>
                 </defs>
               </svg>
-              <a href={district.social_media_x_url} target="_blank"> Follow us on X </a>
+              <a href={district.social_media_x_url} target="_blank">{t("Follow us on X")}</a>
             </div>}
             {district.social_media_linkedin_url && <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
               <img src={logoLinkedIn} alt="linkedIn logo" className={styles.linkedInLogo} />
-              <a href={district.social_media_linkedin_url} target="_blank"> Follow us on LinkedIn </a>
+              <a href={district.social_media_linkedin_url} target="_blank">{t("Follow us on LinkedIn")}</a>
             </div>}
           </div>
           <a href={`https://www.sba.gov/contact/contact_your_district_office?district=${district.district_nid}`}
@@ -292,7 +292,7 @@ const LocalResources = () => {
           <div className={`${styles.officeCardDetailsContainer}`}>
             <div className={`${styles.officeCardDetailsTitle}`}>{office.title}</div>
             {office.appointment_only &&
-              <div className={`usa-tag ${styles.officeCardDetailsAptOnly}`}>Appointment Only</div>}
+              <div className={`usa-tag ${styles.officeCardDetailsAptOnly}`}>{t("Appointment Only")}</div>}
             <div className={`${styles.officeCardDetailsPhone}`}>
               <svg
                 className={`usa-icon ${styles.launchIcon}`}
@@ -327,7 +327,7 @@ const LocalResources = () => {
       </div>
       <div className={`${styles.guideContainer}`}>
         <div className={`${styles.guideTitle}`}>
-          Explore your local business guide
+          {t("Explore your local business guide")}
         </div>
         <div>
           <a href={district.field_district_business_link} target="_blank" rel="noopener noreferrer">
