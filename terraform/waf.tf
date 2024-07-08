@@ -53,7 +53,7 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
     priority = 2
 
     override_action {
-      count {}
+      none {}
     }
 
     statement {
@@ -84,7 +84,7 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
     priority = 3
     name     = "amazon-common"
     override_action {
-      count {}
+      none {}
     }
     statement {
       managed_rule_group_statement {
