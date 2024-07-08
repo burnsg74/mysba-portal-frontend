@@ -95,6 +95,8 @@
     font-style: normal;
     font-weight: 700;
     line-height: 90%;
+    padding:12px 20px;
+    gap: 10px;
 }
 
 .viewCourseBtn:active {
