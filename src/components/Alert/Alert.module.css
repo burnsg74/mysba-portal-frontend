@@ -45,6 +45,10 @@
     background-color: var(--Alert-Error-Bar);
 }
 
+.alert-success {
+    background: var(--Alert-Valid-Background);
+}
+
 .alertTitle {
     color: var(--Text-Text);
     font-size: 22px;

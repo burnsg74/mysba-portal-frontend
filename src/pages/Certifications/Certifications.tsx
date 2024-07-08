@@ -140,7 +140,7 @@ const Certifications = () => {
         </div>
 
         <Alert
-          type={"info"}
+          type={"success"}
           title={"Why should I get certified?"}
           message={<>
             {t("SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs.")}

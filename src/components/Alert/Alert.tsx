@@ -10,7 +10,12 @@ interface IAlertProps {
 
 const Alert: React.FC<IAlertProps> = ({ message, type, title=null }) => {
   const { t } = useTranslation();
-
+  let typeIcon
+  if (type==="success"){
+    typeIcon = "lightbulb"
+  } else {
+    typeIcon = type
+  }
   return (<div className={`${styles.alertContainer} ${styles["alert-" + type]}`}>
       <svg
         className={`usa-icon ${styles.alertIcon}`}
@@ -18,7 +23,7 @@ const Alert: React.FC<IAlertProps> = ({ message, type, title=null }) => {
         focusable="false" 
         data-testid="alert-icon"
       >
-        <use xlinkHref={`/assets/img/sprite.svg#${type}`}></use>
+        <use xlinkHref={`/assets/img/sprite.svg#${typeIcon}`}></use>
       </svg>
       <div className={`${styles.alertMessage}`}>
         {title && <div className={`${styles.alertTitle}`}>{t(title)}</div>}
