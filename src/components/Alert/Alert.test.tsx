@@ -5,11 +5,11 @@ import '@testing-library/jest-dom';
 
 describe('Alert component', () => {
   test('renders the correct message', () => {
-    const { rerender } = render(<Alert message="Success message" type="success" />);
-    expect(screen.getByText('Success message')).toBeInTheDocument();
-    expect(screen.getByText('Success message').parentNode).toHaveClass('alertContainer alert-success');
+    const { rerender } = render(<Alert message="info message" type="info" />);
+    expect(screen.getByText('info message')).toBeInTheDocument();
+    expect(screen.getByText('info message').parentNode).toHaveClass('alertContainer alert-info');
     const iconUse = screen.getByTestId('alert-icon').querySelector('use');
-    expect(iconUse).toHaveAttribute('xlink:href', '/assets/img/sprite.svg#success');
+    expect(iconUse).toHaveAttribute('xlink:href', '/assets/img/sprite.svg#info');
     
 
     // Rerender the component with a different type to verify the correct classes and attributes are applied
