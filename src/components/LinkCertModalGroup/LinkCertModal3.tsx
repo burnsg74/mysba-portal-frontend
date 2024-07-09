@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "src/components/Modal/Modal";
 import styles from "src/components/LinkCertModalGroup/LinkCertModal.module.css";
@@ -21,13 +21,34 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
     uei: businessData.uei, businessName: businessData.businessName, certName: businessData.certName,
   });
 
+  const certTranslationMap: { [key: string]: string } = {
+    "WOSB": "Women Owned Small Business",
+    "EDWOSB": "Economically Disadvantaged Women Owned Small Business",
+    "8a": "8(a)",
+    "8aJointVenture": "8(a) Joint Venture",
+    "SDVOSB": "Service-Disabled Veteran Owned Small Business",
+    "SDVOSBJointVenture": "Service-Disabled Veteran Owned Small Business Joint Venture",
+    "HUBZone": "HUBZone",
+    "VOSB": "Veteran Owned Small Business",
+    "VOSBJointVenture": "Veteran Owned Small Business Joint Venture"
+    
+  };
+
+  const translatedCertNames = useMemo(
+    () =>
+      stepData.certName.map((cert) => certTranslationMap[cert] || cert),
+    [stepData.certName, certTranslationMap]
+  );
+
+  console.log(translatedCertNames)
+
   let modalTitle
 
   if (stepData.certName.length > 0) {
     if(stepData.certName.length === 1) {
-      modalTitle = t(`Your ${stepData.certName[0]} has been successfully added!`)
+      modalTitle = t(`Your ${translatedCertNames[0]} has been successfully added!`)
     } else {
-      const certNames = stepData.certName.map((cert, index) => {
+      const certNames = translatedCertNames.map((cert, index) => {
         if(index === stepData.certName.length - 1 && stepData.certName.length > 1) {
           return ` and ${cert}`;
         }
