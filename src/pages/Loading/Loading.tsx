@@ -92,6 +92,7 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log('authState?.isAuthenticated', authState?.isAuthenticated)
     if (authState?.isAuthenticated) {
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
@@ -125,6 +126,10 @@ const Loading = () => {
       });
     }
   }, []);
+
+  useEffect(() => {
+    console.log('useEffect: authState?.isAuthenticated', authState?.isAuthenticated)
+  }, [authState?.isAuthenticated]);
 
   useEffect(() => {
     let interval = setInterval(() => {
