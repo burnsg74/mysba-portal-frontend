@@ -4,7 +4,11 @@
     gap: 40px;
     margin-top: 40px;
 }
-
+.alertsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
 .titleContainer {
     align-items: center;
     display: flex;
@@ -238,10 +242,6 @@
     font-weight: 400;
     line-height: 120%;
     text-align: center;
-}
-
-.certificationRow {
-    padding-bottom: 40px;
 }
 
 .certificationRow:last-child {

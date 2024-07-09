@@ -103,11 +103,13 @@ const Certifications = () => {
   return (<>
     <div data-testid="page-certifications" className={`main-container ${styles.pageContainer}`}>
       {/* Certifications Alerts */}
+      <div className={`${styles.alertsContainer}`}>
         {user.certifications?.map((certification) => {
           return (<React.Fragment key={certification.certification_id}>
             <CertificationAlert certification={certification} />
           </React.Fragment>);
         })}
+      </div>
 
       {/* Title Row */}
       <div className={`${styles.titleContainer}`}>
@@ -157,7 +159,7 @@ const Certifications = () => {
       {user.certifications && [...user.certifications]
         .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
         .map((certification) => (
-          <div key={certification.certification_id} className={`grid-row ${styles.certificationRow}`}>
+          <div key={certification.certification_id} className={`grid-row`}>
             <div className="grid-col">
               <CertificationCard key={certification.certification_id} certification={certification} />
             </div>
