@@ -61,6 +61,7 @@ const App: React.FC = () => {
   }, [location.pathname, profileData?.profile?.crm?.email]);
 
   const restoreOriginalUri = () => {
+    console.log('Restore Original, goto loading');
     navigate("/loading");
   };
 
@@ -85,7 +86,7 @@ const App: React.FC = () => {
   return (
     <Security
       oktaAuth={oktaAuth}
-      onAuthRequired={() => navigate("/")}
+      onAuthRequired={() => {console.log('onAuthRequired: goto /'); navigate("/")}}
       restoreOriginalUri={restoreOriginalUri}
     >
       <Routes>
