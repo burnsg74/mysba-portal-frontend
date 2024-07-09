@@ -56,7 +56,7 @@ const App: React.FC = () => {
     }
     if (!profileData?.profile?.crm?.email) {
       console.log('No CRM Profile')
-      // navigate("/");
+      navigate("/");
     }
   }, [location.pathname, profileData?.profile?.crm?.email]);
 
