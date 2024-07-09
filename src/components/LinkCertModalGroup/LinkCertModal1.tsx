@@ -93,7 +93,6 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
 
       const org = results?.data.organizations[0]
       const certs = parseAndCheckActive(org.certification)
-      console.log(certs)
       const updatedStepData = { ...stepData, uei: org.organizationUei, businessName: org.organizationName, certName: certs };
       handleContinue(updatedStepData);
     } catch (error) {

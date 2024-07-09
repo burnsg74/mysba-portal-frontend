@@ -40,8 +40,6 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
     [stepData.certName, certTranslationMap]
   );
 
-  console.log(translatedCertNames)
-
   let modalTitle
 
   if (stepData.certName.length > 0) {

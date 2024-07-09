@@ -86,9 +86,7 @@ const Loading = () => {
   };
 
   useEffect(() => {
-    console.log('Set timeout for 10 secs')
     const timer = setTimeout(() => {
-      console.log('Times up, goto landing page')
       navigate("/");
     }, 10000);
 
@@ -104,9 +102,7 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log('UseEffect authState?.isAuthenticated: ', authState?.isAuthenticated);
     if (authState?.isAuthenticated) {
-      console.log('isAuthenticated try to load');
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {

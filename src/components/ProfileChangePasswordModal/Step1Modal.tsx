@@ -68,7 +68,6 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   };
 
   function handleSaveBtnClick() {
-    console.log("MAT-2175 handleSaveBtnClick")
     setIsSaveDisabled(true);
     setSaveBtnLabel("Saving...");
     setHasErrors(false)
@@ -76,17 +75,12 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     setCurrentPasswordErrorMsg("")
     setChangePasswordErrorMsg("")
 
-    console.log("Saving")
     if (!isPasswordValid(stepData.newPassword1)) {
-      console.log("Local Invalid ")
       setHasNewPasswordErrors(true);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
       setChangePasswordErrorMsg("New password must meet password requirements");
       return;
-    // } else {
-    //   setHasErrors(false);
-    //   setIsSaveDisabled(true);
     }
 
     if (!doesPasswordsMatch()) {

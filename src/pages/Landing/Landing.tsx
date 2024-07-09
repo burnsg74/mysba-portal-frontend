@@ -62,7 +62,6 @@ const LandingPage = () => {
     const zipcodeToDistrict = 20416;
 
     // Getting CORS error
-    console.log('Get Local District')
     axios.get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcodeToDistrict}`).then((response) => {
       // businessData[0].district = response.data.district;
       console.log("district", response);

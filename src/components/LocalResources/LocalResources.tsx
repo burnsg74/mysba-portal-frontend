@@ -96,7 +96,6 @@ const LocalResources = () => {
               return newOffice;
             }) || [],
           };
-          console.log('newDistrict',newDistrict)
           setDistrict(newDistrict);
           updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
         } catch (error) {

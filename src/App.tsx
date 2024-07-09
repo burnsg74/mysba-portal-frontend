@@ -45,7 +45,6 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    console.log('useEffect location, profileData?.profile?.crm?.email]', location.pathname, profileData?.profile?.crm?.email);
     if (
       location.pathname === "/" ||
       location.pathname === "/loading" ||
@@ -55,7 +54,6 @@ const App: React.FC = () => {
       return;
     }
     if (!profileData?.profile?.crm?.email) {
-      console.log('No CRM user, goto landing')
       navigate("/");
     }
   }, [location.pathname, profileData?.profile?.crm?.email]);

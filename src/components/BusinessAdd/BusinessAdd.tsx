@@ -66,8 +66,7 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
       }
       data.id=email;
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
-      const res = await axios.post(`${BASE_API_URL}/business`, data);
-      console.log("saveNewBusinesses res", res);
+      await axios.post(`${BASE_API_URL}/business`, data);
     } catch (error) {
       console.error("Error saving new business", error);
     }
