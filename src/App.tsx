@@ -45,23 +45,11 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    console.log('App useEffect:',location.pathname,profileData?.profile?.crm?.email);
-    if (
-      location.pathname === "/" ||
-      location.pathname === "/loading" ||
-      location.pathname === "/login/callback"
-    ) {
-      console.log('Skip this route')
-      return;
-    }
-    if (!profileData?.profile?.crm?.email) {
-      console.log('No CRM Profile')
-      navigate("/");
-    }
+    if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") { return; }
+    if (!profileData?.profile?.crm?.email) { navigate("/"); }
   }, [location.pathname, profileData?.profile?.crm?.email]);
 
   const restoreOriginalUri = () => {
-    console.log('Restore Original, goto loading');
     navigate("/loading");
   };
 
@@ -86,7 +74,7 @@ const App: React.FC = () => {
   return (
     <Security
       oktaAuth={oktaAuth}
-      onAuthRequired={() => {console.log('onAuthRequired: goto /'); navigate("/")}}
+      onAuthRequired={() => navigate("/")}
       restoreOriginalUri={restoreOriginalUri}
     >
       <Routes>

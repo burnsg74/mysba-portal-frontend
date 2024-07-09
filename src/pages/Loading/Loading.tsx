@@ -87,12 +87,10 @@ const Loading = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('TIMEOUT, goto /')
       navigate("/");
     }, 10000);
 
     return () => {
-      console.log('Clear timer')
       clearTimeout(timer);
     };
   }, []);
@@ -107,7 +105,6 @@ const Loading = () => {
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
-          console.log('User',user);
           dispatch(setNav(true));
           dispatch(setShowProfile(true))
           dispatch(setUser(user));
@@ -119,10 +116,8 @@ const Loading = () => {
             const restoreURL = sessionStorage.getItem('restoreURL');
 
             if (restoreURL) {
-              console.log('goto restoreURL', restoreURL);
               navigate(restoreURL);
             } else {
-              console.log('GOTO Dash')
               navigate('/dashboard');
             }
           }
