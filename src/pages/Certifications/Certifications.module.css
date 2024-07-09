@@ -145,7 +145,6 @@
 }
 
 .applyForCertificationBtn {
-    border: 2px solid var(--Brand-Secondary-Bright-Blue);
     margin: 0;
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
@@ -154,7 +153,19 @@
     font-style: normal;
     font-weight: 700;
     line-height: 90%;
-    box-shadow: unset;
+    box-shadow: inset 0 0 0 2px #007DBC;
+}
+
+.applyForCertificationBtn:focus {
+    outline: none;
+    box-shadow: inset 0 0 0 3px #05FC;
+    color: var(--Brand-Secondary-Bright-Blue);
+    text-align: center;
+    font-family: var(--Font-Secondary);
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 90%;
 }
 
 .applyForCertificationBtn:active {
@@ -171,18 +182,6 @@
 
 .applyForCertificationBtn:hover {
     border: 2px solid var(--Brand-Secondary-Bright-Blue);
-    color: var(--Brand-Secondary-Bright-Blue);
-    text-align: center;
-    font-family: var(--Font-Secondary);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 90%;
-    box-shadow: unset;
-}
-
-.applyForCertificationBtn:focus {
-    outline: none;
     color: var(--Brand-Secondary-Bright-Blue);
     text-align: center;
     font-family: var(--Font-Secondary);
