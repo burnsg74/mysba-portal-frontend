@@ -99,15 +99,13 @@ const Loading = () => {
           dispatch(setNav(true));
           dispatch(setShowProfile(true))
           dispatch(setUser(user));
-          // Disable in RC1 (GB) 6/24/24
-          // if (!user.profile.portal) {
-          //   dispatch(setNav(false));
-          //   dispatch(setShowProfile(false))
-          //   navigate("/account-setup/1");
-          // } else {
-          //   navigate("/dashboard");
-          // }
-          navigate("/dashboard");
+          if (!user.profile.portal) {
+            dispatch(setNav(false));
+            dispatch(setShowProfile(false))
+            navigate("/account-setup/1");
+          } else {
+            navigate("/dashboard");
+          }
         }).catch((error) => {
           console.log('Catch Error 1', error);
           oktaAuth.signOut().then(() => {
