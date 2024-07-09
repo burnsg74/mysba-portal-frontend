@@ -291,7 +291,7 @@
 
 .radioRow {
     min-height: 72px;
-    margin-bottom: 16px;
+    margin-bottom: 24px;
     border-color: var(--Base-base-lighter);
     flex-shrink: 1;
     display: flex;
@@ -412,4 +412,8 @@
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+
+.certModalContentContianer {
+    padding-top: 40px;
 }

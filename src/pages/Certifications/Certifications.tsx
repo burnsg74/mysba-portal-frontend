@@ -177,7 +177,7 @@ const Certifications = () => {
       footerContent={modal1FooterContent}
     >
       <>
-        <div>
+        <div className={`${styles.certModalContentContianer}`}>
           <form className={`usa-form ${styles.usaForm}`}>
             <fieldset className="usa-fieldset">
               <div className={`grid-row usa-radio ${styles.radioRow}`}>
