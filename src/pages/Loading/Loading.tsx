@@ -104,10 +104,13 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log('UseEffect authState?.isAuthenticated: ', authState?.isAuthenticated);
     if (authState?.isAuthenticated) {
+      console.log('isAuthenticated try to load');
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
+          console.log('User',user);
           dispatch(setNav(true));
           dispatch(setShowProfile(true))
           dispatch(setUser(user));

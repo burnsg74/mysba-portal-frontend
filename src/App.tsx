@@ -35,23 +35,30 @@ const App: React.FC = () => {
   const profileData: IUser = useSelector(getUser);
 
   useEffect(() => {
-    if (location.pathname !== '/') {
-      sessionStorage.setItem('restoreURL', location.pathname);
-    }
-  }, []);
-
-  useEffect(() => {
     if (
       location.pathname === "/" ||
       location.pathname === "/loading" ||
       location.pathname === "/login/callback"
     ) {
+      sessionStorage.setItem('restoreURL', location.pathname);
+    }
+  }, []);
+
+  useEffect(() => {
+    console.log('useEffect location, profileData?.profile?.crm?.email]', location.pathname, profileData?.profile?.crm?.email);
+    if (
+      location.pathname === "/" ||
+      location.pathname === "/loading" ||
+      location.pathname === "/login/callback"
+    ) {
+      console.log('Skip this route')
       return;
     }
     if (!profileData?.profile?.crm?.email) {
+      console.log('No CRM user, goto landing')
       navigate("/");
     }
-  }, [location, profileData?.profile?.crm?.email]);
+  }, [location.pathname, profileData?.profile?.crm?.email]);
 
   const restoreOriginalUri = () => {
     navigate("/loading");
