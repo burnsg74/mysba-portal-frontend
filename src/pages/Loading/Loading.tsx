@@ -77,7 +77,6 @@ const Loading = () => {
     } catch (err) {
       console.log(err)
     }
-    console.log(portalData)
 
     return {
       profile: {
@@ -87,12 +86,24 @@ const Loading = () => {
   };
 
   useEffect(() => {
+    console.log('Set timeout for 10 secs')
+    const timer = setTimeout(() => {
+      console.log('Times up, goto landing page')
+      navigate("/");
+    }, 10000);
+
+    return () => {
+      console.log('Clear timer')
+      clearTimeout(timer);
+    };
+  }, [navigate]);
+
+  useEffect(() => {
     dispatch(setNav(false));
     dispatch(setShowProfile(false))
   }, [dispatch]);
 
   useEffect(() => {
-    console.log('authState?.isAuthenticated', authState?.isAuthenticated)
     if (authState?.isAuthenticated) {
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
@@ -125,10 +136,6 @@ const Loading = () => {
           });
       });
     }
-  }, []);
-
-  useEffect(() => {
-    console.log('useEffect: authState?.isAuthenticated', authState?.isAuthenticated)
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
