@@ -2,6 +2,7 @@
     position: relative;
     height: 276px;
     padding-top: 20px;
+    margin-bottom: 20px;
     background-color: #F3F8FC;
     color: var(--Brand-Primary-SBA-Blue);
     display: flex;
