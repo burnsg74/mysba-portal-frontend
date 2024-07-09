@@ -32,7 +32,7 @@ const Businesses = () => {
       </div>
 
       {/* No Businesses Message */}
-      {! user.businesses?.length && (<div>
+      {! user.businesses?.length && (<div className={`${styles.noBusinessesContainer}`}>
         <div className={`${styles.noBusinessesMessageContainer}`}>
           <img src={bagIcon} alt="No Businesses" />
           <div className={`${styles.noBusinessesText}`}>

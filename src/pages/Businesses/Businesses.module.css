@@ -87,6 +87,10 @@
     align-self: stretch;
 }
 
+.noBusinessesContainer {
+   padding-top: 40px;
+}
+
 .noBusinessesText {
     color: var(--Brand-Primary-SBA-Blue);
     text-align: center;
