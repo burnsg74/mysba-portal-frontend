@@ -31,10 +31,6 @@ const Dashboard = () => {
     {t("All Done")}
   </button>);
 
-  useEffect(() => {
-    console.log(user)
-  }, []);
-
   return (<>
     {/* Top city banner */}
     <div className={`banner ${styles.banner}`}>

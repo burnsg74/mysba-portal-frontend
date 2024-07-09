@@ -35,6 +35,12 @@ const App: React.FC = () => {
   const profileData: IUser = useSelector(getUser);
 
   useEffect(() => {
+    if (location.pathname !== '/') {
+      sessionStorage.setItem('restoreURL', location.pathname);
+    }
+  }, []);
+
+  useEffect(() => {
     if (
       location.pathname === "/" ||
       location.pathname === "/loading" ||

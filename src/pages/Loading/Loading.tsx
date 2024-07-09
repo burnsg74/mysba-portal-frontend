@@ -104,7 +104,13 @@ const Loading = () => {
             dispatch(setShowProfile(false))
             navigate("/account-setup/1");
           } else {
-            navigate("/dashboard");
+            const restoreURL = sessionStorage.getItem('restoreURL');
+
+            if (restoreURL) {
+              navigate(restoreURL);
+            } else {
+              navigate('/dashboard');
+            }
           }
         }).catch((error) => {
           console.log('Catch Error 1', error);
