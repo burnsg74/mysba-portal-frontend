@@ -38,10 +38,10 @@ const App: React.FC = () => {
     if (
       location.pathname === "/" ||
       location.pathname === "/loading" ||
-      location.pathname === "/login/callback"
-    ) {
-      sessionStorage.setItem('restoreURL', location.pathname);
+      location.pathname === "/login/callback") {
+      return;
     }
+    sessionStorage.setItem('restoreURL', location.pathname);
   }, []);
 
   useEffect(() => {
