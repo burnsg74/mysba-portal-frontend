@@ -265,22 +265,23 @@ const LocalResources = () => {
               <a href={district.social_media_linkedin_url} target="_blank">{t("Follow us on LinkedIn")}</a>
             </div>}
           </div>
-          <a href={`https://www.sba.gov/contact/contact_your_district_office?district=${district.district_nid}`}
-             className={`${styles.districtContactLink}`}
-             target="_blank"
-             rel="noopener noreferrer">
-            <button type="button" className={`usa-button ${styles.linkCertificationBtn}`}>
-              {t("Make an Appointment")}
-              <svg
-                className={`usa-icon ${styles.launchIcon}`}
-                aria-hidden="true"
-                focusable="false"
-              >
-                <title>{t("Open in a new window")}</title>
-                <use xlinkHref="/assets/img/sprite.svg#launch"></use>
-              </svg>
-            </button>
-          </a>
+          <button type="button"
+                  className={`usa-button`}
+                  onClick={event => {
+                    event.preventDefault();
+                    window.open(`https://www.sba.gov/contact/contact_your_district_office?district=${district.district_nid}`, "_blank");
+                  }}
+          >
+            {t("Make an Appointment")}
+            <svg
+              className={`usa-icon ${styles.launchIcon}`}
+              aria-hidden="true"
+              focusable="false"
+            >
+              <title>{t("Open in a new window")}</title>
+              <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+            </svg>
+          </button>
         </div>
       </div>
       <div className={`${styles.officeCardsContainer}`}>
@@ -330,19 +331,22 @@ const LocalResources = () => {
           {t("Explore your local business guide")}
         </div>
         <div>
-          <a href={district.field_district_business_link} target="_blank" rel="noopener noreferrer">
-            <button type="button" className={`usa-button ${styles.linkCertificationBtn}`}>
-              {t("Local Business Guide")}
-              <svg
-                className={`usa-icon ${styles.launchIcon}`}
-                aria-hidden="true"
-                focusable="false"
-              >
-                <title>{t("Open in a new window")}</title>
-                <use xlinkHref="/assets/img/sprite.svg#launch"></use>
-              </svg>
-            </button>
-          </a>
+          <button type="button"
+                  className={`usa-button`}
+                  onClick={event => {
+                    event.preventDefault();
+                    window.open(district.field_district_business_link, "_blank");
+                  }}>
+            {t("Local Business Guide")}
+            <svg
+              className={`usa-icon ${styles.launchIcon}`}
+              aria-hidden="true"
+              focusable="false"
+            >
+              <title>{t("Open in a new window")}</title>
+              <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+            </svg>
+          </button>
         </div>
       </div>
     </div>}
