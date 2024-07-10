@@ -22,15 +22,15 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
   });
 
   const certTranslationMap: { [key: string]: string } = {
-    "WOSB": "Women Owned Small Business",
-    "EDWOSB": "Economically Disadvantaged Women Owned Small Business",
+    "WOSB": "Women-Owned Small Business",
+    "EDWOSB": "Economically Disadvantaged Women-Owned Small Business",
     "8a": "8(a)",
     "8aJointVenture": "8(a) Joint Venture",
     "SDVOSB": "Service-Disabled Veteran Owned Small Business",
-    "SDVOSBJointVenture": "Service-Disabled Veteran Owned Small Business Joint Venture",
-    "HUBZone": "HUBZone",
-    "VOSB": "Veteran Owned Small Business",
-    "VOSBJointVenture": "Veteran Owned Small Business Joint Venture"
+    "SDVOSBJointVenture": "Service-Disabled Veteran-Owned Small Business Joint Venture",
+    "HUBZone": "Historically Underutilized Business Zone",
+    "VOSB": "Veteran-Owned Small Business",
+    "VOSBJointVenture": "Veteran-Owned Small Business Joint Venture"
     
   };
 
