@@ -24,40 +24,6 @@ interface ModalProps {
   errorMessage?: string;
 }
 
-function useFocusTrap(ref: React.RefObject<HTMLElement>, initialFocusRef: React.RefObject<HTMLElement>) {
-  useEffect(() => {
-    const focusableElements = 'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
-    const firstFocusableElement: HTMLElement | null = initialFocusRef.current ?? ref.current?.querySelector(focusableElements) ?? null;
-    firstFocusableElement?.focus();
-    let focusableContent: NodeListOf<HTMLElement>;
-    if (ref.current) {
-      focusableContent = ref.current.querySelectorAll(focusableElements);
-    } else {
-      focusableContent = document.querySelectorAll<HTMLElement>("nothing");
-    }
-    const lastFocusableElement: HTMLElement | null = focusableContent[focusableContent.length - 1];
-
-    const handleFocus = (event: KeyboardEvent) => {
-      const isTabPressed = event instanceof KeyboardEvent && event.key === "Tab";
-      const isShiftPressed = event.shiftKey;
-      const isFirstElementFocused = document.activeElement === firstFocusableElement;
-      const isLastElementFocused = document.activeElement === lastFocusableElement;
-
-      if (!isTabPressed) { return; }
-      if ((isShiftPressed && isFirstElementFocused) || (!isShiftPressed && isLastElementFocused)) {
-        const focusTarget = isShiftPressed ? lastFocusableElement : firstFocusableElement;
-        focusTarget?.focus();
-        event.preventDefault();
-      }
-    };
-
-    document.addEventListener("keydown", handleFocus);
-    return () => {
-      document.removeEventListener("keydown", handleFocus);
-    };
-  }, []);
-}
-
 const ModalComponent = ({
   onClose,
   prevModal,
@@ -76,7 +42,6 @@ const ModalComponent = ({
   const footerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
-  useFocusTrap(contentRef, closeButtonRef);
 
   useEffect(() => {
     if (footerRef.current && contentRef.current) {

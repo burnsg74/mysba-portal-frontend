@@ -7,6 +7,12 @@
     flex: 1;
 }
 
+.cancelBtn:focus {
+    box-shadow: 0 0 0 3px #05fc;
+    border-radius: 2px;
+    color: var(--Brand-Secondary-Bright-Blue);
+}
+
 .inputContainer {
     align-items: flex-start;
     align-self: stretch;
