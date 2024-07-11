@@ -12,7 +12,7 @@ interface Step3ModalProps {
   };
   handleClose: () => void;
   handleContinue: (stepData: any) => void;
-  handleBack: (stepData: any) => void;
+  handleBack: (stepData: any, step?: number) => void;
 }
 
 const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleBack }) => {
@@ -78,7 +78,7 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
   return (<Modal
     title={t("Link a Certification")}
     onClose={closeModal}
-    prevModal={handleBackButtonClick}
+    prevModal={(stepData, step) => handleBack(stepData, step)}
     totalSteps={3}
     completedSteps={2}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}

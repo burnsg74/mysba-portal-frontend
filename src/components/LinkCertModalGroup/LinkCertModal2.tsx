@@ -19,7 +19,7 @@ interface Step2ModalProps {
   };
   handleClose: () => void;
   handleContinue: (stepData: any) => void;
-  handleBack: (stepData: any) => void;
+  handleBack: (stepData: any, step?: number) => void;
 }
 
 interface Certification {
