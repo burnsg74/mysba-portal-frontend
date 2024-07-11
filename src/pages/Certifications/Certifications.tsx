@@ -106,7 +106,7 @@ const Certifications = () => {
       <div className={`${styles.alertsContainer}`}>
         {user.certifications?.map((certification) => {
           return (<React.Fragment key={certification.certification_id}>
-            <CertificationAlert certification={certification} />
+            <CertificationAlert certification={certification} useSlim={true} />
           </React.Fragment>);
         })}
       </div>

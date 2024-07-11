@@ -4,9 +4,10 @@ import { useTranslation } from "react-i18next";
 
 interface ICertificationProps {
   certification: ICertification;
+  useSlim?: boolean;
 }
 
-const CertificationAlert = ({ certification }: ICertificationProps): ReactElement | null => {
+const CertificationAlert = ({ certification }: ICertificationProps, useSlim = false): ReactElement | null => {
   const { t } = useTranslation();
   let alertType: "error" | "warning" | "success" | "info";
   let alertMessage: string = "";
@@ -25,7 +26,7 @@ const CertificationAlert = ({ certification }: ICertificationProps): ReactElemen
     return null;
   }
 
-  return <Alert type={alertType} message={t(alertMessage)} />;
+  return <Alert type={alertType} message={t(alertMessage)} useSlim={useSlim} />;
 };
 
 export default CertificationAlert;
