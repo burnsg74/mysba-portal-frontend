@@ -9,6 +9,7 @@ import axios from "axios";
 import { useOktaAuth } from "@okta/okta-react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
+import { startCase } from 'lodash';
 
 interface Step2ModalProps {
   businessData: {
@@ -133,7 +134,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
           email: business.organizationEmail ?? '',
           owner: `${individual.firstName ?? ''} ${individual.lastName ?? ''}`,
           id: businessId ?? '',
-          name: business.organizationName ?? '',
+          name: business.organizationName ? startCase(business.organizationName.toLowerCase()) : '',
           legal_entity: business.organizationLegalEntity ?? '',
           ownership_type: business.organizationOwnerShipType ?? '',
           uei: business.organizationUei?.replace(/(\d{6})(\d{4})/, "******$2") ?? '',
@@ -171,7 +172,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
             issue_date: certification[`${cert.type}CertificationEntranceDate`] ?? '',
             expiration_date: certification[cert.expirationKey] ?? '',
             days_until_expiry: calculateDaysUntilExpiry(certification[cert.expirationKey]),
-            company_name: business.organizationName ?? '',
+            company_name: business.organizationName ? startCase(business.organizationName.toLowerCase()) : '',
             owner: owner,
             naics_codes: business.organizationNaicsCodes ?? '',
           };
