@@ -44,7 +44,7 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
 
   if (stepData.certName.length > 0) {
     if(stepData.certName.length === 1) {
-      modalTitle = t(`Your ${translatedCertNames[0]} has been successfully added!`)
+      modalTitle = t(`Your ${translatedCertNames[0]} certification has been successfully added!`)
     } else {
       const certNames = translatedCertNames.map((cert, index) => {
         if(index === stepData.certName.length - 1 && stepData.certName.length > 1) {

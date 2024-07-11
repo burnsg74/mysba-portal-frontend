@@ -21,16 +21,16 @@
     --Error-error-dark: #B50909;
 
     /* Alert Colors */
-    --Alert-Info-Bar: #007DBC;
-    --Alert-Info-Background: #D1EBFF;
-    --Alert-In-Progress-Bar: #007DBC;
-    --Alert-In-Progress-Background: #D1EBFF;
-    --Alert-Valid-Bar: #197E4E;
-    --Alert-Valid-Background: #ECF3EC;
-    --Alert-Warning-Bar: #F1C400;
-    --Alert-Warning-Background: #FAF3D1;
-    --Alert-Error-Bar: #CC0000;
     --Alert-Error-Background: #F4E3DB;
+    --Alert-Error-Bar: #CC0000;
+    --Alert-In-Progress-Background: #D1EBFF;
+    --Alert-In-Progress-Bar: #007DBC;
+    --Alert-Info-Background: #D1EBFF;
+    --Alert-Info-Bar: #007DBC;
+    --Alert-Success-Background: #ECF3EC;
+    --Alert-Success-Bar: #197E4E;
+    --Alert-Warning-Background: #FAF3D1;
+    --Alert-Warning-Bar: #F1C400;
 
 
     /* Fonts */
@@ -540,4 +540,3 @@ textarea:not([disabled]):focus {
     left: unset;
     padding-right: 16px;
 }
-

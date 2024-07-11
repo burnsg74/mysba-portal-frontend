@@ -16,20 +16,30 @@ const Alert: React.FC<IAlertProps> = ({ message, type, title=null }) => {
   } else {
     typeIcon = type
   }
-  return (<div className={`${styles.alertContainer} ${styles["alert-" + type]}`}>
-      <svg
-        className={`usa-icon ${styles.alertIcon}`}
-        aria-hidden="true"
-        focusable="false" 
-        data-testid="alert-icon"
-      >
-        <use xlinkHref={`/assets/img/sprite.svg#${typeIcon}`}></use>
-      </svg>
-      <div className={`${styles.alertMessage}`}>
-        {title && <div className={`${styles.alertTitle}`}>{t(title)}</div>}
-        {typeof message === "string" ? t(message) : message}
+
+  return (<div className={`usa-alert usa-alert--${type} ${styles["alert-" + type]}`}>
+      <div id="usa-alert__body" className={`usa-alert__body ${styles["alert-body"]}`}>
+        {title && <h4 className="usa-alert__heading">{t(title)}</h4>}
+        <div className="usa-alert__text">
+          {typeof message === "string" ? t(message) : message}
+        </div>
       </div>
     </div>);
+
+  // return (<div className={`${styles.alertContainer} ${styles["alert-" + type]}`}>
+  //   <svg
+  //     className={`usa-icon ${styles.alertIcon}`}
+  //     aria-hidden="true"
+  //     focusable="false"
+  //     data-testid="alert-icon"
+  //   >
+  //     <use xlinkHref={`/assets/img/sprite.svg#${typeIcon}`}></use>
+  //   </svg>
+  //   <div className={`${styles.alertMessage}`}>
+  //       {title && <div className={`${styles.alertTitle}`}>{t(title)}</div>}
+  //       {typeof message === "string" ? t(message) : message}
+  //     </div>
+  //   </div>);
 };
 
 export default Alert;

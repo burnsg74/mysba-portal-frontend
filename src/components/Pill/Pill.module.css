@@ -25,8 +25,8 @@
 }
 
 .pill-valid {
-    background: var(--Alert-Valid-Background);
-    border: 2px solid var(--Alert-Valid-Bar);
+    background: var(--Alert-Success-Background);
+    border: 2px solid var(--Alert-Success-Bar);
 }
 
 .pill-warning {
