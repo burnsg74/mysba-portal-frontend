@@ -181,21 +181,21 @@ const LandingPage = () => {
         <div
           className={`${styles.mysbaMessage}`}>{t("Loans, certifications, and resources tailored to your business all in one place.")}</div>
         <div className={`${styles.buttonGroup}`}>
-          {location.href !== "https://prod.mysba.ussba.io/" && (<button
-            type="button"
-            className={`usa-button usa-button--outline  ${styles.signupBtn}`}
-            onClick={signUp}
-          >
-            {t("Sign Up")}
-          </button>)}
-          <button
-            type="button"
-            data-testid="modal1-next"
-            className={`usa-button ${styles.loginBtn}`}
-            onClick={login}
-          >
-            {t("Log In")}
-          </button>
+          {/*{location.href !== "https://prod.mysba.ussba.io/" && (<button*/}
+          {/*  type="button"*/}
+          {/*  className={`usa-button usa-button--outline  ${styles.signupBtn}`}*/}
+          {/*  onClick={signUp}*/}
+          {/*>*/}
+          {/*  {t("Sign Up")}*/}
+          {/*</button>)}*/}
+          {/*<button*/}
+          {/*  type="button"*/}
+          {/*  data-testid="modal1-next"*/}
+          {/*  className={`usa-button ${styles.loginBtn}`}*/}
+          {/*  onClick={login}*/}
+          {/*>*/}
+          {/*  {t("Log In")}*/}
+          {/*</button>*/}
         </div>
       </div>
       <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
