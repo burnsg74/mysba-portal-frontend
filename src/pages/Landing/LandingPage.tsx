@@ -90,9 +90,9 @@ const LandingPage = () => {
           </header>
           <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
             <div className="grid-row grid-gap-lg">
-              <div className="usa-banner__guidance tablet:grid-col-6">
+              <div className={`usa-banner__guidance tablet:grid-col-6 ${styles.header}`}>
                 <img
-                  className="usa-banner__icon usa-media-block__img"
+                  className={`usa-banner__icon usa-media-block__img ${styles.usaLogo}`}
                   src={DotGov}
                   alt="Dot Goc Icon"
                   aria-hidden="true"
@@ -174,12 +174,20 @@ const LandingPage = () => {
     <img className={`${styles.cloudImage}`} src={CloudImage} alt={t("Decorative Cloud")} />
     <div className={`${styles.mainContainer}`}>
       <div className={`banner ${styles.banner}`}>
-
-        <div className={`${styles.welcomeMessage}`}>
-          {t("Welcome to")}<span className={`${styles.bold}`}> MySBA</span>
+        <div className={`${styles.comingSoon}`}>
+          Coming soon: <span className={`${styles.mySBA}`}> MySBA</span>
         </div>
-        <div
-          className={`${styles.mysbaMessage}`}>{t("Loans, certifications, and resources tailored to your business all in one place.")}</div>
+        {/*Read more [link to news release coming next week],*/}
+        <div className={`${styles.comingSoonMessage}`}>
+          One-stop access to SBA’s small business support, including loans, certifications, and resources tailored to you and your business needs.<br/>
+          <br/>
+          Follow #MySBA on <a href="https://www.facebook.com/SBAgov" target="_blank">Facebook</a>,&nbsp;
+          <a href="https://x.com/sbagov" target="_blank">X</a>, &nbsp;
+          <a href="https://www.instagram.com/sbagov/" target="_blank">Instagram</a> and &nbsp;
+          <a href="https://www.linkedin.com/company/us-small-business-administration/" target="_blank">LinkedIn</a>, and &nbsp;
+          <a href="https://www.sba.gov/updates" target="_blank">sign up</a> for SBA news to stay up to date on the
+          progress.
+        </div>
         <div className={`${styles.buttonGroup}`}>
           {/*{location.href !== "https://prod.mysba.ussba.io/" && (<button*/}
           {/*  type="button"*/}
