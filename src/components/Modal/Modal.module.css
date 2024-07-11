@@ -76,7 +76,7 @@
 }
 .contentContainer {
   overflow-y: auto;
-  scrollbar-width: none;
+  /*scrollbar-width: none;*/
   padding-top:40px;
   gap: 16px;
   display:flex;
