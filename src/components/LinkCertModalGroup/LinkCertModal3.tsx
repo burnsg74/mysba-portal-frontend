@@ -80,7 +80,7 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
     onClose={closeModal}
     prevModal={handleBackButtonClick}
     totalSteps={3}
-    completedSteps={3}
+    completedSteps={2}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={modalTitle}
     footerContent={(<button type="button"
