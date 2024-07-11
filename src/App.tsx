@@ -113,6 +113,8 @@ const App: React.FC = () => {
             <Route path="/loans" element={<Loans />} />
             <Route path="/help" element={<Help />} />
             <Route path="/error" element={<ErrorPage />} />
+            {/* Default route if path is not found */}
+            <Route path='*' element={<Dashboard />} />
           </Route>
         </Route>
       </Routes>
