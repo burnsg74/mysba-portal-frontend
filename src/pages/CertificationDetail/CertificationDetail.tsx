@@ -145,38 +145,55 @@ const CertificationDetail = () => {
               <div className={`${styles.expiredHelpMessageHeader}`}>{t("Contact Us")}</div>
               <div className={`${styles.expiredHelpMessageBody}`}>
                 <div>
-                  <Trans
-                    components={{
-                      helpFormLink: (
-                        <a href="https://wosb.certify.sba.gov/help-csh/" target="_blank" rel="noopener noreferrer">
-                          here
-                        </a>), emailLink: <a href="mailto:wosb@SBA.gov">wosb@sba.gov</a>,
-                    }}
-                  >
-                    {t("You can fill out a help request form here or contact us at wosb@sba.gov.")}
-                  </Trans>
+                  {/*<Trans*/}
+                  {/*  components={{*/}
+                  {/*    helpFormLink: (*/}
+                  {/*      <a href="https://wosb.certify.sba.gov/help-csh/" target="_blank" rel="noopener noreferrer">*/}
+                  {/*        here*/}
+                  {/*      </a>), emailLink: <a href="mailto:wosb@SBA.gov">wosb@sba.gov</a>,*/}
+                  {/*  }}*/}
+                  {/*>*/}
+                  {/*  {t("You can fill out a help request form here or contact us at wosb@sba.gov.")}*/}
+                  {/*</Trans>*/}
+                  {certModelData.helpForm && certModelData.helpEmail && (
+                    <>
+                      You can fill out a help request form <a href={certModelData.helpForm} target="_blank" rel="noopener noreferrer">here</a> or contact us at <a href={`mailto:${certModelData.helpEmail}`}>{certModelData.helpEmail}</a>.
+                    </>
+                  )}
+                  {certModelData.helpForm && !certModelData.helpEmail && (
+                    <>
+                      You can fill out a help request form <a href={certModelData.helpForm} target="_blank" rel="noopener noreferrer">here</a>.
+                    </>
+                  )}
+                  {!certModelData.helpForm && certModelData.helpEmail && (
+                    <>
+                      You can contact us at <a href={`mailto:${certModelData.helpEmail}`}>{certModelData.helpEmail}</a>.
+                    </>
+                  )}
                 </div>
               </div>
               <div className={`${styles.expiredHelpMessageBody}`}>
-                <a
-                  href="https://wosb.certify.sba.gov/knowledgebase/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  style={{ display: "flex", alignItems: "center" }}
-                  aria-label="Frequently Asked Questions in a new window"
-                >
-                  {t("Frequently Asked Questions")}
-                </a>
-
-                <svg
-                  className={`usa-icon ${styles.expiredHelpLaunchIcon}`}
-                  aria-hidden="true"
-                  focusable="false"
-                  width={24}
-                  height={24}
-                >
-                  <use xlinkHref="/assets/img/sprite.svg#launch"></use>
-                </svg>
+                {certModelData.helpFAQ && (<>
+                    <a
+                      href={certModelData.helpFAQ}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      style={{ display: "flex", alignItems: "center" }}
+                      aria-label="Frequently Asked Questions in a new window"
+                    >
+                      {t("Frequently Asked Questions")}
+                    </a>
+                    <svg
+                      className={`usa-icon ${styles.expiredHelpLaunchIcon}`}
+                      aria-hidden="true"
+                      focusable="false"
+                      width={24}
+                      height={24}
+                    >
+                      <use xlinkHref="/assets/img/sprite.svg#launch"></use>
+                    </svg>
+                  </>
+              )}
               </div>
             </div>
           </div>
