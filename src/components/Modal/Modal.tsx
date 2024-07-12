@@ -11,7 +11,7 @@ interface ImageAndAlt {
 
 interface ModalProps {
   onClose: () => void;
-  prevModal?: () => void;
+  prevModal?: (stepData: {}, step?: number) => void;
   totalSteps?: number;
   completedSteps?: number;
   title: string;
@@ -26,7 +26,7 @@ interface ModalProps {
 
 const ModalComponent = ({
   onClose,
-  prevModal,
+  prevModal = (stepData: {}, step?: number) => {},
   title = "",
   totalSteps = 0,
   completedSteps = 0,
@@ -54,9 +54,9 @@ const ModalComponent = ({
   };
 
   const stepsArray = Array.from({ length: totalSteps }, (_, index) => {
-    if (index < completedSteps) return { id: `step-${index}`, status: "complete" };
-    if (index === completedSteps) return { id: `step-${index}`, status: "current" };
-    return { id: `step-${index}`, status: "incomplete" };
+    if (index < completedSteps) return { id: `step-${index}`, status: "complete", stepNum: index };
+    if (index === completedSteps) return { id: `step-${index}`, status: "current", stepNum: index };
+    return { id: `step-${index}`, status: "incomplete", stepNum: index };
   });
 
   return (
@@ -105,7 +105,7 @@ const ModalComponent = ({
                         <button
                           data-testid="step-indicator"
                           className={styles.stepIndicatorbutton}
-                          onClick={prevModal}
+                          onClick={() => prevModal({}, step.stepNum + 1)}
                         >&nbsp;</button>
                       )}
                     </li>

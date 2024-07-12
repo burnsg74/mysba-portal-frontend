@@ -30,10 +30,16 @@ const LinkCertModalGroup: React.FC<LinkCertProps> = ({ handleCloseModal }) => {
         setCurrentStep(currentStep + 1);
     };
 
-    const handleBack = (stepData: {}) => {
+    const handleBack = (stepData: {}, step?: number) => {
+        console.log(step)
         setBusinessData({ ...businessData, ...stepData });
-        setCurrentStep(currentStep - 1);
+        if (step !== undefined) {
+            setCurrentStep(step);
+        } else {
+            setCurrentStep(currentStep - 1);
+        }
     };
+
 
     function StepSelector(currentStep: number) {
         switch (currentStep) {
@@ -46,13 +52,13 @@ const LinkCertModalGroup: React.FC<LinkCertProps> = ({ handleCloseModal }) => {
                     businessData={businessData}
                     handleClose={handleCloseModal}
                     handleContinue={(stepData) => handleContinue(stepData)}
-                    handleBack={(stepData) => handleBack(stepData)} />;
+                    handleBack={(stepData, step) => handleBack(stepData, step)} />;
             case 3:
                 return <LinkCertModal3
                     businessData={businessData}
                     handleClose={handleCloseModal}
                     handleContinue={(stepData) => handleContinue(stepData)}
-                    handleBack={(stepData) => handleBack(stepData)} />;
+                    handleBack={(stepData, step) => handleBack(stepData, step)} />;
             default:
                 return null;
         }
