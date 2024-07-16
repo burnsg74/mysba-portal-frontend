@@ -222,7 +222,7 @@ const LocalResources = () => {
             <div className={`${styles.bodyDistrictCardDetailsLinksGroup}`}>
               <svg
                 className={`usa-icon ${styles.districtCardDetailsLinkIcon}`}
-                aria-hidden="true"
+                
                 focusable="false"
               >
                 <title>{t("Open in a new window")}</title>
@@ -235,7 +235,7 @@ const LocalResources = () => {
               {district.field_district_staff_directory && <>
                 <svg
                   className={`usa-icon ${styles.districtCardDetailsLinkIcon}`}
-                  aria-hidden="true"
+                  
                   focusable="false"
                 >
                   <title>{t("Open in email")}</title>
@@ -274,7 +274,7 @@ const LocalResources = () => {
             {t("Make an Appointment")}
             <svg
               className={`usa-icon ${styles.launchIcon}`}
-              aria-hidden="true"
+              
               focusable="false"
             >
               <title>{t("Open in a new window")}</title>
@@ -296,7 +296,7 @@ const LocalResources = () => {
             <div className={`${styles.officeCardDetailsPhone}`}>
               <svg
                 className={`usa-icon ${styles.launchIcon}`}
-                aria-hidden="true"
+                
                 focusable="false"
               >
                 <title>{t("Open in email")}</title>
@@ -307,7 +307,7 @@ const LocalResources = () => {
             {!office.is_virtual_office && (<div className={`${styles.officeCardDetailsAddress}`}>
               <svg
                 className={`usa-icon ${styles.launchIcon}`}
-                aria-hidden="true"
+                
                 focusable="false"
               >
                 <title>{t("Open")}</title>
@@ -339,7 +339,7 @@ const LocalResources = () => {
             {t("Local Business Guide")}
             <svg
               className={`usa-icon ${styles.launchIcon}`}
-              aria-hidden="true"
+              
               focusable="false"
             >
               <title>{t("Open in a new window")}</title>

@@ -79,7 +79,7 @@ const ModalComponent = ({
             >
               {" "}
               {t("Close")}
-              <svg aria-hidden="true" focusable="false" width="24" height="24" style={{ fill: "#71767A" }}>
+              <svg  focusable="false" width="24" height="24" style={{ fill: "#71767A" }}>
                 <use xlinkHref="/assets/img/sprite.svg#close"></use>
               </svg>
             </button>)}

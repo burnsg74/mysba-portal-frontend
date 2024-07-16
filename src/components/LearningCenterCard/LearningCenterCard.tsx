@@ -35,7 +35,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
               >
                 <svg
                   className={`usa-icon ${styles.launchIcon}`}
-                  aria-hidden="true"
+                  
                   focusable="false"
                 >
                   <title>{t("Open in a new window")}</title>
@@ -111,7 +111,7 @@ const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
           </div>
           <svg
             className={`${styles.viewCourseIcon}`}
-            aria-hidden="true"
+            
             focusable="false"
           >
             <use xlinkHref="/assets/img/sprite.svg#launch"></use>

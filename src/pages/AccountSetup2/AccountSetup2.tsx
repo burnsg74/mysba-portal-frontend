@@ -216,7 +216,7 @@ const AccountSetup2 = () => {
               <span className={`${styles.toolTip}`}>
                     <svg
                       className={`usa-icon ${styles.infoIcon}`}
-                      aria-hidden="true"
+                      
                       focusable="false"
                     >
                       {" "}
