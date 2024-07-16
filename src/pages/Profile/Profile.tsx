@@ -63,7 +63,7 @@ const Profile = () => {
         </button>
         <button
           type="button"
-          className={`usa-button usa-button--outline ${styles.changePasswordBtn}`}
+          className={`usa-button usa-button--outline`}
           onClick={handleChangePasswordBtnClick}
         >
           {t("Change Password")}

@@ -137,20 +137,3 @@
     line-height: 14px;
     word-wrap: break-word;
 }
-
-.changePasswordBtn {
-    border: 2px solid var(--Brand-Secondary-Bright-Blue);
-    color: var(--Brand-Secondary-Bright-Blue);
-    text-align: center;
-    font-family: var(--Font-Secondary);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 14px;
-    box-shadow: unset;
-    margin-left: 10px;
-}
-
-.changePasswordBtn:hover {
-    border:unset;
-}
