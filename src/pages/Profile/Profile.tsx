@@ -6,7 +6,6 @@ import { useTranslation } from "react-i18next";
 import styles from "src/pages/Profile/Profile.module.css";
 import Field from "src/components/Field/Field";
 import { useNavigate } from 'react-router-dom';
-import BusinessAdd from "src/components/BusinessAdd/BusinessAdd";
 import ProfileChangePasswordModal from "src/components/ProfileChangePasswordModal/ProfileChangePasswordModal";
 
 
@@ -14,7 +13,7 @@ const Profile = () => {
   const { t } = useTranslation();
   const profileData: IUser = useSelector(getUser);
   const { oktaAuth } = useOktaAuth();
-  const navigate = useNavigate();;
+  const navigate = useNavigate();
   const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
 
   const handleChangePasswordBtnClick = () => {

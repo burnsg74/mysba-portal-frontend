@@ -8,6 +8,8 @@ import { AccessToken } from "@okta/okta-auth-js";
 import axios from "axios";
 import { useOktaAuth } from "@okta/okta-react";
 import { PORTAL_API_URL } from "src/utils/constants";
+import { getUser } from "src/store/user/userSlice";
+import { useSelector } from "react-redux";
 
 interface Step1ModalProps {
   handleClose: () => void;
@@ -26,12 +28,12 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   const [user, setUser] = useState(null);
   const { oktaAuth, authState } = useOktaAuth();
   const { t } = useTranslation();
+  const profileData: IUser = useSelector(getUser);
   const [stepData, setStepData] = useState({
     currentPassword: "", newPassword1: "", newPassword2: "",
   });
   const [highlightInvalid, setHighlightInvalid] = useState({
-    minLength: false, lowerCase: false, upperCase: false, number: false, lastPasswords: false });
-
+    minLength: false, lowerCase: false, upperCase: false, number: false,  specialChars: false, notUsernameParts:false, lastPasswords: false});
 
   interface ApiErrorMessages {
     [key: string]: string;
@@ -75,7 +77,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     setCurrentPasswordErrorMsg("")
     setChangePasswordErrorMsg("")
 
-    if (!isPasswordValid(stepData.newPassword1)) {
+    if (!isPasswordValid(profileData.profile?.crm.email, stepData.newPassword1)) {
       setHasNewPasswordErrors(true);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
@@ -144,12 +146,16 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     }
   }
 
-  const isPasswordValid = (password: string) => {
+  const isPasswordValid = (username: string, password: string) => {
+    const usernameParts = username.split(/[.@]/);
+    const specialChars = /[{}<>:?|~!$#%^&*_]/;
     const invalidConditions = {
-      minLength: !(password.length >= 8),
+      minLength: !(password.length >= 16),
       lowerCase: !(/[a-z]/.test(password)),
       upperCase: !(/[A-Z]/.test(password)),
       number   : !(/[0-9]/.test(password)),
+      specialChars: !specialChars.test(password),
+      notUsernameParts: usernameParts.some(part => password.includes(part)),
       lastPasswords: false
     };
     setHighlightInvalid(invalidConditions);
@@ -199,11 +205,14 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       <div className={`${styles.passwordRequirements}`}>
         Password requirements:
         <ul>
-          <li className={highlightInvalid.minLength ? `${styles.error}` : ""}>{t("At least 8 characters")}</li>
+          <li className={highlightInvalid.minLength ? `${styles.error}` : ""}>{t("At least 16 characters")}</li>
           <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>{t("A lowercase letter")}</li>
           <li className={highlightInvalid.upperCase ? `${styles.error}` : ""}>{t("An uppercase letter")}</li>
-          <li className={highlightInvalid.number ? `${styles.error}` : ""}>{t("A number")}</li>
-          <li className={highlightInvalid.lastPasswords ? `${styles.error}` : ""}>Password can't be the same as your last 4 passwords </li>
+          <li className={highlightInvalid.specialChars ? `${styles.error}` : ""}>{t("A special character")}</li>
+          <li className={highlightInvalid.notUsernameParts ? `${styles.error}` : ""}>{t("Does not contain parts from username.")}</li>
+          <li className={highlightInvalid.lastPasswords ? `${styles.error}` : ""}>Password can't be the same as your
+            last 4 passwords
+          </li>
         </ul>
       </div>
       <ModalInputText label={"New Password"}
