@@ -1,0 +1,26 @@
+.sba-waffle-menu__container {
+    display: inline-flex;
+    padding: 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    border-radius: 8px;
+    border: 1px solid #E0E0E0;
+    box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+}
+
+.sba-waffle-menu__header {
+    display: flex;
+    height: 22px;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+}
+.sba-waffle-menu__header span {
+    color: #002E6D;
+
+    font-family: "Source Sans Pro";
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 115%;
+}
