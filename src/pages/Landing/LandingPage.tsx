@@ -70,10 +70,10 @@ const LandingPage = () => {
           <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
             <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
               <div className="grid-col-auto">
-                <img aria-hidden="true" className="usa-banner__header-flag" src={USFlag}
+                <img  className="usa-banner__header-flag" src={USFlag}
                      alt="US Flag" />
               </div>
-              <div className="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+              <div className="grid-col-fill tablet:grid-col-auto" >
                 <p
                   className="usa-banner__header-text">{t("An official website of the United States government")}</p>
                 <p className="usa-banner__header-action">{t("Here's how you know")}</p>
@@ -95,7 +95,7 @@ const LandingPage = () => {
                   className="usa-banner__icon usa-media-block__img"
                   src={DotGov}
                   alt="Dot Goc Icon"
-                  aria-hidden="true"
+                  
                 />
                 <div className="usa-media-block__body">
                   <p>
@@ -110,7 +110,7 @@ const LandingPage = () => {
                   className="usa-banner__icon usa-media-block__img"
                   src={HttpsIcon}
                   alt="HTTPS Icon"
-                  aria-hidden="true"
+                  
                 />
                 <div className="usa-media-block__body">
                   <p>

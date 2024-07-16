@@ -68,7 +68,7 @@ const CertificationDetail = () => {
       <div className={`${styles.iconContainer}`}>
         <svg
           className={`usa-icon ${styles.usaIcon}`}
-          aria-hidden="true"
+          
           focusable="false"
           height="18px"
           width="18px"
@@ -97,7 +97,7 @@ const CertificationDetail = () => {
           // className={`usa-button usa-button ${styles.manageCertButton}`}
           onClick={() => setShowManageCertificationModal(true)}
         >{t("Manage Certification")}
-          <svg className="usa-icon" aria-hidden="true" focusable="false" height="24px" width="24px">
+          <svg className="usa-icon"  focusable="false" height="24px" width="24px">
             <title>Open in a new window Icon</title>
             <use xlinkHref="/assets/img/sprite.svg#launch"></use>
           </svg></button>
@@ -129,7 +129,7 @@ const CertificationDetail = () => {
                 className={`usa-icon ${styles.expiredHelpIcon}`}
                 viewBox="0 0 18 18"
                 fill="none"
-                aria-hidden="true"
+                
                 focusable="false"
                 aria-labelledby="phoneIconTitle"
                 id="phoneIconTitle"
@@ -185,7 +185,7 @@ const CertificationDetail = () => {
                     </a>
                     <svg
                       className={`usa-icon ${styles.expiredHelpLaunchIcon}`}
-                      aria-hidden="true"
+                      
                       focusable="false"
                       width={24}
                       height={24}

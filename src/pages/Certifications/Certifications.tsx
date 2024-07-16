@@ -80,7 +80,7 @@ const Certifications = () => {
       <div className={`${styles.iconContainer}`}>
         <svg
           className={`usa-icon  ${styles.usaIcon}`}
-          aria-hidden="true"
+          
           focusable="false"
           height="18px"
           width="18px"
@@ -195,7 +195,7 @@ const Certifications = () => {
                         {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                       </span>
                   <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
+                        <svg className={`usa-icon ${styles.infoIcon}`}  focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -229,7 +229,7 @@ const Certifications = () => {
                         {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                       </span>
                   <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
+                        <svg className={`usa-icon ${styles.infoIcon}`}  focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -260,7 +260,7 @@ const Certifications = () => {
                         {t("Veteran-Owned Small Business (VOSB) Certification")}
                       </span>
                   <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
+                        <svg className={`usa-icon ${styles.infoIcon}`}  focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -291,7 +291,7 @@ const Certifications = () => {
                         {t("Women-Owned Small Business (WOSB) Certification")}
                       </span>
                   <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`} aria-hidden="true" focusable="false">
+                        <svg className={`usa-icon ${styles.infoIcon}`}  focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>

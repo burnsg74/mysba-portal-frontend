@@ -19,7 +19,7 @@ const Alert: React.FC<IAlertProps> = ({ message, type, title=null }) => {
   return (<div className={`${styles.alertContainer} ${styles["alert-" + type]}`}>
       <svg
         className={`usa-icon ${styles.alertIcon}`}
-        aria-hidden="true"
+        
         focusable="false" 
         data-testid="alert-icon"
       >

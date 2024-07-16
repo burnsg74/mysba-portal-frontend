@@ -80,7 +80,7 @@ const ApplyCert1 = () => {
                     <span className={`${styles.toolTip}`}>
                       <svg
                         className={`usa-icon ${styles.infoIcon}`}
-                        aria-hidden="true"
+                        
                         focusable="false"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
@@ -120,7 +120,7 @@ const ApplyCert1 = () => {
                     <span className={`${styles.toolTip}`}>
                       <svg
                         className={`usa-icon ${styles.infoIcon}`}
-                        aria-hidden="true"
+                        
                         focusable="false"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
@@ -155,7 +155,7 @@ const ApplyCert1 = () => {
                     <span className={`${styles.toolTip}`}>
                       <svg
                         className={`usa-icon ${styles.infoIcon}`}
-                        aria-hidden="true"
+                        
                         focusable="false"
                       >
                         <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>

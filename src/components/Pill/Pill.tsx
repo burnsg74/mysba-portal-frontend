@@ -22,7 +22,7 @@ const Pill: React.FC<IPillProps> = ({ message, type }) => {
     <div className={`${styles.pillContainer} ${styles["pill-" + type]}`}>
       <svg
         className={`usa-icon ${styles.pillIcon}`}
-        aria-hidden="true"
+        
         focusable="false"
         data-testid="pill-icon"
       >
