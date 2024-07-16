@@ -53,6 +53,7 @@ const Profile = () => {
             value={profileData.profile?.crm?.last_name}
           />
         </div>
+        <div  className={`${styles.buttonGroup}`}>
         <button
           className={`usa-button usa-button--secondary ${styles.buttonStyle}`}
           onClick={logout}
@@ -68,6 +69,7 @@ const Profile = () => {
         >
           {t("Change Password")}
         </button>
+        </div>
       </div>
       {showChangePasswordModal && ( <ProfileChangePasswordModal handleCloseModal={handleCloseModal}/>)}
     </div>);
