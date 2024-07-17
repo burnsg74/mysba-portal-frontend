@@ -186,7 +186,7 @@ const Header = () => {
         <div className={`grid-col-auto ${styles.right}`}>
 
           {/* Toggle Language Button */}
-          <div className={`usa-language-container ${showProfile ? styles.usaLanguageContainer : ""}`}>
+          <div className={`usa-language-container ${!showProfile ? styles.usaLanguageContainer : ""}`}>
             <button
               type="button"
               data-testid="language-toggle"
