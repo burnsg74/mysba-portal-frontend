@@ -119,7 +119,7 @@ const Certifications = () => {
             <button
               type="button"
               data-testid="apply-for-certification"
-              className={`usa-button usa-button--outline ${styles.applyForCertificationBtn}`}
+              className={`usa-button usa-button--outline`}
               onClick={handleApplyCertificationClick}
             >
               {t("Apply for a Certification")}

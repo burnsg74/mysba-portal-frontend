@@ -40,7 +40,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   web_acl_id          = aws_wafv2_web_acl.waf_cloudfront.arn
 
   aliases = [
-    "${terraform.workspace}.mysba.ussba.io"
+    local.env.frontend_alias
   ]
 
   origin {

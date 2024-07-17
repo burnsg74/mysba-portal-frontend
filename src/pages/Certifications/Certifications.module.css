@@ -334,6 +334,8 @@
     position: relative;
     display: inline-block;
     margin: auto;
+    min-width:44px;
+    margin-right:0px;
     padding-right: 20px;
 }
 

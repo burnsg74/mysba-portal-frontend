@@ -151,7 +151,7 @@ const LinkCertModal1: React.FC<Step1ModalProps> = ({ handleClose, handleContinue
           <br />
           <span className={`${styles.greyLabel}`}>{t("Unique Entity Identifier (12 Characters)")}</span>
           <br />
-          {error && <span className={styles.error}>{error}</span>}
+          {error && <span className={styles.error}>{t(error)}</span>}
         </label>
         <input className={`usa-input ${hasError ? "usa-input--error" : ""} ${styles.textInput}`} id="input-type-text" name="input-type-text"
                onChange={handleInputChange} maxLength={12} />
