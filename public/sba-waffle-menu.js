@@ -1,4 +1,5 @@
 document.addEventListener("DOMContentLoaded", function() {
+  let isOpen = false;
   const observer = new MutationObserver((mutationsList, observer) => {
     for (let mutation of mutationsList) {
       if (mutation.addedNodes.length) {
@@ -22,7 +23,23 @@ document.addEventListener("DOMContentLoaded", function() {
           svg.setAttribute("viewBox", "0 0 24 24");
           svg.setAttribute("fill", "none");
           svg.addEventListener("click", function() {
+
+            console.log("isOpen", isOpen);
+            let sbaWaffleMenuLinks = document.getElementById('sbaWaffleMenuLinks');
+            if (sbaWaffleMenuLinks) {
+              sbaWaffleMenuLinks.parentElement.removeChild(sbaWaffleMenuLinks);
+            }
+
+            if (isOpen) {
+              console.log("isOpen True?", isOpen);
+              isOpen = false;
+              return;
+            }
+            isOpen = true;
+            console.log('After')
+
             let menuContainerDiv = document.createElement("div");
+            menuContainerDiv.id = "sbaWaffleMenuLinks";
             menuContainerDiv.classList.add("sba-waffle-menu__container");
 
             let svgRect = svg.getBoundingClientRect();
@@ -52,9 +69,13 @@ document.addEventListener("DOMContentLoaded", function() {
             crossPath.setAttribute("d", "M14 1.41L12.59 0L7 5.59L1.41 0L0 1.41L5.59 7L0 12.59L1.41 14L7 8.41L12.59 14L14 12.59L8.41 7L14 1.41Z");
             crossPath.setAttribute("fill", "#002E6D");
             crossPath.addEventListener("click", function() {
-              if (menuContainerDiv) {
-                menuContainerDiv.style.display = "none";
+              console.log('Close Menu', isOpen)
+              let sbaWaffleMenuLinks = document.getElementById('sbaWaffleMenuLinks');
+              console.log(sbaWaffleMenuLinks)
+              if (sbaWaffleMenuLinks) {
+                sbaWaffleMenuLinks.parentElement.removeChild(sbaWaffleMenuLinks);
               }
+              isOpen = false;
             });
 
             g3.appendChild(crossPath);

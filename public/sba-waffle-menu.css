@@ -1,3 +1,7 @@
+#sbaWaffleMenu {
+    cursor: pointer;
+}
+
 .sba-waffle-menu__container {
     position: absolute;
     z-index: 999;
@@ -19,6 +23,10 @@
     align-items: center;
     align-self: stretch;
     margin-bottom: 10px;
+}
+
+.sba-waffle-menu__header svg {
+    cursor: pointer;
 }
 
 .sba-waffle-menu__header span {
