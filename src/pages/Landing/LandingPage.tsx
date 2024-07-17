@@ -166,7 +166,7 @@ const LandingPage = () => {
                                     <span
                                       lang={lang === "en" ? "es" : "en"}>{lang === "en" ? "Español" : "English"}</span>
               </button>
-              <div id={'sbaWaffleMenu'}></div>
+              <div id={'sbaWaffleMenu'}/>
             </div>
           </div>
         </div>
