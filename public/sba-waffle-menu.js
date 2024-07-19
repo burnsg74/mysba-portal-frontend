@@ -89,18 +89,12 @@ class SbaWaffleMenu {
 
       bodyDiv.appendChild(buttonLink);
     });
-    menuContainerDiv.appendChild(bodyDiv);
-
-    let el = document.getElementById("sbaWaffleMenuIcon");
-    console.log(el);
-    let waffleMenuIconButtonWidth = el.offsetWidth;
-    let rect = el.getBoundingClientRect();
-    const distanceFromRight = window.innerWidth - rect.right;
-    console.log(waffleMenuIconButtonWidth,distanceFromRight,rect)
-
-    this.sbaWaffleMenuEl.appendChild(menuContainerDiv);
     menuContainerDiv.style.right = 0;
     menuContainerDiv.style.top = "50px";
+    menuContainerDiv.appendChild(bodyDiv);
+
+    this.sbaWaffleMenuEl.appendChild(menuContainerDiv);
+
   }
 
   toggleMenu() {
