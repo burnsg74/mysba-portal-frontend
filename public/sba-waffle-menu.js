@@ -30,6 +30,7 @@ class SbaWaffleMenu {
     waffleMenuIconButton.classList.add("sba-waffle-menu-icon__button");
     waffleMenuIconButton.addEventListener("click", this.toggleMenu.bind(this));
     sbaWaffleMenu.appendChild(waffleMenuIconButton);
+
     let waffleMenuIconButtonWidth = waffleMenuIconButton.offsetWidth;
     let rect = waffleMenuIconButton.getBoundingClientRect();
     this.waffleMenuIconButtonPosition = {
@@ -90,9 +91,16 @@ class SbaWaffleMenu {
     });
     menuContainerDiv.appendChild(bodyDiv);
 
-    document.body.appendChild(menuContainerDiv);
-    menuContainerDiv.style.left = this.waffleMenuIconButtonPosition.right - this.waffleMenuIconButtonPosition.width + "px";
-    menuContainerDiv.style.top = this.waffleMenuIconButtonPosition.bottom + 20 + "px";
+    let el = document.getElementById("sbaWaffleMenuIcon");
+    console.log(el);
+    let waffleMenuIconButtonWidth = el.offsetWidth;
+    let rect = el.getBoundingClientRect();
+    const distanceFromRight = window.innerWidth - rect.right;
+    console.log(waffleMenuIconButtonWidth,distanceFromRight,rect)
+
+    this.sbaWaffleMenuEl.appendChild(menuContainerDiv);
+    menuContainerDiv.style.right = 0;
+    menuContainerDiv.style.top = "50px";
   }
 
   toggleMenu() {
@@ -101,13 +109,6 @@ class SbaWaffleMenu {
       this.renderMenu();
     } else {
       this.removeMenu();
-    }
-  }
-
-  remove() {
-    const menuContainerDiv = this.menuContainer.querySelector("#menuContainerDiv");
-    if (menuContainerDiv) {
-      menuContainerDiv.remove();
     }
   }
 
