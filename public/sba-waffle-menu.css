@@ -1,12 +1,13 @@
-#sbaWaffleMenu {
+.sba-waffle-menu-icon__button {
     cursor: pointer;
+    background: unset;
+    border: unset;
 }
 
 .sba-waffle-menu__container {
     position: absolute;
     z-index: 999;
     background: #FFFFFF;
-    width: 140px;
     display: inline-flex;
     padding: 20px;
     flex-direction: column;
@@ -15,6 +16,7 @@
     border: 1px solid #E0E0E0;
     box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
 }
+
 
 .sba-waffle-menu__header {
     display: flex;
@@ -25,10 +27,6 @@
     margin-bottom: 10px;
 }
 
-.sba-waffle-menu__header svg {
-    cursor: pointer;
-}
-
 .sba-waffle-menu__header span {
     color: #002E6D;
     font-family: "Source Sans Pro";
@@ -36,6 +34,7 @@
     font-style: normal;
     font-weight: 700;
     line-height: 115%;
+    letter-spacing: 0.325px;
 }
 
 .sba-waffle-menu__body {

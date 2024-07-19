@@ -9,6 +9,10 @@ import Header from "./Header";
 import showNavSlice from "src/store/showNav/showNavSlice";
 
 const signOutMock = jest.fn(() => Promise.resolve());
+// @ts-ignore
+global.SbaWaffleMenu = jest.fn(() => ({
+  renderMenuIcon: jest.fn()
+}));
 
 jest.mock("@okta/okta-react", () => ({
   useOktaAuth: () => ({

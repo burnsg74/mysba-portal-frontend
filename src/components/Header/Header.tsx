@@ -15,6 +15,17 @@ import { useSelector } from "react-redux";
 import { useOktaAuth } from "@okta/okta-react";
 
 const Header = () => {
+  const myElementRef = useRef(null);
+
+  useEffect(() => {
+    // Waffle menu
+    if (myElementRef.current) {
+      // @ts-ignore
+      let sbaWaffleMenuInstance = new SbaWaffleMenu(myElementRef.current);
+      sbaWaffleMenuInstance.renderMenuIcon()
+    }
+  }, []);
+
   const detectedLang: string = navigator.language.substring(0, 2);
   const [lang, setLang] = useState(localStorage.getItem("lang") ?? detectedLang ?? "en");
   const { i18n } = useTranslation();
@@ -186,7 +197,7 @@ const Header = () => {
         <div className={`grid-col-auto ${styles.right}`}>
 
           {/* Toggle Language Button */}
-          <div className={`usa-language-container ${!showProfile ? styles.usaLanguageContainer : ""}`}>
+          <div className={`usa-language-container ${showProfile ? "" : styles.usaLanguageContainer}`}>
             <button
               type="button"
               data-testid="language-toggle"
@@ -208,13 +219,16 @@ const Header = () => {
               </Link>
             </div>
           </>)}
+
+          <div id="sbaWaffleMenu" ref={myElementRef}></div>
+
           {/* Multi-Language Toggle */}
           {showNav && (<>
             {/* Head Nav for small screens */}
             <div className={`${styles.headerMenuIconContainer}`}>
               <svg
                 className={`${styles.headerMenuIcon}`}
-                
+
                 focusable="false"
                 onClick={handleMenuClick}
                 data-testid="menu-icon"
