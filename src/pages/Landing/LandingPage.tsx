@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
+import { Trans, useTranslation } from "react-i18next";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useDispatch } from "react-redux";
 import styles from "src/pages/Landing/LandingPage.module.css";
@@ -175,18 +175,19 @@ const LandingPage = () => {
     <div className={`${styles.mainContainer}`}>
       <div className={`banner ${styles.banner}`}>
         <div className={`${styles.comingSoon}`}>
-          Coming soon: <span className={`${styles.mySBA}`}> MySBA</span>
+          {t("Coming soon")}: <span className={`${styles.mySBA}`}> MySBA</span>
         </div>
         {/*Read more [link to news release coming next week],*/}
         <div className={`${styles.comingSoonMessage}`}>
-          One-stop access to SBA’s small business support, including loans, certifications, and resources tailored to you and your business needs.<br/>
+          {t('One-stop access to SBA’s small business support, including loans, certifications, and resources tailored to you and your business needs.')}<br/>
           <br/>
-          Follow #MySBA on <a href="https://www.facebook.com/SBAgov" target="_blank">Facebook</a>,&nbsp;
-          <a href="https://x.com/sbagov" target="_blank">X</a>, &nbsp;
-          <a href="https://www.instagram.com/sbagov/" target="_blank">Instagram</a> and &nbsp;
-          <a href="https://www.linkedin.com/company/us-small-business-administration/" target="_blank">LinkedIn</a>, and &nbsp;
-          <a href="https://www.sba.gov/updates" target="_blank">sign up</a> for SBA news to stay up to date on the
-          progress.
+          <Trans i18nKey="followMessage" components={[
+            <a href="https://www.facebook.com/SBAgov" target="_blank"></a>,
+            <a href="https://x.com/sbagov" target="_blank"></a>,
+            <a href="https://www.instagram.com/sbagov/" target="_blank"></a>,
+            <a href="https://www.linkedin.com/company/us-small-business-administration/" target="_blank"></a>,
+            <a href="https://www.sba.gov/updates" target="_blank"></a>
+            ]}/>
         </div>
         <div className={`${styles.buttonGroup}`}>
           {/*{location.href !== "https://prod.mysba.ussba.io/" && (<button*/}
