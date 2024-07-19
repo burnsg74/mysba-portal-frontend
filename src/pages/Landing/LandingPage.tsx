@@ -13,7 +13,6 @@ import HttpsIcon from "src/assets/icon-https.svg";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
-import axios from "axios";
 import { PORTAL_SIGNUP_URL } from "src/utils/constants";
 
 const LandingPage = () => {
@@ -179,15 +178,17 @@ const LandingPage = () => {
         </div>
         {/*Read more [link to news release coming next week],*/}
         <div className={`${styles.comingSoonMessage}`}>
+          <Trans i18nKey="lookingForHelpForm" components={[<a href="https://contact.sba.gov/help/"></a>]} />
+        </div>
+        <div className={`${styles.comingSoonMessage}`}>
           {t('One-stop access to SBA’s small business support, including loans, certifications, and resources tailored to you and your business needs.')}<br/>
-          <br/>
-          <Trans i18nKey="followMessage" components={[
-            <a href="https://www.facebook.com/SBAgov" target="_blank"></a>,
+        </div>
+        <div className={`${styles.comingSoonMessage}`}>
+          <Trans i18nKey="followMessage" components={[<a href="https://www.facebook.com/SBAgov" target="_blank"></a>,
             <a href="https://x.com/sbagov" target="_blank"></a>,
             <a href="https://www.instagram.com/sbagov/" target="_blank"></a>,
             <a href="https://www.linkedin.com/company/us-small-business-administration/" target="_blank"></a>,
-            <a href="https://www.sba.gov/updates" target="_blank"></a>
-            ]}/>
+            <a href="https://www.sba.gov/updates" target="_blank"></a>]} />
         </div>
         <div className={`${styles.buttonGroup}`}>
           {/*{location.href !== "https://prod.mysba.ussba.io/" && (<button*/}
