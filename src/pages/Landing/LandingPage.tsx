@@ -14,6 +14,7 @@ import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
 import { PORTAL_SIGNUP_URL } from "src/utils/constants";
+import Alert from "src/components/Alert/Alert";
 
 const LandingPage = () => {
   const { oktaAuth, authState } = useOktaAuth();
@@ -63,59 +64,59 @@ const LandingPage = () => {
   }, []);
 
   return (<>
-    <div className={`${styles.fixedTopGroup}`}>
-      <section className="usa-banner" aria-label="Official website of the United States government">
-        <div className="usa-accordion">
-          <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
-            <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
-              <div className="grid-col-auto">
-                <img aria-hidden="true" className="usa-banner__header-flag" src={USFlag}
-                     alt="US Flag" />
-              </div>
-              <div className="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
-                <p
-                  className="usa-banner__header-text">{t("An official website of the United States government")}</p>
-                <p className="usa-banner__header-action">{t("Here's how you know")}</p>
-              </div>
-              <button
-                type="button"
-                className="usa-accordion__button usa-banner__button"
-                aria-expanded="false"
-                aria-controls="gov-banner-default"
-              >
-                <span className="usa-banner__button-text">{t("Here's how you know")}</span>
-              </button>
+    <div className={`${styles.pageContainer}`}>
+    <section className="usa-banner" aria-label="Official website of the United States government">
+      <div className="usa-accordion">
+        <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
+          <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
+            <div className="grid-col-auto">
+              <img aria-hidden="true" className="usa-banner__header-flag" src={USFlag}
+                   alt="US Flag" />
             </div>
-          </header>
-          <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
-            <div className="grid-row grid-gap-lg">
-              <div className={`usa-banner__guidance tablet:grid-col-6 ${styles.header}`}>
-                <img
-                  className={`usa-banner__icon usa-media-block__img ${styles.usaLogo}`}
-                  src={DotGov}
-                  alt="Dot Goc Icon"
-                  aria-hidden="true"
-                />
-                <div className="usa-media-block__body">
-                  <p>
-                    <strong>{t("Official websites use .gov")}</strong>
-                    <br />
-                    {t("A .gov website belongs to an official government organization in the United States.")}
-                  </p>
-                </div>
+            <div className="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
+              <p
+                className="usa-banner__header-text">{t("An official website of the United States government")}</p>
+              <p className="usa-banner__header-action">{t("Here's how you know")}</p>
+            </div>
+            <button
+              type="button"
+              className="usa-accordion__button usa-banner__button"
+              aria-expanded="false"
+              aria-controls="gov-banner-default"
+            >
+              <span className="usa-banner__button-text">{t("Here's how you know")}</span>
+            </button>
+          </div>
+        </header>
+        <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
+          <div className="grid-row grid-gap-lg">
+            <div className={`usa-banner__guidance tablet:grid-col-6 ${styles.header}`}>
+              <img
+                className={`usa-banner__icon usa-media-block__img ${styles.usaLogo}`}
+                src={DotGov}
+                alt="Dot Goc Icon"
+                aria-hidden="true"
+              />
+              <div className="usa-media-block__body">
+                <p>
+                  <strong>{t("Official websites use .gov")}</strong>
+                  <br />
+                  {t("A .gov website belongs to an official government organization in the United States.")}
+                </p>
               </div>
-              <div className="usa-banner__guidance tablet:grid-col-6">
-                <img
-                  className="usa-banner__icon usa-media-block__img"
-                  src={HttpsIcon}
-                  alt="HTTPS Icon"
-                  aria-hidden="true"
-                />
-                <div className="usa-media-block__body">
-                  <p>
-                    <strong>{t("Secure .gov websites use HTTPS")}</strong>
-                    <br />&nbsp;{t("A")}<strong>{t("lock")}</strong> (<span
-                    className="icon-lock">
+            </div>
+            <div className="usa-banner__guidance tablet:grid-col-6">
+              <img
+                className="usa-banner__icon usa-media-block__img"
+                src={HttpsIcon}
+                alt="HTTPS Icon"
+                aria-hidden="true"
+              />
+              <div className="usa-media-block__body">
+                <p>
+                  <strong>{t("Secure .gov websites use HTTPS")}</strong>
+                  <br />&nbsp;{t("A")}<strong>{t("lock")}</strong> (<span
+                  className="icon-lock">
                                             <svg
                                               xmlns="http://www.w3.org/2000/svg"
                                               width="52"
@@ -134,54 +135,56 @@ const LandingPage = () => {
                                                 />
                                             </svg>
                                         </span>) {t("or")} <strong>https://</strong>
-                    {t("means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.")}
-                  </p>
-                </div>
+                  {t("means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.")}
+                </p>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <header className={`${styles.usaHeader}`}>
-        <div className={`grid-row ${styles.usaNavContainer}`}>
-          <div className={`grid-col-auto ${styles.left}`}>
-            {/* LOGO */}
-            <img
-              className={`${styles.usaLogo}`}
-              src={lang === "en" ? SBAlogoEn : SBAlogoEs}
-              alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
-            />
-            <img
-              className={`${styles.usaLogoSm}`}
-              src={SBAlogoSm}
-              alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
-            />
-          </div>
-          <div className={`grid-col ${styles.left}`}></div>
-          <div className={`grid-col-auto ${styles.right}`}>
-            <div className={`usa-language-container ${styles.usaLanguageContainer}`}>
-              <button type="button" className={`usa-button ${styles.pillButton}`}
-                      onClick={switchLanguage}>
+      </div>
+    </section>
+    <header className={`${styles.usaHeader}`}>
+      <div className={`grid-row ${styles.usaNavContainer}`}>
+        <div className={`grid-col-auto ${styles.left}`}>
+          {/* LOGO */}
+          <img
+            className={`${styles.usaLogo}`}
+            src={lang === "en" ? SBAlogoEn : SBAlogoEs}
+            alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
+          />
+          <img
+            className={`${styles.usaLogoSm}`}
+            src={SBAlogoSm}
+            alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
+          />
+        </div>
+        <div className={`grid-col ${styles.left}`}></div>
+        <div className={`grid-col-auto ${styles.right}`}>
+          <div className={`usa-language-container ${styles.usaLanguageContainer}`}>
+            <button type="button" className={`usa-button ${styles.pillButton}`}
+                    onClick={switchLanguage}>
                                     <span
                                       lang={lang === "en" ? "es" : "en"}>{lang === "en" ? "Español" : "English"}</span>
-              </button>
-            </div>
+            </button>
           </div>
         </div>
-      </header>
+      </div>
+    </header>
+    <div className={`${styles.alertBanner}`}>
+      <Alert
+        message={<Trans i18nKey="lookingForHelpForm" components={[<a href="https://contact.sba.gov/help/"></a>,<a href="https://contact.sba.gov"></a>]} />}
+        type="info"></Alert>
     </div>
+    <div className={`${styles.cloudImageContainer}`}>
     <img className={`${styles.cloudImage}`} src={CloudImage} alt={t("Decorative Cloud")} />
+    </div>
     <div className={`${styles.mainContainer}`}>
       <div className={`banner ${styles.banner}`}>
         <div className={`${styles.comingSoon}`}>
           {t("Coming soon")}: <span className={`${styles.mySBA}`}> MySBA</span>
         </div>
-        {/*Read more [link to news release coming next week],*/}
         <div className={`${styles.comingSoonMessage}`}>
-          <Trans i18nKey="lookingForHelpForm" components={[<a href="https://contact.sba.gov/help/"></a>]} />
-        </div>
-        <div className={`${styles.comingSoonMessage}`}>
-          {t('One-stop access to SBA’s small business support, including loans, certifications, and resources tailored to you and your business needs.')}<br/>
+          {t('One-stop access to SBA’s small business support, including loans, certifications, and resources tailored to you and your business needs.')}<br />
         </div>
         <div className={`${styles.comingSoonMessage}`}>
           <Trans i18nKey="followMessage" components={[<a href="https://www.facebook.com/SBAgov" target="_blank"></a>,
@@ -190,25 +193,11 @@ const LandingPage = () => {
             <a href="https://www.linkedin.com/company/us-small-business-administration/" target="_blank"></a>,
             <a href="https://www.sba.gov/updates" target="_blank"></a>]} />
         </div>
-        <div className={`${styles.buttonGroup}`}>
-          {/*{location.href !== "https://prod.mysba.ussba.io/" && (<button*/}
-          {/*  type="button"*/}
-          {/*  className={`usa-button usa-button--outline  ${styles.signupBtn}`}*/}
-          {/*  onClick={signUp}*/}
-          {/*>*/}
-          {/*  {t("Sign Up")}*/}
-          {/*</button>)}*/}
-          {/*<button*/}
-          {/*  type="button"*/}
-          {/*  data-testid="modal1-next"*/}
-          {/*  className={`usa-button ${styles.loginBtn}`}*/}
-          {/*  onClick={login}*/}
-          {/*>*/}
-          {/*  {t("Log In")}*/}
-          {/*</button>*/}
-        </div>
       </div>
+    </div>
+    <div className={`${styles.cityscapeContainer}`}>
       <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
+    </div>
     </div>
   </>);
 };
