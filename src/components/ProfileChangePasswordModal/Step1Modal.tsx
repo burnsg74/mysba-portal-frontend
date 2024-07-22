@@ -25,15 +25,21 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   const [saveBtnLabel, setSaveBtnLabel] = useState("Save");
   const [changePasswordErrorMsg, setChangePasswordErrorMsg] = useState("");
   const [currentPasswordErrorMsg, setCurrentPasswordErrorMsg] = useState("");
-  const [user, setUser] = useState(null);
   const { oktaAuth, authState } = useOktaAuth();
   const { t } = useTranslation();
-  const profileData: IUser = useSelector(getUser);
   const [stepData, setStepData] = useState({
     currentPassword: "", newPassword1: "", newPassword2: "",
   });
+  const profileData: IUser = useSelector(getUser);
   const [highlightInvalid, setHighlightInvalid] = useState({
-    minLength: false, lowerCase: false, upperCase: false, number: false,  specialChars: false, notUsernameParts:false, lastPasswords: false});
+    minLength       : false,
+    lowerCase       : false,
+    upperCase       : false,
+    number          : false,
+    specialCharacter: false,
+    notUsernameParts: false,
+    lastPasswords   : false,
+  });
 
   interface ApiErrorMessages {
     [key: string]: string;
@@ -49,20 +55,20 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     return apiErrorMessages[apiError] || "An unexpected error occurred. Please try again later.";
   };
 
-  useEffect(() => {
-    async function fetchUser() {
-      if (!authState?.isAuthenticated) {
-        setUser(null);
-        return;
-      }
-      if (authState.isAuthenticated) {
-        const userInfo = await oktaAuth.getUser();
-        setUser(userInfo);
-      }
-    }
-
-    fetchUser();
-  }, [authState]);
+  // useEffect(() => {
+  //   async function fetchUser() {
+  //     if (!authState?.isAuthenticated) {
+  //       setUser(null);
+  //       return;
+  //     }
+  //     if (authState.isAuthenticated) {
+  //       const userInfo = await oktaAuth.getUser();
+  //       setUser(userInfo);
+  //     }
+  //   }
+  //
+  //   fetchUser();
+  // }, [authState]);
 
   const handleInputChange = (name: string, value: string) => {
     const updatedStepData = { ...stepData, [name]: value };
@@ -77,7 +83,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     setCurrentPasswordErrorMsg("")
     setChangePasswordErrorMsg("")
 
-    if (!isPasswordValid(profileData.profile?.crm.email, stepData.newPassword1)) {
+    if (profileData.profile && profileData.profile.sso && !isPasswordValid(profileData.profile.sso.email, stepData.newPassword1)) {
       setHasNewPasswordErrors(true);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
@@ -101,8 +107,10 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 
     const data = {
-      userName   : user?.email, clsElevated: user?.cls_elevated !== undefined ? user?.cls_elevated : false,
-      oldPassword: stepData.currentPassword, newPassword: stepData.newPassword1,
+      userName   : profileData.profile?.sso?.email,
+      clsElevated: profileData.profile?.sso?.cls_elevated,
+      oldPassword: stepData.currentPassword,
+      newPassword: stepData.newPassword1
     };
 
     try {
@@ -147,14 +155,16 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   }
 
   const isPasswordValid = (username: string, password: string) => {
-    const usernameParts = username.split(/[.@]/);
-    const specialChars = /[{}<>:?|~!$#%^&*_]/;
+    const usernameParts = username.toLowerCase().split(/[.@]/);
+    console.log('usernameParts',usernameParts)
+    const specialCharacter = /[{}<>:?|~!$#%^&*_]/;
+    console.log('parts from username', usernameParts.some(part => password.includes(part)))
     const invalidConditions = {
       minLength: !(password.length >= 16),
       lowerCase: !(/[a-z]/.test(password)),
       upperCase: !(/[A-Z]/.test(password)),
       number   : !(/[0-9]/.test(password)),
-      specialChars: !specialChars.test(password),
+      specialCharacter: !specialCharacter.test(password),
       notUsernameParts: usernameParts.some(part => password.includes(part)),
       lastPasswords: false
     };
@@ -208,7 +218,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           <li className={highlightInvalid.minLength ? `${styles.error}` : ""}>{t("At least 16 characters")}</li>
           <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>{t("A lowercase letter")}</li>
           <li className={highlightInvalid.upperCase ? `${styles.error}` : ""}>{t("An uppercase letter")}</li>
-          <li className={highlightInvalid.specialChars ? `${styles.error}` : ""}>{t("A special character")}</li>
+          <li className={highlightInvalid.specialCharacter ? `${styles.error}` : ""}>{t("A special character")}</li>
           <li className={highlightInvalid.notUsernameParts ? `${styles.error}` : ""}>{t("Does not contain parts from username.")}</li>
           <li className={highlightInvalid.lastPasswords ? `${styles.error}` : ""}>Password can't be the same as your
             last 4 passwords

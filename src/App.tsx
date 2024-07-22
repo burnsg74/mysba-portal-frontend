@@ -23,7 +23,6 @@ import Callback from "src/pages/Callback/Callback";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
-import ChangePassword from "src/pages/ChangePassword/ChangePassword";
 import { OKTA_DOMAIN, OKTA_CLIENT_ID, } from "src/utils/constants"
 
 // @ts-ignore
@@ -86,7 +85,6 @@ const App: React.FC = () => {
         <Route element={<ProtectedRoute />}>
           <Route element={<Layout />}>
             <Route path="/loading" element={<Loading />} />
-            <Route path="/change-password" element={<ChangePassword />} />
             <Route path="/account-setup/1" element={<AccountSetup1 />} />
             <Route path="/account-setup/2" element={<AccountSetup2 />} />
             <Route path="/dashboard/*" element={<Dashboard />} />
@@ -113,8 +111,7 @@ const App: React.FC = () => {
             <Route path="/loans" element={<Loans />} />
             <Route path="/help" element={<Help />} />
             <Route path="/error" element={<ErrorPage />} />
-            {/* Default route if path is not found */}
-            <Route path='*' element={<Dashboard />} />
+            <Route path='*' element={<Dashboard />} />       {/* Default route if path is not found */}
           </Route>
         </Route>
       </Routes>
