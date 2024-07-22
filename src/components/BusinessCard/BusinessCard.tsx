@@ -2,7 +2,6 @@ import React, { useEffect, useRef, useState } from "react";
 import Card from "src/components/Card/Card";
 import { useTranslation } from "react-i18next";
 import styles from "src/components/BusinessCard/BusinessCard.module.css";
-import ellipse from "src/assets/ellipse.svg";
 import BusinessCardIcon from "src/assets/business-card-icon.svg";
 
 export const BusinessCard: React.FC<IBusinessCardProps> = ({ business, hideDetails = false }) => {

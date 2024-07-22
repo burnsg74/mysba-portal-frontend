@@ -31,7 +31,6 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
     "HUBZone": "Historically Underutilized Business Zone",
     "VOSB": "Veteran-Owned Small Business",
     "VOSBJointVenture": "Veteran-Owned Small Business Joint Venture"
-    
   };
 
   const translatedCertNames = useMemo(
@@ -48,7 +47,7 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
     } else {
       const certNames = translatedCertNames.map((cert, index) => {
         if(index === stepData.certName.length - 1 && stepData.certName.length > 1) {
-          return ` and ${cert}`;
+          return ' ' + t('and') + ` ${cert}`;
         }
         else if (index === 0) {
           return cert;
@@ -57,10 +56,10 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
           return `, ${cert}`;
         }
       }).join("");
-      modalTitle = t(`Your ${certNames} certifcations have been successfully added!`);
+      modalTitle = t('Your {{Cert Types}} certifications have been successfully added!',{'Cert Types': certNames});
     }
   } else {
-    modalTitle = t(`There is no certification data associated with ${stepData.businessName}`)
+    modalTitle = t('There is no certification data associated with {{Business Name}}', {'Business Name':stepData.businessName})
   }
 
   function handleContinueBtnClick() {
