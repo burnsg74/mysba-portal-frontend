@@ -31,6 +31,8 @@ const Dashboard = () => {
     {t("All Done")}
   </button>);
 
+  console.log('user', user)
+
   return (<>
     {/* Top city banner */}
     <div className={`banner ${styles.banner}`}>

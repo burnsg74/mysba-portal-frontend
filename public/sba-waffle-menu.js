@@ -3,16 +3,22 @@ class SbaWaffleMenu {
     this.sbaWaffleMenuEl = sbaWaffleMenuEl;
     this.isOpen = false;
     this.buttonList = [
-      { image: "mysba", label: "Home", link: "https://prod.mysba.ussba.io/" },
+      { image: "mysba", label: "Home", link: "https://my.sba.gov/dashboard" },
       { image: "certs", label: "Certifications", link: "https://certify.sba.gov/" },
       { image: "loans", label: "Loans", link: "https://www.sba.gov/funding-programs/loans" },
       {
         image: "disaster",
         label: "Disaster Assistance",
-        link: "https://www.sba.gov/funding-programs/disaster-assistance",
+        link: "https://lending.sba.gov/search-disaster",
+      },
+      {
+        image: "learning",
+        label: "Learning",
+        link: "https://www.sba.gov/sba-learning-platform",
       },
     ];
     this.waffleMenuIconButtonPosition = { bottom: 0, right: 0 };
+    this.handleClickOutside = this.handleClickOutside.bind(this);
   }
 
   renderMenuIcon() {
@@ -46,6 +52,9 @@ class SbaWaffleMenu {
       return
     }
 
+    // Event Listener to handle closing the menu if user clicks outside the menu.
+    document.addEventListener('click', this.handleClickOutside, true);
+
     let menuContainerDiv = document.createElement("div");
     menuContainerDiv.id = "menuContainerDiv";
     menuContainerDiv.classList.add("sba-waffle-menu__container");
@@ -53,7 +62,7 @@ class SbaWaffleMenu {
     let headerDiv = document.createElement("div");
     headerDiv.classList.add("sba-waffle-menu__header");
     let headerText = document.createElement("span");
-    headerText.innerHTML = "mySBA";
+    headerText.innerHTML = "MySBA";
     headerDiv.appendChild(headerText);
 
     let waffleMenuCloseButton = document.createElement("button");
@@ -94,7 +103,15 @@ class SbaWaffleMenu {
     menuContainerDiv.appendChild(bodyDiv);
 
     this.sbaWaffleMenuEl.appendChild(menuContainerDiv);
+  }
 
+  handleClickOutside(event) {
+    const menuContainerDiv = document.getElementById('menuContainerDiv');
+    if (!menuContainerDiv.contains(event.target) && this.isOpen) {
+      this.isOpen = false;
+      document.removeEventListener('click', this.handleClickOutside, true);
+      this.removeMenu();
+    }
   }
 
   toggleMenu() {

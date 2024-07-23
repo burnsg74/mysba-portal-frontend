@@ -22,9 +22,9 @@ const Loading = () => {
   const dispatch = useDispatch();
   const { t } = useTranslation();
   const loadingMessages = [t("Authenticating"), t("Working Magic"), t("Fetching Data"), t("Verifying")];
+  const [userFetched, setUserFetched] = useState(false);
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-
 
     const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
@@ -68,7 +68,6 @@ const Loading = () => {
       console.log(err);
     }
 
-    console.log("Okta Info", info);
     let ssoProfile: IUserProfile["sso"] = {
       given_name        : info.given_name ?? "",
       family_name       : info.family_name ?? "",
@@ -106,10 +105,11 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    if (authState?.isAuthenticated) {
+    if (authState?.isAuthenticated && !userFetched) {
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
+          setUserFetched(true);
           dispatch(setNav(true));
           dispatch(setShowProfile(true));
           dispatch(setUser(user));
