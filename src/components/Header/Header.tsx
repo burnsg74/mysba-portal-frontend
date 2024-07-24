@@ -220,7 +220,6 @@ const Header = () => {
             </div>
           </>)}
 
-          <div id="sbaWaffleMenu" ref={myElementRef}></div>
 
           {/* Multi-Language Toggle */}
           {showNav && (<>
@@ -228,7 +227,6 @@ const Header = () => {
             <div className={`${styles.headerMenuIconContainer}`}>
               <svg
                 className={`${styles.headerMenuIcon}`}
-
                 focusable="false"
                 onClick={handleMenuClick}
                 data-testid="menu-icon"
@@ -247,6 +245,7 @@ const Header = () => {
           >
             <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
           </button>)}
+          <div id="sbaWaffleMenu" ref={myElementRef}></div>
         </div>
       </div>
     </header>

@@ -1,4 +1,17 @@
 interface IUserProfile {
+  sso: {
+    "sub": string,
+    "name": string,
+    "locale": string,
+    "email": string,
+    "preferred_username": string,
+    "given_name": string,
+    "family_name": string,
+    "zone_info": string,
+    "updated_at": number,
+    "email_verified": boolean,
+    "cls_elevated": boolean,
+  };
   crm: {
     first_name: string;
     last_name: string;

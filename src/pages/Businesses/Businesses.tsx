@@ -36,7 +36,7 @@ const Businesses = () => {
         <div className={`${styles.noBusinessesMessageContainer}`}>
           <img src={bagIcon} alt="No Businesses" />
           <div className={`${styles.noBusinessesText}`}>
-            {t("You haven’t added any businesses.")}
+            {t("You haven’t added any businesses")}.
           </div>
         </div>
 

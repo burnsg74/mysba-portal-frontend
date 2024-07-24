@@ -42,11 +42,12 @@ const LocalResources = () => {
   }, []);
 
   useEffect(() => {
-    let accessToken = authState?.accessToken?.accessToken;
-    if (accessToken && zipcode && zipcode.toString().length === 5) {
+    // let accessToken = authState?.accessToken?.accessToken;
+    // console.log(accessToken)
+    if ( zipcode && zipcode.toString().length === 5) {
       refreshDistrict(zipcode);
     }
-  }, [authState?.accessToken?.accessToken, zipcode]);
+  }, [zipcode]);
 
   function refreshDistrict(zipcode: string) {
     setApiError(false);
@@ -100,7 +101,7 @@ const LocalResources = () => {
           updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
         } catch (error) {
           console.error("An error occurred:", error);
-          setApiErrorMessage("Error fetching local resources for given zipcode.");
+          setApiErrorMessage(t("Error fetching local resources for given zipcode" + '.'));
           setApiError(true);
         }
       }).catch(error => {
@@ -196,7 +197,7 @@ const LocalResources = () => {
             }}
             // className={`usa-input ${styles.titleZipInput}`}
             className={`usa-input ${apiError ? "usa-input--error" : ""} ${styles.titleZipInput}`}
-            placeholder="Enter Zip Code"
+            placeholder={t("Enter Zip Code")}
             maxLength={5}
           />
         </div>
@@ -235,13 +236,12 @@ const LocalResources = () => {
               {district.field_district_staff_directory && <>
                 <svg
                   className={`usa-icon ${styles.districtCardDetailsLinkIcon}`}
-                  
                   focusable="false"
                 >
                   <title>{t("Open in email")}</title>
                   <use xlinkHref="/assets/img/sprite.svg#mail_outline"></use>
                 </svg>
-                <a href={district.field_district_staff_directory} target="_blank">Office Directory</a>
+                <a href={district.field_district_staff_directory} target="_blank">{t("Office Directory")}</a>
               </>}
             </div>
             {district.social_media_x_url && <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
@@ -257,11 +257,11 @@ const LocalResources = () => {
                   </clipPath>
                 </defs>
               </svg>
-              <a href={district.social_media_x_url} target="_blank">{t("Follow us on X")}</a>
+              <a href={district.social_media_x_url} target="_blank">{t("Follow us on") + ' X'}</a>
             </div>}
             {district.social_media_linkedin_url && <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
               <img src={logoLinkedIn} alt="linkedIn logo" className={styles.linkedInLogo} />
-              <a href={district.social_media_linkedin_url} target="_blank">{t("Follow us on LinkedIn")}</a>
+              <a href={district.social_media_linkedin_url} target="_blank">{t("Follow us on")+ ' LinkedIn'}</a>
             </div>}
           </div>
           <button type="button"

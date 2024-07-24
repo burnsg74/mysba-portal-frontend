@@ -18,10 +18,14 @@ const CertificationAlert = ({ certification }: ICertificationProps, useSlim = fa
 
   if (certification.days_until_expiry <= 0) {
     alertType = "error";
-    alertMessage = `Your ${certification.certification_type} certification has expired`;
+    alertMessage = t('Your {{Cert Type}} certification has expired', { 'Cert Type': certification.certification_type });
   } else if (certification.days_until_expiry <= 90) {
     alertType = "warning";
-    alertMessage = `Your ${certification.certification_type} certification will expire within ${certification.days_until_expiry} days. It must be renewed by ${certification.expiration_date}`;
+    alertMessage = t('Your {{Cert Type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expiration_date}}', {
+      'Cert Type': certification.certification_type,
+      'days_until_expiry': certification.days_until_expiry,
+      'expiration_date': certification.expiration_date
+    });
   } else {
     return null;
   }

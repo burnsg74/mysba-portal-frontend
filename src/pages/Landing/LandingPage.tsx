@@ -13,7 +13,6 @@ import HttpsIcon from "src/assets/icon-https.svg";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
-import axios from "axios";
 import { PORTAL_SIGNUP_URL } from "src/utils/constants";
 
 const LandingPage = () => {
@@ -61,6 +60,9 @@ const LandingPage = () => {
   useEffect(() => {
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
+    const sbaWaffleMenuEl = document.getElementById('sbaWaffleMenu');
+    const sbaWaffleMenuInstance = new SbaWaffleMenu(sbaWaffleMenuEl);
+    sbaWaffleMenuInstance.renderMenuIcon()
   }, []);
 
   return (<>

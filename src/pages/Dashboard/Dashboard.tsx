@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -31,6 +31,8 @@ const Dashboard = () => {
     {t("All Done")}
   </button>);
 
+  console.log('user', user)
+
   return (<>
     {/* Top city banner */}
     <div className={`banner ${styles.banner}`}>
@@ -61,10 +63,10 @@ const Dashboard = () => {
         {! user.businesses?.length && (<div className={`${styles.noBusinessesMessageContainer}`}>
             <img src={IconMagnifier} alt={"No Cert"} className={`${styles.noBusinesseIcon}`} />
             <div className={` ${styles.noBusinessesText1}`}>
-              It looks like you haven’t added anything.
+              {t("It looks like you haven’t added anything.")}
             </div>
             <div className={` ${styles.noBusinessesText2}`}>
-              Navigate to Businesses or Certifications to add your information.
+              {t("Navigate to Businesses or Certifications to add your information.")}
             </div>
           </div>)}
 
