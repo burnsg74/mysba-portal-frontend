@@ -64,7 +64,6 @@ const LandingPage = () => {
       maxBodyLength: Infinity,
       url: `${CLS_URL}/api/current-user-details`,
       headers: {},
-      credentials:'include'
     };
     
     axios.request(config)
