@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useDispatch } from "react-redux";
+import axios from 'axios';
 import styles from "src/pages/Landing/LandingPage.module.css";
 import CityScapeImage from "src/assets/cityscape.png";
 import CloudImage from "src/assets/landingpage-clouds.svg";
@@ -13,7 +14,7 @@ import HttpsIcon from "src/assets/icon-https.svg";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
-import { PORTAL_SIGNUP_URL } from "src/utils/constants";
+import { PORTAL_SIGNUP_URL, CLS_URL } from "src/utils/constants";
 
 const LandingPage = () => {
   const { oktaAuth, authState } = useOktaAuth();
@@ -58,6 +59,22 @@ const LandingPage = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `${CLS_URL}/api/current-user-details`,
+      headers: {},
+      credentials:'include'
+    };
+    
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.error('Error fetching user details:', error);
+      });
+
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
     const sbaWaffleMenuEl = document.getElementById('sbaWaffleMenu');
