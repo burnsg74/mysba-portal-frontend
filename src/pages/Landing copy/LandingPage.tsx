@@ -1,18 +1,19 @@
-import React, { useEffect, useState, ChangeEvent} from "react";
+import React, { useEffect, useState } from "react";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import { useDispatch } from "react-redux";
+import axios from 'axios';
 import styles from "src/pages/Landing/LandingPage.module.css";
+import CityScapeImage from "src/assets/cityscape.png";
+import CloudImage from "src/assets/landingpage-clouds.svg";
 import USFlag from "src/assets/us_flag.svg";
 import DotGov from "src/assets/icon-dot-gov.svg";
 import HttpsIcon from "src/assets/icon-https.svg";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
-import landingPageIllustration from "src/assets/landing_page_illustration.svg";
-
 import { PORTAL_SIGNUP_URL, CLS_URL } from "src/utils/constants";
 
 const LandingPage = () => {
@@ -23,28 +24,9 @@ const LandingPage = () => {
   const [lang, setLang] = useState(localStorage.getItem("lang") ?? detectedLang ?? "en");
   const { i18n } = useTranslation();
   const { t } = useTranslation();
-  const [emailAddress, setEmailAddress] = useState<string>("");
-
-  const handleEmailAddressChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setEmailAddress(event.target.value);
-  };
-
-  const fetchUserDetails = async () => {
-    try {
-      const response = await fetch(`[https://%7b%7bcls_url%7d%7d/api/current-user-details]${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' })
-      console.log(response)
-      // if (response.ok) {
-      //   oktaAuth.signInWithRedirect()
-      // } else {
-      //   return
-      // }
-    } catch (error) {
-      console.error('Error fetching user details:', error);
-    }
-  };
 
   const login = () => {
-    oktaAuth.signInWithRedirect({loginHint:emailAddress});
+    oktaAuth.signInWithRedirect();
   };
 
   const signUp = () => {
@@ -77,40 +59,38 @@ const LandingPage = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
-    // let config = {
-    //   method: 'get',
-    //   maxBodyLength: Infinity,
-    //   url: `${CLS_URL}/api/current-user-details`,
-    //   headers: {},
-    //   withCredentials:true
-    // };
+    let config = {
+      method: 'get',
+      maxBodyLength: Infinity,
+      url: `${CLS_URL}/api/current-user-details`,
+      headers: {},
+      withCredentials:true
+    };
+    
+    axios.request(config)
+      .then((response) => {
+        console.log(JSON.stringify(response.data));
+      })
+      .catch((error) => {
+        console.error('Error fetching user details:', error);
+      });
 
-    // axios.request(config)
-    //   .then((response) => {
-    //     console.log(JSON.stringify(response.data));
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error fetching user details:', error);
-    //   });
-
-    fetchUserDetails()
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
     const sbaWaffleMenuEl = document.getElementById('sbaWaffleMenu');
-    // @ts-ignore
     const sbaWaffleMenuInstance = new SbaWaffleMenu(sbaWaffleMenuEl);
     sbaWaffleMenuInstance.renderMenuIcon()
   }, []);
 
   return (<>
-    <div className={`${styles.pageContainer}`}>
+    <div className={`${styles.fixedTopGroup}`}>
       <section className="usa-banner" aria-label="Official website of the United States government">
         <div className="usa-accordion">
           <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
             <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
               <div className="grid-col-auto">
-                <img className="usa-banner__header-flag" src={USFlag}
-                  alt="US Flag" />
+                <img  className="usa-banner__header-flag" src={USFlag}
+                     alt="US Flag" />
               </div>
               <div className="grid-col-fill tablet:grid-col-auto" >
                 <p
@@ -129,9 +109,9 @@ const LandingPage = () => {
           </header>
           <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
             <div className="grid-row grid-gap-lg">
-              <div className={`usa-banner__guidance tablet:grid-col-6 ${styles.header}`}>
+              <div className="usa-banner__guidance tablet:grid-col-6">
                 <img
-                  className={`usa-banner__icon usa-media-block__img ${styles.usaLogo}`}
+                  className="usa-banner__icon usa-media-block__img"
                   src={DotGov}
                   alt="Dot Goc Icon"
                   
@@ -149,7 +129,7 @@ const LandingPage = () => {
                   className="usa-banner__icon usa-media-block__img"
                   src={HttpsIcon}
                   alt="HTTPS Icon"
-
+                  
                 />
                 <div className="usa-media-block__body">
                   <p>
@@ -210,48 +190,35 @@ const LandingPage = () => {
           </div>
         </div>
       </header>
-      {/*<div className={`${styles.cloudImageContainer}`}>*/}
-      {/*  <img className={`${styles.cloudImage}`} src={CloudImage} alt={t("Decorative Cloud")} />*/}
-      {/*</div>*/}
-      <div className={`${styles.mainContainer}`}>
-        <div className={`banner ${styles.banner}`}>
-          <div className={`${styles.loginRow}`}>
-            <div className={`${styles.loginRowLeft}`}>
-              <div className={`${styles.welcomeTo}`}>
-                Welcome to
-              </div>
-              <div className={`${styles.mySBAHome}`}>
-                MySBA Home
-              </div>
-              <div className={`${styles.subTitle}`}>
-                Loans, certifications, and resources tailored to your business all in one place.
-              </div>
-              <div>
-                <label className="usa-label" htmlFor="input-type-text">Email Address <span
-                  style={{ color: "red" }}>*</span></label>
-                <input className="usa-input" name="emailAddress" value={emailAddress} onChange={handleEmailAddressChange}/>
-              </div>
-              <div>
-                <ul className="usa-button-group">
-                  <li className="usa-button-group__item">
-                    <button onClick={signUp} style={{ height: "unset" }} className="usa-button usa-button--outline">Sign Up</button>
-                  </li>
-                  <li className="usa-button-group__item">
-                    <button onClick={login} type="button" style={{ height: "unset" }} className="usa-button">Login</button>
-                  </li>
-                </ul>
-              </div>
-            </div>
-            <div className={`${styles.loginRowRight}`}>
-              <img aria-hidden="true" src={landingPageIllustration}
-                   alt="Landing Page Illustration" />
-            </div>
-          </div>
+    </div>
+    <img className={`${styles.cloudImage}`} src={CloudImage} alt={t("Decorative Cloud")} />
+    <div className={`${styles.mainContainer}`}>
+      <div className={`banner ${styles.banner}`}>
+
+        <div className={`${styles.welcomeMessage}`}>
+          {t("Welcome to")}<span className={`${styles.bold}`}> MySBA</span>
+        </div>
+        <div
+          className={`${styles.mysbaMessage}`}>{t("Loans, certifications, and resources tailored to your business all in one place.")}</div>
+        <div className={`${styles.buttonGroup}`}>
+          {location.href !== "https://prod.mysba.ussba.io/" && (<button
+            type="button"
+            className={`usa-button usa-button--outline  ${styles.signupBtn}`}
+            onClick={signUp}
+          >
+            {t("Sign Up")}
+          </button>)}
+          <button
+            type="button"
+            data-testid="modal1-next"
+            className={`usa-button ${styles.loginBtn}`}
+            onClick={login}
+          >
+            {t("Log In")}
+          </button>
         </div>
       </div>
-      {/*<div className={`${styles.cityscapeContainer}`}>*/}
-      {/*  <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />*/}
-      {/*</div>*/}
+      <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
     </div>
   </>);
 };

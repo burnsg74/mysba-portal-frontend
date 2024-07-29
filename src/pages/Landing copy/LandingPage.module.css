@@ -1,85 +1,29 @@
-.pageContainer {
-    min-height: 100vh;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
 .mainContainer {
+    position:relative;
     display: flex;
-    flex-grow: 1;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
+    justify-content:center;
     width: 100%;
+    min-height: 100dvh;
     background-color: #F3F8FC;
-    padding: 20px;
 }
 
-/*.banner {*/
-/*    align-items: center;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    flex: 1;*/
-/*    justify-content: center;*/
-/*    top: 33%;*/
-/*    z-index: 1;*/
-/*}*/
+.fixedTopGroup {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
 
 .banner {
-    display: flex;
-    /*padding: 120px;*/
-    flex-direction: column;
     align-items: center;
-    /*gap: var(--64px, 64px);*/
-    align-self: stretch;
-}
-
-.loginRow {
     display: flex;
-    padding: 20px;
+    flex-direction: column;
+    flex: 1;
     justify-content: center;
-    align-items: center;
-    align-content: center;
-    gap: 120px;
-    align-self: stretch;
-    flex-wrap: wrap;
-}
-
-.loginRowLeft {
-    display: flex;
-    width: 400px;
-    flex-direction: column;
-    gap: 20px;
-}
-
-.welcomeTo {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-}
-
-.mySBAHome {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-}
-
-.subTitle {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-}
-
-.loginRowRight {
-
+    padding: 0 20px;
+    top: 33%;
+    z-index: 1;
 }
 
 .welcomeMessage {
@@ -115,36 +59,24 @@
     max-width: 460px;
 }
 
-.cityscapeContainer {
-    align-items: center;
-    background-color: #F3F8FC;
-    display: flex;
-    justify-content: center;
-    overflow: hidden;
-    width: 100%;
-}
-
 .cityscape {
+    position: fixed;
+    bottom: 0;
     height: 175px;
-    object-fit: cover;
-}
-
-.alertBanner {
-    width: 100%;
-}
-
-.cloudImageContainer {
-    display: flex;
-    justify-content: center;
-    background-color: #F3F8FC;
-    width: 100%;
-    overflow: hidden;
+    min-width: 1022px;
+    max-width: 1022px;
 }
 
 .cloudImage {
-    width:100%;
-    height: auto;
-    object-fit: cover;
+    position: fixed;
+    top: 100px;
+    min-width: 1337px;
+    max-width: 1337px;
+    max-height:181px;
+    min-height:181px;
+    z-index: 1;
+    left: 50%;
+    transform: translateX(-50%);
 }
 
 .buttonGroup {
@@ -220,16 +152,18 @@
     padding-bottom: 20px;
     z-index: 2;
     background: var(--Base-white);
-    width: 100%;
 }
 
 .usaBannerHeader {
     text-align: left;
 }
 
-
 .usaLanguageContainer {
-    padding-right: 20px;
+    gap: 20px;
+}
+
+.pillButton {
+    margin: unset;
 }
 
 .pillButton img {
@@ -238,13 +172,13 @@
 }
 
 .usaLogo {
-    height: 57px;
+    height: 38px;
     flex: unset;
     display: block;
 }
 
 .usaLogoSm {
-    height: 32px;
+    height: 38px;
     flex: unset;
     display: none;
 }
@@ -257,40 +191,4 @@
     .usaLogo {
         display: none;
     }
-}
-
-.comingSoon {
-    color: var(--Brand-Primary-SBA-Blue);
-    text-align: center;
-    font-family: "Source Sans Pro";
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-}
-
-.mySBA {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-family: "Source Sans Pro";
-    font-size: 48px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
-}
-
-.comingSoonMessage {
-    color: var(--Brand-Primary-SBA-Blue);
-    text-align: center;
-    font-family: "Source Sans Pro";
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-    margin-top: 23px;
-    max-width: 720px;
-    overflow-wrap: break-word;
-}
-
-.comingSoonMessage a {
-    color: unset;
 }
