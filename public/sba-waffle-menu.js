@@ -95,11 +95,14 @@ class SbaWaffleMenu {
 
       bodyDiv.appendChild(buttonLink);
     });
-    menuContainerDiv.style.right = "20px";
-    menuContainerDiv.style.top = "50px";
     menuContainerDiv.appendChild(bodyDiv);
 
-    this.sbaWaffleMenuEl.appendChild(menuContainerDiv);
+    const rightPosition = window.innerWidth - this.waffleMenuIconButtonPosition.right;
+    console.log(rightPosition)
+    menuContainerDiv.style.right = `${rightPosition}px`;
+    menuContainerDiv.style.top = `${this.waffleMenuIconButtonPosition.bottom + 20}px`;
+
+    document.body.appendChild(menuContainerDiv);
   }
 
   handleClickOutside(event) {
