@@ -226,5 +226,7 @@
   "You could qualify if over 51% of your business is owned by women.": "You could qualify if over 51% of your business is owned by women.",
   "UEI must be 12 characters": "UEI must be 12 characters",
   "UEI could not be linked to an existing business.": "UEI could not be linked to an existing business.",
-  "dashboard.cert.alert.message": "If your business is not yet certified, visit {{link}} to learn more, prepare, and apply for a federal contracting certification."
+  "dashboard.cert.alert.message": "If your business is not yet certified, visit {{link}} to learn more, prepare, and apply for a federal contracting certification.",
+  "followMessage": "Follow #MySBA on <0>Facebook</0>, <1>X</1>, <2>Instagram</2> and <3>LinkedIn</3>, and <4>sign up</4> for SBA news to stay up to date on the progress.",
+  "lookingForHelpForm": "Looking for the <0>SBA customer service form</0>? Visit <1>Contact.SBA.gov</1> to submit inquiries."
 }
