@@ -29,7 +29,6 @@ const LandingPage = () => {
     try {
       const response = await fetch(`[https://%7b%7bcls_url%7d%7d/api/current-user-details]${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' })
       console.log(response)
-      console.log(responseB)
       // if (response.ok) {
       //   oktaAuth.signInWithRedirect()
       // } else {
