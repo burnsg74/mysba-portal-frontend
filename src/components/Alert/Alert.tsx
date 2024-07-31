@@ -16,7 +16,10 @@ const Alert: React.FC<IAlertProps> = ({ message, type, title = null, useSlim = f
     <div id="usa-alert__body" className={`usa-alert__body ${styles["alert-body"]}`}>
       {title && <h4 className="usa-alert__heading">{t(title)}</h4>}
       <div className="usa-alert__text">
-        {typeof message === "string" ? t(message) : message}
+        {typeof message === "string"
+          ? <span dangerouslySetInnerHTML={{__html: t(message)}} />
+          : message
+        }
       </div>
     </div>
   </div>);
