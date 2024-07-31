@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import ReactDOMServer from 'react-dom/server';
 import { useTranslation } from "react-i18next";
 import Modal from "src/components/Modal/Modal";
 import styles from "src/components/ProfileChangePasswordModal/Step1Modal.module.css";
@@ -44,11 +45,12 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   interface ApiErrorMessages {
     [key: string]: string;
   }
+
   const apiErrorMessages: ApiErrorMessages = {
-    "Okta password update aborted: Previous password is incorrect.": "The current password you entered is incorrect. Please try again.",
-    "Okta HTTP 403 E0000006 You do not have permission to perform the requested action": "Okta Admin: You can't use this interface to change your password.",
-    "Okta HTTP 400 E0000001 Api validation failed: password password: Password has been used too recently": "Password has been used too recently. Please choose a different password.",
-    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password has been used too recently": "Password has been used too recently. Please choose a different password.",
+    "Okta password update aborted: Previous password is incorrect."                                           : "The current password you entered is incorrect. Please try again.",
+    "Okta HTTP 403 E0000006 You do not have permission to perform the requested action"                       : "Okta Admin: You can't use this interface to change your password.",
+    "Okta HTTP 400 E0000001 Api validation failed: password password: Password has been used too recently"    : "Password has been used too recently. Please choose a different password.",
+    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password has been used too recently"     : "Password has been used too recently. Please choose a different password.",
     "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password cannot be your current password": "Password has been used too recently. Please choose a different password.",
   };
   const getUserFriendlyError = (apiError: string): string => {
@@ -78,25 +80,26 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   function handleSaveBtnClick() {
     setIsSaveDisabled(true);
     setSaveBtnLabel("Saving...");
-    setHasErrors(false)
-    setHasNewPasswordErrors(false)
-    setCurrentPasswordErrorMsg("")
-    setChangePasswordErrorMsg("")
+    setHasErrors(false);
+    setHasNewPasswordErrors(false);
+    setCurrentPasswordErrorMsg("");
+    setChangePasswordErrorMsg("");
 
-    if (profileData.profile && profileData.profile.sso && !isPasswordValid(profileData.profile.sso.email, stepData.newPassword1)) {
-      setHasNewPasswordErrors(true);
-      setIsSaveDisabled(false);
-      setSaveBtnLabel("Save");
-      setChangePasswordErrorMsg("New password must meet password requirements");
-      return;
-    }
-
-    if (!doesPasswordsMatch()) {
-      setHasPasswordMatchErrors(true)
-      setIsSaveDisabled(false);
-      setSaveBtnLabel("Save");
-      return;
-    }
+    // Commented out for testing CLS errors returned from the API
+    // if (profileData.profile && profileData.profile.sso && !isPasswordValid(profileData.profile.sso.email, stepData.newPassword1)) {
+    //   setHasNewPasswordErrors(true);
+    //   setIsSaveDisabled(false);
+    //   setSaveBtnLabel("Save");
+    //   setChangePasswordErrorMsg("New password must meet password requirements");
+    //   return;
+    // }
+    //
+    // if (!doesPasswordsMatch()) {
+    //   setHasPasswordMatchErrors(true);
+    //   setIsSaveDisabled(false);
+    //   setSaveBtnLabel("Save");
+    //   return;
+    // }
 
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
@@ -110,40 +113,69 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       userName   : profileData.profile?.sso?.email,
       clsElevated: profileData.profile?.sso?.cls_elevated,
       oldPassword: stepData.currentPassword,
-      newPassword: stepData.newPassword1
+      newPassword: stepData.newPassword1,
     };
 
     try {
       setChangePasswordErrorMsg("");
       axios.post(change_password_url, data).then((response) => {
+
         if (response.status !== 200) {
           throw new Error(`Error: ${response.statusText}`);
         }
+
         setIsSaveDisabled(false);
         setSaveBtnLabel("Save");
-        setHasErrors(false)
-        setCurrentPasswordErrorMsg("")
+        setHasErrors(false);
+        setCurrentPasswordErrorMsg("");
         handleContinue();
       }).catch((error) => {
-        console.error("Axios Error 2", error.response.data);
-        const apiErrorMessage = (error?.response?.data?.['Error'] ?? null)?.replace(/\r?\n|\r/g, '');
-        console.log("apiErrorMessage", apiErrorMessage)
-        const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
+        console.error("Axios Error",error.response.status, error.response.data);
 
-        if (userFriendlyMessage === "Password has been used too recently. Please choose a different password.") {
-          setHighlightInvalid(prevState => ({ ...prevState, lastPasswords: true }));
-          setHasNewPasswordErrors(true);
-          setChangePasswordErrorMsg("New password must meet password requirements");
-        } else if (userFriendlyMessage === "The current password you entered is incorrect. Please try again.") {
-          setCurrentPasswordErrorMsg(userFriendlyMessage)
-          setChangePasswordErrorMsg(userFriendlyMessage)
+        console.log("error.response.status", error.response.status);
+        console.log("error.response.data", error.response.data);
+
+        let errorStatusCode = error.response.status;
+        let errorData = JSON.parse(error.response.data);
+        console.log("errorStatusCode", errorStatusCode);
+        console.log("errorData", errorData);
+        console.log("errors", errorData.error);
+
+        if (errorStatusCode === 406 && errorData.error) {
+          console.log("error.response.data.error", error.response.data.error);
+          let errorMsg: string;
+          if (Array.isArray(errorData.error)) {
+            errorMsg = errorData.error.map((err: React.ReactNode, index: number) =>
+              ReactDOMServer.renderToString(<>{err}<br/></>)
+            ).join('');
+          } else {
+            errorMsg = errorData.error;
+          }
+          console.log('errorMsg', errorMsg);
+          setChangePasswordErrorMsg(errorMsg);
+          setHasErrors(true);
+          setIsSaveDisabled(false);
+          setSaveBtnLabel("Save");
         } else {
-          setChangePasswordErrorMsg(userFriendlyMessage);
-          setHasErrors(true)
-        }
+          const apiErrorMessage = (error?.response?.data?.["Error"] ?? null)?.replace(/\r?\n|\r/g, "");
+          console.log("apiErrorMessage", apiErrorMessage);
+          const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
 
-        setIsSaveDisabled(false);
-        setSaveBtnLabel("Save");
+          if (userFriendlyMessage === "Password has been used too recently. Please choose a different password.") {
+            setHighlightInvalid(prevState => ({ ...prevState, lastPasswords: true }));
+            setHasNewPasswordErrors(true);
+            setChangePasswordErrorMsg("New password must meet password requirements");
+          } else if (userFriendlyMessage === "The current password you entered is incorrect. Please try again.") {
+            setCurrentPasswordErrorMsg(userFriendlyMessage);
+            setChangePasswordErrorMsg(userFriendlyMessage);
+          } else {
+            setChangePasswordErrorMsg(userFriendlyMessage);
+            setHasErrors(true);
+          }
+
+          setIsSaveDisabled(false);
+          setSaveBtnLabel("Save");
+        }
       });
 
     } catch (error: string | any) {
@@ -156,26 +188,25 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
 
   const isPasswordValid = (username: string, password: string) => {
     const usernameParts = username.toLowerCase().split(/[.@]/);
-    console.log('usernameParts',usernameParts)
     const specialCharacter = /[{}<>:?|~!$#%^&*_]/;
-    console.log('parts from username', usernameParts.some(part => password.includes(part)))
     const invalidConditions = {
-      minLength: !(password.length >= 16),
-      lowerCase: !(/[a-z]/.test(password)),
-      upperCase: !(/[A-Z]/.test(password)),
-      number   : !(/[0-9]/.test(password)),
+      minLength       : !(password.length >= 16),
+      lowerCase       : !(/[a-z]/.test(password)),
+      upperCase       : !(/[A-Z]/.test(password)),
+      number          : !(/[0-9]/.test(password)),
       specialCharacter: !specialCharacter.test(password),
       notUsernameParts: usernameParts.some(part => password.includes(part)),
-      lastPasswords: false
+      lastPasswords   : false,
     };
-    setHighlightInvalid(invalidConditions);
+    // setHighlightInvalid(invalidConditions);
 
-    return !Object.values(invalidConditions).includes(true);
+    // return !Object.values(invalidConditions).includes(true);
+    return false
   };
 
   const doesPasswordsMatch = () => {
-   return  (stepData.newPassword1 === stepData.newPassword2)
-  }
+    return (stepData.newPassword1 === stepData.newPassword2);
+  };
 
   const closeModal = () => {
     handleClose();
@@ -219,7 +250,8 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>{t("A lowercase letter")}</li>
           <li className={highlightInvalid.upperCase ? `${styles.error}` : ""}>{t("An uppercase letter")}</li>
           <li className={highlightInvalid.specialCharacter ? `${styles.error}` : ""}>{t("A special character")}</li>
-          <li className={highlightInvalid.notUsernameParts ? `${styles.error}` : ""}>{t("Does not contain parts from username.")}</li>
+          <li
+            className={highlightInvalid.notUsernameParts ? `${styles.error}` : ""}>{t("Does not contain parts from username.")}</li>
           <li className={highlightInvalid.lastPasswords ? `${styles.error}` : ""}>Password can't be the same as your
             last 4 passwords
           </li>
