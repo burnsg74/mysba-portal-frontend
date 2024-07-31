@@ -57,21 +57,6 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     return apiErrorMessages[apiError] || "An unexpected error occurred. Please try again later.";
   };
 
-  // useEffect(() => {
-  //   async function fetchUser() {
-  //     if (!authState?.isAuthenticated) {
-  //       setUser(null);
-  //       return;
-  //     }
-  //     if (authState.isAuthenticated) {
-  //       const userInfo = await oktaAuth.getUser();
-  //       setUser(userInfo);
-  //     }
-  //   }
-  //
-  //   fetchUser();
-  // }, [authState]);
-
   const handleInputChange = (name: string, value: string) => {
     const updatedStepData = { ...stepData, [name]: value };
     setStepData(updatedStepData);
@@ -85,21 +70,20 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     setCurrentPasswordErrorMsg("");
     setChangePasswordErrorMsg("");
 
-    // Commented out for testing CLS errors returned from the API
-    // if (profileData.profile && profileData.profile.sso && !isPasswordValid(profileData.profile.sso.email, stepData.newPassword1)) {
-    //   setHasNewPasswordErrors(true);
-    //   setIsSaveDisabled(false);
-    //   setSaveBtnLabel("Save");
-    //   setChangePasswordErrorMsg("New password must meet password requirements");
-    //   return;
-    // }
-    //
-    // if (!doesPasswordsMatch()) {
-    //   setHasPasswordMatchErrors(true);
-    //   setIsSaveDisabled(false);
-    //   setSaveBtnLabel("Save");
-    //   return;
-    // }
+    if (profileData.profile && profileData.profile.sso && !isPasswordValid(profileData.profile.sso.email, stepData.newPassword1)) {
+      setHasNewPasswordErrors(true);
+      setIsSaveDisabled(false);
+      setSaveBtnLabel("Save");
+      setChangePasswordErrorMsg("New password must meet password requirements");
+      return;
+    }
+
+    if (!doesPasswordsMatch()) {
+      setHasPasswordMatchErrors(true);
+      setIsSaveDisabled(false);
+      setSaveBtnLabel("Save");
+      return;
+    }
 
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
@@ -198,10 +182,9 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       notUsernameParts: usernameParts.some(part => password.includes(part)),
       lastPasswords   : false,
     };
-    // setHighlightInvalid(invalidConditions);
+    setHighlightInvalid(invalidConditions);
 
-    // return !Object.values(invalidConditions).includes(true);
-    return false
+    return !Object.values(invalidConditions).includes(true);
   };
 
   const doesPasswordsMatch = () => {
