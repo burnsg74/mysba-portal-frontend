@@ -55,7 +55,12 @@ const Loading = () => {
     });
     let individual = results?.data.individuals[0];
     if (!individual) {
-      throw new Error("No individual found");
+      // throw new Error("No individual found");
+
+      // Workaround for the case where the user is not in the CRM Profile yet. This is a temporary solution. - GB 2021-09-29
+      individual = {
+        firstName: info.given_name ?? "", lastName: info.family_name ?? "", email: info.email ?? "",
+      };
     }
     let crmData: IUserProfile["crm"] = {
       first_name: individual.firstName ?? "", last_name: individual.lastName ?? "", email: individual.email ?? "",
@@ -150,18 +155,18 @@ const Loading = () => {
   }, [messageIndex]);
 
   return (<div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
-      <img
-        className={`${styles.loadingIcon}`}
-        src={loadingIcon}
-        alt="Loading"
-      />
-      <div className={`${styles.loadingProgressbarOuter}`}>
-        <div
-          className={`${styles.loadingProgressbarInner}`}
-          style={{ width: `${loadingProgress}%` }}
-        ></div>
-      </div>
-      <div className={`${styles.loadingText}`}>{loadingMessage}</div>
-    </div>);
+    <img
+      className={`${styles.loadingIcon}`}
+      src={loadingIcon}
+      alt="Loading"
+    />
+    <div className={`${styles.loadingProgressbarOuter}`}>
+      <div
+        className={`${styles.loadingProgressbarInner}`}
+        style={{ width: `${loadingProgress}%` }}
+      ></div>
+    </div>
+    <div className={`${styles.loadingText}`}>{loadingMessage}</div>
+  </div>);
 };
 export default Loading;
