@@ -13,7 +13,7 @@ import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
 import landingPageIllustration from "src/assets/landing_page_illustration.svg";
 
-import { PORTAL_SIGNUP_URL, CLS_URL } from "src/utils/constants";
+import { PORTAL_SIGNUP_URL, CLS_URL, OKTA_IDP } from "src/utils/constants";
 
 const LandingPage = () => {
   const { oktaAuth, authState } = useOktaAuth();
@@ -32,10 +32,8 @@ const LandingPage = () => {
   const fetchUserDetails = async () => {
     try {
       const response = await fetch(`${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' })
-      const data = await response.json()
-      console.log(data)
       if (response.ok) {
-        oktaAuth.signInWithRedirect({loginHint: data.username})
+        oktaAuth.signInWithRedirect({idp: OKTA_IDP})
       } else {
         return
       }
