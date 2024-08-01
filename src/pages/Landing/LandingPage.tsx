@@ -32,12 +32,13 @@ const LandingPage = () => {
   const fetchUserDetails = async () => {
     try {
       const response = await fetch(`${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' })
-      console.log(response)
-      // if (response.ok) {
-      //   oktaAuth.signInWithRedirect()
-      // } else {
-      //   return
-      // }
+      const data = await response.json()
+      console.log(data)
+      if (response.ok) {
+        oktaAuth.signInWithRedirect({loginHint: data.username})
+      } else {
+        return
+      }
     } catch (error) {
       console.error('Error fetching user details:', error);
     }
