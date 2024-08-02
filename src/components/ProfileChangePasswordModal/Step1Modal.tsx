@@ -119,13 +119,12 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
         console.log("error.response.status", error.response.status);
         console.log("error.response.data", error.response.data);
 
-        let errorStatusCode = error.response.status;
-        let errorData = JSON.parse(error.response.data);
-        console.log("errorStatusCode", errorStatusCode);
-        console.log("errorData", errorData);
-        console.log("errors", errorData.error);
-
-        if (errorStatusCode === 406 && errorData.error) {
+        if (error.response.status === 406) {
+          let errorStatusCode = error.response.status;
+          let errorData = JSON.parse(error.response.data);
+          console.log("errorStatusCode", errorStatusCode);
+          console.log("errorData", errorData);
+          console.log("errors", errorData.error);
           console.log("error.response.data.error", error.response.data.error);
           let errorMsg: string;
           if (Array.isArray(errorData.error)) {
