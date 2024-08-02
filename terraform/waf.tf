@@ -53,7 +53,7 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
     priority = 2
 
     override_action {
-      none {}
+      count {}
     }
 
     statement {
@@ -66,6 +66,29 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
             inspection_level = "TARGETED"
           }
         }
+
+        rule_action_override {
+          name = "TGT_VolumetricSession"
+          action_to_use {
+            count {}
+          }
+        }
+
+        rule_action_override {
+          name = "TGT_SignalAutomatedBrowser"
+          action_to_use {
+            count {}
+          }
+        }
+
+        rule_action_override {
+          name = "TGT_SignalBrowserInconsistency"
+          action_to_use {
+            count {}
+          }
+        }
+
+
       }
     }
 
