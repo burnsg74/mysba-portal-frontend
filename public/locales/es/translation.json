@@ -309,6 +309,7 @@
   "Your business has been successfully added.": "Su negocio ha sido añadido con éxito.",
   "Your business will only have this if you have registered for a UEI (Unique Entity ID) on SAM.gov.": "Tu empresa solo tendrá este, si te has registrado para obtener un UEI (ID de entidad único) en SAM.gov.",
   "Your profile": "Tu perfil",
+  "Your {{Cert Type}} certification will expire within {{days_until_expiry}} days. It must be renewed by {{expiration_date}}": "Tu certificación {{Cert Type}} vencerá en {{days_until_expiry}} días. Debe renovarse antes del {{expiration_date}}.",
   "Your {{Cert Types}} certifications have been successfully added!": "¡Tu {{Cert Types}} se han agregado con éxito!",
   "Your {{Cert Type}} certification has expired": "Su certificación {{Cert Type}} ha caducado",
   "Zip Code": "Código Postal",
