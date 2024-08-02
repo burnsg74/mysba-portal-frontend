@@ -37,7 +37,7 @@
   "Business mentorship": "Mentoría empresarial",
   "Businesses": "Empresas",
   "C corporation": "Corporación C",
-  "Cancel":"Cancelar",
+  "Cancel": "Cancelar",
   "Capabilities Narrative": "Declaración de capacidad",
   "Catering services and food distribution": "Servicios de alimentación y distribución de alimentos.",
   "Catering": "Servicios de alimentación",
@@ -268,7 +268,7 @@
   "View": "Ver",
   "Website": "Pagina Web",
   "Welcome to your MySBA Dashboard": "Bienvenido a su tablero de MiSBA",
-  "Welcome to":"Bienvenido a",
+  "Welcome to": "Bienvenido a",
   "What happens to my information if I delete my account?": "¿Qué pasa con mi información si elimino mi cuenta?",
   "What is MySBA?": "¿Que es MySBA?",
   "What kind of certification would you like to apply for?": "¿Qué tipo de certificación le gustaría solicitar?",
@@ -301,7 +301,7 @@
   "Your Financial needs": "Sus necesidades financieras",
   "Your Profile": "Tu perfil",
   "Your UEI must be 12 characters long": "El UEI debe tener 12 caracteres",
-  "Your Veteran-owned small business certification must be renewed by":" Su certificación de pequeño negocio propiedad de un Veterano debe renovarse antes del 15/12/2023.",
+  "Your Veteran-owned small business certification must be renewed by": " Su certificación de pequeño negocio propiedad de un Veterano debe renovarse antes del 15/12/2023.",
   "Your Women-Owned Small Business certification must be renewed by": "Su certificación de Pequeña Empresa Propiedad de Mujeres, (WOSB, por sus siglas en inglés) debe ser renovada, antes del",
   "Your Women-Owned Small Business certification will expire within {{days_until_expiry}} days. It must be renewed by {{expire_at}}": "Su certificación de pequeña empresa propiedad de mujeres caducará en un plazo de {{days_until_expiry}} días. Debe renovarse antes del {{expire_at}}.",
   "Your account has successfully been deleted.": "Su cuenta ha sido eliminada correctamente.",
@@ -333,5 +333,7 @@
   "will receive a reply within two": "digitalresearch@SBA.gov y recibirá",
   "It looks like you haven’t added anything.": "It looks like you haven’t added anything.",
   "Navigate to Businesses or Certifications to add your information.": "Navigate to Businesses or Certifications to add your information.",
-  "There is no certification data associated with {{business_name}}": "There is no certification data associated with {{business_name}}"
+  "There is no certification data associated with {{business_name}}": "There is no certification data associated with {{business_name}}",
+  "Women-Owned Small Business (WOSB) Certification": "Certificación de Pequeñas Empresas Propiedad de Mujeres (WOSB)",
+  "Veteran-Owned Small Business (VOSB) Certification": "Certificación de Pequeñas Empresas Propiedad de Veteranos (VOSB)"
 }
