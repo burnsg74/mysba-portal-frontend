@@ -34,6 +34,7 @@ const App: React.FC = () => {
   const profileData: IUser = useSelector(getUser);
 
   useEffect(() => {
+
     if (
       location.pathname === "/" ||
       location.pathname === "/loading" ||
