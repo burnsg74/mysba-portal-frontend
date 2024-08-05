@@ -26,6 +26,10 @@ const Loading = () => {
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
 
+    if (info.cls_elevated) {
+      sessionStorage.setItem('clsUser', 'true');
+    }
+
     const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {

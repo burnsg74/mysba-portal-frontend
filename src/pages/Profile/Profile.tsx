@@ -25,6 +25,21 @@ const Profile = () => {
   };
 
   const logout = async () => {
+    // if sessionStorage.setItem('clsUser', 'true'); redirect to https://gamma.oauth.cls.sba.gov/accounts/logout/
+    console.log('clsUser', sessionStorage.getItem('clsUser'));
+    if (sessionStorage.getItem('clsUser') !== null) {
+      console.log('clsUser Logout', sessionStorage.getItem('clsUser'));
+      document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+      sessionStorage.clear();
+      localStorage.clear();
+      sessionStorage.setItem('clsLogoutNeeded', 'true');
+      oktaAuth.signOut();
+      return;
+    }
+
+    console.log('Normal Logout');
     await oktaAuth.signOut();
     document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';

@@ -12,6 +12,12 @@ import "./i18n";
 const container = document.getElementById("root");
 if (!container) throw new Error("Could not find root element with id 'root'");
 
+if (sessionStorage.getItem('clsLogoutNeeded') !== null) {
+  console.log('CLS Logout Needed')
+  sessionStorage.clear();
+  window.location.replace('https://gamma.oauth.cls.sba.gov/accounts/logout/' + '?next=' + window.location.origin);
+}
+
 if (import.meta.env.MODE === 'localhost') {
   const urlParams = new URLSearchParams(window.location.search);
   const user = urlParams.get('user');
