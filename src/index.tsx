@@ -7,6 +7,7 @@ import { store } from "src/store/store";
 import { Provider } from "react-redux";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
+import { CLS_URL } from "src/utils/constants";
 import "./i18n";
 
 const container = document.getElementById("root");
@@ -15,22 +16,27 @@ if (!container) throw new Error("Could not find root element with id 'root'");
 if (sessionStorage.getItem('clsLogoutNeeded') !== null) {
   console.log('CLS Logout Needed')
   sessionStorage.clear();
-  window.location.replace('https://gamma.oauth.cls.sba.gov/accounts/logout/' + '?next=' + window.location.origin);
-}
-
-if (import.meta.env.MODE === 'localhost') {
-  const urlParams = new URLSearchParams(window.location.search);
-  const user = urlParams.get('user');
-  if (user) {
-    sessionStorage.setItem('user', user);
+  window.location.href = CLS_URL +  '/accounts/logout' + '?next=' + window.location.origin;
+} else {
+  console.log('Normal Login');
+  if (import.meta.env.MODE === 'localhost') {
+    const urlParams = new URLSearchParams(window.location.search);
+    const user = urlParams.get('user');
+    if (user) {
+      sessionStorage.setItem('user', user);
+    }
   }
+
+  const root = createRoot(container);
+  root.render(
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
+  );
+
 }
 
-const root = createRoot(container);
-root.render(
-  <Provider store={store}>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
-  </Provider>
-);
+
+

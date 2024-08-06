@@ -13,7 +13,7 @@ import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
 import landingPageIllustration from "src/assets/landing_page_illustration.svg";
 
-import { PORTAL_URL, PORTAL_SIGNUP_URL, CLS_URL, OKTA_IDP } from "src/utils/constants";
+import { PORTAL_SIGNUP_URL, CLS_URL, OKTA_IDP } from "src/utils/constants";
 
 const LandingPage = () => {
   const { oktaAuth, authState } = useOktaAuth();
@@ -230,16 +230,16 @@ const LandingPage = () => {
               <div className={`${styles.subTitle}`}>
                 Loans, certifications, and resources tailored to your business all in one place.
               </div>
-              <div>
-                <label className="usa-label" htmlFor="input-type-text">Email Address <span
-                  style={{ color: "red" }}>*</span></label>
-                <input className="usa-input" name="emailAddress" value={emailAddress} onChange={handleEmailAddressChange}/>
-              </div>
+              {/*<div>*/}
+              {/*  <label className="usa-label" htmlFor="input-type-text">Email Address <span*/}
+              {/*    style={{ color: "red" }}>*</span></label>*/}
+              {/*  <input className="usa-input" name="emailAddress" value={emailAddress} onChange={handleEmailAddressChange}/>*/}
+              {/*</div>*/}
               <div>
                 <ul className="usa-button-group">
-                  <li className="usa-button-group__item">
-                    <button onClick={signUp} style={{ height: "unset" }} className="usa-button usa-button--outline">Sign Up</button>
-                  </li>
+                  {/*<li className="usa-button-group__item">*/}
+                  {/*  <button onClick={signUp} style={{ height: "unset" }} className="usa-button usa-button--outline">Sign Up</button>*/}
+                  {/*</li>*/}
                   <li className="usa-button-group__item">
                     <button onClick={login} type="button" style={{ height: "unset" }} className="usa-button">Login</button>
                   </li>
