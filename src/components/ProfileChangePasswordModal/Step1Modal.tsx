@@ -74,7 +74,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       setHasNewPasswordErrors(true);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
-      setChangePasswordErrorMsg("New password must meet password requirements");
+      setChangePasswordErrorMsg(t("New password must meet password requirements"));
       return;
     }
 
@@ -147,7 +147,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           if (userFriendlyMessage === "Password has been used too recently. Please choose a different password.") {
             setHighlightInvalid(prevState => ({ ...prevState, lastPasswords: true }));
             setHasNewPasswordErrors(true);
-            setChangePasswordErrorMsg("New password must meet password requirements");
+            setChangePasswordErrorMsg(t("New password must meet password requirements"));
           } else if (userFriendlyMessage === "The current password you entered is incorrect. Please try again.") {
             setCurrentPasswordErrorMsg(userFriendlyMessage);
             setChangePasswordErrorMsg(userFriendlyMessage);
@@ -226,7 +226,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
                       errorMessage={currentPasswordErrorMsg}
                       onChange={handleInputChange} />
       <div className={`${styles.passwordRequirements}`}>
-        Password requirements:
+        {t("Password requirements")}:
         <ul>
           <li className={highlightInvalid.minLength ? `${styles.error}` : ""}>{t("At least 16 characters")}</li>
           <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>{t("At least 1 lowercase letter")}</li>
