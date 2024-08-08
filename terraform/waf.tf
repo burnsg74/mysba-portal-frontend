@@ -88,7 +88,12 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
           }
         }
 
-
+        rule_action_override {
+          name = "TGT_VolumetricIpTokenAbsent"
+          action_to_use {
+            count {}
+          }
+        }
       }
     }
 
