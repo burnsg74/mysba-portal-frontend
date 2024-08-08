@@ -97,7 +97,6 @@ const LandingPage = () => {
 
     console.log('Landing Page useEffect');
 
-    setTimeout(fetchUserDetails, 30000);
     fetchUserDetails()
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
