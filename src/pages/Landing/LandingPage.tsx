@@ -97,7 +97,8 @@ const LandingPage = () => {
 
     console.log('Landing Page useEffect');
 
-    fetchUserDetails()
+    setTimeout(fetchUserDetails, 30000);
+    // fetchUserDetails()
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
     const sbaWaffleMenuEl = document.getElementById('sbaWaffleMenu');
