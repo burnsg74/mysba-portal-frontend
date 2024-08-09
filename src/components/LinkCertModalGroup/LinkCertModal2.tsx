@@ -9,13 +9,13 @@ import axios from "axios";
 import { useOktaAuth } from "@okta/okta-react";
 import { useSelector, useDispatch } from "react-redux";
 import { getUser, setUser } from "src/store/user/userSlice";
-import { startCase } from 'lodash';
+import { startCase } from "lodash";
 
 interface Step2ModalProps {
   businessData: {
-    businessName: string
-    certName: string[]
-    uei: string
+    businessName: string;
+    certName: string[];
+    uei: string;
   };
   handleClose: () => void;
   handleContinue: (stepData: any) => void;
@@ -31,23 +31,41 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
   const { authState } = useOktaAuth();
   const dispatch = useDispatch();
   const user: IUser = useSelector(getUser);
-  const [stepData] = useState<{ uei: string, businessName: string, certName: string[]; }>({ uei: businessData.uei, businessName: businessData.businessName, certName: businessData.certName });
+  const [stepData] = useState<{ uei: string; businessName: string; certName: string[] }>({
+    uei: businessData.uei,
+    businessName: businessData.businessName,
+    certName: businessData.certName,
+  });
 
   const formatPhoneNumber = (phoneNumber: string) => {
     const phoneNumberStr = phoneNumber.toString();
-    return phoneNumberStr.replace(/(\d{3})(\d{3})(\d{4})/, '($1) $2-$3');
+    return phoneNumberStr.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
   };
 
-  function parseAndCheckActive(data: Certification): { type: string, expirationKey: string }[] {
-    const activeCertifications: { type: string, expirationKey: string }[] = [];
-    const keywords = ["8a","8aJointVenture", "WOSB", "SDVOSB", "SDVOSBJointVenture", "HUBZone", "VOSB","VOSBJointVenture", "EDWOSB"];
-  
+  function parseAndCheckActive(data: Certification): { type: string; expirationKey: string }[] {
+    const activeCertifications: { type: string; expirationKey: string }[] = [];
+    const keywords = [
+      "8a",
+      "8aJointVenture",
+      "WOSB",
+      "SDVOSB",
+      "SDVOSBJointVenture",
+      "HUBZone",
+      "VOSB",
+      "VOSBJointVenture",
+      "EDWOSB",
+    ];
+
     keywords.forEach(keyword => {
       const statusKey = `${keyword}CertificationStatus`;
-      if (data[statusKey] && (data[statusKey]!.toString().toLowerCase() === 'active' || data[statusKey]!.toString().toLowerCase() === 'previously certified')) {
+      if (
+        data[statusKey] &&
+        (data[statusKey]!.toString().toLowerCase() === "active" ||
+          data[statusKey]!.toString().toLowerCase() === "previously certified")
+      ) {
         activeCertifications.push({
           type: keyword,
-          expirationKey: `${keyword}CertificationExitDate`
+          expirationKey: `${keyword}CertificationExitDate`,
         });
       }
     });
@@ -61,7 +79,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
       const diffTime = expiry.getTime() - today.getTime();
       return Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     } else {
-      return null
+      return null;
     }
   };
 
@@ -79,102 +97,114 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
         accessToken = undefined;
       }
       let data = JSON.stringify({
-        "individuals": [
+        individuals: [
           {
-            "firstName": "",
-            "lastName": "",
-            "email": email,
-            "linkedOrganization": {
-              "organizations": [{
-                "organizationUei": stepData.uei
-              }]
-            }
-          }
-        ]
+            firstName: "",
+            lastName: "",
+            email: email,
+            linkedOrganization: {
+              organizations: [
+                {
+                  organizationUei: stepData.uei,
+                },
+              ],
+            },
+          },
+        ],
       });
 
       let config = {
-        method: 'put',
+        method: "put",
         maxBodyLength: Infinity,
         url: `${BASE_API_URL}/individuals/individual`,
         headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${accessToken}`
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
         },
-        data: data
+        data: data,
       };
-      let results = await axios.request(config).catch((error) => { console.log(error); });
+      let results = await axios.request(config).catch(error => {
+        console.log(error);
+      });
       data = JSON.stringify({
-        "individuals": [
+        individuals: [
           {
-            "firstName": "",
-            "lastName": "",
-            "email": email,
-            "linkedOrganization": {
-              "organizations": [{
-                "organizationUei": stepData.uei
-              }]
-            }
-          }
-        ]
+            firstName: "",
+            lastName: "",
+            email: email,
+            linkedOrganization: {
+              organizations: [
+                {
+                  organizationUei: stepData.uei,
+                },
+              ],
+            },
+          },
+        ],
       });
 
       config = {
-        method : "post", maxBodyLength: Infinity, url: `${BASE_API_URL}/organizations/organization?task=read`,
+        method: "post",
+        maxBodyLength: Infinity,
+        url: `${BASE_API_URL}/organizations/organization?task=read`,
         headers: {
-          "Content-Type": "application/json", "Authorization": `Bearer ${accessToken}`,
-        }, data: data,
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${accessToken}`,
+        },
+        data: data,
       };
-      results = await axios.request(config).catch((error) => { console.log(error); });
-      let businessIdCounter = 1
-      let individual = results?.data
+      results = await axios.request(config).catch(error => {
+        console.log(error);
+      });
+      let businessIdCounter = 1;
+      const individual = results?.data;
       const businessData: IBusiness[] = individual.organizations.map((business: any) => {
         const businessId = (businessIdCounter++).toString();
         return {
-          email: business.organizationEmail ?? '',
-          owner: `${individual.firstName ?? ''} ${individual.lastName ?? ''}`,
-          id: businessId ?? '',
-          name: business.organizationName ? startCase(business.organizationName.toLowerCase()) : '',
-          legal_entity: business.organizationLegalEntity ?? '',
-          ownership_type: business.organizationOwnerShipType ?? '',
-          uei: business.organizationUei?.replace(/(\d{6})(\d{4})/, "******$2") ?? '',
+          email: business.organizationEmail ?? "",
+          owner: `${individual.firstName ?? ""} ${individual.lastName ?? ""}`,
+          id: businessId ?? "",
+          name: business.organizationName ? startCase(business.organizationName.toLowerCase()) : "",
+          legal_entity: business.organizationLegalEntity ?? "",
+          ownership_type: business.organizationOwnerShipType ?? "",
+          uei: business.organizationUei?.replace(/(\d{6})(\d{4})/, "******$2") ?? "",
           ein: null,
-          user_id: business.userId ?? '',
-          mailing_address_street: business.organizationMailingAddressStreet ?? '',
-          mailing_address_city: business.organizationMailingAddressCity ?? '',
-          mailing_address_state: business.organizationMailingAddressState ?? '',
-          mailing_address_zipcode: business.organizationMailingAddressZip ?? '',
-          business_address_street: business.organizationAddressStreet ?? '',
-          business_address_city: business.organizationAddressCity ?? '',
-          business_address_state: business.organizationAddressState ?? '',
-          business_address_zipcode: business.organizationAddressZip ?? '',
-          business_phone_number: formatPhoneNumber(business.organizationPhone ?? ''),
-          fax: business.organizationFax ?? '',
-          naics_codes: business.organizationNaicsCodes ?? '',
-          capabilities_narrative: business.organizationCapabilityNarratives ?? '',
-          website: business.organizationWebsite ?? '',
+          user_id: business.userId ?? "",
+          mailing_address_street: business.organizationMailingAddressStreet ?? "",
+          mailing_address_city: business.organizationMailingAddressCity ?? "",
+          mailing_address_state: business.organizationMailingAddressState ?? "",
+          mailing_address_zipcode: business.organizationMailingAddressZip ?? "",
+          business_address_street: business.organizationAddressStreet ?? "",
+          business_address_city: business.organizationAddressCity ?? "",
+          business_address_state: business.organizationAddressState ?? "",
+          business_address_zipcode: business.organizationAddressZip ?? "",
+          business_phone_number: formatPhoneNumber(business.organizationPhone ?? ""),
+          fax: business.organizationFax ?? "",
+          naics_codes: business.organizationNaicsCodes ?? "",
+          capabilities_narrative: business.organizationCapabilityNarratives ?? "",
+          website: business.organizationWebsite ?? "",
         };
       });
-      const certs = parseAndCheckActive(results?.data.organizations[0].certification)
-      let certificationIdCounter = 1
+      const certs = parseAndCheckActive(results?.data.organizations[0].certification);
+      let certificationIdCounter = 1;
       const certificationData: ICertification[] = individual.organizations.flatMap((business: any) => {
         const certification = business.certification;
         return certs.map(cert => {
           const certificationId = (certificationIdCounter++).toString();
           const ownersArray = business.organizationOwnerName ?? []; // Assume business.owners is an array of strings
-          const owner = ownersArray.join(', ');
+          const owner = ownersArray.join(", ");
           return {
-            email: business.organizationEmail ?? '',
+            email: business.organizationEmail ?? "",
             ein: null,
-            certification_id:certificationId,
-            business_id: business.organizationUei ?? '',
+            certification_id: certificationId,
+            business_id: business.organizationUei ?? "",
             certification_type: certification.certificationType ?? cert.type,
-            issue_date: certification[`${cert.type}CertificationEntranceDate`] ?? '',
-            expiration_date: certification[cert.expirationKey] ?? '',
+            issue_date: certification[`${cert.type}CertificationEntranceDate`] ?? "",
+            expiration_date: certification[cert.expirationKey] ?? "",
             days_until_expiry: calculateDaysUntilExpiry(certification[cert.expirationKey]),
-            company_name: business.organizationName ? startCase(business.organizationName.toLowerCase()) : '',
+            company_name: business.organizationName ? startCase(business.organizationName.toLowerCase()) : "",
             owner: owner,
-            naics_codes: business.organizationNaicsCodes ?? '',
+            naics_codes: business.organizationNaicsCodes ?? "",
           };
         });
       });
@@ -184,9 +214,9 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
     } catch (error) {
       console.error("Error saving new business", error);
     }
-  }
+  };
   function handleContinueBtnClick() {
-    linkCert()
+    linkCert();
   }
 
   const closeModal = () => {
@@ -196,31 +226,34 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
     handleBack(stepData);
   };
 
-  return (<Modal
-    title={t("Link a Certification")}
-    onClose={closeModal}
-    prevModal={handleBackButtonClick}
-    totalSteps={3}
-    completedSteps={1}
-    ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
-    contentTitle={t('Is {{businessName}} your business?', { businessName: businessData.businessName })}
-    contentMessage={t("If this business name doesn't match, please go back to the previous step and make sure you entered your UEI correctly.")}
-    footerContent={(<>
-      <button
-        type="button"
-        className={`usa-button usa-button--outline ${styles.cancelBtn}`}
-        onClick={handleBackButtonClick}
-      >
-        {t("Back")}
-      </button>
-      <button type="button"
-        className={`usa-button ${styles.continueBtn}`}
-        onClick={() => handleContinueBtnClick()}>
-        {t("Confirm")}
-      </button>
-    </>)}
-  >
-  </Modal>);
+  return (
+    <Modal
+      title={t("Link a Certification")}
+      onClose={closeModal}
+      prevModal={handleBackButtonClick}
+      totalSteps={3}
+      completedSteps={1}
+      ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
+      contentTitle={t("Is {{businessName}} your business?", { businessName: businessData.businessName })}
+      contentMessage={t(
+        "If this business name doesn't match, please go back to the previous step and make sure you entered your UEI correctly."
+      )}
+      footerContent={
+        <>
+          <button
+            type="button"
+            className={`usa-button usa-button--outline ${styles.cancelBtn}`}
+            onClick={handleBackButtonClick}
+          >
+            {t("Back")}
+          </button>
+          <button type="button" className={`usa-button ${styles.continueBtn}`} onClick={() => handleContinueBtnClick()}>
+            {t("Confirm")}
+          </button>
+        </>
+      }
+    ></Modal>
+  );
 };
 
 export default LinkCertModal2;
