@@ -31,8 +31,6 @@ const Dashboard = () => {
     {t("All Done")}
   </button>);
 
-  console.log('user', user)
-
   return (<>
     {/* Top city banner */}
     <div className={`banner ${styles.banner}`}>
@@ -104,18 +102,19 @@ const Dashboard = () => {
           </React.Fragment>))}
       </div>
     </div>
-    {location.pathname === "/dashboard/new" && (<Modal
-      title=""
-      onClose={() => {
-        dispatch(setNav(true));
-        dispatch(setShowProfile(true));
-        navigate("/dashboard");
-      }}
-      ImageAndAlt={{ image: lightBulbImage, alt: "Light Bulb" }}
-      contentTitle={t("Your account is all set up.")}
-      contentMessage={t("Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov.")}
-      footerContent={modalFooterContent}
-    />)}
+    {/* Temp remove new user */}
+    {/*{location.pathname === "/dashboard/new" && (<Modal*/}
+    {/*  title=""*/}
+    {/*  onClose={() => {*/}
+    {/*    dispatch(setNav(true));*/}
+    {/*    dispatch(setShowProfile(true));*/}
+    {/*    navigate("/dashboard");*/}
+    {/*  }}*/}
+    {/*  ImageAndAlt={{ image: lightBulbImage, alt: "Light Bulb" }}*/}
+    {/*  contentTitle={t("Your account is all set up.")}*/}
+    {/*  contentMessage={t("Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov.")}*/}
+    {/*  footerContent={modalFooterContent}*/}
+    {/*/>)}*/}
   </>);
 };
 

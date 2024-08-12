@@ -336,5 +336,12 @@
   "Navigate to Businesses or Certifications to add your information.": "Navigate to Businesses or Certifications to add your information.",
   "There is no certification data associated with {{business_name}}": "There is no certification data associated with {{business_name}}",
   "Women-Owned Small Business (WOSB) Certification": "Certificación de Pequeñas Empresas Propiedad de Mujeres (WOSB)",
-  "Veteran-Owned Small Business (VOSB) Certification": "Certificación de Pequeñas Empresas Propiedad de Veteranos (VOSB)"
+  "Veteran-Owned Small Business (VOSB) Certification": "Certificación de Pequeñas Empresas Propiedad de Veteranos (VOSB)",
+  "New password must meet password requirements": "La nueva contraseña debe cumplir con los requisitos de la contraseña",
+  "At least 16 characters": "Al menos 16 caracteres",
+  "At least 1 lowercase letter": "Al menos 1 letra minúscula",
+  "At least 1 uppercase letter": "Al menos 1 letra mayúscula",
+  "At least 1 number": "Al menos 1 número",
+  "At least 1 special character": "Al menos 1 carácter especial",
+  "Does not contain parts from username.": "No contiene partes del nombre de usuario."
 }
