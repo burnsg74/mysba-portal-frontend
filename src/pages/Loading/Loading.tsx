@@ -55,7 +55,8 @@ const Loading = () => {
       data         : data,
     };
     let results = await axios.request(config).catch((error) => {
-      throw new Error("Unable to get individual from crm");
+      // throw new Error("Unable to get individual from crm");
+      console.log("Error", error);
     });
     let individual = results?.data.individuals[0];
     if (!individual) {
