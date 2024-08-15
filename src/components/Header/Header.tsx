@@ -22,7 +22,7 @@ const Header = () => {
     if (myElementRef.current) {
       // @ts-ignore
       let sbaWaffleMenuInstance = new SbaWaffleMenu(myElementRef.current);
-      sbaWaffleMenuInstance.renderMenuIcon()
+      sbaWaffleMenuInstance.renderMenuIcon();
     }
   }, []);
 
@@ -93,61 +93,71 @@ const Header = () => {
   }, [navRef]);
 
   const logout = async () => {
+    if (sessionStorage.getItem("clsUser") !== null) {
+      console.log("clsUser Logout", sessionStorage.getItem("clsUser"));
+      document.cookie = "sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      document.cookie = "okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      document.cookie = "okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      sessionStorage.clear();
+      localStorage.clear();
+      sessionStorage.setItem("clsLogoutNeeded", "true");
+      oktaAuth.signOut();
+      return;
+    }
+
+    console.log("Normal Logout");
     await oktaAuth.signOut();
+    document.cookie = "sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    sessionStorage.clear();
+    localStorage.clear();
   };
 
-  return (<>
-    {/* Top Banner : Official website of the United States government */}
-    <section className="usa-banner" aria-label="Official website of the United States government">
-      <div className="usa-accordion">
-        <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
-          <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
-            <div className="grid-col-auto">
-              <img  className="usa-banner__header-flag" src={USFlag} alt="US Flag" />
-            </div>
-            <div className="grid-col-fill tablet:grid-col-auto" >
-              <p className="usa-banner__header-text">{t("An official website of the United States government")}</p>
-              <p className="usa-banner__header-action">{t("Here's how you know")}</p>
-            </div>
-            <button
-              type="button"
-              className="usa-accordion__button usa-banner__button"
-              aria-expanded="false"
-              aria-controls="gov-banner-default"
-            >
-              <span className="usa-banner__button-text">{t("Here's how you know")}</span>
-            </button>
-          </div>
-        </header>
-        <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
-          <div className="grid-row grid-gap-lg">
-            <div className="usa-banner__guidance tablet:grid-col-6">
-              <img
-                className="usa-banner__icon usa-media-block__img"
-                src={DotGov}
-                alt="Dot Goc Icon"
-                
-              />
-              <div className="usa-media-block__body">
-                <p>
-                  <strong>{t("Official websites use .gov")}</strong>
-                  <br />
-                  {t("A .gov website belongs to an official government organization in the United States.")}
-                </p>
+  return (
+    <>
+      {/* Top Banner : Official website of the United States government */}
+      <section className="usa-banner" aria-label="Official website of the United States government">
+        <div className="usa-accordion">
+          <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
+            <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
+              <div className="grid-col-auto">
+                <img className="usa-banner__header-flag" src={USFlag} alt="US Flag" />
               </div>
+              <div className="grid-col-fill tablet:grid-col-auto">
+                <p className="usa-banner__header-text">{t("An official website of the United States government")}</p>
+                <p className="usa-banner__header-action">{t("Here's how you know")}</p>
+              </div>
+              <button
+                type="button"
+                className="usa-accordion__button usa-banner__button"
+                aria-expanded="false"
+                aria-controls="gov-banner-default"
+              >
+                <span className="usa-banner__button-text">{t("Here's how you know")}</span>
+              </button>
             </div>
-            <div className="usa-banner__guidance tablet:grid-col-6">
-              <img
-                className="usa-banner__icon usa-media-block__img"
-                src={HttpsIcon}
-                alt="HTTPS Icon"
-                
-              />
-              <div className="usa-media-block__body">
-                <p>
-                  <strong>{t("Secure .gov websites use HTTPS")}</strong>
-                  <br />
-                  &nbsp;{t("A")} <strong>{t("lock")}</strong> (<span className="icon-lock">
+          </header>
+          <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
+            <div className="grid-row grid-gap-lg">
+              <div className="usa-banner__guidance tablet:grid-col-6">
+                <img className="usa-banner__icon usa-media-block__img" src={DotGov} alt="Dot Goc Icon" />
+                <div className="usa-media-block__body">
+                  <p>
+                    <strong>{t("Official websites use .gov")}</strong>
+                    <br />
+                    {t("A .gov website belongs to an official government organization in the United States.")}
+                  </p>
+                </div>
+              </div>
+              <div className="usa-banner__guidance tablet:grid-col-6">
+                <img className="usa-banner__icon usa-media-block__img" src={HttpsIcon} alt="HTTPS Icon" />
+                <div className="usa-media-block__body">
+                  <p>
+                    <strong>{t("Secure .gov websites use HTTPS")}</strong>
+                    <br />
+                    &nbsp;{t("A")} <strong>{t("lock")}</strong> (
+                    <span className="icon-lock">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="52"
@@ -165,103 +175,120 @@ const Header = () => {
                           d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z"
                         />
                       </svg>
-                    </span>) {t("or")} <strong>https://</strong>
-                  {t("means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.")}
-                </p>
+                    </span>
+                    ) {t("or")} <strong>https://</strong>
+                    {t(
+                      "means you've safely connected to the .gov website. Share sensitive information only on official, secure websites."
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    {/* MySBA Header*/}
-    <header className={`${styles.usaHeader}`}>
-      <div className={`grid-row ${styles.usaNavContainer}`}>
-        <div className={`grid-col-auto ${styles.left}`}>
-          {/* LOGO */}
-          <a href="https://www.sba.gov/">
-          <img
-            className={`${styles.usaLogo}`}
-            src={lang === "en" ? SBAlogoEn : SBAlogoEs}
-            alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
-          />
-          <img
-            className={`${styles.usaLogoSm}`}
-            src={SBAlogoSm}
-            alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
-          />
-          </a>
-        </div>
-        <div className={`grid-col ${styles.left}`}></div>
-        <div className={`grid-col-auto ${styles.right}`}>
-
-          {/* Toggle Language Button */}
-          <div className={`usa-language-container ${showProfile ? "" : styles.usaLanguageContainer}`}>
-            <button
-              type="button"
-              data-testid="language-toggle"
-              className={`usa-button ${styles.pillButton}`}
-              onClick={switchLanguage}>
-              <span
-                data-testid="language-toggle-label"
-                lang={lang === "en" ? "es" : "en"}>
-                {lang === "en" ? "Español" : "English"}
-              </span>
-            </button>
+      {/* MySBA Header*/}
+      <header className={`${styles.usaHeader}`}>
+        <div className={`grid-row ${styles.usaNavContainer}`}>
+          <div className={`grid-col-auto ${styles.left}`}>
+            {/* LOGO */}
+            <a href="https://www.sba.gov/">
+              <img
+                className={`${styles.usaLogo}`}
+                src={lang === "en" ? SBAlogoEn : SBAlogoEs}
+                alt={
+                  lang === "en"
+                    ? "U.S. Small Business Administration"
+                    : "Administración de Pequeñas Empresas de los Estados Unidos"
+                }
+              />
+              <img
+                className={`${styles.usaLogoSm}`}
+                src={SBAlogoSm}
+                alt={
+                  lang === "en"
+                    ? "U.S. Small Business Administration"
+                    : "Administración de Pequeñas Empresas de los Estados Unidos"
+                }
+              />
+            </a>
           </div>
-
-          {showProfile && (<>
-            {/* User ChangePassword */}
-            <div className={`usa-nav__inner ${styles.usaNavInner}`}>
-              <Link to="/profile" data-testid="profile-link">
-                <img src={ProfileIcon} alt="Profile Icon" />
-              </Link>
-            </div>
-          </>)}
-
-
-          {/* Multi-Language Toggle */}
-          {showNav && (<>
-            {/* Head Nav for small screens */}
-            <div className={`${styles.headerMenuIconContainer}`}>
-              <svg
-                className={`${styles.headerMenuIcon}`}
-                focusable="false"
-                onClick={handleMenuClick}
-                data-testid="menu-icon"
+          <div className={`grid-col ${styles.left}`}></div>
+          <div className={`grid-col-auto ${styles.right}`}>
+            {/* Toggle Language Button */}
+            <div className={`usa-language-container ${showProfile ? "" : styles.usaLanguageContainer}`}>
+              <button
+                type="button"
+                data-testid="language-toggle"
+                className={`usa-button ${styles.pillButton}`}
+                onClick={switchLanguage}
               >
-                <title>{t("Menu")}</title>
-                <use xlinkHref="/assets/img/sprite.svg#menu"></use>
-              </svg>
+                <span data-testid="language-toggle-label" lang={lang === "en" ? "es" : "en"}>
+                  {lang === "en" ? "Español" : "English"}
+                </span>
+              </button>
             </div>
-          </>)}
-          {!showNav && !showProfile && (<button
-            className={` ${styles.buttonStyle}`}
-            onClick={logout}
-            aria-label={t("Log Out")}
-            type="button"
-            data-testid="log-out-button"
-          >
-            <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
-          </button>)}
-          <div id="sbaWaffleMenu" ref={myElementRef}></div>
+
+            {showProfile && (
+              <>
+                {/* User ChangePassword */}
+                <div className={`usa-nav__inner ${styles.usaNavInner}`}>
+                  <Link to="/profile" data-testid="profile-link">
+                    <img src={ProfileIcon} alt="Profile Icon" />
+                  </Link>
+                </div>
+              </>
+            )}
+
+            {/* Multi-Language Toggle */}
+            {showNav && (
+              <>
+                {/* Head Nav for small screens */}
+                <div className={`${styles.headerMenuIconContainer}`}>
+                  <svg
+                    className={`${styles.headerMenuIcon}`}
+                    focusable="false"
+                    onClick={handleMenuClick}
+                    data-testid="menu-icon"
+                  >
+                    <title>{t("Menu")}</title>
+                    <use xlinkHref="/assets/img/sprite.svg#menu"></use>
+                  </svg>
+                </div>
+              </>
+            )}
+            {!showNav && !showProfile && (
+              <button
+                className={` ${styles.buttonStyle}`}
+                onClick={logout}
+                aria-label={t("Log Out")}
+                type="button"
+                data-testid="log-out-button"
+              >
+                <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
+              </button>
+            )}
+            <div id="sbaWaffleMenu" ref={myElementRef}></div>
+          </div>
         </div>
-      </div>
-    </header>
-    {showNav && (<button
-      className={`${styles.rightSideNav} ${isNavOpen ? styles.isOpen : ""}`}
-      onBlur={handleFocusOut}
-      onClick={handleSvgCloseClick}
-    >
-      <div className={`${styles.rightSideNavHeader}`} data-testid="right-side-nav-header">
-        <svg className={`${styles.rightSideNavIcon}`}>
-          <title>{t("Close")}</title>
-          <use xlinkHref="/assets/img/sprite.svg#close"></use>
-        </svg>
-      </div>
-      <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
-    </button>)}
-  </>);
+      </header>
+      {showNav && (
+        <button
+          className={`${styles.rightSideNav} ${isNavOpen ? styles.isOpen : ""}`}
+          onBlur={handleFocusOut}
+          onClick={handleSvgCloseClick}
+        >
+          <div className={`${styles.rightSideNavHeader}`} data-testid="right-side-nav-header">
+            <svg className={`${styles.rightSideNavIcon}`}>
+              <title>{t("Close")}</title>
+              <use xlinkHref="/assets/img/sprite.svg#close"></use>
+            </svg>
+          </div>
+          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
+        </button>
+      )}
+    </>
+  );
 };
 export default Header;
