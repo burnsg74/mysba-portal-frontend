@@ -271,7 +271,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           isPassword={true}
           value={stepData.newPassword1}
           required={true}
-          errorMessage={hasNewPasswordErrors ? "New password must meet the above requirements" : ""}
+          errorMessage={hasNewPasswordErrors ? t("New password must meet the above requirements") : ""}
           onChange={handleInputChange}
         />
         <ModalInputText
@@ -280,7 +280,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           isPassword={true}
           required={true}
           value={stepData.newPassword2}
-          errorMessage={!doesPasswordsMatch() ? "Passwords must match" : ""}
+          errorMessage={!doesPasswordsMatch() ? t("Passwords must match") : ""}
           onChange={handleInputChange}
         />
       </div>
