@@ -343,5 +343,8 @@
   "At least 1 uppercase letter": "Al menos 1 letra mayúscula",
   "At least 1 number": "Al menos 1 número",
   "At least 1 special character": "Al menos 1 carácter especial",
-  "Does not contain parts from username.": "No contiene partes del nombre de usuario."
+  "Does not contain parts from username.": "No contiene partes del nombre de usuario.",
+  "Passwords must match": "Las contraseñas deben coincidir",
+  "You can contact us at": "Puede contactarnos en",
+  "You can fill out a help request form": "Puede completar un formulario de solicitud de ayuda"
 }
