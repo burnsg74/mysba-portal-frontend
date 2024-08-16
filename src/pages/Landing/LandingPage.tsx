@@ -150,24 +150,26 @@ const LandingPage = () => {
           <div className={`grid-row ${styles.usaNavContainer}`}>
             <div className={`grid-col-auto ${styles.left}`}>
               {/* LOGO */}
-              <img
-                className={`${styles.usaLogo}`}
-                src={lang === "en" ? SBAlogoEn : SBAlogoEs}
-                alt={
-                  lang === "en"
-                    ? "U.S. Small Business Administration"
-                    : "Administración de Pequeñas Empresas de los Estados Unidos"
-                }
-              />
-              <img
-                className={`${styles.usaLogoSm}`}
-                src={SBAlogoSm}
-                alt={
-                  lang === "en"
-                    ? "U.S. Small Business Administration"
-                    : "Administración de Pequeñas Empresas de los Estados Unidos"
-                }
-              />
+              <a href="https://www.sba.gov/">
+                <img
+                  className={`${styles.usaLogo}`}
+                  src={lang === "en" ? SBAlogoEn : SBAlogoEs}
+                  alt={
+                    lang === "en"
+                      ? "U.S. Small Business Administration"
+                      : "Administración de Pequeñas Empresas de los Estados Unidos"
+                  }
+                />
+                <img
+                  className={`${styles.usaLogoSm}`}
+                  src={SBAlogoSm}
+                  alt={
+                    lang === "en"
+                      ? "U.S. Small Business Administration"
+                      : "Administración de Pequeñas Empresas de los Estados Unidos"
+                  }
+                />
+              </a>
             </div>
             <div className={`grid-col ${styles.left}`}></div>
             <div className={`grid-col-auto ${styles.right}`}>
