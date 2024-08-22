@@ -133,8 +133,8 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           console.log("error.response.data", error.response.data);
 
           if (error.response.status === 406) {
-            let errorStatusCode = error.response.status;
-            let errorData = JSON.parse(error.response.data);
+            const errorStatusCode = error.response.status;
+            const errorData = JSON.parse(error.response.data);
             console.log("errorStatusCode", errorStatusCode);
             console.log("errorData", errorData);
             console.log("errors", errorData.error);
@@ -142,7 +142,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
             let errorMsg: string;
             if (Array.isArray(errorData.error)) {
               errorMsg = errorData.error
-                .map((err: React.ReactNode, index: number) =>
+                .map((err: React.ReactNode) =>
                   ReactDOMServer.renderToString(
                     <>
                       {err}
@@ -190,7 +190,8 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
 
   const isPasswordValid = (username: string, password: string) => {
     const usernameParts = username.toLowerCase().split(/[.@]/);
-    const specialCharacter = /[{}<>:?|~!$#%^&*_]/;
+    // const specialCharacter = /[{}<>:?|~!$#%^&*_]/;
+    const specialCharacter = /[{}<>:?|\\~!@$#%^&*_]/;
     const invalidConditions = {
       minLength: !(password.length >= 16),
       lowerCase: !/[a-z]/.test(password),
