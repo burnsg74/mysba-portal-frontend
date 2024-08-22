@@ -346,5 +346,17 @@
   "Does not contain parts from username.": "No contiene partes del nombre de usuario.",
   "Passwords must match": "Las contraseñas deben coincidir",
   "You can contact us at": "Puede contactarnos en",
-  "You can fill out a help request form": "Puede completar un formulario de solicitud de ayuda"
+  "You can fill out a help request form": "Puede completar un formulario de solicitud de ayuda",
+  "January": "Enero",
+  "February": "Febrero",
+  "March": "Marzo",
+  "April": "Abril",
+  "May": "Mayo",
+  "June": "Junio",
+  "July": "Julio",
+  "August": "Agosto",
+  "September": "Septiembre",
+  "October": "Octubre",
+  "November": "Noviembre",
+  "December": "Diciembre"
 }
