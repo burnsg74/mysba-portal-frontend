@@ -25,6 +25,21 @@ const LandingPage = () => {
   const { i18n } = useTranslation();
   const { t } = useTranslation();
 
+  interface Params {
+    accessKey: string;
+  }
+
+  const params: Params = {
+    accessKey: "5c8d9d26-89b7-408d-8a41-ed4f9f874e89",
+  };
+
+  const getAccessKeyFromURL = () => {
+    const params = new URLSearchParams(location.search);
+    return params.get('access-key');
+  };
+
+  const correctAccessKey = getAccessKeyFromURL();
+
   const login = () => {
     oktaAuth.signInWithRedirect();
   };
@@ -62,8 +77,7 @@ const LandingPage = () => {
     dispatch(setShowProfile(false));
   }, []);
 
-  return (
-    <>
+  return (<>
       <div className={`${styles.pageContainer}`}>
         <section className="usa-banner" aria-label="Official website of the United States government">
           <div className="usa-accordion">
@@ -136,9 +150,7 @@ const LandingPage = () => {
                         </svg>
                       </span>
                       ) {t("or")} <strong>https://</strong>
-                      {t(
-                        "means you've safely connected to the .gov website. Share sensitive information only on official, secure websites."
-                      )}
+                      {t("means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.")}
                     </p>
                   </div>
                 </div>
@@ -154,20 +166,12 @@ const LandingPage = () => {
                 <img
                   className={`${styles.usaLogo}`}
                   src={lang === "en" ? SBAlogoEn : SBAlogoEs}
-                  alt={
-                    lang === "en"
-                      ? "U.S. Small Business Administration"
-                      : "Administración de Pequeñas Empresas de los Estados Unidos"
-                  }
+                  alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
                 />
                 <img
                   className={`${styles.usaLogoSm}`}
                   src={SBAlogoSm}
-                  alt={
-                    lang === "en"
-                      ? "U.S. Small Business Administration"
-                      : "Administración de Pequeñas Empresas de los Estados Unidos"
-                  }
+                  alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
                 />
               </a>
             </div>
@@ -177,21 +181,21 @@ const LandingPage = () => {
                 <button type="button" className={`usa-button ${styles.pillButton}`} onClick={switchLanguage}>
                   <span lang={lang === "en" ? "es" : "en"}>{lang === "en" ? "Español" : "English"}</span>
                 </button>
+                {params.accessKey === correctAccessKey && (
+                  <button onClick={login} type="button" style={{ height: "unset" }} className="usa-button">
+                    Login
+                  </button>)}
               </div>
             </div>
           </div>
         </header>
         <div className={`${styles.alertBanner}`}>
           <Alert
-            message={
-              <Trans
-                i18nKey="lookingForHelpForm"
-                components={[
-                  <a href="https://contact.sba.gov/help/" target="_blank"></a>,
-                  <a href="https://contact.sba.gov" target="_blank"></a>,
-                ]}
-              />
-            }
+            message={<Trans
+              i18nKey="lookingForHelpForm"
+              components={[<a href="https://contact.sba.gov/help/" target="_blank"></a>,
+                <a href="https://contact.sba.gov" target="_blank"></a>]}
+            />}
             type="info"
           ></Alert>
         </div>
@@ -204,21 +208,17 @@ const LandingPage = () => {
               {t("Coming soon")}: <span className={`${styles.mySBA}`}> MySBA</span>
             </div>
             <div className={`${styles.comingSoonMessage}`}>
-              {t(
-                "One-stop access to SBA’s small business support, including loans, certifications, and resources tailored to you and your business needs."
-              )}
+              {t("One-stop access to SBA’s small business support, including loans, certifications, and resources tailored to you and your business needs.")}
               <br />
             </div>
             <div className={`${styles.comingSoonMessage}`}>
               <Trans
                 i18nKey="followMessage"
-                components={[
-                  <a href="https://www.facebook.com/SBAgov" target="_blank"></a>,
+                components={[<a href="https://www.facebook.com/SBAgov" target="_blank"></a>,
                   <a href="https://x.com/sbagov" target="_blank"></a>,
                   <a href="https://www.instagram.com/sbagov/" target="_blank"></a>,
                   <a href="https://www.linkedin.com/company/us-small-business-administration/" target="_blank"></a>,
-                  <a href="https://www.sba.gov/updates" target="_blank"></a>,
-                ]}
+                  <a href="https://www.sba.gov/updates" target="_blank"></a>]}
               />
             </div>
           </div>
@@ -227,8 +227,7 @@ const LandingPage = () => {
           <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
         </div>
       </div>
-    </>
-  );
+    </>);
 };
 
 export default LandingPage;
