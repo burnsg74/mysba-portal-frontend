@@ -59,6 +59,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       "Password has been used too recently. Please choose a different password.",
     "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password cannot be your current password":
       "Password has been used too recently. Please choose a different password.",
+    "Old/current password is invalid.": "The current password you entered is incorrect. Please try again.",
   };
   const getUserFriendlyError = (apiError: string): string => {
     return apiErrorMessages[apiError] || "An unexpected error occurred. Please try again later.";
@@ -139,9 +140,9 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
             console.log("errorData", errorData);
             console.log("errors", errorData.error);
             console.log("error.response.data.error", error.response.data.error);
-            let errorMsg: string;
+            let apiErrorMessage: string;
             if (Array.isArray(errorData.error)) {
-              errorMsg = errorData.error
+              apiErrorMessage = errorData.error
                 .map((err: React.ReactNode) =>
                   ReactDOMServer.renderToString(
                     <>
@@ -152,10 +153,14 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
                 )
                 .join("");
             } else {
-              errorMsg = errorData.error;
+              apiErrorMessage = errorData.error;
             }
-            console.log("errorMsg", errorMsg);
-            setChangePasswordErrorMsg(errorMsg);
+
+            console.log("apiErrorMessage", apiErrorMessage);
+            const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
+            console.log("apiErrorMessage", userFriendlyMessage);
+
+            setChangePasswordErrorMsg(userFriendlyMessage);
             setHasErrors(true);
             setIsSaveDisabled(false);
             setSaveBtnLabel("Save");
