@@ -61,6 +61,7 @@ const LandingPage = () => {
   };
 
   const handleAuthStateChange = async () => {
+    console.log("Auth state changed:", authState?.isAuthenticated );
     if (authState?.isAuthenticated === undefined) {
       return;
     }

@@ -2,12 +2,13 @@ import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, Outlet } from "react-router-dom";
 import Header from "src/components/Header/Header";
+// import SideNav from "src/components/SideNav/SideNav";
 import styles from "src/components/Layout/Layout.module.css";
 import { getShowNav } from "src/store/showNav/showNavSlice";
 import { learningCenterCoursesByPath } from "src/utils/learningCenterCourses";
 import LearningCenterCard from "src/components/LearningCenterCard/LearningCenterCard";
 import { useTranslation } from "react-i18next";
-import TopNav from "src/components/TopNav/TopNav";
+import TopNav from "../TopNav/TopNav";
 
 const Layout = () => {
   const showNav: boolean = useSelector(getShowNav);
@@ -51,15 +52,11 @@ const Layout = () => {
           <Header />
         </div>
       </div>
-      {showNav && <TopNav onNavLinkClick={handleNavLinkClick} forMobile={false} />}
+      {/*{showNav && <TopNav onNavLinkClick={handleNavLinkClick}  forMobile={false} />}*/}
       <div className={`grid-row ${styles.contentRow}`}>
-        {/*{showNav && (<div className={`grid-col-auto ${styles.sideNav}`}>*/}
-        {/*    /!*<TopNav onNavLinkClick={handleNavLinkClick}  forMobile={false}/>*!/*/}
-        {/*  </div>)}*/}
-        <main id="main-content" className="grid-col" ref={mainContentRef}>
-          <Outlet />
-        </main>
-        {showNav}
+        {/*<main id="main-content" className="grid-col" ref={mainContentRef}>*/}
+        {/*  <Outlet />*/}
+        {/*</main>*/}
         {showNav && courses.length > 0 && (
           <div className={`grid-col-auto ${styles.resourcesForYouRight}`}>
             <div className={scrollAreaClass} style={{ height: `${mainContentHeight}` }}>

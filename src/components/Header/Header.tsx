@@ -9,7 +9,6 @@ import DotGov from "src/assets/icon-dot-gov.svg";
 import HttpsIcon from "src/assets/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";
 import { useTranslation } from "react-i18next";
-import SideNav from "src/components/SideNav/SideNav";
 import { getShowNav, getShowProfile } from "src/store/showNav/showNavSlice";
 import { useSelector } from "react-redux";
 import { useOktaAuth } from "@okta/okta-react";
@@ -285,7 +284,6 @@ const Header = () => {
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </div>
-          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
         </button>
       )}
     </>

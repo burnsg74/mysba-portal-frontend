@@ -26,6 +26,7 @@ const Loading = () => {
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
 
+    console.log("Fetching user data from backend...", info);
     if (info.cls_elevated) {
       sessionStorage.setItem('clsUser', 'true');
     }
@@ -103,6 +104,7 @@ const Loading = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
+      console.log("Redirecting to /");
       navigate("/");
     }, 10000);
 
@@ -112,11 +114,13 @@ const Loading = () => {
   }, []);
 
   useEffect(() => {
+    console.log("Loading dispatch");
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
   }, [dispatch]);
 
   useEffect(() => {
+    console.log("Loading", authState?.isAuthenticated, userFetched);
     if (authState?.isAuthenticated && !userFetched) {
       oktaAuth.getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
@@ -131,6 +135,7 @@ const Loading = () => {
             navigate("/account-setup/1");
           } else {
             const restoreURL = sessionStorage.getItem("restoreURL");
+            console.log("restoreURL", restoreURL);
 
             if (restoreURL) {
               navigate(restoreURL);
