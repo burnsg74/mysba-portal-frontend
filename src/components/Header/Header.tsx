@@ -240,6 +240,7 @@ const Header = () => {
               </>
             )}
 
+            <div id="sbaWaffleMenu" ref={myElementRef}></div>
             {/* Multi-Language Toggle */}
             {showNav && (
               <>
@@ -268,7 +269,6 @@ const Header = () => {
                 <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
               </button>
             )}
-            <div id="sbaWaffleMenu" ref={myElementRef}></div>
           </div>
         </div>
       </header>
