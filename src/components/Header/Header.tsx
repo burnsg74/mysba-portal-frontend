@@ -12,6 +12,7 @@ import { useTranslation } from "react-i18next";
 import { getShowNav, getShowProfile } from "src/store/showNav/showNavSlice";
 import { useSelector } from "react-redux";
 import { useOktaAuth } from "@okta/okta-react";
+import SideNav from "src/components/SideNav/SideNav";
 
 const Header = () => {
   const myElementRef = useRef(null);
@@ -283,6 +284,7 @@ const Header = () => {
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </div>
+          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
         </button>
       )}
     </>
