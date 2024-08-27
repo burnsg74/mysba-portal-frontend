@@ -61,6 +61,7 @@ const LandingPage = () => {
   };
 
   const handleAuthStateChange = async () => {
+    console.log("Auth state changed:", authState?.isAuthenticated );
     if (authState?.isAuthenticated === undefined) {
       return;
     }
@@ -78,24 +79,6 @@ const LandingPage = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
-    // let config = {
-    //   method: 'get',
-    //   maxBodyLength: Infinity,
-    //   url: `${CLS_URL}/api/current-user-details`,
-    //   headers: {},
-    //   withCredentials:true
-    // };
-
-    // axios.request(config)
-    //   .then((response) => {
-    //     console.log(JSON.stringify(response.data));
-    //   })
-    //   .catch((error) => {
-    //     console.error('Error fetching user details:', error);
-    //   });
-
-    console.log("Landing Page useEffect");
-
     fetchUserDetails();
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
@@ -219,9 +202,6 @@ const LandingPage = () => {
             </div>
           </div>
         </header>
-        {/*<div className={`${styles.cloudImageContainer}`}>*/}
-        {/*  <img className={`${styles.cloudImage}`} src={CloudImage} alt={t("Decorative Cloud")} />*/}
-        {/*</div>*/}
         <div className={`${styles.mainContainer}`}>
           <div className={`banner ${styles.banner}`}>
             <div className={`${styles.loginRow}`}>
@@ -231,16 +211,8 @@ const LandingPage = () => {
                 <div className={`${styles.subTitle}`}>
                   Loans, certifications, and resources tailored to your business all in one place.
                 </div>
-                {/*<div>*/}
-                {/*  <label className="usa-label" htmlFor="input-type-text">Email Address <span*/}
-                {/*    style={{ color: "red" }}>*</span></label>*/}
-                {/*  <input className="usa-input" name="emailAddress" value={emailAddress} onChange={handleEmailAddressChange}/>*/}
-                {/*</div>*/}
                 <div>
                   <ul className="usa-button-group">
-                    {/*<li className="usa-button-group__item">*/}
-                    {/*  <button onClick={signUp} style={{ height: "unset" }} className="usa-button usa-button--outline">Sign Up</button>*/}
-                    {/*</li>*/}
                     <li className="usa-button-group__item">
                       <button onClick={login} type="button" style={{ height: "unset" }} className="usa-button">
                         Login
@@ -255,9 +227,6 @@ const LandingPage = () => {
             </div>
           </div>
         </div>
-        {/*<div className={`${styles.cityscapeContainer}`}>*/}
-        {/*  <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />*/}
-        {/*</div>*/}
       </div>
     </>
   );

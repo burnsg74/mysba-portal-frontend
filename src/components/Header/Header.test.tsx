@@ -22,8 +22,6 @@ jest.mock("@okta/okta-react", () => ({
   }),
 }));
 
-jest.mock("src/components/SideNav/SideNav", () => () => <div>SideNav</div>);
-
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: jest.fn((key) => key),

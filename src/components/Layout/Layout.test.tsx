@@ -12,7 +12,6 @@ jest.mock('react-router-dom', () => ({
 }));
 
 jest.mock('src/components/Header/Header', () => () => <div>MockHeader</div>);
-jest.mock('src/components/SideNav/SideNav', () => () => <div>MockSideNav</div>);
 jest.mock('src/components/LearningCenterCard/LearningCenterCard', () => (props: LearningCenterCardProps) => <div>{props.learningCenter.title}</div>);
 
 jest.mock('react-i18next', () => ({
@@ -47,7 +46,6 @@ describe('Layout component tests', () => {
   test('renders correctly with given state from Redux', () => {
     render(<Layout />, { wrapper });
     expect(screen.getByText('MockHeader')).toBeInTheDocument();
-    expect(screen.getByText('MockSideNav')).toBeInTheDocument();
   });
 
 });

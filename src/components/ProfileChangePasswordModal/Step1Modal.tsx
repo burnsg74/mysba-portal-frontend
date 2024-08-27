@@ -35,13 +35,13 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   });
   const profileData: IUser = useSelector(getUser);
   const [highlightInvalid, setHighlightInvalid] = useState({
-    minLength: false,
-    lowerCase: false,
-    upperCase: false,
-    number: false,
+    minLength       : false,
+    lowerCase       : false,
+    upperCase       : false,
+    number          : false,
     specialCharacter: false,
-    notUsernameParts: false,
-    lastPasswords: false,
+    other           : false,
+    lastPasswords   : false,
   });
 
   interface ApiErrorMessages {
@@ -60,6 +60,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password cannot be your current password":
       "Password has been used too recently. Please choose a different password.",
     "Old/current password is invalid.": "The current password you entered is incorrect. Please try again.",
+    "Okta HTTP 400 E0000001 Api validation failed: password\npassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).":"Password cannot contain parts of the username or match the last 24 passwords used."
   };
   const getUserFriendlyError = (apiError: string): string => {
     return apiErrorMessages[apiError] || "An unexpected error occurred. Please try again later.";
@@ -179,6 +180,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
             } else {
               setChangePasswordErrorMsg(userFriendlyMessage);
               setHasErrors(true);
+              setHighlightInvalid(prevState => ({ ...prevState, other: true }));
             }
 
             setIsSaveDisabled(false);
@@ -195,16 +197,15 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
 
   const isPasswordValid = (username: string, password: string) => {
     const usernameParts = username.toLowerCase().split(/[.@]/);
-    // const specialCharacter = /[{}<>:?|~!$#%^&*_]/;
     const specialCharacter = /[{}<>:?|\\~!@$#%^&*_]/;
     const invalidConditions = {
-      minLength: !(password.length >= 16),
-      lowerCase: !/[a-z]/.test(password),
-      upperCase: !/[A-Z]/.test(password),
-      number: !/[0-9]/.test(password),
+      minLength       : !(password.length >= 16),
+      lowerCase       : !/[a-z]/.test(password),
+      upperCase       : !/[A-Z]/.test(password),
+      number          : !/[0-9]/.test(password),
       specialCharacter: !specialCharacter.test(password),
-      notUsernameParts: usernameParts.some(part => password.includes(part)),
-      lastPasswords: false,
+      other           : usernameParts.some(part => password.includes(part)),
+      lastPasswords   : false,
     };
     setHighlightInvalid(invalidConditions);
 
@@ -260,15 +261,8 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
             <li className={highlightInvalid.lowerCase ? `${styles.error}` : ""}>{t("At least 1 lowercase letter")}</li>
             <li className={highlightInvalid.upperCase ? `${styles.error}` : ""}>{t("At least 1 uppercase letter")}</li>
             <li className={highlightInvalid.number ? `${styles.error}` : ""}>{t("At least 1 number")}</li>
-            <li className={highlightInvalid.specialCharacter ? `${styles.error}` : ""}>
-              {t("At least 1 special character")}
-            </li>
-            <li className={highlightInvalid.notUsernameParts ? `${styles.error}` : ""}>
-              {t("Does not contain parts from username.")}
-            </li>
-            <li className={highlightInvalid.lastPasswords ? `${styles.error}` : ""}>
-              {t("Password can't be the same as your last 24 passwords")}
-            </li>
+            <li className={highlightInvalid.specialCharacter ? `${styles.error}` : ""}> {t("At least 1 special character")} </li>
+            <li className={highlightInvalid.other ? `${styles.error}` : ""}> {t("Password cannot contain parts of the username or match the last 24 passwords used")} </li>
           </ul>
         </div>
         <ModalInputText

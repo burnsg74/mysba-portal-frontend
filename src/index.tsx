@@ -14,11 +14,9 @@ const container = document.getElementById("root");
 if (!container) throw new Error("Could not find root element with id 'root'");
 
 if (sessionStorage.getItem('clsLogoutNeeded') !== null) {
-  console.log('CLS Logout Needed')
   sessionStorage.clear();
   window.location.href = CLS_URL +  '/accounts/logout' + '?next=' + window.location.origin;
 } else {
-  console.log('Normal Login');
   if (import.meta.env.MODE === 'localhost') {
     const urlParams = new URLSearchParams(window.location.search);
     const user = urlParams.get('user');
