@@ -16,6 +16,7 @@ import SideNav from "src/components/SideNav/SideNav";
 
 const Header = () => {
   const myElementRef = useRef(null);
+  const navRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     // Waffle menu
@@ -33,7 +34,6 @@ const Header = () => {
   const showNav: boolean = useSelector(getShowNav);
   const showProfile: boolean = useSelector(getShowProfile);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const navRef = useRef<HTMLDivElement | null>(null);
   const { oktaAuth } = useOktaAuth();
   const lockIcon = (
     <span className="icon-lock">
@@ -73,6 +73,7 @@ const Header = () => {
   };
 
   function handleFocusOut() {
+    console.log('handleFocusOut')
     setIsNavOpen(false);
   }
 
@@ -155,7 +156,7 @@ const Header = () => {
                   <p>
                     <strong>{t("Secure .gov websites use HTTPS")}</strong>
                     <br />
-                    &nbsp;{t("A")} <strong>{t("lock")}</strong> (
+                     {t("A")} <strong>{t("lock")}</strong> (
                     <span className="icon-lock">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -276,6 +277,7 @@ const Header = () => {
         <button
           className={`${styles.rightSideNav} ${isNavOpen ? styles.isOpen : ""}`}
           onBlur={handleFocusOut}
+          ref={navRef}
           onClick={handleSvgCloseClick}
         >
           <div className={`${styles.rightSideNavHeader}`} data-testid="right-side-nav-header">
@@ -284,7 +286,7 @@ const Header = () => {
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </div>
-          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
+          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick}/>
         </button>
       )}
     </>
