@@ -46,8 +46,6 @@ const LocalResources = () => {
   }, []);
 
   useEffect(() => {
-    // let accessToken = authState?.accessToken?.accessToken;
-    // console.log(accessToken)
     if (zipcode && zipcode.toString().length === 5) {
       refreshDistrict(zipcode);
     }
@@ -112,7 +110,6 @@ const LocalResources = () => {
               setDistrict(newDistrict);
               updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
             } catch (error) {
-              console.error("An error occurred:", error);
               setApiErrorMessage(t("Error fetching local resources for given zipcode" + "."));
               setApiError(true);
             }
@@ -128,7 +125,6 @@ const LocalResources = () => {
         // An error occurred: Record with ZIP Code '90909' was not found
         // "Record with ZIP Code '{{Zip Code}}' was not found": "No se encontró el registro con el código postal {{'Zip Code'}}",
         const translatedMessage = t("Record with ZIP Code '{{Zip Code}}' was not found", { "Zip Code": zipcode });
-        console.log("translatedMessage", translatedMessage);
         setApiErrorMessage(translatedMessage);
         setApiError(true);
       });

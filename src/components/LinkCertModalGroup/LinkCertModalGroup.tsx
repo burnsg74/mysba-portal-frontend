@@ -31,7 +31,6 @@ const LinkCertModalGroup: React.FC<LinkCertProps> = ({ handleCloseModal }) => {
     };
 
     const handleBack = (stepData: {}, step?: number) => {
-        console.log(step)
         setBusinessData({ ...businessData, ...stepData });
         if (step !== undefined) {
             setCurrentStep(step);
