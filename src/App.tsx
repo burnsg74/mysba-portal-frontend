@@ -27,6 +27,7 @@ import { OKTA_DOMAIN, OKTA_CLIENT_ID, } from "src/utils/constants"
 
 // @ts-ignore
 import { MockOktaAuth } from "src/mock/MockOktaAuth";
+import Resources from "src/pages/Resources/Resources";
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -111,6 +112,7 @@ const App: React.FC = () => {
             />
             <Route path="/loans" element={<Loans />} />
             <Route path="/help" element={<Help />} />
+            <Route path="/resources" element={<Resources />} />
             <Route path="/error" element={<ErrorPage />} />
             <Route path='*' element={<Dashboard />} />       {/* Default route if path is not found */}
           </Route>

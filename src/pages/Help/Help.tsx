@@ -2,7 +2,6 @@ import React from "react";
 import styles from "src/pages/Help/Help.module.css";
 import { FrequentlyAskedQuestions } from "src/utils/frequentlyAskedQuestions";
 import { useTranslation } from "react-i18next";
-import LocalResources from "src/components/LocalResources/LocalResources";
 import Alert from "src/components/Alert/Alert";
 
 const Help = () => {
@@ -10,7 +9,6 @@ const Help = () => {
 
   return (<div data-testid="page-help" className={`main-container ${styles.mainContainer}}`}>
     <div className={`${styles.container}`}>
-      <LocalResources />
       <h1 className={styles.title}>{t("Frequently Asked Questions")}</h1>
       <div className={`${styles.faqContainer}`}>
         {FrequentlyAskedQuestions.map((faq) => (<div key={faq.id} className="usa-accordion usa-accordion--bordered">

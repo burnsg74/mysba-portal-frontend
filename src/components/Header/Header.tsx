@@ -12,9 +12,11 @@ import { useTranslation } from "react-i18next";
 import { getShowNav, getShowProfile } from "src/store/showNav/showNavSlice";
 import { useSelector } from "react-redux";
 import { useOktaAuth } from "@okta/okta-react";
+import SideNav from "src/components/SideNav/SideNav";
 
 const Header = () => {
   const myElementRef = useRef(null);
+  const navRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     // Waffle menu
@@ -32,7 +34,6 @@ const Header = () => {
   const showNav: boolean = useSelector(getShowNav);
   const showProfile: boolean = useSelector(getShowProfile);
   const [isNavOpen, setIsNavOpen] = useState(false);
-  const navRef = useRef<HTMLDivElement | null>(null);
   const { oktaAuth } = useOktaAuth();
 
   const handleMenuClick = () => {
@@ -51,6 +52,7 @@ const Header = () => {
   };
 
   function handleFocusOut() {
+    console.log('handleFocusOut')
     setIsNavOpen(false);
   }
 
@@ -133,7 +135,7 @@ const Header = () => {
                   <p>
                     <strong>{t("Secure .gov websites use HTTPS")}</strong>
                     <br />
-                    &nbsp;{t("A")} <strong>{t("lock")}</strong> (
+                     {t("A")} <strong>{t("lock")}</strong> (
                     <span className="icon-lock">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -218,6 +220,7 @@ const Header = () => {
               </>
             )}
 
+            <div id="sbaWaffleMenu" ref={myElementRef}></div>
             {/* Multi-Language Toggle */}
             {showNav && (
               <>
@@ -246,7 +249,6 @@ const Header = () => {
                 <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
               </button>
             )}
-            <div id="sbaWaffleMenu" ref={myElementRef}></div>
           </div>
         </div>
       </header>
@@ -254,6 +256,7 @@ const Header = () => {
         <button
           className={`${styles.rightSideNav} ${isNavOpen ? styles.isOpen : ""}`}
           onBlur={handleFocusOut}
+          ref={navRef}
           onClick={handleSvgCloseClick}
         >
           <div className={`${styles.rightSideNavHeader}`} data-testid="right-side-nav-header">
@@ -262,6 +265,7 @@ const Header = () => {
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </div>
+          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick}/>
         </button>
       )}
     </>
