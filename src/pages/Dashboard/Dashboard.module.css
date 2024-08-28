@@ -31,7 +31,6 @@
     font-style: normal;
     font-weight: 700;
     line-height: 26px;
-    width: 200px;
     margin: 0 auto;
     overflow-wrap: break-word;
     white-space: normal;
@@ -51,6 +50,16 @@
 .alertContainer {
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+.contentContainer {
+    padding-left: 120px;
+    padding-right: 120px;
+}
+
+.cardsContainer {
+    padding-top: 40px;
+    padding-bottom: 40px;
 }
 
 .businessesContainer {

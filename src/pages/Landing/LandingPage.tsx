@@ -50,7 +50,12 @@ const LandingPage = () => {
   };
 
   const signUp = () => {
-    window.location.assign(PORTAL_SIGNUP_URL);
+    oktaAuth.token.getWithRedirect({
+      responseType: 'id_token',
+      extraParams:  {
+        flow:'signup'
+      }
+    });
   };
 
   const switchLanguage = () => {

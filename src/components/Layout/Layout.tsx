@@ -5,7 +5,6 @@ import Header from "src/components/Header/Header";
 import styles from "src/components/Layout/Layout.module.css";
 import { getShowNav } from "src/store/showNav/showNavSlice";
 import { learningCenterCoursesByPath } from "src/utils/learningCenterCourses";
-import LearningCenterCard from "src/components/LearningCenterCard/LearningCenterCard";
 import { useTranslation } from "react-i18next";
 import TopNav from "src/components/TopNav/TopNav";
 
@@ -53,40 +52,38 @@ const Layout = () => {
       </div>
       {showNav && <TopNav onNavLinkClick={handleNavLinkClick} forMobile={false} />}
       <div className={`grid-row ${styles.contentRow}`}>
-        {/*{showNav && (<div className={`grid-col-auto ${styles.sideNav}`}>*/}
-        {/*    /!*<TopNav onNavLinkClick={handleNavLinkClick}  forMobile={false}/>*!/*/}
-        {/*  </div>)}*/}
         <main id="main-content" className="grid-col" ref={mainContentRef}>
           <Outlet />
         </main>
-        {showNav}
-        {showNav && courses.length > 0 && (
-          <div className={`grid-col-auto ${styles.resourcesForYouRight}`}>
-            <div className={scrollAreaClass} style={{ height: `${mainContentHeight}` }}>
-              <h1 className={`${styles.resourceLocationTitle}`}>{t("Resources for you")}</h1>
-              <div className={`${styles.resourceLocationCards}`}>
-                {courses.map(course => (
-                  <LearningCenterCard key={course.id} learningCenter={course} />
-                ))}
-              </div>
-            </div>
-          </div>
-        )}
+        {/* RC2 - Hide Resources for you (GB 24-08-23) */}
+        {/*{showNav && courses.length > 0 && (*/}
+        {/*  <div className={`grid-col-auto ${styles.resourcesForYouRight}`}>*/}
+        {/*    <div className={scrollAreaClass} style={{ height: `${mainContentHeight}` }}>*/}
+        {/*      <h1 className={`${styles.resourceLocationTitle}`}>{t("Resources for you")}</h1>*/}
+        {/*      <div className={`${styles.resourceLocationCards}`}>*/}
+        {/*        {courses.map(course => (*/}
+        {/*          <LearningCenterCard key={course.id} learningCenter={course} />*/}
+        {/*        ))}*/}
+        {/*      </div>*/}
+        {/*    </div>*/}
+        {/*  </div>*/}
+        {/*)}*/}
       </div>
-      {showNav && courses.length > 0 && (
-        <div className={`grid-col-row ${styles.resourcesForYouBottom}`}>
-          <div className="grid-col">
-            <div className={`${styles.resourceLocationTitleBottomContainer}`}>
-              <h1 className={`${styles.resourceLocationTitleBottom}`}>{t("Resources for you")}</h1>
-            </div>
-            <div className={`${styles.resourceLocationCards}`}>
-              {courses.map(course => (
-                <LearningCenterCard key={course.id} learningCenter={course} />
-              ))}
-            </div>
-          </div>
-        </div>
-      )}
+      {/* RC2 - Hide Resources for you (GB 24-08-23) */}
+      {/*{showNav && courses.length > 0 && (*/}
+      {/*  <div className={`grid-col-row ${styles.resourcesForYouBottom}`}>*/}
+      {/*    <div className="grid-col">*/}
+      {/*      <div className={`${styles.resourceLocationTitleBottomContainer}`}>*/}
+      {/*        <h1 className={`${styles.resourceLocationTitleBottom}`}>{t("Resources for you")}</h1>*/}
+      {/*      </div>*/}
+      {/*      <div className={`${styles.resourceLocationCards}`}>*/}
+      {/*        {courses.map(course => (*/}
+      {/*          <LearningCenterCard key={course.id} learningCenter={course} />*/}
+      {/*        ))}*/}
+      {/*      </div>*/}
+      {/*    </div>*/}
+      {/*  </div>*/}
+      {/*)}*/}
     </>
   );
 };
