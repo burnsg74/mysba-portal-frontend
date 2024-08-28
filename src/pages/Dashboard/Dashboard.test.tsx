@@ -42,7 +42,7 @@ describe("Page: Dashboard", () => {
       </BrowserRouter>
     </Provider>);
 
-    expect(screen.getByText("Welcome to your MySBA Dashboard")).toBeDefined();
+    expect(screen.getByText("Welcome to MySBA")).toBeDefined();
   });
 
   it("It says hi to user", () => {
