@@ -25,10 +25,9 @@ const Loading = () => {
   const [userFetched, setUserFetched] = useState(false);
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-
     console.log("Fetching user data from backend...", info);
     if (info.cls_elevated) {
-      sessionStorage.setItem('clsUser', 'true');
+      sessionStorage.setItem("clsUser", "true");
     }
 
     const email = info.email?.toLowerCase() ?? "";
@@ -40,22 +39,27 @@ const Loading = () => {
     }
 
     let data = JSON.stringify({
-      "individuals": [{
-        "firstName": "", "lastName": "", "email": email,
-      }],
+      individuals: [
+        {
+          firstName: "",
+          lastName: "",
+          email: email,
+        },
+      ],
     });
 
     let config = {
-      method       : "post",
+      method: "post",
       maxBodyLength: Infinity,
-      url          : `${BASE_API_URL}/individuals/individual?task=read`,
-      agent        : false,
-      headers      : {
-        "Content-Type": "application/json", "Authorization": `Bearer ${accessToken}`,
+      url: `${BASE_API_URL}/individuals/individual?task=read`,
+      agent: false,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
       },
-      data         : data,
+      data: data,
     };
-    let results = await axios.request(config).catch((error) => {
+    let results = await axios.request(config).catch(error => {
       // throw new Error("Unable to get individual from crm");
       console.log("Error", error);
     });
@@ -71,33 +75,41 @@ const Loading = () => {
       };
     }
     let crmData: IUserProfile["crm"] = {
-      first_name: individual.firstName ?? "", last_name: individual.lastName ?? "", email: individual.email ?? "",
+      first_name: individual.firstName ?? "",
+      last_name: individual.lastName ?? "",
+      email: individual.email ?? "",
     };
 
     let portalData;
     try {
-      await axios.get(`${PORTAL_API_URL}/portal/user/${email}`, { headers: { "Authorization": `Bearer ${accessToken}` } }).then((response) => { portalData = response.data;});
+      await axios
+        .get(`${PORTAL_API_URL}/portal/user/${email}`, { headers: { Authorization: `Bearer ${accessToken}` } })
+        .then(response => {
+          portalData = response.data;
+        });
     } catch (err) {
       console.log(err);
     }
 
     let ssoProfile: IUserProfile["sso"] = {
-      given_name        : info.given_name ?? "",
-      family_name       : info.family_name ?? "",
-      email             : info.email ?? "",
-      sub               : info.sub ?? "",
-      name              : info.name ?? "",
-      locale            : info.locale ?? "",
+      given_name: info.given_name ?? "",
+      family_name: info.family_name ?? "",
+      email: info.email ?? "",
+      sub: info.sub ?? "",
+      name: info.name ?? "",
+      locale: info.locale ?? "",
       preferred_username: info.preferred_username ?? "",
-      zone_info         : info.zoneinfo ?? "",
-      updated_at        : info.updated_at ?? 0,
-      email_verified    : info.email_verified ?? false,
-      cls_elevated      : Boolean(info.cls_elevated) ?? false,
+      zone_info: info.zoneinfo ?? "",
+      updated_at: info.updated_at ?? 0,
+      email_verified: info.email_verified ?? false,
+      cls_elevated: Boolean(info.cls_elevated) ?? false,
     };
 
     return {
       profile: {
-        sso: ssoProfile, crm: crmData, portal: portalData,
+        sso: ssoProfile,
+        crm: crmData,
+        portal: portalData,
       },
     };
   };
@@ -122,38 +134,40 @@ const Loading = () => {
   useEffect(() => {
     console.log("Loading", authState?.isAuthenticated, userFetched);
     if (authState?.isAuthenticated && !userFetched) {
-      oktaAuth.getUser()
+      oktaAuth
+        .getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))
         .then(user => {
           setUserFetched(true);
           dispatch(setNav(true));
           dispatch(setShowProfile(true));
           dispatch(setUser(user));
-          if (!user.profile.portal) {
-            dispatch(setNav(false));
-            dispatch(setShowProfile(false));
-            navigate("/account-setup/1");
-          } else {
-            const restoreURL = sessionStorage.getItem("restoreURL");
-            console.log("restoreURL", restoreURL);
+          // if (!user.profile.portal) {
+          //   dispatch(setNav(false));
+          //   dispatch(setShowProfile(false));
+          //   navigate("/account-setup/1");
+          // } else {
+          const restoreURL = sessionStorage.getItem("restoreURL");
+          console.log("restoreURL", restoreURL);
 
-            if (restoreURL) {
-              navigate(restoreURL);
-            } else {
-              navigate("/dashboard");
-            }
+          if (restoreURL) {
+            navigate(restoreURL);
+          } else {
+            navigate("/dashboard");
           }
-        }).catch((error) => {
-        console.log("Catch Error 1", error);
-        oktaAuth.signOut().then(() => {
-          document.cookie = "sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-          document.cookie = "okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-          document.cookie = "okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
-          sessionStorage.clear();
-          localStorage.clear();
-          window.location.href = "/error.html";
+          // }
+        })
+        .catch(error => {
+          console.log("Catch Error 1", error);
+          oktaAuth.signOut().then(() => {
+            document.cookie = "sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            document.cookie = "okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            document.cookie = "okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+            sessionStorage.clear();
+            localStorage.clear();
+            window.location.href = "/error.html";
+          });
         });
-      });
     }
   }, [authState?.isAuthenticated]);
 
@@ -166,19 +180,14 @@ const Loading = () => {
     return () => clearInterval(interval);
   }, [messageIndex]);
 
-  return (<div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
-      <img
-        className={`${styles.loadingIcon}`}
-        src={loadingIcon}
-        alt="Loading"
-      />
+  return (
+    <div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
+      <img className={`${styles.loadingIcon}`} src={loadingIcon} alt="Loading" />
       <div className={`${styles.loadingProgressbarOuter}`}>
-        <div
-          className={`${styles.loadingProgressbarInner}`}
-          style={{ width: `${loadingProgress}%` }}
-        ></div>
+        <div className={`${styles.loadingProgressbarInner}`} style={{ width: `${loadingProgress}%` }}></div>
       </div>
       <div className={`${styles.loadingText}`}>{loadingMessage}</div>
-    </div>);
+    </div>
+  );
 };
 export default Loading;
