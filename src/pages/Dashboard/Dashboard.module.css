@@ -174,3 +174,25 @@
 .footerBtn {
     width: 100%;
 }
+
+.card {
+    margin-bottom: 1rem;
+}
+
+.cardRow {
+    padding-bottom: 24px;
+}
+
+.cardHeader {
+    font-family: var(--Font-Primary);
+    font-weight: 400;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 32px;
+}
+
+.cardBody {
+    font-family: var(--Font-Secondary);
+    font-weight: 400;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 16px;
+}
