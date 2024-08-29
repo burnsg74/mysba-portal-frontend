@@ -133,18 +133,9 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           handleContinue();
         })
         .catch(error => {
-          console.error("Axios Error", error.response.status, error.response.data);
-
-          console.log("error.response.status", error.response.status);
-          console.log("error.response.data", error.response.data);
-
           if (error.response.status === 406) {
             const errorStatusCode = error.response.status;
             const errorData = JSON.parse(error.response.data);
-            console.log("errorStatusCode", errorStatusCode);
-            console.log("errorData", errorData);
-            console.log("errors", errorData.error);
-            console.log("error.response.data.error", error.response.data.error);
             let apiErrorMessage: string;
             if (Array.isArray(errorData.error)) {
               apiErrorMessage = errorData.error
@@ -161,20 +152,14 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
               apiErrorMessage = errorData.error;
             }
 
-            console.log("apiErrorMessage", apiErrorMessage);
             const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
-            console.log("apiErrorMessage", userFriendlyMessage);
-
             setChangePasswordErrorMsg(userFriendlyMessage);
             setHasErrors(true);
             setIsSaveDisabled(false);
             setSaveBtnLabel("Save");
           } else {
-            error.response.data["Error"] = "Okta HTTP 400 E0000001 Api validation failed: password\npassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).";
             const apiErrorMessage = (error?.response?.data?.["Error"] ?? null)?.replace(/\r?\n|\r/g, "");
-            console.log("apiErrorMessage: before", apiErrorMessage);
             const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
-            console.log("apiErrorMessage: userFriendlyMessage", userFriendlyMessage);
 
             if (userFriendlyMessage === "Password has been used too recently. Please choose a different password.") {
               setHighlightInvalid(prevState => ({ ...prevState, lastPasswords: true }));
@@ -200,7 +185,6 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           }
         });
     } catch (error: string | any) {
-      console.error("APP Error 1", error);
       setChangePasswordErrorMsg(`Error: Unable to change password, ${error.message}`);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
