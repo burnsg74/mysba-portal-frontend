@@ -48,6 +48,9 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     [key: string]: string;
   }
 
+  // Okta HTTP 400 E0000001 Api validation failed: password\npassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).
+  // Okta HTTP 400 E0000001 Api validation failed: password\npassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).":
+
   const apiErrorMessages: ApiErrorMessages = {
     "Okta password update aborted: Previous password is incorrect.":
       "The current password you entered is incorrect. Please try again.",
@@ -60,7 +63,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password cannot be your current password":
       "Password has been used too recently. Please choose a different password.",
     "Old/current password is invalid.": "The current password you entered is incorrect. Please try again.",
-    "Okta HTTP 400 E0000001 Api validation failed: password\npassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).":
+    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).":
       "Password cannot contain parts of the username or match the last 24 passwords used.",
   };
   const getUserFriendlyError = (apiError: string): string => {
@@ -167,9 +170,11 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
             setIsSaveDisabled(false);
             setSaveBtnLabel("Save");
           } else {
+            error.response.data["Error"] = "Okta HTTP 400 E0000001 Api validation failed: password\npassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).";
             const apiErrorMessage = (error?.response?.data?.["Error"] ?? null)?.replace(/\r?\n|\r/g, "");
-            console.log("apiErrorMessage", apiErrorMessage);
+            console.log("apiErrorMessage: before", apiErrorMessage);
             const userFriendlyMessage = getUserFriendlyError(apiErrorMessage);
+            console.log("apiErrorMessage: userFriendlyMessage", userFriendlyMessage);
 
             if (userFriendlyMessage === "Password has been used too recently. Please choose a different password.") {
               setHighlightInvalid(prevState => ({ ...prevState, lastPasswords: true }));
