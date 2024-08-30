@@ -58,7 +58,7 @@ const Dashboard = () => {
                 <>
                   Certifications aren’t shown in MySBA Home yet, but support is coming soon. Visit{" "}
                   <a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">
-                    certify.sba.gov
+                    certification.sba.gov
                   </a>{" "}
                   to apply for and manage certifications.
                 </>
