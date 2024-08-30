@@ -132,7 +132,7 @@ const Dashboard = () => {
                   </React.Fragment>
                 ))}
             <div className={`grid-row padding-top-5 margin-left-5 margin-right-5 ${styles.cardRow}`}>
-              <div className={`grid-col-12 tablet:grid-col-4 ${styles.card}`}>
+              <div className={`grid-col-12 mobile-lg:grid-col-6 tablet:grid-col-4 ${styles.card}`}>
                 <div className={`usa-card__container ${styles.cardContainer}`}>
                   <div className="usa-card__header">
                     <h4 className={`usa-card__heading ${styles.cardHeader}`}>Loans</h4>
@@ -158,7 +158,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-              <div className={`grid-col-12 tablet:grid-col-4 ${styles.card}`}>
+              <div className={`grid-col-12 mobile-lg:grid-col-6  tablet:grid-col-4 ${styles.card}`}>
                 <div className={`usa-card__container ${styles.cardContainer}`}>
                   <div className="usa-card__header">
                     <h4 className={`usa-card__heading ${styles.cardHeader}`}>Certifications</h4>
@@ -184,7 +184,7 @@ const Dashboard = () => {
                   </div>
                 </div>
               </div>
-              <div className={`grid-col-12 tablet:grid-col-4 ${styles.card}`}>
+              <div className={`grid-col-12 mobile-lg:grid-col-6  tablet:grid-col-4 ${styles.card}`}>
                 <div className={`usa-card__container ${styles.cardContainer}`}>
                   <div className="usa-card__header">
                     <h4 className={`usa-card__heading ${styles.cardHeader}`}>Disaster Loans</h4>
