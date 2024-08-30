@@ -10,7 +10,7 @@ import CityScapeImage from "src/assets/cityscape.png";
 import BusinessCardIcon from "src/assets/business-card-icon.svg";
 import CertificationAlert from "src/components/CertificationAlert/CertificationAlert";
 import Alert from "src/components/Alert/Alert";
-import CardLoansImg from "src/assets/card-loans-img.png";
+import CardLoansImg from "src/assets/card-loans-img.jpg";
 import CardCertificationsImg from "src/assets/card-certifications-img.png";
 import CardDisasterLoansImg from "src/assets/card-disaster_loans-img.png";
 
