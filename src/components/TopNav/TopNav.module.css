@@ -10,7 +10,7 @@
   justify-content: space-between;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 639px) {
   .container {
     display: none;
   }
