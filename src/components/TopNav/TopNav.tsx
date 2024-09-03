@@ -2,6 +2,8 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "src/components/TopNav/TopNav.module.css";
+import { getUser } from "src/store/user/userSlice";
+import { useSelector } from "react-redux";
 
 type TopNavProps = {
   onNavLinkClick: () => void; forMobile: boolean;
@@ -9,11 +11,20 @@ type TopNavProps = {
 
 const TopNav: React.FC<TopNavProps> = ({ onNavLinkClick, forMobile = false }) => {
   const { t } = useTranslation();
+  const user: IUser = useSelector(getUser);
   const mainContentRef = useRef<HTMLDivElement | null>(null);
+
+  console.log("user", user);
+  const organizationLength = user.businesses?.length;
+  const organizationId = organizationLength === 1 ? user.businesses?.[0]?.id : null;
+  console.log("user", organizationLength);
+
   const NAVIGATION_LINKS = [{
     name: "Overview", url: "/dashboard", location: "left",
   }, {
-    name: "Business Details", url: "/businesses", location: "left",
+    name    : "Business Details",
+    url     : organizationLength === 1 ? `/businesses/detail/${organizationId}` : "/businesses",
+    location: "left",
   }, {
     name: "Resources", url: "/resources", location: "right",
   }, {
@@ -24,6 +35,11 @@ const TopNav: React.FC<TopNavProps> = ({ onNavLinkClick, forMobile = false }) =>
     if (window.location.hash === "#main-content") {
       mainContentRef.current?.focus();
     }
+    console.log("user", user);
+    const organizationLength = user.businesses?.length;
+    const organizationId = organizationLength === 1 ? user.businesses?.[0]?.id : null;
+    console.log("user Count", organizationLength);
+
   }, []);
 
   const handleClick = () => {

@@ -2,7 +2,7 @@
   "name": "mysba-portal",
   "version": "0.0.1",
   "scripts": {
-    "localhost": "vite --mode localhost --open",
+    "localhost": "vite --mode localhost",
     "dev": "vite --mode dev --open",
     "build": "tsc && vite build",
     "serve": "vite preview",
@@ -40,6 +40,7 @@
     "@testing-library/react": "^14.3.1",
     "@types/jest": "^29.5.12",
     "@types/lodash": "^4.17.6",
+    "@types/node": "^22.5.2",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "@typescript-eslint/eslint-plugin": "^6.21.0",

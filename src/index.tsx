@@ -17,13 +17,11 @@ if (sessionStorage.getItem('clsLogoutNeeded') !== null) {
   sessionStorage.clear();
   window.location.href = CLS_URL +  '/accounts/logout' + '?next=' + window.location.origin;
 } else {
-  if (import.meta.env.MODE === 'localhost') {
     const urlParams = new URLSearchParams(window.location.search);
-    const user = urlParams.get('user');
-    if (user) {
-      sessionStorage.setItem('user', user);
+    const mock = urlParams.get('mock');
+    if (urlParams.has("mock")) {
+      if (mock != null) {sessionStorage.setItem("mock", mock);}
     }
-  }
 
   const root = createRoot(container);
   root.render(

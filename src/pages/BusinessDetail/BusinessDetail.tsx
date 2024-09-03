@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
@@ -13,6 +13,13 @@ const BusinessDetail = () => {
   const { id } = useParams();
   const { t } = useTranslation();
   const index = calculateIndexFromId(id as string);
+  const [organizationLength, setOrganizationLength] = useState<number>(1);
+
+  useEffect(() => {
+    console.log("user", user);
+    setOrganizationLength(user.businesses ? user.businesses.length : 0);
+    console.log("organizationLength", organizationLength);
+  }, []);
 
   function calculateIndexFromId(id: string): number | null {
     let index = Number(id);
@@ -42,6 +49,7 @@ const BusinessDetail = () => {
     {business?.business_address_city}, {business?.business_address_state} {business?.business_address_zipcode}</>);
 
   return (<div data-testid="page-business-details" className={`${styles.container}`}>
+    {organizationLength > 1 && (
     <div className={"grid-row"}>
       <div className={"grid-col"}>
         <button
@@ -55,6 +63,7 @@ const BusinessDetail = () => {
         </button>
       </div>
     </div>
+    )}
     <div className={`grid-row ${styles.headerRow}`}>
       <div className={`grid-col-auto ${styles.headerIcon}`}>
         <img className={`${styles.headerIcon}`} src={BusinessCardIcon} alt={"Business Card Icon"} />
@@ -68,6 +77,9 @@ const BusinessDetail = () => {
         <h4 className={`${styles.subheader}`}>{t("Business Information")}</h4>
       </div>
     </div>
+    <Field label="Business Name" value={business.name} />
+    <Field label="EIN" value={business.ein} />
+    <Field label="UEI" value={business.uei} />
     {business.user_id && <Field label="User ID" value={business.user_id} />}
 
     <div className={`${styles.subheader}`}>{t("Contact Information")}</div>

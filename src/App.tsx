@@ -54,7 +54,9 @@ const App: React.FC = () => {
     navigate("/loading");
   };
 
-  const oktaAuth = import.meta.env.MODE === 'localhost'
+  let mock = sessionStorage.getItem("mock");
+  // if (mock) {
+  const oktaAuth = mock
     ? new MockOktaAuth({
       clientId: OKTA_CLIENT_ID,
       issuer: `https://${OKTA_DOMAIN}/oauth2/default`,

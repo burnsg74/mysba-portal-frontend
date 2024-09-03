@@ -23,26 +23,27 @@ const Businesses = () => {
 
   return (<>
     <div data-testid="page-businesses" className={`main-container`}>
-      {/* Title Row */}
-      <div className={`${styles.titleContainer}`}>
-        <h1 className={`${styles.title}`}> {t("Businesses")} </h1>
-        <button type="button" onClick={handleAddBusinessBtnClick}
-                className={`usa-button usa-button--outline ${styles.addBusinessBtn}`}
-        disabled={true}> {t("Add a Business")} </button>
-      </div>
+      {/*/!* Title Row *!/*/}
+      {/*<div className={`${styles.titleContainer}`}>*/}
+      {/*  <h1 className={`${styles.title}`}> {t("Businesses")} </h1>*/}
+      {/*  /!*<button type="button" onClick={handleAddBusinessBtnClick}*!/*/}
+      {/*  /!*        className={`usa-button usa-button--outline ${styles.addBusinessBtn}`}*!/*/}
+      {/*  /!*disabled={true}> {t("Add a Business")} </button>*!/*/}
+      {/*</div>*/}
 
       {/* No Businesses Message */}
       {! user.businesses?.length && (<div className={`${styles.noBusinessesContainer}`}>
         <div className={`${styles.noBusinessesMessageContainer}`}>
           <img src={bagIcon} alt="No Businesses" />
           <div className={`${styles.noBusinessesText}`}>
-            {t("You haven’t added any businesses")}.
+            {t("Your business will appear when a certification or loan is linked")}.
+            {/*{t("You haven’t added any businesses")}.*/}
           </div>
         </div>
 
-        <Alert type={"info"}
-               title={"Add your business and customize your experience"}
-               message={"If you add your business to MySBA, you can then manage your certifications, like the Women-Owned Small Business (WOSB) or Veteran Small Business (VetCert) certification, and loans—all in one place."} />
+        {/*<Alert type={"info"}*/}
+        {/*       title={"Add your business and customize your experience"}*/}
+        {/*       message={"If you add your business to MySBA, you can then manage your certifications, like the Women-Owned Small Business (WOSB) or Veteran Small Business (VetCert) certification, and loans—all in one place."} />*/}
       </div>)}
 
       <div className="Businesses-content">

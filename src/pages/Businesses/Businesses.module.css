@@ -78,18 +78,24 @@
     margin-bottom: 40px;
 }
 
+.noBusinessesContainer {
+    /*padding-top: 40px;*/
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .noBusinessesMessageContainer {
     display: flex;
-    padding: 24px 0;
+    /*padding: 24px 0;*/
     flex-direction: column;
     align-items: center;
     gap: 16px;
     align-self: stretch;
+    justify-content: center;
 }
 
-.noBusinessesContainer {
-   padding-top: 40px;
-}
 
 .noBusinessesText {
     color: var(--Brand-Primary-SBA-Blue);

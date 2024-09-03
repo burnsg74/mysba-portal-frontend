@@ -30,6 +30,49 @@ const Loading = () => {
       sessionStorage.setItem("clsUser", "true");
     }
 
+    // if (import.meta.env.MODE === "localhost") {
+    let mock = sessionStorage.getItem("mock");
+    if (mock) {
+      let mock = sessionStorage.getItem("mock");
+      console.log("mock", mock);
+
+      let ssoProfile = await fetch(`../../mock-data/${mock}/sso.json`)
+        .then(response => response.json())
+        .then(data => {
+          return data;
+        });
+
+      let crmData = await fetch(`../../mock-data/${mock}/crm.json`)
+        .then(response => response.json())
+        .then(data => {
+          return data.individuals[0];
+        })
+        .catch(error => {
+          console.error("Error:", error);
+        });
+
+      let businesses = await fetch(`../../mock-data/${mock}/business.json`)
+        .then(response => response.json())
+        .then(data => {
+          return data;
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          return [];
+        });
+
+      console.log("User", mock);
+      console.log("ssoProfile", ssoProfile);
+      console.log("crmData", crmData);
+      return {
+        profile      : {
+          sso: ssoProfile, crm: crmData,
+        }, businesses: businesses,
+      };
+    }
+
+    console.log("Mark 2");
+
     const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
@@ -39,25 +82,20 @@ const Loading = () => {
     }
 
     let data = JSON.stringify({
-      individuals: [
-        {
-          firstName: "",
-          lastName: "",
-          email: email,
-        },
-      ],
+      individuals: [{
+        firstName: "", lastName: "", email: email,
+      }],
     });
 
     let config = {
-      method: "post",
+      method       : "post",
       maxBodyLength: Infinity,
-      url: `${BASE_API_URL}/individuals/individual?task=read`,
-      agent: false,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+      url          : `${BASE_API_URL}/individuals/individual?task=read`,
+      agent        : false,
+      headers      : {
+        "Content-Type": "application/json", Authorization: `Bearer ${accessToken}`,
       },
-      data: data,
+      data         : data,
     };
     let results = await axios.request(config).catch(error => {
       // throw new Error("Unable to get individual from crm");
@@ -69,15 +107,11 @@ const Loading = () => {
 
       // Workaround for the case where the user is not in the CRM Profile yet. This is a temporary solution. - GB 2021-09-29
       individual = {
-        firstName: info.given_name ?? "",
-        lastName: info.family_name ?? "",
-        email: info.email ?? "",
+        firstName: info.given_name ?? "", lastName: info.family_name ?? "", email: info.email ?? "",
       };
     }
     let crmData: IUserProfile["crm"] = {
-      first_name: individual.firstName ?? "",
-      last_name: individual.lastName ?? "",
-      email: individual.email ?? "",
+      first_name: individual.firstName ?? "", last_name: individual.lastName ?? "", email: individual.email ?? "",
     };
 
     let portalData;
@@ -92,24 +126,22 @@ const Loading = () => {
     }
 
     let ssoProfile: IUserProfile["sso"] = {
-      given_name: info.given_name ?? "",
-      family_name: info.family_name ?? "",
-      email: info.email ?? "",
-      sub: info.sub ?? "",
-      name: info.name ?? "",
-      locale: info.locale ?? "",
+      given_name        : info.given_name ?? "",
+      family_name       : info.family_name ?? "",
+      email             : info.email ?? "",
+      sub               : info.sub ?? "",
+      name              : info.name ?? "",
+      locale            : info.locale ?? "",
       preferred_username: info.preferred_username ?? "",
-      zone_info: info.zoneinfo ?? "",
-      updated_at: info.updated_at ?? 0,
-      email_verified: info.email_verified ?? false,
-      cls_elevated: Boolean(info.cls_elevated) ?? false,
+      zone_info         : info.zoneinfo ?? "",
+      updated_at        : info.updated_at ?? 0,
+      email_verified    : info.email_verified ?? false,
+      cls_elevated      : Boolean(info.cls_elevated) ?? false,
     };
 
     return {
       profile: {
-        sso: ssoProfile,
-        crm: crmData,
-        portal: portalData,
+        sso: ssoProfile, crm: crmData, portal: portalData,
       },
     };
   };
@@ -180,14 +212,12 @@ const Loading = () => {
     return () => clearInterval(interval);
   }, [messageIndex]);
 
-  return (
-    <div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
+  return (<div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
       <img className={`${styles.loadingIcon}`} src={loadingIcon} alt="Loading" />
       <div className={`${styles.loadingProgressbarOuter}`}>
         <div className={`${styles.loadingProgressbarInner}`} style={{ width: `${loadingProgress}%` }}></div>
       </div>
       <div className={`${styles.loadingText}`}>{loadingMessage}</div>
-    </div>
-  );
+    </div>);
 };
 export default Loading;
