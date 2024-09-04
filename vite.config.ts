@@ -63,6 +63,10 @@ async function copyAssets() {
             );
         });
 
+        await fs.copy(
+          path.resolve(__dirname, "mock-data"),
+          path.resolve(__dirname, "public/mock-data"));
+
         console.log("File copy was successful!")
     } catch (error) {
         console.error("Error occurred while copying file: ", error)

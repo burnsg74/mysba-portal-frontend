@@ -1,0 +1,57 @@
+[
+  {
+    "email": "owner1@example.com",
+    "owner": "John Doe",
+    "id": "1",
+    "name": "3rd Degree Safety Solutions LLC",
+    "legal_entity": "LLC",
+    "ownership_type": "Private",
+    "uei": "ABC123THFD5",
+    "ein": "12-3456789",
+    "user_id": "P2327838",
+    "mailing_address_street": "123 Main Street",
+    "mailing_address_city": "Nashua",
+    "mailing_address_state": "NH",
+    "mailing_address_zipcode": "03060",
+    "business_address_street": "96 Peele Road",
+    "business_address_city": "Hudson",
+    "business_address_state": "NH",
+    "business_address_zipcode": "03062-2520",
+    "business_phone_number": "+1-603-555-1234",
+    "fax": "+1-603-555-5678",
+    "naics_codes": [
+      "423450",
+      "611699",
+      "811219"
+    ],
+    "capabilities_narrative": "We provide comprehensive safety training and consulting services.",
+    "website": "https://www.3rd-degreesafety.com"
+  },
+  {
+    "email": "contact@veloci-tech.com",
+    "owner": "Jane Smith",
+    "id": "2",
+    "name": "VelociTech Solutions Inc.",
+    "legal_entity": "Corporation",
+    "ownership_type": "Public",
+    "uei": "XYZ789LKJH2",
+    "ein": "98-7654321",
+    "user_id": "P8765434",
+    "mailing_address_street": "456 Market Street",
+    "mailing_address_city": "Portsmouth",
+    "mailing_address_state": "NH",
+    "mailing_address_zipcode": "03801",
+    "business_address_street": "789 Innovation Drive",
+    "business_address_city": "Portsmouth",
+    "business_address_state": "NH",
+    "business_address_zipcode": "03801-4412",
+    "business_phone_number": "+1-603-555-9876",
+    "fax": "+1-603-555-1235",
+    "naics_codes": [
+      "541512",
+      "541519"
+    ],
+    "capabilities_narrative": "We specialize in IT consulting and custom software development.",
+    "website": "https://www.veloci-tech.com"
+  }
+]

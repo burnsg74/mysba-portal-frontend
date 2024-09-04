@@ -1,0 +1,9 @@
+{
+  "individuals": [
+    {
+      "first_name": "John",
+      "last_name": "Doe",
+      "email": "JohnDoe@example.com"
+    }
+  ]
+}
