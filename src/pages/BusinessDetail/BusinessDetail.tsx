@@ -49,21 +49,20 @@ const BusinessDetail = () => {
     {business?.business_address_city}, {business?.business_address_state} {business?.business_address_zipcode}</>);
 
   return (<div data-testid="page-business-details" className={`${styles.container}`}>
-    {organizationLength > 1 && (
-    <div className={"grid-row"}>
-      <div className={"grid-col"}>
-        <button
-          type="button"
-          className="usa-button usa-button--outline"
-          onClick={() => {
-            navigate(-1);
-          }}
-        >
-          {t("Back")}
-        </button>
-      </div>
-    </div>
-    )}
+    {organizationLength > 1 && (<div className={"grid-row"}>
+        <div className={"grid-col"}>
+          <button
+            type="button"
+            className="usa-button usa-button--outline"
+            onClick={() => {
+              navigate(-1);
+            }}
+          >
+            {t("Back")}
+          </button>
+        </div>
+      </div>)}
+
     <div className={`grid-row ${styles.headerRow}`}>
       <div className={`grid-col-auto ${styles.headerIcon}`}>
         <img className={`${styles.headerIcon}`} src={BusinessCardIcon} alt={"Business Card Icon"} />

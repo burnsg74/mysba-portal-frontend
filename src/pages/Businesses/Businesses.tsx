@@ -22,7 +22,7 @@ const Businesses = () => {
   };
 
   return (<>
-    <div data-testid="page-businesses" className={`main-container`}>
+    <div data-testid="page-businesses" className={`main-container ${styles.businessesContainer}`}>
       {/*/!* Title Row *!/*/}
       {/*<div className={`${styles.titleContainer}`}>*/}
       {/*  <h1 className={`${styles.title}`}> {t("Businesses")} </h1>*/}
@@ -32,7 +32,7 @@ const Businesses = () => {
       {/*</div>*/}
 
       {/* No Businesses Message */}
-      {! user.businesses?.length && (<div className={`${styles.noBusinessesContainer}`}>
+      {!user.businesses?.length && (<div className={``}>
         <div className={`${styles.noBusinessesMessageContainer}`}>
           <img src={bagIcon} alt="No Businesses" />
           <div className={`${styles.noBusinessesText}`}>
@@ -46,6 +46,13 @@ const Businesses = () => {
         {/*       message={"If you add your business to MySBA, you can then manage your certifications, like the Women-Owned Small Business (WOSB) or Veteran Small Business (VetCert) certification, and loans—all in one place."} />*/}
       </div>)}
 
+      <div className={"grid-row"}>
+        <div className={`grid-col`}>
+          <h1 className={`${styles.businessesHeader}`}>
+            Business Details
+          </h1>
+        </div>
+      </div>
       <div className="Businesses-content">
         {user.businesses && [...user.businesses]
           .sort((a, b) => a.name.localeCompare(b.name))
@@ -56,7 +63,7 @@ const Businesses = () => {
           </div>))}
       </div>
     </div>
-    {showBusinessAdd && ( <BusinessAdd handleCloseModal={handleCloseModal}/>)}
+    {showBusinessAdd && (<BusinessAdd handleCloseModal={handleCloseModal} />)}
   </>);
 };
 

@@ -1,18 +1,12 @@
 import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
-import { Link, useLocation, useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next";
-import { CertificationCard } from "src/components/CertificationCard/CertificationCard";
+import { useLocation, useNavigate } from "react-router-dom";
+import { Trans, useTranslation } from "react-i18next";
 import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import styles from "src/pages/Dashboard/Dashboard.module.css";
 import CityScapeImage from "src/assets/cityscape.png";
-import BusinessCardIcon from "src/assets/business-card-icon.svg";
-import CertificationAlert from "src/components/CertificationAlert/CertificationAlert";
 import Alert from "src/components/Alert/Alert";
-import CardLoansImg from "src/assets/card-loans-img.jpg";
-import CardCertificationsImg from "src/assets/card-certifications-img.jpg";
-import CardDisasterLoansImg from "src/assets/card-disaster_loans-img.jpg";
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
@@ -20,8 +14,7 @@ const Dashboard = () => {
   const { t } = useTranslation();
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const modalFooterContent = (
-    <button
+  const modalFooterContent = (<button
       type="button"
       className={`usa-button ${styles.footerBtn}`}
       onClick={() => {
@@ -31,19 +24,15 @@ const Dashboard = () => {
       }}
     >
       {t("All Done")}
-    </button>
-  );
+    </button>);
 
-  return (
-    <>
+  return (<>
       {/* Top city banner */}
       <div className={`banner ${styles.banner}`}>
         <div className={`${styles.welcomeMessage}`}>
-          {user.profile?.crm && (
-            <span data-testid="welcome-first_name" className="first_name">
+          {user.profile?.crm && (<span data-testid="welcome-first_name" className="first_name">
               {t("Hi")} {user.profile?.crm?.first_name},{" "}
-            </span>
-          )}
+            </span>)}
         </div>
         <div className={`${styles.mysbaMessage}`}>{t("Welcome to MySBA")}</div>
         <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
@@ -53,17 +42,28 @@ const Dashboard = () => {
           <div className="grid-col-12" style={{ marginLeft: ".5rem", marginRight: ".5rem" }}>
             <Alert
               type={"info"}
-              title={"Certification Data is Coming Soon"}
-              message={
-                <>
-                  Certifications aren’t shown in MySBA Home yet, but support is coming soon. Visit{" "}
-                  <a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">
-                    certification.sba.gov
-                  </a>{" "}
-                  to apply for and manage certifications.
-                </>
-              }
+              title={t("Certification Data is Coming Soon")}
+              message={t("dashboard.cert.alert.message", {
+                link: '<a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">certification.sba.gov</a>'
+              })}
             />
+            {/*<Alert*/}
+            {/*  type={"info"}*/}
+            {/*  title={"Certification Data is Coming Soon"}*/}
+            {/*  message={*/}
+            {/*    <Trans*/}
+            {/*      i18nKey="dashboard.cert.alert.message"*/}
+            {/*      components={{ link: <a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">certification.sba.gov</a> }}*/}
+            {/*    />*/}
+            {/*  }*/}
+            {/*/>*/}
+            {/*<Alert*/}
+            {/*  type={"info"}*/}
+            {/*  title={"Certification Data is Coming Soon"}*/}
+            {/*  message={t("Certifications aren’t shown in MySBA Home yet, but support is coming soon. Visit {{link}} to apply for and manage certifications.", {*/}
+            {/*    'link': <a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">certification.sba.gov</a>*/}
+            {/*  })}*/}
+            {/*/>*/}
           </div>
         </div>
 
@@ -229,8 +229,7 @@ const Dashboard = () => {
       {/*  contentMessage={t("Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov.")}*/}
       {/*  footerContent={modalFooterContent}*/}
       {/*/>)}*/}
-    </>
-  );
+    </>);
 };
 
 export default Dashboard;

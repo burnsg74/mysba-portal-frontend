@@ -267,7 +267,7 @@
   "View MySBA Loan Portal": "Ver el Portal de Préstamos de MiSBA",
   "View": "Ver",
   "Website": "Pagina Web",
-  "Welcome to your MySBA Dashboard": "Bienvenido a su tablero de MiSBA",
+  "Welcome to MySBA": "Bienvenido a MySBA",
   "Welcome to": "Bienvenido a",
   "What happens to my information if I delete my account?": "¿Qué pasa con mi información si elimino mi cuenta?",
   "What is MySBA?": "¿Que es MySBA?",
@@ -361,5 +361,7 @@
   "December": "Diciembre",
   "Overview": "Resumen",
   "Business Details": "Detalles del Negocio",
-  "Resources": "Recursos"
+  "Resources": "Recursos",
+  "Certification Data is Coming Soon": "Los datos de certificación están por venir",
+  "dashboard.cert.alert.message": "Las certificaciones no se muestran en MySBA Home aún, pero el soporte está por venir. Visite {{link}} para aplicar y administrar certificaciones."
 }
