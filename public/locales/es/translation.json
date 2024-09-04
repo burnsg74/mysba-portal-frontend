@@ -363,5 +363,6 @@
   "Business Details": "Detalles del Negocio",
   "Resources": "Recursos",
   "Certification Data is Coming Soon": "Los datos de certificación están por venir",
-  "dashboard.cert.alert.message": "Las certificaciones no se muestran en MySBA Home aún, pero el soporte está por venir. Visite {{link}} para aplicar y administrar certificaciones."
+  "dashboard.cert.alert.message": "Las certificaciones no se muestran en MySBA Home aún, pero el soporte está por venir. Visite {{link}} para aplicar y administrar certificaciones.",
+  "Your business will appear when a certification or loan is linked": "Tu negocio aparecerá cuando se vincule una certificación o un préstamo"
 }

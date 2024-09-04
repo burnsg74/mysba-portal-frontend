@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { useTranslation } from "react-i18next";
 import { getUser } from "src/store/user/userSlice";
 import { BusinessCard } from "src/components/BusinessCard/BusinessCard";
-import Alert from "src/components/Alert/Alert";
 import styles from "src/pages/Businesses/Businesses.module.css";
 import bagIcon from "src/assets/bag.svg";
 import BusinessAdd from "src/components/BusinessAdd/BusinessAdd";
@@ -14,7 +13,7 @@ const Businesses = () => {
   const [showBusinessAdd, setShowBusinessAdd] = useState(false);
 
   const handleAddBusinessBtnClick = () => {
-    setShowBusinessAdd(true)
+    setShowBusinessAdd(true);
   };
 
   const handleCloseModal = () => {
@@ -32,7 +31,7 @@ const Businesses = () => {
       {/*</div>*/}
 
       {/* No Businesses Message */}
-      {!user.businesses?.length && (<div className={``}>
+      {!user.businesses?.length && (<div>
         <div className={`${styles.noBusinessesMessageContainer}`}>
           <img src={bagIcon} alt="No Businesses" />
           <div className={`${styles.noBusinessesText}`}>
@@ -46,13 +45,16 @@ const Businesses = () => {
         {/*       message={"If you add your business to MySBA, you can then manage your certifications, like the Women-Owned Small Business (WOSB) or Veteran Small Business (VetCert) certification, and loans—all in one place."} />*/}
       </div>)}
 
-      <div className={"grid-row"}>
-        <div className={`grid-col`}>
-          <h1 className={`${styles.businessesHeader}`}>
-            Business Details
-          </h1>
+      {user.businesses && user.businesses.length > 0 && (
+        <div className="grid-row">
+          <div className="grid-col">
+            <h1 className={styles.businessesHeader}>
+              Business Details
+            </h1>
+          </div>
         </div>
-      </div>
+      )}
+
       <div className="Businesses-content">
         {user.businesses && [...user.businesses]
           .sort((a, b) => a.name.localeCompare(b.name))
