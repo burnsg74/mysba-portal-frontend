@@ -30,7 +30,6 @@ const Loading = () => {
       sessionStorage.setItem("clsUser", "true");
     }
 
-    // if (import.meta.env.MODE === "localhost") {
     let mock = sessionStorage.getItem("mock");
     if (mock) {
       let mock = sessionStorage.getItem("mock");

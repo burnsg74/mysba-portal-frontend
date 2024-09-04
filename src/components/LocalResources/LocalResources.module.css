@@ -5,6 +5,19 @@
     gap: 40px;
 }
 
+.searchInputGroup {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.searchButton {
+    width: 97px;
+    height: 16px;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
 .titleRow {
     display: flex;
     align-items: flex-start;
@@ -40,11 +53,6 @@
     font-weight: 400;
     line-height: normal;
     margin-top: unset;
-}
-
-.titleZipInput {
-    align-self: stretch;
-    height: 40px;
 }
 
 .localResourcesContentContainer {
