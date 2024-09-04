@@ -7,6 +7,9 @@ import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import styles from "src/pages/Dashboard/Dashboard.module.css";
 import CityScapeImage from "src/assets/cityscape.png";
 import Alert from "src/components/Alert/Alert";
+import CardLoansImg from "src/assets/card-loans-img.jpg";
+import CardCertificationsImg from "src/assets/card-certifications-img.jpg";
+import CardDisasterLoansImg from "src/assets/card-disaster_loans-img.jpg";
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
@@ -131,91 +134,91 @@ const Dashboard = () => {
         {/*            )}*/}
         {/*          </React.Fragment>*/}
         {/*        ))}*/}
-        {/*    <div className={`grid-row padding-top-5 margin-left-5 margin-right-5 ${styles.cardRow}`}>*/}
-        {/*      <div className={`grid-col ${styles.card}`}>*/}
-        {/*        <div className={`usa-card__container ${styles.cardContainer}`}>*/}
-        {/*          <div className="usa-card__header">*/}
-        {/*            <h4 className={`usa-card__heading ${styles.cardHeader}`}>Loans</h4>*/}
-        {/*          </div>*/}
-        {/*          <div className="usa-card__media">*/}
-        {/*            <div className="usa-card__img">*/}
-        {/*              <img src={CardLoansImg} alt="Loans Card" />*/}
-        {/*            </div>*/}
-        {/*          </div>*/}
-        {/*          <div className={`usa-card__body ${styles.cardBody}`}>*/}
-        {/*            <p>*/}
-        {/*              Government-backed loans with favorable terms for businesses who may not be eligible through*/}
-        {/*              traditional lenders.*/}
-        {/*            </p>*/}
-        {/*          </div>*/}
-        {/*          <div className="usa-card__footer">*/}
-        {/*            <a href="https://www.sba.gov/funding-programs/loans" target="_blank" className="usa-button usa-button--outline">*/}
-        {/*              Learn More*/}
-        {/*            </a>*/}
-        {/*            <a href="https://lending.sba.gov/lender-match/" target="_blank" className="usa-button">*/}
-        {/*              Apply*/}
-        {/*            </a>*/}
-        {/*          </div>*/}
-        {/*        </div>*/}
-        {/*      </div>*/}
-        {/*      <div className={`grid-col ${styles.card}`}>*/}
-        {/*        <div className={`usa-card__container ${styles.cardContainer}`}>*/}
-        {/*          <div className="usa-card__header">*/}
-        {/*            <h4 className={`usa-card__heading ${styles.cardHeader}`}>Certifications</h4>*/}
-        {/*          </div>*/}
-        {/*          <div className="usa-card__media">*/}
-        {/*            <div className="usa-card__img">*/}
-        {/*              <img src={CardCertificationsImg} alt="Certifications Card" />*/}
-        {/*            </div>*/}
-        {/*          </div>*/}
-        {/*          <div className={`usa-card__body ${styles.cardBody}`}>*/}
-        {/*            <p>*/}
-        {/*              The federal government uses special programs to help small businesses win at least at 23% of*/}
-        {/*              federal contracting dollars yearly.*/}
-        {/*            </p>*/}
-        {/*          </div>*/}
-        {/*          <div className="usa-card__footer">*/}
-        {/*            <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank" className="usa-button usa-button--outline">*/}
-        {/*              Learn More*/}
-        {/*            </a>*/}
-        {/*            <a href="https://certification.sba.gov" target="_blank" className="usa-button">*/}
-        {/*              Apply*/}
-        {/*            </a>*/}
-        {/*          </div>*/}
-        {/*        </div>*/}
-        {/*      </div>*/}
-        {/*      <div className={`grid-col ${styles.card}`}>*/}
-        {/*        <div className={`usa-card__container ${styles.cardContainer}`}>*/}
-        {/*          <div className="usa-card__header">*/}
-        {/*            <h4 className={`usa-card__heading ${styles.cardHeader}`}>Disaster Loans</h4>*/}
-        {/*          </div>*/}
-        {/*          <div className="usa-card__media">*/}
-        {/*            <div className="usa-card__img">*/}
-        {/*              <img src={CardDisasterLoansImg} alt="Disaster Loans Card" />*/}
-        {/*            </div>*/}
-        {/*          </div>*/}
-        {/*          <div className={`usa-card__body ${styles.cardBody}`}>*/}
-        {/*            <p>*/}
-        {/*              In a disaster, the SBA is here to help. Whether you’re a business or private citizen SBA disaster*/}
-        {/*              loans may be available to you.*/}
-        {/*            </p>*/}
-        {/*          </div>*/}
-        {/*          <div className="usa-card__footer">*/}
-        {/*            <a href="https://www.sba.gov/funding-programs/disaster-assistance" target="_blank" className="usa-button usa-button--outline">*/}
-        {/*              Learn More*/}
-        {/*            </a>*/}
-        {/*            <a href="https://lending.sba.gov/search-disaster/" target="_blank" className="usa-button">*/}
-        {/*              Apply*/}
-        {/*            </a>*/}
-        {/*          </div>*/}
-        {/*        </div>*/}
-        {/*      </div>*/}
-        {/*    </div>*/}
-        {/*  </div>*/}
+            <div className={`grid-row padding-top-5 margin-left-5 margin-right-5 ${styles.cardRow}`}>
+              <div className={`grid-col ${styles.card}`}>
+                <div className={`usa-card__container ${styles.cardContainer}`}>
+                  <div className="usa-card__header">
+                    <h4 className={`usa-card__heading ${styles.cardHeader}`}>Loans</h4>
+                  </div>
+                  <div className="usa-card__media">
+                    <div className="usa-card__img">
+                      <img src={CardLoansImg} alt="Loans Card" />
+                    </div>
+                  </div>
+                  <div className={`usa-card__body ${styles.cardBody}`}>
+                    <p>
+                      Government-backed loans with favorable terms for businesses who may not be eligible through
+                      traditional lenders.
+                    </p>
+                  </div>
+                  <div className="usa-card__footer">
+                    <a href="https://www.sba.gov/funding-programs/loans" target="_blank" className="usa-button usa-button--outline">
+                      Learn More
+                    </a>
+                    <a href="https://lending.sba.gov/lender-match/" target="_blank" className="usa-button">
+                      Apply
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className={`grid-col ${styles.card}`}>
+                <div className={`usa-card__container ${styles.cardContainer}`}>
+                  <div className="usa-card__header">
+                    <h4 className={`usa-card__heading ${styles.cardHeader}`}>Certifications</h4>
+                  </div>
+                  <div className="usa-card__media">
+                    <div className="usa-card__img">
+                      <img src={CardCertificationsImg} alt="Certifications Card" />
+                    </div>
+                  </div>
+                  <div className={`usa-card__body ${styles.cardBody}`}>
+                    <p>
+                      The federal government uses special programs to help small businesses win at least at 23% of
+                      federal contracting dollars yearly.
+                    </p>
+                  </div>
+                  <div className="usa-card__footer">
+                    <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank" className="usa-button usa-button--outline">
+                      Learn More
+                    </a>
+                    <a href="https://certification.sba.gov" target="_blank" className="usa-button">
+                      Apply
+                    </a>
+                  </div>
+                </div>
+              </div>
+              <div className={`grid-col ${styles.card}`}>
+                <div className={`usa-card__container ${styles.cardContainer}`}>
+                  <div className="usa-card__header">
+                    <h4 className={`usa-card__heading ${styles.cardHeader}`}>Disaster Loans</h4>
+                  </div>
+                  <div className="usa-card__media">
+                    <div className="usa-card__img">
+                      <img src={CardDisasterLoansImg} alt="Disaster Loans Card" />
+                    </div>
+                  </div>
+                  <div className={`usa-card__body ${styles.cardBody}`}>
+                    <p>
+                      In a disaster, the SBA is here to help. Whether you’re a business or private citizen SBA disaster
+                      loans may be available to you.
+                    </p>
+                  </div>
+                  <div className="usa-card__footer">
+                    <a href="https://www.sba.gov/funding-programs/disaster-assistance" target="_blank" className="usa-button usa-button--outline">
+                      Learn More
+                    </a>
+                    <a href="https://lending.sba.gov/search-disaster/" target="_blank" className="usa-button">
+                      Apply
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          {/*</div>*/}
         {/*</div>*/}
 
 
-      </div>
+      // </div>
       {/* Temp remove new user (GB 24-08-23) */}
       {/*{location.pathname === "/dashboard/new" && (<Modal*/}
       {/*  title=""*/}
