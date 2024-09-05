@@ -50,6 +50,7 @@ const LocalResources = () => {
   useEffect(() => {
     if (zipcode && zipcode.toString().length === 5) {
       setSearchBtnDisabled(false);
+      refreshDistrict(zipcode);
     }
   }, [zipcode]);
 
