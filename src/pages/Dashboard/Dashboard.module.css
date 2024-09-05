@@ -115,6 +115,7 @@
     font-family: var(--Font-Secondary);
     color: var(--Brand-Primary-SBA-Blue);
 }
+
 .noBusinessesMessageContainer {
     align-items: center;
     display: flex;

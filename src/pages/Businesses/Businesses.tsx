@@ -31,18 +31,12 @@ const Businesses = () => {
       {/*</div>*/}
 
       {/* No Businesses Message */}
-      {!user.businesses?.length && (<div>
+      {!user.businesses?.length && (
         <div className={`${styles.noBusinessesMessageContainer}`}>
           <img src={bagIcon} alt="No Businesses" />
           <div className={`${styles.noBusinessesText}`}>
             {t("Your business will appear when a certification or loan is linked")}.
-            {/*{t("You haven’t added any businesses")}.*/}
           </div>
-        </div>
-
-        {/*<Alert type={"info"}*/}
-        {/*       title={"Add your business and customize your experience"}*/}
-        {/*       message={"If you add your business to MySBA, you can then manage your certifications, like the Women-Owned Small Business (WOSB) or Veteran Small Business (VetCert) certification, and loans—all in one place."} />*/}
       </div>)}
 
       {user.businesses && user.businesses.length > 0 && (

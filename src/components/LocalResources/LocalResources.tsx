@@ -34,7 +34,11 @@ const LocalResources = () => {
     return undefined;
   };
 
-  const [zipcode, setZipcode] = useState(formatZipcode(user.profile?.portal?.district?.zipcode) ?? formatZipcode(user?.businesses?.[0]?.business_address_zipcode) ?? "10001");
+  const [zipcode, setZipcode] = useState(
+    formatZipcode(user.profile?.portal?.district?.zipcode) ??
+      formatZipcode(user?.businesses?.[0]?.business_address_zipcode) ??
+      "10001"
+  );
 
   useEffect(() => {
     let accessToken = authState?.accessToken?.accessToken;
@@ -87,32 +91,33 @@ const LocalResources = () => {
 
               // district.district_nid
               let newDistrict: District = {
-                zipcode                       : zipcodeDistrictData.zipcode,
-                county_code                   : zipcodeDistrictData.county_code,
-                district_nid                  : zipcodeDistrictData.district_nid,
-                title                         : apiDistrict.title,
-                website                       : apiDistrict.website,
-                field_district_map_svg        : apiDistrict.field_district_map_svg,
+                zipcode: zipcodeDistrictData.zipcode,
+                county_code: zipcodeDistrictData.county_code,
+                district_nid: zipcodeDistrictData.district_nid,
+                title: apiDistrict.title,
+                website: apiDistrict.website,
+                field_district_map_svg: apiDistrict.field_district_map_svg,
                 field_district_staff_directory: apiDistrict.field_district_staff_directory,
-                field_district_business_link  : apiDistrict.field_district_business_link,
-                social_media_x_url            : getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
-                social_media_linkedin_url     : getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
-                field_district_offices        : apiDistrict.field_district_offices?.map((office: any) => {
-                  let newOffice: DistrictOffice = {
-                    title           : office.title,
-                    typeIcon        : getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
-                    appointment_only: office.office_type.id === 149 || office.office_type.id === 147, // is_virtual_office: getIsVirtualFromMediaImage(office.office_type.office_type_icon?.media_image),
-                    is_virtual_office: office.office_type.id === 148 || office.office_type.id === 270,
-                    address_line1    : office.address?.address_line1,
-                    address_line2    : office.address?.address_line2,
-                    address_city     : office.address?.locality,
-                    address_state    : office.address?.administrative_area.code,
-                    address_zipcode  : office.address?.postal_code,
-                    telephone        : office.telephone,
-                    google_map_url   : getGoogleMapUrlFromAddress(office.address),
-                  };
-                  return newOffice;
-                }) || [],
+                field_district_business_link: apiDistrict.field_district_business_link,
+                social_media_x_url: getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
+                social_media_linkedin_url: getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
+                field_district_offices:
+                  apiDistrict.field_district_offices?.map((office: any) => {
+                    let newOffice: DistrictOffice = {
+                      title: office.title,
+                      typeIcon: getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
+                      appointment_only: office.office_type.id === 149 || office.office_type.id === 147, // is_virtual_office: getIsVirtualFromMediaImage(office.office_type.office_type_icon?.media_image),
+                      is_virtual_office: office.office_type.id === 148 || office.office_type.id === 270,
+                      address_line1: office.address?.address_line1,
+                      address_line2: office.address?.address_line2,
+                      address_city: office.address?.locality,
+                      address_state: office.address?.administrative_area.code,
+                      address_zipcode: office.address?.postal_code,
+                      telephone: office.telephone,
+                      google_map_url: getGoogleMapUrlFromAddress(office.address),
+                    };
+                    return newOffice;
+                  }) || [],
               };
               setDistrict(newDistrict);
               updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
@@ -128,7 +133,6 @@ const LocalResources = () => {
           });
       })
       .catch(() => {
-        console.log("Mark1");
         setSearchBtnLabel("Search");
         // An error occurred: Record with ZIP Code '90909' was not found
         // "Record with ZIP Code '{{Zip Code}}' was not found": "No se encontró el registro con el código postal {{'Zip Code'}}",
@@ -146,7 +150,9 @@ const LocalResources = () => {
   }
 
   function getSocialMediaLinkedinUrlFrom(field_district_social_media: any[]) {
-    const linkedInSocialMedia = field_district_social_media?.find(socialMedia => socialMedia.social_media_service.name === "LinkedIn");
+    const linkedInSocialMedia = field_district_social_media?.find(
+      socialMedia => socialMedia.social_media_service.name === "LinkedIn"
+    );
     return linkedInSocialMedia ? `https://www.linkedin.com/showcase/${linkedInSocialMedia.social_media_account}` : null;
   }
 
@@ -189,7 +195,8 @@ const LocalResources = () => {
       });
   }
 
-  return (<div className={`${styles.localResourcesContainer}`}>
+  return (
+    <div className={`${styles.localResourcesContainer}`}>
       {/* Title Row */}
       <div className={`${styles.titleRow}`}>
         <div className={`${styles.title}`}>{t("Local Resources")}</div>
@@ -198,13 +205,17 @@ const LocalResources = () => {
             <label htmlFor="zipCode" className={`usa-label ${styles.titleZipLabel}`}>
               {t("Zip Code")}
             </label>
-            {apiError ? (<span className="usa-error-message text-no-wrap" id="input-error-message" role="alert">
+            {apiError ? (
+              <span className="usa-error-message text-no-wrap" id="input-error-message" role="alert">
                 {apiErrorMessage}
-              </span>) : null}
+              </span>
+            ) : null}
 
             <section aria-label="Search component">
               <form className="usa-search usa-search--small" role="search">
-                <label className="usa-sr-only" htmlFor="search-field">Search</label>
+                <label className="usa-sr-only" htmlFor="search-field">
+                  Search
+                </label>
                 <input
                   className={`usa-input ${apiError ? "usa-input--error" : ""} ${styles.titleZipInput}`}
                   type="search"
@@ -220,21 +231,17 @@ const LocalResources = () => {
                     }
                   }}
                 />
-                <button className="usa-button"
-                        type="submit"
-                        onClick={handleSearchClick}
-                        disabled={searchBtnDisabled}
-                >
-                  Search
+                <button className="usa-button" type="submit" onClick={handleSearchClick} disabled={searchBtnDisabled}>
+                  {searchBtnLabel}
                 </button>
               </form>
             </section>
-
           </div>
         </div>
       </div>
 
-      {district !== null && (<div className={`${styles.localResourcesContentContainer}`}>
+      {district !== null && (
+        <div className={`${styles.localResourcesContentContainer}`}>
           <div className={`${styles.bodyDistrictCard}`}>
             <div className={`${styles.bodyDistrictCardImgContainer}`}>
               <img className={`${styles.bodyDistrictCardImg}`} src={district.field_district_map_svg} alt="district" />
@@ -256,7 +263,8 @@ const LocalResources = () => {
                   </a>
                 </div>
                 <div className={`${styles.bodyDistrictCardDetailsLinksGroup}`}>
-                  {district.field_district_staff_directory && (<>
+                  {district.field_district_staff_directory && (
+                    <>
                       <svg className={`usa-icon ${styles.districtCardDetailsLinkIcon}`} focusable="false">
                         <title>{t("Open in email")}</title>
                         <use xlinkHref="/assets/img/sprite.svg#mail_outline"></use>
@@ -264,9 +272,11 @@ const LocalResources = () => {
                       <a href={district.field_district_staff_directory} target="_blank">
                         {t("Office Directory")}
                       </a>
-                    </>)}
+                    </>
+                  )}
                 </div>
-                {district.social_media_x_url && (<div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
+                {district.social_media_x_url && (
+                  <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
                     <svg
                       className={`usa-icon ${styles.districtCardDetailsLinkIcon}`}
                       xmlns="http://www.w3.org/2000/svg"
@@ -288,20 +298,26 @@ const LocalResources = () => {
                     <a href={district.social_media_x_url} target="_blank">
                       {t("Follow us on") + " X"}
                     </a>
-                  </div>)}
-                {district.social_media_linkedin_url && (<div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
+                  </div>
+                )}
+                {district.social_media_linkedin_url && (
+                  <div className={` ${styles.bodyDistrictCardDetailsLinksGroup}`}>
                     <img src={logoLinkedIn} alt="linkedIn logo" className={styles.linkedInLogo} />
                     <a href={district.social_media_linkedin_url} target="_blank">
                       {t("Follow us on") + " LinkedIn"}
                     </a>
-                  </div>)}
+                  </div>
+                )}
               </div>
               <button
                 type="button"
                 className={`usa-button`}
                 onClick={event => {
                   event.preventDefault();
-                  window.open(`https://www.sba.gov/contact/contact_your_district_office?district=${district.district_nid}`, "_blank");
+                  window.open(
+                    `https://www.sba.gov/contact/contact_your_district_office?district=${district.district_nid}`,
+                    "_blank"
+                  );
                 }}
               >
                 {t("Make an Appointment")}
@@ -313,12 +329,14 @@ const LocalResources = () => {
             </div>
           </div>
           <div className={`${styles.officeCardsContainer}`}>
-            {district.field_district_offices.map(office => (<div key={office.title} className={`${styles.officeCard}`}>
+            {district.field_district_offices.map(office => (
+              <div key={office.title} className={`${styles.officeCard}`}>
                 <img className={`${styles.officeCardsImg}`} src={office.typeIcon} alt="office" />
                 <div className={`${styles.officeCardDetailsContainer}`}>
                   <div className={`${styles.officeCardDetailsTitle}`}>{office.title}</div>
                   {office.appointment_only && (
-                    <div className={`usa-tag ${styles.officeCardDetailsAptOnly}`}>{t("Appointment Only")}</div>)}
+                    <div className={`usa-tag ${styles.officeCardDetailsAptOnly}`}>{t("Appointment Only")}</div>
+                  )}
                   <div className={`${styles.officeCardDetailsPhone}`}>
                     <svg className={`usa-icon ${styles.launchIcon}`} focusable="false">
                       <title>{t("Open in email")}</title>
@@ -326,7 +344,8 @@ const LocalResources = () => {
                     </svg>
                     <a href={`tel:${office.telephone}`}>{office.telephone}</a>
                   </div>
-                  {!office.is_virtual_office && (<div className={`${styles.officeCardDetailsAddress}`}>
+                  {!office.is_virtual_office && (
+                    <div className={`${styles.officeCardDetailsAddress}`}>
                       <svg className={`usa-icon ${styles.launchIcon}`} focusable="false">
                         <title>{t("Open")}</title>
                         <use xlinkHref="/assets/img/sprite.svg#map"></use>
@@ -334,15 +353,19 @@ const LocalResources = () => {
                       <a href={office.google_map_url} target="_blank" rel="noopener noreferrer">
                         {office.address_line1}
                         <br />
-                        {office.address_line2 !== "" && (<>
+                        {office.address_line2 !== "" && (
+                          <>
                             {office.address_line2}
                             <br />
-                          </>)}
+                          </>
+                        )}
                         {office.address_city}, {office.address_state} {office.address_zipcode} <br />
                       </a>
-                    </div>)}
+                    </div>
+                  )}
                 </div>
-              </div>))}
+              </div>
+            ))}
           </div>
           <div className={`${styles.guideContainer}`}>
             <div className={`${styles.guideTitle}`}>{t("Explore your local business guide")}</div>
@@ -363,8 +386,10 @@ const LocalResources = () => {
               </button>
             </div>
           </div>
-        </div>)}
-    </div>);
+        </div>
+      )}
+    </div>
+  );
 };
 
 export default LocalResources;

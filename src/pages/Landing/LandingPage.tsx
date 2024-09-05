@@ -220,7 +220,7 @@ const LandingPage = () => {
                   <ul className="usa-button-group">
                     <li className="usa-button-group__item">
                       <button onClick={login} type="button" style={{ height: "unset" }} className="usa-button">
-                        Login
+                        Log In  / Sign Up
                       </button>
                     </li>
                   </ul>

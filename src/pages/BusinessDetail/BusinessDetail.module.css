@@ -4,7 +4,17 @@
     flex-direction: column;
     flex: 1 0 0;
     gap: 20px;
-    padding: 40px;
+    padding: 20px;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+@media screen and (min-width: 1024px) {
+    .container {
+        padding-right: 40px;
+        padding-left: 40px;
+    }
 }
 
 .headerRow {
@@ -37,7 +47,7 @@
 }
 
 .subheader {
-    color: var(--Primary-primary-darker);
+    color: var(--Brand-Primary-SBA-Blue);
     font-family: var(--Font-Secondary);
     font-size: 20px;
     font-style: normal;

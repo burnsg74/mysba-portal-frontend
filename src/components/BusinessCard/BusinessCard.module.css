@@ -7,7 +7,7 @@
 
 .bodyLegalEntityText {
     flex: none;
-    color: var(--Primary-primary-darker);
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
@@ -17,7 +17,7 @@
 
 .bodySubGroup {
     align-items: center;
-    color: var(--Primary-primary-darker);
+    color: var(--Brand-Primary-SBA-Blue);
     display: flex;
     font-size: 16px;
     font-style: normal;
