@@ -49,20 +49,17 @@ const LocalResources = () => {
 
   useEffect(() => {
     if (zipcode && zipcode.toString().length === 5) {
-      console.log("Remove Disabled");
       setSearchBtnDisabled(false);
     }
   }, [zipcode]);
 
   const handleSearchClick = () => {
     setSearchBtnLabel("Searching");
-    console.log("Searching for zipcode:", zipcode);
     setZipcode(zipcode);
     refreshDistrict(zipcode);
   };
 
   function refreshDistrict(zipcode: string) {
-    console.log("Mark refresh");
     setSearchBtnDisabled(true);
     setApiError(false);
     axios
@@ -177,7 +174,7 @@ const LocalResources = () => {
 
   function updateAndSaveUserPortalProfileWithNewDistrict(newDistrict: District) {
     const newPortalProfile = { ...user.profile?.portal, district: newDistrict };
-    const url = `${PORTAL_API_URL}/portal/user/` + user.profile?.crm?.email;
+    const url = `${PORTAL_API_URL}/portal/user/` + user.profile?.crm?.email?.toLowerCase();
     let accessToken: string | AccessToken | null | undefined;
     if (authState && "accessToken" in authState) {
       accessToken = authState.accessToken?.accessToken;
@@ -191,7 +188,7 @@ const LocalResources = () => {
         dispatch(setUser({ ...user, profile: { ...user.profile, portal: newPortalProfile } }));
       })
       .catch(error => {
-        console.log(error);
+        console.log("ERROR", error);
       });
   }
 
