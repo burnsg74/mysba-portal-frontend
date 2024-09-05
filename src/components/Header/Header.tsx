@@ -15,14 +15,14 @@ import { useOktaAuth } from "@okta/okta-react";
 import SideNav from "src/components/SideNav/SideNav";
 
 const Header = () => {
-  const myElementRef = useRef(null);
+  const waffleMenu = useRef(null);
   const navRef = useRef<HTMLButtonElement | null>(null);
 
   useEffect(() => {
     // Waffle menu
-    if (myElementRef.current) {
-      // @ts-ignore
-      let sbaWaffleMenuInstance = new SbaWaffleMenu(myElementRef.current);
+    if (waffleMenu.current) {
+      // @ts-expect-error Waffle Menu does not use Typescript
+      const sbaWaffleMenuInstance = new SbaWaffleMenu(waffleMenu.current);
       sbaWaffleMenuInstance.renderMenuIcon();
     }
   }, []);
@@ -52,7 +52,7 @@ const Header = () => {
   };
 
   function handleFocusOut() {
-    console.log('handleFocusOut')
+    console.log("handleFocusOut");
     setIsNavOpen(false);
   }
 
@@ -134,8 +134,7 @@ const Header = () => {
                 <div className="usa-media-block__body">
                   <p>
                     <strong>{t("Secure .gov websites use HTTPS")}</strong>
-                    <br />
-                     {t("A")} <strong>{t("lock")}</strong> (
+                    <br /> {t("A")} <strong>{t("lock")}</strong> (
                     <span className="icon-lock">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -220,7 +219,7 @@ const Header = () => {
               </>
             )}
 
-            <div id="sbaWaffleMenu" ref={myElementRef}></div>
+            <div id="sbaWaffleMenu" ref={waffleMenu}></div>
             {/* Multi-Language Toggle */}
             {showNav && (
               <>
@@ -265,7 +264,7 @@ const Header = () => {
               <use xlinkHref="/assets/img/sprite.svg#close"></use>
             </svg>
           </div>
-          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick}/>
+          <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
         </button>
       )}
     </>

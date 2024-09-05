@@ -1,4 +1,4 @@
-import React, { useEffect, useState, ChangeEvent } from "react";
+import React, { useEffect, useState, ChangeEvent, useRef } from "react";
 import { useOktaAuth } from "@okta/okta-react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -24,6 +24,8 @@ const LandingPage = () => {
   const { i18n } = useTranslation();
   const { t } = useTranslation();
   const [emailAddress, setEmailAddress] = useState<string>("");
+  const waffleMenu = useRef(null);
+  const navRef = useRef<HTMLButtonElement | null>(null);
 
   const handleEmailAddressChange = (event: ChangeEvent<HTMLInputElement>) => {
     setEmailAddress(event.target.value);
@@ -51,10 +53,10 @@ const LandingPage = () => {
 
   const signUp = () => {
     oktaAuth.token.getWithRedirect({
-      responseType: 'id_token',
-      extraParams:  {
-        flow:'signup'
-      }
+      responseType: "id_token",
+      extraParams: {
+        flow: "signup",
+      },
     });
   };
 
@@ -66,7 +68,7 @@ const LandingPage = () => {
   };
 
   const handleAuthStateChange = async () => {
-    console.log("Auth state changed:", authState?.isAuthenticated );
+    console.log("Auth state changed:", authState?.isAuthenticated);
     if (authState?.isAuthenticated === undefined) {
       return;
     }
@@ -87,10 +89,18 @@ const LandingPage = () => {
     fetchUserDetails();
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
-    const sbaWaffleMenuEl = document.getElementById("sbaWaffleMenu");
-    // @ts-ignore
-    const sbaWaffleMenuInstance = new SbaWaffleMenu(sbaWaffleMenuEl);
-    sbaWaffleMenuInstance.renderMenuIcon();
+    let sbaWaffleMenuInstance: any;
+    if (waffleMenu.current) {
+      // @ts-expect-error Waffle Menu does not use Typescript
+      sbaWaffleMenuInstance = new SbaWaffleMenu(waffleMenu.current);
+      sbaWaffleMenuInstance.renderMenuIcon();
+    }
+
+    return () => {
+      if (sbaWaffleMenuInstance) {
+        sbaWaffleMenuInstance.destroy();
+      }
+    };
   }, []);
 
   return (
@@ -202,7 +212,7 @@ const LandingPage = () => {
                 <button type="button" className={`usa-button ${styles.pillButton}`} onClick={switchLanguage}>
                   <span lang={lang === "en" ? "es" : "en"}>{lang === "en" ? "Español" : "English"}</span>
                 </button>
-                <div id={"sbaWaffleMenu"} />
+                <div ref={waffleMenu}></div>
               </div>
             </div>
           </div>
@@ -220,7 +230,7 @@ const LandingPage = () => {
                   <ul className="usa-button-group">
                     <li className="usa-button-group__item">
                       <button onClick={login} type="button" style={{ height: "unset" }} className="usa-button">
-                        Log In  / Sign Up
+                        Log In / Sign Up
                       </button>
                     </li>
                   </ul>

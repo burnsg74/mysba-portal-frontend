@@ -31,6 +31,7 @@ const Profile = () => {
       localStorage.clear();
       sessionStorage.setItem("clsLogoutNeeded", "true");
       oktaAuth.signOut();
+      window.location.href = "/";
       return;
     }
 
@@ -40,6 +41,7 @@ const Profile = () => {
     document.cookie = "okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
     sessionStorage.clear();
     localStorage.clear();
+    window.location.href = "/";
   };
 
   return (

@@ -4,8 +4,8 @@ class SbaWaffleMenu {
     this.isOpen = false;
     this.buttonList = [
       { image: "mysba", label: "Home", link: "https://my.sba.gov/dashboard" },
-      { image: "certs", label: "Certifications", link: "https://certify.sba.gov/" },
-      { image: "loans", label: "Loans", link: "https://www.sba.gov/funding-programs/loans" },
+      { image: "certs", label: "Certifications", link: "https://certification.sba.gov/" },
+      { image: "loans", label: "Loans", link: "https://lending.sba.gov/" },
       {
         image: "disaster",
         label: "Disaster Assistance",
@@ -36,6 +36,7 @@ class SbaWaffleMenu {
     sbaWaffleMenu.appendChild(waffleMenuIconButton);
 
     let rect = waffleMenuIconButton.getBoundingClientRect();
+    console.log("WM Rect", rect.right, rect);
     this.waffleMenuIconButtonPosition = {
       bottom: rect.bottom,
       right: rect.right,
@@ -98,7 +99,7 @@ class SbaWaffleMenu {
     menuContainerDiv.appendChild(bodyDiv);
 
     const rightPosition = window.innerWidth - this.waffleMenuIconButtonPosition.right;
-    console.log(rightPosition)
+    console.log(rightPosition);
     menuContainerDiv.style.right = `${rightPosition}px`;
     menuContainerDiv.style.top = `${this.waffleMenuIconButtonPosition.bottom + 20}px`;
 
