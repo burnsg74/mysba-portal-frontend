@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { AccessToken } from "@okta/okta-auth-js";
 import { DISTRICT_URL, PORTAL_API_URL } from "src/utils/constants";
 import { getUser, setUser } from "src/store/user/userSlice";
@@ -18,7 +18,7 @@ const LocalResources = () => {
   const { authState } = useOktaAuth();
   const { t } = useTranslation();
   const [searchBtnLabel, setSearchBtnLabel] = useState("Search");
-  const [searchBtnDisabled, setSearchBtnDisabled] = useState(true);
+  const [searchBtnDisabled, setSearchBtnDisabled] = useState(false);
   const [apiError, setApiError] = useState(false);
   const [apiErrorMessage, setApiErrorMessage] = useState("");
   const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
@@ -40,30 +40,32 @@ const LocalResources = () => {
       "10001"
   );
 
+  const hasMountedRef = useRef(false);
   useEffect(() => {
     let accessToken = authState?.accessToken?.accessToken;
     if (accessToken && zipcode && zipcode.toString().length === 5) {
       refreshDistrict(zipcode);
     }
+    hasMountedRef.current = true;
   }, []);
 
-  useEffect(() => {
-    if (zipcode && zipcode.toString().length === 5) {
-      setSearchBtnLabel("Searching");
-      setSearchBtnDisabled(true);
-      refreshDistrict(zipcode);
-      setSearchBtnDisabled(false);
-      setSearchBtnLabel("Search");
-    }
-  }, [zipcode]);
+  // useEffect(() => {
+  //   if (zipcode && zipcode.toString().length === 5) {
+  //     // setSearchBtnLabel("Searching");
+  //     // setSearchBtnDisabled(true);
+  //     refreshDistrict(zipcode);
+  //     setSearchBtnDisabled(false);
+  //     setSearchBtnLabel("Search");
+  //   }
+  // }, [zipcode]);
 
   const handleSearchClick = () => {
-    setSearchBtnLabel("Searching");
     setZipcode(zipcode);
     refreshDistrict(zipcode);
   };
 
   function refreshDistrict(zipcode: string) {
+    setSearchBtnLabel("Searching");
     setSearchBtnDisabled(true);
     setApiError(false);
     axios
@@ -92,33 +94,32 @@ const LocalResources = () => {
 
               // district.district_nid
               let newDistrict: District = {
-                zipcode: zipcodeDistrictData.zipcode,
-                county_code: zipcodeDistrictData.county_code,
-                district_nid: zipcodeDistrictData.district_nid,
-                title: apiDistrict.title,
-                website: apiDistrict.website,
-                field_district_map_svg: apiDistrict.field_district_map_svg,
+                zipcode                       : zipcodeDistrictData.zipcode,
+                county_code                   : zipcodeDistrictData.county_code,
+                district_nid                  : zipcodeDistrictData.district_nid,
+                title                         : apiDistrict.title,
+                website                       : apiDistrict.website,
+                field_district_map_svg        : apiDistrict.field_district_map_svg,
                 field_district_staff_directory: apiDistrict.field_district_staff_directory,
-                field_district_business_link: apiDistrict.field_district_business_link,
-                social_media_x_url: getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
-                social_media_linkedin_url: getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
-                field_district_offices:
-                  apiDistrict.field_district_offices?.map((office: any) => {
-                    let newOffice: DistrictOffice = {
-                      title: office.title,
-                      typeIcon: getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
-                      appointment_only: office.office_type.id === 149 || office.office_type.id === 147, // is_virtual_office: getIsVirtualFromMediaImage(office.office_type.office_type_icon?.media_image),
-                      is_virtual_office: office.office_type.id === 148 || office.office_type.id === 270,
-                      address_line1: office.address?.address_line1,
-                      address_line2: office.address?.address_line2,
-                      address_city: office.address?.locality,
-                      address_state: office.address?.administrative_area.code,
-                      address_zipcode: office.address?.postal_code,
-                      telephone: office.telephone,
-                      google_map_url: getGoogleMapUrlFromAddress(office.address),
-                    };
-                    return newOffice;
-                  }) || [],
+                field_district_business_link  : apiDistrict.field_district_business_link,
+                social_media_x_url            : getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
+                social_media_linkedin_url     : getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
+                field_district_offices        : apiDistrict.field_district_offices?.map((office: any) => {
+                  let newOffice: DistrictOffice = {
+                    title            : office.title,
+                    typeIcon         : getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
+                    appointment_only : office.office_type.id === 149 || office.office_type.id === 147, // is_virtual_office: getIsVirtualFromMediaImage(office.office_type.office_type_icon?.media_image),
+                    is_virtual_office: office.office_type.id === 148 || office.office_type.id === 270,
+                    address_line1    : office.address?.address_line1,
+                    address_line2    : office.address?.address_line2,
+                    address_city     : office.address?.locality,
+                    address_state    : office.address?.administrative_area.code,
+                    address_zipcode  : office.address?.postal_code,
+                    telephone        : office.telephone,
+                    google_map_url   : getGoogleMapUrlFromAddress(office.address),
+                  };
+                  return newOffice;
+                }) || [],
               };
               setDistrict(newDistrict);
               updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
@@ -140,7 +141,10 @@ const LocalResources = () => {
         const translatedMessage = t("Record with ZIP Code '{{Zip Code}}' was not found", { "Zip Code": zipcode });
         setApiErrorMessage(translatedMessage);
         setApiError(true);
-      });
+      }).finally(() => {
+      setSearchBtnLabel("Search");
+      setSearchBtnDisabled(false);
+    });
   }
 
   function getSocialMediaXUrlFrom(field_district_social_media: any[]) {
@@ -232,7 +236,13 @@ const LocalResources = () => {
                     }
                   }}
                 />
-                <button className="usa-button" type="submit" onClick={handleSearchClick} disabled={searchBtnDisabled}>
+                <button
+                  className={`usa-button`}
+                  style={{ width: "97px"}}
+                  type="submit"
+                  onClick={handleSearchClick}
+                  disabled={searchBtnDisabled}
+                >
                   {searchBtnLabel}
                 </button>
               </form>
