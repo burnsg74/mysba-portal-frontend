@@ -97,7 +97,7 @@ const LandingPage = () => {
     }
 
     return () => {
-      if (sbaWaffleMenuInstance) {
+      if (sbaWaffleMenuInstance && typeof sbaWaffleMenuInstance.destroy === "function") {
         sbaWaffleMenuInstance.destroy();
       }
     };
