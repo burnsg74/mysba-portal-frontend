@@ -1,3 +1,8 @@
+data "aws_wafv2_rule_group" "geo_restrictions" {
+  name  = "geo-restrictions"
+  scope = "CLOUDFRONT"
+}
+
 resource "aws_wafv2_web_acl" "waf_cloudfront" {
   description = "${terraform.workspace}-mysba-portal-frontend-acl"
   name        = "${terraform.workspace}-mysba-portal-frontend-acl"
@@ -7,11 +12,29 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
     allow {}
   }
 
+  rule {
+    priority = 1
+    name     = "geo-restrictions"
+    override_action {
+      none {}
+    }
+    statement {
+      rule_group_reference_statement {
+        arn = data.aws_wafv2_rule_group.geo_restrictions.arn
+      }
+    }
+    visibility_config {
+      cloudwatch_metrics_enabled = true
+      metric_name                = "geo-restrictions"
+      sampled_requests_enabled   = false
+    }
+  }
+
   # This group contains rules that are based on Amazon threat intelligence. This is useful
   # if you would like to block sources associated with bots or other threats.
   # - https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-ip-rep.html
   rule {
-    priority = 0
+    priority = 2
     name     = "amazon-ip-reputation"
     override_action {
       none {}
@@ -32,7 +55,7 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
   # RateLimit for DDoS protections
   rule {
     name     = "rate-limit"
-    priority = 1
+    priority = 3
     action {
       block {}
     }
@@ -48,9 +71,10 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
       sampled_requests_enabled   = false
     }
   }
+
   rule {
     name     = "bot-control"
-    priority = 2
+    priority = 4
 
     override_action {
       count {}
@@ -109,7 +133,7 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
   # common threats. Choose one or more of these rule groups to establish baseline protection for your resources.
   # - https://docs.aws.amazon.com/waf/latest/developerguide/aws-managed-rule-groups-baseline.html
   rule {
-    priority = 3
+    priority = 5
     name     = "amazon-common"
     override_action {
       none {}
