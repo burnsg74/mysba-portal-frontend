@@ -1,5 +1,5 @@
 data "aws_wafv2_rule_group" "geo_restrictions" {
-  name = "geo-restrictions"
+  name  = "geo-restrictions"
   scope = "CLOUDFRONT"
 }
 
@@ -14,7 +14,7 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
 
   rule {
     priority = 1
-    name = "geo-restrictions"
+    name     = "geo-restrictions"
     override_action {
       none {}
     }
@@ -25,8 +25,8 @@ resource "aws_wafv2_web_acl" "waf_cloudfront" {
     }
     visibility_config {
       cloudwatch_metrics_enabled = true
-      metric_name = "geo-restrictions"
-      sampled_requests_enabled = false
+      metric_name                = "geo-restrictions"
+      sampled_requests_enabled   = false
     }
   }
 
