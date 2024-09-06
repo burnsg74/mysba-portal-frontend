@@ -22,6 +22,7 @@ const LocalResources = () => {
   const [apiError, setApiError] = useState(false);
   const [apiErrorMessage, setApiErrorMessage] = useState("");
   const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
+  const [isFetching, setIsFetching] = useState(false);
 
   // Zipcode can only be a 5-digit number
   const formatZipcode = (value: string | undefined): string | undefined => {
@@ -42,12 +43,17 @@ const LocalResources = () => {
 
   const hasMountedRef = useRef(false);
   useEffect(() => {
-    let accessToken = authState?.accessToken?.accessToken;
-    if (accessToken && zipcode && zipcode.toString().length === 5) {
+    if (zipcode && zipcode.toString().length === 5) {
       refreshDistrict(zipcode);
     }
     hasMountedRef.current = true;
   }, []);
+
+  useEffect(() => {
+    console.log("District: " + district);
+    setSearchBtnLabel("Search");
+    setSearchBtnDisabled(false);
+  }, [district]);
 
   // useEffect(() => {
   //   if (zipcode && zipcode.toString().length === 5) {
@@ -65,13 +71,13 @@ const LocalResources = () => {
   };
 
   function refreshDistrict(zipcode: string) {
+    console.log("Searching for zipcode: " + zipcode);
     setSearchBtnLabel("Searching");
     setSearchBtnDisabled(true);
     setApiError(false);
     axios
       .get(`${DISTRICT_URL}/rest/zipcode_to_district/${zipcode}`)
       .then(response1 => {
-        setSearchBtnLabel("Search");
         if (!response1.data) {
           setApiErrorMessage("Error");
           setApiError(true);
@@ -126,24 +132,29 @@ const LocalResources = () => {
             } catch (error) {
               setApiErrorMessage(t("Error fetching local resources for given zipcode" + "."));
               setApiError(true);
+              setSearchBtnLabel("Search");
+              setSearchBtnDisabled(false);
             }
           })
           .catch(error => {
             const translatedMessage = t(error.response.data.message, { "Zip Code": zipcode });
             setApiErrorMessage(translatedMessage);
             setApiError(true);
+            setSearchBtnLabel("Search");
+            setSearchBtnDisabled(false);
           });
       })
       .catch(() => {
-        setSearchBtnLabel("Search");
         // An error occurred: Record with ZIP Code '90909' was not found
         // "Record with ZIP Code '{{Zip Code}}' was not found": "No se encontró el registro con el código postal {{'Zip Code'}}",
         const translatedMessage = t("Record with ZIP Code '{{Zip Code}}' was not found", { "Zip Code": zipcode });
         setApiErrorMessage(translatedMessage);
         setApiError(true);
+        setSearchBtnLabel("Search");
+        setSearchBtnDisabled(false);
       }).finally(() => {
-      setSearchBtnLabel("Search");
-      setSearchBtnDisabled(false);
+        console.log("Finished fetching local resources for zipcode: " + zipcode);
+
     });
   }
 

@@ -16,18 +16,19 @@ import AccountSetup1 from "src/pages/AccountSetup1/AccountSetup1";
 import AccountSetup2 from "src/pages/AccountSetup2/AccountSetup2";
 import ApplyCert1 from "src/pages/ApplyCert1/ApplyCert1";
 import ApplyCert2 from "src/pages/ApplyCert2/ApplyCert2";
-import LinkLaunchPad from "src/pages/LinkLaunchPad/LinkLaunchPad"
+import LinkLaunchPad from "src/pages/LinkLaunchPad/LinkLaunchPad";
 import Layout from "src/components/Layout/Layout";
 import ErrorPage from "src/pages/Error/ErrorPage";
 import Callback from "src/pages/Callback/Callback";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
 import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
-import { OKTA_DOMAIN, OKTA_CLIENT_ID, } from "src/utils/constants"
+import { OKTA_CLIENT_ID, OKTA_DOMAIN } from "src/utils/constants";
 
 // @ts-ignore
 import { MockOktaAuth } from "src/mock/MockOktaAuth";
 import Resources from "src/pages/Resources/Resources";
+import LoanDetail from "src/pages/LoanDetail/LoanDetail";
 
 const App: React.FC = () => {
   const navigate = useNavigate();
@@ -36,13 +37,10 @@ const App: React.FC = () => {
 
   useEffect(() => {
 
-    if (
-      location.pathname === "/" ||
-      location.pathname === "/loading" ||
-      location.pathname === "/login/callback") {
+    if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") {
       return;
     }
-    sessionStorage.setItem('restoreURL', location.pathname);
+    sessionStorage.setItem("restoreURL", location.pathname);
   }, []);
 
   useEffect(() => {
@@ -56,26 +54,23 @@ const App: React.FC = () => {
 
   let mock = sessionStorage.getItem("mock");
   // if (mock) {
-  const oktaAuth = mock
-    ? new MockOktaAuth({
-      clientId: OKTA_CLIENT_ID,
-      issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
-      redirectUri: `${window.location.origin}/login/callback`,
-      postLogoutRedirectUri: `${window.location.origin}`,
-      scopes: ["openid", "profile", "email"],
-      pkce: true
-    })
-    : new OktaAuth({
-      clientId: OKTA_CLIENT_ID,
-      issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
-      redirectUri: `${window.location.origin}/login/callback`,
-      postLogoutRedirectUri: `${window.location.origin}`,
-      scopes: ["openid", "profile", "email"],
-      pkce: true
-    });
+  const oktaAuth = mock ? new MockOktaAuth({
+    clientId             : OKTA_CLIENT_ID,
+    issuer               : `https://${OKTA_DOMAIN}/oauth2/default`,
+    redirectUri          : `${window.location.origin}/login/callback`,
+    postLogoutRedirectUri: `${window.location.origin}`,
+    scopes               : ["openid", "profile", "email"],
+    pkce                 : true,
+  }) : new OktaAuth({
+    clientId             : OKTA_CLIENT_ID,
+    issuer               : `https://${OKTA_DOMAIN}/oauth2/default`,
+    redirectUri          : `${window.location.origin}/login/callback`,
+    postLogoutRedirectUri: `${window.location.origin}`,
+    scopes               : ["openid", "profile", "email"],
+    pkce                 : true,
+  });
 
-  return (
-    <Security
+  return (<Security
       oktaAuth={oktaAuth}
       onAuthRequired={() => navigate("/")}
       restoreOriginalUri={restoreOriginalUri}
@@ -89,39 +84,49 @@ const App: React.FC = () => {
         <Route element={<ProtectedRoute />}>
           <Route element={<Layout />}>
             <Route path="/loading" element={<Loading />} />
+
+            {/* Account Setup */}
             <Route path="/account-setup/1" element={<AccountSetup1 />} />
             <Route path="/account-setup/2" element={<AccountSetup2 />} />
+
+            {/* Dashboard */}
             <Route path="/dashboard/*" element={<Dashboard />} />
+
+            {/* Link LaunchPad */}
             <Route path="/link-launchpad/*" element={<LinkLaunchPad />} />
+
+            {/* Profile */}
             <Route path="/profile" element={<Profile />} />
+
+            {/* Businesses */}
             <Route path="/businesses" element={<Businesses />} />
-            <Route
-              path="/businesses/detail/:id"
-              element={<BusinessDetail />}
-            />
-            <Route path="/certifications/*" element={<Certifications />} />
-            <Route
-              path="/certification-apply/1"
-              element={<ApplyCert1 />}
-            />
-            <Route
-              path="/certification-apply/2"
-              element={<ApplyCert2 />}
-            />
-            <Route
-              path="/certifications/detail/:id"
-              element={<CertificationDetail />}
-            />
+            <Route path="/businesses/detail/:id" element={<BusinessDetail />} />
+
+            {/* Loans */}
             <Route path="/loans" element={<Loans />} />
+            <Route path="/loans/detail/:id" element={<LoanDetail />} />
+
+            {/* Certifications */}
+            <Route path="/certifications/*" element={<Certifications />} />
+            <Route path="/certification-apply/1" element={<ApplyCert1 />} />
+            <Route path="/certification-apply/2" element={<ApplyCert2 />} />
+            <Route path="/certifications/detail/:id" element={<CertificationDetail />} />
+
+            {/* Help */}
             <Route path="/help" element={<Help />} />
+
+            {/* Resources */}
             <Route path="/resources" element={<Resources />} />
+
+            {/* Error Page */}
             <Route path="/error" element={<ErrorPage />} />
-            <Route path='*' element={<Dashboard />} />       {/* Default route if path is not found */}
+
+            {/* Fallback Route */}
+            <Route path="*" element={<Dashboard />} />
           </Route>
         </Route>
       </Routes>
-    </Security>
-  );
+    </Security>);
 };
 
 export default App;

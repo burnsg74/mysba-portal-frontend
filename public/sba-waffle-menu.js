@@ -23,7 +23,6 @@ class SbaWaffleMenu {
   }
   renderMenuIcon() {
     if (window.document.getElementById("sbaWaffleMenuIcon")) {
-      console.log("Already rendered");
       return;
     }
 
@@ -36,7 +35,6 @@ class SbaWaffleMenu {
     sbaWaffleMenu.appendChild(waffleMenuIconButton);
 
     let rect = waffleMenuIconButton.getBoundingClientRect();
-    console.log("WM Rect", rect.right, rect);
     this.waffleMenuIconButtonPosition = {
       bottom: rect.bottom,
       right: rect.right,
@@ -46,7 +44,6 @@ class SbaWaffleMenu {
 
   renderMenu() {
     if (window.document.getElementById("menuContainerDiv")) {
-      console.log("menuContainerDiv Already rendered");
       return;
     }
 
@@ -99,7 +96,6 @@ class SbaWaffleMenu {
     menuContainerDiv.appendChild(bodyDiv);
 
     const rightPosition = window.innerWidth - this.waffleMenuIconButtonPosition.right;
-    console.log(rightPosition);
     menuContainerDiv.style.right = `${rightPosition}px`;
     menuContainerDiv.style.top = `${this.waffleMenuIconButtonPosition.bottom + 20}px`;
 

@@ -137,7 +137,7 @@ const Certifications = () => {
         <div className={`${styles.noCertificationMessageContainer}`}>
           <img src={IconPaperCert} alt={"No Cert"} className={`${styles.noCertsIcon}`} />
           <div className={` ${styles.noCertsText}`}>
-            {t("You haven’t linked any certifications.")}
+            {t("You haven't linked any certifications.")}
           </div>
         </div>
 

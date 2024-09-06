@@ -60,17 +60,25 @@ const Loading = () => {
           return [];
         });
 
+      let loans = await fetch(`../../mock-data/${mock}/loan.json`)
+        .then(response => response.json())
+        .then(data => {
+          return data;
+        })
+        .catch(error => {
+          console.error("Error:", error);
+          return [];
+        });
+
       console.log("User", mock);
       console.log("ssoProfile", ssoProfile);
       console.log("crmData", crmData);
       return {
         profile      : {
           sso: ssoProfile, crm: crmData,
-        }, businesses: businesses,
+        }, businesses: businesses, loans: loans,
       };
     }
-
-    console.log("Mark 2");
 
     const email = info.email?.toLowerCase() ?? "";
     let accessToken: string | AccessToken | null | undefined;
@@ -212,11 +220,11 @@ const Loading = () => {
   }, [messageIndex]);
 
   return (<div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
-      <img className={`${styles.loadingIcon}`} src={loadingIcon} alt="Loading" />
-      <div className={`${styles.loadingProgressbarOuter}`}>
-        <div className={`${styles.loadingProgressbarInner}`} style={{ width: `${loadingProgress}%` }}></div>
-      </div>
-      <div className={`${styles.loadingText}`}>{loadingMessage}</div>
-    </div>);
+    <img className={`${styles.loadingIcon}`} src={loadingIcon} alt="Loading" />
+    <div className={`${styles.loadingProgressbarOuter}`}>
+      <div className={`${styles.loadingProgressbarInner}`} style={{ width: `${loadingProgress}%` }}></div>
+    </div>
+    <div className={`${styles.loadingText}`}>{loadingMessage}</div>
+  </div>);
 };
 export default Loading;

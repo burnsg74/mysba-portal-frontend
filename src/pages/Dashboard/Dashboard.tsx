@@ -10,9 +10,11 @@ import Alert from "src/components/Alert/Alert";
 import CardLoansImg from "src/assets/card-loans-img.jpg";
 import CardCertificationsImg from "src/assets/card-certifications-img.jpg";
 import CardDisasterLoansImg from "src/assets/card-disaster_loans-img.jpg";
+import { LoanCard } from "src/components/LoanCard/LoanCard";
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
+  console.log("user", user);
   const location = useLocation();
   const { t } = useTranslation();
   const navigate = useNavigate();
@@ -50,6 +52,14 @@ const Dashboard = () => {
                 link: '<a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">certification.sba.gov</a>'
               })}
             />
+
+            {user.loans && user.loans.length > 0 &&
+              <div>
+              <h2>Loans</h2>
+                <LoanCard loan={user.loans[0]} hideDetails={true} />
+              </div>
+            }
+
             {/*<Alert*/}
             {/*  type={"info"}*/}
             {/*  title={"Certification Data is Coming Soon"}*/}
@@ -63,7 +73,7 @@ const Dashboard = () => {
             {/*<Alert*/}
             {/*  type={"info"}*/}
             {/*  title={"Certification Data is Coming Soon"}*/}
-            {/*  message={t("Certifications aren’t shown in MySBA Home yet, but support is coming soon. Visit {{link}} to apply for and manage certifications.", {*/}
+            {/*  message={t("Certifications aren't shown in MySBA Home yet, but support is coming soon. Visit {{link}} to apply for and manage certifications.", {*/}
             {/*    'link': <a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">certification.sba.gov</a>*/}
             {/*  })}*/}
             {/*/>*/}
@@ -89,7 +99,7 @@ const Dashboard = () => {
         {/*    /!*{! user.businesses?.length && (<div className={`${styles.noBusinessesMessageContainer}`}>*!/*/}
         {/*    /!*    <img src={IconMagnifier} alt={"No Cert"} className={`${styles.noBusinesseIcon}`} />*!/*/}
         {/*    /!*    <div className={` ${styles.noBusinessesText1}`}>*!/*/}
-        {/*    /!*      {t("It looks like you haven’t added anything.")}*!/*/}
+        {/*    /!*      {t("It looks like you haven't added anything.")}*!/*/}
         {/*    /!*    </div>*!/*/}
         {/*    /!*    <div className={` ${styles.noBusinessesText2}`}>*!/*/}
         {/*    /!*      {t("Navigate to Businesses or Certifications to add your information.")}*!/*/}
@@ -199,7 +209,7 @@ const Dashboard = () => {
                   </div>
                   <div className={`usa-card__body ${styles.cardBody}`}>
                     <p>
-                      In a disaster, the SBA is here to help. Whether you’re a business or private citizen SBA disaster
+                      In a disaster, the SBA is here to help. Whether you're a business or private citizen SBA disaster
                       loans may be available to you.
                     </p>
                   </div>
@@ -216,9 +226,7 @@ const Dashboard = () => {
             </div>
           {/*</div>*/}
         {/*</div>*/}
-
-
-      // </div>
+      </div>
       {/* Temp remove new user (GB 24-08-23) */}
       {/*{location.pathname === "/dashboard/new" && (<Modal*/}
       {/*  title=""*/}

@@ -170,7 +170,7 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
                       name={"name"}
                       value={stepData.name}
                       required={true}
-                      help={"If you don’t yet have a business name, just enter your name."}
+                      help={"If you don't yet have a business name, just enter your name."}
                       errorMessage={errors.name}
                       onChange={handleInputChange} />
 
