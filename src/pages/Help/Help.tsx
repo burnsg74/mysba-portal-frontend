@@ -38,7 +38,7 @@ const Help: React.FC = () => {
         <div style={{ width: '100%', marginBottom: '40px' }}>
           <Alert
             type="info"
-            title="Need assistance with MySBA?"
+            title={t('Need assistance with MySBA?')}
             message={
               <>
                 {t('Help is available via phone and email. Contact us today:')}<br />
