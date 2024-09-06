@@ -165,7 +165,6 @@ const Loading = () => {
   }, []);
 
   useEffect(() => {
-    console.log("Loading dispatch");
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
   }, [dispatch]);

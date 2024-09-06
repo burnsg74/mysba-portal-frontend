@@ -6,7 +6,7 @@ import ArrowNextImage from "src/assets/arrow-next.svg";
 import styles from "src/components/LearningCenterCard/LearningCenterCard.module.css";
 import { useTranslation } from "react-i18next";
 
-const LearningCenterCard: React.FC<LearningCenterCardProps> = ({
+const LearningCenterCard: React.FC<ILearningCenterCardProps> = ({
   learningCenter,
 }) => {
   const { t } = useTranslation();
