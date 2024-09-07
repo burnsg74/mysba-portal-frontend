@@ -25,7 +25,6 @@ import { getUser } from "src/store/user/userSlice";
 import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
 import { OKTA_CLIENT_ID, OKTA_DOMAIN } from "src/utils/constants";
 
-// @ts-ignore
 import { MockOktaAuth } from "src/mock/MockOktaAuth";
 import Resources from "src/pages/Resources/Resources";
 import LoanDetail from "src/pages/LoanDetail/LoanDetail";
@@ -36,7 +35,6 @@ const App: React.FC = () => {
   const profileData: IUser = useSelector(getUser);
 
   useEffect(() => {
-
     if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") {
       return;
     }
@@ -44,47 +42,45 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") { return; }
-    if (!profileData?.profile?.crm?.email) { navigate("/"); }
+    if (location.pathname === "/" || location.pathname === "/loading" || location.pathname === "/login/callback") {
+      return;
+    }
+    if (!profileData?.profile?.crm?.email) {
+      navigate("/");
+    }
   }, [location.pathname, profileData?.profile?.crm?.email]);
 
   const restoreOriginalUri = () => {
     navigate("/loading");
   };
 
-  let mock = sessionStorage.getItem("mock");
-  // if (mock) {
-  const oktaAuth = mock ? new MockOktaAuth({
-    clientId             : OKTA_CLIENT_ID,
-    issuer               : `https://${OKTA_DOMAIN}/oauth2/default`,
-    redirectUri          : `${window.location.origin}/login/callback`,
-    postLogoutRedirectUri: `${window.location.origin}`,
-    scopes               : ["openid", "profile", "email"],
-    pkce                 : true,
-  }) : new OktaAuth({
-    clientId             : OKTA_CLIENT_ID,
-    issuer               : `https://${OKTA_DOMAIN}/oauth2/default`,
-    redirectUri          : `${window.location.origin}/login/callback`,
-    postLogoutRedirectUri: `${window.location.origin}`,
-    scopes               : ["openid", "profile", "email"],
-    pkce                 : true,
-  });
+  const mock = sessionStorage.getItem("mock");
+  const oktaAuth = mock
+    ? new MockOktaAuth({
+        clientId: OKTA_CLIENT_ID,
+        issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
+        redirectUri: `${window.location.origin}/login/callback`,
+        postLogoutRedirectUri: `${window.location.origin}`,
+        scopes: ["openid", "profile", "email"],
+        pkce: true,
+      })
+    : new OktaAuth({
+        clientId: OKTA_CLIENT_ID,
+        issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
+        redirectUri: `${window.location.origin}/login/callback`,
+        postLogoutRedirectUri: `${window.location.origin}`,
+        scopes: ["openid", "profile", "email"],
+        pkce: true,
+      });
 
-  return (<Security
-      oktaAuth={oktaAuth}
-      onAuthRequired={() => navigate("/")}
-      restoreOriginalUri={restoreOriginalUri}
-    >
+  return (
+    <Security oktaAuth={oktaAuth} onAuthRequired={() => navigate("/")} restoreOriginalUri={restoreOriginalUri}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
-        <Route
-          path="/login/callback"
-          element={<LoginCallback loadingElement={<Callback />} />}
-        />
+        <Route path="/login/callback" element={<LoginCallback loadingElement={<Callback />} />} />
         <Route element={<ProtectedRoute />}>
+          <Route path="/loading" element={<Loading />} />
           <Route element={<Layout />}>
-            <Route path="/loading" element={<Loading />} />
-
             {/* Account Setup */}
             <Route path="/account-setup/1" element={<AccountSetup1 />} />
             <Route path="/account-setup/2" element={<AccountSetup2 />} />
@@ -126,7 +122,8 @@ const App: React.FC = () => {
           </Route>
         </Route>
       </Routes>
-    </Security>);
+    </Security>
+  );
 };
 
 export default App;

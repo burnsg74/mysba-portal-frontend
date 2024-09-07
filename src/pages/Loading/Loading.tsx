@@ -11,6 +11,10 @@ import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
 import { BASE_API_URL, PORTAL_API_URL } from "src/utils/constants";
+import GovBanner from "src/components/GovBanner/GovBanner";
+import SBAlogoEn from "src/assets/logo-horizontal.svg";
+import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
+import SBAlogoSm from "src/assets/logo-sm.svg";
 
 const Loading = () => {
   const PROGRESS_UPDATE_INTERVAL = 500;
@@ -23,25 +27,24 @@ const Loading = () => {
   const { t } = useTranslation();
   const loadingMessages = [t("Authenticating"), t("Working Magic"), t("Fetching Data"), t("Verifying")];
   const [userFetched, setUserFetched] = useState(false);
+  const detectedLang: string = navigator.language.substring(0, 2);
+  const { i18n } = useTranslation();
+  const [lang, setLang] = useState(localStorage.getItem("lang") ?? detectedLang ?? "en");
 
   const fetchUserDataFromBackend = async (info: UserClaims) => {
-    console.log("Fetching user data from backend...", info);
     if (info.cls_elevated) {
       sessionStorage.setItem("clsUser", "true");
     }
 
-    let mock = sessionStorage.getItem("mock");
+    const mock = sessionStorage.getItem("mock");
     if (mock) {
-      let mock = sessionStorage.getItem("mock");
-      console.log("mock", mock);
-
-      let ssoProfile = await fetch(`../../mock-data/${mock}/sso.json`)
+      const ssoProfile = await fetch(`../../mock-data/${mock}/sso.json`)
         .then(response => response.json())
         .then(data => {
           return data;
         });
 
-      let crmData = await fetch(`../../mock-data/${mock}/crm.json`)
+      const crmData = await fetch(`../../mock-data/${mock}/crm.json`)
         .then(response => response.json())
         .then(data => {
           return data.individuals[0];
@@ -50,7 +53,7 @@ const Loading = () => {
           console.error("Error:", error);
         });
 
-      let businesses = await fetch(`../../mock-data/${mock}/business.json`)
+      const businesses = await fetch(`../../mock-data/${mock}/business.json`)
         .then(response => response.json())
         .then(data => {
           return data;
@@ -60,7 +63,7 @@ const Loading = () => {
           return [];
         });
 
-      let loans = await fetch(`../../mock-data/${mock}/loan.json`)
+      const loans = await fetch(`../../mock-data/${mock}/loan.json`)
         .then(response => response.json())
         .then(data => {
           return data;
@@ -70,13 +73,13 @@ const Loading = () => {
           return [];
         });
 
-      console.log("User", mock);
-      console.log("ssoProfile", ssoProfile);
-      console.log("crmData", crmData);
       return {
-        profile      : {
-          sso: ssoProfile, crm: crmData,
-        }, businesses: businesses, loans: loans,
+        profile: {
+          sso: ssoProfile,
+          crm: crmData,
+        },
+        businesses: businesses,
+        loans: loans,
       };
     }
 
@@ -88,37 +91,42 @@ const Loading = () => {
       accessToken = undefined;
     }
 
-    let data = JSON.stringify({
-      individuals: [{
-        firstName: "", lastName: "", email: email,
-      }],
+    const data = JSON.stringify({
+      individuals: [
+        {
+          firstName: "",
+          lastName: "",
+          email: email,
+        },
+      ],
     });
 
-    let config = {
-      method       : "post",
+    const config = {
+      method: "post",
       maxBodyLength: Infinity,
-      url          : `${BASE_API_URL}/individuals/individual?task=read`,
-      agent        : false,
-      headers      : {
-        "Content-Type": "application/json", Authorization: `Bearer ${accessToken}`,
+      url: `${BASE_API_URL}/individuals/individual?task=read`,
+      agent: false,
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${accessToken}`,
       },
-      data         : data,
+      data: data,
     };
-    let results = await axios.request(config).catch(error => {
-      // throw new Error("Unable to get individual from crm");
+    const results = await axios.request(config).catch(error => {
       console.log("Error", error);
     });
     let individual = results?.data.individuals[0];
     if (!individual) {
-      // throw new Error("No individual found");
-
-      // Workaround for the case where the user is not in the CRM Profile yet. This is a temporary solution. - GB 2021-09-29
       individual = {
-        firstName: info.given_name ?? "", lastName: info.family_name ?? "", email: info.email ?? "",
+        firstName: info.given_name ?? "",
+        lastName: info.family_name ?? "",
+        email: info.email ?? "",
       };
     }
-    let crmData: IUserProfile["crm"] = {
-      first_name: individual.firstName ?? "", last_name: individual.lastName ?? "", email: individual.email ?? "",
+    const crmData: IUserProfile["crm"] = {
+      first_name: individual.firstName ?? "",
+      last_name: individual.lastName ?? "",
+      email: individual.email ?? "",
     };
 
     let portalData;
@@ -132,30 +140,31 @@ const Loading = () => {
       console.log(err);
     }
 
-    let ssoProfile: IUserProfile["sso"] = {
-      given_name        : info.given_name ?? "",
-      family_name       : info.family_name ?? "",
-      email             : info.email ?? "",
-      sub               : info.sub ?? "",
-      name              : info.name ?? "",
-      locale            : info.locale ?? "",
+    const ssoProfile: IUserProfile["sso"] = {
+      given_name: info.given_name ?? "",
+      family_name: info.family_name ?? "",
+      email: info.email ?? "",
+      sub: info.sub ?? "",
+      name: info.name ?? "",
+      locale: info.locale ?? "",
       preferred_username: info.preferred_username ?? "",
-      zone_info         : info.zoneinfo ?? "",
-      updated_at        : info.updated_at ?? 0,
-      email_verified    : info.email_verified ?? false,
-      cls_elevated      : Boolean(info.cls_elevated) ?? false,
+      zone_info: info.zoneinfo ?? "",
+      updated_at: info.updated_at ?? 0,
+      email_verified: info.email_verified ?? false,
+      cls_elevated: Boolean(info.cls_elevated),
     };
 
     return {
       profile: {
-        sso: ssoProfile, crm: crmData, portal: portalData,
+        sso: ssoProfile,
+        crm: crmData,
+        portal: portalData,
       },
     };
   };
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log("Redirecting to /");
       navigate("/");
     }, 10000);
 
@@ -170,7 +179,6 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    console.log("Loading", authState?.isAuthenticated, userFetched);
     if (authState?.isAuthenticated && !userFetched) {
       oktaAuth
         .getUser()
@@ -180,20 +188,13 @@ const Loading = () => {
           dispatch(setNav(true));
           dispatch(setShowProfile(true));
           dispatch(setUser(user));
-          // if (!user.profile.portal) {
-          //   dispatch(setNav(false));
-          //   dispatch(setShowProfile(false));
-          //   navigate("/account-setup/1");
-          // } else {
           const restoreURL = sessionStorage.getItem("restoreURL");
-          console.log("restoreURL", restoreURL);
 
           if (restoreURL) {
             navigate(restoreURL);
           } else {
             navigate("/dashboard");
           }
-          // }
         })
         .catch(error => {
           console.log("Catch Error 1", error);
@@ -210,7 +211,7 @@ const Loading = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
-    let interval = setInterval(() => {
+    const interval = setInterval(() => {
       setLoadingProgress(prev => Math.min(prev + (500 / 3000) * 100, 100));
       setMessageIndex(prev => (prev < 3 ? prev + 1 : 0));
       setLoadingMessage(loadingMessages[messageIndex]);
@@ -218,12 +219,88 @@ const Loading = () => {
     return () => clearInterval(interval);
   }, [messageIndex]);
 
-  return (<div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
-    <img className={`${styles.loadingIcon}`} src={loadingIcon} alt="Loading" />
-    <div className={`${styles.loadingProgressbarOuter}`}>
-      <div className={`${styles.loadingProgressbarInner}`} style={{ width: `${loadingProgress}%` }}></div>
-    </div>
-    <div className={`${styles.loadingText}`}>{loadingMessage}</div>
-  </div>);
+  const switchLanguage = () => {
+    const newLang = lang === "en" ? "es" : "en";
+    setLang(newLang);
+    localStorage.setItem("lang", newLang);
+    i18n.changeLanguage(newLang).then();
+  };
+
+  const logout = async () => {
+    if (sessionStorage.getItem("clsUser") !== null) {
+      document.cookie = "sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      document.cookie = "okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      document.cookie = "okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+      sessionStorage.clear();
+      localStorage.clear();
+      sessionStorage.setItem("clsLogoutNeeded", "true");
+      oktaAuth.signOut();
+      return;
+    }
+
+    await oktaAuth.signOut();
+    document.cookie = "sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    document.cookie = "okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+    sessionStorage.clear();
+    localStorage.clear();
+  };
+
+  return (
+    <>
+      <GovBanner />
+      <header className={`${styles.usaHeader}`}>
+        <div className={`grid-row ${styles.usaNavContainer}`}>
+          <div className={`grid-col-auto ${styles.left}`}>
+            {/* LOGO */}
+            <a href="https://www.sba.gov/">
+              <img
+                className={`${styles.usaLogo}`}
+                src={lang === "en" ? SBAlogoEn : SBAlogoEs}
+                alt={
+                  lang === "en"
+                    ? "U.S. Small Business Administration"
+                    : "Administración de Pequeñas Empresas de los Estados Unidos"
+                }
+              />
+              <img
+                className={`${styles.usaLogoSm}`}
+                src={SBAlogoSm}
+                alt={
+                  lang === "en"
+                    ? "U.S. Small Business Administration"
+                    : "Administración de Pequeñas Empresas de los Estados Unidos"
+                }
+              />
+            </a>
+          </div>
+          <div className={`grid-col ${styles.left}`}></div>
+          <div className={`grid-col-auto ${styles.right}`}>
+            <div className={`usa-language-container ${styles.usaLanguageContainer}`}>
+              <button type="button" className={`usa-button ${styles.pillButton}`} onClick={switchLanguage}>
+                <span lang={lang === "en" ? "es" : "en"}>{lang === "en" ? "Español" : "English"}</span>
+              </button>
+            </div>
+            <button
+              className={` ${styles.buttonStyle}`}
+              onClick={logout}
+              aria-label={t("Log Out")}
+              type="button"
+              data-testid="log-out-button"
+            >
+              <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
+            </button>
+          </div>
+        </div>
+      </header>
+      <div data-cy={"loadingContainer"} className={`${styles.loadingContainer}`}>
+        <img className={`${styles.loadingIcon}`} src={loadingIcon} alt="Loading" />
+        <div className={`${styles.loadingProgressbarOuter}`}>
+          <div className={`${styles.loadingProgressbarInner}`} style={{ width: `${loadingProgress}%` }}></div>
+        </div>
+        <div className={`${styles.loadingText}`}>{loadingMessage}</div>
+      </div>
+    </>
+  );
 };
 export default Loading;

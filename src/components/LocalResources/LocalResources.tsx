@@ -21,8 +21,7 @@ const LocalResources = () => {
   const [searchBtnDisabled, setSearchBtnDisabled] = useState(false);
   const [apiError, setApiError] = useState(false);
   const [apiErrorMessage, setApiErrorMessage] = useState("");
-  const [district, setDistrict] = useState<District | null>(user.profile?.portal?.district ?? null);
-  const [isFetching, setIsFetching] = useState(false);
+  const [district, setDistrict] = useState<IDistrict | null>(user.profile?.portal?.district ?? null);
 
   // Zipcode can only be a 5-digit number
   const formatZipcode = (value: string | undefined): string | undefined => {
@@ -99,7 +98,7 @@ const LocalResources = () => {
               const apiDistrict = response2.data[0];
 
               // district.district_nid
-              let newDistrict: District = {
+              let newDistrict: IDistrict = {
                 zipcode                       : zipcodeDistrictData.zipcode,
                 county_code                   : zipcodeDistrictData.county_code,
                 district_nid                  : zipcodeDistrictData.district_nid,
@@ -111,7 +110,7 @@ const LocalResources = () => {
                 social_media_x_url            : getSocialMediaXUrlFrom(apiDistrict.field_district_social_media),
                 social_media_linkedin_url     : getSocialMediaLinkedinUrlFrom(apiDistrict.field_district_social_media),
                 field_district_offices        : apiDistrict.field_district_offices?.map((office: any) => {
-                  let newOffice: DistrictOffice = {
+                  let newOffice: IDistrictOffice = {
                     title            : office.title,
                     typeIcon         : getTypeIconFromMediaImage(office.office_type.office_type_icon?.media_image),
                     appointment_only : office.office_type.id === 149 || office.office_type.id === 147, // is_virtual_office: getIsVirtualFromMediaImage(office.office_type.office_type_icon?.media_image),
@@ -191,7 +190,7 @@ const LocalResources = () => {
     return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(address.address_line1 + ", " + address.locality + ", " + address.administrative_area.code + " " + address.postal_code)}`;
   }
 
-  function updateAndSaveUserPortalProfileWithNewDistrict(newDistrict: District) {
+  function updateAndSaveUserPortalProfileWithNewDistrict(newDistrict: IDistrict) {
     const newPortalProfile = { ...user.profile?.portal, district: newDistrict };
     const url = `${PORTAL_API_URL}/portal/user/` + user.profile?.crm?.email?.toLowerCase();
     let accessToken: string | AccessToken | null | undefined;

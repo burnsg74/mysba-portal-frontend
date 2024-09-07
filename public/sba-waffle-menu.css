@@ -108,3 +108,8 @@
   font-weight: 400;
   line-height: normal;
 }
+
+.sba-waffle-menu-icon__button,
+#menuContainerDiv {
+  box-sizing: border-box;
+}
