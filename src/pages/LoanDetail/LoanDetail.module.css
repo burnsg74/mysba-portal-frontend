@@ -19,7 +19,7 @@
     flex-wrap: wrap;
     gap: 10px;
     overflow: hidden;
-    padding: 20px 40px;
+    padding: 20px;
     position: relative;
 }
 
@@ -127,6 +127,20 @@
 .headerButtonsContainer {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.leftContainer,
+.rightContainer {
+    flex-grow: 0;
+}
+
+.leftContainer {
+    flex-shrink: 0;
+}
+
+.rightContainer {
+    flex-shrink: 0;
 }
 
 .manageCertButton {
@@ -204,6 +218,7 @@
     font-weight: 700;
     line-height: 90%;
     box-shadow: unset;
+    margin-right: 0;
 }
 
 .applyForCertificationBtn:active {
@@ -240,6 +255,10 @@
     font-weight: 700;
     line-height: 90%;
     box-shadow: unset;
+}
+
+.linkCertificationBtn {
+    margin: 0;
 }
 
 .linkCertificationBtn:disabled {
