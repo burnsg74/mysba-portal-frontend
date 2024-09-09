@@ -50,6 +50,10 @@ const App: React.FC = () => {
     }
   }, [location.pathname, profileData?.profile?.crm?.email]);
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location.pathname]);
+
   const restoreOriginalUri = () => {
     navigate("/loading");
   };
