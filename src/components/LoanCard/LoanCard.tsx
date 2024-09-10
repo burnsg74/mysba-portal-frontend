@@ -7,27 +7,26 @@ import LoanCardIcon from "src/assets/loan-card-icon.svg";
 export const LoanCard: React.FC<ILoanCardProps> = ({ loan, hideDetails = false }) => {
   const { t } = useTranslation();
 
-  return (
-    <Card
-      icon={LoanCardIcon}
-      title={t(loan.program_description)}
-      hideDetails={false}
-      detailsPage={`/loans/detail/${loan.sba_number}`}
-      body={
-        <div className={`grid-row ${styles.bodyRow}`} data-testid="loan-card-body">
-          <div className={`grid-col ${styles.bodyCompanyName}`}>
-            SBA Loan Number: {loan.sba_number}
-          </div>
-          <div className="grid-col-auto">
-            <div className={styles.bodyRowRightGroup}>
-              {`Amount to be Current: ${new Intl.NumberFormat('en-US', {
-                style: 'currency',
-                currency: 'USD',
-              }).format(loan.amount_to_be_current)}`}
-            </div>
-          </div>
-        </div>
-      }
-    />
-  );
+  return (<Card
+    icon={LoanCardIcon}
+    title={t(loan.program_description)}
+    hideDetails={false}
+    detailsPage={`/loans/detail/${loan.sba_number}`}
+    body={<div className={`grid-row ${styles.bodyRow}`} data-testid="loan-card-body">
+      <div className={`grid-col ${styles.bodyCompanyName}`}>
+        SBA Loan Number: {loan.sba_number}
+      </div>
+      <div className="grid-col-auto">
+        {loan.program_description === "504 Loan" ? (<div className={styles.bodyRowRightGroup}>
+            {`Amount to be Current: ${new Intl.NumberFormat("en-US", {
+              style: "currency", currency: "USD",
+            }).format(loan.amount_to_be_current)}`}
+          </div>) : (<div className={styles.bodyRowRightGroup}>
+          {`${new Intl.NumberFormat("en-US", {
+            style: "currency", currency: "USD",
+          }).format(loan.amount_to_be_current)}`} due on {loan.payment_due_date}
+        </div>)}
+      </div>
+    </div>}
+  />);
 };

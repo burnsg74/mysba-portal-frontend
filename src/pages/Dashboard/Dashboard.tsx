@@ -147,7 +147,7 @@ const Dashboard = () => {
         {/*            )}*/}
         {/*          </React.Fragment>*/}
         {/*        ))}*/}
-        <div className={`grid-row padding-top-5 margin-left-5 margin-right-5 ${styles.cardRow}`}>
+        <div className={`grid-row ${styles.cardRow}`}>
           <div className={`grid-col ${styles.card}`}>
             <div className={`usa-card__container ${styles.cardContainer}`}>
               <div className="usa-card__header">

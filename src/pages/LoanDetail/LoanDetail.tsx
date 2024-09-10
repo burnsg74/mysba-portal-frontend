@@ -64,20 +64,15 @@ const LoanDetail = () => {
 
         <div className={`${styles.categoryGroup}`}>
           <h4 className={`${styles.subtitle}`}>{t("Details")}</h4>
-          {loan.business_name && <Field label="Business Name" value={loan.business_name} />}
+          {loan.program_description && <Field label="Name" value={loan.program_description} />}
           {loan.sba_number && <Field label="SBA Loan Number" value={loan.sba_number} />}
-          {loan.loan_status && <Field label="Loan Status" value={loan.loan_status} />}
-          {loan.maturity_date && <Field label="Maturity Date" value={loan.maturity_date} />}
+          {loan.loan_status && <Field label="Current Status" value={loan.loan_status} />}
+          {loan.maturity_date && <Field label="Loan Maturity Date" value={loan.maturity_date} />}
           {loan.outstanding_balance !== undefined &&
             <Field label="Outstanding Balance" value={loan.outstanding_balance} />}
           {loan.amount_to_be_current !== undefined &&
             <Field label="Amount to be Current" value={loan.amount_to_be_current} />}
-          {loan.payment_due_date && <Field label="Payment Due Date" value={loan.payment_due_date} />}
-          {loan.payment_past_due !== undefined &&
-            <Field label="Payment Past Due" value={loan.payment_past_due.toString()} />}
-          {loan.program_description && <Field label="Program Description" value={loan.program_description} />}
-          {loan.processing_method_description &&
-            <Field label="Processing Method Description" value={loan.processing_method_description} />}
+          {loan.payment_due_date && <Field label="Next Payment Due Date" value={loan.payment_due_date} />}
         </div>
       </div>
     </>);

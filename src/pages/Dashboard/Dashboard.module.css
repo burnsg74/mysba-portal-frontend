@@ -188,6 +188,11 @@
 
 .cardRow {
   padding-bottom: 24px;
+  gap:12px
+}
+
+.cardContainer {
+  margin: 0;
 }
 
 .cardHeader {
