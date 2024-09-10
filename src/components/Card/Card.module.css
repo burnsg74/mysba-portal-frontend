@@ -4,6 +4,7 @@
     border: 5px solid var(--Base-white);
     box-shadow: 0 7px 15px 0 var(--Box-Shadow);
     margin: 0;
+    height: unset;
 }
 
 .headerRow {

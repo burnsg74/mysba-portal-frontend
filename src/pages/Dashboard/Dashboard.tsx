@@ -43,7 +43,7 @@ const Dashboard = () => {
         <div className={`${styles.mysbaMessage}`}>{t("Welcome to MySBA")}</div>
         <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
       </div>
-      <div className={`${styles.contentContainer}`}>
+      <div className={`main-container ${styles.contentContainer}`}>
         <Alert
           type={"info"}
           title={t("Certification Data is Coming Soon")}

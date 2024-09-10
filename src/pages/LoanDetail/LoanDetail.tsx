@@ -26,7 +26,7 @@ const LoanDetail = () => {
 
 
   return (<>
-      <div data-testid="page-loan-details" className={`${styles.container}`}>
+      <div data-testid="page-loan-details" className={`main-container ${styles.container}`}>
         <div className={`${styles.headerButtonsContainer}`}>
           <div className={styles.leftContainer}>
             <button
@@ -42,12 +42,10 @@ const LoanDetail = () => {
           <div className={styles.rightContainer}>
             <button type="button" className={`usa-button ${styles.linkCertificationBtn}`} onClick={handleManageLoanClick}>
               {t("Manage Loan")}
-              <div className={`${styles.iconContainer}`}>
                 <svg className={`usa-icon ${styles.usaIcon}`} focusable="false" height="18px" width="18px">
                   <title>Open in a new window Icon</title>
                   <use xlinkHref="/assets/img/sprite.svg#launch"></use>
                 </svg>
-              </div>
             </button>
           </div>
         </div>
