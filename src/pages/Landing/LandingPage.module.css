@@ -54,6 +54,12 @@
   gap: 20px;
 }
 
+.welcomeMessageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
 .welcomeTo {
   color: var(--Brand-Primary-SBA-Blue);
   font-size: 48px;

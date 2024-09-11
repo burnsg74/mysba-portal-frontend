@@ -148,30 +148,32 @@ const LandingPage = () => {
           <div className={`banner ${styles.banner}`}>
             <div className={`${styles.loginRow}`}>
               <div className={`${styles.loginRowLeft}`}>
-                <div className={`${styles.welcomeTo}`}>Welcome to</div>
-                <div className={`${styles.mySBAHome}`}>MySBA Home</div>
-                <div className={`${styles.subTitle}`}>
-                  Loans, certifications, and resources tailored to your business all in one place.
+                <div className={`${styles.welcomeMessageContainer}`}>
+                  <div className={`${styles.welcomeTo}`}>Welcome to</div>
+                  <div className={`${styles.mySBAHome}`}>MySBA Home</div>
                 </div>
-                <div>
-                  <ul className="usa-button-group">
-                    <li className="usa-button-group__item">
-                      <button onClick={login} type="button" style={{ height: "unset" }} className="usa-button">
-                        Log In / Sign Up
-                      </button>
-                    </li>
-                  </ul>
+                  <div className={`${styles.subTitle}`}>
+                    Loans, certifications, and resources tailored to your business all in one place.
+                  </div>
+                  <div>
+                    <ul className="usa-button-group">
+                      <li className="usa-button-group__item">
+                        <button onClick={login} type="button" style={{ height: "unset" }} className="usa-button">
+                          Log In / Sign Up
+                        </button>
+                      </li>
+                    </ul>
+                  </div>
                 </div>
-              </div>
-              <div className={`${styles.loginRowRight}`}>
-                <img aria-hidden="true" src={landingPageIllustration} alt="Landing Page Illustration" />
+                <div className={`${styles.loginRowRight}`}>
+                  <img aria-hidden="true" src={landingPageIllustration} alt="Landing Page Illustration" />
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </>
-  );
+      </>
+      );
 };
 
 export default LandingPage;
