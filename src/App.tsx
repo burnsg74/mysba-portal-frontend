@@ -25,6 +25,7 @@ import { getUser } from "src/store/user/userSlice";
 import BusinessDetail from "src/pages/BusinessDetail/BusinessDetail";
 import { OKTA_CLIENT_ID, OKTA_DOMAIN } from "src/utils/constants";
 
+// @ts-ignore
 import { MockOktaAuth } from "src/mock/MockOktaAuth";
 import Resources from "src/pages/Resources/Resources";
 import LoanDetail from "src/pages/LoanDetail/LoanDetail";

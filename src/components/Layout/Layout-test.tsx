@@ -12,7 +12,7 @@ jest.mock('react-router-dom', () => ({
 }));
 
 jest.mock('src/components/Header/Header', () => () => <div>MockHeader</div>);
-jest.mock('src/components/LearningCenterCard/LearningCenterCard', () => (props: LearningCenterCardProps) => <div>{props.learningCenter.title}</div>);
+jest.mock('src/components/LearningCenterCard/LearningCenterCard', () => (props: ILearningCenterCardProps) => <div>{props.learningCenter.title}</div>);
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({

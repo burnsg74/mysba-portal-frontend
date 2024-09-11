@@ -34,7 +34,7 @@ const Dashboard = () => {
 
   return (<>
       {/* Top city banner */}
-      <div className={`banner ${styles.banner}`}>
+      <div className={`banner ${styles.banner}`} data-testid="page-dashboard">
         <div className={`${styles.welcomeMessage}`}>
           {user.profile?.crm && (<span data-testid="welcome-first_name" className="first_name">
               {t("Hi")} {user.profile?.crm?.first_name},{" "}
