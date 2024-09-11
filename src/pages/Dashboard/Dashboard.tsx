@@ -48,7 +48,7 @@ const Dashboard = () => {
           type={"info"}
           title={t("Certification Data is Coming Soon")}
           message={t("dashboard.cert.alert.message", {
-            link: "<a href=\"https://certification.sba.gov\" target=\"_blank\" rel=\"noopener noreferrer\">certification.sba.gov</a>",
+            link: "<a href=\"https://certification.sba.gov\" target=\"_blank\" rel=\"noopener noreferrer\">MySBA Certifications</a>",
           })}
         />
 
