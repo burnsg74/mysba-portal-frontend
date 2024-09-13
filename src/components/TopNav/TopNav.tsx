@@ -22,11 +22,11 @@ const TopNav: React.FC<TopNavProps> = ({ onNavLinkClick, forMobile = false }) =>
       url: "/dashboard",
       location: "left",
     },
-    {
-      name: "Business Details",
-      url: organizationLength === 1 ? `/businesses/detail/${organizationId}` : "/businesses",
-      location: "left",
-    },
+    // {
+    //   name: "Business Details",
+    //   url: organizationLength === 1 ? `/businesses/detail/${organizationId}` : "/businesses",
+    //   location: "left",
+    // },
     {
       name: "Resources",
       url: "/resources",

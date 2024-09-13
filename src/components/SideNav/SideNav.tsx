@@ -16,11 +16,11 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile = false }) 
       url: "/dashboard",
       location: "left",
     },
-    {
-      name: "Business Details",
-      url: "/businesses",
-      location: "left",
-    },
+    // {
+    //   name: "Business Details",
+    //   url: "/businesses",
+    //   location: "left",
+    // },
     {
       name: "Resources",
       url: "/resources",
