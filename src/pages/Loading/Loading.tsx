@@ -10,7 +10,7 @@ import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL, PORTAL_API_URL } from "src/utils/constants";
+import { BASE_API_URL, PORTAL_API_URL, LOAN_URL, LOAN_CLIENT_ID, LOAN_CLIENT_SECRET  } from "src/utils/constants";
 import GovBanner from "src/components/GovBanner/GovBanner";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
@@ -101,6 +101,7 @@ const Loading = () => {
       ],
     });
 
+    // Get CRM Profile
     const config = {
       method: "post",
       maxBodyLength: Infinity,
@@ -128,6 +129,25 @@ const Loading = () => {
       last_name: individual.lastName ?? "",
       email: individual.email ?? "",
     };
+
+    // Get Loans
+    let loansData;
+    try {
+      await axios
+        .get(`${LOAN_URL}/${email}`, { headers: {
+          Authorization: `Bearer ${accessToken}`,
+            client_id: LOAN_CLIENT_ID,
+            client_secret: LOAN_CLIENT_SECRET,
+        }}).then(response => {
+          if (response.data === 'No loan information is available for given user') {
+            loansData = [];
+          } else {
+            loansData = response.data;
+          }
+        });
+    } catch (err) {
+      console.log(err);
+    }
 
     let portalData;
     try {
@@ -160,6 +180,7 @@ const Loading = () => {
         crm: crmData,
         portal: portalData,
       },
+      loans: loansData
     };
   };
 
