@@ -1,303 +1,291 @@
 .pageContainer {
-  min-height: 100vh;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-.mainContainer {
-  display: flex;
-  flex-grow: 1;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
-  /*background-color: #F3F8FC;*/
-  padding: 20px;
+    min-height: 100vh;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-/*.banner {*/
-/*    align-items: center;*/
-/*    display: flex;*/
-/*    flex-direction: column;*/
-/*    flex: 1;*/
-/*    justify-content: center;*/
-/*    top: 33%;*/
-/*    z-index: 1;*/
-/*}*/
+.mainContainer {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    padding: 20px;
+}
 
 .banner {
-  display: flex;
-  /*padding: 120px;*/
-  flex-direction: column;
-  align-items: center;
-  /*gap: var(--64px, 64px);*/
-  align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-self: stretch;
 }
 
 .loginRow {
-  display: flex;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
-  align-content: center;
-  gap: 120px;
-  align-self: stretch;
-  flex-wrap: wrap;
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 120px;
+    align-self: stretch;
+    flex-wrap: wrap;
 }
 
 .loginRowLeft {
-  display: flex;
-  width: 400px;
-  flex-direction: column;
-  gap: 20px;
+    display: flex;
+    width: 400px;
+    flex-direction: column;
+    gap: 20px;
 }
 
 .welcomeMessageContainer {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
 }
 
 .welcomeTo {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 400;
-  height: 48px;
-  line-height: 120%;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    height: 48px;
+    line-height: 120%;
 }
 
 .mySBAHome {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  height: 48px;
-  line-height: 120%;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    height: 48px;
+    line-height: 120%;
 }
 
 .subTitle {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
 }
 
 .loginRowRight {
 }
 
 .welcomeMessage {
-  font-family: var(--Font-Primary);
-  color: var(--Brand-Primary-SBA-Blue);
-  text-align: center;
-  padding-top: 5px;
-  font-size: 48px;
-  font-weight: 400;
-  line-height: 120%;
+    font-family: var(--Font-Primary);
+    color: var(--Brand-Primary-SBA-Blue);
+    text-align: center;
+    padding-top: 5px;
+    font-size: 48px;
+    font-weight: 400;
+    line-height: 120%;
 }
 
 .bold {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-family: var(--Font-Primary);
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-family: var(--Font-Primary);
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 .mysbaMessage {
-  font-family: var(--Font-Primary);
-  color: var(--Brand-Primary-SBA-Blue);
-  text-align: center;
-  text-overflow: ellipsis;
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
-  overflow-wrap: break-word;
-  margin-top: 6px;
-  max-width: 460px;
+    font-family: var(--Font-Primary);
+    color: var(--Brand-Primary-SBA-Blue);
+    text-align: center;
+    text-overflow: ellipsis;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    overflow-wrap: break-word;
+    margin-top: 6px;
+    max-width: 460px;
 }
 
 .cityscapeContainer {
-  align-items: center;
-  background-color: #f3f8fc;
-  display: flex;
-  justify-content: center;
-  overflow: hidden;
-  width: 100%;
+    align-items: center;
+    background-color: #F3F8FC;
+    display: flex;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
 }
 
 .cityscape {
-  height: 175px;
-  object-fit: cover;
+    height: 175px;
+    object-fit: cover;
 }
 
 .alertBanner {
-  width: 100%;
+    width: 100%;
 }
 
 .cloudImageContainer {
-  display: flex;
-  justify-content: center;
-  background-color: #f3f8fc;
-  width: 100%;
-  overflow: hidden;
+    display: flex;
+    justify-content: center;
+    background-color: #F3F8FC;
+    width: 100%;
+    overflow: hidden;
 }
 
 .cloudImage {
-  width: 100%;
-  height: auto;
-  object-fit: cover;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 .buttonGroup {
-  margin-top: 22px;
-  width: 100%;
-  gap: 16px;
-  display: flex;
-  justify-content: center;
+    margin-top: 22px;
+    width: 100%;
+    gap: 16px;
+    display: flex;
+    justify-content: center;
 }
 
 .signupBtn {
-  align-items: center;
-  border: 2px;
-  box-shadow: inset 0 0 0 2px var(--Brand-Secondary-Bright-Blue);
-  color: var(--Brand-Secondary-Bright-Blue);
-  display: flex;
-  flex-shrink: 0;
-  max-width: 100px;
-  max-height: 38px;
-  padding: 12px 20px;
-  justify-content: center;
-  margin-right: 0;
+    align-items: center;
+    border: 2px;
+    box-shadow: inset 0 0 0 2px var(--Brand-Secondary-Bright-Blue);
+    color: var(--Brand-Secondary-Bright-Blue);
+    display: flex;
+    flex-shrink: 0;
+    max-width: 100px;
+    max-height: 38px;
+    padding: 12px 20px;
+    justify-content: center;
+    margin-right: 0;
 }
 
 .loginBtn {
-  border: 2px;
-  display: flex;
-  flex-shrink: 0;
-  font-size: 18px;
-  gap: 10px;
-  width: 100px;
-  height: 38px;
-  justify-content: center;
-  align-items: center;
-  margin-right: 0;
-  padding: 0;
+    border: 2px;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 18px;
+    gap: 10px;
+    width: 100px;
+    height: 38px;
+    justify-content: center;
+    align-items: center;
+    margin-right: 0;
+    padding: 0;
 }
 
 .usaNavContainer {
-  width: 100%;
-  margin: 0;
-  max-width: unset;
-  display: flex;
-  justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
+    width: 100%;
+    margin: 0;
+    max-width: unset;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .left {
-  display: flex;
-  align-items: center;
+    display: flex;
+    align-items: center;
 }
 
 .right {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
 }
 
 .usaBannerInner {
-  width: 100vw;
-  margin: 0;
-  max-width: unset;
-  justify-content: start;
-  padding-left: 16px;
+    width: 100vw;
+    margin: 0;
+    max-width: unset;
+    justify-content: start;
+    padding-left: 16px;
 }
 
 .usaHeader {
-  position: sticky;
-  border-bottom: 1px solid lightgray;
-  padding-top: 20px;
-  padding-bottom: 20px;
-  z-index: 2;
-  background: var(--Base-white);
-  width: 100%;
+    position: sticky;
+    border-bottom: 1px solid lightgray;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    z-index: 2;
+    background: var(--Base-white);
+    width: 100%;
 }
 
 .usaBannerHeader {
-  text-align: left;
+    text-align: left;
 }
 
 .usaLanguageContainer {
-  /* padding-right: 20px; */
-  gap: 20px;
+    /* padding-right: 20px; */
+    gap: 20px;
 }
 
 .pillButton img {
-  width: 20px;
-  height: auto;
+    width: 20px;
+    height: auto;
 }
 
 .usaLogo {
-  height: 57px;
-  flex: unset;
-  display: block;
+    height: 57px;
+    flex: unset;
+    display: block;
 }
 
 .usaLogoSm {
-  height: 32px;
-  flex: unset;
-  display: none;
+    height: 32px;
+    flex: unset;
+    display: none;
 }
 
 @media screen and (max-width: 1023px) {
-  .usaLogoSm {
-    display: block;
-  }
+    .usaLogoSm {
+        display: block;
+    }
 
-  .usaLogo {
-    display: none;
-  }
+    .usaLogo {
+        display: none;
+    }
 }
 
 .comingSoon {
-  color: var(--Brand-Primary-SBA-Blue);
-  text-align: center;
-  font-family: "Source Sans Pro";
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
+    color: var(--Brand-Primary-SBA-Blue);
+    text-align: center;
+    font-family: "Source Sans Pro";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
 }
 
 .mySBA {
-  color: var(--Brand-Primary-SBA-Blue);
-  font-family: "Source Sans Pro";
-  font-size: 48px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 120%;
+    color: var(--Brand-Primary-SBA-Blue);
+    font-family: "Source Sans Pro";
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 120%;
 }
 
 .comingSoonMessage {
-  color: var(--Brand-Primary-SBA-Blue);
-  text-align: center;
-  font-family: "Source Sans Pro";
-  font-size: 22px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: 120%;
-  margin-top: 23px;
-  max-width: 720px;
-  overflow-wrap: break-word;
+    color: var(--Brand-Primary-SBA-Blue);
+    text-align: center;
+    font-family: "Source Sans Pro";
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 120%;
+    margin-top: 23px;
+    max-width: 720px;
+    overflow-wrap: break-word;
 }
 
 .comingSoonMessage a {
-  color: unset;
+    color: unset;
 }

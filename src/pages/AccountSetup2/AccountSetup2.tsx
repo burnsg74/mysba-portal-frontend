@@ -19,14 +19,14 @@ const AccountSetup2 = () => {
   const { authState } = useOktaAuth();
 
   const [state, setState] = useState({
-    planningNewBusiness: false,
-    launchingNewBusiness: false,
-    managingExistingBusiness: false,
-    marketingExistingBusiness: false,
-    growingExistingBusiness: false,
-    govContracting: false,
-    businessMentorship: false,
-    womenOwnedBusinessContent: false,
+    planningNewBusiness        : false,
+    launchingNewBusiness       : false,
+    managingExistingBusiness   : false,
+    marketingExistingBusiness  : false,
+    growingExistingBusiness    : false,
+    govContracting             : false,
+    businessMentorship         : false,
+    womenOwnedBusinessContent  : false,
     veteranOwnedBusinessContent: false,
   });
 
@@ -216,7 +216,7 @@ const AccountSetup2 = () => {
               <span className={`${styles.toolTip}`}>
                     <svg
                       className={`usa-icon ${styles.infoIcon}`}
-                      
+
                       focusable="false"
                     >
                       {" "}
@@ -294,17 +294,13 @@ const AccountSetup2 = () => {
       <div className={`${styles.buttonGroup}`}>
         <div className={`${styles.buttonRow}`}>
 
-          {
-            user.businesses && user.businesses.length > 0 ? (
-              <button
-                type="button"
-                onClick={handleBackBtnClick}
-                className={`usa-button usa-button--outline ${styles.usaButton}`}
-              >
-                {t("Back")}
-              </button>
-            ) : null
-          }
+          {user.businesses && user.businesses.length > 0 ? (<button
+              type="button"
+              onClick={handleBackBtnClick}
+              className={`usa-button usa-button--outline ${styles.usaButton}`}
+            >
+              {t("Back")}
+            </button>) : null}
           <button
             type="button"
             className={`usa-button ${styles.usaButton}`}

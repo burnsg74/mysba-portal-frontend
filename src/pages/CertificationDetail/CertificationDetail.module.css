@@ -162,9 +162,9 @@
 }
 
 .footerBtnOutline:focus {
-  box-shadow: 0 0 0 3px #05fc;
-  border-radius: 2px;
-  color: var(--Brand-Secondary-Bright-Blue);
+    box-shadow: 0 0 0 3px #05FC;
+    border-radius: 2px;
+    color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .footerBtn {

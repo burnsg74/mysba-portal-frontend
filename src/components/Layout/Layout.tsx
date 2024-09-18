@@ -43,8 +43,7 @@ const Layout = () => {
     // Layout Ignores this
   }
 
-  return (
-    <>
+  return (<>
       <div className="grid-row" id="header__container" ref={headerRef}>
         <div className={`grid-col`}>
           <Header />
@@ -84,8 +83,7 @@ const Layout = () => {
       {/*    </div>*/}
       {/*  </div>*/}
       {/*)}*/}
-    </>
-  );
+    </>);
 };
 
 export default Layout;

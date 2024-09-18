@@ -26,20 +26,15 @@ const CertificationDetail = () => {
     return null;
   }
 
-  const certification: ICertification | undefined = user.certifications?.find(
-    (certification: ICertification) => certification.certification_id === id
-  );
+  const certification: ICertification | undefined = user.certifications?.find((certification: ICertification) => certification.certification_id === id);
   if (!certification) {
     navigate("/error");
     return null;
   }
 
-  const certModelData =
-    certifications.find(cert => cert.code === certification?.certification_type.toUpperCase()) || certifications[0];
+  const certModelData = certifications.find(cert => cert.code === certification?.certification_type.toUpperCase()) || certifications[0];
   const issue_date = formatDate(certification.issue_date, "MMMM D, YYYY");
-  const expiration_date: string | null = certification.expiration_date
-    ? formatDate(certification.expiration_date, "MMMM D, YYYY")
-    : null;
+  const expiration_date: string | null = certification.expiration_date ? formatDate(certification.expiration_date, "MMMM D, YYYY") : null;
 
   function calculateIndexFromId(id: string): number | null {
     const index = Number(id);
@@ -60,8 +55,7 @@ const CertificationDetail = () => {
     window.open(certModelData.url, "_blank");
   };
 
-  const footerContent = (
-    <>
+  const footerContent = (<>
       <button
         type="button"
         className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
@@ -78,11 +72,9 @@ const CertificationDetail = () => {
           </svg>
         </div>
       </button>
-    </>
-  );
+    </>);
 
-  return (
-    <>
+  return (<>
       <div data-testid="page-certification-details" className={`${styles.container}`}>
         <div className={`${styles.headerButtonsContainer}`}>
           <button
@@ -124,8 +116,7 @@ const CertificationDetail = () => {
         </div>
 
         {/* Expired Cert Help*/}
-        {certification.days_until_expiry <= 0 && (
-          <>
+        {certification.days_until_expiry <= 0 && (<>
             <div className={`${styles.expiredHelpContainer}`}>
               <div className={`${styles.expiredHelpHeader}`}>{t("Need help getting re-certified?")}</div>
               <div className={`grid-row`}>
@@ -151,36 +142,29 @@ const CertificationDetail = () => {
                   <div className={`${styles.expiredHelpMessageHeader}`}>{t("Contact Us")}</div>
                   <div className={`${styles.expiredHelpMessageBody}`}>
                     <div>
-                      {certModelData.helpForm && certModelData.helpEmail && (
-                        <>
+                      {certModelData.helpForm && certModelData.helpEmail && (<>
                           {t("You can fill out a help request form")}{" "}
                           <a href={certModelData.helpForm} target="_blank" rel="noopener noreferrer">
                             {t("here")}
                           </a>{" "}
                           {t("or contact us at")}{" "}
                           <a href={`mailto:${certModelData.helpEmail}`}>{certModelData.helpEmail}</a>.
-                        </>
-                      )}
-                      {certModelData.helpForm && !certModelData.helpEmail && (
-                        <>
+                        </>)}
+                      {certModelData.helpForm && !certModelData.helpEmail && (<>
                           {t("You can fill out a help request form")}{" "}
                           <a href={certModelData.helpForm} target="_blank" rel="noopener noreferrer">
                             {t("here")}
                           </a>
                           .
-                        </>
-                      )}
-                      {!certModelData.helpForm && certModelData.helpEmail && (
-                        <>
+                        </>)}
+                      {!certModelData.helpForm && certModelData.helpEmail && (<>
                           {t("You can contact us at")}{" "}
                           <a href={`mailto:${certModelData.helpEmail}`}>{certModelData.helpEmail}</a>.
-                        </>
-                      )}
+                        </>)}
                     </div>
                   </div>
                   <div className={`${styles.expiredHelpMessageBody}`}>
-                    {certModelData.helpFAQ && (
-                      <>
+                    {certModelData.helpFAQ && (<>
                         <a
                           href={certModelData.helpFAQ}
                           target="_blank"
@@ -198,8 +182,7 @@ const CertificationDetail = () => {
                         >
                           <use xlinkHref="/assets/img/sprite.svg#launch"></use>
                         </svg>
-                      </>
-                    )}
+                      </>)}
                   </div>
                 </div>
               </div>
@@ -211,33 +194,27 @@ const CertificationDetail = () => {
             >
               {t("Start the re-certification process")}
             </button>
-          </>
-        )}
+          </>)}
         <div className={`${styles.categoryGroup}`}>
           <h4 className={`${styles.subtitle}`}>{t("Details")}</h4>
           {certification.company_name && <Field label="Company Certified" value={certification.company_name} />}
           {issue_date && <Field label="Issue Date" value={issue_date} />}
           {expiration_date && <Field label="Expiration Date" value={expiration_date} />}
         </div>
-        {certification.owner && (
-          <div className={`${styles.categoryGroup}`}>
+        {certification.owner && (<div className={`${styles.categoryGroup}`}>
             <h4 className={`${styles.subtitle}`}>{t("Ownership")}</h4>
             <Field label="Owner(s)" value={certification.owner} />
-          </div>
-        )}
+          </div>)}
       </div>
-      {showManageCertificationModal && (
-        <Modal
+      {showManageCertificationModal && (<Modal
           title={t("Manage Certification")}
           onClose={handleManageCertificationModalClose}
           ImageAndAlt={{ image: nextSignImg, alt: "Next Sign" }}
           contentTitle={t(certModelData.title)}
           contentMessage={t(certModelData.message)}
           footerContent={footerContent}
-        />
-      )}
-    </>
-  );
+        />)}
+    </>);
 };
 
 export default CertificationDetail;

@@ -4,9 +4,6 @@ import styles from "src/components/Header/Header.module.css";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
 import SBAlogoSm from "src/assets/logo-sm.svg";
-import USFlag from "src/assets/us_flag.svg";
-import DotGov from "src/assets/icon-dot-gov.svg";
-import HttpsIcon from "src/assets/icon-https.svg";
 import ProfileIcon from "src/assets/profile.svg";
 import { useTranslation } from "react-i18next";
 import { getShowNav, getShowProfile } from "src/store/showNav/showNavSlice";
@@ -94,8 +91,7 @@ const Header = () => {
     localStorage.clear();
   };
 
-  return (
-    <>
+  return (<>
       <GovBanner />
       {/* MySBA Header*/}
       <header className={`${styles.usaHeader}`}>
@@ -106,20 +102,12 @@ const Header = () => {
               <img
                 className={`${styles.usaLogo}`}
                 src={lang === "en" ? SBAlogoEn : SBAlogoEs}
-                alt={
-                  lang === "en"
-                    ? "U.S. Small Business Administration"
-                    : "Administración de Pequeñas Empresas de los Estados Unidos"
-                }
+                alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
               />
               <img
                 className={`${styles.usaLogoSm}`}
                 src={SBAlogoSm}
-                alt={
-                  lang === "en"
-                    ? "U.S. Small Business Administration"
-                    : "Administración de Pequeñas Empresas de los Estados Unidos"
-                }
+                alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
               />
             </a>
           </div>
@@ -139,21 +127,18 @@ const Header = () => {
               </button>
             </div>
 
-            {showProfile && (
-              <>
+            {showProfile && (<>
                 {/* User ChangePassword */}
                 <div className={`usa-nav__inner ${styles.usaNavInner}`}>
                   <Link to="/profile" data-testid="profile-link">
                     <img src={ProfileIcon} alt="Profile Icon" />
                   </Link>
                 </div>
-              </>
-            )}
+              </>)}
 
             <div id="sbaWaffleMenu" ref={waffleMenu}></div>
             {/* Multi-Language Toggle */}
-            {showNav && (
-              <>
+            {showNav && (<>
                 {/* Head Nav for small screens */}
                 <div className={`${styles.headerMenuIconContainer}`}>
                   <svg
@@ -166,10 +151,8 @@ const Header = () => {
                     <use xlinkHref="/assets/img/sprite.svg#menu"></use>
                   </svg>
                 </div>
-              </>
-            )}
-            {!showNav && !showProfile && (
-              <button
+              </>)}
+            {!showNav && !showProfile && (<button
                 className={` ${styles.buttonStyle}`}
                 onClick={logout}
                 aria-label={t("Log Out")}
@@ -177,13 +160,11 @@ const Header = () => {
                 data-testid="log-out-button"
               >
                 <span className={`${styles.buttonText}`}>{t("Log Out")}</span>
-              </button>
-            )}
+              </button>)}
           </div>
         </div>
       </header>
-      {showNav && (
-        <button
+      {showNav && (<button
           className={`${styles.rightSideNav} ${isNavOpen ? styles.isOpen : ""}`}
           onBlur={handleFocusOut}
           ref={navRef}
@@ -196,9 +177,7 @@ const Header = () => {
             </svg>
           </div>
           <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
-        </button>
-      )}
-    </>
-  );
+        </button>)}
+    </>);
 };
 export default Header;

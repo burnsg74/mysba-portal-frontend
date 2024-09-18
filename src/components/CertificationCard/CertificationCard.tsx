@@ -8,7 +8,7 @@ import Pill from "src/components/Pill/Pill";
 import CertificationCardIcon from "src/assets/certification-card-icon.svg";
 
 function getPillComponents(days_until_expiry: number, t: TFunction): JSX.Element | null {
-  
+
   if (days_until_expiry <= 0) {
     if (!days_until_expiry) {
       return <Pill type={"valid"} message={t("Certified")} />;
@@ -19,8 +19,8 @@ function getPillComponents(days_until_expiry: number, t: TFunction): JSX.Element
     return <Pill type={"warning"} message={`${t("Renew in")} ${days_until_expiry} ${t("Days")}`} />;
   } else if (days_until_expiry > 90) {
     return <Pill type={"valid"} message={t("Certified")} />;
-  }else{
-    return null
+  } else {
+    return null;
   }
 }
 
@@ -46,7 +46,8 @@ export const CertificationCard: React.FC<ICertificationCardProps> = ({ certifica
   }, []);
 
   const body = (
-    <div ref={containerRef} className={`grid-row ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`} data-testid="certification-card-body">
+    <div ref={containerRef} className={`grid-row ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`}
+         data-testid="certification-card-body">
       <div className={`grid-col ${styles.bodyCompanyName}`}>{certification.company_name}</div>
       <div className={`grid-col-auto`}>
         <div className={` ${styles.bodyRowRightGroup}`}>

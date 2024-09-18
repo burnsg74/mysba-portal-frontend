@@ -1,7 +1,11 @@
-import React  from "react";
+import React from "react";
 import styles from "src/components/ModalInputSelect/ModalInputSelect.module.css";
 
-interface Option { value: string; label: string; }
+interface Option {
+  value: string;
+  label: string;
+}
+
 interface ModalInputSelectProps {
   name: string;
   value: string;
@@ -17,8 +21,8 @@ const ModalInputSelect: React.FC<ModalInputSelectProps> = ({ name, value, option
   };
 
   return (<div className={` ${styles.inputGroup}`}>
-      <label className={`${styles.inputLabel}`}>{label}</label>
-      {help && <div className={`${styles.inputHelp}`}>{help}</div>}
+    <label className={`${styles.inputLabel}`}>{label}</label>
+    {help && <div className={`${styles.inputHelp}`}>{help}</div>}
     <select
       className={`usa-select ${styles.input}`}
       name={name}

@@ -8,8 +8,7 @@ import { useTranslation } from "react-i18next";
 const GovBanner = () => {
   const { t } = useTranslation();
 
-  return (
-    <>
+  return (<>
       {/* Top Banner : Official website of the United States government */}
       <section className="usa-banner" aria-label="Official website of the United States government">
         <div className="usa-accordion">
@@ -71,9 +70,7 @@ const GovBanner = () => {
                       </svg>
                     </span>
                     ) {t("or")} <strong>https://</strong>
-                    {t(
-                      "means you've safely connected to the .gov website. Share sensitive information only on official, secure websites."
-                    )}
+                    {t("means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.")}
                   </p>
                 </div>
               </div>
@@ -81,7 +78,6 @@ const GovBanner = () => {
           </div>
         </div>
       </section>
-    </>
-  );
+    </>);
 };
 export default GovBanner;

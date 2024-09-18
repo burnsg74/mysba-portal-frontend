@@ -175,7 +175,7 @@
 .officeCard {
     align-items: flex-start;
     align-self: stretch;
-    background: #FFF;
+    background: #FFFFFF;
     border-radius: 8px;
     border: 1px solid var(--Base-base-lighter);
     box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
@@ -236,6 +236,7 @@
 
 
 }
+
 .officeCardDetailsPhone a {
     color: var(--Brand-Primary-SBA-Blue);
     font-size: 14px;
@@ -257,6 +258,7 @@
     text-decoration-line: underline;
     white-space: pre-line;
 }
+
 .officeCardDetailsAddress a {
     color: var(--Brand-Primary-SBA-Blue);
     font-size: 14px;
@@ -280,7 +282,7 @@
 }
 
 .guideTitle {
-    color: #FFF;
+    color: #FFFFFF;
     font-size: 22px;
     font-style: normal;
     font-weight: 400;
@@ -301,7 +303,7 @@
     flex: 1 0 0;
     border-radius: 8px;
     border: 1px solid var(--Base-base-lighter);
-    background: #FFF;
+    background: #FFFFFF;
     box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
 }
 

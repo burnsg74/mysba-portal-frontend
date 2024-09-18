@@ -1,12 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import { getUser } from "src/store/user/userSlice";
-// import { useLocation, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-// import { setNav, setShowProfile } from "src/store/showNav/showNavSlice";
 import styles from "src/pages/Dashboard/Dashboard.module.css";
 import CityScapeImage from "src/assets/cityscape.png";
-import Alert from "src/components/Alert/Alert";
+import {Alert} from "src/components/Alert/Alert";
 import CardLoansImg from "src/assets/card-loans-img.jpg";
 import CardCertificationsImg from "src/assets/card-certifications-img.jpg";
 import CardDisasterLoansImg from "src/assets/card-disaster_loans-img.jpg";
@@ -17,32 +15,14 @@ const Dashboard = () => {
   const user: IUser = useSelector(getUser);
   console.log("user", user);
   const { t } = useTranslation();
-  // const navigate = useNavigate();
-  // const dispatch = useDispatch();
-  // const modalFooterContent = (
-  //   <button
-  //     type="button"
-  //     className={`usa-button ${styles.footerBtn}`}
-  //     onClick={() => {
-  //       dispatch(setNav(true));
-  //       dispatch(setShowProfile(true));
-  //       navigate("/dashboard");
-  //     }}
-  //   >
-  //     {t("All Done")}
-  //   </button>
-  // );
 
-  return (
-    <>
+  return (<>
       {/* Top city banner */}
       <div className={`banner ${styles.banner}`} data-testid="page-dashboard">
         <div className={`${styles.welcomeMessage}`}>
-          {user.profile?.crm && (
-            <span data-testid="welcome-first_name" className="first_name">
+          {user.profile?.crm && (<span data-testid="welcome-first_name" className="first_name">
               {t("Hi")} {user.profile?.crm?.first_name},{" "}
-            </span>
-          )}
+            </span>)}
         </div>
         <div className={`${styles.mysbaMessage}`}>{t("Welcome to MySBA")}</div>
         <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
@@ -52,109 +32,23 @@ const Dashboard = () => {
           type={"info"}
           title={t("Certification Data is Coming Soon")}
           message={t("dashboard.cert.alert.message", {
-            link: '<a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">MySBA Certifications</a>',
+            link: "<a href=\"https://certification.sba.gov\" target=\"_blank\" rel=\"noopener noreferrer\">MySBA Certifications</a>",
           })}
         />
 
-        {user.loans && user.loans.length > 0 && (
-          <>
+        {user.loans && user.loans.length > 0 && (<>
             <h1 className={`${styles.loanBusinessLabel}`}>
               <img src={BusinessIcon} alt="Business" />
               {user.loans[0].business_name}
             </h1>
             <h2 className={`${styles.loanLabel}`}>Loans</h2>
             {/*<LoanCard loan={user.loans[0]} hideDetails={true} />*/}
-            {user.loans.map((loan, index) => (
-              <>
+            {user.loans.map((loan, index) => (<>
                 {loan.payment_past_due && <Alert message="Your loan payment is past due." type="error" />}
                 <LoanCard key={index} loan={loan} hideDetails={true} />
-              </>
-            ))}
-          </>
-        )}
+              </>))}
+          </>)}
 
-        {/*<Alert*/}
-        {/*  type={"info"}*/}
-        {/*  title={"Certification Data is Coming Soon"}*/}
-        {/*  message={*/}
-        {/*    <Trans*/}
-        {/*      i18nKey="dashboard.cert.alert.message"*/}
-        {/*      components={{ link: <a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">certification.sba.gov</a> }}*/}
-        {/*    />*/}
-        {/*  }*/}
-        {/*/>*/}
-        {/*<Alert*/}
-        {/*  type={"info"}*/}
-        {/*  title={"Certification Data is Coming Soon"}*/}
-        {/*  message={t("Certifications aren't shown in MySBA Home yet, but support is coming soon. Visit {{link}} to apply for and manage certifications.", {*/}
-        {/*    'link': <a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">certification.sba.gov</a>*/}
-        {/*  })}*/}
-        {/*/>*/}
-
-        {/* Dashboard Content className={`main-container`} */}
-        {/*<div data-testid="page-dashboard">*/}
-        {/*  <div className={`${styles.dashboardContent}`}>*/}
-        {/*    /!* Certifications Alerts *!/*/}
-        {/*    {user.certifications?.map(certification => {*/}
-        {/*      if (certification.days_until_expiry > 90) {*/}
-        {/*        return null;*/}
-        {/*      }*/}
-        {/*      return (*/}
-        {/*        <div className={styles.alertContainer} key={certification.certification_id}>*/}
-        {/*          <CertificationAlert certification={certification} />*/}
-        {/*        </div>*/}
-        {/*      );*/}
-        {/*    })}*/}
-
-        {/*    /!* No Businesses *!/*/}
-        {/*    /!*{! user.businesses?.length && (<div className={`${styles.noBusinessesMessageContainer}`}>*!/*/}
-        {/*    /!*    <img src={IconMagnifier} alt={"No Cert"} className={`${styles.noBusinesseIcon}`} />*!/*/}
-        {/*    /!*    <div className={` ${styles.noBusinessesText1}`}>*!/*/}
-        {/*    /!*      {t("It looks like you haven't added anything.")}*!/*/}
-        {/*    /!*    </div>*!/*/}
-        {/*    /!*    <div className={` ${styles.noBusinessesText2}`}>*!/*/}
-        {/*    /!*      {t("Navigate to Businesses or Certifications to add your information.")}*!/*/}
-        {/*    /!*    </div>*!/*/}
-        {/*    /!*  </div>)}*!/*/}
-
-        {/*    /!* Businesses *!/*/}
-        {/*    {user.businesses &&*/}
-        {/*      [...user.businesses]*/}
-        {/*        .sort((a, b) => a.name.localeCompare(b.name))*/}
-        {/*        .map(business => (*/}
-        {/*          <React.Fragment key={business.id}>*/}
-        {/*            <div className={`grid-row ${styles.businessHeaderRow}`}>*/}
-        {/*              <div className={`grid-col-auto`}>*/}
-        {/*                <img src={BusinessCardIcon} alt={"Business Card Icon"} />*/}
-        {/*              </div>*/}
-        {/*              <div className={`grid-col`}>*/}
-        {/*                <span className={`${styles.businessHeaderTitle}`}>{business.name}</span>*/}
-        {/*              </div>*/}
-        {/*            </div>*/}
-        {/*            <div className={`grid-row ${styles.certHeaderRow}`}>*/}
-        {/*              <div className="grid-col">*/}
-        {/*                <div className={`${styles.certifications}`}>{t("Certifications")}</div>*/}
-        {/*              </div>*/}
-        {/*              <div className={`grid-col ${styles.certificationsHeaderLink}`}>*/}
-        {/*                <Link*/}
-        {/*                  to="/certifications"*/}
-        {/*                  className={`float-right usa-prose ${styles.certificationsHeaderLink}`}*/}
-        {/*                >*/}
-        {/*                  {t("View")}*/}
-        {/*                </Link>*/}
-        {/*              </div>*/}
-        {/*            </div>*/}
-        {/*            {user.certifications?.map(certification =>*/}
-        {/*              certification.business_id === business.uei ? (*/}
-        {/*                <div key={certification.certification_id} className={`grid-row ${styles.certificationsRow}`}>*/}
-        {/*                  <div className="grid-col">*/}
-        {/*                    <CertificationCard key={certification.certification_id} certification={certification} />*/}
-        {/*                  </div>*/}
-        {/*                </div>*/}
-        {/*              ) : null*/}
-        {/*            )}*/}
-        {/*          </React.Fragment>*/}
-        {/*        ))}*/}
         <div className={`grid-row ${styles.cardRow}`}>
           <div className={`grid-col ${styles.card}`}>
             <div className={`usa-card__container ${styles.cardContainer}`}>
@@ -255,24 +149,8 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        {/*</div>*/}
-        {/*</div>*/}
       </div>
-      {/* Temp remove new user (GB 24-08-23) */}
-      {/*{location.pathname === "/dashboard/new" && (<Modal*/}
-      {/*  title=""*/}
-      {/*  onClose={() => {*/}
-      {/*    dispatch(setNav(true));*/}
-      {/*    dispatch(setShowProfile(true));*/}
-      {/*    navigate("/dashboard");*/}
-      {/*  }}*/}
-      {/*  ImageAndAlt={{ image: lightBulbImage, alt: "Light Bulb" }}*/}
-      {/*  contentTitle={t("Your account is all set up.")}*/}
-      {/*  contentMessage={t("Thank you for participating in this beta release. If you find a glitch, get lost in something you find confusing, or have general ideas please provide feedback through digitalresearch@SBA.gov.")}*/}
-      {/*  footerContent={modalFooterContent}*/}
-      {/*/>)}*/}
-    </>
-  );
+    </>);
 };
 
 export default Dashboard;

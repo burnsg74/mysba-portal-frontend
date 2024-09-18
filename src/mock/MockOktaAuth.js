@@ -2,7 +2,7 @@
 export class MockOktaAuth {
   constructor(config) {
     this.config = config;
-    this.user = sessionStorage.getItem('user');
+    this.user = sessionStorage.getItem("user");
     this.authState = {
       isAuthenticated: true,
       idToken: {
@@ -15,18 +15,19 @@ export class MockOktaAuth {
 
     this.options = {
       restoreOriginalUri: async (_, originalUri) => {
-        window.location.replace(originalUri || '/');
+        window.location.replace(originalUri || "/");
       },
     };
 
     this._oktaUserAgent = {
-      addEnvironment: () => {},
+      addEnvironment: () => {
+      },
       getHttpHeader: () => {
         return {
-          'X-Okta-User-Agent-Extended': 'okta-auth-localhost:6343'
+          "X-Okta-User-Agent-Extended": "okta-auth-localhost:6343",
         };
       },
-      getVersion: () => '7.6.0',
+      getVersion: () => "7.6.0",
     };
   }
 
@@ -46,7 +47,7 @@ export class MockOktaAuth {
   async getUser() {
     return {
       sub: "00u1nwb8gl7y1t4Dy5d6",
-      email:this.user,
+      email: this.user,
       name: "Test User",
     };
   }

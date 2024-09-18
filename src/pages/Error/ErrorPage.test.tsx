@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, screen} from "@testing-library/react";
-import ErrorPage from './ErrorPage';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import ErrorPage from "./ErrorPage";
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
 import { BrowserRouter } from "react-router-dom";
@@ -11,7 +11,7 @@ jest.mock("react-i18next", () => ({
   }),
 }));
 
-describe('Page: Error', () => {
+describe("Page: Error", () => {
 
   it("It renders", () => {
     render(<Provider store={store}>

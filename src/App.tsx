@@ -60,26 +60,23 @@ const App: React.FC = () => {
   };
 
   const mock = sessionStorage.getItem("mock");
-  const oktaAuth = mock
-    ? new MockOktaAuth({
-        clientId: OKTA_CLIENT_ID,
-        issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
-        redirectUri: `${window.location.origin}/login/callback`,
-        postLogoutRedirectUri: `${window.location.origin}`,
-        scopes: ["openid", "profile", "email"],
-        pkce: true,
-      })
-    : new OktaAuth({
-        clientId: OKTA_CLIENT_ID,
-        issuer: `https://${OKTA_DOMAIN}/oauth2/default`,
-        redirectUri: `${window.location.origin}/login/callback`,
-        postLogoutRedirectUri: `${window.location.origin}`,
-        scopes: ["openid", "profile", "email"],
-        pkce: true,
-      });
+  const oktaAuth = mock ? new MockOktaAuth({
+    clientId             : OKTA_CLIENT_ID,
+    issuer               : `https://${OKTA_DOMAIN}/oauth2/default`,
+    redirectUri          : `${window.location.origin}/login/callback`,
+    postLogoutRedirectUri: `${window.location.origin}`,
+    scopes               : ["openid", "profile", "email"],
+    pkce                 : true,
+  }) : new OktaAuth({
+    clientId             : OKTA_CLIENT_ID,
+    issuer               : `https://${OKTA_DOMAIN}/oauth2/default`,
+    redirectUri          : `${window.location.origin}/login/callback`,
+    postLogoutRedirectUri: `${window.location.origin}`,
+    scopes               : ["openid", "profile", "email"],
+    pkce                 : true,
+  });
 
-  return (
-    <Security oktaAuth={oktaAuth} onAuthRequired={() => navigate("/")} restoreOriginalUri={restoreOriginalUri}>
+  return (<Security oktaAuth={oktaAuth} onAuthRequired={() => navigate("/")} restoreOriginalUri={restoreOriginalUri}>
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login/callback" element={<LoginCallback loadingElement={<Callback />} />} />
@@ -127,8 +124,7 @@ const App: React.FC = () => {
           </Route>
         </Route>
       </Routes>
-    </Security>
-  );
+    </Security>);
 };
 
 export default App;

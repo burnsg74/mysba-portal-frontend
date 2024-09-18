@@ -35,7 +35,6 @@
   font-style: normal;
   font-weight: 700;
   line-height: 115%;
-  letter-spacing: 0.325px;
 }
 
 .sba-waffle-menu__body {
@@ -76,26 +75,26 @@
 }
 
 .sba-waffle-menu__button-image_mysba {
-  background: url("/sba-waffle-menu-mysba.png") 50% / cover no-repeat;
+  background: url("./sba-waffle-menu-mysba.png") 50% / cover no-repeat;
 }
 
 .sba-waffle-menu__button-image_certs {
-  background: url("/sba-waffle-menu-certs.png") 50% / cover no-repeat;
+  background: url("./sba-waffle-menu-certs.png") 50% / cover no-repeat;
 }
 
 .sba-waffle-menu__button-image_loans {
-  background: url("/sba-waffle-menu-loans.png") 50% / cover no-repeat;
+  background: url("./sba-waffle-menu-loans.png") 50% / cover no-repeat;
 }
 
 .sba-waffle-menu__button-image_disaster {
   width: 50px;
   height: 50px;
   align-self: unset;
-  background: url("/sba-waffle-menu-disaster.png") 50% / cover no-repeat;
+  background: url("./sba-waffle-menu-disaster.png") 50% / cover no-repeat;
 }
 
 .sba-waffle-menu__button-image_learning {
-  background: url("/sba-waffle-menu-learning.png") 50% / cover no-repeat;
+  background: url("./sba-waffle-menu-learning.png") 50% / cover no-repeat;
 }
 
 .sba-waffle-menu__button-text {

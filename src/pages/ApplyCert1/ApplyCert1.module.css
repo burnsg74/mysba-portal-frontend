@@ -102,7 +102,7 @@
     flex-direction: row;
     border: 1px solid var(--Base-base-lighter);
     border-radius: 8px;
-    background: var(--Base-white, #FFF);
+    background: var(--Base-white, #FFFFFF);
     box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
 }
 
@@ -232,11 +232,9 @@
 }
 
 
-
 .toolTip:hover .toolTipText {
     visibility: visible;
 }
-
 
 
 .stepIndicatorContainer {

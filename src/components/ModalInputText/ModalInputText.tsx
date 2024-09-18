@@ -13,21 +13,31 @@ interface ModalInputTextProps {
   errorMessage?: string
 }
 
-const ModalInputText: React.FC<ModalInputTextProps> = ({ name, value, label, help, onChange, required, isPassword=false, errorMessage="" }) => {
+const ModalInputText: React.FC<ModalInputTextProps> = ({
+                                                         name,
+                                                         value,
+                                                         label,
+                                                         help,
+                                                         onChange,
+                                                         required,
+                                                         isPassword = false,
+                                                         errorMessage = "",
+                                                       }) => {
   const { t } = useTranslation();
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     onChange(name, event.target.value);
   };
 
-  return (<div className={`${styles.inputGroup}  ${errorMessage ? styles.error : ''}`}>
-    <label className={`${styles.inputLabel}`}>{t(label)} {required && <span className={`${styles.redStar}`}>*</span>}</label>
+  return (<div className={`${styles.inputGroup}  ${errorMessage ? styles.error : ""}`}>
+    <label className={`${styles.inputLabel}`}>{t(label)} {required &&
+      <span className={`${styles.redStar}`}>*</span>}</label>
     {help && <div className={`${styles.inputHelp}`}>{t(help)}</div>}
     {errorMessage?.length > 0 && <div className={`${styles.errorMessage}`}>{t(errorMessage)}</div>}
     <input name={name}
-           type={isPassword ? 'password' : 'text'}
+           type={isPassword ? "password" : "text"}
            value={value}
-           className={`usa-input ${errorMessage ? 'usa-input--error' : ''} ${styles.input}`}
+           className={`usa-input ${errorMessage ? "usa-input--error" : ""} ${styles.input}`}
            onChange={handleChange}
     />
   </div>);

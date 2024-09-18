@@ -1,4 +1,4 @@
-import moment from 'moment';
+import moment from "moment";
 
 export const formatDateMMDDYYYY = (dateString: string) => {
   const ISODate = moment(dateString, "YYYY-MM-DD");

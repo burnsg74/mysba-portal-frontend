@@ -1,4 +1,4 @@
-import React  from "react";
+import React from "react";
 import { useTranslation } from "react-i18next";
 import Modal from "src/components/Modal/Modal";
 import modalIcon from "src/assets/light-bulb.svg";
@@ -8,7 +8,7 @@ interface Step2ModalProps {
   handleClose: () => void;
 }
 
-const Step2Modal: React.FC<Step2ModalProps> = ({ handleClose}) => {
+const Step2Modal: React.FC<Step2ModalProps> = ({ handleClose }) => {
   const { t } = useTranslation();
 
   const closeModal = () => {
@@ -22,15 +22,13 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ handleClose}) => {
     completedSteps={2}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("You have successfully changed your password.")}
-    footerContent={(
-      <button
+    footerContent={(<button
         type="button"
         className={`usa-button ${styles.continueBtn}`}
         onClick={closeModal}
       >
         {t("Continue")}
-      </button>
-    )}
+      </button>)}
   >
   </Modal>);
 };

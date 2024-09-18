@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import AccountSetup2 from "./AccountSetup2";
 import { Provider } from "react-redux";
 import { store } from "src/store/store";

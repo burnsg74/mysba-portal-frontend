@@ -6,24 +6,25 @@ import ModalInputRadio from "src/components/ModalInputRadio/ModalInputRadio";
 import modalIcon from "src/assets/icon-paper-cert.svg";
 
 interface Step1ModalProps {
-  businessData: {workingWithSBA: string};
+  businessData: { workingWithSBA: string };
   handleClose: () => void;
   handleContinue: (stepData: any) => void;
 }
 
-const Step1Modal: React.FC<Step1ModalProps> = ({businessData, handleClose, handleContinue }) => {
+const Step1Modal: React.FC<Step1ModalProps> = ({ businessData, handleClose, handleContinue }) => {
   const { t } = useTranslation();
-  const [stepData, setStepData] = useState<{workingWithSBA: string; }>({workingWithSBA: businessData.workingWithSBA});
+  const [stepData, setStepData] = useState<{
+    workingWithSBA: string;
+  }>({ workingWithSBA: businessData.workingWithSBA });
 
   const handleInputChange = (name: string, value: string) => {
-    const updatedStepData = {...stepData, [name]: value };
+    const updatedStepData = { ...stepData, [name]: value };
     setStepData(updatedStepData);
   };
 
   function handleContinueBtnClick() {
     handleContinue(stepData);
   }
-
 
 
   const closeModal = () => {
@@ -51,13 +52,13 @@ const Step1Modal: React.FC<Step1ModalProps> = ({businessData, handleClose, handl
       </button>
     </>)}
   >
-    <div  className={`${styles.inputContainer}`} >
+    <div className={`${styles.inputContainer}`}>
       <ModalInputRadio id="1" name={"workingWithSBA"}
                        label={"Yes, this business has an existing loan or certification account with the SBA"}
                        value={"yes"}
                        groupValue={stepData.workingWithSBA}
                        onChange={handleInputChange}
-                       disabled={true}/>
+                       disabled={true} />
 
       <ModalInputRadio id="2" name={"workingWithSBA"} label={"No, this business does not have a certification or loan"}
                        value={"no"}

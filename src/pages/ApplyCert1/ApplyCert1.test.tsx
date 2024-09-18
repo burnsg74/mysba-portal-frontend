@@ -1,5 +1,5 @@
 import React from "react";
-import { render, screen} from "@testing-library/react";
+import { render, screen } from "@testing-library/react";
 import ApplyCert1 from "./ApplyCert1";
 import { Provider } from "react-redux";
 import { store } from "src/store/store";

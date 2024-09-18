@@ -2,57 +2,33 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import styles from "src/components/TopNav/TopNav.module.css";
-import { getUser } from "src/store/user/userSlice";
-import { useSelector } from "react-redux";
 
 type TopNavProps = {
-  onNavLinkClick: () => void;
-  forMobile: boolean;
+  onNavLinkClick: () => void; forMobile: boolean;
 };
 
 const TopNav: React.FC<TopNavProps> = ({ onNavLinkClick, forMobile = false }) => {
   const { t } = useTranslation();
-  const user: IUser = useSelector(getUser);
   const mainContentRef = useRef<HTMLDivElement | null>(null);
-  const organizationLength = user.businesses?.length;
-  const organizationId = organizationLength === 1 ? user.businesses?.[0]?.id : null;
-  const NAVIGATION_LINKS = [
-    {
-      name: "Overview",
-      url: "/dashboard",
-      location: "left",
-    },
-    // {
-    //   name: "Business Details",
-    //   url: organizationLength === 1 ? `/businesses/detail/${organizationId}` : "/businesses",
-    //   location: "left",
-    // },
-    {
-      name: "Resources",
-      url: "/resources",
-      location: "right",
-    },
-    {
-      name: "Help",
-      url: "/help",
-      location: "right",
-    },
-  ];
+  const NAVIGATION_LINKS = [{
+    name: "Overview", url: "/dashboard", location: "left",
+  }, {
+    name: "Resources", url: "/resources", location: "right",
+  }, {
+    name: "Help", url: "/help", location: "right",
+  }];
 
   useEffect(() => {
     if (window.location.hash === "#main-content") {
       mainContentRef.current?.focus();
     }
-    const organizationLength = user.businesses?.length;
-    const organizationId = organizationLength === 1 ? user.businesses?.[0]?.id : null;
   }, []);
 
   const handleClick = () => {
     onNavLinkClick();
   };
 
-  return (
-    <nav aria-label="Top navigation" className={`${styles.container}`}>
+  return (<nav aria-label="Top navigation" className={`${styles.container}`}>
       {/*<a href="#main-content" className={`${styles.skipLink}`}>*/}
       {/*  Skip to Main Content*/}
       {/*</a>*/}
@@ -74,8 +50,7 @@ const TopNav: React.FC<TopNavProps> = ({ onNavLinkClick, forMobile = false }) =>
               >
                 {t(item.name)}
               </Link>
-            </li>
-          ))}{" "}
+            </li>))}{" "}
         </ul>
       </div>
       <div className={`${styles.rightLinks}`}>
@@ -93,12 +68,10 @@ const TopNav: React.FC<TopNavProps> = ({ onNavLinkClick, forMobile = false }) =>
               >
                 {t(item.name)}
               </Link>
-            </li>
-          ))}{" "}
+            </li>))}{" "}
         </ul>
       </div>
-    </nav>
-  );
+    </nav>);
 };
 
 export default TopNav;

@@ -8,29 +8,24 @@ interface IPillProps {
 }
 
 const Pill: React.FC<IPillProps> = ({ message, type }) => {
-  const {t} = useTranslation();
+  const { t } = useTranslation();
   message = t(message);
   const type2icon = {
-    "in-progress": "schedule",
-    "valid": "check_circle",
-    "error": "cancel",
-    "warning": "warning"
-  }
+    "in-progress": "schedule", "valid": "check_circle", "error": "cancel", "warning": "warning",
+  };
   const icon = type2icon[type];
 
-  return (
-    <div className={`${styles.pillContainer} ${styles["pill-" + type]}`}>
+  return (<div className={`${styles.pillContainer} ${styles["pill-" + type]}`}>
       <svg
         className={`usa-icon ${styles.pillIcon}`}
-        
+
         focusable="false"
         data-testid="pill-icon"
       >
         <use xlinkHref={`/assets/img/sprite.svg#${icon}`}></use>
       </svg>
       <div className={`${styles.pillMessage}`}>{t(message)}</div>
-    </div>
-  );
+    </div>);
 };
 
 export default Pill;

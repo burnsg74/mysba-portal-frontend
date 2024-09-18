@@ -42,26 +42,26 @@ const BusinessDetail = () => {
     return null;
   }
 
-  const mailing_address = (<>{business?.mailing_address_street}<br/>
+  const mailing_address = (<>{business?.mailing_address_street}<br />
     {business?.mailing_address_city}, {business?.mailing_address_state} {business?.mailing_address_zipcode}</>);
 
-  const business_address = (<>{business?.business_address_street}<br/>
+  const business_address = (<>{business?.business_address_street}<br />
     {business?.business_address_city}, {business?.business_address_state} {business?.business_address_zipcode}</>);
 
   return (<div data-testid="page-business-details" className={`${styles.container}`}>
     {organizationLength > 1 && (<div className={"grid-row"}>
-        <div className={"grid-col"}>
-          <button
-            type="button"
-            className="usa-button usa-button--outline"
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            {t("Back")}
-          </button>
-        </div>
-      </div>)}
+      <div className={"grid-col"}>
+        <button
+          type="button"
+          className="usa-button usa-button--outline"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          {t("Back")}
+        </button>
+      </div>
+    </div>)}
 
     <div className={`grid-row ${styles.headerRow}`}>
       <div className={`grid-col-auto ${styles.headerIcon}`}>

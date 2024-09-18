@@ -128,7 +128,7 @@ interface IDistrictOffice {
 
 interface ICardProps {
   icon: string;
-  title: string| JSX.Element;
+  title: string | JSX.Element;
   body: JSX.Element;
   detailsPage: string;
   hideDetails?: boolean;
@@ -168,10 +168,4 @@ interface ILibraryItem {
   title: string;
   description: string;
   link: string;
-}
-
-declare module "@uswds/uswds" {
-  export const USFlag: any;
-  export const DotGov: any;
-  export const HttpsIcon: any;
 }

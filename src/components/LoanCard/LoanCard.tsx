@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 import styles from "src/components/LoanCard/LoanCard.module.css";
 import LoanCardIcon from "src/assets/loan-card-icon.svg";
 
-export const LoanCard: React.FC<ILoanCardProps> = ({ loan, hideDetails = false }) => {
+export const LoanCard: React.FC<ILoanCardProps> = ({ loan }) => {
   const { t } = useTranslation();
 
   return (<Card
@@ -18,10 +18,10 @@ export const LoanCard: React.FC<ILoanCardProps> = ({ loan, hideDetails = false }
       </div>
       <div className="grid-col-auto">
         {loan.program_description === "504 Loan" ? (<div className={styles.bodyRowRightGroup}>
-            {`Amount to be Current: ${new Intl.NumberFormat("en-US", {
-              style: "currency", currency: "USD",
-            }).format(loan.amount_to_be_current)}`}
-          </div>) : (<div className={styles.bodyRowRightGroup}>
+          {`Amount to be Current: ${new Intl.NumberFormat("en-US", {
+            style: "currency", currency: "USD",
+          }).format(loan.amount_to_be_current)}`}
+        </div>) : (<div className={styles.bodyRowRightGroup}>
           {`${new Intl.NumberFormat("en-US", {
             style: "currency", currency: "USD",
           }).format(loan.amount_to_be_current)}`} due on {loan.payment_due_date}

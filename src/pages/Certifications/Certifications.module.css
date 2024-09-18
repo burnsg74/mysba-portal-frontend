@@ -3,12 +3,14 @@
     flex-direction: column;
     gap: 20px;
 }
+
 .alertsContainer {
     display: flex;
     flex-direction: column;
     gap: 10px;
     margin-top: 40px;
 }
+
 .titleContainer {
     align-items: center;
     display: flex;
@@ -264,9 +266,9 @@
 }
 
 .footerBtnOutline:focus {
-  box-shadow: 0 0 0 3px #05fc;
-  border-radius: 2px;
-  color: var(--Brand-Secondary-Bright-Blue);
+    box-shadow: 0 0 0 3px #05FC;
+    border-radius: 2px;
+    color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .footerBtn {
@@ -333,9 +335,8 @@
 .toolTip {
     position: relative;
     display: inline-block;
-    margin: auto;
-    min-width:44px;
-    margin-right:0px;
+    min-width: 44px;
+    margin: auto 0 auto auto;
     padding-right: 20px;
 }
 

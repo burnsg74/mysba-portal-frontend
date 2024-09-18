@@ -7,11 +7,10 @@ import styles from "src/components/LearningCenterCard/LearningCenterCard.module.
 import { useTranslation } from "react-i18next";
 
 const LearningCenterCard: React.FC<ILearningCenterCardProps> = ({
-  learningCenter,
-}) => {
+                                                                  learningCenter,
+                                                                }) => {
   const { t } = useTranslation();
-  return (
-    <div className={`${styles.usaCardContainer}`}>
+  return (<div className={`${styles.usaCardContainer}`}>
       {/* Header */}
       <div className={`usa-card__header ${styles.usaCardHeader}`}>
         <div className={`usa-card__heading ${styles.usaCardHeading}`}>
@@ -35,7 +34,7 @@ const LearningCenterCard: React.FC<ILearningCenterCardProps> = ({
               >
                 <svg
                   className={`usa-icon ${styles.launchIcon}`}
-                  
+
                   focusable="false"
                 >
                   <title>{t("Open in a new window")}</title>
@@ -62,22 +61,17 @@ const LearningCenterCard: React.FC<ILearningCenterCardProps> = ({
         </div>
       </div>
       {/* List of items in library */}
-      {learningCenter.library.map((item) => (
-        <React.Fragment key={item.id}>
+      {learningCenter.library.map((item) => (<React.Fragment key={item.id}>
           <div className={`${styles.videoContainer}`}>
             <button
-              onClick={()=> window.open(item.link, "_blank")}
+              onClick={() => window.open(item.link, "_blank")}
               className={`${styles.videoHref}`}
               aria-label={`Go to ${item.title}`}
             >
               <div className={` ${styles.videoRow}`}>
                 <div className={` ${styles.videoRowImage}`}>
                   <img
-                    src={
-                      item.type === "infographic"
-                        ? InfographicImage
-                        : VideoImage
-                    }
+                    src={item.type === "infographic" ? InfographicImage : VideoImage}
                     alt={item.type === "infographic" ? "Infographic" : "Video"}
                     className={`${styles.videoIcon}`}
                   />
@@ -98,8 +92,7 @@ const LearningCenterCard: React.FC<ILearningCenterCardProps> = ({
               </div>
             </button>
           </div>
-        </React.Fragment>
-      ))}
+        </React.Fragment>))}
       <div className={`usa-card__footer ${styles.usaCardFooter}`}>
         <button
           type="button"
@@ -111,15 +104,14 @@ const LearningCenterCard: React.FC<ILearningCenterCardProps> = ({
           </div>
           <svg
             className={`${styles.viewCourseIcon}`}
-            
+
             focusable="false"
           >
             <use xlinkHref="/assets/img/sprite.svg#launch"></use>
           </svg>
         </button>
       </div>
-    </div>
-  );
+    </div>);
 };
 
 export default LearningCenterCard;

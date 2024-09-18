@@ -5,7 +5,6 @@ import { getUser } from "src/store/user/userSlice";
 import { useTranslation } from "react-i18next";
 import styles from "src/pages/Profile/Profile.module.css";
 import Field from "src/components/Field/Field";
-import { useNavigate } from "react-router-dom";
 import ProfileChangePasswordModal from "src/components/ProfileChangePasswordModal/ProfileChangePasswordModal";
 
 const Profile = () => {
@@ -30,7 +29,7 @@ const Profile = () => {
       sessionStorage.clear();
       localStorage.clear();
       sessionStorage.setItem("clsLogoutNeeded", "true");
-      oktaAuth.signOut();
+      await oktaAuth.signOut();
       window.location.href = "/";
       return;
     }
@@ -44,8 +43,7 @@ const Profile = () => {
     window.location.href = "/";
   };
 
-  return (
-    <div data-testid="page-profile" className={`grid-row ${styles.row}`}>
+  return (<div data-testid="page-profile" className={`grid-row ${styles.row}`}>
       <div className={`grid-col ${styles.container}`}>
         <h1 className={`${styles.profileName}`}>
           {profileData?.profile?.crm?.first_name + " " + profileData?.profile?.crm?.last_name}
@@ -71,7 +69,6 @@ const Profile = () => {
         </div>
       </div>
       {showChangePasswordModal && <ProfileChangePasswordModal handleCloseModal={handleCloseModal} />}
-    </div>
-  );
+    </div>);
 };
 export default Profile;

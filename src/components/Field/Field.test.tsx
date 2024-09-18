@@ -1,17 +1,17 @@
-import React from 'react';
-import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom';
-import Field from './Field'; // Adjust the import path as necessary
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import "@testing-library/jest-dom";
+import Field from "./Field"; // Adjust the import path as necessary
 
 // Mocking the useTranslation hook
-jest.mock('react-i18next', () => ({
+jest.mock("react-i18next", () => ({
   useTranslation: () => ({
-    t: (key:string) => `translated_${key}` // Prefix translated texts to identify them easily
-  })
+    t: (key: string) => `translated_${key}`, // Prefix translated texts to identify them easily
+  }),
 }));
 
-describe('Field Component', () => {
-  it('renders the label and value correctly', () => {
+describe("Field Component", () => {
+  it("renders the label and value correctly", () => {
     const label = "Test Label";
     const value = "Test Value";
     render(<Field label={label} value={value} />);
@@ -20,7 +20,7 @@ describe('Field Component', () => {
     expect(screen.getByText(value)).toBeInTheDocument();
   });
 
-  it('supports ReactNode as value', () => {
+  it("supports ReactNode as value", () => {
     const label = "Node Label";
     const nodeValue = <span>Node Value</span>;
     render(<Field label={label} value={nodeValue} />);

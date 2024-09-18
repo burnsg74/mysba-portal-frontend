@@ -11,7 +11,7 @@ import showNavSlice from "src/store/showNav/showNavSlice";
 const signOutMock = jest.fn(() => Promise.resolve());
 // @ts-ignore
 global.SbaWaffleMenu = jest.fn(() => ({
-  renderMenuIcon: jest.fn()
+  renderMenuIcon: jest.fn(),
 }));
 
 jest.mock("@okta/okta-react", () => ({
@@ -22,49 +22,43 @@ jest.mock("@okta/okta-react", () => ({
   }),
 }));
 
-jest.mock('react-i18next', () => ({
+jest.mock("react-i18next", () => ({
   useTranslation: () => ({
-    t: jest.fn((key) => key),
-    i18n: {
-      changeLanguage: jest.fn(() => Promise.resolve())
-    }
-  })
+    t: jest.fn((key) => key), i18n: {
+      changeLanguage: jest.fn(() => Promise.resolve()),
+    },
+  }),
 }));
 
 const mockStore = configureStore({
-  reducer: {
+  reducer          : {
     showNav: showNavSlice,
-  },
-  preloadedState: {
+  }, preloadedState: {
     showNav: { value: true, showProfile: true },
   },
 });
 
 const mockStoreHidden = configureStore({
-  reducer: {
+  reducer          : {
     showNav: showNavSlice,
-  },
-  preloadedState: {
+  }, preloadedState: {
     showNav: { value: false, showProfile: false },
   },
 });
 
-const setup = (store: Store) =>
-  render(
-    <Provider store={store}>
-      <MemoryRouter>
-        <Header />
-      </MemoryRouter>
-    </Provider>
-  );
+const setup = (store: Store) => render(<Provider store={store}>
+  <MemoryRouter>
+    <Header />
+  </MemoryRouter>
+</Provider>);
 
 describe("Header Component", () => {
   it("renders the language toggle button and changes language on click", () => {
     setup(mockStore);
     const langButton = screen.getByText("Español");
-    expect(langButton).toBeInTheDocument()
+    expect(langButton).toBeInTheDocument();
     fireEvent.click(langButton);
-    expect(langButton.textContent).toBe("English")
+    expect(langButton.textContent).toBe("English");
   });
 
   it("shows the profile link if showProfile is true", () => {
@@ -75,7 +69,7 @@ describe("Header Component", () => {
   it("handles logout correctly", async () => {
     setup(mockStoreHidden);
     const logoutButton = screen.getByTestId("log-out-button");
-    expect(logoutButton).toBeInTheDocument()
+    expect(logoutButton).toBeInTheDocument();
     fireEvent.click(logoutButton);
     await waitFor(() => {
       expect(signOutMock).toHaveBeenCalled();

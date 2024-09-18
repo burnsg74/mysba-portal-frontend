@@ -30,7 +30,7 @@
     width: 100%;
 }
 
-.input+[class*=__label]::before {
+.input + [class*=__label]::before {
     left: 20px;
 }
 

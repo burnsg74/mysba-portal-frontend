@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import styles from "src/components/Modal/Modal.module.css";
 import { useTranslation } from "react-i18next";
 import ReactFocusLock from "react-focus-lock";
-import Alert from "src/components/Alert/Alert";
+import {Alert} from "src/components/Alert/Alert";
 
 interface ImageAndAlt {
   image: string;
@@ -25,19 +25,19 @@ interface ModalProps {
 }
 
 const ModalComponent = ({
-  onClose,
-  prevModal = (stepData: {}, step?: number) => {},
-  title = "",
-  totalSteps = 0,
-  completedSteps = 0,
-  ImageAndAlt,
-  contentTitle,
-  contentMessage,
-  children,
-  footerContent,
-  hideCloseButton=false,
-  errorMessage
-}: ModalProps) => {
+                          onClose,
+                          prevModal = (stepData: {}, step?: number) => {},
+                          title = "",
+                          totalSteps = 0,
+                          completedSteps = 0,
+                          ImageAndAlt,
+                          contentTitle,
+                          contentMessage,
+                          children,
+                          footerContent,
+                          hideCloseButton = false,
+                          errorMessage,
+                        }: ModalProps) => {
   const { t } = useTranslation();
   const footerRef = useRef<HTMLDivElement>(null);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -45,9 +45,9 @@ const ModalComponent = ({
 
   useEffect(() => {
     if (footerRef.current && contentRef.current) {
-      contentRef.current.style.paddingBottom = `${footerRef.current.getBoundingClientRect().height + 40}px`
+      contentRef.current.style.paddingBottom = `${footerRef.current.getBoundingClientRect().height + 40}px`;
     }
-  }, [footerContent])
+  }, [footerContent]);
 
   const closeModal = () => {
     if (onClose) onClose();
@@ -59,9 +59,8 @@ const ModalComponent = ({
     return { id: `step-${index}`, status: "incomplete", stepNum: index };
   });
 
-  return (
-      <div data-testid="modal" className={`${styles.overlay}`}>
-        <ReactFocusLock>
+  return (<div data-testid="modal" className={`${styles.overlay}`}>
+      <ReactFocusLock>
         <div className={`${styles.container}`}>
           <div className={`${styles.header}`}>
             <span className={`${styles.headerTitle}`}>{t(title)}</span>
@@ -79,7 +78,7 @@ const ModalComponent = ({
             >
               {" "}
               {t("Close")}
-              <svg  focusable="false" width="24" height="24" style={{ fill: "#71767A" }}>
+              <svg focusable="false" width="24" height="24" style={{ fill: "#71767A" }}>
                 <use xlinkHref="/assets/img/sprite.svg#close"></use>
               </svg>
             </button>)}
@@ -96,25 +95,21 @@ const ModalComponent = ({
                   const statusClass = `usa-step-indicator__segment--${status}`;
                   const statusClassName = styles[statusClass];
 
-                  return (
-                    <li
+                  return (<li
                       key={step.id}
                       className={`usa-step-indicator__segment ${statusClassName}`}
                     >
-                      {isComplete && (
-                        <button
+                      {isComplete && (<button
                           data-testid="step-indicator"
                           className={styles.stepIndicatorbutton}
                           onClick={() => prevModal({}, step.stepNum + 1)}
-                        >&nbsp;</button>
-                      )}
-                    </li>
-                  );
+                        >&nbsp;</button>)}
+                    </li>);
                 })}
               </ol>
             </div>
-            {errorMessage && <div  className={`${styles.alertContainer}`}>
-              <Alert message={errorMessage} type={"error"}/>
+            {errorMessage && <div className={`${styles.alertContainer}`}>
+              <Alert message={errorMessage} type={"error"} />
             </div>}
           </div>)}
           <div ref={contentRef} className={`${styles.contentContainer}`}>
@@ -129,9 +124,8 @@ const ModalComponent = ({
           </div>
           {footerContent && <div ref={footerRef} className={`${styles.footer}`}>{footerContent}</div>}
         </div>
-        </ReactFocusLock>
-      </div>
-  );
+      </ReactFocusLock>
+    </div>);
 };
 
 export default ModalComponent;

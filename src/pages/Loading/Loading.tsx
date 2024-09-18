@@ -10,7 +10,7 @@ import loadingIcon from "src/assets/loading.gif";
 import styles from "src/pages/Loading/Loading.module.css";
 import { useTranslation } from "react-i18next";
 import { AccessToken } from "@okta/okta-auth-js";
-import { BASE_API_URL, PORTAL_API_URL, LOAN_URL, LOAN_CLIENT_ID, LOAN_CLIENT_SECRET  } from "src/utils/constants";
+import { BASE_API_URL, LOAN_CLIENT_ID, LOAN_CLIENT_SECRET, LOAN_URL, PORTAL_API_URL } from "src/utils/constants";
 import GovBanner from "src/components/GovBanner/GovBanner";
 import SBAlogoEn from "src/assets/logo-horizontal.svg";
 import SBAlogoEs from "src/assets/logo-horizontal-spanish.svg";
@@ -74,12 +74,9 @@ const Loading = () => {
         });
 
       return {
-        profile: {
-          sso: ssoProfile,
-          crm: crmData,
-        },
-        businesses: businesses,
-        loans: loans,
+        profile      : {
+          sso: ssoProfile, crm: crmData,
+        }, businesses: businesses, loans: loans,
       };
     }
 
@@ -92,26 +89,21 @@ const Loading = () => {
     }
 
     const data = JSON.stringify({
-      individuals: [
-        {
-          firstName: "",
-          lastName: "",
-          email: email,
-        },
-      ],
+      individuals: [{
+        firstName: "", lastName: "", email: email,
+      }],
     });
 
     // Get CRM Profile
     const config = {
-      method: "post",
+      method       : "post",
       maxBodyLength: Infinity,
-      url: `${BASE_API_URL}/individuals/individual?task=read`,
-      agent: false,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${accessToken}`,
+      url          : `${BASE_API_URL}/individuals/individual?task=read`,
+      agent        : false,
+      headers      : {
+        "Content-Type": "application/json", Authorization: `Bearer ${accessToken}`,
       },
-      data: data,
+      data         : data,
     };
     const results = await axios.request(config).catch(error => {
       console.log("Error", error);
@@ -119,27 +111,23 @@ const Loading = () => {
     let individual = results?.data.individuals[0];
     if (!individual) {
       individual = {
-        firstName: info.given_name ?? "",
-        lastName: info.family_name ?? "",
-        email: info.email ?? "",
+        firstName: info.given_name ?? "", lastName: info.family_name ?? "", email: info.email ?? "",
       };
     }
     const crmData: IUserProfile["crm"] = {
-      first_name: individual.firstName ?? "",
-      last_name: individual.lastName ?? "",
-      email: individual.email ?? "",
+      first_name: individual.firstName ?? "", last_name: individual.lastName ?? "", email: individual.email ?? "",
     };
 
     // Get Loans
     let loansData;
     try {
       await axios
-        .get(`${LOAN_URL}/${email}`, { headers: {
-          Authorization: `Bearer ${accessToken}`,
-            client_id: LOAN_CLIENT_ID,
-            client_secret: LOAN_CLIENT_SECRET,
-        }}).then(response => {
-          if (response.data === 'No loan information is available for given user') {
+        .get(`${LOAN_URL}/${email}`, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`, client_id: LOAN_CLIENT_ID, client_secret: LOAN_CLIENT_SECRET,
+          },
+        }).then(response => {
+          if (response.data === "No loan information is available for given user") {
             loansData = [];
           } else {
             loansData = response.data;
@@ -161,26 +149,23 @@ const Loading = () => {
     }
 
     const ssoProfile: IUserProfile["sso"] = {
-      given_name: info.given_name ?? "",
-      family_name: info.family_name ?? "",
-      email: info.email ?? "",
-      sub: info.sub ?? "",
-      name: info.name ?? "",
-      locale: info.locale ?? "",
+      given_name        : info.given_name ?? "",
+      family_name       : info.family_name ?? "",
+      email             : info.email ?? "",
+      sub               : info.sub ?? "",
+      name              : info.name ?? "",
+      locale            : info.locale ?? "",
       preferred_username: info.preferred_username ?? "",
-      zone_info: info.zoneinfo ?? "",
-      updated_at: info.updated_at ?? 0,
-      email_verified: info.email_verified ?? false,
-      cls_elevated: Boolean(info.cls_elevated),
+      zone_info         : info.zoneinfo ?? "",
+      updated_at        : info.updated_at ?? 0,
+      email_verified    : info.email_verified ?? false,
+      cls_elevated      : Boolean(info.cls_elevated),
     };
 
     return {
-      profile: {
-        sso: ssoProfile,
-        crm: crmData,
-        portal: portalData,
-      },
-      loans: loansData
+      profile : {
+        sso: ssoProfile, crm: crmData, portal: portalData,
+      }, loans: loansData,
     };
   };
 
@@ -255,7 +240,7 @@ const Loading = () => {
       sessionStorage.clear();
       localStorage.clear();
       sessionStorage.setItem("clsLogoutNeeded", "true");
-      oktaAuth.signOut();
+      await oktaAuth.signOut();
       return;
     }
 
@@ -267,8 +252,7 @@ const Loading = () => {
     localStorage.clear();
   };
 
-  return (
-    <>
+  return (<>
       <GovBanner />
       <header className={`${styles.usaHeader}`}>
         <div className={`grid-row ${styles.usaNavContainer}`}>
@@ -278,20 +262,12 @@ const Loading = () => {
               <img
                 className={`${styles.usaLogo}`}
                 src={lang === "en" ? SBAlogoEn : SBAlogoEs}
-                alt={
-                  lang === "en"
-                    ? "U.S. Small Business Administration"
-                    : "Administración de Pequeñas Empresas de los Estados Unidos"
-                }
+                alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
               />
               <img
                 className={`${styles.usaLogoSm}`}
                 src={SBAlogoSm}
-                alt={
-                  lang === "en"
-                    ? "U.S. Small Business Administration"
-                    : "Administración de Pequeñas Empresas de los Estados Unidos"
-                }
+                alt={lang === "en" ? "U.S. Small Business Administration" : "Administración de Pequeñas Empresas de los Estados Unidos"}
               />
             </a>
           </div>
@@ -321,7 +297,6 @@ const Loading = () => {
         </div>
         <div className={`${styles.loadingText}`}>{loadingMessage}</div>
       </div>
-    </>
-  );
+    </>);
 };
 export default Loading;

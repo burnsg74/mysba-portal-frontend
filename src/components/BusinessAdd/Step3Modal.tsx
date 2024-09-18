@@ -28,21 +28,16 @@ interface Step3ModalProps {
 const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, handleContinue, handleBack }) => {
   const { t } = useTranslation();
   const [stepData, setStepData] = useState({
-    ein: businessData.ein,
-    uei: businessData.uei,
-    legal_entity: businessData.legal_entity,
+    ein: businessData.ein, uei: businessData.uei, legal_entity: businessData.legal_entity,
   });
   const [errors, setErrors] = useState({
-    ein: '',
-    uei: ''
+    ein: "", uei: "",
   });
 
   useEffect(() => {
     setStepData({
-      ein: businessData.ein,
-      uei: businessData.uei,
-      legal_entity: businessData.legal_entity,
-    })
+      ein: businessData.ein, uei: businessData.uei, legal_entity: businessData.legal_entity,
+    });
   }, []);
 
   const legalEntityOptions = [{ value: "llc", label: "Limited Liability Company" }, {
@@ -60,11 +55,11 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
   function formValidation() {
     let newErrors = {};
     let isValid = true;
-    if (!(isNineDigitNumber(stepData.ein)  || stepData.ein === '')){
+    if (!(isNineDigitNumber(stepData.ein) || stepData.ein === "")) {
       newErrors = { ...newErrors, ein: "Your EIN must be a 9 digit number" };
       isValid = false;
     }
-    if (!(isTwelveChars(stepData.uei) || stepData.uei === '')){
+    if (!(isTwelveChars(stepData.uei) || stepData.uei === "")) {
       newErrors = { ...newErrors, uei: "Your UEI must be 12 characters long" };
       isValid = false;
     }
@@ -79,7 +74,7 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
   }
 
   function isTwelveChars(value: string) {
-    return (value.length === 12)
+    return (value.length === 12);
   }
 
   function handleContinueBtnClick() {
@@ -108,8 +103,7 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
     completedSteps={2}
     ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
     contentTitle={t("Do you have these details yet? \n" + "If not, just skip.")}
-    footerContent={(
-      <div className={styles.footerContainer}>
+    footerContent={(<div className={styles.footerContainer}>
         <div className={styles.footerButtonContainer}>
           <button
             type="button"
@@ -129,10 +123,10 @@ const Step3Modal: React.FC<Step3ModalProps> = ({ businessData, handleClose, hand
         <div>
           <button
             className={`${styles.skipBtn}`}
-            onClick={() => handleSkipClick()}>Skip</button>
+            onClick={() => handleSkipClick()}>Skip
+          </button>
         </div>
-      </div>
-    )}
+      </div>)}
   >
     <div className={`${styles.inputContainer}`}>
       <ModalInputText name={"ein"} label={"EIN"}

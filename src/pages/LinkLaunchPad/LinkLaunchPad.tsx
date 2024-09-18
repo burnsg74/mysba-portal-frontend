@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 import { setNav } from "src/store/showNav/showNavSlice";
@@ -11,7 +11,7 @@ const LinkLaunchPad = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { t } = useTranslation();
-  const [isModalOpen, setIsModalOpen] = useState<boolean>(false)
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const [iframeSize, setIframeSize] = useState({ width: 1055, height: 755 });
 
   useEffect(() => {
@@ -40,20 +40,19 @@ const LinkLaunchPad = () => {
   };
 
   const handleContinueBtnClick = () => {
-    setIsModalOpen(true)
-  }
+    setIsModalOpen(true);
+  };
 
   const closeModal = () => {
-    setIsModalOpen(false)
-  }
+    setIsModalOpen(false);
+  };
 
   const completeModal = () => {
-    dispatch(setNav(true))
-    navigate("/certifications")
-  }
+    dispatch(setNav(true));
+    navigate("/certifications");
+  };
 
-  const modalFooterContent = (
-    <>
+  const modalFooterContent = (<>
       <button
         type="button"
         className={`usa-button usa-button--outline  ${styles.footerBtnOutline}`}
@@ -61,14 +60,13 @@ const LinkLaunchPad = () => {
       >
         {t("Cancel")}
       </button>
-      <button type="button" data-testid="modal1-next" className={`usa-button ${styles.footerBtn}`} onClick={completeModal}>
+      <button type="button" data-testid="modal1-next" className={`usa-button ${styles.footerBtn}`}
+              onClick={completeModal}>
         {t("All Done")}
       </button>
-    </>
-  );
+    </>);
 
-  return (
-    <>
+  return (<>
       <div className={` ${styles.mainContainer}`}>
         {/* Launchpad Header */}
         <div className={`banner ${styles.contentHeader}`}>
@@ -82,9 +80,7 @@ const LinkLaunchPad = () => {
           <div className={`${styles.textContainer}`}>
             <div className={`${styles.title}`}>{t("Let's link your certification")}</div>
             <div className={`${styles.message}`}>
-              {t(
-                "You are connecting an existing account to your new MySBA account. Log in below to finish connecting this account."
-              )}
+              {t("You are connecting an existing account to your new MySBA account. Log in below to finish connecting this account.")}
             </div>
           </div>
           <button type="button" className={`usa-button ${styles.footerBtn}`} onClick={handleContinueBtnClick}>
@@ -100,8 +96,7 @@ const LinkLaunchPad = () => {
           <div className={`${styles.tbd}`}><h1>TBD</h1></div>
         </div>
       </div>
-      {isModalOpen && (
-        <Modal
+      {isModalOpen && (<Modal
           title=""
           onClose={closeModal}
           prevModal={closeModal}
@@ -109,10 +104,8 @@ const LinkLaunchPad = () => {
           contentTitle={t("Success")}
           contentMessage={t("Your linkage was successful")}
           footerContent={modalFooterContent}
-        />
-      )}
-    </>
-  );
+        />)}
+    </>);
 };
 
 export default LinkLaunchPad;

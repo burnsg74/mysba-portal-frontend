@@ -9,7 +9,7 @@ import LinkCertModalGroup from "src/components/LinkCertModalGroup/LinkCertModalG
 import Modal from "src/components/Modal/Modal";
 import editPaperImg from "src/assets/edit-paper.svg";
 import nextSignImg from "src/assets/next-sign.svg";
-import Alert from "src/components/Alert/Alert";
+import {Alert} from "src/components/Alert/Alert";
 import styles from "src/pages/Certifications/Certifications.module.css";
 import CertificationAlert from "src/components/CertificationAlert/CertificationAlert";
 import IconPaperCert from "src/assets/icon-paper-cert.svg";
@@ -80,7 +80,7 @@ const Certifications = () => {
       <div className={`${styles.iconContainer}`}>
         <svg
           className={`usa-icon  ${styles.usaIcon}`}
-          
+
           focusable="false"
           height="18px"
           width="18px"
@@ -133,7 +133,7 @@ const Certifications = () => {
         </div>
       </div>
       {/* No Certification Message */}
-      {! user.certifications?.length && (<>
+      {!user.certifications?.length && (<>
         <div className={`${styles.noCertificationMessageContainer}`}>
           <img src={IconPaperCert} alt={"No Cert"} className={`${styles.noCertsIcon}`} />
           <div className={` ${styles.noCertsText}`}>
@@ -147,10 +147,10 @@ const Certifications = () => {
           message={<>
             {t("SBA certification is essential for businesses seeking government contracts, as a percentage of these contracts is reserved for certified small enterprises. This designation, granted by the Small Business Administration, verifies a business's size, ownership, and standards, providing a competitive edge in accessing exclusive opportunities and tailored support programs.")}
             <div className={`${styles.learnMore}`}>
-            <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank">
-              {t("Learn more about certifications") }
-              <img src={IconOpenInNew} alt={"Open in New Tab"}/>
-            </a>
+              <a href="https://www.sba.gov/federal-contracting/contracting-assistance-programs" target="_blank">
+                {t("Learn more about certifications")}
+                <img src={IconOpenInNew} alt={"Open in New Tab"} />
+              </a>
             </div>
           </>}
         />
@@ -158,13 +158,12 @@ const Certifications = () => {
 
       {user.certifications && [...user.certifications]
         .sort((a, b) => a.certification_type.localeCompare(b.certification_type))
-        .map((certification) => (
-          <div key={certification.certification_id} className={`grid-row`}>
-            <div className="grid-col">
-              <CertificationCard key={certification.certification_id} certification={certification} />
-            </div>
-          </div>))}
-      </div>
+        .map((certification) => (<div key={certification.certification_id} className={`grid-row`}>
+          <div className="grid-col">
+            <CertificationCard key={certification.certification_id} certification={certification} />
+          </div>
+        </div>))}
+    </div>
 
     {/* Apply for a Certification Modal */}
     {isApplyCertModal1Open && (<Modal
@@ -195,7 +194,7 @@ const Certifications = () => {
                         {t("Socially and Economically Disadvantaged Business Certification (8A)")}
                       </span>
                   <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`}  focusable="false">
+                        <svg className={`usa-icon ${styles.infoIcon}`} focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -229,7 +228,7 @@ const Certifications = () => {
                         {t("Historically Underutilized Business Zone Certification (HUBZone)")}
                       </span>
                   <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`}  focusable="false">
+                        <svg className={`usa-icon ${styles.infoIcon}`} focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -260,7 +259,7 @@ const Certifications = () => {
                         {t("Veteran-Owned Small Business (VOSB) Certification")}
                       </span>
                   <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`}  focusable="false">
+                        <svg className={`usa-icon ${styles.infoIcon}`} focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>
@@ -291,7 +290,7 @@ const Certifications = () => {
                         {t("Women-Owned Small Business (WOSB) Certification")}
                       </span>
                   <span className={`${styles.toolTip}`}>
-                        <svg className={`usa-icon ${styles.infoIcon}`}  focusable="false">
+                        <svg className={`usa-icon ${styles.infoIcon}`} focusable="false">
                           <use xlinkHref="/assets/img/sprite.svg#info_outline"></use>
                         </svg>
                         <span className={`${styles.toolTipText}`}>

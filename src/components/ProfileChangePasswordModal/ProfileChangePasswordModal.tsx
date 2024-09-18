@@ -20,7 +20,7 @@ const ProfileChangePasswordModal: React.FC<ProfileChangePasswordModalProps> = ({
           handleClose={handleCloseModal}
           handleContinue={handleContinue} />;
       case 2:
-        return <Step2Modal handleClose={handleCloseModal} />
+        return <Step2Modal handleClose={handleCloseModal} />;
       default:
         return null;
     }

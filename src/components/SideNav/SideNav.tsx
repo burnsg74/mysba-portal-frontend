@@ -4,46 +4,33 @@ import { useTranslation } from "react-i18next";
 import styles from "src/components/SideNav/SideNav.module.css";
 
 type SideNavProps = {
-  onNavLinkClick: () => void;
-  forMobile: boolean;
+  onNavLinkClick: () => void; forMobile: boolean;
 };
 
 const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile = false }) => {
   const { t } = useTranslation();
-  const NAVIGATION_LINKS = [
-    {
-      name: "Overview",
-      url: "/dashboard",
-      location: "left",
-    },
-    // {
+  const NAVIGATION_LINKS = [{
+    name: "Overview", url: "/dashboard", location: "left",
+  }, // {
     //   name: "Business Details",
     //   url: "/businesses",
     //   location: "left",
     // },
     {
-      name: "Resources",
-      url: "/resources",
-      location: "right",
-    },
-    {
-      name: "Help",
-      url: "/help",
-      location: "right",
-    },
-  ];
+      name: "Resources", url: "/resources", location: "right",
+    }, {
+      name: "Help", url: "/help", location: "right",
+    }];
 
   const handleClick = () => {
     onNavLinkClick();
   };
 
-  return (
-    <nav aria-label="Side navigation" className={`${styles.container}`}>
+  return (<nav aria-label="Side navigation" className={`${styles.container}`}>
       <a href="#main-content" className={`${styles.skipLink}`}>
         Skip to Main Content
       </a>
-      {NAVIGATION_LINKS.map(item => (
-        <Link
+      {NAVIGATION_LINKS.map(item => (<Link
           to={item.url}
           key={item.name}
           aria-label={t(item.name)}
@@ -60,10 +47,8 @@ const SideNav: React.FC<SideNavProps> = ({ onNavLinkClick, forMobile = false }) 
           >
             {t(item.name)}
           </div>
-        </Link>
-      ))}{" "}
-    </nav>
-  );
+        </Link>))}{" "}
+    </nav>);
 };
 
 export default SideNav;

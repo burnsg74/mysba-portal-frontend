@@ -5,26 +5,24 @@ import "@testing-library/jest-dom";
 
 jest.mock("react-i18next", () => ({
   useTranslation: () => ({
-    t: (key:string) => key, // returns the key as the translated value
+    t: (key: string) => key, // returns the key as the translated value
   }),
 }));
 
 describe("LearningCenterCard", () => {
   const learningCenterMock = {
-    image: "image-url.png",
-    title: "Test Course",
-    id: 123,
+    image      : "image-url.png",
+    title      : "Test Course",
+    id         : 123,
     description: "A brief description of the course.",
-    link: "https://example.com",
-    library: [
-      {
-        id: 1,
-        type: "video",
-        title: "Introduction Video",
-        description: "A short intro video.",
-        link: "https://video.example.com",
-      },
-    ],
+    link       : "https://example.com",
+    library    : [{
+      id         : 1,
+      type       : "video",
+      title      : "Introduction Video",
+      description: "A short intro video.",
+      link       : "https://video.example.com",
+    }],
   };
 
   it("renders correctly with provided props", () => {

@@ -19,7 +19,6 @@ interface Step1ModalProps {
 
 const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) => {
   const change_password_url = `${PORTAL_API_URL}/sso-change-password`;
-  const [hasErrors, setHasErrors] = useState(false);
   const [hasNewPasswordErrors, setHasNewPasswordErrors] = useState(false);
   const [hasPasswordMatchErrors, setHasPasswordMatchErrors] = useState(false);
   const [isSaveDisabled, setIsSaveDisabled] = useState(false);
@@ -29,19 +28,17 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   const { oktaAuth, authState } = useOktaAuth();
   const { t } = useTranslation();
   const [stepData, setStepData] = useState({
-    currentPassword: "",
-    newPassword1: "",
-    newPassword2: "",
+    currentPassword: "", newPassword1: "", newPassword2: "",
   });
   const profileData: IUser = useSelector(getUser);
   const [highlightInvalid, setHighlightInvalid] = useState({
-    minLength: false,
-    lowerCase: false,
-    upperCase: false,
-    number: false,
+    minLength       : false,
+    lowerCase       : false,
+    upperCase       : false,
+    number          : false,
     specialCharacter: false,
-    other: false,
-    lastPasswords: false,
+    other           : false,
+    lastPasswords   : false,
   });
 
   interface ApiErrorMessages {
@@ -52,19 +49,13 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   // Okta HTTP 400 E0000001 Api validation failed: password\npassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).":
 
   const apiErrorMessages: ApiErrorMessages = {
-    "Okta password update aborted: Previous password is incorrect.":
-      "The current password you entered is incorrect. Please try again.",
-    "Okta HTTP 403 E0000006 You do not have permission to perform the requested action":
-      "Okta Admin: You can't use this interface to change your password.",
-    "Okta HTTP 400 E0000001 Api validation failed: password password: Password has been used too recently":
-      "Password has been used too recently. Please choose a different password.",
-    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password has been used too recently":
-      "Password has been used too recently. Please choose a different password.",
-    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password cannot be your current password":
-      "Password has been used too recently. Please choose a different password.",
-    "Old/current password is invalid.": "The current password you entered is incorrect. Please try again.",
-    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).":
-      "Password cannot contain parts of the username or match the last 24 passwords used.",
+    "Okta password update aborted: Previous password is incorrect."                                                                                                                                                                                                                                                                                                         : "The current password you entered is incorrect. Please try again.",
+    "Okta HTTP 403 E0000006 You do not have permission to perform the requested action"                                                                                                                                                                                                                                                                                     : "Okta Admin: You can't use this interface to change your password.",
+    "Okta HTTP 400 E0000001 Api validation failed: password password: Password has been used too recently"                                                                                                                                                                                                                                                                  : "Password has been used too recently. Please choose a different password.",
+    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password has been used too recently"                                                                                                                                                                                                                                                                   : "Password has been used too recently. Please choose a different password.",
+    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password cannot be your current password"                                                                                                                                                                                                                                                              : "Password has been used too recently. Please choose a different password.",
+    "Old/current password is invalid."                                                                                                                                                                                                                                                                                                                                      : "The current password you entered is incorrect. Please try again.",
+    "Okta HTTP 400 E0000001 Api validation failed: passwordpassword: Password requirements were not met. Password requirements: at least 16 characters, a lowercase letter, an uppercase letter, a number, a symbol, no parts of your username, does not include your first name, does not include your last name. Your password cannot be any of your last 24 password(s).": "Password cannot contain parts of the username or match the last 24 passwords used.",
   };
   const getUserFriendlyError = (apiError: string): string => {
     return apiErrorMessages[apiError] || "An unexpected error occurred. Please try again later.";
@@ -83,11 +74,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     setCurrentPasswordErrorMsg("");
     setChangePasswordErrorMsg("");
 
-    if (
-      profileData.profile &&
-      profileData.profile.sso &&
-      !isPasswordValid(profileData.profile.sso.email, stepData.newPassword1)
-    ) {
+    if (profileData.profile && profileData.profile.sso && !isPasswordValid(profileData.profile.sso.email, stepData.newPassword1)) {
       setHasNewPasswordErrors(true);
       setIsSaveDisabled(false);
       setSaveBtnLabel("Save");
@@ -111,7 +98,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
 
     const data = {
-      userName: profileData.profile?.sso?.email,
+      userName   : profileData.profile?.sso?.email,
       clsElevated: profileData.profile?.sso?.cls_elevated,
       oldPassword: stepData.currentPassword,
       newPassword: stepData.newPassword1,
@@ -139,14 +126,10 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
             let apiErrorMessage: string;
             if (Array.isArray(errorData.error)) {
               apiErrorMessage = errorData.error
-                .map((err: React.ReactNode) =>
-                  ReactDOMServer.renderToString(
-                    <>
-                      {err}
-                      <br />
-                    </>
-                  )
-                )
+                .map((err: React.ReactNode) => ReactDOMServer.renderToString(<>
+                  {err}
+                  <br />
+                </>))
                 .join("");
             } else {
               apiErrorMessage = errorData.error;
@@ -168,10 +151,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
             } else if (userFriendlyMessage === "The current password you entered is incorrect. Please try again.") {
               setCurrentPasswordErrorMsg(userFriendlyMessage);
               setChangePasswordErrorMsg(userFriendlyMessage);
-            } else if (
-              userFriendlyMessage ===
-              "Password cannot contain parts of the username or match the last 24 passwords used"
-            ) {
+            } else if (userFriendlyMessage === "Password cannot contain parts of the username or match the last 24 passwords used") {
               setCurrentPasswordErrorMsg(userFriendlyMessage);
               setChangePasswordErrorMsg(userFriendlyMessage);
             } else {
@@ -195,13 +175,13 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
     const usernameParts = username.toLowerCase().split(/[.@]/);
     const specialCharacter = /[{}<>:?|\\~!@$#%^&*_]/;
     const invalidConditions = {
-      minLength: !(password.length >= 16),
-      lowerCase: !/[a-z]/.test(password),
-      upperCase: !/[A-Z]/.test(password),
-      number: !/[0-9]/.test(password),
+      minLength       : !(password.length >= 16),
+      lowerCase       : !/[a-z]/.test(password),
+      upperCase       : !/[A-Z]/.test(password),
+      number          : !/[0-9]/.test(password),
       specialCharacter: !specialCharacter.test(password),
-      other: usernameParts.some(part => password.includes(part)),
-      lastPasswords: false,
+      other           : usernameParts.some(part => password.includes(part)),
+      lastPasswords   : false,
     };
     setHighlightInvalid(invalidConditions);
 
@@ -215,8 +195,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
   const closeModal = () => {
     handleClose();
   };
-  return (
-    <Modal
+  return (<Modal
       title={t("Change My Password")}
       onClose={closeModal}
       totalSteps={2}
@@ -224,21 +203,19 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
       ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
       contentTitle={t("Let's Change Your Password")}
       errorMessage={changePasswordErrorMsg}
-      footerContent={
-        <>
-          <button type="button" className={`usa-button usa-button--outline ${styles.cancelBtn}`} onClick={closeModal}>
-            {t("Cancel")}
-          </button>
-          <button
-            type="button"
-            className={`usa-button ${styles.continueBtn}`}
-            disabled={isSaveDisabled}
-            onClick={() => handleSaveBtnClick()}
-          >
-            {t(saveBtnLabel)}
-          </button>
-        </>
-      }
+      footerContent={<>
+        <button type="button" className={`usa-button usa-button--outline ${styles.cancelBtn}`} onClick={closeModal}>
+          {t("Cancel")}
+        </button>
+        <button
+          type="button"
+          className={`usa-button ${styles.continueBtn}`}
+          disabled={isSaveDisabled}
+          onClick={() => handleSaveBtnClick()}
+        >
+          {t(saveBtnLabel)}
+        </button>
+      </>}
     >
       <div className={`${styles.inputContainer}`}>
         <ModalInputText
@@ -286,8 +263,7 @@ const Step1Modal: React.FC<Step1ModalProps> = ({ handleClose, handleContinue }) 
           onChange={handleInputChange}
         />
       </div>
-    </Modal>
-  );
+    </Modal>);
 };
 
 export default Step1Modal;

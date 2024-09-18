@@ -22,48 +22,43 @@ const LinkCertModal3: React.FC<Step3ModalProps> = ({ businessData, handleClose, 
   });
 
   const certTranslationMap: { [key: string]: string } = {
-    "WOSB": "Women-Owned Small Business",
-    "EDWOSB": "Economically Disadvantaged Women-Owned Small Business",
-    "8a": "8(a)",
-    "8aJointVenture": "8(a) Joint Venture",
-    "SDVOSB": "Service-Disabled Veteran Owned Small Business",
+    "WOSB"              : "Women-Owned Small Business",
+    "EDWOSB"            : "Economically Disadvantaged Women-Owned Small Business",
+    "8a"                : "8(a)",
+    "8aJointVenture"    : "8(a) Joint Venture",
+    "SDVOSB"            : "Service-Disabled Veteran Owned Small Business",
     "SDVOSBJointVenture": "Service-Disabled Veteran-Owned Small Business Joint Venture",
-    "HUBZone": "Historically Underutilized Business Zone",
-    "VOSB": "Veteran-Owned Small Business",
-    "VOSBJointVenture": "Veteran-Owned Small Business Joint Venture"
+    "HUBZone"           : "Historically Underutilized Business Zone",
+    "VOSB"              : "Veteran-Owned Small Business",
+    "VOSBJointVenture"  : "Veteran-Owned Small Business Joint Venture",
   };
 
-  const translatedCertNames = useMemo(
-    () =>
-      stepData.certName.map((cert) => certTranslationMap[cert] || cert),
-    [stepData.certName, certTranslationMap]
-  );
+  const translatedCertNames = useMemo(() => stepData.certName.map((cert) => certTranslationMap[cert] || cert), [stepData.certName,
+    certTranslationMap]);
 
-  let modalTitle
+  let modalTitle;
 
   if (stepData.certName.length > 0) {
-    if(stepData.certName.length === 1) {
-      modalTitle = t('Your {{Cert Types}} certifications have been successfully added!',{'Cert Types': translatedCertNames[0]});
+    if (stepData.certName.length === 1) {
+      modalTitle = t("Your {{Cert Types}} certifications have been successfully added!", { "Cert Types": translatedCertNames[0] });
     } else {
       const certNames = translatedCertNames.map((cert, index) => {
-        if(index === stepData.certName.length - 1 && stepData.certName.length > 1) {
-          return ' ' + t('and') + ` ${cert}`;
-        }
-        else if (index === 0) {
+        if (index === stepData.certName.length - 1 && stepData.certName.length > 1) {
+          return " " + t("and") + ` ${cert}`;
+        } else if (index === 0) {
           return cert;
-        }
-        else {
+        } else {
           return `, ${cert}`;
         }
       }).join("");
-      modalTitle = t('Your {{Cert Types}} certifications have been successfully added!',{'Cert Types': certNames});
+      modalTitle = t("Your {{Cert Types}} certifications have been successfully added!", { "Cert Types": certNames });
     }
   } else {
-    modalTitle = t('There is no certification data associated with {{Business Name}}', {'Business Name':stepData.businessName})
+    modalTitle = t("There is no certification data associated with {{Business Name}}", { "Business Name": stepData.businessName });
   }
 
   function handleContinueBtnClick() {
-    handleClose()
+    handleClose();
   }
 
   const closeModal = () => {

@@ -12,7 +12,15 @@ interface ModalInputRadioProps {
   disabled?: boolean;
 }
 
-const ModalInputRadio: React.FC<ModalInputRadioProps> = ({ id, name, value, groupValue, label, onChange, disabled=false }) => {
+const ModalInputRadio: React.FC<ModalInputRadioProps> = ({
+                                                           id,
+                                                           name,
+                                                           value,
+                                                           groupValue,
+                                                           label,
+                                                           onChange,
+                                                           disabled = false,
+                                                         }) => {
   const { t } = useTranslation();
 
   const handleClick = () => {
@@ -24,25 +32,24 @@ const ModalInputRadio: React.FC<ModalInputRadioProps> = ({ id, name, value, grou
     onChange(name, event.target.value);
   };
 
-  return (
-      <div className={`usa-radio ${styles.frame}`}>
-        <input
-          className={`usa-radio__input usa-radio__input--tile ${styles.input}`}
-          id={id}
-          type="radio"
-          name={name}
-          value={value}
-          checked={groupValue === value}
-          onChange={handleChange}
-          disabled={disabled}
-        />
-        <label
-          htmlFor={id}
-          className={`usa-radio__label ${styles.label}`}
-          >
-          <button onClick={handleClick}>{t(label)}</button>
-        </label>
-    </div>);
+  return (<div className={`usa-radio ${styles.frame}`}>
+    <input
+      className={`usa-radio__input usa-radio__input--tile ${styles.input}`}
+      id={id}
+      type="radio"
+      name={name}
+      value={value}
+      checked={groupValue === value}
+      onChange={handleChange}
+      disabled={disabled}
+    />
+    <label
+      htmlFor={id}
+      className={`usa-radio__label ${styles.label}`}
+    >
+      <button onClick={handleClick}>{t(label)}</button>
+    </label>
+  </div>);
 };
 
 export default ModalInputRadio;

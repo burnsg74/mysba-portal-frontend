@@ -36,22 +36,22 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
   const user: IUser = useSelector(getUser);
   const [currentStep, setCurrentStep] = useState(1);
   const [businessData, setBusinessData] = useState({
-    name: "",
+    name                    : "",
     business_address_street1: "",
     business_address_street2: "",
-    business_address_city: "",
-    business_address_state: "",
-    business_address_zip: "",
-    county: "",
-    ein: "",
-    id: "",
-    legal_entity: "",
-    owner: "",
-    uei: "",
-    workingWithSBA: "no"
+    business_address_city   : "",
+    business_address_state  : "",
+    business_address_zip    : "",
+    county                  : "",
+    ein                     : "",
+    id                      : "",
+    legal_entity            : "",
+    owner                   : "",
+    uei                     : "",
+    workingWithSBA          : "no",
   });
 
-  const saveNewBusinesses = async (data:data) => {
+  const saveNewBusinesses = async (data: data) => {
     try {
       const email = user?.profile?.crm?.email;
       if (!email) {
@@ -64,20 +64,20 @@ const BusinessAdd: React.FC<BusinessAddProps> = ({ handleCloseModal }) => {
       } else {
         accessToken = undefined;
       }
-      data.id=email;
+      data.id = email;
       axios.defaults.headers.common["Authorization"] = `Bearer ${accessToken}`;
       await axios.post(`${BASE_API_URL}/business`, data);
     } catch (error) {
       console.error("Error saving new business", error);
     }
-  }
+  };
 
   const handleContinue = (stepData: {}) => {
-    const newBusinessData:data = {...businessData, ...stepData};
+    const newBusinessData: data = { ...businessData, ...stepData };
     setBusinessData(newBusinessData);
 
     if (currentStep === 4) {
-      saveNewBusinesses(newBusinessData).then()
+      saveNewBusinesses(newBusinessData).then();
     }
 
     setCurrentStep(currentStep + 1);

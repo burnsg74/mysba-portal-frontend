@@ -34,43 +34,43 @@ const ApplyCert2 = () => {
   }, [navigate]);
 
   return (<div className={`${styles.container}`}>
-      <div className={`${styles.content}`}>
-        <div className={`${styles.stepIndicatorContainer}`}>
-          <div
-            className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
-            aria-label="progress"
-          >
-            <ol className={`usa-step-indicator__segments ${styles.usaStepIndicatorSegments}`}>
-              <li
-                className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles.usaStepIndicatorSegmentIncomplete}`}
-              ></li>
-              <li
-                className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles.usaStepIndicatorSegmentComplete}`}
-              ></li>
-            </ol>
-          </div>
+    <div className={`${styles.content}`}>
+      <div className={`${styles.stepIndicatorContainer}`}>
+        <div
+          className={`usa-step-indicator usa-step-indicator--no-labels ${styles.customStepIndicator}`}
+          aria-label="progress"
+        >
+          <ol className={`usa-step-indicator__segments ${styles.usaStepIndicatorSegments}`}>
+            <li
+              className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles.usaStepIndicatorSegmentIncomplete}`}
+            ></li>
+            <li
+              className={`usa-step-indicator__segment usa-step-indicator__segment--complete ${styles.usaStepIndicatorSegmentComplete}`}
+            ></li>
+          </ol>
         </div>
-        <img src={nextSignImg} alt="Next Sign" />
-        <div className={`${styles.contentTitle}`}>{t(selectedCert?.title) || ""}</div>
-        <div className={`${styles.contentMessage}`}>{t(selectedCert?.message) || ""}</div>
       </div>
-      <div className={`${styles.footer}`}>
-        <button
-          type="button"
-          className={`usa-button usa-button--outline  ${styles.footerBtn}`}
-          onClick={prevPage}
-        >
-          {t("Back")}
-        </button>
-        <button
-          type="button"
-          className={`usa-button ${styles.footerBtn}`}
-          onClick={() => openCertWebsite(selectedCert?.url)}
-        >
-          {t("Go")}
-        </button>
-      </div>
-    </div>);
+      <img src={nextSignImg} alt="Next Sign" />
+      <div className={`${styles.contentTitle}`}>{t(selectedCert?.title) || ""}</div>
+      <div className={`${styles.contentMessage}`}>{t(selectedCert?.message) || ""}</div>
+    </div>
+    <div className={`${styles.footer}`}>
+      <button
+        type="button"
+        className={`usa-button usa-button--outline  ${styles.footerBtn}`}
+        onClick={prevPage}
+      >
+        {t("Back")}
+      </button>
+      <button
+        type="button"
+        className={`usa-button ${styles.footerBtn}`}
+        onClick={() => openCertWebsite(selectedCert?.url)}
+      >
+        {t("Go")}
+      </button>
+    </div>
+  </div>);
 };
 
 export default ApplyCert2;

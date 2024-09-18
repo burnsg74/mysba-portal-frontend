@@ -28,33 +28,33 @@ interface Step2ModalProps {
 const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, handleContinue, handleBack }) => {
   const { t } = useTranslation();
   const [stepData, setStepData] = useState({
-    name: businessData.name,
-    ein: businessData.ein,
-    uei: businessData.uei,
-    legal_entity: businessData.legal_entity,
-    owner: businessData.owner,
+    name                    : businessData.name,
+    ein                     : businessData.ein,
+    uei                     : businessData.uei,
+    legal_entity            : businessData.legal_entity,
+    owner                   : businessData.owner,
     business_address_street1: businessData.business_address_street1,
     business_address_street2: businessData.business_address_street2,
-    business_address_city: businessData.business_address_city,
-    business_address_state: businessData.business_address_state,
-    business_address_zip: businessData.business_address_zip,
-    county: businessData.county,
+    business_address_city   : businessData.business_address_city,
+    business_address_state  : businessData.business_address_state,
+    business_address_zip    : businessData.business_address_zip,
+    county                  : businessData.county,
   });
 
   useEffect(() => {
     setStepData({
-      name: businessData.name,
-      ein: businessData.ein,
-      uei: businessData.uei,
-      legal_entity: businessData.legal_entity,
-      owner: businessData.owner,
+      name                    : businessData.name,
+      ein                     : businessData.ein,
+      uei                     : businessData.uei,
+      legal_entity            : businessData.legal_entity,
+      owner                   : businessData.owner,
       business_address_street1: businessData.business_address_street1,
       business_address_street2: businessData.business_address_street2,
-      business_address_city: businessData.business_address_city,
-      business_address_state: businessData.business_address_state,
-      business_address_zip: businessData.business_address_zip,
-      county: businessData.county,
-    })
+      business_address_city   : businessData.business_address_city,
+      business_address_state  : businessData.business_address_state,
+      business_address_zip    : businessData.business_address_zip,
+      county                  : businessData.county,
+    });
   }, []);
 
   const businessAddressStateOptions = [{ value: "AL", label: "Alabama" }, {
@@ -104,21 +104,21 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
     { value: "travel", label: "Travel & Tourism Wholesale" },
     { value: "other", label: "Other" }];
 
-  const [errors, setErrors] = useState({ name: '', business_address_zip: ''});
+  const [errors, setErrors] = useState({ name: "", business_address_zip: "" });
 
   const handleInputChange = (name: string, value: string) => {
     setStepData({ ...stepData, [name]: value });
-  }
+  };
 
   function formValidation() {
     let isValid = true;
-    let newErrors = {...errors};
+    let newErrors = { ...errors };
     if (stepData.name.length < 1) {
-      newErrors.name = 'Required Field';
+      newErrors.name = "Required Field";
       isValid = false;
     }
     if (!isValidZip(stepData.business_address_zip)) {
-      newErrors.business_address_zip = 'Required Field';
+      newErrors.business_address_zip = "Required Field";
       isValid = false;
     }
     setErrors(newErrors);
@@ -181,9 +181,11 @@ const Step2Modal: React.FC<Step2ModalProps> = ({ businessData, handleClose, hand
       <ModalInputSelect name={"legal_entity"} label={"Industry"} value={stepData.legal_entity}
                         options={industryOptions} onChange={handleInputChange} />
       <div className={`${styles.hr}`}></div>
-      <ModalInputText name={"business_address_street1"} label={"Business Address Line One"} value={stepData.business_address_street1}
+      <ModalInputText name={"business_address_street1"} label={"Business Address Line One"}
+                      value={stepData.business_address_street1}
                       onChange={handleInputChange} />
-      <ModalInputText name={"business_address_street2"} label={"Business Address Line Two"} value={stepData.business_address_street2}
+      <ModalInputText name={"business_address_street2"} label={"Business Address Line Two"}
+                      value={stepData.business_address_street2}
                       onChange={handleInputChange} />
       <div className={`${styles.group}`}>
         <ModalInputText name={"business_address_city"} label={"City"} value={stepData.business_address_city}

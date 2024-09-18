@@ -13,9 +13,7 @@ import { startCase } from "lodash";
 
 interface Step2ModalProps {
   businessData: {
-    businessName: string;
-    certName: string[];
-    uei: string;
+    businessName: string; certName: string[]; uei: string;
   };
   handleClose: () => void;
   handleContinue: (stepData: any) => void;
@@ -32,9 +30,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
   const dispatch = useDispatch();
   const user: IUser = useSelector(getUser);
   const [stepData] = useState<{ uei: string; businessName: string; certName: string[] }>({
-    uei: businessData.uei,
-    businessName: businessData.businessName,
-    certName: businessData.certName,
+    uei: businessData.uei, businessName: businessData.businessName, certName: businessData.certName,
   });
 
   const formatPhoneNumber = (phoneNumber: string) => {
@@ -44,8 +40,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
 
   function parseAndCheckActive(data: Certification): { type: string; expirationKey: string }[] {
     const activeCertifications: { type: string; expirationKey: string }[] = [];
-    const keywords = [
-      "8a",
+    const keywords = ["8a",
       "8aJointVenture",
       "WOSB",
       "SDVOSB",
@@ -53,19 +48,13 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
       "HUBZone",
       "VOSB",
       "VOSBJointVenture",
-      "EDWOSB",
-    ];
+      "EDWOSB"];
 
     keywords.forEach(keyword => {
       const statusKey = `${keyword}CertificationStatus`;
-      if (
-        data[statusKey] &&
-        (data[statusKey]!.toString().toLowerCase() === "active" ||
-          data[statusKey]!.toString().toLowerCase() === "previously certified")
-      ) {
+      if (data[statusKey] && (data[statusKey]!.toString().toLowerCase() === "active" || data[statusKey]!.toString().toLowerCase() === "previously certified")) {
         activeCertifications.push({
-          type: keyword,
-          expirationKey: `${keyword}CertificationExitDate`,
+          type: keyword, expirationKey: `${keyword}CertificationExitDate`,
         });
       }
     });
@@ -97,61 +86,41 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
         accessToken = undefined;
       }
       let data = JSON.stringify({
-        individuals: [
-          {
-            firstName: "",
-            lastName: "",
-            email: email,
-            linkedOrganization: {
-              organizations: [
-                {
-                  organizationUei: stepData.uei,
-                },
-              ],
-            },
+        individuals: [{
+          firstName: "", lastName: "", email: email, linkedOrganization: {
+            organizations: [{
+              organizationUei: stepData.uei,
+            }],
           },
-        ],
+        }],
       });
 
       let config = {
-        method: "put",
-        maxBodyLength: Infinity,
-        url: `${BASE_API_URL}/individuals/individual`,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
-        },
-        data: data,
+        method : "put", maxBodyLength: Infinity, url: `${BASE_API_URL}/individuals/individual`, headers: {
+          "Content-Type": "application/json", Authorization: `Bearer ${accessToken}`,
+        }, data: data,
       };
-      let results = await axios.request(config).catch(error => {
+      let results: any = await axios.request(config).catch(error => {
         console.log(error);
       });
       data = JSON.stringify({
-        individuals: [
-          {
-            firstName: "",
-            lastName: "",
-            email: email,
-            linkedOrganization: {
-              organizations: [
-                {
-                  organizationUei: stepData.uei,
-                },
-              ],
-            },
+        individuals: [{
+          firstName: "", lastName: "", email: email, linkedOrganization: {
+            organizations: [{
+              organizationUei: stepData.uei,
+            }],
           },
-        ],
+        }],
       });
 
       config = {
-        method: "post",
+        method       : "post",
         maxBodyLength: Infinity,
-        url: `${BASE_API_URL}/organizations/organization?task=read`,
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${accessToken}`,
+        url          : `${BASE_API_URL}/organizations/organization?task=read`,
+        headers      : {
+          "Content-Type": "application/json", Authorization: `Bearer ${accessToken}`,
         },
-        data: data,
+        data         : data,
       };
       results = await axios.request(config).catch(error => {
         console.log(error);
@@ -161,28 +130,28 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
       const businessData: IBusiness[] = individual.organizations.map((business: any) => {
         const businessId = (businessIdCounter++).toString();
         return {
-          email: business.organizationEmail ?? "",
-          owner: `${individual.firstName ?? ""} ${individual.lastName ?? ""}`,
-          id: businessId ?? "",
-          name: business.organizationName ? startCase(business.organizationName.toLowerCase()) : "",
-          legal_entity: business.organizationLegalEntity ?? "",
-          ownership_type: business.organizationOwnerShipType ?? "",
-          uei: business.organizationUei?.replace(/(\d{6})(\d{4})/, "******$2") ?? "",
-          ein: null,
-          user_id: business.userId ?? "",
-          mailing_address_street: business.organizationMailingAddressStreet ?? "",
-          mailing_address_city: business.organizationMailingAddressCity ?? "",
-          mailing_address_state: business.organizationMailingAddressState ?? "",
-          mailing_address_zipcode: business.organizationMailingAddressZip ?? "",
-          business_address_street: business.organizationAddressStreet ?? "",
-          business_address_city: business.organizationAddressCity ?? "",
-          business_address_state: business.organizationAddressState ?? "",
+          email                   : business.organizationEmail ?? "",
+          owner                   : `${individual.firstName ?? ""} ${individual.lastName ?? ""}`,
+          id                      : businessId ?? "",
+          name                    : business.organizationName ? startCase(business.organizationName.toLowerCase()) : "",
+          legal_entity            : business.organizationLegalEntity ?? "",
+          ownership_type          : business.organizationOwnerShipType ?? "",
+          uei                     : business.organizationUei?.replace(/(\d{6})(\d{4})/, "******$2") ?? "",
+          ein                     : null,
+          user_id                 : business.userId ?? "",
+          mailing_address_street  : business.organizationMailingAddressStreet ?? "",
+          mailing_address_city    : business.organizationMailingAddressCity ?? "",
+          mailing_address_state   : business.organizationMailingAddressState ?? "",
+          mailing_address_zipcode : business.organizationMailingAddressZip ?? "",
+          business_address_street : business.organizationAddressStreet ?? "",
+          business_address_city   : business.organizationAddressCity ?? "",
+          business_address_state  : business.organizationAddressState ?? "",
           business_address_zipcode: business.organizationAddressZip ?? "",
-          business_phone_number: formatPhoneNumber(business.organizationPhone ?? ""),
-          fax: business.organizationFax ?? "",
-          naics_codes: business.organizationNaicsCodes ?? "",
-          capabilities_narrative: business.organizationCapabilityNarratives ?? "",
-          website: business.organizationWebsite ?? "",
+          business_phone_number   : formatPhoneNumber(business.organizationPhone ?? ""),
+          fax                     : business.organizationFax ?? "",
+          naics_codes             : business.organizationNaicsCodes ?? "",
+          capabilities_narrative  : business.organizationCapabilityNarratives ?? "",
+          website                 : business.organizationWebsite ?? "",
         };
       });
       const certs = parseAndCheckActive(results?.data.organizations[0].certification);
@@ -194,17 +163,17 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
           const ownersArray = business.organizationOwnerName ?? []; // Assume business.owners is an array of strings
           const owner = ownersArray.join(", ");
           return {
-            email: business.organizationEmail ?? "",
-            ein: null,
-            certification_id: certificationId,
-            business_id: business.organizationUei ?? "",
+            email             : business.organizationEmail ?? "",
+            ein               : null,
+            certification_id  : certificationId,
+            business_id       : business.organizationUei ?? "",
             certification_type: certification.certificationType ?? cert.type,
-            issue_date: certification[`${cert.type}CertificationEntranceDate`] ?? "",
-            expiration_date: certification[cert.expirationKey] ?? "",
-            days_until_expiry: calculateDaysUntilExpiry(certification[cert.expirationKey]),
-            company_name: business.organizationName ? startCase(business.organizationName.toLowerCase()) : "",
-            owner: owner,
-            naics_codes: business.organizationNaicsCodes ?? "",
+            issue_date        : certification[`${cert.type}CertificationEntranceDate`] ?? "",
+            expiration_date   : certification[cert.expirationKey] ?? "",
+            days_until_expiry : calculateDaysUntilExpiry(certification[cert.expirationKey]),
+            company_name      : business.organizationName ? startCase(business.organizationName.toLowerCase()) : "",
+            owner             : owner,
+            naics_codes       : business.organizationNaicsCodes ?? "",
           };
         });
       });
@@ -215,6 +184,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
       console.error("Error saving new business", error);
     }
   };
+
   function handleContinueBtnClick() {
     linkCert();
   }
@@ -226,8 +196,7 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
     handleBack(stepData);
   };
 
-  return (
-    <Modal
+  return (<Modal
       title={t("Link a Certification")}
       onClose={closeModal}
       prevModal={handleBackButtonClick}
@@ -235,25 +204,20 @@ const LinkCertModal2: React.FC<Step2ModalProps> = ({ businessData, handleClose, 
       completedSteps={1}
       ImageAndAlt={{ image: modalIcon, alt: "Modal Icon" }}
       contentTitle={t("Is {{businessName}} your business?", { businessName: businessData.businessName })}
-      contentMessage={t(
-        "If this business name doesn't match, please go back to the previous step and make sure you entered your UEI correctly."
-      )}
-      footerContent={
-        <>
-          <button
-            type="button"
-            className={`usa-button usa-button--outline ${styles.cancelBtn}`}
-            onClick={handleBackButtonClick}
-          >
-            {t("Back")}
-          </button>
-          <button type="button" className={`usa-button ${styles.continueBtn}`} onClick={() => handleContinueBtnClick()}>
-            {t("Confirm")}
-          </button>
-        </>
-      }
-    ></Modal>
-  );
+      contentMessage={t("If this business name doesn't match, please go back to the previous step and make sure you entered your UEI correctly.")}
+      footerContent={<>
+        <button
+          type="button"
+          className={`usa-button usa-button--outline ${styles.cancelBtn}`}
+          onClick={handleBackButtonClick}
+        >
+          {t("Back")}
+        </button>
+        <button type="button" className={`usa-button ${styles.continueBtn}`} onClick={() => handleContinueBtnClick()}>
+          {t("Confirm")}
+        </button>
+      </>}
+    ></Modal>);
 };
 
 export default LinkCertModal2;

@@ -24,8 +24,7 @@ export const BusinessCard: React.FC<IBusinessCardProps> = ({ business, hideDetai
     return () => window.removeEventListener("resize", updateScreenSize);
   }, []);
 
-  const body = (
-    <div
+  const body = (<div
       ref={containerRef}
       className={`grid-row ${styles.bodyRow} ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`}
     >
@@ -35,15 +34,12 @@ export const BusinessCard: React.FC<IBusinessCardProps> = ({ business, hideDetai
         <img src={DotIcon} alt="dot" className={styles.dotIcon} />
         {t("UEI")}: {business.uei}
       </div>
-    </div>
-  );
-  return (
-    <Card
+    </div>);
+  return (<Card
       icon={BusinessCardIcon}
       title={business.name}
       detailsPage={`/businesses/detail/${business.id}`}
       body={body}
       hideDetails={hideDetails}
-    />
-  );
+    />);
 };

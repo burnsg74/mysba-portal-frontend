@@ -1,6 +1,6 @@
-import React from 'react';
-import { render, screen} from "@testing-library/react";
-import Loans from './Loans';
+import React from "react";
+import { render, screen } from "@testing-library/react";
+import Loans from "./Loans";
 import { Provider } from "react-redux";
 import { store } from "src/store/store";
 import { BrowserRouter } from "react-router-dom";
@@ -11,7 +11,7 @@ jest.mock("react-i18next", () => ({
   }),
 }));
 
-describe('Page: Loans', () => {
+describe("Page: Loans", () => {
 
   it("It renders", () => {
     render(<Provider store={store}>
