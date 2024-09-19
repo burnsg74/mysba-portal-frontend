@@ -160,12 +160,12 @@
         <h2 class="content-header">Upgrade Security to Activate</h2>
 
         <div class="identifier-container">
-            Gregory.Burns@sba.gov
+            <span id="email1"></span>
         </div>
 
         <p class="notice-text">
             We need additional information in order to activate your account. Provide the necessary information below or
-            check for a link in your email: useremail@gmail.com
+            check for a link in your email: <span id="email2"></span>
         </p>
 
 <!--        <button class="usa-button btn">Upgrade Now</button>-->
@@ -174,5 +174,13 @@
     </div>
 </main>
 <script src="uswds.min.js"></script>
+<script>
+    const currentUrl = window.location.href;
+    const url = new URL(currentUrl);
+    const email = url.searchParams.get('email');
+
+    document.getElementById("email1").textContent = email;
+    document.getElementById("email2").textContent = email;
+</script>
 </body>
 </html>
