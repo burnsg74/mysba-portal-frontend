@@ -14,7 +14,7 @@
   {
     "sba_number": "5399109105",
     "business_name": "Alpha LLC Sole",
-    "payment_past_due": false,
+    "payment_past_due": true,
     "outstanding_balance": 0,
     "loan_status": "Active Un-Disbursed",
     "payment_due_date": null,

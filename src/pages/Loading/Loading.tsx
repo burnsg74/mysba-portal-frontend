@@ -185,7 +185,9 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    console.log('authState?.isAuthenticated',authState?.isAuthenticated,userFetched)
     if (authState?.isAuthenticated && !userFetched) {
+      console.log('fetchUserDataFromBackend')
       oktaAuth
         .getUser()
         .then((info: UserClaims) => fetchUserDataFromBackend(info))

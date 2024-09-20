@@ -74,7 +74,7 @@ const Dashboard = () => {
                       <h2 className={`${styles.loanLabel}`}>Loans</h2>
                     </>
                   )}
-                  {loan.payment_past_due && <Alert message="Your loan payment is past due." type="error" />}
+                  {loan.payment_past_due && <Alert message={`Payment for loan ${loan.sba_number} is past due.`} type="error" useSlim={true} />}
                   <LoanCard loan={loan} hideDetails={true} />
                 </React.Fragment>
               );

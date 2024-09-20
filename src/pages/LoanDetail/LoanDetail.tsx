@@ -50,7 +50,7 @@ const LoanDetail = () => {
         </div>
       </div>
 
-      {loan.payment_past_due && (<Alert message="Your loan payment is past due." type="error" useSlim={true} />)}
+      {loan.payment_past_due && <Alert message={`Payment for loan ${loan.sba_number} is past due.`} type="error" useSlim={true} />}
 
       {/* Loan Detail */}
       <div className={`grid-row ${styles.titleBanner}`}>
