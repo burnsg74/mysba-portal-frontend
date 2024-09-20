@@ -21,7 +21,7 @@ const LoanDetail = () => {
   }
 
   const handleManageLoanClick = () => {
-    window.open("https://lending.sba.gov/", "_blank");
+    window.open("https://dlap.beta.lending.sba.gov/dashboard/", "_blank");
   };
 
 
