@@ -13,7 +13,7 @@ export const Alert: React.FC<IAlertProps> = ({ message, type, title = null, useS
   const { t } = useTranslation();
 
   return (
-    <div role="alert" className={`usa-alert usa-alert--${type} ${styles["alert-" + type]} ${useSlim ? "usa-alert--slim" : ""}`}>
+    <div role="alert" className={`usa-alert usa-alert--${type} ${styles["alert"]} ${styles["alert-" + type]} ${useSlim ? "usa-alert--slim" : ""}`}>
       <div id="usa-alert__body" className={`usa-alert__body ${styles["alert-body"]}`}>
         {title && <h4 className="usa-alert__heading">{t(title)}</h4>}
         <div className="usa-alert__text">

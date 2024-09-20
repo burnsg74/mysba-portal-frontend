@@ -2,16 +2,17 @@
     align-items: center;
     align-self: stretch;
     display: flex;
-    gap: 20px;
     padding: 20px;
 }
 
-.bodyCompanyName {
+.bodyLoanNumber {
     color: var(--Primary-primary-darker);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
+    flex: 1 1 auto;
+    padding-right: 20px;
 }
 
 .bodyRowRightGroup {

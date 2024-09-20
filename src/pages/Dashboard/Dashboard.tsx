@@ -8,7 +8,6 @@ import {Alert} from "src/components/Alert/Alert";
 import CardLoansImg from "src/assets/card-loans-img.jpg";
 import CardCertificationsImg from "src/assets/card-certifications-img.jpg";
 import CardDisasterLoansImg from "src/assets/card-disaster_loans-img.jpg";
-import BusinessIcon from "src/assets/business-card-icon.svg";
 import { LoanCard } from "src/components/LoanCard/LoanCard";
 
 const Dashboard = () => {
@@ -59,6 +58,7 @@ const Dashboard = () => {
             });
         })()}
 
+        <div className={`${styles.certInfoAlertWrapper}`}>
         <Alert
           type={"info"}
           title={t("Certification Data is Coming Soon")}
@@ -66,6 +66,7 @@ const Dashboard = () => {
             link: "<a href=\"https://certification.sba.gov\" target=\"_blank\" rel=\"noopener noreferrer\">MySBA Certifications</a>",
           })}
         />
+        </div>
 
         <div className={`grid-row ${styles.cardRow}`}>
           <div className={`grid-col ${styles.card}`}>

@@ -13,7 +13,7 @@ export const LoanCard: React.FC<ILoanCardProps> = ({ loan }) => {
     hideDetails={false}
     detailsPage={`/loans/detail/${loan.sba_number}`}
     body={<div className={`grid-row ${styles.bodyRow}`} data-testid="loan-card-body">
-      <div className={`grid-col ${styles.bodyCompanyName}`}>
+      <div className={`grid-col ${styles.bodyLoanNumber}`}>
         SBA Loan Number: {loan.sba_number}
       </div>
       <div className="grid-col-auto">

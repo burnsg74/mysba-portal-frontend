@@ -182,7 +182,7 @@
 }
 
 .card {
-    margin-bottom: 1rem;
+    margin: 0;
     min-width: 300px;
 }
 
@@ -217,8 +217,7 @@
     line-height: 38px;
     text-align: left;
     color: var(--Brand-Primary-SBA-Blue);
-    gap: 24px;
-    padding: 10px 0;
+    padding: 20px 0;
 }
 
 .loanLabel {
@@ -227,4 +226,8 @@
     line-height: 26px;
     text-align: left;
     color: var(--Brand-Primary-SBA-Blue);
+}
+
+.certInfoAlertWrapper {
+    margin: 20px 0;
 }

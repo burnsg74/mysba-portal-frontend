@@ -1,3 +1,6 @@
+.alert {
+    margin: 0;
+}
 .alert-info {
     background: var(--Alert-Info-Background);
     border-left-color: var(--Alert-Info-Bar);
