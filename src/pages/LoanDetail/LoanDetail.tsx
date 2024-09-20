@@ -66,12 +66,20 @@ const LoanDetail = () => {
         {loan.business_name && <Field label="Name" value={loan.business_name} />}
         {loan.sba_number && <Field label="SBA Loan Number" value={loan.sba_number} />}
         {loan.loan_status && <Field label="Current Status" value={loan.loan_status} />}
-        {loan.maturity_date && <Field label="Maturity Date" value={loan.maturity_date} />}
+        {loan.maturity_date  && (loan.program_description === "504" ? (
+          <Field label="Maturity Date" value={loan.maturity_date} />
+        ) : (
+          <Field label="Loan Maturity Date" value={loan.maturity_date} />
+        ))}
         {loan.outstanding_balance  && (
           <Field label="Outstanding Balance" value={loan.outstanding_balance} />)}
+
         {loan.amount_to_be_current  && (loan.program_description === "504" ? (
-            <Field label="Next Payment Amount" value={loan.amount_to_be_current} />) : (
-            <Field label="Amount to be Current" value={loan.amount_to_be_current} />))}
+          <Field label="Amount to be Current" value={loan.amount_to_be_current} />
+        ) : (
+          <Field label="Next Payment Amount" value={loan.amount_to_be_current} />
+        ))}
+
         {loan.payment_due_date && <Field label="Next Payment Due Date" value={loan.payment_due_date} />}
       </div>
     </div>

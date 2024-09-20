@@ -3,16 +3,17 @@
     align-self: stretch;
     display: flex;
     padding: 20px;
+    gap: 20px;
 }
 
 .bodyLoanNumber {
-    color: var(--Primary-primary-darker);
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
     line-height: 20px;
     flex: 1 1 auto;
-    padding-right: 20px;
+    flex-wrap: nowrap;
 }
 
 .bodyRowRightGroup {
@@ -23,7 +24,7 @@
 }
 
 .bodyRightGroupExpirationDate {
-    color: var(--Primary-primary-darker);
+    color: var(--Brand-Primary-SBA-Blue);
     font-size: 16px;
     font-style: normal;
     font-weight: 400;
