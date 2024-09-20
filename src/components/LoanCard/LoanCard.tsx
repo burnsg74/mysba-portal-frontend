@@ -9,7 +9,7 @@ export const LoanCard: React.FC<ILoanCardProps> = ({ loan }) => {
 
   return (<Card
     icon={LoanCardIcon}
-    title={t(loan.program_description)}
+    title={t(loan.processing_method_description)}
     hideDetails={false}
     detailsPage={`/loans/detail/${loan.sba_number}`}
     body={<div className={`grid-row ${styles.bodyRow}`} data-testid="loan-card-body">
@@ -17,14 +17,13 @@ export const LoanCard: React.FC<ILoanCardProps> = ({ loan }) => {
         SBA Loan Number: {loan.sba_number}
       </div>
       <div className="grid-col-auto">
-        {loan.program_description === "504 Loan" ? (<div className={styles.bodyRowRightGroup}>
-          {`Amount to be Current: ${new Intl.NumberFormat("en-US", {
-            style: "currency", currency: "USD",
-          }).format(loan.amount_to_be_current)}`}
-        </div>) : (<div className={styles.bodyRowRightGroup}>
-          {`${new Intl.NumberFormat("en-US", {
-            style: "currency", currency: "USD",
-          }).format(loan.amount_to_be_current)}`} due on {loan.payment_due_date}
+        {loan.program_description === "504" ? (
+          <div className={styles.bodyRowRightGroup}>
+          Amount to be Current: {loan.amount_to_be_current}
+        </div>
+        ) : (
+          <div className={styles.bodyRowRightGroup}>
+            {loan.amount_to_be_current} due {loan.payment_due_date}
         </div>)}
       </div>
     </div>}

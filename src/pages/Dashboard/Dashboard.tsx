@@ -13,7 +13,6 @@ import { LoanCard } from "src/components/LoanCard/LoanCard";
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
-  console.log("user", user);
   const { t } = useTranslation();
 
   return (<>
@@ -36,18 +35,51 @@ const Dashboard = () => {
           })}
         />
 
-        {user.loans && user.loans.length > 0 && (<>
-            <h1 className={`${styles.loanBusinessLabel}`}>
-              <img src={BusinessIcon} alt="Business" />
-              {user.loans[0].business_name}
-            </h1>
-            <h2 className={`${styles.loanLabel}`}>Loans</h2>
-            {/*<LoanCard loan={user.loans[0]} hideDetails={true} />*/}
-            {user.loans.map((loan, index) => (<>
-                {loan.payment_past_due && <Alert message="Your loan payment is past due." type="error" />}
-                <LoanCard key={index} loan={loan} hideDetails={true} />
-              </>))}
-          </>)}
+        {/*{user.loans && user.loans.length > 0 && (<>*/}
+        {/*    <h1 className={`${styles.loanBusinessLabel}`}>*/}
+        {/*      <img src={BusinessIcon} alt="Business" />*/}
+        {/*      {user.loans[0].business_name}*/}
+        {/*    </h1>*/}
+        {/*    <h2 className={`${styles.loanLabel}`}>Loans</h2>*/}
+        {/*    /!*<LoanCard loan={user.loans[0]} hideDetails={true} />*!/*/}
+        {/*    {user.loans.map((loan, index) => (<>*/}
+        {/*        {loan.payment_past_due && <Alert message="Your loan payment is past due." type="error" />}*/}
+        {/*        <LoanCard key={index} loan={loan} hideDetails={true} />*/}
+        {/*      </>))}*/}
+        {/*  </>)}*/}
+
+        {(() => {
+          let previousBusinessName = '';
+          console.log("user.loans", user.loans);
+          return [...(user.loans ?? [])]
+            .sort(
+              (a, b) =>
+                a.business_name.localeCompare(b.business_name) ||
+                a.processing_method_description.localeCompare(b.processing_method_description) ||
+                a.sba_number.localeCompare(b.sba_number)
+            )
+            .map(loan => {
+              const isDifferentBusiness = loan.business_name !== previousBusinessName;
+              previousBusinessName = loan.business_name;
+              console.log('Loan',loan);
+              console.log('isDifferentBusiness',isDifferentBusiness);
+
+              return (
+                <React.Fragment key={loan.sba_number}>
+                  {isDifferentBusiness && (
+                    <>
+                      <h1 className={`${styles.loanBusinessLabel}`}>
+                        {loan.business_name}
+                      </h1>
+                      <h2 className={`${styles.loanLabel}`}>Loans</h2>
+                    </>
+                  )}
+                  {loan.payment_past_due && <Alert message="Your loan payment is past due." type="error" />}
+                  <LoanCard loan={loan} hideDetails={true} />
+                </React.Fragment>
+              );
+            });
+        })()}
 
         <div className={`grid-row ${styles.cardRow}`}>
           <div className={`grid-col ${styles.card}`}>
