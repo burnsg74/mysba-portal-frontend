@@ -1,7 +1,7 @@
 .container {
     align-items: center;
     border-radius: 8px;
-    border: 5px solid var(--Base-white);
+    border: 1px solid var(--Base-base-lighter);
     box-shadow: 0 7px 15px 0 var(--Box-Shadow);
     margin: 0;
     height: unset;
@@ -41,6 +41,7 @@
 
 .detailsButton {
     background-color: var(--SBA-Celeste);
+    margin: 0;
 }
 
 .smallScreen {

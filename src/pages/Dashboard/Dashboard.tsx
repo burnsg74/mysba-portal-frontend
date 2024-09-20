@@ -27,30 +27,10 @@ const Dashboard = () => {
         <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
       </div>
       <div className={`main-container ${styles.contentContainer}`}>
-        <Alert
-          type={"info"}
-          title={t("Certification Data is Coming Soon")}
-          message={t("dashboard.cert.alert.message", {
-            link: "<a href=\"https://certification.sba.gov\" target=\"_blank\" rel=\"noopener noreferrer\">MySBA Certifications</a>",
-          })}
-        />
 
-        {/*{user.loans && user.loans.length > 0 && (<>*/}
-        {/*    <h1 className={`${styles.loanBusinessLabel}`}>*/}
-        {/*      <img src={BusinessIcon} alt="Business" />*/}
-        {/*      {user.loans[0].business_name}*/}
-        {/*    </h1>*/}
-        {/*    <h2 className={`${styles.loanLabel}`}>Loans</h2>*/}
-        {/*    /!*<LoanCard loan={user.loans[0]} hideDetails={true} />*!/*/}
-        {/*    {user.loans.map((loan, index) => (<>*/}
-        {/*        {loan.payment_past_due && <Alert message="Your loan payment is past due." type="error" />}*/}
-        {/*        <LoanCard key={index} loan={loan} hideDetails={true} />*/}
-        {/*      </>))}*/}
-        {/*  </>)}*/}
 
         {(() => {
           let previousBusinessName = '';
-          console.log("user.loans", user.loans);
           return [...(user.loans ?? [])]
             .sort(
               (a, b) =>
@@ -61,8 +41,6 @@ const Dashboard = () => {
             .map(loan => {
               const isDifferentBusiness = loan.business_name !== previousBusinessName;
               previousBusinessName = loan.business_name;
-              console.log('Loan',loan);
-              console.log('isDifferentBusiness',isDifferentBusiness);
 
               return (
                 <React.Fragment key={loan.sba_number}>
@@ -80,6 +58,14 @@ const Dashboard = () => {
               );
             });
         })()}
+
+        <Alert
+          type={"info"}
+          title={t("Certification Data is Coming Soon")}
+          message={t("dashboard.cert.alert.message", {
+            link: "<a href=\"https://certification.sba.gov\" target=\"_blank\" rel=\"noopener noreferrer\">MySBA Certifications</a>",
+          })}
+        />
 
         <div className={`grid-row ${styles.cardRow}`}>
           <div className={`grid-col ${styles.card}`}>

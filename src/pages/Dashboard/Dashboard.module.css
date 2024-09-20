@@ -193,6 +193,7 @@
 
 .cardContainer {
     margin: 0;
+    box-shadow: 0 7px 15px 0 var(--Box-Shadow);
 }
 
 .cardHeader {
@@ -217,6 +218,7 @@
     text-align: left;
     color: var(--Brand-Primary-SBA-Blue);
     gap: 24px;
+    padding: 10px 0;
 }
 
 .loanLabel {

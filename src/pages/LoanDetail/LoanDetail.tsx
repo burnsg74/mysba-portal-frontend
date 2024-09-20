@@ -50,26 +50,28 @@ const LoanDetail = () => {
         </div>
       </div>
 
-      {loan.payment_past_due && <Alert message={`Payment for loan ${loan.sba_number} is past due.`} type="error" useSlim={true} />}
+      {loan.payment_past_due &&
+        <Alert message={`Payment for loan ${loan.sba_number} is past due.`} type="error" useSlim={true} />}
 
       {/* Loan Detail */}
       <div className={`grid-row ${styles.titleBanner}`}>
         <div className={`grid-col-auto`}>
           <img src={LoanCardIcon} alt={"Loan Card Icon"} />
         </div>
-        <div className={`grid-col ${styles.title}`}>{t(loan.program_description)}</div>
+        <div className={`grid-col ${styles.title}`}>{t(loan.processing_method_description)}</div>
       </div>
 
       <div className={`${styles.categoryGroup}`}>
         <h4 className={`${styles.subtitle}`}>{t("Details")}</h4>
-        {loan.program_description && <Field label="Name" value={loan.program_description} />}
+        {loan.business_name && <Field label="Name" value={loan.business_name} />}
         {loan.sba_number && <Field label="SBA Loan Number" value={loan.sba_number} />}
         {loan.loan_status && <Field label="Current Status" value={loan.loan_status} />}
-        {loan.maturity_date && <Field label="Loan Maturity Date" value={loan.maturity_date} />}
-        {loan.outstanding_balance !== undefined &&
-          <Field label="Outstanding Balance" value={loan.outstanding_balance} />}
-        {loan.amount_to_be_current !== undefined &&
-          <Field label="Amount to be Current" value={loan.amount_to_be_current} />}
+        {loan.maturity_date && <Field label="Maturity Date" value={loan.maturity_date} />}
+        {loan.outstanding_balance  && (
+          <Field label="Outstanding Balance" value={loan.outstanding_balance} />)}
+        {loan.amount_to_be_current  && (loan.program_description === "504" ? (
+            <Field label="Next Payment Amount" value={loan.amount_to_be_current} />) : (
+            <Field label="Amount to be Current" value={loan.amount_to_be_current} />))}
         {loan.payment_due_date && <Field label="Next Payment Due Date" value={loan.payment_due_date} />}
       </div>
     </div>
