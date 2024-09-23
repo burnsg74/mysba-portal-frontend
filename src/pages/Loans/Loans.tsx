@@ -5,8 +5,7 @@ import { useTranslation } from 'react-i18next';
 
 const Loans = () => {
   const { t } = useTranslation();
-  return (
-    <div data-testid="page-loans" className={`main-container`}>
+  return (<div data-testid="page-loans" className={`main-container`}>
       <div className="grid-row">
         <div className="grid-col">
           <img src={Gears} className={`${styles.titleImg}`} alt="Title" />
@@ -20,14 +19,11 @@ const Loans = () => {
       <div className="grid-row">
         <div className="grid-col">
           <div className={`${styles.titleText}`}>
-            {t(
-              'Linking your loans is currently under construction. Check back in our next release for loan functionality. To check on your loans please visit your'
-            )}{' '}
+            {t('Linking your loans is currently under construction. Check back in our next release for loan functionality. To check on your loans please visit your')}{' '}
             <a href="https://lending.sba.gov" rel="noreferrer" target="_blank">
               {' '}
               {t('loan portal')}
-            </a>
-            .
+            </a>.
           </div>
         </div>
       </div>
@@ -49,8 +45,7 @@ const Loans = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
+    </div>);
 };
 
 export default Loans;
