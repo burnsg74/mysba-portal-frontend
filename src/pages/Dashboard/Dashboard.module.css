@@ -1,230 +1,230 @@
 .banner {
-    position: relative;
-    height: 276px;
-    padding-top: 20px;
-    margin-bottom: 20px;
-    background-color: #F3F8FC;
-    color: var(--Brand-Primary-SBA-Blue);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    white-space: nowrap;
+  position: relative;
+  height: 276px;
+  padding-top: 20px;
+  margin-bottom: 20px;
+  background-color: #f3f8fc;
+  color: var(--Brand-Primary-SBA-Blue);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  white-space: nowrap;
 }
 
 .welcomeMessage {
-    font-family: var(--Font-Primary);
-    color: var(--Brand-Primary-SBA-Blue);
-    text-align: center;
-    padding-top: 5px;
-    font-size: 16px;
-    font-weight: 400;
-    height: 20px;
-    line-height: 26px;
+  font-family: var(--Font-Primary);
+  color: var(--Brand-Primary-SBA-Blue);
+  text-align: center;
+  padding-top: 5px;
+  font-size: 16px;
+  font-weight: 400;
+  height: 20px;
+  line-height: 26px;
 }
 
 .mysbaMessage {
-    font-family: var(--Font-Secondary);
-    color: var(--Brand-Primary-SBA-Blue);
-    text-align: center;
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 26px;
-    margin: 0 auto;
-    overflow-wrap: break-word;
-    white-space: normal;
-    padding-top: 5px;
+  font-family: var(--Font-Secondary);
+  color: var(--Brand-Primary-SBA-Blue);
+  text-align: center;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 26px;
+  margin: 0 auto;
+  overflow-wrap: break-word;
+  white-space: normal;
+  padding-top: 5px;
 }
 
 .cityscape {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    object-fit: cover;
-    object-position: center;
-    height: 166px;
-    bottom: 0;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  object-fit: cover;
+  object-position: center;
+  height: 166px;
+  bottom: 0;
 }
 
 .alertContainer {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .contentContainer {
-    display: flex;
-    flex-direction: column;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
-    gap: 20px;
-    margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  gap: 20px;
+  margin-bottom: 100px;
 }
 
 .cardsContainer {
-    padding-top: 40px;
-    padding-bottom: 40px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .businessesContainer {
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    padding: 20px 40px 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px 40px 20px 40px;
 }
 
 .businessHeaderRow {
-    display: flex;
-    align-items: center;
-    gap: 24px;
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }
 
 .businessHeaderIcon {
-    margin-right: 24px;
-    width: 30px;
-    height: 30px;
-    min-width: 30px;
+  margin-right: 24px;
+  width: 30px;
+  height: 30px;
+  min-width: 30px;
 }
 
 .businessHeaderTitle {
-    font-family: var(--Font-Primary);
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 38px;
-    text-align: left;
-    color: var(--Brand-Primary-SBA-Blue);
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-    text-overflow: ellipsis;
+  font-family: var(--Font-Primary);
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  text-align: left;
+  color: var(--Brand-Primary-SBA-Blue);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .dashboardContent {
-    color: var(--Brand-Primary-SBA-Blue);
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .certificationsHeaderLink {
-    text-align: right;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-decoration-line: underline;
-    margin-right: 10px;
-    padding: 2px;
-    font-family: var(--Font-Secondary);
-    color: var(--Brand-Primary-SBA-Blue);
+  text-align: right;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+  margin-right: 10px;
+  padding: 2px;
+  font-family: var(--Font-Secondary);
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .noBusinessesMessageContainer {
-    align-items: center;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    height: 100%;
-    justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 100%;
+  justify-content: center;
 }
 
 .noBusinesseIcon {
-    height: 100px;
-    width: 100px;
+  height: 100px;
+  width: 100px;
 }
 
 .noBusinessesText1 {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 22px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: 120%;
-    text-align: center;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  text-align: center;
 }
 
 .noBusinessesText2 {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    text-align: center;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-align: center;
 }
 
 .rightContainer {
-    width: 350px;
+  width: 350px;
 }
 
 .certHeaderRow {
-    display: flex;
-    align-items: center;
-    margin-top: 20px;
-    margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 .certifications {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 22px;
-    letter-spacing: 0;
-    margin-left: 10px;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 22px;
+  letter-spacing: 0;
+  margin-left: 10px;
 }
 
 .certificationsRow {
-    padding-bottom: 40px;
+  padding-bottom: 40px;
 }
 
 .footerBtn {
-    width: 100%;
+  width: 100%;
 }
 
 .card {
-    margin: 0;
-    min-width: 300px;
+  margin: 0;
+  min-width: 300px;
 }
 
 .cardRow {
-    padding: 80px 0;
-    gap: 12px;
+  padding: 80px 0;
+  gap: 12px;
 }
 
 .cardContainer {
-    margin: 0;
-    box-shadow: 0 7px 15px 0 var(--Box-Shadow);
+  margin: 0;
+  box-shadow: 0 7px 15px 0 var(--Box-Shadow);
 }
 
 .cardHeader {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 32px;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 32px;
 }
 
 .cardBody {
-    font-family: var(--Font-Secondary);
-    font-weight: 400;
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 16px;
+  font-family: var(--Font-Secondary);
+  font-weight: 400;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 16px;
 }
 
 .loanBusinessLabel {
-    display: flex;
-    font-size: 32px;
-    font-weight: 400;
-    line-height: 38px;
-    text-align: left;
-    color: var(--Brand-Primary-SBA-Blue);
-    padding: 20px 0;
+  display: flex;
+  font-size: 32px;
+  font-weight: 400;
+  line-height: 38px;
+  text-align: left;
+  color: var(--Brand-Primary-SBA-Blue);
+  padding: 20px 0;
 }
 
 .loanLabel {
-    font-size: 22px;
-    font-weight: 400;
-    line-height: 26px;
-    text-align: left;
-    color: var(--Brand-Primary-SBA-Blue);
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 26px;
+  text-align: left;
+  color: var(--Brand-Primary-SBA-Blue);
 }
 
 .certInfoAlertWrapper {
-    margin: 20px 0;
+  margin: 20px 0;
 }

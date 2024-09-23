@@ -20,7 +20,8 @@ const PROGRESS_UPDATE_INTERVAL = 500;
 
 const fetchUserDataFromMock = async (mock: string) => {
   try {
-    const [ssoProfile, crmData, loans] = await Promise.all([fetch(`../../mock-data/${mock}/sso.json`).then(response => response.json()),
+    const [ssoProfile, crmData, loans] = await Promise.all([
+      fetch(`../../mock-data/${mock}/sso.json`).then(response => response.json()),
       fetch(`../../mock-data/${mock}/crm.json`)
         .then(response => response.json())
         .then(data => data.individuals[0]),
@@ -29,11 +30,14 @@ const fetchUserDataFromMock = async (mock: string) => {
         .catch(error => {
           console.error('Error fetching loan data:', error);
           return [];
-        })]);
+        }),
+    ]);
     return {
       profile: {
-        sso: ssoProfile, crm: crmData,
-      }, loans,
+        sso: ssoProfile,
+        crm: crmData,
+      },
+      loans,
     };
   } catch (error) {
     console.error('Error fetching user data:', error);
@@ -52,56 +56,69 @@ const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTok
   const loansData = await fetchLoansData(email, accessToken);
   const portalData = await fetchPortalData(email, accessToken);
   const ssoProfile: IUserProfile['sso'] = {
-    given_name        : info.given_name ?? '',
-    family_name       : info.family_name ?? '',
-    email             : info.email ?? '',
-    sub               : info.sub ?? '',
-    name              : info.name ?? '',
-    locale            : info.locale ?? '',
+    given_name: info.given_name ?? '',
+    family_name: info.family_name ?? '',
+    email: info.email ?? '',
+    sub: info.sub ?? '',
+    name: info.name ?? '',
+    locale: info.locale ?? '',
     preferred_username: info.preferred_username ?? '',
-    zone_info         : info.zoneinfo ?? '',
-    updated_at        : info.updated_at ?? 0,
-    email_verified    : info.email_verified ?? false,
-    cls_elevated      : Boolean(info.cls_elevated),
+    zone_info: info.zoneinfo ?? '',
+    updated_at: info.updated_at ?? 0,
+    email_verified: info.email_verified ?? false,
+    cls_elevated: Boolean(info.cls_elevated),
   };
 
   return {
-    profile : {
-      sso: ssoProfile, crm: individual, portal: portalData,
-    }, loans: loansData,
+    profile: {
+      sso: ssoProfile,
+      crm: individual,
+      portal: portalData,
+    },
+    loans: loansData,
   };
 };
 
-
 const fetchCRMDataFromBackend = async (email: string, accessToken: AccessTokenType, info: UserClaims) => {
   const data = JSON.stringify({
-    individuals: [{
-      firstName: '', lastName: '', email: email,
-    }],
+    individuals: [
+      {
+        firstName: '',
+        lastName: '',
+        email: email,
+      },
+    ],
   });
   const config = {
-    method       : 'post',
+    method: 'post',
     maxBodyLength: Infinity,
-    url          : `${BASE_API_URL}/individuals/individual?task=read`,
-    agent        : false,
-    headers      : {
-      'Content-Type': 'application/json', Authorization: `Bearer ${accessToken}`,
+    url: `${BASE_API_URL}/individuals/individual?task=read`,
+    agent: false,
+    headers: {
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${accessToken}`,
     },
-    data         : data,
+    data: data,
   };
   const results = await axios.request(config).catch(error => {
     console.log('Error', error);
   });
-  return results?.data.individuals[0] ?? {
-    firstName: info.given_name ?? '', lastName: info.family_name ?? '', email: info.email ?? '',
-  };
+  return (
+    results?.data.individuals[0] ?? {
+      firstName: info.given_name ?? '',
+      lastName: info.family_name ?? '',
+      email: info.email ?? '',
+    }
+  );
 };
 
 const fetchLoansData = async (email: string, accessToken: string | AccessToken | null | undefined) => {
   try {
     const response = await axios.get(`${LOAN_URL}/${email}`, {
       headers: {
-        Authorization: `Bearer ${accessToken}`, client_id: LOAN_CLIENT_ID, client_secret: LOAN_CLIENT_SECRET,
+        Authorization: `Bearer ${accessToken}`,
+        client_id: LOAN_CLIENT_ID,
+        client_secret: LOAN_CLIENT_SECRET,
       },
     });
     if (response.data === 'No loan information is available for given user') {
@@ -160,7 +177,13 @@ const handleLogout = async (oktaAuth: any) => {
   await oktaAuth.signOut();
 };
 
-const handleLoadingProgress = (setLoadingProgress: React.Dispatch<React.SetStateAction<number>>, setMessageIndex: React.Dispatch<React.SetStateAction<number>>, setLoadingMessage: React.Dispatch<React.SetStateAction<string>>, loadingMessages: string[], messageIndex: number) => {
+const handleLoadingProgress = (
+  setLoadingProgress: React.Dispatch<React.SetStateAction<number>>,
+  setMessageIndex: React.Dispatch<React.SetStateAction<number>>,
+  setLoadingMessage: React.Dispatch<React.SetStateAction<string>>,
+  loadingMessages: string[],
+  messageIndex: number
+) => {
   setLoadingProgress((prev: number) => Math.min(prev + (500 / 3000) * 100, 100));
   setMessageIndex((prev: number) => (prev < 3 ? prev + 1 : 0));
   setLoadingMessage(loadingMessages[messageIndex]);
@@ -198,7 +221,11 @@ const Loading = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
-    const interval = setInterval(() => handleLoadingProgress(setLoadingProgress, setMessageIndex, setLoadingMessage, loadingMessages, messageIndex), PROGRESS_UPDATE_INTERVAL);
+    const interval = setInterval(
+      () =>
+        handleLoadingProgress(setLoadingProgress, setMessageIndex, setLoadingMessage, loadingMessages, messageIndex),
+      PROGRESS_UPDATE_INTERVAL
+    );
     return () => clearInterval(interval);
   }, [messageIndex]);
 
@@ -218,51 +245,61 @@ const Loading = () => {
     await handleLogout(oktaAuth);
   };
 
-  return (<>
-    <GovBanner />
-    <header className={`${styles.usaHeader}`}>
-      <div className={`grid-row ${styles.usaNavContainer}`}>
-        <div className={`grid-col-auto ${styles.left}`}>
-          <a href="https://www.sba.gov/">
-            <img
-              className={`${styles.usaLogo}`}
-              src={lang === 'en' ? SBAlogoEn : SBAlogoEs}
-              alt={lang === 'en' ? 'U.S. Small Business Administration' : 'Administración de Pequeñas Empresas de los Estados Unidos'}
-            />
-            <img
-              className={`${styles.usaLogoSm}`}
-              src={SBAlogoSm}
-              alt={lang === 'en' ? 'U.S. Small Business Administration' : 'Administración de Pequeñas Empresas de los Estados Unidos'}
-            />
-          </a>
-        </div>
-        <div className={`grid-col ${styles.left}`}></div>
-        <div className={`grid-col-auto ${styles.right}`}>
-          <div className={`usa-language-container ${styles.usaLanguageContainer}`}>
-            <button type="button" className={`usa-button ${styles.pillButton}`} onClick={switchLanguage}>
-              <span lang={lang === 'en' ? 'es' : 'en'}>{lang === 'en' ? 'Español' : 'English'}</span>
+  return (
+    <>
+      <GovBanner />
+      <header className={`${styles.usaHeader}`}>
+        <div className={`grid-row ${styles.usaNavContainer}`}>
+          <div className={`grid-col-auto ${styles.left}`}>
+            <a href="https://www.sba.gov/">
+              <img
+                className={`${styles.usaLogo}`}
+                src={lang === 'en' ? SBAlogoEn : SBAlogoEs}
+                alt={
+                  lang === 'en'
+                    ? 'U.S. Small Business Administration'
+                    : 'Administración de Pequeñas Empresas de los Estados Unidos'
+                }
+              />
+              <img
+                className={`${styles.usaLogoSm}`}
+                src={SBAlogoSm}
+                alt={
+                  lang === 'en'
+                    ? 'U.S. Small Business Administration'
+                    : 'Administración de Pequeñas Empresas de los Estados Unidos'
+                }
+              />
+            </a>
+          </div>
+          <div className={`grid-col ${styles.left}`}></div>
+          <div className={`grid-col-auto ${styles.right}`}>
+            <div className={`usa-language-container ${styles.usaLanguageContainer}`}>
+              <button type="button" className={`usa-button ${styles.pillButton}`} onClick={switchLanguage}>
+                <span lang={lang === 'en' ? 'es' : 'en'}>{lang === 'en' ? 'Español' : 'English'}</span>
+              </button>
+            </div>
+            <button
+              className={` ${styles.buttonStyle}`}
+              onClick={logout}
+              aria-label={t('Log Out')}
+              type="button"
+              data-testid="log-out-button"
+            >
+              <span className={`${styles.buttonText}`}>{t('Log Out')}</span>
             </button>
           </div>
-          <button
-            className={` ${styles.buttonStyle}`}
-            onClick={logout}
-            aria-label={t('Log Out')}
-            type="button"
-            data-testid="log-out-button"
-          >
-            <span className={`${styles.buttonText}`}>{t('Log Out')}</span>
-          </button>
         </div>
+      </header>
+      <div data-cy={'loadingContainer'} className={`${styles.loadingContainer}`}>
+        <img className={`${styles.loadingIcon}`} src={loadingIcon} alt="Loading" />
+        <div className={`${styles.loadingProgressbarOuter}`}>
+          <div className={`${styles.loadingProgressbarInner}`} style={{ width: `${loadingProgress}%` }}></div>
+        </div>
+        <div className={`${styles.loadingText}`}>{loadingMessage}</div>
       </div>
-    </header>
-    <div data-cy={'loadingContainer'} className={`${styles.loadingContainer}`}>
-      <img className={`${styles.loadingIcon}`} src={loadingIcon} alt="Loading" />
-      <div className={`${styles.loadingProgressbarOuter}`}>
-        <div className={`${styles.loadingProgressbarInner}`} style={{ width: `${loadingProgress}%` }}></div>
-      </div>
-      <div className={`${styles.loadingText}`}>{loadingMessage}</div>
-    </div>
-  </>);
+    </>
+  );
 };
 
 export default Loading;

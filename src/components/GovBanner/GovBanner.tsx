@@ -7,49 +7,50 @@ import { useTranslation } from 'react-i18next';
 
 const GovBanner = () => {
   const { t } = useTranslation();
-  return (<>
-    {/* Top Banner : Official website of the United States government */}
-    <section className="usa-banner" aria-label="Official website of the United States government">
-      <div className="usa-accordion">
-        <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
-          <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
-            <div className="grid-col-auto">
-              <img className="usa-banner__header-flag" src={USFlag} alt="US Flag" />
-            </div>
-            <div className="grid-col-fill tablet:grid-col-auto">
-              <p className="usa-banner__header-text">{t('An official website of the United States government')}</p>
-              <p className="usa-banner__header-action">{t('Here\'s how you know')}</p>
-            </div>
-            <button
-              type="button"
-              className="usa-accordion__button usa-banner__button"
-              aria-expanded="false"
-              aria-controls="gov-banner-default"
-            >
-              <span className="usa-banner__button-text">{t('Here\'s how you know')}</span>
-            </button>
-          </div>
-        </header>
-        <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
-          <div className="grid-row grid-gap-lg">
-            <div className="usa-banner__guidance tablet:grid-col-6">
-              <img className="usa-banner__icon usa-media-block__img" src={DotGov} alt="Dot Gov Icon" />
-              <div className="usa-media-block__body">
-                <p>
-                  <strong>{t('Official websites use .gov')}</strong>
-                  <br />
-                  {t('A .gov website belongs to an official government organization in the United States.')}
-                </p>
+  return (
+    <>
+      {/* Top Banner : Official website of the United States government */}
+      <section className="usa-banner" aria-label="Official website of the United States government">
+        <div className="usa-accordion">
+          <header className={`usa-banner__header ${styles.usaBannerHeader}`}>
+            <div className={`usa-banner__inner ${styles.usaBannerInner}`}>
+              <div className="grid-col-auto">
+                <img className="usa-banner__header-flag" src={USFlag} alt="US Flag" />
               </div>
+              <div className="grid-col-fill tablet:grid-col-auto">
+                <p className="usa-banner__header-text">{t('An official website of the United States government')}</p>
+                <p className="usa-banner__header-action">{t("Here's how you know")}</p>
+              </div>
+              <button
+                type="button"
+                className="usa-accordion__button usa-banner__button"
+                aria-expanded="false"
+                aria-controls="gov-banner-default"
+              >
+                <span className="usa-banner__button-text">{t("Here's how you know")}</span>
+              </button>
             </div>
-            <div className="usa-banner__guidance tablet:grid-col-6">
-              <img className="usa-banner__icon usa-media-block__img" src={HttpsIcon} alt="HTTPS Icon" />
-              <div className="usa-media-block__body">
-                <p>
-                  <strong>{t('Secure .gov websites use HTTPS')}</strong>
-                  <br />
-                  {t('A')}{' '}
-                  <strong>{t('lock')}</strong>(<span className="icon-lock">
+          </header>
+          <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
+            <div className="grid-row grid-gap-lg">
+              <div className="usa-banner__guidance tablet:grid-col-6">
+                <img className="usa-banner__icon usa-media-block__img" src={DotGov} alt="Dot Gov Icon" />
+                <div className="usa-media-block__body">
+                  <p>
+                    <strong>{t('Official websites use .gov')}</strong>
+                    <br />
+                    {t('A .gov website belongs to an official government organization in the United States.')}
+                  </p>
+                </div>
+              </div>
+              <div className="usa-banner__guidance tablet:grid-col-6">
+                <img className="usa-banner__icon usa-media-block__img" src={HttpsIcon} alt="HTTPS Icon" />
+                <div className="usa-media-block__body">
+                  <p>
+                    <strong>{t('Secure .gov websites use HTTPS')}</strong>
+                    <br />
+                    {t('A')} <strong>{t('lock')}</strong>(
+                    <span className="icon-lock">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         width="52"
@@ -68,16 +69,19 @@ const GovBanner = () => {
                         />
                       </svg>
                     </span>
-                  ) {t('or')} <strong>https://</strong>
-                  {t('means you\'ve safely connected to the .gov website. Share sensitive information only on official, secure websites.')}
-                </p>
+                    ) {t('or')} <strong>https://</strong>
+                    {t(
+                      "means you've safely connected to the .gov website. Share sensitive information only on official, secure websites."
+                    )}
+                  </p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
-  </>);
+      </section>
+    </>
+  );
 };
 
 export default GovBanner;
