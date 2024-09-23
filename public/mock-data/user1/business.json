@@ -19,11 +19,7 @@
     "business_address_zipcode": "03062-2520",
     "business_phone_number": "603-555-1234",
     "fax": "603-555-5678",
-    "naics_codes": [
-      "423450",
-      "611699",
-      "811219"
-    ],
+    "naics_codes": ["423450", "611699", "811219"],
     "capabilities_narrative": "We provide top-notch safety solutions for various industries, including comprehensive training and repair services.",
     "website": "https:/www.3rd-degreesafety.com"
   }

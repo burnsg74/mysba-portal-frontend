@@ -1,3 +1,6 @@
-module.exports = new Proxy({}, {
-  get: (target, key) => key.toString(),
-});
+module.exports = new Proxy(
+  {},
+  {
+    get: (target, key) => key.toString(),
+  }
+);

@@ -3,18 +3,18 @@ class SbaWaffleMenu {
     this.sbaWaffleMenuEl = sbaWaffleMenuEl;
     this.isOpen = false;
     this.buttonList = [
-      { image: "mysba", label: "Home", link: "https://my.sba.gov/dashboard" },
-      { image: "certs", label: "Certifications", link: "https://certification.sba.gov/" },
-      { image: "loans", label: "Loans", link: "https://lending.sba.gov/" },
+      { image: 'mysba', label: 'Home', link: 'https://my.sba.gov/dashboard' },
+      { image: 'certs', label: 'Certifications', link: 'https://certification.sba.gov/' },
+      { image: 'loans', label: 'Loans', link: 'https://lending.sba.gov/' },
       {
-        image: "disaster",
-        label: "Disaster Assistance",
-        link: "https://lending.sba.gov/search-disaster",
+        image: 'disaster',
+        label: 'Disaster Assistance',
+        link: 'https://lending.sba.gov/search-disaster',
       },
       {
-        image: "learning",
-        label: "Learning",
-        link: "https://www.sba.gov/sba-learning-platform",
+        image: 'learning',
+        label: 'Learning',
+        link: 'https://www.sba.gov/sba-learning-platform',
       },
     ];
     this.waffleMenuIconButtonPosition = { bottom: 0, right: 0 };
@@ -24,20 +24,20 @@ class SbaWaffleMenu {
   }
 
   renderMenuIcon() {
-    if (window.document.getElementById("sbaWaffleMenuIcon")) {
+    if (window.document.getElementById('sbaWaffleMenuIcon')) {
       return;
     }
     let sbaWaffleMenu = this.sbaWaffleMenuEl;
-    let waffleMenuIconButton = document.createElement("button");
+    let waffleMenuIconButton = document.createElement('button');
     waffleMenuIconButton.innerHTML = this.svgContent;
-    waffleMenuIconButton.classList.add("sba-waffle-menu-icon__button");
-    waffleMenuIconButton.addEventListener("click", this.toggleMenu.bind(this));
+    waffleMenuIconButton.classList.add('sba-waffle-menu-icon__button');
+    waffleMenuIconButton.addEventListener('click', this.toggleMenu.bind(this));
     sbaWaffleMenu.appendChild(waffleMenuIconButton);
     this.updateMenuPosition();
   }
 
   updateMenuPosition() {
-    let waffleMenuIconButton = document.querySelector(".sba-waffle-menu-icon__button");
+    let waffleMenuIconButton = document.querySelector('.sba-waffle-menu-icon__button');
     if (waffleMenuIconButton) {
       let rect = waffleMenuIconButton.getBoundingClientRect();
       this.waffleMenuIconButtonPosition = {
@@ -47,7 +47,7 @@ class SbaWaffleMenu {
       };
 
       if (this.isOpen) {
-        const menuContainerDiv = document.getElementById("menuContainerDiv");
+        const menuContainerDiv = document.getElementById('menuContainerDiv');
         if (menuContainerDiv) {
           const rightPosition = window.innerWidth - this.waffleMenuIconButtonPosition.right;
           menuContainerDiv.style.right = `${rightPosition}px`;
@@ -58,49 +58,49 @@ class SbaWaffleMenu {
   }
 
   renderMenu() {
-    if (window.document.getElementById("menuContainerDiv")) {
+    if (window.document.getElementById('menuContainerDiv')) {
       return;
     }
-    document.addEventListener("click", this.handleClickOutside, true);
-    window.addEventListener("resize", this.updateMenuPosition);
+    document.addEventListener('click', this.handleClickOutside, true);
+    window.addEventListener('resize', this.updateMenuPosition);
 
-    let menuContainerDiv = document.createElement("div");
-    menuContainerDiv.id = "menuContainerDiv";
-    menuContainerDiv.classList.add("sba-waffle-menu__container");
+    let menuContainerDiv = document.createElement('div');
+    menuContainerDiv.id = 'menuContainerDiv';
+    menuContainerDiv.classList.add('sba-waffle-menu__container');
 
-    let headerDiv = document.createElement("div");
-    headerDiv.classList.add("sba-waffle-menu__header");
+    let headerDiv = document.createElement('div');
+    headerDiv.classList.add('sba-waffle-menu__header');
 
-    let headerText = document.createElement("span");
-    headerText.innerHTML = "MySBA";
+    let headerText = document.createElement('span');
+    headerText.innerHTML = 'MySBA';
     headerDiv.appendChild(headerText);
 
-    let waffleMenuCloseButton = document.createElement("button");
-    let waffleMenuCloseIcon = document.createElement("img");
-    waffleMenuCloseIcon.src = "/sba-waffle-menu-close.svg";
+    let waffleMenuCloseButton = document.createElement('button');
+    let waffleMenuCloseIcon = document.createElement('img');
+    waffleMenuCloseIcon.src = '/sba-waffle-menu-close.svg';
     waffleMenuCloseButton.appendChild(waffleMenuCloseIcon);
-    waffleMenuCloseButton.classList.add("sba-waffle-menu-icon__button");
-    waffleMenuCloseButton.addEventListener("click", this.toggleMenu.bind(this));
+    waffleMenuCloseButton.classList.add('sba-waffle-menu-icon__button');
+    waffleMenuCloseButton.addEventListener('click', this.toggleMenu.bind(this));
     headerDiv.appendChild(waffleMenuCloseButton);
     menuContainerDiv.appendChild(headerDiv);
 
-    let bodyDiv = document.createElement("div");
-    bodyDiv.classList.add("sba-waffle-menu__body");
+    let bodyDiv = document.createElement('div');
+    bodyDiv.classList.add('sba-waffle-menu__body');
     this.buttonList.forEach(item => {
-      let buttonLink = document.createElement("a");
-      buttonLink.classList.add("sba-waffle-menu__button-link");
+      let buttonLink = document.createElement('a');
+      buttonLink.classList.add('sba-waffle-menu__button-link');
       buttonLink.href = item.link;
 
-      let buttonGroupDiv = document.createElement("div");
-      buttonGroupDiv.classList.add("sba-waffle-menu__button-group");
+      let buttonGroupDiv = document.createElement('div');
+      buttonGroupDiv.classList.add('sba-waffle-menu__button-group');
 
-      let buttonImageDiv = document.createElement("div");
-      buttonImageDiv.classList.add("sba-waffle-menu__button-image");
-      buttonImageDiv.classList.add("sba-waffle-menu__button-image_" + item.image);
+      let buttonImageDiv = document.createElement('div');
+      buttonImageDiv.classList.add('sba-waffle-menu__button-image');
+      buttonImageDiv.classList.add('sba-waffle-menu__button-image_' + item.image);
       buttonGroupDiv.appendChild(buttonImageDiv);
 
-      let buttonTextDiv = document.createElement("div");
-      buttonTextDiv.classList.add("sba-waffle-menu__button-text");
+      let buttonTextDiv = document.createElement('div');
+      buttonTextDiv.classList.add('sba-waffle-menu__button-text');
       buttonTextDiv.innerHTML = item.label;
       buttonGroupDiv.appendChild(buttonTextDiv);
 
@@ -114,32 +114,32 @@ class SbaWaffleMenu {
   }
 
   handleClickOutside(event) {
-    const menuContainerDiv = document.getElementById("menuContainerDiv");
+    const menuContainerDiv = document.getElementById('menuContainerDiv');
     if (menuContainerDiv && !menuContainerDiv.contains(event.target) && this.isOpen) {
       this.isOpen = false;
-      let waffleMenuIcon = window.document.getElementById("sbaWaffleMenuIcon");
-      const paths = waffleMenuIcon.querySelectorAll("path");
+      let waffleMenuIcon = window.document.getElementById('sbaWaffleMenuIcon');
+      const paths = waffleMenuIcon.querySelectorAll('path');
       paths.forEach(path => {
-        path.setAttribute("fill", "#007DBC"); // Change to a different color
+        path.setAttribute('fill', '#007DBC'); // Change to a different color
       });
-      document.removeEventListener("click", this.handleClickOutside, true);
-      window.removeEventListener("resize", this.updateMenuPosition);
+      document.removeEventListener('click', this.handleClickOutside, true);
+      window.removeEventListener('resize', this.updateMenuPosition);
       this.removeMenu();
     }
   }
 
   toggleMenu() {
     this.isOpen = !this.isOpen;
-    let waffleMenuIcon = window.document.getElementById("sbaWaffleMenuIcon");
-    const paths = waffleMenuIcon.querySelectorAll("path");
+    let waffleMenuIcon = window.document.getElementById('sbaWaffleMenuIcon');
+    const paths = waffleMenuIcon.querySelectorAll('path');
     if (this.isOpen) {
       paths.forEach(path => {
-        path.setAttribute("fill", "#002E6D"); // Change to a different color
+        path.setAttribute('fill', '#002E6D'); // Change to a different color
       });
       this.renderMenu();
     } else {
       paths.forEach(path => {
-        path.setAttribute("fill", "#007DBC"); // Change to a different color
+        path.setAttribute('fill', '#007DBC'); // Change to a different color
       });
       this.removeMenu();
     }
@@ -147,7 +147,7 @@ class SbaWaffleMenu {
   }
 
   removeMenu() {
-    const menuContainerDiv = document.getElementById("menuContainerDiv");
+    const menuContainerDiv = document.getElementById('menuContainerDiv');
     if (menuContainerDiv) {
       menuContainerDiv.remove();
     }

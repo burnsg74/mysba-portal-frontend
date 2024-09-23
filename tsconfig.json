@@ -3,7 +3,7 @@
     "types": ["jest", "node"],
     "target": "ESNext",
     "useDefineForClassFields": true,
-    "lib": ["DOM", "DOM.Iterable", "ESNext",],
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "allowJs": false,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,9 +18,8 @@
     "jsx": "react",
     "baseUrl": "./",
     "paths": {
-      "src/*": ["src/*"],
+      "src/*": ["src/*"]
     }
-
   },
   "include": ["./src"],
   "exclude": ["node_modules"]

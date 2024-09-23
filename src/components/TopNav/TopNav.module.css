@@ -1,76 +1,70 @@
 .container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
-    border-bottom: 1px solid var(--Nav-Border-Bottom);
-    background: var(--Neutrals-Light-Gray);
-    padding-left: 16px;
-    padding-right: 16px;
-    justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  border-bottom: 1px solid var(--Nav-Border-Bottom);
+  background: var(--Neutrals-Light-Gray);
+  padding-left: 16px;
+  padding-right: 16px;
 }
 
 @media screen and (max-width: 639px) {
-    .container {
-        display: none;
-    }
+  .container {
+    display: none;
+  }
 }
 
 .linkList {
-    margin-bottom: 0;
-    margin-top: 0;
-    list-style-type: none;
-    padding-left: 0;
-    display: flex;
-    gap: 10px;
+  margin-bottom: 0;
+  margin-top: 0;
+  list-style-type: none;
+  padding-left: 0;
+  display: flex;
+  gap: 10px;
 }
 
 .row {
-    align-items: center;
-    align-self: stretch;
-    color: inherit;
-    display: flex;
-    gap: 10px;
-    text-decoration: none;
-    margin-top: 16px;
-    margin-left: 14px;
-    margin-right: 14px;
-    padding-bottom: 16px;
-    color: var(--Base-base-dark);
-    font-family: var(--Font-Secondary);
-    font-size: 14px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+  align-items: center;
+  align-self: stretch;
+  display: flex;
+  gap: 10px;
+  text-decoration: none;
+  margin-top: 16px;
+  margin-left: 14px;
+  margin-right: 14px;
+  padding-bottom: 16px;
+  color: var(--Base-base-dark);
+  font-family: var(--Font-Secondary);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 
 .rowActive {
-    border-bottom: 4px solid var(--Brand-Primary-SBA-Blue);
-    align-items: center;
+  border-bottom: 4px solid var(--Brand-Primary-SBA-Blue);
+  align-items: center;
 }
 
 .leftLinks,
 .rightLinks {
-    display: flex;
-    gap: 10px;
+  display: flex;
+  gap: 10px;
 }
 
 .leftLinks a,
 .rightLinks a {
-    text-align: center;
-    text-decoration: none;
-    font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  font-size: 14px;
 }
 
 .left-links a:hover,
 .right-links a:hover {
-    color: black;
-}
-
-.left-links a.active,
-.right-links a.active {
+  color: black;
 }
 
 .skipLink {
-    display: none;
+  display: none;
 }

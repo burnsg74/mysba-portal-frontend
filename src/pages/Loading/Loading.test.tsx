@@ -1,35 +1,37 @@
-import React from "react";
-import { render, screen } from "@testing-library/react";
-import { Provider } from "react-redux";
-import { BrowserRouter } from "react-router-dom";
-import { store } from "src/store/store";
-import Loading from "src/pages/Loading/Loading";
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
+import { store } from 'src/store/store';
+import Loading from 'src/pages/Loading/Loading';
 
-jest.mock("react-i18next", () => ({
+jest.mock('react-i18next', () => ({
   useTranslation: () => ({
     t: (key: string) => key,
   }),
 }));
 
-jest.mock("src/utils/constants", () => ({
-  BASE_API_URL: "http://localhost/",
+jest.mock('src/utils/constants', () => ({
+  BASE_API_URL: 'http://localhost/',
 }));
 
-jest.mock("@okta/okta-react", () => ({
+jest.mock('@okta/okta-react', () => ({
   useOktaAuth: () => ({
-    authState: {}, authService: {},
+    authState: {},
+    authService: {},
   }),
 }));
 
-describe("Page: Loading", () => {
+describe('Page: Loading', () => {
+  it('It renders', () => {
+    render(
+      <Provider store={store}>
+        <BrowserRouter>
+          <Loading />
+        </BrowserRouter>
+      </Provider>
+    );
 
-  it("It renders", () => {
-    render(<Provider store={store}>
-      <BrowserRouter>
-        <Loading />
-      </BrowserRouter>
-    </Provider>);
-
-    expect(screen.getByText("Authenticating")).toBeDefined();
+    expect(screen.getByText('Authenticating')).toBeDefined();
   });
 });

@@ -1,26 +1,26 @@
 .alert {
-    margin: 0;
+  margin: 0;
 }
 .alert-info {
-    background: var(--Alert-Info-Background);
-    border-left-color: var(--Alert-Info-Bar);
+  background: var(--Alert-Info-Background);
+  border-left-color: var(--Alert-Info-Bar);
 }
 
 .alert-warning {
-    background: var(--Alert-Warning-Background);
-    border-left-color: var(--Alert-Warning-Bar);
+  background: var(--Alert-Warning-Background);
+  border-left-color: var(--Alert-Warning-Bar);
 }
 
 .alert-error {
-    background: var(--Alert-Error-Background);
-    border-left-color: var(--Alert-Error-Bar);
+  background: var(--Alert-Error-Background);
+  border-left-color: var(--Alert-Error-Bar);
 }
 
 .alert-success {
-    background: var(--Alert-Success-Background);
-    border-left-color: var(--Alert-Success-Bar);
+  background: var(--Alert-Success-Background);
+  border-left-color: var(--Alert-Success-Bar);
 }
 
-:global([class*="usa-alert--"]) .alert-body {
-    background-color: unset !important;
+:global([class*='usa-alert--']) .alert-body {
+  background-color: unset !important;
 }

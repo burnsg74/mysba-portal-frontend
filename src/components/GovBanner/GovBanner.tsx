@@ -1,14 +1,14 @@
-import React from "react";
-import styles from "src/components/Header/Header.module.css";
-import USFlag from "src/assets/us_flag.svg";
-import DotGov from "src/assets/icon-dot-gov.svg";
-import HttpsIcon from "src/assets/icon-https.svg";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import styles from 'src/components/Header/Header.module.css';
+import USFlag from 'src/assets/us_flag.svg';
+import DotGov from 'src/assets/icon-dot-gov.svg';
+import HttpsIcon from 'src/assets/icon-https.svg';
+import { useTranslation } from 'react-i18next';
 
 const GovBanner = () => {
   const { t } = useTranslation();
-
-  return (<>
+  return (
+    <>
       {/* Top Banner : Official website of the United States government */}
       <section className="usa-banner" aria-label="Official website of the United States government">
         <div className="usa-accordion">
@@ -18,7 +18,7 @@ const GovBanner = () => {
                 <img className="usa-banner__header-flag" src={USFlag} alt="US Flag" />
               </div>
               <div className="grid-col-fill tablet:grid-col-auto">
-                <p className="usa-banner__header-text">{t("An official website of the United States government")}</p>
+                <p className="usa-banner__header-text">{t('An official website of the United States government')}</p>
                 <p className="usa-banner__header-action">{t("Here's how you know")}</p>
               </div>
               <button
@@ -34,12 +34,12 @@ const GovBanner = () => {
           <div className={`usa-banner__content usa-accordion__content`} id="gov-banner-default" hidden>
             <div className="grid-row grid-gap-lg">
               <div className="usa-banner__guidance tablet:grid-col-6">
-                <img className="usa-banner__icon usa-media-block__img" src={DotGov} alt="Dot Goc Icon" />
+                <img className="usa-banner__icon usa-media-block__img" src={DotGov} alt="Dot Gov Icon" />
                 <div className="usa-media-block__body">
                   <p>
-                    <strong>{t("Official websites use .gov")}</strong>
+                    <strong>{t('Official websites use .gov')}</strong>
                     <br />
-                    {t("A .gov website belongs to an official government organization in the United States.")}
+                    {t('A .gov website belongs to an official government organization in the United States.')}
                   </p>
                 </div>
               </div>
@@ -47,9 +47,10 @@ const GovBanner = () => {
                 <img className="usa-banner__icon usa-media-block__img" src={HttpsIcon} alt="HTTPS Icon" />
                 <div className="usa-media-block__body">
                   <p>
-                    <strong>{t("Secure .gov websites use HTTPS")}</strong>
+                    <strong>{t('Secure .gov websites use HTTPS')}</strong>
                     <br />
-                    {t("A")} <strong>{t("lock")}</strong> (
+                    {t('A')}
+                    <strong>{t('lock')}</strong> (
                     <span className="icon-lock">
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
@@ -69,8 +70,10 @@ const GovBanner = () => {
                         />
                       </svg>
                     </span>
-                    ) {t("or")} <strong>https://</strong>
-                    {t("means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.")}
+                    ) {t('or')} <strong>https://</strong>
+                    {t(
+                      "means you've safely connected to the .gov website. Share sensitive information only on official, secure websites."
+                    )}
                   </p>
                 </div>
               </div>
@@ -78,6 +81,8 @@ const GovBanner = () => {
           </div>
         </div>
       </section>
-    </>);
+    </>
+  );
 };
+
 export default GovBanner;

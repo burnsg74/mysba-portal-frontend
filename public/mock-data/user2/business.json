@@ -19,11 +19,7 @@
     "business_address_zipcode": "03062-2520",
     "business_phone_number": "+1-603-555-1234",
     "fax": "+1-603-555-5678",
-    "naics_codes": [
-      "423450",
-      "611699",
-      "811219"
-    ],
+    "naics_codes": ["423450", "611699", "811219"],
     "capabilities_narrative": "We provide comprehensive safety training and consulting services.",
     "website": "https://www.3rd-degreesafety.com"
   },
@@ -47,10 +43,7 @@
     "business_address_zipcode": "03801-4412",
     "business_phone_number": "+1-603-555-9876",
     "fax": "+1-603-555-1235",
-    "naics_codes": [
-      "541512",
-      "541519"
-    ],
+    "naics_codes": ["541512", "541519"],
     "capabilities_narrative": "We specialize in IT consulting and custom software development.",
     "website": "https://www.veloci-tech.com"
   }

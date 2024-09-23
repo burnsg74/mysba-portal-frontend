@@ -1,69 +1,69 @@
 .inputGroup {
-    align-items: flex-start;
-    align-self: stretch;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    text-align: start;
-    width: 100%;
-    position: relative;
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: start;
+  width: 100%;
+  position: relative;
 }
 
 .inputGroup.error {
-    padding-left: 20px;
+  padding-left: 20px;
 }
 
 .inputGroup.error::before {
-    content: "";
-    position: absolute;
-    left: 0;
-    top: 0;
-    height: 100%;
-    width: 4px;
-    background-color: #B50909;
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background-color: #b50909;
 }
 
 .inputLabel {
-    color: var(--Text-Text);
-    font-family: var(--Font-Secondary);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: var(--Text-Text);
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .inputHelp {
-    color: #757575;
-    font-family: var(--Font-Secondary);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: #757575;
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .input {
-    fill: #FFFFFF;
-    height: 40px;
-    stroke-width: 1px;
-    stroke: var(--Text-Text);
-    width: 100%;
-    max-width: unset;
+  fill: #ffffff;
+  height: 40px;
+  stroke-width: 1px;
+  stroke: var(--Text-Text);
+  width: 100%;
+  max-width: unset;
 }
 
 .redStar {
-    color: var(--Error-error);
-    font-family: var(--Font-Secondary);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  color: var(--Error-error);
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .errorMessage {
-    color: var(--Error-error-dark);
-    font-family: var(--Font-Secondary);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: normal;
+  color: var(--Error-error-dark);
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }

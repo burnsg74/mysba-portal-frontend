@@ -1,11 +1,11 @@
-import { Action, configureStore, ThunkAction } from "@reduxjs/toolkit";
-import userReducer from "./user/userSlice";
-import showNavReducer from "src/store/showNav/showNavSlice";
-
+import { Action, configureStore, ThunkAction } from '@reduxjs/toolkit';
+import userReducer from './user/userSlice';
+import showNavReducer from 'src/store/showNav/showNavSlice';
 
 export const store = configureStore({
   reducer: {
-    user: userReducer, showNav: showNavReducer,
+    user: userReducer,
+    showNav: showNavReducer,
   },
 });
 

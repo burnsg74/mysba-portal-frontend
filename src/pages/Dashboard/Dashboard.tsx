@@ -1,33 +1,34 @@
-import React from "react";
-import { useSelector } from "react-redux";
-import { getUser } from "src/store/user/userSlice";
-import { useTranslation } from "react-i18next";
-import styles from "src/pages/Dashboard/Dashboard.module.css";
-import CityScapeImage from "src/assets/cityscape.png";
-import {Alert} from "src/components/Alert/Alert";
-import CardLoansImg from "src/assets/card-loans-img.jpg";
-import CardCertificationsImg from "src/assets/card-certifications-img.jpg";
-import CardDisasterLoansImg from "src/assets/card-disaster_loans-img.jpg";
-import { LoanCard } from "src/components/LoanCard/LoanCard";
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { getUser } from 'src/store/user/userSlice';
+import { useTranslation } from 'react-i18next';
+import styles from 'src/pages/Dashboard/Dashboard.module.css';
+import CityScapeImage from 'src/assets/cityscape.png';
+import { Alert } from 'src/components/Alert/Alert';
+import CardLoansImg from 'src/assets/card-loans-img.jpg';
+import CardCertificationsImg from 'src/assets/card-certifications-img.jpg';
+import CardDisasterLoansImg from 'src/assets/card-disaster_loans-img.jpg';
+import { LoanCard } from 'src/components/LoanCard/LoanCard';
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
   const { t } = useTranslation();
 
-  return (<>
+  return (
+    <>
       {/* Top city banner */}
       <div className={`banner ${styles.banner}`} data-testid="page-dashboard">
         <div className={`${styles.welcomeMessage}`}>
-          {user.profile?.crm && (<span data-testid="welcome-first_name" className="first_name">
-              {t("Hi")} {user.profile?.crm?.first_name},{" "}
-            </span>)}
+          {user.profile?.crm && (
+            <span data-testid="welcome-first_name" className="first_name">
+              {t('Hi')} {user.profile?.crm?.first_name},{' '}
+            </span>
+          )}
         </div>
-        <div className={`${styles.mysbaMessage}`}>{t("Welcome to MySBA")}</div>
-        <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t("Decorative Cityscape")} />
+        <div className={`${styles.mysbaMessage}`}>{t('Welcome to MySBA')}</div>
+        <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t('Decorative Cityscape')} />
       </div>
       <div className={`main-container ${styles.contentContainer}`}>
-
-
         {(() => {
           let previousBusinessName = '';
           return [...(user.loans ?? [])]
@@ -45,13 +46,13 @@ const Dashboard = () => {
                 <React.Fragment key={loan.sba_number}>
                   {isDifferentBusiness && (
                     <>
-                      <h1 className={`${styles.loanBusinessLabel}`}>
-                        {loan.business_name}
-                      </h1>
+                      <h1 className={`${styles.loanBusinessLabel}`}>{loan.business_name}</h1>
                       <h2 className={`${styles.loanLabel}`}>Loans</h2>
                     </>
                   )}
-                  {loan.payment_past_due && <Alert message={`Payment for loan ${loan.sba_number} is past due.`} type="error" useSlim={true} />}
+                  {loan.payment_past_due && (
+                    <Alert message={`Payment for loan ${loan.sba_number} is past due.`} type="error" useSlim={true} />
+                  )}
                   <LoanCard loan={loan} hideDetails={true} />
                 </React.Fragment>
               );
@@ -59,13 +60,13 @@ const Dashboard = () => {
         })()}
 
         <div className={`${styles.certInfoAlertWrapper}`}>
-        <Alert
-          type={"info"}
-          title={t("Certification Data is Coming Soon")}
-          message={t("dashboard.cert.alert.message", {
-            link: "<a href=\"https://certification.sba.gov\" target=\"_blank\" rel=\"noopener noreferrer\">MySBA Certifications</a>",
-          })}
-        />
+          <Alert
+            type={'info'}
+            title={t('Certification Data is Coming Soon')}
+            message={t('dashboard.cert.alert.message', {
+              link: '<a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">MySBA Certifications</a>',
+            })}
+          />
         </div>
 
         <div className={`grid-row ${styles.cardRow}`}>
@@ -169,7 +170,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </>);
+    </>
+  );
 };
 
 export default Dashboard;

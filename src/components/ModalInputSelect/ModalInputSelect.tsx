@@ -1,5 +1,5 @@
-import React from "react";
-import styles from "src/components/ModalInputSelect/ModalInputSelect.module.css";
+import React from 'react';
+import styles from 'src/components/ModalInputSelect/ModalInputSelect.module.css';
 
 interface Option {
   value: string;
@@ -20,19 +20,20 @@ const ModalInputSelect: React.FC<ModalInputSelectProps> = ({ name, value, option
     onChange(name, event.target.value);
   };
 
-  return (<div className={` ${styles.inputGroup}`}>
-    <label className={`${styles.inputLabel}`}>{label}</label>
-    {help && <div className={`${styles.inputHelp}`}>{help}</div>}
-    <select
-      className={`usa-select ${styles.input}`}
-      name={name}
-      value={value}
-      onChange={handleChange}
-    >
-      <option>- Select -</option>
-      {options.map((option) => (<option key={value} value={option.value}>{option.label}</option>))}
-    </select>
-  </div>);
+  return (
+    <div className={` ${styles.inputGroup}`}>
+      <label className={`${styles.inputLabel}`}>{label}</label>
+      {help && <div className={`${styles.inputHelp}`}>{help}</div>}
+      <select className={`usa-select ${styles.input}`} name={name} value={value} onChange={handleChange}>
+        <option>- Select -</option>
+        {options.map(option => (
+          <option key={value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  );
 };
 
 export default ModalInputSelect;
