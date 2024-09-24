@@ -174,3 +174,320 @@ a {
 .faqContent {
   padding: 16px 24px;
 }
+
+.localResourcesContainer {
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.searchInputGroup {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
+  align-self: stretch;
+  justify-content: space-between;
+}
+
+.title {
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 40px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  width: 100%;
+  flex-grow: 2;
+  flex-basis: auto;
+}
+
+.titleZipContainer {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex: 1 1 auto;
+}
+
+.titleZipLabel {
+  color: var(--Text-Text);
+  font-family: var(--Font-Secondary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-top: unset;
+}
+
+.localResourcesContentContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.BodyContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  align-self: stretch;
+}
+
+.bodyDistrictCard {
+  align-self: stretch;
+  border-radius: 8px;
+  border: 1px solid var(--Base-base-lighter);
+  box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  min-width: 208px;
+  @media (max-width: 1364px) {
+    flex-direction: column;
+  }
+}
+
+.bodyDistrictCardImgContainer {
+  align-items: center;
+  border-radius: 8px;
+  background: #e6e6e6;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: 165px;
+  justify-content: center;
+  width: 252px;
+  @media (max-width: 1364px) {
+    width: 100%;
+  }
+}
+
+.bodyDistrictCardImg {
+  align-items: flex-start;
+  display: flex;
+  flex-shrink: 0;
+  gap: 10px;
+  height: 163px;
+  width: 253px;
+}
+
+.bodyDistrictCardDetailsContainer {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: 20px;
+}
+
+.bodyDistrictCardDetailsTitle {
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  text-decoration-line: underline;
+}
+
+.bodyDistrictCardDetailsTitle a {
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 32px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  text-decoration-line: underline;
+}
+
+.bodyDistrictCardDetailsLinksContainer {
+  align-items: flex-start;
+  display: flex;
+  gap: 8px;
+  align-self: stretch;
+  flex-wrap: wrap;
+}
+
+.launchIcon {
+  width: 18px;
+  height: 18px;
+}
+
+.districtCardDetailsLinkIcon {
+  width: 18px;
+  height: 18px;
+  fill: #002e6d;
+}
+
+.bodyDistrictCardDetailsLinksGroup {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.bodyDistrictCardDetailsLinksGroup a {
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.officeCardsContainer {
+  align-items: flex-start;
+  align-self: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.officeCard {
+  align-items: flex-start;
+  align-self: stretch;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid var(--Base-base-lighter);
+  box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 0 0;
+  gap: 20px;
+  min-width: 314px;
+  padding: 20px;
+}
+
+.officeCardDetailsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+  overflow: hidden;
+}
+
+.officeCardDetailsTitle {
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 100%;
+  max-height: 100%;
+}
+
+.officeCardDetailsAptOnly {
+  align-items: center;
+  background: var(--Brand-Secondary-Bright-Blue);
+  border-radius: 2px;
+  color: #ffffff;
+  display: flex;
+  font-family: var(--Font-Secondary);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 100%;
+  padding: 2px 8px;
+  white-space: nowrap;
+}
+
+.officeCardDetailsPhone {
+  align-items: start;
+  color: var(--Brand-Primary-SBA-Blue);
+  display: flex;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  gap: 8px;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.officeCardDetailsPhone a {
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.officeCardDetailsAddress {
+  align-items: start;
+  color: var(--Brand-Primary-SBA-Blue);
+  display: flex;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  gap: 8px;
+  line-height: normal;
+  text-decoration-line: underline;
+  white-space: pre-line;
+}
+
+.officeCardDetailsAddress a {
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration-line: underline;
+}
+
+.guideContainer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  justify-content: space-between;
+  align-items: center;
+  align-self: stretch;
+  border-radius: 8px;
+  background: var(--Brand-Primary-SBA-Blue);
+  box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+}
+
+.guideTitle {
+  color: #ffffff;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 120%;
+}
+
+.districtContactLink {
+  text-decoration: none;
+  color: inherit;
+}
+
+.officeCardContentContainer {
+  display: flex;
+  min-width: 300px;
+  padding: 20px;
+  align-items: flex-start;
+  gap: 20px;
+  flex: 1 0 0;
+  border-radius: 8px;
+  border: 1px solid var(--Base-base-lighter);
+  background: #ffffff;
+  box-shadow: 0 7px 15px 0 rgba(27, 30, 41, 0.07);
+}
+
+.officeCardsImg {
+  width: 100px;
+  height: 100px;
+}
+
+.linkedInLogo {
+  width: 18px;
+  height: 18px;
+}

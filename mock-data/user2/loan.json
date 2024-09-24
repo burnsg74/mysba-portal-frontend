@@ -2,7 +2,7 @@
   {
     "sba_number": "5338189103",
     "business_name": "Samuel R Kennedy",
-    "payment_past_due": false,
+    "payment_past_due": true,
     "outstanding_balance": "$0.00",
     "loan_status": "Active Un-Disbursed",
     "payment_due_date": null,

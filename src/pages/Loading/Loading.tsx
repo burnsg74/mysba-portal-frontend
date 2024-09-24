@@ -20,12 +20,13 @@ const PROGRESS_UPDATE_INTERVAL = 500;
 
 const fetchUserDataFromMock = async (mock: string) => {
   try {
-    const [ssoProfile, crmData, loans] = await Promise.all([
+    const [ssoData, crmData, loansData, portalData] = await Promise.all([
       fetch(`../../mock-data/${mock}/sso.json`).then(response => response.json()),
       fetch(`../../mock-data/${mock}/crm.json`)
         .then(response => response.json())
         .then(data => data.individuals[0]),
-      fetch(`../../mock-data/${mock}/loan.json`)
+      fetch(`../../mock-data/${mock}/loan.json`).then(response => response.json()),
+      fetch(`../../mock-data/${mock}/portal.json`)
         .then(response => response.json())
         .catch(error => {
           console.error('Error fetching loan data:', error);
@@ -34,10 +35,11 @@ const fetchUserDataFromMock = async (mock: string) => {
     ]);
     return {
       profile: {
-        sso: ssoProfile,
+        portal: portalData,
+        sso: ssoData,
         crm: crmData,
       },
-      loans,
+      loans: loansData,
     };
   } catch (error) {
     console.error('Error fetching user data:', error);
