@@ -10,18 +10,14 @@ i18n.use(initReactI18next).init({
   resources: {
     en: {
       translation: {
-        'Frequently Asked Questions': 'Frequently Asked Questions',
-        'Need assistance with MySBA?': 'Need assistance with MySBA?',
-        'Help is available via phone and email. Contact us today:':
-          'Help is available via phone and email. Contact us today:',
-        Email: 'Email',
-        'If you are seeking SBA assistance, click on resources above and enter your zip code to find your local SBA office contact information.':
-          'If you are seeking SBA assistance, click on resources above and enter your zip code to find your local SBA office contact information.',
+        'Frequently Asked Questions'                                                                                                            : 'Frequently Asked Questions',
+        'Need assistance with MySBA?'                                                                                                           : 'Need assistance with MySBA?',
+        'Help is available via phone and email. Contact us today:'                                                                              : 'Help is available via phone and email. Contact us today:',
+        Email                                                                                                                                   : 'Email',
+        'If you are seeking SBA assistance, click on resources above and enter your zip code to find your local SBA office contact information.': 'If you are seeking SBA assistance, click on resources above and enter your zip code to find your local SBA office contact information.',
       },
     },
-  },
-  lng: 'en',
-  fallbackLng: 'en',
+  }, lng   : 'en', fallbackLng: 'en',
 });
 
 describe('Help function', () => {
