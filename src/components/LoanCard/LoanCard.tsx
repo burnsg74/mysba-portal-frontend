@@ -21,7 +21,7 @@ export const LoanCard: React.FC<ILoanCardProps> = ({ loan }) => {
               <div className={styles.bodyRowRightGroup}>Amount to be Current: {loan.amount_to_be_current}</div>
             ) : (
               <div className={styles.bodyRowRightGroup}>
-                {loan.amount_to_be_current} due {loan.payment_due_date}
+                Next Payment: {loan.amount_to_be_current} due on {loan.payment_due_date}
               </div>
             )}
           </div>
