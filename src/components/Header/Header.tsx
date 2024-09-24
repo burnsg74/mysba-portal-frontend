@@ -82,7 +82,6 @@ const Header = () => {
       return;
     }
 
-    console.log('Normal Logout');
     await oktaAuth.signOut();
     document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -91,8 +90,7 @@ const Header = () => {
     localStorage.clear();
   };
 
-  return (
-    <>
+  return (<>
       <GovBanner />
       {/* MySBA Header*/}
       <header className={`${styles.usaHeader}`}>
@@ -103,20 +101,12 @@ const Header = () => {
               <img
                 className={`${styles.usaLogo}`}
                 src={lang === 'en' ? SBAlogoEn : SBAlogoEs}
-                alt={
-                  lang === 'en'
-                    ? 'U.S. Small Business Administration'
-                    : 'Administración de Pequeñas Empresas de los Estados Unidos'
-                }
+                alt={lang === 'en' ? 'U.S. Small Business Administration' : 'Administración de Pequeñas Empresas de los Estados Unidos'}
               />
               <img
                 className={`${styles.usaLogoSm}`}
                 src={SBAlogoSm}
-                alt={
-                  lang === 'en'
-                    ? 'U.S. Small Business Administration'
-                    : 'Administración de Pequeñas Empresas de los Estados Unidos'
-                }
+                alt={lang === 'en' ? 'U.S. Small Business Administration' : 'Administración de Pequeñas Empresas de los Estados Unidos'}
               />
             </a>
           </div>
@@ -136,21 +126,18 @@ const Header = () => {
               </button>
             </div>
 
-            {showProfile && (
-              <>
+            {showProfile && (<>
                 {/* User ChangePassword */}
                 <div className={`usa-nav__inner ${styles.usaNavInner}`}>
                   <Link to="/profile" data-testid="profile-link">
                     <img src={ProfileIcon} alt="Profile Icon" />
                   </Link>
                 </div>
-              </>
-            )}
+              </>)}
 
             <div id="sbaWaffleMenu" ref={waffleMenu}></div>
             {/* Multi-Language Toggle */}
-            {showNav && (
-              <>
+            {showNav && (<>
                 {/* Head Nav for small screens */}
                 <div className={`${styles.headerMenuIconContainer}`}>
                   <svg
@@ -163,10 +150,8 @@ const Header = () => {
                     <use xlinkHref="/assets/img/sprite.svg#menu"></use>
                   </svg>
                 </div>
-              </>
-            )}
-            {!showNav && !showProfile && (
-              <button
+              </>)}
+            {!showNav && !showProfile && (<button
                 className={` ${styles.buttonStyle}`}
                 onClick={logout}
                 aria-label={t('Log Out')}
@@ -174,13 +159,11 @@ const Header = () => {
                 data-testid="log-out-button"
               >
                 <span className={`${styles.buttonText}`}>{t('Log Out')}</span>
-              </button>
-            )}
+              </button>)}
           </div>
         </div>
       </header>
-      {showNav && (
-        <button
+      {showNav && (<button
           className={`${styles.rightSideNav} ${isNavOpen ? styles.isOpen : ''}`}
           onBlur={handleFocusOut}
           ref={navRef}
@@ -193,9 +176,7 @@ const Header = () => {
             </svg>
           </div>
           <SideNav forMobile={true} onNavLinkClick={handleNavLinkClick} />
-        </button>
-      )}
-    </>
-  );
+        </button>)}
+    </>);
 };
 export default Header;
