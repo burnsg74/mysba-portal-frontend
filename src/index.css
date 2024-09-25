@@ -534,8 +534,12 @@ textarea:not([disabled]):focus {
     padding-right: 16px;
 }
 
-#fba-button {
-    color: #007DBC;
+#fba-button.usa-button {
+    background-color: var(--SBA-Celeste) !important;
+}
+
+#fba-button.usa-button:hover {
+    background-color: #1A4480 !important;
 }
 
 /*.fba-modal-dialog h1 {*/
