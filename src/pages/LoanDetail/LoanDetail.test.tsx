@@ -6,7 +6,8 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
 jest.mock('react-router-dom', () => ({
-  useNavigate: jest.fn(), useParams: jest.fn(),
+  useNavigate: jest.fn(),
+  useParams: jest.fn(),
 }));
 
 jest.mock('react-redux', () => ({
@@ -20,18 +21,20 @@ jest.mock('react-i18next', () => ({
 }));
 
 const mockUser = {
-  loans: [{
-    sba_number                   : '123456',
-    business_name                : 'Test Business',
-    loan_status                  : 'Active',
-    maturity_date                : '2025-01-01',
-    outstanding_balance          : 100000,
-    amount_to_be_current         : 5000,
-    payment_due_date             : '2023-06-01',
-    program_description          : '7(a)',
-    processing_method_description: 'Test Loan',
-    payment_past_due             : false,
-  }],
+  loans: [
+    {
+      sba_number: '123456',
+      business_name: 'Test Business',
+      loan_status: 'Active',
+      maturity_date: '2025-01-01',
+      outstanding_balance: 100000,
+      amount_to_be_current: 5000,
+      payment_due_date: '2023-06-01',
+      program_description: '7(a)',
+      processing_method_description: 'Test Loan',
+      payment_past_due: false,
+    },
+  ],
 };
 
 describe('LoanDetail', () => {
@@ -71,7 +74,8 @@ describe('LoanDetail', () => {
 
   it('displays alert when payment is past due', () => {
     const pastDueUser = {
-      ...mockUser, loans: [{ ...mockUser.loans[0], payment_past_due: true }],
+      ...mockUser,
+      loans: [{ ...mockUser.loans[0], payment_past_due: true }],
     };
     (useSelector as jest.Mock).mockReturnValue(pastDueUser);
     render(<LoanDetail />);
@@ -89,7 +93,8 @@ describe('LoanDetail', () => {
 
   it('renders correct label for 504 loan program', () => {
     const user504 = {
-      ...mockUser, loans: [{ ...mockUser.loans[0], program_description: '504' }],
+      ...mockUser,
+      loans: [{ ...mockUser.loans[0], program_description: '504' }],
     };
     (useSelector as jest.Mock).mockReturnValue(user504);
     render(<LoanDetail />);

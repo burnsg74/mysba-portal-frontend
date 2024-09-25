@@ -11,15 +11,19 @@ jest.mock('react-i18next', () => ({
 
 describe('Card', () => {
   const defaultProps: ICardProps = {
-    icon       : 'icon.png',
-    title      : 'Card Title',
+    icon: 'icon.png',
+    title: 'Card Title',
     detailsPage: '/details',
-    body       : <>{'This is the card body'}</>,
+    body: <>{'This is the card body'}</>,
     hideDetails: false,
   };
 
   it('renders without crashing', () => {
-    const { getByTestId } = render(<Router><Card {...defaultProps} /></Router>);
+    const { getByTestId } = render(
+      <Router>
+        <Card {...defaultProps} />
+      </Router>
+    );
     expect(getByTestId('card-header')).toBeTruthy();
     expect(getByTestId('card-body')).toBeTruthy();
   });

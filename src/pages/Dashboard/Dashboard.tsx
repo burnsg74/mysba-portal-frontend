@@ -51,7 +51,11 @@ const Dashboard = () => {
                     </>
                   )}
                   {loan.payment_past_due && (
-                    <Alert message={`Payment for loan ${loan.sba_number} is past due.`} type="error" useSlim={true} />
+                    <Alert
+                      message={t('Payment for loan {{sbaNumber}} is past due.', { sbaNumber: loan.sba_number })}
+                      type="error"
+                      useSlim={true}
+                    />
                   )}
                   <LoanCard loan={loan} hideDetails={true} />
                 </React.Fragment>
@@ -64,7 +68,7 @@ const Dashboard = () => {
             type={'info'}
             title={t('Certification Data is Coming Soon')}
             message={t('dashboard.cert.alert.message', {
-              link: '<a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">MySBA Certifications</a>',
+              link: `<a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">${t('MySBA Certifications')}</a>`,
             })}
           />
         </div>
@@ -73,17 +77,18 @@ const Dashboard = () => {
           <div className={`grid-col ${styles.card}`}>
             <div className={`usa-card__container ${styles.cardContainer}`}>
               <div className="usa-card__header">
-                <h4 className={`usa-card__heading ${styles.cardHeader}`}>Loans</h4>
+                <h4 className={`usa-card__heading ${styles.cardHeader}`}>{t('Loans')}</h4>
               </div>
               <div className="usa-card__media">
                 <div className="usa-card__img">
-                  <img src={CardLoansImg} alt="Loans Card" />
+                  <img src={CardLoansImg} alt={t('Loans Card')} />
                 </div>
               </div>
               <div className={`usa-card__body ${styles.cardBody}`}>
                 <p>
-                  Government-backed loans with favorable terms for businesses who may not be eligible through
-                  traditional lenders.
+                  {t(
+                    'Government-backed loans with favorable terms for businesses who may not be eligible through traditional lenders.'
+                  )}
                 </p>
               </div>
               <div className="usa-card__footer">
@@ -93,10 +98,10 @@ const Dashboard = () => {
                   className="usa-button usa-button--outline"
                   rel="noreferrer"
                 >
-                  Learn More
+                  {t('Learn More')}
                 </a>
                 <a href="https://lending.sba.gov/lender-match/" target="_blank" className="usa-button" rel="noreferrer">
-                  Apply
+                  {t('Apply')}
                 </a>
               </div>
             </div>
@@ -104,17 +109,18 @@ const Dashboard = () => {
           <div className={`grid-col ${styles.card}`}>
             <div className={`usa-card__container ${styles.cardContainer}`}>
               <div className="usa-card__header">
-                <h4 className={`usa-card__heading ${styles.cardHeader}`}>Certifications</h4>
+                <h4 className={`usa-card__heading ${styles.cardHeader}`}>{t('Certifications')}</h4>
               </div>
               <div className="usa-card__media">
                 <div className="usa-card__img">
-                  <img src={CardCertificationsImg} alt="Certifications Card" />
+                  <img src={CardCertificationsImg} alt={t('Certifications Card')} />
                 </div>
               </div>
               <div className={`usa-card__body ${styles.cardBody}`}>
                 <p>
-                  The federal government uses special programs to help small businesses win at least at 23% of federal
-                  contracting dollars yearly.
+                  {t(
+                    'The federal government uses special programs to help small businesses win at least at 23% of federal contracting dollars yearly.'
+                  )}
                 </p>
               </div>
               <div className="usa-card__footer">
@@ -124,10 +130,10 @@ const Dashboard = () => {
                   className="usa-button usa-button--outline"
                   rel="noreferrer"
                 >
-                  Learn More
+                  {t('Learn More')}
                 </a>
                 <a href="https://certification.sba.gov" target="_blank" className="usa-button" rel="noreferrer">
-                  Apply
+                  {t('Apply')}
                 </a>
               </div>
             </div>
@@ -135,17 +141,18 @@ const Dashboard = () => {
           <div className={`grid-col ${styles.card}`}>
             <div className={`usa-card__container ${styles.cardContainer}`}>
               <div className="usa-card__header">
-                <h4 className={`usa-card__heading ${styles.cardHeader}`}>Disaster Loans</h4>
+                <h4 className={`usa-card__heading ${styles.cardHeader}`}>{t('Disaster Loans')}</h4>
               </div>
               <div className="usa-card__media">
                 <div className="usa-card__img">
-                  <img src={CardDisasterLoansImg} alt="Disaster Loans Card" />
+                  <img src={CardDisasterLoansImg} alt={t('Disaster Loans Card')} />
                 </div>
               </div>
               <div className={`usa-card__body ${styles.cardBody}`}>
                 <p>
-                  In a disaster, the SBA is here to help. Whether you&apos;re a business or private citizen SBA disaster
-                  loans may be available to you.
+                  {t(
+                    "In a disaster, the SBA is here to help. Whether you're a business or private citizen SBA disaster loans may be available to you."
+                  )}
                 </p>
               </div>
               <div className="usa-card__footer">
@@ -155,7 +162,7 @@ const Dashboard = () => {
                   className="usa-button usa-button--outline"
                   rel="noreferrer"
                 >
-                  Learn More
+                  {t('Learn More')}
                 </a>
                 <a
                   href="https://lending.sba.gov/search-disaster/"
@@ -163,7 +170,7 @@ const Dashboard = () => {
                   className="usa-button"
                   rel="noreferrer"
                 >
-                  Apply
+                  {t('Apply')}
                 </a>
               </div>
             </div>
