@@ -14,13 +14,16 @@ const Dashboard = () => {
   const user: IUser = useSelector(getUser);
   const { t } = useTranslation();
 
-  return (<>
+  return (
+    <>
       {/* Top city banner */}
       <div className={`banner ${styles.banner}`} data-testid="page-dashboard">
         <div className={`${styles.welcomeMessage}`}>
-          {user.profile?.crm && (<span data-testid="welcome-first_name" className="first_name">
+          {user.profile?.crm && (
+            <span data-testid="welcome-first_name" className="first_name">
               {t('Hi')} {user.profile?.crm?.first_name},{' '}
-            </span>)}
+            </span>
+          )}
         </div>
         <div className={`${styles.mysbaMessage}`}>{t('Welcome to MySBA')}</div>
         <img className={`${styles.cityscape}`} src={CityScapeImage} alt={t('Decorative Cityscape')} />
@@ -29,23 +32,34 @@ const Dashboard = () => {
         {(() => {
           let previousBusinessName = '';
           return [...(user.loans ?? [])]
-            .sort((a, b) => a.business_name.localeCompare(b.business_name) || a.processing_method_description.localeCompare(b.processing_method_description) || a.sba_number.localeCompare(b.sba_number))
+            .sort(
+              (a, b) =>
+                a.business_name.localeCompare(b.business_name) ||
+                a.processing_method_description.localeCompare(b.processing_method_description) ||
+                a.sba_number.localeCompare(b.sba_number)
+            )
             .map(loan => {
               const isDifferentBusiness = loan.business_name !== previousBusinessName;
               previousBusinessName = loan.business_name;
 
-              return (<React.Fragment key={loan.sba_number}>
-                  {isDifferentBusiness && (<>
+              return (
+                <React.Fragment key={loan.sba_number}>
+                  {isDifferentBusiness && (
+                    <>
                       <h1 className={`${styles.loanBusinessLabel}`}>{loan.business_name}</h1>
                       <h2 className={`${styles.loanLabel}`}>{t('Loans')}</h2>
-                    </>)}
-                  {loan.payment_past_due && (<Alert
+                    </>
+                  )}
+                  {loan.payment_past_due && (
+                    <Alert
                       message={t('Payment for loan {{sbaNumber}} is past due.', { sbaNumber: loan.sba_number })}
                       type="error"
                       useSlim={true}
-                    />)}
+                    />
+                  )}
                   <LoanCard loan={loan} hideDetails={true} />
-                </React.Fragment>);
+                </React.Fragment>
+              );
             });
         })()}
 
@@ -72,7 +86,9 @@ const Dashboard = () => {
               </div>
               <div className={`usa-card__body ${styles.cardBody}`}>
                 <p>
-                  {t('Government-backed loans with favorable terms for businesses who may not be eligible through traditional lenders.')}
+                  {t(
+                    'Government-backed loans with favorable terms for businesses who may not be eligible through traditional lenders.'
+                  )}
                 </p>
               </div>
               <div className="usa-card__footer">
@@ -102,7 +118,9 @@ const Dashboard = () => {
               </div>
               <div className={`usa-card__body ${styles.cardBody}`}>
                 <p>
-                  {t('The federal government uses special programs to help small businesses win at least at 23% of federal contracting dollars yearly.')}
+                  {t(
+                    'The federal government uses special programs to help small businesses win at least at 23% of federal contracting dollars yearly.'
+                  )}
                 </p>
               </div>
               <div className="usa-card__footer">
@@ -132,7 +150,9 @@ const Dashboard = () => {
               </div>
               <div className={`usa-card__body ${styles.cardBody}`}>
                 <p>
-                  {t('In a disaster, the SBA is here to help. Whether you\'re a business or private citizen SBA disaster loans may be available to you.')}
+                  {t(
+                    "In a disaster, the SBA is here to help. Whether you're a business or private citizen SBA disaster loans may be available to you."
+                  )}
                 </p>
               </div>
               <div className="usa-card__footer">
@@ -157,7 +177,8 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
-    </>);
+    </>
+  );
 };
 
 export default Dashboard;

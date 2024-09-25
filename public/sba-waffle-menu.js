@@ -1,10 +1,17 @@
 class SbaWaffleMenu {
   constructor(sbaWaffleMenuEl) {
+    const localLang = localStorage.getItem('lang');
+    this.currentLanguage = localLang ? localLang : (navigator.language || navigator.userLanguage).split('-')[0];
+    this.translator();
     this.sbaWaffleMenuEl = sbaWaffleMenuEl;
     this.isOpen = false;
     this.buttonList = [
       { image: 'mysba', label: 'Home', link: 'https://my.sba.gov/dashboard' },
-      { image: 'certs', label: 'Certifications', link: 'https://certification.sba.gov/' },
+      {
+        image: 'certs',
+        label: 'Certifications',
+        link: 'https://certification.sba.gov/',
+      },
       { image: 'loans', label: 'Loans', link: 'https://lending.sba.gov/' },
       {
         image: 'disaster',
@@ -19,8 +26,57 @@ class SbaWaffleMenu {
     ];
     this.waffleMenuIconButtonPosition = { bottom: 0, right: 0 };
     this.handleClickOutside = this.handleClickOutside.bind(this);
-    this.updateMenuPosition = this.updateMenuPosition.bind(this); // Make sure `this` is correctly bound
+    this.updateMenuPosition = this.updateMenuPosition.bind(this);
     this.svgContent = `<svg id="sbaWaffleMenuIcon" width="30" height="31" viewBox="0 0 30 31" fill="#007DBC" xmlns="http://www.w3.org/2000/svg"><g id="Waffle Icon"><g id="USWDS Components"><path id="Union" fill-rule="evenodd" clip-rule="evenodd" d="M4.00001 10.5423V4H10.2578V10.5423H4.00001ZM5.56447 8.90671H8.69339V5.63557H5.56447V8.90671ZM4.00001 12.2799V12.1779H10.2578V18.7201H10.2578V18.8222H4V12.2799H4.00001ZM8.69338 17.0846H5.56447V13.9155H8.69338V17.0846ZM11.8223 10.5423V4H11.9198H18.0801H18.1776V10.5423H18.0801H11.9198H11.8223ZM13.4843 8.90671H16.5157V5.63557H13.4843V8.90671ZM11.8223 12.2799V12.1779H11.9198H18.0801H18.1776V12.28V18.7201V18.8223H11.9198V18.8222H11.8223V12.2799H11.8223ZM16.5157 17.0846H13.4843V13.9156H16.5157V17.0846ZM19.7421 10.5423V4H25.9999V10.5423H19.7421ZM21.3066 8.90671H24.4355V5.63557H21.3066V8.90671ZM19.7421 12.28V12.1779H25.9999V12.28V18.7201V18.8223H19.7421V18.7201V12.28ZM21.3066 17.0846H24.4355V13.9156H21.3066V17.0846ZM11.9198 27.0001V27.0002H18.1776V20.4579H18.0801V20.4578H11.8223V27.0001H11.9198ZM16.5157 22.0935H13.4843V25.3645H16.5157V22.0935ZM19.7421 20.4579V27.0002H25.9999V20.4579H19.7421ZM24.4355 25.3646H21.3066V22.0935H24.4355V25.3646ZM4 27.0001V20.4578H10.2578V27.0001H4ZM5.56446 25.3645H8.69338V22.0933H5.56446V25.3645Z" fill="#007DBC"/> </g> </g> </svg> `;
+  }
+
+  translator() {
+    const translationData = {
+      en: {
+        MiSBA: 'MySBA',
+        Inicio: 'Home',
+        Certificaciones: 'Certifications',
+        Préstamos: 'Loans',
+        'Asistencia por Desastre': 'Disaster Assistance',
+        Aprendizaje: 'Learning',
+      },
+      es: {
+        MySBA: 'MiSBA',
+        Home: 'Inicio',
+        Certifications: 'Certificaciones',
+        Loans: 'Préstamos',
+        'Disaster Assistance': 'Asistencia por Desastre',
+        Learning: 'Aprendizaje',
+      },
+    };
+    const ob_config = {
+      childList: true, // Observe direct child additions/removals
+      subtree: true, // Observe all descendants
+      attributes: false, // Do not observe attribute changes
+      characterData: false, // Do not observe text changes
+    };
+
+    const translateNode = node => {
+      if (node.nodeType === Node.TEXT_NODE) {
+        const text = node.nodeValue.trim();
+        if (translationData?.[this.currentLanguage]?.[text]) {
+          node.nodeValue = translationData[this.currentLanguage][text];
+        }
+      } else {
+        Array.from(node.childNodes).forEach(childNode => translateNode(childNode));
+      }
+    };
+
+    const observer = new MutationObserver((mutationsList, observer) => {
+      for (let mutation of mutationsList) {
+        if (mutation.type === 'childList' || mutation.type === 'subtree') {
+          translateNode(document.body);
+        }
+      }
+    });
+
+    observer.observe(document.body, ob_config);
+    translateNode(document.body);
   }
 
   renderMenuIcon() {
@@ -151,5 +207,12 @@ class SbaWaffleMenu {
     if (menuContainerDiv) {
       menuContainerDiv.remove();
     }
+  }
+
+  updateLanguage(newLang) {
+    this.currentLanguage = newLang;
+    this.translator();
+    this.removeMenu();
+    this.renderMenu();
   }
 }

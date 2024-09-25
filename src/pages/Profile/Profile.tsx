@@ -43,7 +43,8 @@ const Profile = () => {
     window.location.href = '/';
   };
 
-  return (<div data-testid="page-profile" className={`grid-row ${styles.wrapper}`}>
+  return (
+    <div data-testid="page-profile" className={`grid-row ${styles.wrapper}`}>
       <div className={`grid-col ${styles.container}`}>
         <h1 className={`${styles.profileName}`}>
           {profileData?.profile?.crm?.first_name + ' ' + profileData?.profile?.crm?.last_name}
@@ -69,6 +70,7 @@ const Profile = () => {
         </div>
       </div>
       {showChangePasswordModal && <ProfileChangePasswordModal handleCloseModal={handleCloseModal} />}
-    </div>);
+    </div>
+  );
 };
 export default Profile;

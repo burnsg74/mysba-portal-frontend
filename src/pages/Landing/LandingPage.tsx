@@ -21,27 +21,24 @@ const LandingPage = () => {
   const { i18n } = useTranslation();
   const [emailAddress] = useState<string>('');
   const waffleMenu = useRef(null);
+  const [sbaWaffleMenuInstance, setSbaWaffleMenuInstance] = useState(null);
+  const { t } = useTranslation();
 
   const fetchUserDetails = async () => {
     try {
       const response = await fetch(`${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' });
       if (response.ok) {
-        console.log('User details fetched successfully: clsUser = true');
         sessionStorage.setItem('clsUser', 'true');
         await oktaAuth.signInWithRedirect({ idp: OKTA_IDP });
       } else {
         sessionStorage.removeItem('clsUser');
         return;
       }
-    } catch (error) {
-      console.error('Error fetching user details:', error);
-    }
+    } catch (error) {}
   };
 
   const login = () => {
-    oktaAuth.signInWithRedirect({ loginHint: emailAddress }).then(() => {
-      console.log('Redirecting to login page');
-    });
+    oktaAuth.signInWithRedirect({ loginHint: emailAddress }).then(() => {});
   };
 
   const switchLanguage = () => {
@@ -49,10 +46,13 @@ const LandingPage = () => {
     setLang(newLang);
     localStorage.setItem('lang', newLang);
     i18n.changeLanguage(newLang).then();
+    if (sbaWaffleMenuInstance) {
+      // @ts-ignore
+      sbaWaffleMenuInstance.updateLanguage(newLang);
+    }
   };
 
   const handleAuthStateChange = async () => {
-    console.log('Auth state changed:', authState?.isAuthenticated);
     if (authState?.isAuthenticated === undefined) {
       return;
     }
@@ -70,9 +70,7 @@ const LandingPage = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
-    fetchUserDetails().then(clsUser => {
-      console.log('User details fetched successfully:', clsUser);
-    });
+    fetchUserDetails().then(clsUser => {});
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
     let sbaWaffleMenuInstance: any;
@@ -87,6 +85,15 @@ const LandingPage = () => {
         sbaWaffleMenuInstance.destroy();
       }
     };
+  }, []);
+
+  useEffect(() => {
+    if (waffleMenu.current) {
+      // @ts-expect-error Waffle Menu does not use Typescript
+      const instance = new SbaWaffleMenu(waffleMenu.current);
+      instance.renderMenuIcon();
+      setSbaWaffleMenuInstance(instance);
+    }
   }, []);
 
   return (
@@ -133,17 +140,17 @@ const LandingPage = () => {
           <div className={`${styles.loginRow}`}>
             <div className={`${styles.loginRowLeft}`}>
               <div className={`${styles.welcomeMessageContainer}`}>
-                <div className={`${styles.welcomeTo}`}>Welcome to</div>
-                <div className={`${styles.mySBAHome}`}>MySBA Home</div>
+                <div className={`${styles.welcomeTo}`}>{t('Welcome to')}</div>
+                <div className={`${styles.mySBAHome}`}>{t('MySBA Home')}</div>
               </div>
               <div className={`${styles.subTitle}`}>
-                Loans, certifications, and resources tailored to your business all in one place.
+                {t('Loans, certifications, and resources tailored to your business all in one place.')}
               </div>
               <div>
                 <ul className="usa-button-group">
                   <li className="usa-button-group__item">
                     <button onClick={login} type="button" style={{ height: 'unset' }} className="usa-button">
-                      Log In / Sign Up
+                      {t('Log In / Sign Up')}
                     </button>
                   </li>
                 </ul>

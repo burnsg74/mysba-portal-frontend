@@ -15,16 +15,7 @@ import GovBanner from '../GovBanner/GovBanner';
 const Header = () => {
   const waffleMenu = useRef(null);
   const navRef = useRef<HTMLButtonElement | null>(null);
-
-  useEffect(() => {
-    // Waffle menu
-    if (waffleMenu.current) {
-      // @ts-expect-error Waffle Menu does not use Typescript
-      const sbaWaffleMenuInstance = new SbaWaffleMenu(waffleMenu.current);
-      sbaWaffleMenuInstance.renderMenuIcon();
-    }
-  }, []);
-
+  const [sbaWaffleMenuInstance, setSbaWaffleMenuInstance] = useState(null);
   const detectedLang: string = navigator.language.substring(0, 2);
   const [lang, setLang] = useState(localStorage.getItem('lang') ?? detectedLang ?? 'en');
   const { i18n } = useTranslation();
@@ -47,10 +38,22 @@ const Header = () => {
     setLang(newLang);
     localStorage.setItem('lang', newLang);
     i18n.changeLanguage(newLang).then();
+    if (sbaWaffleMenuInstance) {
+      // @ts-ignore
+      sbaWaffleMenuInstance.updateLanguage(newLang);
+    }
   };
 
+  useEffect(() => {
+    if (waffleMenu.current) {
+      // @ts-expect-error Waffle Menu does not use Typescript
+      const sbaWaffleMenuInstance = new SbaWaffleMenu(waffleMenu.current);
+      setSbaWaffleMenuInstance(sbaWaffleMenuInstance);
+      sbaWaffleMenuInstance.renderMenuIcon();
+    }
+  }, []);
+
   function handleFocusOut() {
-    console.log('handleFocusOut');
     setIsNavOpen(false);
   }
 
