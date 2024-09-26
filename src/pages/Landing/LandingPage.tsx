@@ -8,7 +8,7 @@ import styles from 'src/pages/Landing/LandingPage.module.css';
 import SbaLogoEn from 'src/assets/logo-horizontal.svg';
 import SbaLogoEs from 'src/assets/logo-horizontal-spanish.svg';
 import SbaLogoSm from 'src/assets/logo-sm.svg';
-import landingPageIllustration from 'src/assets/landing_page_illustration.svg';
+import landingPageIllustration from 'src/assets/landing_page_illustration.png';
 import { CLS_URL, OKTA_IDP } from 'src/utils/constants';
 import GovBanner from 'src/components/GovBanner/GovBanner';
 

@@ -42,6 +42,10 @@
   gap: 20px;
 }
 
+.loginRowRight {
+  max-width: 420px;
+}
+
 .welcomeMessageContainer {
   display: flex;
   flex-direction: column;
