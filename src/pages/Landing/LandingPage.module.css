@@ -32,7 +32,19 @@
   align-content: center;
   gap: 120px;
   align-self: stretch;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+}
+
+@media (max-width: 750px) {
+  .loginRow {
+    gap: 30px;
+  }
+}
+
+@media (max-width: 650px) {
+  .loginRow {
+    gap: 10px;
+  }
 }
 
 .loginRowLeft {
@@ -40,6 +52,7 @@
   width: 400px;
   flex-direction: column;
   gap: 20px;
+  min-width: 300px;
 }
 
 .loginRowRight {
@@ -50,6 +63,40 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
+}
+
+@media (max-width: 480px) {
+  .welcomeMessageContainer {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .loginButton {
+    align-items: center;
+    text-align: center;
+  }
+}
+
+.loginRowRight {
+  display: block;
+}
+
+@media (max-width: 480px) {
+  .loginRowRight {
+    display: none;
+  }
+}
+
+.iconBusiness {
+  display: none;
+}
+
+@media (max-width: 480px) {
+  .iconBusiness {
+    display: block;
+  }
 }
 
 .welcomeTo {
@@ -76,6 +123,13 @@
   font-style: normal;
   font-weight: 400;
   line-height: 120%;
+}
+
+@media (max-width: 480px) {
+  .subTitle {
+    align-items: center;
+    text-align: center;
+  }
 }
 
 .welcomeMessage {

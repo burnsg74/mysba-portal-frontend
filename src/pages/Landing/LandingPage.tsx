@@ -9,6 +9,7 @@ import SbaLogoEn from 'src/assets/logo-horizontal.svg';
 import SbaLogoEs from 'src/assets/logo-horizontal-spanish.svg';
 import SbaLogoSm from 'src/assets/logo-sm.svg';
 import landingPageIllustration from 'src/assets/landing_page_illustration.png';
+import iconBusiness from 'src/assets/icon-business.svg';
 import { CLS_URL, OKTA_IDP } from 'src/utils/constants';
 import GovBanner from 'src/components/GovBanner/GovBanner';
 
@@ -140,20 +141,19 @@ const LandingPage = () => {
           <div className={`${styles.loginRow}`}>
             <div className={`${styles.loginRowLeft}`}>
               <div className={`${styles.welcomeMessageContainer}`}>
+                <div className={`${styles.iconBusiness}`}>
+                  <img aria-hidden="true" src={iconBusiness} alt="Landing Page Illustration" />
+                </div>
                 <div className={`${styles.welcomeTo}`}>{t('Welcome to')}</div>
                 <div className={`${styles.mySBAHome}`}>{t('MySBA Home')}</div>
               </div>
               <div className={`${styles.subTitle}`}>
                 {t('Loans, certifications, and resources tailored to your business all in one place.')}
               </div>
-              <div>
-                <ul className="usa-button-group">
-                  <li className="usa-button-group__item">
-                    <button onClick={login} type="button" style={{ height: 'unset' }} className="usa-button">
-                      {t('Log In / Sign Up')}
-                    </button>
-                  </li>
-                </ul>
+              <div className={`${styles.loginButton}`}>
+                <button onClick={login} type="button" style={{ height: 'unset' }} className="usa-button">
+                  {t('Log In / Sign Up')}
+                </button>
               </div>
             </div>
             <div className={`${styles.loginRowRight}`}>
