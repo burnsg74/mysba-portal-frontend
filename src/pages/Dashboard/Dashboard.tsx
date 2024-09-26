@@ -12,6 +12,7 @@ import { LoanCard } from 'src/components/LoanCard/LoanCard';
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
+  const hasNoLoans = !user.loans || user.loans.length === 0;
   const { t } = useTranslation();
 
   return (
@@ -73,7 +74,7 @@ const Dashboard = () => {
           />
         </div>
 
-        <div className={`grid-row ${styles.cardRow}`}>
+        <div className={`grid-row ${styles.cardRow} ${hasNoLoans ? styles.cardRow0State : ''}`}>
           <div className={`grid-col ${styles.card}`}>
             <div className={`usa-card__container ${styles.cardContainer}`}>
               <div className="usa-card__header">

@@ -188,6 +188,10 @@
   gap: 12px;
 }
 
+.cardRow0State {
+  padding: 0;
+}
+
 .cardContainer {
   margin: 0;
   box-shadow: 0 7px 15px 0 var(--Box-Shadow);
