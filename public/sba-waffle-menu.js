@@ -176,7 +176,7 @@ class SbaWaffleMenu {
       let waffleMenuIcon = window.document.getElementById('sbaWaffleMenuIcon');
       const paths = waffleMenuIcon.querySelectorAll('path');
       paths.forEach(path => {
-        path.setAttribute('fill', '#007DBC'); // Change to a different color
+        path.setAttribute('fill', '#007DBC');
       });
       document.removeEventListener('click', this.handleClickOutside, true);
       window.removeEventListener('resize', this.updateMenuPosition);
@@ -190,16 +190,16 @@ class SbaWaffleMenu {
     const paths = waffleMenuIcon.querySelectorAll('path');
     if (this.isOpen) {
       paths.forEach(path => {
-        path.setAttribute('fill', '#002E6D'); // Change to a different color
+        path.setAttribute('fill', '#002E6D');
       });
       this.renderMenu();
     } else {
       paths.forEach(path => {
-        path.setAttribute('fill', '#007DBC'); // Change to a different color
+        path.setAttribute('fill', '#007DBC');
       });
       this.removeMenu();
     }
-    this.updateMenuPosition(); // Ensure position is updated when menu is toggled
+    this.updateMenuPosition();
   }
 
   removeMenu() {
@@ -212,7 +212,9 @@ class SbaWaffleMenu {
   updateLanguage(newLang) {
     this.currentLanguage = newLang;
     this.translator();
-    this.removeMenu();
-    this.renderMenu();
+    if (this.isOpen) {
+      this.removeMenu();
+      this.renderMenu();
+    }
   }
 }
