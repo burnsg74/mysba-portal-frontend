@@ -22,7 +22,7 @@ const Dashboard = () => {
         <div className={`${styles.welcomeMessage}`}>
           {user.profile?.crm && (
             <span data-testid="welcome-first_name" className="first_name">
-              {t('Hi')} {user.profile?.crm?.first_name},{' '}
+              {t('Hi')} {user.profile?.crm?.firstName},{' '}
             </span>
           )}
         </div>

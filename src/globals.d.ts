@@ -25,8 +25,8 @@ interface ISSO {
 }
 
 interface ICRM {
-  first_name: string;
-  last_name: string;
+  firstName: string;
+  lastName: string;
   email: string;
 }
 
