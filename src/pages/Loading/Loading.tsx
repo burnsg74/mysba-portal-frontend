@@ -53,6 +53,7 @@ const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTok
   if (info.cls_elevated) {
     sessionStorage.setItem('clsUser', 'true');
   }
+  console.log('sso info', info);
   const email = info.email?.toLowerCase() ?? '';
   const individual = await fetchCRMDataFromBackend(email, accessToken, info);
   const loansData = await fetchLoansData(email, accessToken);
