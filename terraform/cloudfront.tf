@@ -90,7 +90,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   logging_config {
     bucket          = "${local.env.account_id}-${local.env.region}-logs.s3.amazonaws.com"
     include_cookies = false
-    prefix          = "cloudfront/mysba-portal-frontend/${terraform.workspace}"
+    prefix          = "cloudfront/${local.env.account_id}/mysba-portal-frontend/${terraform.workspace}"
   }
 }
 
