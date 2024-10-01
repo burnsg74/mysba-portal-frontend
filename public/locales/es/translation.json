@@ -400,7 +400,7 @@
   "Need assistance with MySBA?": "¿Necesita ayuda con MySBA?",
   "Help is available via phone and email. Contact us today:": "La ayuda está disponible por teléfono y correo electrónico. Contáctenos hoy:",
   "If you are seeking SBA assistance, click on resources above and enter your zip code to find your local SBA office contact information.": "Si busca asistencia de la SBA, haga clic en los recursos anteriores e ingrese su código postal para encontrar la información de contacto de su oficina local de la SBA.",
-  "dashboard.cert.alert.message": "Las certificaciones aún no se muestran en MySBA Home, pero el soporte llegará pronto. Visite {{link}} para solicitar certificaciones.",
+  "dashboard.cert.alert.message": "Las certificaciones aún no se muestran en MySBA Home, pero el apoyo para esto llegará pronto. Visite MySBA Certificaciones para solicitar certificaciones.",
   "Apply": "Aplicar",
   "SBA Loan Number": "Número de préstamo de la SBA",
   "Next Payment": "Pago siguiente",

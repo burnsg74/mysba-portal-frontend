@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { UserClaims } from '@okta/okta-auth-js/types/lib/oidc/types/UserClaims';
 import axios from 'axios';
 import { useOktaAuth } from '@okta/okta-react';
 import { useNavigate } from 'react-router-dom';
@@ -9,7 +8,7 @@ import { setUser } from 'src/store/user/userSlice';
 import { setNav, setShowProfile } from 'src/store/showNav/showNavSlice';
 import loadingIcon from 'src/assets/loading.gif';
 import styles from 'src/pages/Loading/Loading.module.css';
-import { AccessToken } from '@okta/okta-auth-js';
+import { AccessToken, UserClaims } from '@okta/okta-auth-js';
 import { BASE_API_URL, LOAN_CLIENT_ID, LOAN_CLIENT_SECRET, LOAN_URL, PORTAL_API_URL } from 'src/utils/constants';
 import GovBanner from 'src/components/GovBanner/GovBanner';
 import SBAlogoEn from 'src/assets/logo-horizontal.svg';
@@ -20,19 +19,24 @@ const PROGRESS_UPDATE_INTERVAL = 500;
 
 const fetchUserDataFromMock = async (mock: string) => {
   try {
-    const [ssoData, crmData, loansData, portalData] = await Promise.all([
-      fetch(`../../mock-data/${mock}/sso.json`).then(response => response.json()),
-      fetch(`../../mock-data/${mock}/crm.json`)
-        .then(response => response.json())
-        .then(data => data.individuals[0]),
-      fetch(`../../mock-data/${mock}/loan.json`).then(response => response.json()),
-      fetch(`../../mock-data/${mock}/portal.json`)
-        .then(response => response.json())
-        .catch(error => {
-          console.error('Error fetching loan data:', error);
-          return [];
-        }),
-    ]);
+    const ssoPromise = fetch(`../../mock-data/${mock}/sso.json`).then(response => response.json());
+    const crmPromise = fetch(`../../mock-data/${mock}/crm.json`)
+      .then(response => response.json())
+      .then(data => data.individuals[0]);
+    const portalPromise = fetch(`../../mock-data/${mock}/portal.json`)
+      .then(response => response.json())
+      .catch(error => {
+        console.error('Error fetching portal data:', error);
+        return [];
+      });
+
+    const [ssoData, crmData, portalData] = await Promise.all([ssoPromise, crmPromise, portalPromise]);
+
+    let loansData = null;
+    if (ssoData.cls_elevated === true) {
+      loansData = await fetch(`../../mock-data/${mock}/loan.json`).then(response => response.json());
+    }
+
     return {
       profile: {
         portal: portalData,
@@ -50,14 +54,6 @@ const fetchUserDataFromMock = async (mock: string) => {
 type AccessTokenType = string | AccessToken | null | undefined;
 
 const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTokenType) => {
-  if (info.cls_elevated) {
-    sessionStorage.setItem('clsUser', 'true');
-  }
-  console.log('sso info', info);
-  const email = info.email?.toLowerCase() ?? '';
-  const individual = await fetchCRMDataFromBackend(email, accessToken, info);
-  const loansData = await fetchLoansData(email, accessToken);
-  const portalData = await fetchPortalData(email, accessToken);
   const ssoProfile: IUserProfile['sso'] = {
     given_name: info.given_name ?? '',
     family_name: info.family_name ?? '',
@@ -71,6 +67,23 @@ const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTok
     email_verified: info.email_verified ?? false,
     cls_elevated: Boolean(info.cls_elevated),
   };
+
+  if (info.cls_elevated) {
+    sessionStorage.setItem('clsUser', 'true');
+  }
+
+  const email = info.email?.toLowerCase() ?? '';
+
+  let fetchPromises = [
+    await fetchCRMDataFromBackend(email, accessToken, info),
+    await fetchPortalData(email, accessToken),
+  ];
+
+  if (ssoProfile.cls_elevated) {
+    fetchPromises.push(fetchLoansData(email, accessToken));
+  }
+
+  const [individual, portalData, loansData = null] = await Promise.all(fetchPromises);
 
   return {
     profile: {
