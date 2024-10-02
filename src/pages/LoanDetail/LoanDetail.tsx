@@ -7,6 +7,7 @@ import Field from 'src/components/Field/Field';
 import { useTranslation } from 'react-i18next';
 import LoanCardIcon from 'src/assets/loan-card-icon.svg';
 import { Alert } from 'src/components/Alert/Alert';
+import { ULP_URL } from 'src/utils/constants';
 
 const LoanDetail = () => {
   const navigate = useNavigate();
@@ -21,7 +22,7 @@ const LoanDetail = () => {
   }
 
   const handleManageLoanClick = () => {
-    window.open('https://dlap.beta.lending.sba.gov/dashboard/', '_blank');
+    window.open('https://' + ULP_URL + '/dashboard/', '_blank');
   };
 
   return (
