@@ -23,20 +23,18 @@ const Profile = () => {
 
   const logout = async () => {
     if (sessionStorage.getItem('clsUser') !== null) {
-      document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-      sessionStorage.clear();
-      localStorage.clear();
       sessionStorage.setItem('clsLogoutNeeded', 'true');
-      await oktaAuth.signOut();
-      return;
     }
 
-    await oktaAuth.signOut();
     document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    await oktaAuth.signOut({
+      clearTokensBeforeRedirect: true,
+      revokeAccessToken: true,
+      revokeRefreshToken: true,
+      postLogoutRedirectUri: '/',
+    });
     sessionStorage.clear();
     localStorage.clear();
   };
