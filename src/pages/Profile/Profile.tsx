@@ -33,7 +33,6 @@ const Profile = () => {
       clearTokensBeforeRedirect: true,
       revokeAccessToken: true,
       revokeRefreshToken: true,
-      postLogoutRedirectUri: '/',
     });
     sessionStorage.clear();
     localStorage.clear();
