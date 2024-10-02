@@ -130,7 +130,7 @@ const Resources = () => {
 
   const updateAndSaveUserPortalProfileWithNewDistrict = (newDistrict: IDistrict) => {
     const newPortalProfile = { ...user.profile?.portal, district: newDistrict };
-    const url = `${PORTAL_API_URL}/portal/user/` + user.profile?.crm?.email?.toLowerCase();
+    const url = `${PORTAL_API_URL}/portal/user/` + user.profile?.sso?.email?.toLowerCase();
     const accessToken = authState?.accessToken?.accessToken;
 
     if (!accessToken) {

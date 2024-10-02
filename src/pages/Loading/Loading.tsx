@@ -9,7 +9,7 @@ import { setNav, setShowProfile } from 'src/store/showNav/showNavSlice';
 import loadingIcon from 'src/assets/loading.gif';
 import styles from 'src/pages/Loading/Loading.module.css';
 import { AccessToken, UserClaims } from '@okta/okta-auth-js';
-import { BASE_API_URL, LOAN_CLIENT_ID, LOAN_CLIENT_SECRET, LOAN_URL, PORTAL_API_URL } from 'src/utils/constants';
+import { LOAN_CLIENT_ID, LOAN_CLIENT_SECRET, LOAN_URL, PORTAL_API_URL } from 'src/utils/constants';
 import GovBanner from 'src/components/GovBanner/GovBanner';
 import SBAlogoEn from 'src/assets/logo-horizontal.svg';
 import SBAlogoEs from 'src/assets/logo-horizontal-spanish.svg';
@@ -20,9 +20,6 @@ const PROGRESS_UPDATE_INTERVAL = 500;
 const fetchUserDataFromMock = async (mock: string) => {
   try {
     const ssoPromise = fetch(`../../mock-data/${mock}/sso.json`).then(response => response.json());
-    const crmPromise = fetch(`../../mock-data/${mock}/crm.json`)
-      .then(response => response.json())
-      .then(data => data.individuals[0]);
     const portalPromise = fetch(`../../mock-data/${mock}/portal.json`)
       .then(response => response.json())
       .catch(error => {
@@ -30,7 +27,7 @@ const fetchUserDataFromMock = async (mock: string) => {
         return [];
       });
 
-    const [ssoData, crmData, portalData] = await Promise.all([ssoPromise, crmPromise, portalPromise]);
+    const [ssoData, portalData] = await Promise.all([ssoPromise, portalPromise]);
 
     let loansData = null;
     if (ssoData.cls_elevated === true) {
@@ -41,7 +38,6 @@ const fetchUserDataFromMock = async (mock: string) => {
       profile: {
         portal: portalData,
         sso: ssoData,
-        crm: crmData,
       },
       loans: loansData,
     };
@@ -74,58 +70,21 @@ const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTok
 
   const email = info.email?.toLowerCase() ?? '';
 
-  let fetchPromises = [
-    await fetchCRMDataFromBackend(email, accessToken, info),
-    await fetchPortalData(email, accessToken),
-  ];
+  let fetchPromises = [await fetchPortalData(email, accessToken)];
 
   if (ssoProfile.cls_elevated) {
     fetchPromises.push(fetchLoansData(email, accessToken));
   }
 
-  const [individual, portalData, loansData = null] = await Promise.all(fetchPromises);
+  const [portalData, loansData = null] = await Promise.all(fetchPromises);
 
   return {
     profile: {
       sso: ssoProfile,
-      crm: individual,
       portal: portalData,
     },
     loans: loansData,
   };
-};
-
-const fetchCRMDataFromBackend = async (email: string, accessToken: AccessTokenType, info: UserClaims) => {
-  const data = JSON.stringify({
-    individuals: [
-      {
-        firstName: '',
-        lastName: '',
-        email: email,
-      },
-    ],
-  });
-  const config = {
-    method: 'post',
-    maxBodyLength: Infinity,
-    url: `${BASE_API_URL}/individuals/individual?task=read`,
-    agent: false,
-    headers: {
-      'Content-Type': 'application/json',
-      Authorization: `Bearer ${accessToken}`,
-    },
-    data: data,
-  };
-  const results = await axios.request(config).catch(error => {
-    console.log('Error', error);
-  });
-  return (
-    results?.data.individuals[0] ?? {
-      firstName: info.given_name ?? '',
-      lastName: info.family_name ?? '',
-      email: info.email ?? '',
-    }
-  );
 };
 
 const fetchLoansData = async (email: string, accessToken: string | AccessToken | null | undefined) => {

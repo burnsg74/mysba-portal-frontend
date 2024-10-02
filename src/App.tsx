@@ -38,10 +38,10 @@ const App: React.FC = () => {
     if (location.pathname === '/' || location.pathname === '/loading' || location.pathname === '/login/callback') {
       return;
     }
-    if (!profileData?.profile?.crm?.email) {
+    if (!profileData?.profile?.sso?.email) {
       navigate('/');
     }
-  }, [location.pathname, profileData?.profile?.crm?.email]);
+  }, [location.pathname, profileData?.profile?.sso?.email]);
 
   useEffect(() => {
     window.scrollTo(0, 0);

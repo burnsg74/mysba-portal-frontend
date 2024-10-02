@@ -47,13 +47,13 @@ const Profile = () => {
     <div data-testid="page-profile" className={`grid-row ${styles.wrapper}`}>
       <div className={`grid-col ${styles.container}`}>
         <h1 className={`${styles.profileName}`}>
-          {profileData?.profile?.crm?.firstName + ' ' + profileData?.profile?.crm?.lastName}
+          {profileData?.profile?.sso?.given_name + ' ' + profileData?.profile?.sso?.family_name}
         </h1>
         <div className={`${styles.categoryGroup}`}>
           <div className={`${styles.profileSubheading}`}>{t('Contact Information')}</div>
-          <Field label="Email" value={profileData.profile?.crm?.email} />
-          <Field label="First Name" value={profileData.profile?.crm?.firstName} />
-          <Field label="Last Name" value={profileData.profile?.crm?.lastName} />
+          <Field label="Email" value={profileData.profile?.sso?.email} />
+          <Field label="First Name" value={profileData.profile?.sso?.given_name} />
+          <Field label="Last Name" value={profileData.profile?.sso?.family_name} />
         </div>
         <div className={`${styles.buttonGroup}`}>
           <button

@@ -6,7 +6,6 @@ interface IUser {
 
 interface IUserProfile {
   sso: ISSO;
-  crm: ICRM;
   portal: IPortal;
 }
 
@@ -22,12 +21,6 @@ interface ISSO {
   updated_at: number;
   email_verified: boolean;
   cls_elevated: boolean;
-}
-
-interface ICRM {
-  firstName: string;
-  lastName: string;
-  email: string;
 }
 
 interface IPortal {
