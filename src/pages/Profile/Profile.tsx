@@ -25,7 +25,6 @@ const Profile = () => {
     if (sessionStorage.getItem('clsUser') !== null) {
       sessionStorage.setItem('clsLogoutNeeded', 'true');
     }
-
     document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
@@ -34,8 +33,6 @@ const Profile = () => {
       revokeAccessToken: true,
       revokeRefreshToken: true,
     });
-    sessionStorage.clear();
-    localStorage.clear();
   };
 
   return (
