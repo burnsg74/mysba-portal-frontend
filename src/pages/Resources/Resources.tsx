@@ -25,14 +25,19 @@ const Resources = () => {
 
   useEffect(() => {
     if (zipcode && zipcode.toString().length === 5) {
-      refreshDistrict(zipcode).then(newDistrict => {
-        if (newDistrict) {
-          setDistrict(newDistrict);
-          updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
-        } else {
-          setDistrict(null);
-        }
-      });
+      refreshDistrict(zipcode)
+        .then(newDistrict => {
+          if (newDistrict) {
+            setDistrict(newDistrict);
+            updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
+          } else {
+            setDistrict(null);
+          }
+        })
+        .catch(() => {
+          // No action needed if the district is not found, refreshDistrict will handle the error
+          // console.log('Error fetching district:', error);
+        });
     }
     hasMountedRef.current = true;
   }, []);
@@ -44,14 +49,19 @@ const Resources = () => {
 
   const handleSearchClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    refreshDistrict(zipcode).then(newDistrict => {
-      if (newDistrict) {
-        setDistrict(newDistrict);
-        updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
-      } else {
-        setDistrict(null);
-      }
-    });
+    refreshDistrict(zipcode)
+      .then(newDistrict => {
+        if (newDistrict) {
+          setDistrict(newDistrict);
+          updateAndSaveUserPortalProfileWithNewDistrict(newDistrict);
+        } else {
+          setDistrict(null);
+        }
+      })
+      .catch(() => {
+        // No action needed if the district is not found, refreshDistrict will handle the error
+        // console.log('Error fetching district:', error);
+      });
   };
 
   const formatZipcode = (value: string | undefined): string | undefined => {
@@ -82,6 +92,7 @@ const Resources = () => {
       return mapDistrictData(districtData, detailedDistrictData);
     } catch (error: any) {
       handleError(error, zipcode);
+      throw new Error('Error');
     }
   };
 
@@ -134,7 +145,7 @@ const Resources = () => {
     const accessToken = authState?.accessToken?.accessToken;
 
     if (!accessToken) {
-      console.log('No accessToken');
+      // console.log('No accessToken');
       return;
     }
 
@@ -143,8 +154,8 @@ const Resources = () => {
       .then(() => {
         dispatch(setUser({ ...user, profile: { ...user.profile, portal: newPortalProfile } }));
       })
-      .catch(error => {
-        console.log('ERROR', error);
+      .catch(() => {
+        // console.log('ERROR', error);
       });
   };
 

@@ -223,6 +223,11 @@ a {
   font-weight: 400;
   line-height: normal;
   margin-top: unset;
+  padding-bottom: 8px;
+}
+
+.titleZipInput {
+  font-family: var(--Font-Primary);
 }
 
 .localResourcesContentContainer {
