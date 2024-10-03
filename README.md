@@ -13,21 +13,25 @@
 ## Terraform States
 
 ### ./terraform
+
 Houses the infrastructure that supports the front end portal. S3, CloudFront, WAF, etc.
-  - workspaces that are supported.
-    - dev
-    - test
-    - stg
-    - prod
+
+- workspaces that are supported.
+  - dev
+  - test
+  - stg
+  - prod
 
 ### Logging
 
 To satisfy SBA security & compliance requirements all `CloudFront`, `ELB` and `S3` access logs must be written to the accounts delegated `log` bucket. To ensure `access logs` are replicated, resources should be configured to write to the bucket in the lower & upper account. Logs in this bucket should be separated by prefixes for their respective resources, see the examples below.
 
 **Lower Log Bucket**
+
 - `474340895216-us-east-1-logs`
 
 **Upper Log Bucket**
+
 - `286837973291-us-east-1-logs`
 
 ## ALB & CloudFront Logging Convention

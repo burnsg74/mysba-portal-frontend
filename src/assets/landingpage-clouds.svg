@@ -1,59 +1,59 @@
 <svg width="1327" height="181" viewBox="0 0 1327 181" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g clip-path="url(#clip0_16106_71957)">
-<circle cx="250" cy="-6" r="78" fill="white"/>
-<circle cx="306.5" cy="-38.5" r="90.5" fill="white"/>
-<circle cx="307" cy="25" r="78" fill="white"/>
-<circle cx="384.5" cy="16.5" r="55.5" fill="white"/>
-<circle cx="449.5" cy="16.5" r="38.5" fill="white"/>
-<circle cx="171.5" cy="17.5" r="38.5" fill="white"/>
-<circle cx="209.5" cy="33.5" r="38.5" fill="white"/>
-<circle cx="487.5" cy="31.5" r="23.5" fill="white"/>
-<circle cx="129.5" cy="31.5" r="23.5" fill="white"/>
-<circle cx="121.5" cy="13.5" r="23.5" fill="white"/>
-<circle cx="98.5" cy="32.5" r="23.5" fill="white"/>
-<circle cx="548.5" cy="13.5" r="11.5" fill="white"/>
-<circle cx="384.5" cy="-21.5" r="38.5" fill="white"/>
-<circle cx="676" cy="-16" r="78" fill="white"/>
-<circle cx="732.5" cy="-48.5" r="90.5" fill="white"/>
-<circle cx="733" cy="15" r="78" fill="white"/>
-<circle cx="810.5" cy="6.5" r="55.5" fill="white"/>
-<circle cx="875.5" cy="6.5" r="38.5" fill="white"/>
-<circle cx="597.5" cy="7.5" r="38.5" fill="white"/>
-<circle cx="635.5" cy="23.5" r="38.5" fill="white"/>
-<circle cx="913.5" cy="21.5" r="23.5" fill="white"/>
-<circle cx="555.5" cy="21.5" r="23.5" fill="white"/>
-<circle cx="547.5" cy="3.5" r="23.5" fill="white"/>
-<circle cx="524.5" cy="22.5" r="23.5" fill="white"/>
-<circle cx="974.5" cy="3.5" r="11.5" fill="white"/>
-<circle cx="810.5" cy="-31.5" r="38.5" fill="white"/>
-<circle cx="516" cy="4" r="78" fill="white"/>
-<circle cx="566.5" cy="3.5" r="90.5" fill="white"/>
-<circle cx="573" cy="35" r="78" fill="white"/>
-<circle cx="650.5" cy="26.5" r="55.5" fill="white"/>
-<circle cx="688.5" cy="12.5" r="38.5" fill="white"/>
-<circle cx="437.5" cy="27.5" r="38.5" fill="white"/>
-<circle cx="475.5" cy="43.5" r="38.5" fill="white"/>
-<circle cx="753.5" cy="41.5" r="23.5" fill="white"/>
-<circle cx="398.5" cy="31.5" r="23.5" fill="white"/>
-<circle cx="814.5" cy="23.5" r="11.5" fill="white"/>
-<circle cx="318.5" cy="31.5" r="11.5" fill="white"/>
-<circle cx="650.5" cy="-11.5" r="38.5" fill="white"/>
-<circle cx="942" cy="-6" r="78" fill="white"/>
-<circle cx="992.5" cy="-6.5" r="90.5" fill="white"/>
-<circle cx="999" cy="25" r="78" fill="white"/>
-<circle cx="1076.5" cy="16.5" r="55.5" fill="white"/>
-<circle cx="1114.5" cy="2.5" r="38.5" fill="white"/>
-<circle cx="863.5" cy="17.5" r="38.5" fill="white"/>
-<circle cx="901.5" cy="33.5" r="38.5" fill="white"/>
-<circle cx="1179.5" cy="31.5" r="23.5" fill="white"/>
-<circle cx="824.5" cy="21.5" r="23.5" fill="white"/>
-<circle cx="1240.5" cy="13.5" r="11.5" fill="white"/>
-<circle cx="744.5" cy="21.5" r="11.5" fill="white"/>
-<circle cx="1076.5" cy="-21.5" r="38.5" fill="white"/>
-</g>
-<defs>
-<clipPath id="clip0_16106_71957">
-<rect width="1327" height="181" fill="white"/>
-</clipPath>
-</defs>
+    <g clip-path="url(#clip0_16106_71957)">
+        <circle cx="250" cy="-6" r="78" fill="white"/>
+        <circle cx="306.5" cy="-38.5" r="90.5" fill="white"/>
+        <circle cx="307" cy="25" r="78" fill="white"/>
+        <circle cx="384.5" cy="16.5" r="55.5" fill="white"/>
+        <circle cx="449.5" cy="16.5" r="38.5" fill="white"/>
+        <circle cx="171.5" cy="17.5" r="38.5" fill="white"/>
+        <circle cx="209.5" cy="33.5" r="38.5" fill="white"/>
+        <circle cx="487.5" cy="31.5" r="23.5" fill="white"/>
+        <circle cx="129.5" cy="31.5" r="23.5" fill="white"/>
+        <circle cx="121.5" cy="13.5" r="23.5" fill="white"/>
+        <circle cx="98.5" cy="32.5" r="23.5" fill="white"/>
+        <circle cx="548.5" cy="13.5" r="11.5" fill="white"/>
+        <circle cx="384.5" cy="-21.5" r="38.5" fill="white"/>
+        <circle cx="676" cy="-16" r="78" fill="white"/>
+        <circle cx="732.5" cy="-48.5" r="90.5" fill="white"/>
+        <circle cx="733" cy="15" r="78" fill="white"/>
+        <circle cx="810.5" cy="6.5" r="55.5" fill="white"/>
+        <circle cx="875.5" cy="6.5" r="38.5" fill="white"/>
+        <circle cx="597.5" cy="7.5" r="38.5" fill="white"/>
+        <circle cx="635.5" cy="23.5" r="38.5" fill="white"/>
+        <circle cx="913.5" cy="21.5" r="23.5" fill="white"/>
+        <circle cx="555.5" cy="21.5" r="23.5" fill="white"/>
+        <circle cx="547.5" cy="3.5" r="23.5" fill="white"/>
+        <circle cx="524.5" cy="22.5" r="23.5" fill="white"/>
+        <circle cx="974.5" cy="3.5" r="11.5" fill="white"/>
+        <circle cx="810.5" cy="-31.5" r="38.5" fill="white"/>
+        <circle cx="516" cy="4" r="78" fill="white"/>
+        <circle cx="566.5" cy="3.5" r="90.5" fill="white"/>
+        <circle cx="573" cy="35" r="78" fill="white"/>
+        <circle cx="650.5" cy="26.5" r="55.5" fill="white"/>
+        <circle cx="688.5" cy="12.5" r="38.5" fill="white"/>
+        <circle cx="437.5" cy="27.5" r="38.5" fill="white"/>
+        <circle cx="475.5" cy="43.5" r="38.5" fill="white"/>
+        <circle cx="753.5" cy="41.5" r="23.5" fill="white"/>
+        <circle cx="398.5" cy="31.5" r="23.5" fill="white"/>
+        <circle cx="814.5" cy="23.5" r="11.5" fill="white"/>
+        <circle cx="318.5" cy="31.5" r="11.5" fill="white"/>
+        <circle cx="650.5" cy="-11.5" r="38.5" fill="white"/>
+        <circle cx="942" cy="-6" r="78" fill="white"/>
+        <circle cx="992.5" cy="-6.5" r="90.5" fill="white"/>
+        <circle cx="999" cy="25" r="78" fill="white"/>
+        <circle cx="1076.5" cy="16.5" r="55.5" fill="white"/>
+        <circle cx="1114.5" cy="2.5" r="38.5" fill="white"/>
+        <circle cx="863.5" cy="17.5" r="38.5" fill="white"/>
+        <circle cx="901.5" cy="33.5" r="38.5" fill="white"/>
+        <circle cx="1179.5" cy="31.5" r="23.5" fill="white"/>
+        <circle cx="824.5" cy="21.5" r="23.5" fill="white"/>
+        <circle cx="1240.5" cy="13.5" r="11.5" fill="white"/>
+        <circle cx="744.5" cy="21.5" r="11.5" fill="white"/>
+        <circle cx="1076.5" cy="-21.5" r="38.5" fill="white"/>
+    </g>
+    <defs>
+        <clipPath id="clip0_16106_71957">
+            <rect width="1327" height="181" fill="white"/>
+        </clipPath>
+    </defs>
 </svg>

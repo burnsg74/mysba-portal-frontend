@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from "react";
-import Card from "src/components/Card/Card";
-import { useTranslation } from "react-i18next";
-import styles from "src/components/BusinessCard/BusinessCard.module.css";
-import BusinessCardIcon from "src/assets/business-card-icon.svg";
+import React, { useEffect, useRef, useState } from 'react';
+import Card from 'src/components/Card/Card';
+import { useTranslation } from 'react-i18next';
+import styles from 'src/components/BusinessCard/BusinessCard.module.css';
+import BusinessCardIcon from 'src/assets/business-card-icon.svg';
+import DotIcon from 'src/assets/dot-icon.svg';
 
 export const BusinessCard: React.FC<IBusinessCardProps> = ({ business, hideDetails = false }) => {
   const { t } = useTranslation();
@@ -19,19 +20,30 @@ export const BusinessCard: React.FC<IBusinessCardProps> = ({ business, hideDetai
     }
 
     updateScreenSize();
-    window.addEventListener("resize", updateScreenSize);
-    return () => window.removeEventListener("resize", updateScreenSize);
+    window.addEventListener('resize', updateScreenSize);
+    return () => window.removeEventListener('resize', updateScreenSize);
   }, []);
 
-  const body = (<div ref={containerRef}
-                     className={`grid-row ${styles.bodyRow} ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ""}`}>
-      <div className={`grid-col  ${styles.bodyLegalEntityText}`}>
-        {t(business.legal_entity)}
-      </div>
+  const body = (
+    <div
+      ref={containerRef}
+      className={`grid-row ${styles.bodyRow} ${styles.bodyRow} ${isSmallScreen ? styles.smallScreen : ''}`}
+    >
+      <div className={`grid-col  ${styles.bodyLegalEntityText}`}>{t(business.legal_entity)}</div>
       <div className={`grid-col-auto ${styles.bodySubGroup}`}>
-        {t("UEI")}: {business.uei}
+        {t('EIN')}: {business.ein}
+        <img src={DotIcon} alt="dot" className={styles.dotIcon} />
+        {t('UEI')}: {business.uei}
       </div>
-    </div>);
-  return <Card icon={BusinessCardIcon} title={business.name} detailsPage={`/businesses/detail/${business.id}`}
-               body={body} hideDetails={hideDetails} />;
+    </div>
+  );
+  return (
+    <Card
+      icon={BusinessCardIcon}
+      title={business.name}
+      detailsPage={`/businesses/detail/${business.id}`}
+      body={body}
+      hideDetails={hideDetails}
+    />
+  );
 };

@@ -5,8 +5,8 @@ import ModalComponent from './Modal';
 
 jest.mock('react-i18next', () => ({
   useTranslation: () => ({
-    t: (key:string) => key
-  })
+    t: (key: string) => key,
+  }),
 }));
 
 describe('ModalComponent', () => {
@@ -18,9 +18,9 @@ describe('ModalComponent', () => {
   });
 
   it('renders the modal with a title and close button', () => {
-    const title = "My Modal Title";
+    const title = 'My Modal Title';
     render(<ModalComponent title={title} onClose={onClose} />);
-    
+
     expect(screen.getByText(title)).toBeInTheDocument();
     expect(screen.getByText('Close')).toBeInTheDocument();
     fireEvent.click(screen.getByText('Close'));
@@ -28,7 +28,9 @@ describe('ModalComponent', () => {
   });
 
   it('renders step indicators and prevModal is called when completed step is clicked', () => {
-    render(<ModalComponent title="Step Modal" totalSteps={3} completedSteps={1} prevModal={prevModal} onClose={onClose} />);
+    render(
+      <ModalComponent title="Step Modal" totalSteps={3} completedSteps={1} prevModal={prevModal} onClose={onClose} />
+    );
 
     // step-indicator"
     const completeStep = screen.getAllByTestId('step-indicator')[0];
@@ -37,7 +39,7 @@ describe('ModalComponent', () => {
   });
 
   it('displays an image if provided', () => {
-    const imageProps = { image: "test-image.png", alt: "Test Image" };
+    const imageProps = { image: 'test-image.png', alt: 'Test Image' };
     render(<ModalComponent title="Image Modal" ImageAndAlt={imageProps} onClose={onClose} />);
 
     const image = screen.getByRole('img', { name: 'Test Image' });
@@ -46,7 +48,14 @@ describe('ModalComponent', () => {
   });
 
   it('renders content title and message when provided', () => {
-    render(<ModalComponent title="Content Modal" contentTitle="Content Title" contentMessage="This is a content message." onClose={onClose} />);
+    render(
+      <ModalComponent
+        title="Content Modal"
+        contentTitle="Content Title"
+        contentMessage="This is a content message."
+        onClose={onClose}
+      />
+    );
 
     expect(screen.getByText('Content Title')).toBeInTheDocument();
     expect(screen.getByText('This is a content message.')).toBeInTheDocument();

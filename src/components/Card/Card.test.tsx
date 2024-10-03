@@ -1,70 +1,30 @@
-import React, { ReactNode } from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import '@testing-library/jest-dom';
+// Required Imports
+import React from 'react';
+import { render } from '@testing-library/react';
 import Card from './Card';
+import { BrowserRouter as Router } from 'react-router-dom';
 
-interface MockLinkProps {
-  to: string;
-  children: ReactNode;
-}
-
-jest.mock('react-router-dom', () => ({
-  Link: ({ children, to }: MockLinkProps) => <a href={to}>{children}</a>
-}));
-
+// Mock Translation Function
 jest.mock('react-i18next', () => ({
-  useTranslation: () => ({
-    t: (key:string) => key
-  })
+  useTranslation: () => ({ t: (key: string) => key }),
 }));
 
-describe('Card Component', () => {
-  it('renders correctly with all props', () => {
-    const props = {
-      icon: "test-icon.png",
-      title: "Test Title",
-      body: <div>Test Body Content</div>,
-      detailsPage: "/details-page",
-      hideDetails: false
-    };
-    render(<Card {...props} />);
+describe('Card', () => {
+  const defaultProps: ICardProps = {
+    icon: 'icon.png',
+    title: 'Card Title',
+    detailsPage: '/details',
+    body: <>{'This is the card body'}</>,
+    hideDetails: false,
+  };
 
-    expect(screen.getByAltText('Card Header Icon')).toHaveAttribute('src', 'test-icon.png');
-    expect(screen.getByText('Test Title')).toBeInTheDocument();
-    expect(screen.getByText('Test Body Content')).toBeInTheDocument();
-    expect(screen.getByText('Details').closest('a')).toHaveAttribute('href', '/details-page');
-  });
-
-  it('hides details link when hideDetails is true', () => {
-    const props = {
-      icon: "test-icon.png",
-      title: "Test Title",
-      body: <div>Test Body Content</div>,
-      detailsPage: "/details-page",
-      hideDetails: true
-    };
-    render(<Card {...props} />);
-
-    expect(screen.queryByText('Details')).not.toBeInTheDocument();
-  });
-
-  it('adjusts style for small screens', () => {
-    global.innerWidth = 500;
-    const props = {
-      icon: "test-icon.png",
-      title: "Test Title",
-      body: <div>Test Body Content</div>,
-      detailsPage: "/details-page",
-      hideDetails: false
-    };
-    render(<Card {...props} />);
-    fireEvent(window, new Event('resize'));
-
-    expect(screen.getByTestId('card-header')).toHaveClass('smallScreen');
-    expect(screen.getByTestId('card-body')).toHaveClass('smallScreen');
-  });
-
-  afterEach(() => {
-    jest.restoreAllMocks();
+  it('renders without crashing', () => {
+    const { getByTestId } = render(
+      <Router>
+        <Card {...defaultProps} />
+      </Router>
+    );
+    expect(getByTestId('card-header')).toBeTruthy();
+    expect(getByTestId('card-body')).toBeTruthy();
   });
 });

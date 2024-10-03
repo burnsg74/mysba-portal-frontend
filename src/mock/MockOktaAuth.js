@@ -8,7 +8,7 @@ export class MockOktaAuth {
       idToken: {
         claims: {
           email: this.user,
-          name: "Test User",
+          name: 'Test User',
         },
       },
     };
@@ -23,7 +23,7 @@ export class MockOktaAuth {
       addEnvironment: () => {},
       getHttpHeader: () => {
         return {
-          'X-Okta-User-Agent-Extended': 'okta-auth-localhost:6343'
+          'X-Okta-User-Agent-Extended': 'okta-auth-localhost:6343',
         };
       },
       getVersion: () => '7.6.0',
@@ -33,8 +33,8 @@ export class MockOktaAuth {
   async signIn() {
     this.authState.isAuthenticated = true;
     return {
-      status: "SUCCESS",
-      sessionToken: "mock-session-token",
+      status: 'SUCCESS',
+      sessionToken: 'mock-session-token',
     };
   }
 
@@ -45,9 +45,9 @@ export class MockOktaAuth {
 
   async getUser() {
     return {
-      sub: "00u1nwb8gl7y1t4Dy5d6",
-      email:this.user,
-      name: "Test User",
+      sub: '00u1nwb8gl7y1t4Dy5d6',
+      email: this.user,
+      name: 'Test User',
     };
   }
 
@@ -57,10 +57,10 @@ export class MockOktaAuth {
 
   authStateManager = {
     getAuthState: () => this.authState,
-    subscribe: (callback) => {
+    subscribe: callback => {
       // Mock subscription logic if needed
     },
-    unsubscribe: (callback) => {
+    unsubscribe: callback => {
       // Mock unsubscription logic if needed
     },
   };

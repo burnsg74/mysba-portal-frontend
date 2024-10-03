@@ -1,135 +1,140 @@
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
 .usa-panel {
-    padding: 40px;
+  padding: 40px;
 }
 
 .usa-form label {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 .usa-button {
-    margin-top: 24px;
+  margin-top: 24px;
 }
 
 .container {
-    margin: 40px;
+  margin: 40px;
 }
 
 .categoryGroup {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 16px;
-    align-self: stretch;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+  align-self: stretch;
 }
 
 .profileName {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 40px;
-    line-height: 120%;
-    margin-bottom: 24px;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 40px;
+  line-height: 120%;
+  margin-bottom: 24px;
 }
 
 .profileSubheading {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 22px;
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    line-height: 120%;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 22px;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  line-height: 120%;
 }
 
 .profileLabel {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 18px;
-    font-family: var(--Font-Primary);
-    font-weight: 600;
-    line-height: 21px;
-    padding-top: 16px;
-    padding-bottom: 4px;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 18px;
+  font-family: var(--Font-Primary);
+  font-weight: 600;
+  line-height: 21px;
+  padding-top: 16px;
+  padding-bottom: 4px;
 }
 
 .profileInfo {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 17px;
-    font-family: var(--Font-Secondary);
-    font-weight: 400;
-    line-height: normal;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 17px;
+  font-family: var(--Font-Secondary);
+  font-weight: 400;
+  line-height: normal;
 }
 
 .updatesLabel {
-    color: black;
-    font-size: 15px;
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    word-wrap: break-word;
-    margin-left: 25px;
+  color: black;
+  font-size: 15px;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  word-wrap: break-word;
+  margin-left: 25px;
 }
 
 .usa-checkbox__input:checked + .usa-checkbox__label::before {
-    background-color: var(--Brand-Secondary-Bright-Blue);
-    border-color: var(--Brand-Secondary-Bright-Blue);
+  background-color: var(--Brand-Secondary-Bright-Blue);
+  border-color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .usa-checkbox__label::before {
-    width: 24px;
-    height: 24px;
+  width: 24px;
+  height: 24px;
 }
 
 .usa-checkbox__label {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding-left: 49px;
-    margin-top: unset;
-    font-size: 15px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 49px;
+  margin-top: unset;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .checkbox {
-    padding-bottom: 41px;
-    padding-left: 15px;
+  padding-bottom: 41px;
+  padding-left: 15px;
 }
 
 .checkbox__container {
-    display: flex;
-    flex-direction: row;
-    gap: 10px;
-    align-self: stretch;
-    margin-top: 31px;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  align-self: stretch;
+  margin-top: 31px;
 }
 
 .divider {
-    border-top: 1px solid var(--Base-base-lighter);
-    padding-top: 16px;
-    margin-top: 16px;
+  border-top: 1px solid var(--Base-base-lighter);
+  padding-top: 16px;
+  margin-top: 16px;
 }
 
 .divider:last-child {
-    border-top: 1px solid var(--Base-base-lighter);
-    padding-top: 16px;
-    padding-bottom: 31px;
+  border-top: 1px solid var(--Base-base-lighter);
+  padding-top: 16px;
+  padding-bottom: 31px;
 }
 
 .buttonStyle {
-    background-color: #D54309;
+  background-color: #d54309;
 }
 
 .buttonStyle .buttonText {
-    text-align: center;
-    color: var(--Base-white);
-    font-size: 16px;
-    font-family: var(--Font-Secondary);
-    font-weight: 700;
-    line-height: 14px;
-    word-wrap: break-word;
+  text-align: center;
+  color: var(--Base-white);
+  font-size: 16px;
+  font-family: var(--Font-Secondary);
+  font-weight: 700;
+  line-height: 14px;
+  word-wrap: break-word;
 }
 
 .buttonGroup {
-    display: flex;
-    gap: 10px;
-    flex-wrap: wrap;
-    margin-top: 24px;
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 24px;
 }

@@ -4,14 +4,14 @@
   max-width: unset;
   display: flex;
   justify-content: space-between;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .usaNavInner a {
-  display:block;
-  height:26px;
-  width:26px;
+  display: block;
+  height: 26px;
+  width: 26px;
 }
 
 .left {
@@ -49,11 +49,7 @@
   align-items: center;
   justify-content: center;
   background-color: var(--Alert-Info-Bar);
-  margin-right:0 !important;
-}
-
-.usaLanguageContainer {
-  padding-right: 20px;
+  margin-right: 0 !important;
 }
 
 .pillButton img {
@@ -69,6 +65,7 @@
   cursor: pointer;
   width: 24px;
   height: 24px;
+  fill: var(--SBA-Celeste);
 }
 
 .usaLogo {
@@ -83,7 +80,7 @@
   display: none;
 }
 
-@media screen and (max-width: 1023px) {
+@media screen and (max-width: 639px) {
   .headerMenuIconContainer {
     display: block;
   }
@@ -114,7 +111,6 @@
   transform: translateX(0);
 }
 
-
 @media (max-width: 1023px) {
   .rightSideNav.isOpen {
     width: 300px;
@@ -122,7 +118,7 @@
 }
 
 .rightSideNavHeader {
-  width:300px;
+  width: 300px;
   padding-top: 24px;
   position: relative;
 }
@@ -153,7 +149,7 @@
   left: auto;
   right: 150%;
   opacity: 0;
-  transition:opacity 0.08s ease-in-out;
+  transition: opacity 0.08s ease-in-out;
 }
 
 .tooltip:hover .tooltiptext {
