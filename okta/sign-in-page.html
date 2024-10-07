@@ -618,8 +618,6 @@
               window.location.href = "https://dev.mysba.ussba.io/upgrade-required.html?email="+emailInputValue;
             }
 
-
-
             const error_id = "input-email-error";
             if (!specialIgnoreMessage.some(v => errorContent.toLowerCase().includes(v.toLowerCase()))) {
               setCustomInlineError(inputSpan, error_id, errorContent, "");
