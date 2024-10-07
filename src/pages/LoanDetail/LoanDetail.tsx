@@ -16,8 +16,14 @@ const LoanDetail = () => {
   const { t } = useTranslation();
 
   const loan: ILoan | undefined = user.loans?.find((loan: ILoan) => loan.sba_number === id);
+
+  React.useEffect(() => {
+    if (!loan) {
+      navigate('/error');
+    }
+  }, [loan, navigate]);
+
   if (!loan) {
-    navigate('/error');
     return null;
   }
 
