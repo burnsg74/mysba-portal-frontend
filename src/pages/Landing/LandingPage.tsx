@@ -57,6 +57,7 @@ const LandingPage = () => {
     if (authState?.isAuthenticated === undefined) {
       return;
     }
+
     if (authState?.isAuthenticated) {
       navigate('/loading');
       return;
@@ -71,7 +72,21 @@ const LandingPage = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
+    if (sessionStorage.getItem('clsLogoutNeeded') !== null) {
+      sessionStorage.removeItem('clsLogoutNeeded');
+      window.location.href = `${CLS_URL}/accounts/logout?next=${window.location.origin}`;
+      return;
+    }
+
     fetchUserDetails().then(clsUser => {});
+
+    if (waffleMenu.current) {
+      // @ts-expect-error Waffle Menu does not use Typescript
+      const instance = new SbaWaffleMenu(waffleMenu.current);
+      instance.renderMenuIcon();
+      setSbaWaffleMenuInstance(instance);
+    }
+
     dispatch(setNav(false));
     dispatch(setShowProfile(false));
     let sbaWaffleMenuInstance: any;
@@ -86,15 +101,6 @@ const LandingPage = () => {
         sbaWaffleMenuInstance.destroy();
       }
     };
-  }, []);
-
-  useEffect(() => {
-    if (waffleMenu.current) {
-      // @ts-expect-error Waffle Menu does not use Typescript
-      const instance = new SbaWaffleMenu(waffleMenu.current);
-      instance.renderMenuIcon();
-      setSbaWaffleMenuInstance(instance);
-    }
   }, []);
 
   return (
