@@ -7,8 +7,15 @@ import { store } from 'src/store/store';
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
-import { CLS_URL } from 'src/utils/constants';
 import './i18n';
+
+const urlParams = new URLSearchParams(window.location.search);
+const mock = urlParams.get('mock');
+if (urlParams.has('mock')) {
+  if (mock != null) {
+    sessionStorage.setItem('mock', mock);
+  }
+}
 
 const container = document.getElementById('root');
 if (!container) throw new Error("Could not find root element with id 'root'");
@@ -23,24 +30,11 @@ if (isHomePage) {
   document.head.appendChild(dapScript);
 }
 
-if (sessionStorage.getItem('clsLogoutNeeded') !== null) {
-  sessionStorage.clear();
-  window.location.href = CLS_URL + '/accounts/logout' + '?next=' + window.location.origin;
-} else {
-  const urlParams = new URLSearchParams(window.location.search);
-  const mock = urlParams.get('mock');
-  if (urlParams.has('mock')) {
-    if (mock != null) {
-      sessionStorage.setItem('mock', mock);
-    }
-  }
-
-  const root = createRoot(container);
-  root.render(
-    <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
-    </Provider>
-  );
-}
+const root = createRoot(container);
+root.render(
+  <Provider store={store}>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </Provider>
+);

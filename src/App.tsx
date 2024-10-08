@@ -16,11 +16,11 @@ import Callback from 'src/pages/Callback/Callback';
 import { useSelector } from 'react-redux';
 import { getUser } from 'src/store/user/userSlice';
 import { OKTA_CLIENT_ID, OKTA_DOMAIN } from 'src/utils/constants';
+import Resources from 'src/pages/Resources/Resources';
+import LoanDetail from 'src/pages/LoanDetail/LoanDetail';
 
 // @ts-ignore
 import { MockOktaAuth } from 'src/mock/MockOktaAuth';
-import Resources from 'src/pages/Resources/Resources';
-import LoanDetail from 'src/pages/LoanDetail/LoanDetail';
 
 const App: React.FC = () => {
   const navigate = useNavigate();
