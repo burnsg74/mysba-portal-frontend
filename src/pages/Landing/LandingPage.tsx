@@ -42,6 +42,7 @@ const LandingPage = () => {
   };
 
   const login = () => {
+    console.log('Login Clicked');
     oktaAuth.signInWithRedirect({ loginHint: emailAddress }).then(() => {});
   };
 
@@ -57,6 +58,8 @@ const LandingPage = () => {
   };
 
   useEffect(() => {
+    console.log('isAuthenticated changed: ', authState?.isAuthenticated);
+
     // Not ready yet
     if (authState?.isAuthenticated === undefined) {
       return;
@@ -71,6 +74,8 @@ const LandingPage = () => {
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
+    console.log('Landing Page: Mounted');
+
     if (sessionStorage.getItem('clsLogoutNeeded') !== null) {
       console.log('CLS Logout Needed, redirect to CLS Logout');
       sessionStorage.removeItem('clsLogoutNeeded');
