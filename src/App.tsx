@@ -35,6 +35,7 @@ const App: React.FC = () => {
   }, []);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     if (location.pathname === '/' || location.pathname === '/loading' || location.pathname === '/login/callback') {
       return;
     }
@@ -42,10 +43,6 @@ const App: React.FC = () => {
       navigate('/');
     }
   }, [location.pathname, profileData?.profile?.sso?.email]);
-
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location.pathname]);
 
   const restoreOriginalUri = () => {
     navigate('/loading');
