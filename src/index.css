@@ -346,7 +346,6 @@ button:focus {
   padding-left: 20px;
   margin-left: auto;
   margin-right: auto;
-  height: 100%;
 }
 
 @media screen and (min-width: 1024px) {

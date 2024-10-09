@@ -22,6 +22,7 @@ const Profile = () => {
   };
 
   const logout = async () => {
+    console.log('Logout Clicked');
     if (sessionStorage.getItem('clsUser') !== null) {
       sessionStorage.setItem('clsLogoutNeeded', 'true');
     }
@@ -34,6 +35,7 @@ const Profile = () => {
       revokeAccessToken: true,
       revokeRefreshToken: true,
     });
+    console.log('oktaAuth.signOut...done');
   };
 
   return (
