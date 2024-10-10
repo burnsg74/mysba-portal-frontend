@@ -90,7 +90,7 @@ describe('Dashboard Component', () => {
         </BrowserRouter>
       </Provider>
     );
-    expect(screen.getByText('SBA Certification Information is Coming Soon')).toBeInTheDocument();
+    expect(screen.getByText('SBA certification information is coming soon')).toBeInTheDocument();
   });
 
   it('renders correct number of "Learn More" and "Apply" buttons', () => {
