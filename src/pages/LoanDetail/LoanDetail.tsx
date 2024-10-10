@@ -46,13 +46,18 @@ const LoanDetail = () => {
           </button>
         </div>
         <div className={styles.rightContainer}>
-          <button type="button" className={`usa-button ${styles.linkCertificationBtn}`} onClick={handleManageLoanClick}>
+          <a
+            href={`https://${ULP_URL}/accounts/cls/login/?process=`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`usa-button ${styles.linkCertificationBtn}`}
+          >
             {t('Manage Loan')}
             <svg className={`usa-icon ${styles.usaIcon}`} focusable="false" height="18px" width="18px">
               <title>Open in a new window Icon</title>
               <use xlinkHref="/assets/img/sprite.svg#launch"></use>
             </svg>
-          </button>
+          </a>
         </div>
       </div>
 
