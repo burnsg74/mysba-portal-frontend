@@ -28,7 +28,7 @@ const LoanDetail = () => {
   }
 
   const handleManageLoanClick = () => {
-    window.open('https://' + ULP_URL + '/dashboard/', '_blank');
+    window.open('https://' + ULP_URL + '/accounts/cls/login/?process=', '_blank');
   };
 
   return (
