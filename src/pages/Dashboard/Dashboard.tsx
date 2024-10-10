@@ -67,7 +67,7 @@ const Dashboard = () => {
         <div className={`${styles.certInfoAlertWrapper}`}>
           <Alert
             type={'info'}
-            title={t('Certification Data is Coming Soon')}
+            title={t('SBA Certification Information is Coming Soon')}
             message={t('dashboard.cert.alert.message', {
               link: `<a href="https://certification.sba.gov" target="_blank" rel="noopener noreferrer">${t('MySBA Certifications')}</a>`,
             })}
