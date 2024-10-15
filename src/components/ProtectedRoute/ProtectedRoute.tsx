@@ -12,7 +12,7 @@ const ProtectedRoute = () => {
       return;
     }
     if (!authState?.isAuthenticated) {
-      console.log('Protected Route, goto landing page');
+      console.log('Protected Route');
       // navigate('/');
     }
   }, [authState, navigate]);

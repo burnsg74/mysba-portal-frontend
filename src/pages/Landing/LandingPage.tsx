@@ -58,12 +58,12 @@ const LandingPage = () => {
   };
 
   useEffect(() => {
-    console.log('isAuthenticated changed: ', authState?.isAuthenticated);
-
     // Not ready yet
     if (authState?.isAuthenticated === undefined) {
       return;
     }
+
+    console.log('isAuthenticated changed: ', authState?.isAuthenticated);
 
     // User already authenticated, goto loading page
     if (authState?.isAuthenticated) {
