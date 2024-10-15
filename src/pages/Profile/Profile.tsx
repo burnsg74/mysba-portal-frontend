@@ -31,10 +31,10 @@ const Profile = () => {
     document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     console.log('oktaAuth.signOut...');
     await oktaAuth.signOut({
-      clearTokensBeforeRedirect: true,
       revokeAccessToken: true,
       revokeRefreshToken: true,
     });
+
     console.log('oktaAuth.signOut...done');
   };
 

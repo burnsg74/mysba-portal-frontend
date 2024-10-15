@@ -179,7 +179,10 @@ const Loading = () => {
   const mock = sessionStorage.getItem('mock');
 
   useEffect(() => {
-    const timer = setTimeout(() => navigate('/'), 10000);
+    const timer = setTimeout(() => {
+      console.log('Loading Timeout, Navigating to root...');
+      navigate('/');
+    }, 10000);
     return () => clearTimeout(timer);
   }, [navigate]);
 
@@ -189,6 +192,9 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    if (authState?.isAuthenticated === undefined) {
+      return;
+    }
     if (authState?.isAuthenticated && !userFetched) {
       setUserFetched(true);
       handleOktaAuth(oktaAuth, authState, mock, dispatch, navigate);
