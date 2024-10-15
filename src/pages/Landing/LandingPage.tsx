@@ -27,7 +27,7 @@ const LandingPage = () => {
 
   const fetchUserDetails = async () => {
     try {
-      console.log('Is this a CLS User?');
+      console.log('Is this a CLS User, Pulling CLS User Details...');
       const response = await fetch(`${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' });
       if (response.ok) {
         sessionStorage.setItem('clsUser', 'true');
