@@ -191,12 +191,15 @@ const Loading = () => {
     dispatch(setShowProfile(false));
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   if (authState?.isAuthenticated && !userFetched) {
-  //     setUserFetched(true);
-  //     handleOktaAuth(oktaAuth, authState, mock, dispatch, navigate);
-  //   }
-  // }, [authState?.isAuthenticated]);
+  useEffect(() => {
+    if (authState?.isAuthenticated === undefined) {
+      return;
+    }
+    if (authState?.isAuthenticated && !userFetched) {
+      setUserFetched(true);
+      handleOktaAuth(oktaAuth, authState, mock, dispatch, navigate);
+    }
+  }, [authState?.isAuthenticated]);
 
   useEffect(() => {
     const interval = setInterval(
