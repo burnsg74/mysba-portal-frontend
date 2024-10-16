@@ -9,11 +9,25 @@ import CardLoansImg from 'src/assets/card-loans-img.jpg';
 import CardCertificationsImg from 'src/assets/card-certifications-img.jpg';
 import CardDisasterLoansImg from 'src/assets/card-disaster_loans-img.jpg';
 import { LoanCard } from 'src/components/LoanCard/LoanCard';
+import { CLS_URL } from 'src/utils/constants';
 
 const Dashboard = () => {
   const user: IUser = useSelector(getUser);
   const hasNoLoans = !user.loans || user.loans.length === 0;
   const { t } = useTranslation();
+
+  // const redirectUrl = user.profile.sso.cls_guid ? "https://{environment}.oauth.cls.sba.gov/signup/mysba_upgrade?start={slug}&email={cls_enabled_user}" : null;
+  // https://{environment}.oauth.cls.sba.gov/signup/mysba_upgrade?start={slug}&email={cls_enabled_user}
+  // href="https://lending.sba.gov/lender-match/"
+  // href="https://lending.sba.gov/search-disaster/"
+  const clsGuid = user.profile?.sso?.cls_guid;
+  const email = user.profile?.sso?.email;
+  console.log('clsGuid', clsGuid);
+  console.log('email', email);
+
+  const clsUpgradeURL = user.profile?.sso?.cls_guid
+    ? `${CLS_URL}/signup/mysba_upgrade?start=${clsGuid}&email=${email}`
+    : null;
 
   return (
     <>
@@ -101,7 +115,13 @@ const Dashboard = () => {
                 >
                   {t('Learn More')}
                 </a>
-                <a href="https://lending.sba.gov/lender-match/" target="_blank" className="usa-button" rel="noreferrer">
+                <a
+                  href={clsUpgradeURL ?? 'https://lending.sba.gov/lender-match/'}
+                  // href="https://lending.sba.gov/lender-match/"
+                  target="_blank"
+                  className="usa-button"
+                  rel="noreferrer"
+                >
                   {t('Apply')}
                 </a>
               </div>
@@ -166,7 +186,8 @@ const Dashboard = () => {
                   {t('Learn More')}
                 </a>
                 <a
-                  href="https://lending.sba.gov/search-disaster/"
+                  href={clsUpgradeURL ?? 'https://lending.sba.gov/search-disaster/"'}
+                  // href="https://lending.sba.gov/search-disaster/"
                   target="_blank"
                   className="usa-button"
                   rel="noreferrer"
