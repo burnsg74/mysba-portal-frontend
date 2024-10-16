@@ -187,7 +187,7 @@ const Dashboard = () => {
                   {t('Learn More')}
                 </a>
                 <a
-                  href={clsUpgradeURL ?? 'https://lending.sba.gov/search-disaster/"'}
+                  href={clsUpgradeURL ?? 'https://lending.sba.gov/search-disaster/'}
                   // href="https://lending.sba.gov/search-disaster/"
                   target="_blank"
                   className="usa-button"
