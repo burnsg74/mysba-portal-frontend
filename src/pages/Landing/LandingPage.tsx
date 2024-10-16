@@ -27,14 +27,11 @@ const LandingPage = () => {
 
   const fetchUserDetails = async () => {
     try {
-      console.log('Is this a CLS User, Pulling CLS User Details...');
       const response = await fetch(`${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' });
       if (response.ok) {
         sessionStorage.setItem('clsUser', 'true');
-        console.log('> Yes, signInWithRedirect');
         await oktaAuth.signInWithRedirect({ idp: OKTA_IDP });
       } else {
-        console.log('> No');
         sessionStorage.removeItem('clsUser');
         return;
       }
@@ -42,7 +39,6 @@ const LandingPage = () => {
   };
 
   const login = () => {
-    console.log('Login Clicked');
     oktaAuth.signInWithRedirect({ loginHint: emailAddress }).then(() => {});
   };
 
@@ -63,21 +59,15 @@ const LandingPage = () => {
       return;
     }
 
-    console.log('isAuthenticated changed: ', authState?.isAuthenticated);
-
     // User already authenticated, goto loading page
     if (authState?.isAuthenticated) {
-      console.log('User already authenticated, goto loading');
       navigate('/loading');
       return;
     }
   }, [authState?.isAuthenticated]);
 
   useEffect(() => {
-    console.log('Landing Page: Mounted');
-
     if (sessionStorage.getItem('clsLogoutNeeded') !== null) {
-      console.log('CLS Logout Needed, redirect to CLS Logout');
       sessionStorage.removeItem('clsLogoutNeeded');
       window.location.href = `${CLS_URL}/accounts/logout?next=${window.location.origin}`;
       return;

@@ -15,15 +15,8 @@ const Dashboard = () => {
   const user: IUser = useSelector(getUser);
   const hasNoLoans = !user.loans || user.loans.length === 0;
   const { t } = useTranslation();
-
-  // const redirectUrl = user.profile.sso.cls_guid ? "https://{environment}.oauth.cls.sba.gov/signup/mysba_upgrade?start={slug}&email={cls_enabled_user}" : null;
-  // https://{environment}.oauth.cls.sba.gov/signup/mysba_upgrade?start={slug}&email={cls_enabled_user}
-  // href="https://lending.sba.gov/lender-match/"
-  // href="https://lending.sba.gov/search-disaster/"
   const clsGuid = user.profile?.sso?.cls_guid;
   const email = user.profile?.sso?.email;
-  console.log('clsGuid', clsGuid);
-  console.log('email', email);
 
   const clsUpgradeURL =
     user.profile?.sso?.cls_guid && user.profile?.sso?.cls_elevated === false

@@ -53,7 +53,6 @@ type AccessTokenType = string | AccessToken | null | undefined;
 const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTokenType) => {
   const tokenString: string = accessToken as string;
   const tokenData: any = jwtDecode(tokenString);
-  console.log('Token Data:', tokenData);
   const ssoProfile: IUserProfile['sso'] = {
     given_name: info.given_name ?? '',
     family_name: info.family_name ?? '',
@@ -187,7 +186,6 @@ const Loading = () => {
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      console.log('Loading Timeout, Navigating to root...');
       navigate('/');
     }, 10000);
     return () => clearTimeout(timer);

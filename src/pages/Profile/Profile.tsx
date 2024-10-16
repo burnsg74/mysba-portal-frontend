@@ -22,20 +22,16 @@ const Profile = () => {
   };
 
   const logout = async () => {
-    console.log('Logout Clicked');
     if (sessionStorage.getItem('clsUser') !== null) {
       sessionStorage.setItem('clsLogoutNeeded', 'true');
     }
     document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
     document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-    console.log('oktaAuth.signOut...');
     await oktaAuth.signOut({
       revokeAccessToken: true,
       revokeRefreshToken: true,
     });
-
-    console.log('oktaAuth.signOut...done');
   };
 
   return (

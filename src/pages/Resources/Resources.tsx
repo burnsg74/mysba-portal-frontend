@@ -36,7 +36,6 @@ const Resources = () => {
         })
         .catch(() => {
           // No action needed if the district is not found, refreshDistrict will handle the error
-          // console.log('Error fetching district:', error);
         });
     }
     hasMountedRef.current = true;
@@ -60,7 +59,6 @@ const Resources = () => {
       })
       .catch(() => {
         // No action needed if the district is not found, refreshDistrict will handle the error
-        // console.log('Error fetching district:', error);
       });
   };
 
@@ -145,7 +143,6 @@ const Resources = () => {
     const accessToken = authState?.accessToken?.accessToken;
 
     if (!accessToken) {
-      // console.log('No accessToken');
       return;
     }
 
@@ -155,7 +152,7 @@ const Resources = () => {
         dispatch(setUser({ ...user, profile: { ...user.profile, portal: newPortalProfile } }));
       })
       .catch(() => {
-        // console.log('ERROR', error);
+        // No action needed if the district is not found, refreshDistrict will handle the error
       });
   };
 
