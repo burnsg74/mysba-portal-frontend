@@ -21,6 +21,7 @@ interface ISSO {
   updated_at: number;
   email_verified: boolean;
   cls_elevated: boolean;
+  cls_guid: string;
 }
 
 interface IPortal {

@@ -14,6 +14,7 @@ import GovBanner from 'src/components/GovBanner/GovBanner';
 import SBAlogoEn from 'src/assets/logo-horizontal.svg';
 import SBAlogoEs from 'src/assets/logo-horizontal-spanish.svg';
 import SBAlogoSm from 'src/assets/logo-sm.svg';
+import { jwtDecode } from 'jwt-decode';
 
 const PROGRESS_UPDATE_INTERVAL = 500;
 
@@ -50,6 +51,8 @@ const fetchUserDataFromMock = async (mock: string) => {
 type AccessTokenType = string | AccessToken | null | undefined;
 
 const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTokenType) => {
+  const tokenString: string = accessToken as string;
+  const tokenData: any = jwtDecode(tokenString);
   const ssoProfile: IUserProfile['sso'] = {
     given_name: info.given_name ?? '',
     family_name: info.family_name ?? '',
@@ -62,6 +65,7 @@ const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTok
     updated_at: info.updated_at ?? 0,
     email_verified: info.email_verified ?? false,
     cls_elevated: Boolean(info.cls_elevated),
+    cls_guid: tokenData.cls_Guid ?? '',
   };
 
   if (info.cls_elevated) {
@@ -129,6 +133,8 @@ const handleOktaAuth = async (oktaAuth: any, authState: any, mock: string | null
         user = await fetchUserDataFromMock(mock);
       } else {
         const accessToken = authState.accessToken?.accessToken;
+        //"Automagic_TestUser@team577635.testinator.com",
+        //   "cls_Guid": "70395a2c-86f0-4e25-bc35-0a5315667e8c"
         user = await fetchUserDataFromBackend(info, accessToken);
       }
       dispatch(setNav(true));
@@ -179,7 +185,9 @@ const Loading = () => {
   const mock = sessionStorage.getItem('mock');
 
   useEffect(() => {
-    const timer = setTimeout(() => navigate('/'), 10000);
+    const timer = setTimeout(() => {
+      navigate('/');
+    }, 10000);
     return () => clearTimeout(timer);
   }, [navigate]);
 
@@ -189,6 +197,9 @@ const Loading = () => {
   }, [dispatch]);
 
   useEffect(() => {
+    if (authState?.isAuthenticated === undefined) {
+      return;
+    }
     if (authState?.isAuthenticated && !userFetched) {
       setUserFetched(true);
       handleOktaAuth(oktaAuth, authState, mock, dispatch, navigate);

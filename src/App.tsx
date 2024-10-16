@@ -8,7 +8,6 @@ import LandingPage from 'src/pages/Landing/LandingPage';
 import Loading from 'src/pages/Loading/Loading';
 import Loans from 'src/pages/Loans/Loans';
 import Profile from 'src/pages/Profile/Profile';
-import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute';
 import LinkLaunchPad from 'src/pages/LinkLaunchPad/LinkLaunchPad';
 import Layout from 'src/components/Layout/Layout';
 import ErrorPage from 'src/pages/Error/ErrorPage';
@@ -72,34 +71,32 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/login/callback" element={<LoginCallback loadingElement={<Callback />} />} />
-        <Route element={<ProtectedRoute />}>
-          <Route path="/loading" element={<Loading />} />
-          <Route element={<Layout />}>
-            {/* Dashboard */}
-            <Route path="/dashboard/*" element={<Dashboard />} />
+        <Route path="/loading" element={<Loading />} />
+        <Route element={<Layout />}>
+          {/* Dashboard */}
+          <Route path="/dashboard/*" element={<Dashboard />} />
 
-            {/* Link LaunchPad */}
-            <Route path="/link-launchpad/*" element={<LinkLaunchPad />} />
+          {/* Link LaunchPad */}
+          <Route path="/link-launchpad/*" element={<LinkLaunchPad />} />
 
-            {/* Profile */}
-            <Route path="/profile" element={<Profile />} />
+          {/* Profile */}
+          <Route path="/profile" element={<Profile />} />
 
-            {/* Loans */}
-            <Route path="/loans" element={<Loans />} />
-            <Route path="/loans/detail/:id" element={<LoanDetail />} />
+          {/* Loans */}
+          <Route path="/loans" element={<Loans />} />
+          <Route path="/loans/detail/:id" element={<LoanDetail />} />
 
-            {/* Help */}
-            <Route path="/help" element={<Help />} />
+          {/* Help */}
+          <Route path="/help" element={<Help />} />
 
-            {/* Resources */}
-            <Route path="/resources" element={<Resources />} />
+          {/* Resources */}
+          <Route path="/resources" element={<Resources />} />
 
-            {/* Error Page */}
-            <Route path="/error" element={<ErrorPage />} />
+          {/* Error Page */}
+          <Route path="/error" element={<ErrorPage />} />
 
-            {/* Fallback Route */}
-            <Route path="*" element={<Dashboard />} />
-          </Route>
+          {/* Fallback Route */}
+          <Route path="*" element={<Dashboard />} />
         </Route>
       </Routes>
     </Security>
