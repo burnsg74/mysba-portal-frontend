@@ -25,9 +25,10 @@ const Dashboard = () => {
   console.log('clsGuid', clsGuid);
   console.log('email', email);
 
-  const clsUpgradeURL = user.profile?.sso?.cls_guid
-    ? `${CLS_URL}/signup/mysba_upgrade?start=${clsGuid}&email=${email}`
-    : null;
+  const clsUpgradeURL =
+    user.profile?.sso?.cls_guid && user.profile?.sso?.cls_elevated === false
+      ? `${CLS_URL}/signup/mysba_upgrade?start=${clsGuid}&email=${email}`
+      : null;
 
   return (
     <>
