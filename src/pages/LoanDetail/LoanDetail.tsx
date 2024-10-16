@@ -62,7 +62,11 @@ const LoanDetail = () => {
       </div>
 
       {loan.payment_past_due && (
-        <Alert message={`Payment for loan ${loan.sba_number} is past due.`} type="error" useSlim={true} />
+        <Alert
+          message={t('Payment for loan {{loanNumber}} is past due.', { loanNumber: loan.sba_number })}
+          type="error"
+          useSlim={true}
+        />
       )}
 
       {/* Loan Detail */}
