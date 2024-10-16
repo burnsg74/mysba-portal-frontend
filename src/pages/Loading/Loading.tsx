@@ -52,7 +52,7 @@ type AccessTokenType = string | AccessToken | null | undefined;
 
 const fetchUserDataFromBackend = async (info: UserClaims, accessToken: AccessTokenType) => {
   const tokenString: string = accessToken as string;
-  const tokenData = jwtDecode(tokenString);
+  const tokenData: any = jwtDecode(tokenString);
   console.log('Token Data:', tokenData);
   const ssoProfile: IUserProfile['sso'] = {
     given_name: info.given_name ?? '',
