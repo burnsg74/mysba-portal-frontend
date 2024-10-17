@@ -25,6 +25,21 @@ const LandingPage = () => {
   const [sbaWaffleMenuInstance, setSbaWaffleMenuInstance] = useState(null);
   const { t } = useTranslation();
 
+  interface Params {
+    accessKey: string;
+  }
+
+  const params: Params = {
+    accessKey: 'a1b2c3d4-e5f6-7890-1234-56789abcdef0',
+  };
+
+  const getAccessKeyFromURL = () => {
+    const params = new URLSearchParams(location.search);
+    return params.get('access-key');
+  };
+
+  const correctAccessKey = getAccessKeyFromURL();
+
   const fetchUserDetails = async () => {
     try {
       const response = await fetch(`${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' });
@@ -152,9 +167,11 @@ const LandingPage = () => {
                 {t('Loans, certifications, and resources tailored to your business all in one place.')}
               </div>
               <div className={`${styles.loginButton}`}>
-                <button onClick={login} type="button" style={{ height: 'unset' }} className="usa-button">
-                  {t('Log In / Sign Up')}
-                </button>
+                {params.accessKey === correctAccessKey && (
+                  <button onClick={login} type="button" style={{ height: 'unset' }} className="usa-button">
+                    {t('Log In / Sign Up')}
+                  </button>
+                )}
               </div>
             </div>
             <div className={`${styles.loginRowRight}`}>
