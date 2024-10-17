@@ -1,0 +1,29 @@
+{
+  "district": {
+    "zipcode": "97637",
+    "county_code": "41037",
+    "district_nid": "11",
+    "field_district_business_link": "https://www.sba.gov/district/portland/doing-business-portland-district",
+    "field_district_map_svg": "https://www.sba.gov/sites/default/files/2022-06/SBA_DOMaps_OR_Portland.svg",
+    "field_district_staff_directory": null,
+    "social_media_linkedin_url": "https://www.linkedin.com/showcase/sbaportland",
+    "social_media_x_url": "https://www.twitter.com/SBA_PortlandOR",
+    "title": "Portland",
+    "website": "https://dev.mars.ussba.io/district/portland",
+    "field_district_offices": [
+      {
+        "address_city": "Portland",
+        "address_line1": "419 SW 11th Avenue",
+        "address_line2": "Suite 310",
+        "address_state": "OR",
+        "address_zipcode": "97205",
+        "appointment_only": true,
+        "google_map_url": "https://www.google.com/maps/search/?api=1&query=419%20SW%2011th%20Avenue, Portland, OR 97205",
+        "is_virtual_office": false,
+        "telephone": "503-326-2682",
+        "title": "Portland",
+        "typeIcon": "/src/assets/icon-office-lg.svg"
+      }
+    ]
+  }
+}

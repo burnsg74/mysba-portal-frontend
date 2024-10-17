@@ -1,30 +1,28 @@
-import React from "react";
-import styles from "src/components/Alert/Alert.module.css";
-import { useTranslation } from "react-i18next";
+import React from 'react';
+import styles from 'src/components/Alert/Alert.module.css';
+import { useTranslation } from 'react-i18next';
 
 interface IAlertProps {
   title?: string;
-  message: string|JSX.Element;
-  type: "success" | "error" | "warning" | "info";
+  message: string | JSX.Element;
+  type: 'success' | 'error' | 'warning' | 'info';
+  useSlim?: boolean;
 }
 
-const Alert: React.FC<IAlertProps> = ({ message, type, title=null }) => {
+export const Alert: React.FC<IAlertProps> = ({ message, type, title = null, useSlim = false }) => {
   const { t } = useTranslation();
 
-  return (<div className={`${styles.alertContainer} ${styles["alert-" + type]}`}>
-      <svg
-        className={`usa-icon ${styles.alertIcon}`}
-        aria-hidden="true"
-        focusable="false" 
-        data-testid="alert-icon"
-      >
-        <use xlinkHref={`/assets/img/sprite.svg#${type}`}></use>
-      </svg>
-      <div className={`${styles.alertMessage}`}>
-        {title && <div className={`${styles.alertTitle}`}>{t(title)}</div>}
-        {typeof message === "string" ? t(message) : message}
+  return (
+    <div
+      role="alert"
+      className={`usa-alert usa-alert--${type} ${styles['alert']} ${styles['alert-' + type]} ${useSlim ? 'usa-alert--slim' : ''}`}
+    >
+      <div id="usa-alert__body" className={`usa-alert__body ${styles['alert-body']}`}>
+        {title && <h4 className="usa-alert__heading">{t(title)}</h4>}
+        <div className="usa-alert__text">
+          {typeof message === 'string' ? <span dangerouslySetInnerHTML={{ __html: t(message) }} /> : message}
+        </div>
       </div>
-    </div>);
+    </div>
+  );
 };
-
-export default Alert;

@@ -13,8 +13,8 @@
 }
 
 .loadingIcon {
-  width: 100px;
-  height: 100px;
+  width: 75px;
+  height: 75px;
 }
 
 .loadingProgressbarOuter {
@@ -23,6 +23,7 @@
   background-color: var(--Base-white);
   border-radius: 25px;
 }
+
 .loadingProgressbarInner {
   height: 100%;
   background-color: var(--Brand-Secondary-Bright-Blue);
@@ -37,4 +38,205 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+}
+
+.usaNavContainer {
+  width: 100%;
+  margin: 0;
+  max-width: unset;
+  display: flex;
+  justify-content: space-between;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.usaNavInner a {
+  display: block;
+  height: 26px;
+  width: 26px;
+}
+
+.left {
+  display: flex;
+  align-items: center;
+}
+
+.right {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.usaBannerInner {
+  width: 100vw;
+  margin: 0;
+  max-width: unset;
+  justify-content: start;
+  padding-left: 16px;
+}
+
+.usaHeader {
+  border-bottom: 1px solid lightgray;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.usaBannerHeader {
+  text-align: left;
+}
+
+.pillButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--Alert-Info-Bar);
+  margin-right: 0 !important;
+}
+
+.pillButton img {
+  width: 20px;
+  height: auto;
+}
+
+.headerMenuIconContainer {
+  display: none;
+}
+
+.headerMenuIcon {
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  fill: var(--SBA-Celeste);
+}
+
+.usaLogo {
+  height: 38px;
+  flex: unset;
+  display: block;
+}
+
+.usaLogoSm {
+  height: 38px;
+  flex: unset;
+  display: none;
+}
+
+@media screen and (max-width: 639px) {
+  .headerMenuIconContainer {
+    display: block;
+  }
+
+  .usaLogoSm {
+    display: block;
+  }
+
+  .usaLogo {
+    display: none;
+  }
+}
+
+.rightSideNav {
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100vh;
+  border-left: 1px solid lightgray;
+  width: 200px;
+  z-index: 9999;
+  background-color: white;
+}
+
+.rightSideNav.isOpen {
+  transform: translateX(0);
+}
+
+@media (max-width: 1023px) {
+  .rightSideNav.isOpen {
+    width: 300px;
+  }
+}
+
+.rightSideNavHeader {
+  width: 300px;
+  padding-top: 24px;
+  position: relative;
+}
+
+.rightSideNavIcon {
+  height: 24px;
+  margin-left: 120px;
+  cursor: pointer;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  margin-left: auto;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  white-space: nowrap;
+  background-color: black;
+  color: var(--Base-white);
+  text-align: center;
+  padding: 8px;
+  border-radius: 6px;
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: auto;
+  right: 150%;
+  opacity: 0;
+  transition: opacity 0.08s ease-in-out;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip .tooltiptext::after {
+  content: '';
+  position: absolute;
+  width: 10px;
+  top: 50%;
+  left: 100%;
+  margin-top: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent transparent black;
+}
+
+@media screen and (min-width: 1023px) {
+  .rightSideNav {
+    display: none;
+  }
+}
+
+.buttonStyle {
+  padding: 12px 20px;
+  background-color: #d54309;
+  border-radius: 4px;
+  overflow: hidden;
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.buttonStyle .buttonText {
+  text-align: center;
+  color: var(--Base-white);
+  font-size: 16px;
+  font-family: var(--Font-Secondary), serif;
+  font-weight: 700;
+  line-height: 14px;
+  word-wrap: break-word;
 }

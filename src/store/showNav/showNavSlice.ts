@@ -1,11 +1,10 @@
-import { createSelector, createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { RootState } from "../store";
+import { createSelector, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { RootState } from '../store';
 
 type NavState = {
   value: boolean;
   showProfile: boolean;
 };
-
 
 const initialState: NavState = {
   value: true,
@@ -13,7 +12,7 @@ const initialState: NavState = {
 };
 
 export const showNavSlice = createSlice({
-  name: "showNav",
+  name: 'showNav',
   initialState,
   reducers: {
     setNav: (state, action: PayloadAction<boolean>) => {

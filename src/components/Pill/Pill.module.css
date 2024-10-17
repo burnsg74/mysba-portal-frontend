@@ -1,40 +1,40 @@
 .pillContainer {
-    display: flex;
-    padding: 5px 20px 5px 12px;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-    border-radius: 34px;
+  display: flex;
+  padding: 5px 20px 5px 12px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 34px;
 }
 
 .pillIcon {
-    color: var(--Text-Text);
+  color: var(--Text-Text);
 }
 
 .pillMessage {
-    color: var(--Text-Text);
-    font-family: var(--Font-Primary);
-    font-size: 13px;
-    font-weight: 400;
-    line-height: 16px;
+  color: var(--Text-Text);
+  font-family: var(--Font-Primary);
+  font-size: 13px;
+  font-weight: 400;
+  line-height: 16px;
 }
 
 .pill-in-progress {
-    background: var(--Alert-In-Progress-Background);
-    border: 2px solid var(--Alert-In-Progress-Bar);
+  background: var(--Alert-In-Progress-Background);
+  border: 2px solid var(--Alert-In-Progress-Bar);
 }
 
 .pill-valid {
-    background: var(--Alert-Valid-Background);
-    border: 2px solid var(--Alert-Valid-Bar);
+  background: var(--Alert-Success-Background);
+  border: 2px solid var(--Alert-Success-Bar);
 }
 
 .pill-warning {
-    background: var(--Alert-Warning-Background);
-    border: 2px solid var(--Alert-Warning-Bar);
+  background: var(--Alert-Warning-Background);
+  border: 2px solid var(--Alert-Warning-Bar);
 }
 
 .pill-error {
-    background: var(--Alert-Error-Background);
-    border: 2px solid var(--Alert-Error-Bar);
+  background: var(--Alert-Error-Background);
+  border: 2px solid var(--Alert-Error-Bar);
 }

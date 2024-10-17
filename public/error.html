@@ -1,225 +1,164 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <title>MySBA Portal</title>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.png" />
-  <link rel="stylesheet" href="uswds.min.css" />
-  <style>
-    :root {
-      --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;
-      --Brand-Primary-SBA-Blue: #002E6D;
-    }
+    <title>MySBA Portal</title>
+    <meta charset="UTF-8"/>
+    <meta content="width=device-width, initial-scale=1" name="viewport">
+    <link href="/assets/favicon.png" rel="icon" type="image/svg+xml"/>
+    <link href="uswds.min.css" rel="stylesheet"/>
+    <style>
+        :root {
+            --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif;
+            --Brand-Primary-SBA-Blue: #002E6D;
+        }
 
-    body {
-      height: 100vh;
-    }
+        body {
+            height: 100vh;
+            font-family: var(--Font-Primary), sans-serif;
+        }
 
-    .grid-row {
-      display: flex;
-      flex-wrap: wrap;
-    }
+        .grid-row {
+            display: flex;
+            flex-wrap: wrap;
+        }
 
-    .grid-col {
-      flex: 1 1 0;
-      width: auto;
-      max-width: 100%;
-      min-width: 1px;
-    }
+        .grid-col {
+            flex: 1 1 0;
+            width: auto;
+            max-width: 100%;
+            min-width: 1px;
+        }
 
-    .header-container {
-      width: 100%;
-      margin: 0;
-      max-width: unset;
-      display: flex;
-      justify-content: space-between;
-      padding-left: 20px;
-      padding-right: 20px;
-      padding-top: 20px;
-      padding-bottom: 20px;
-      border-bottom: 1px solid lightgray;
-    }
+        .header-container {
+            width: 100%;
+            margin: 0;
+            max-width: unset;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            border-bottom: 1px solid lightgray;
+        }
 
-    .error-container {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      height: calc(100vh - 100px);
-      width: 100%;
-    }
+        .error-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: calc(100vh - 100px);
+            width: 100%;
+        }
 
-    .error-message {
-      font-family: var(--Font-Primary);
-      color: var(--Brand-Primary-SBA-Blue);
-      text-align: center;
-      padding-top: 5px;
-      line-height: 48px;
-      height: 20px;
-      font-size: 40px;
-      font-style: normal;
-      font-weight: 400;
-    }
+        .error-message {
+            color: var(--Brand-Primary-SBA-Blue);
+            text-align: center;
+            padding-top: 5px;
+            line-height: 48px;
+            height: 20px;
+            font-size: 40px;
+            font-style: normal;
+            font-weight: 400;
+        }
 
-    .logo {
-      height: 33px;
-      flex: unset;
-      display: block;
-    }
+        .logo {
+            height: 33px;
+            flex: unset;
+            display: block;
+        }
 
-    .usa-banner__inner {
-      width: 100vw;
-      margin: 0;
-      max-width: unset;
-      justify-content: start;
-      padding-left: 16px;
-    }
+        .usa-banner__inner {
+            width: 100vw;
+            margin: 0;
+            max-width: unset;
+            justify-content: start;
+            padding-left: 16px;
+        }
 
-    .left {
-      display: flex;
-      align-items: center;
-    }
+        .left {
+            display: flex;
+            align-items: center;
+        }
 
-    .right {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-    }
+        .right {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
 
-    .pillButton {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background-color: #007DBC;
-      margin-right: 0 !important;
-    }
-
-    .pillButton img {
-      width: 20px;
-      height: auto;
-    }
-
-    .buttonStyle {
-      padding: 12px 20px;
-      background-color: #d54309;
-      border-radius: 4px;
-      overflow: hidden;
-      display: inline-flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: center;
-      gap: 10px;
-      border: none;
-      cursor: pointer;
-    }
-
-    .buttonStyle .buttonText {
-      text-align: center;
-      color: #FFFFFF;
-      font-size: 16px;
-      font-family: var(--Font-Secondary), serif;
-      font-weight: 700;
-      line-height: 14px;
-      word-wrap: break-word;
-    }
-  </style>
+        .pillButton img {
+            width: 20px;
+            height: auto;
+        }
+    </style>
 </head>
-
 <body>
-  <section class="usa-banner" aria-label="Official website of the United States government">
+<section aria-label="Official website of the United States government" class="usa-banner">
     <div class="usa-accordion">
-      <header class="usa-banner__header _usa-banner__header_tkyj5_36">
-        <div class="usa-banner__inner _usa-banner__inner_tkyj5_22">
-          <div class="grid-col-auto"><img aria-hidden="true" class="usa-banner__header-flag" src="us_flag_small.png"
-              alt="US Flag"></div>
-          <div class="grid-col-fill tablet:grid-col-auto" aria-hidden="true">
-            <p class="usa-banner__header-text">An
-              official website of the United States government</p>
-            <p class="usa-banner__header-action">Here's how you know</p>
-          </div>
-          <button type="button" class="usa-accordion__button usa-banner__button" aria-expanded="false"
-            aria-controls="gov-banner-default"><span class="usa-banner__button-text">Here's how you know</span>
-          </button>
-        </div>
-      </header>
-      <div class="usa-banner__content usa-accordion__content" id="gov-banner-default" hidden="">
-        <div class="grid-row grid-gap-lg">
-          <div class="usa-banner__guidance tablet:grid-col-6"><img class="usa-banner__icon usa-media-block__img"
-              src="icon-dot-gov.svg" alt="Dot Goc Icon" aria-hidden="true">
-            <div class="usa-media-block__body">
-              <p><strong>Official websites use .gov</strong><br>A .gov website belongs to
-                an official government organization in the United States.</p>
+        <header class="usa-banner__header _usa-banner__header_tkyj5_36">
+            <div class="usa-banner__inner _usa-banner__inner_tkyj5_22">
+                <div class="grid-col-auto">
+                    <img alt="US Flag" aria-hidden="true" class="usa-banner__header-flag" src="us_flag_small.png">
+                </div>
+                <div aria-hidden="true" class="grid-col-fill tablet:grid-col-auto">
+                    <p class="usa-banner__header-text">
+                        An official website of the United States government
+                    </p>
+                    <p class="usa-banner__header-action">Here's how you know</p>
+                </div>
+                <button aria-controls="gov-banner-default" aria-expanded="false"
+                        class="usa-accordion__button usa-banner__button" type="button">
+                    <span class="usa-banner__button-text">Here's how you know</span>
+                </button>
             </div>
-          </div>
-          <div class="usa-banner__guidance tablet:grid-col-6"><img class="usa-banner__icon usa-media-block__img"
-              src="icon-https.svg" alt="HTTPS Icon" aria-hidden="true">
-            <div class="usa-media-block__body">
-              <p><strong>Secure .gov websites use HTTPS</strong><br> A <strong>lock</strong> (<span
-                  class="icon-lock"><svg xmlns="http://www.w3.org/2000/svg" width="52" height="64" viewBox="0 0 52 64"
-                    class="usa-banner__lock-image" role="img" aria-labelledby="banner-lock-description-default"
-                    focusable="false">
-                    <title id="banner-lock-title-default">Lock</title>
-                    <desc id="banner-lock-description-default">Locked padlock icon</desc>
-                    <path fill="#000000" fill-rule="evenodd"
-                      d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z">
-                    </path>
-                  </svg> </span>)
-                or <strong>https://</strong>means you've safely connected to the .gov website. Share sensitive
-                information
-                only on official, secure websites.
-              </p>
+        </header>
+        <div class="usa-banner__content usa-accordion__content" id="gov-banner-default">
+            <div class="grid-row grid-gap-lg">
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img alt="Dot Goc Icon" aria-hidden="true" class="usa-banner__icon usa-media-block__img"
+                         src="icon-dot-gov.svg">
+                    <div class="usa-media-block__body">
+                        <p><strong>Official websites use .gov</strong><br/>A .gov website belongs to
+                            an official government organization in the United States.</p>
+                    </div>
+                </div>
+                <div class="usa-banner__guidance tablet:grid-col-6">
+                    <img alt="HTTPS Icon" aria-hidden="true" class="usa-banner__icon usa-media-block__img"
+                         src="icon-https.svg">
+                    <div class="usa-media-block__body">
+                        <p><strong>Secure .gov websites use HTTPS</strong><br/> A <strong>lock</strong> (<span
+                                class="icon-lock"> <svg aria-labelledby="banner-lock-description-default" class="usa-banner__lock-image" focusable="false"
+                                                       height="64" viewBox="0 0 52 64"
+                                                       width="52"
+                                                       xmlns="http://www.w3.org/2000/svg"><title
+                                id="banner-lock-title-default">Lock</title><desc id="banner-lock-description-default">Locked padlock icon</desc><path
+                                d="M26 0c10.493 0 19 8.507 19 19v9h3a4 4 0 0 1 4 4v28a4 4 0 0 1-4 4H4a4 4 0 0 1-4-4V32a4 4 0 0 1 4-4h3v-9C7 8.507 15.507 0 26 0zm0 8c-5.979 0-10.843 4.77-10.996 10.712L15 19v9h22v-9c0-6.075-4.925-11-11-11z" fill="#000000"
+                                fill-rule="evenodd"></path></svg> </span>)
+                            or <strong>https://</strong>means you've safely connected to the .gov website. Share
+                            sensitive information only on official, secure websites.
+                        </p>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </section>
-  <div class="grid-row">
+</section>
+<div class="grid-row">
     <div class="grid-col">
-      <header class="header-container">
-        <div class="left">
-          <img class="logo" src="/assets/logo.png" alt="Logo">
-        </div>
-        <div class="right">
-<!--          <button type="button" class="usa-button pillButton" onclick="switchLanguage()">-->
-<!--            <span id="language-toggle" lang="en">Español</span>-->
-<!--          </button>-->
-<!--          <button class="buttonStyle" onclick="logout()" aria-label="Log Out" type="button"-->
-<!--            data-testid="log-out-button">-->
-<!--            <span class="buttonText">Log Out</span>-->
-<!--          </button>-->
-        </div>
-      </header>
+        <header class="header-container">
+            <div class="left">
+                <img alt="Logo" class="logo" src="/assets/img/logo-horizontal.svg"/>
+            </div>
+            <div class="right">
+            </div>
+        </header>
     </div>
-  </div>
-  <div class="error-container">
-    <img src="/assets/error.svg" alt="error" class="error-image" />
+</div>
+<div class="error-container">
+    <img alt="error" class="error-image" src="/assets/error.svg"/>
     <div class="error-message">
-      Oops, looks like something went wrong
+        Oops, looks like something went wrong
     </div>
-  </div>
-  <script src="uswds.min.js"></script>
-  <script>
-    let lang = 'en';
-
-    function switchLanguage() {
-      const newLang = lang === 'en' ? 'es' : 'en';
-      lang = newLang;
-      localStorage.setItem('lang', newLang);
-      document.getElementById('language-toggle').textContent = lang === 'en' ? 'Español' : 'English';
-      document.getElementById('language-toggle').setAttribute('lang', lang);
-    }
-    async function logout() {
-      try {
-        window.location.href = "/";
-      } catch (error) {
-        console.error('Sign out failed', error);
-      }
-    }
-  </script>
+</div>
+<script src="uswds.min.js"></script>
 </body>
-
 </html>

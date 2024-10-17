@@ -1,23 +1,33 @@
-import React from "react";
-import "@uswds/uswds";
-import "@uswds/uswds/css/uswds.min.css";
-import "src/index.css";
-import App from "src/App";
-import { store } from "src/store/store";
-import { Provider } from "react-redux";
-import { createRoot } from "react-dom/client";
-import { BrowserRouter } from "react-router-dom";
-import "./i18n";
+import React from 'react';
+import '@uswds/uswds';
+import '@uswds/uswds/css/uswds.min.css';
+import 'src/index.css';
+import App from 'src/App';
+import { store } from 'src/store/store';
+import { Provider } from 'react-redux';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import './i18n';
 
-const container = document.getElementById("root");
+const urlParams = new URLSearchParams(window.location.search);
+const mock = urlParams.get('mock');
+if (urlParams.has('mock')) {
+  if (mock != null) {
+    sessionStorage.setItem('mock', mock);
+  }
+}
+
+const container = document.getElementById('root');
 if (!container) throw new Error("Could not find root element with id 'root'");
 
-if (import.meta.env.MODE === 'localhost') {
-  const urlParams = new URLSearchParams(window.location.search);
-  const user = urlParams.get('user');
-  if (user) {
-    sessionStorage.setItem('user', user);
-  }
+const isHomePage = window.location.pathname === '/';
+if (isHomePage) {
+  const dapScript = document.createElement('script');
+  dapScript.async = true;
+  dapScript.type = 'text/javascript';
+  dapScript.src = 'https://dap.digitalgov.gov/Universal-Federated-Analytics-Min.js?agency=SBA';
+  dapScript.id = '_fed_an_ua_tag';
+  document.head.appendChild(dapScript);
 }
 
 const root = createRoot(container);

@@ -1,0 +1,13 @@
+{
+  "sub": "",
+  "name": "User0 Person",
+  "locale": "en",
+  "email": "user0@example.com",
+  "preferred_username": "User1",
+  "given_name": "User0",
+  "family_name": "Person",
+  "zone_info": "",
+  "updated_at": "",
+  "email_verified": true,
+  "cls_elevated": false
+}

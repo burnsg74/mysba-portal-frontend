@@ -1,18 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/src/favicon.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>MySBA Home</title>
-    <script>
-      if (window.location.pathname.includes("/help")) {
-        window.location.href = "https://contact.sba.gov/help/";
-      }
-    </script>
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/index.tsx"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <link href="/src/favicon.png" rel="icon" type="image/svg+xml" />
+  <meta content="width=device-width, initial-scale=1" name="viewport">
+  <link href="/sba-waffle-menu.css" rel="stylesheet" type="text/css">
+  <title>MySBA Home</title>
+</head>
+<body>
+<div id="root"></div>
+<script src="/src/index.tsx" type="module"></script>
+<script crossorigin="anonymous" src="/sba-waffle-menu.js"></script>
+<script async src="https://touchpoints.app.cloud.gov/touchpoints/86b5b5ea.js"></script>
+</body>
 </html>

@@ -59,7 +59,7 @@ resource "aws_cloudfront_distribution" "distribution" {
   restrictions {
     geo_restriction {
       restriction_type = "blacklist"
-      locations        = ["RU", "HK", "CN"]
+      locations = ["RU", "HK", "CN"]
     }
   }
 
@@ -67,8 +67,8 @@ resource "aws_cloudfront_distribution" "distribution" {
     cache_policy_id            = terraform.workspace == "prod" ? data.aws_cloudfront_cache_policy.cache_optimized.id : data.aws_cloudfront_cache_policy.cache_disabled.id
     viewer_protocol_policy     = "redirect-to-https"
     compress                   = true
-    allowed_methods            = ["GET", "HEAD", "OPTIONS"]
-    cached_methods             = ["GET", "HEAD"]
+    allowed_methods = ["GET", "HEAD", "OPTIONS"]
+    cached_methods = ["GET", "HEAD"]
     target_origin_id           = "mysba-portal-frontend"
     response_headers_policy_id = "67f7725c-6f97-4210-82d7-5512b31e9d03"
   }

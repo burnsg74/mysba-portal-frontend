@@ -1,33 +1,33 @@
 .row {
-    align-items: flex-start;
-    align-self: stretch;
-    border-bottom: 1px solid var(--Base-base-lighter);
-    display: flex;
-    flex-direction: column;
-    padding-bottom: 16px;
-    padding-top: 0;
+  align-items: flex-start;
+  align-self: stretch;
+  border-bottom: 1px solid var(--Base-base-lighter);
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 16px;
+  padding-top: 0;
 }
 
 .frame {
-    align-items: flex-start;
-    display: flex;
-    flex-direction: column;
-    flex: 1 0 0;
-    gap: 4px;
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 0;
+  gap: 4px;
 }
 
 .label {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-family: var(--Font-Primary);
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 21px;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-family: var(--Font-Primary);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 21px;
 }
 
 .value {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-family: var(--Font-Primary);
-    font-size: 17px;
-    font-weight: 400;
-    line-height: normal;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-family: var(--Font-Primary);
+  font-size: 17px;
+  font-weight: 400;
+  line-height: normal;
 }

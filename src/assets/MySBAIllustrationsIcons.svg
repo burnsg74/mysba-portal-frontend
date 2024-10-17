@@ -1,21 +1,45 @@
 <svg width="100" height="101" viewBox="0 0 100 101" fill="none" xmlns="http://www.w3.org/2000/svg">
-<g id="MySBA Illustrations Icons ">
-<path id="Vector" d="M70.3402 95.3391L9.18018 80.4791L27.5102 5.03906L67.1202 14.6691L85.0002 34.9691L70.3402 95.3391Z" fill="white" stroke="#002E6D" stroke-width="3" stroke-miterlimit="10"/>
-<path id="Vector_2" d="M63.37 54.9705L26.71 45.9805" stroke="#C5C5C5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_3" d="M64.7299 83.7405L20.1299 72.8105" stroke="#C5C5C5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_4" d="M62.9501 26.4309L38.5801 20.4609" stroke="#C5C5C5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_5" d="M75.6901 39.0396L31.1001 28.0996" stroke="#C5C5C5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_6" d="M73.4999 47.9791L28.8999 37.0391" stroke="#C5C5C5" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_7" d="M84.9499 34.9502L63.4199 29.6302L67.1199 14.6602" stroke="#002E6D" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round"/>
-<path id="Vector_8" d="M62.0016 84.3919C68.4253 80.7842 70.7081 72.6521 67.1003 66.2284C63.4926 59.8047 55.3605 57.5219 48.9368 61.1297C42.5131 64.7374 40.2303 72.8695 43.8381 79.2932C47.4458 85.7169 55.5779 87.9997 62.0016 84.3919Z" fill="#007DBC"/>
-<path id="Vector_9" d="M61.0808 82.753C66.5992 79.6536 68.5603 72.6676 65.461 67.1492C62.3616 61.6308 55.3756 59.6697 49.8572 62.769C44.3388 65.8684 42.3777 72.8544 45.477 78.3728C48.5764 83.8912 55.5624 85.8523 61.0808 82.753Z" fill="white"/>
-<path id="Vector_10" d="M60.4393 81.6101C65.3269 78.865 67.0638 72.6776 64.3188 67.79C61.5738 62.9024 55.3863 61.1655 50.4987 63.9105C45.6111 66.6556 43.8742 72.843 46.6192 77.7306C49.3643 82.6182 55.5517 84.3551 60.4393 81.6101Z" fill="#007DBC"/>
-<path id="Vector_11" d="M59.2101 79.4212C62.8891 77.355 64.1964 72.6977 62.1302 69.0187C60.064 65.3398 55.4066 64.0324 51.7277 66.0986C48.0488 68.1648 46.7414 72.8222 48.8076 76.5011C50.8738 80.1801 55.5312 81.4875 59.2101 79.4212Z" fill="white"/>
-<path id="Vector_12" d="M58.2796 77.765C61.0436 76.2126 62.0259 72.7135 60.4735 69.9495C58.9212 67.1855 55.422 66.2032 52.658 67.7556C49.894 69.308 48.9118 72.8071 50.4641 75.5711C52.0165 78.3351 55.5156 79.3174 58.2796 77.765Z" fill="#007DBC"/>
-<path id="Vector_13" d="M57.3641 76.1347C59.2277 75.088 59.8899 72.7289 58.8433 70.8653C57.7967 69.0018 55.4375 68.3395 53.574 69.3862C51.7104 70.4328 51.0482 72.792 52.0948 74.6555C53.1414 76.519 55.5006 77.1813 57.3641 76.1347Z" fill="white"/>
-<path id="Vector_14" d="M61.1144 76.1964L62.1279 72.5859L49.8813 69.1482L48.8678 72.7586L61.1144 76.1964Z" fill="white"/>
-<path id="Vector_15" d="M85.1299 72.7805L91.9999 71.2305" stroke="#007DBC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_16" d="M85.0298 81.0293L91.7898 83.0493" stroke="#007DBC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path id="Vector_17" d="M81.1802 88.8906L86.0902 93.9306" stroke="#007DBC" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</g>
+    <g id="MySBA Illustrations Icons ">
+        <path id="Vector"
+              d="M70.3402 95.3391L9.18018 80.4791L27.5102 5.03906L67.1202 14.6691L85.0002 34.9691L70.3402 95.3391Z"
+              fill="white" stroke="#002E6D" stroke-width="3" stroke-miterlimit="10"/>
+        <path id="Vector_2" d="M63.37 54.9705L26.71 45.9805" stroke="#C5C5C5" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round"/>
+        <path id="Vector_3" d="M64.7299 83.7405L20.1299 72.8105" stroke="#C5C5C5" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_4" d="M62.9501 26.4309L38.5801 20.4609" stroke="#C5C5C5" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_5" d="M75.6901 39.0396L31.1001 28.0996" stroke="#C5C5C5" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_6" d="M73.4999 47.9791L28.8999 37.0391" stroke="#C5C5C5" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_7" d="M84.9499 34.9502L63.4199 29.6302L67.1199 14.6602" stroke="#002E6D" stroke-width="3"
+              stroke-miterlimit="10" stroke-linecap="round"/>
+        <path id="Vector_8"
+              d="M62.0016 84.3919C68.4253 80.7842 70.7081 72.6521 67.1003 66.2284C63.4926 59.8047 55.3605 57.5219 48.9368 61.1297C42.5131 64.7374 40.2303 72.8695 43.8381 79.2932C47.4458 85.7169 55.5779 87.9997 62.0016 84.3919Z"
+              fill="#007DBC"/>
+        <path id="Vector_9"
+              d="M61.0808 82.753C66.5992 79.6536 68.5603 72.6676 65.461 67.1492C62.3616 61.6308 55.3756 59.6697 49.8572 62.769C44.3388 65.8684 42.3777 72.8544 45.477 78.3728C48.5764 83.8912 55.5624 85.8523 61.0808 82.753Z"
+              fill="white"/>
+        <path id="Vector_10"
+              d="M60.4393 81.6101C65.3269 78.865 67.0638 72.6776 64.3188 67.79C61.5738 62.9024 55.3863 61.1655 50.4987 63.9105C45.6111 66.6556 43.8742 72.843 46.6192 77.7306C49.3643 82.6182 55.5517 84.3551 60.4393 81.6101Z"
+              fill="#007DBC"/>
+        <path id="Vector_11"
+              d="M59.2101 79.4212C62.8891 77.355 64.1964 72.6977 62.1302 69.0187C60.064 65.3398 55.4066 64.0324 51.7277 66.0986C48.0488 68.1648 46.7414 72.8222 48.8076 76.5011C50.8738 80.1801 55.5312 81.4875 59.2101 79.4212Z"
+              fill="white"/>
+        <path id="Vector_12"
+              d="M58.2796 77.765C61.0436 76.2126 62.0259 72.7135 60.4735 69.9495C58.9212 67.1855 55.422 66.2032 52.658 67.7556C49.894 69.308 48.9118 72.8071 50.4641 75.5711C52.0165 78.3351 55.5156 79.3174 58.2796 77.765Z"
+              fill="#007DBC"/>
+        <path id="Vector_13"
+              d="M57.3641 76.1347C59.2277 75.088 59.8899 72.7289 58.8433 70.8653C57.7967 69.0018 55.4375 68.3395 53.574 69.3862C51.7104 70.4328 51.0482 72.792 52.0948 74.6555C53.1414 76.519 55.5006 77.1813 57.3641 76.1347Z"
+              fill="white"/>
+        <path id="Vector_14" d="M61.1144 76.1964L62.1279 72.5859L49.8813 69.1482L48.8678 72.7586L61.1144 76.1964Z"
+              fill="white"/>
+        <path id="Vector_15" d="M85.1299 72.7805L91.9999 71.2305" stroke="#007DBC" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_16" d="M85.0298 81.0293L91.7898 83.0493" stroke="#007DBC" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+        <path id="Vector_17" d="M81.1802 88.8906L86.0902 93.9306" stroke="#007DBC" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
 </svg>

@@ -1,21 +1,33 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import Alert from './Alert';
 import '@testing-library/jest-dom';
+import { Alert } from './Alert';
 
-describe('Alert component', () => {
-  test('renders the correct message', () => {
-    const { rerender } = render(<Alert message="Success message" type="success" />);
-    expect(screen.getByText('Success message')).toBeInTheDocument();
-    expect(screen.getByText('Success message').parentNode).toHaveClass('alertContainer alert-success');
-    const iconUse = screen.getByTestId('alert-icon').querySelector('use');
-    expect(iconUse).toHaveAttribute('xlink:href', '/assets/img/sprite.svg#success');
-    
+jest.mock('react-i18next', () => ({
+  useTranslation: () => ({
+    t: (key: string) => key,
+  }),
+}));
 
-    // Rerender the component with a different type to verify the correct classes and attributes are applied
-    rerender(<Alert message="Error message" type="error" />);
-    expect(screen.getByText('Error message')).toBeInTheDocument();
-    expect(screen.getByText('Error message').parentNode).toHaveClass('alertContainer alert-error');
-    expect(iconUse).toHaveAttribute('xlink:href', '/assets/img/sprite.svg#error');
+describe('Alert Component', () => {
+  it('renders with correct type class', () => {
+    render(<Alert message="Test message" type="info" />);
+    expect(screen.getByRole('alert')).toHaveClass('usa-alert--info');
+  });
+
+  it('renders title when provided', () => {
+    render(<Alert message="Test message" type="warning" title="Warning Title" />);
+    expect(screen.getByRole('heading', { level: 4 })).toHaveTextContent('Warning Title');
+  });
+
+  it('applies slim class when useSlim is true', () => {
+    render(<Alert message="Test message" type="error" useSlim={true} />);
+    expect(screen.getByRole('alert')).toHaveClass('usa-alert--slim');
+  });
+
+  it("renders message as React element when it's not a string", () => {
+    const TestMessage = () => <span>Custom message</span>;
+    render(<Alert message={<TestMessage />} type="info" />);
+    expect(screen.getByText('Custom message')).toBeInTheDocument();
   });
 });

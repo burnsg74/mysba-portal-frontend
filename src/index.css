@@ -1,543 +1,563 @@
 :root {
-    /* Colors */
-    --Base-base-dark: #565C65;
-    --Base-base-lighter: #DCDEE0;
-    --Base-white: #FFFFFF;
-    --Box-Shadow: rgba(27, 30, 41, 0.07);
-    --Brand-Primary-SBA-Blue: #002E6D;
-    --Brand-Secondary-Bright-Blue: #007DBC;
-    --Card-Header-Background: rgba(165, 198, 224, 0.2);
-    --Grayscale-gray-50: #757575;
-    --Neutrals-Light-Gray-4: #E0E0E0;
-    --Neutrals-Light-Gray: #FBFCFD;
-    --Primary-primary-darker: #162E51;
-    --Primary-primary: #005EA2;
-    --SBA-CRM-text-text-light: #71767A;
-    --SBA-Celeste: #007DBC;
-    --SBA-Dark-Blue: #000441;
-    --Success-success-lighter: #ECF3EC;
-    --Text-Text: #1B1B1B;
-    --Error-error: #D54309;
-    --Error-error-dark: #B50909;
+  /* Colors */
+  --Base-base-dark: #565c65;
+  --Base-base-lighter: #dcdee0;
+  --Base-white: #ffffff;
+  --Box-Shadow: rgba(27, 30, 41, 0.07);
+  --Brand-Primary-SBA-Blue: #002e6d;
+  --Brand-Secondary-Bright-Blue: #007dbc;
+  --Card-Header-Background: rgba(165, 198, 224, 0.2);
+  --Grayscale-gray-50: #757575;
+  --Neutrals-Light-Gray-4: #e0e0e0;
+  --Neutrals-Light-Gray: #fbfcfd;
+  --Primary-primary-darker: #162e51;
+  --Primary-primary: #005ea2;
+  --SBA-CRM-text-text-light: #71767a;
+  --SBA-Celeste: #007dbc;
+  --SBA-Dark-Blue: #000441;
+  --Success-success-lighter: #ecf3ec;
+  --Text-Text: #1b1b1b;
+  --Error-error: #d54309;
+  --Error-error-dark: #b50909;
+  --Nav-Border-Bottom: #dfe1e2;
 
-    /* Alert Colors */
-    --Alert-Info-Bar: #007DBC;
-    --Alert-Info-Background: #D1EBFF;
-    --Alert-In-Progress-Bar: #007DBC;
-    --Alert-In-Progress-Background: #D1EBFF;
-    --Alert-Valid-Bar: #197E4E;
-    --Alert-Valid-Background: #ECF3EC;
-    --Alert-Warning-Bar: #F1C400;
-    --Alert-Warning-Background: #FAF3D1;
-    --Alert-Error-Bar: #CC0000;
-    --Alert-Error-Background: #F4E3DB;
+  /* Alert Colors */
+  --Alert-Error-Background: #f4e3db;
+  --Alert-Error-Bar: #cc0000;
+  --Alert-In-Progress-Background: #d1ebff;
+  --Alert-In-Progress-Bar: #007dbc;
+  --Alert-Info-Background: #d1ebff;
+  --Alert-Info-Bar: #007dbc;
+  --Alert-Success-Background: #ecf3ec;
+  --Alert-Success-Bar: #197e4e;
+  --Alert-Warning-Background: #faf3d1;
+  --Alert-Warning-Bar: #f1c400;
 
+  /* Fonts */
+  --Font-Primary: 'Source Sans Pro', 'Public Sans', 'Helvetica', sans-serif, serif;
+  --Font-Secondary: 'Public Sans', 'Source Sans Pro', 'Helvetica', sans-serif, serif;
 
-    /* Fonts */
-    --Font-Primary: "Source Sans Pro", "Public Sans", "Helvetica", sans-serif, serif;
-    --Font-Secondary: "Public Sans", "Source Sans Pro", "Helvetica", sans-serif, serif;
-
-    /* @TODO Remove or update name */
-
-    --warningwarning-lighter: #FAF3D1;
-
-    --warningwarning: #FFBE2E;
+  /* Warning Colors */
+  --warningwarning-lighter: #faf3d1;
+  --warningwarning: #ffbe2e;
 }
 
 /*** FONTS ***/
 /* Source Sans Pro */
 /* 200 Extra Light (Ultra Light) */
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-style: normal;
-    font-weight: 200;
-    src: url("/assets/fonts/sourcesanspro-extralight-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 200;
+  src: url('/assets/fonts/sourcesanspro-extralight-webfont.woff2') format('woff2');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-style: italic;
-    font-weight: 200;
-    src: url("/assets/fonts/sourcesanspro-extralightitalic-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 200;
+  src: url('/assets/fonts/sourcesanspro-extralightitalic-webfont.woff2') format('woff2');
 }
 
 /* 300 Extra Light */
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-style: normal;
-    font-weight: 300;
-    src: url("/assets/fonts/sourcesanspro-light-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 300;
+  src: url('/assets/fonts/sourcesanspro-light-webfont.woff2') format('woff2');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-style: italic;
-    font-weight: 300;
-    src: url("/assets/fonts/sourcesanspro-lightitalic-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 300;
+  src: url('/assets/fonts/sourcesanspro-lightitalic-webfont.woff2') format('woff2');
 }
 
 /* 400 regular */
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-style: normal;
-    font-weight: 400;
-    src: url("/assets/fonts/sourcesanspro-regular-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/sourcesanspro-regular-webfont.woff2') format('woff2');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-style: italic;
-    font-weight: 400;
-    src: url("/assets/fonts/sourcesanspro-italic-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-style: italic;
+  font-weight: 400;
+  src: url('/assets/fonts/sourcesanspro-italic-webfont.woff2') format('woff2');
 }
 
 /* 600 semibold */
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-weight: 600;
-    font-style: normal;
-    src: url("/assets/fonts/sourcesanspro-semibold-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: normal;
+  src: url('/assets/fonts/sourcesanspro-semibold-webfont.woff2') format('woff2');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-weight: 600;
-    font-style: italic;
-    src: url("/assets/fonts/sourcesanspro-semibolditalic-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 600;
+  font-style: italic;
+  src: url('/assets/fonts/sourcesanspro-semibolditalic-webfont.woff2') format('woff2');
 }
 
 /* 700 bold */
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-weight: 700;
-    font-style: normal;
-    src: url("/assets/fonts/sourcesanspro-bold-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: normal;
+  src: url('/assets/fonts/sourcesanspro-bold-webfont.woff2') format('woff2');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-weight: 700;
-    font-style: italic;
-    src: url("/assets/fonts/sourcesanspro-bolditalic-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 700;
+  font-style: italic;
+  src: url('/assets/fonts/sourcesanspro-bolditalic-webfont.woff2') format('woff2');
 }
 
 /* 900  black */
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-weight: 900;
-    font-style: normal;
-    src: url("/assets/fonts/sourcesanspro-black-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: normal;
+  src: url('/assets/fonts/sourcesanspro-black-webfont.woff2') format('woff2');
 }
 
 @font-face {
-    font-display: swap;
-    font-family: "Source Sans Pro";
-    font-weight: 900;
-    font-style: italic;
-    src: url("/assets/fonts/sourcesanspro-blackitalic-webfont.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Source Sans Pro';
+  font-weight: 900;
+  font-style: italic;
+  src: url('/assets/fonts/sourcesanspro-blackitalic-webfont.woff2') format('woff2');
 }
 
 /* Public Sans */
 /* 100 Thin */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-Thin.woff2") format("woff2");
-    font-weight: 100;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-Thin.woff2') format('woff2');
+  font-weight: 100;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-ThinItalic.woff2") format("woff2");
-    font-weight: 100;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-ThinItalic.woff2') format('woff2');
+  font-weight: 100;
+  font-style: italic;
 }
 
 /* 100 Thin */
 @font-face {
-    font-display: swap;
-    font-family: "Public Sans";
-    font-style: normal;
-    font-weight: 400;
-    src: url("/assets/fonts/public-sans-regular.woff2") format("woff2");
+  font-display: swap;
+  font-family: 'Public Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: url('/assets/fonts/public-sans-regular.woff2') format('woff2');
 }
 
 /* 200 ExtraLight */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-extralight.woff2") format("woff2");
-    font-weight: 200;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-extralight.woff2') format('woff2');
+  font-weight: 200;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-extralightitalic.woff2") format("woff2");
-    font-weight: 200;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-extralightitalic.woff2') format('woff2');
+  font-weight: 200;
+  font-style: italic;
 }
 
 /* 300 Light */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-light.woff2") format("woff2");
-    font-weight: 300;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-light.woff2') format('woff2');
+  font-weight: 300;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-lightitalic.woff2") format("woff2");
-    font-weight: 300;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-lightitalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
 }
 
 /* 400 Regular */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-regular.woff2") format("woff2");
-    font-weight: 400;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-italic.woff2") format("woff2");
-    font-weight: 400;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
 }
 
 /* 500 Medium */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-medium.woff2") format("woff2");
-    font-weight: 500;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-medium.woff2') format('woff2');
+  font-weight: 500;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-mediumitalic.woff2") format("woff2");
-    font-weight: 500;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-mediumitalic.woff2') format('woff2');
+  font-weight: 500;
+  font-style: italic;
 }
 
 /* 600 SemiBold */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-semibold.woff2") format("woff2");
-    font-weight: 600;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-semibold.woff2') format('woff2');
+  font-weight: 600;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-semibolditalic.woff2") format("woff2");
-    font-weight: 600;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-semibolditalic.woff2') format('woff2');
+  font-weight: 600;
+  font-style: italic;
 }
 
 /* 700 Bold */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-bold.woff2") format("woff2");
-    font-weight: 700;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-bolditalic.woff2") format("woff2");
-    font-weight: 700;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-bolditalic.woff2') format('woff2');
+  font-weight: 700;
+  font-style: italic;
 }
 
 /* 800 ExtraBold */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-extrabold.woff2") format("woff2");
-    font-weight: 800;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-extrabold.woff2') format('woff2');
+  font-weight: 800;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-extrabolditalic.woff2") format("woff2");
-    font-weight: 800;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-extrabolditalic.woff2') format('woff2');
+  font-weight: 800;
+  font-style: italic;
 }
 
 /* 800 Black */
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-black.woff2") format("woff2");
-    font-weight: 900;
-    font-style: normal;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-black.woff2') format('woff2');
+  font-weight: 900;
+  font-style: normal;
 }
 
 @font-face {
-    font-family: "Public Sans";
-    src: url("/assets/fonts/public-sans-blackitalic.woff2") format("woff2");
-    font-weight: 900;
-    font-style: italic;
+  font-family: 'Public Sans';
+  src: url('/assets/fonts/public-sans-blackitalic.woff2') format('woff2');
+  font-weight: 900;
+  font-style: italic;
 }
 
 /***** GLOBAL STYLES ******/
 * {
-    font-family: var(--Font-Primary);
+  font-family: var(--Font-Primary);
 }
 
-html, body {
-    height: 100%;
-}
-
-body {
-    min-height: 100vh;
-}
-
-#root {
-    min-height: 100vh;
-}
 a,
 a:focus,
 a:active,
 a:hover,
 a:visited {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 .sr-only {
-    position: absolute;
-    left: -9999px;
+  position: absolute;
+  left: -9999px;
 }
 
-h1, h2, h3, h4, h5, h6 {
-    margin: 0;
-    padding: 0;
-    font-weight: normal;
-    color: inherit;
-    background: none;
-    border: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  padding: 0;
+  font-weight: normal;
+  color: inherit;
+  background: none;
+  border: none;
 }
 
 :focus {
-    outline: none;
-    box-shadow: 0 0 0 3px #05FC;
-    border-radius: 2px;
+  outline: none;
+  box-shadow: 0 0 0 3px #05fc;
+  border-radius: 2px;
 }
 
 button {
-    all: unset;
-    padding: 0;
-    margin: 0;
+  all: unset;
+  padding: 0;
+  margin: 0;
 }
 
 button:focus {
-    outline: revert;
+  outline: revert;
 }
 
 /*** LAYOUT ***/
 .main-container {
-    max-width: 1200px;
-    padding-right: 20px;
-    padding-left: 20px;
-    margin-left: auto;
-    margin-right: auto;
+  max-width: 1200px;
+  padding-right: 20px;
+  padding-left: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 80px;
 }
 
 @media screen and (min-width: 1024px) {
-    .main-container {
-        padding-right: 40px;
-        padding-left: 40px;
-    }
+  .main-container {
+    padding-right: 40px;
+    padding-left: 40px;
+  }
 }
 
 .container-row {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 
 .container {
-    display: flex;
-    flex-direction: column;
-    width: 730px;
-    margin: 40px;
-    max-width: 730px;
-    gap: 20px;
+  display: flex;
+  flex-direction: column;
+  width: 730px;
+  margin: 40px;
+  max-width: 730px;
+  gap: 20px;
 }
 
 .header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .open-sign {
-    position: relative;
-    width: 100px;
-    height: 100px;
-    margin-bottom: 20px;
+  position: relative;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
 }
 
 .title {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 32px;
-    margin-bottom: 20px;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 32px;
+  margin-bottom: 20px;
 }
 
 .subtitle {
-    color: var(--Brand-Primary-SBA-Blue);
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    font-size: 22px;
-    margin-bottom: 20px;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  font-size: 22px;
+  margin-bottom: 20px;
 }
 
 .label {
-    font-family: var(--Font-Primary);
-    font-weight: 400;
-    color: var(--Brand-Primary-SBA-Blue);
-    font-size: 40px;
-    width: 100%;
+  font-family: var(--Font-Primary);
+  font-weight: 400;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-size: 40px;
+  width: 100%;
 }
 
 .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .modal-content {
-    background-color: #FEFEFE;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888888;
-    width: 80%;
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888888;
+  width: 80%;
 }
 
 .closeBtn {
-    color: #AAAAAA;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-    background: #007DBC;
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  background: #007dbc;
 }
 
 .closeBtn:hover,
 .closeBtn:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-    background: #005EA2;
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+  background: #005ea2;
 }
 
 .usa-current.side-nav-link {
-    outline: none;
+  outline: none;
 }
 
 .usa-card__body:last-child {
-    padding: 20px;
+  padding: 20px;
 }
 
 *:focus {
-    outline: none;
+  outline: none;
 }
 
 /* USWDS Overrides */
-[contentEditable="true"]:focus,
+[contentEditable='true']:focus,
 [href]:focus,
 [tabindex]:focus,
 iframe:focus {
-    text-decoration: none;
-    outline: none;
+  text-decoration: none;
+  outline: none;
 }
 
 button:not([disabled]):focus,
 input:not([disabled]):focus,
 select:not([disabled]):focus,
 textarea:not([disabled]):focus {
-    outline: none;
-    outline-offset: unset;
+  outline: none;
+  outline-offset: unset;
 }
 
 .usa-button {
-    width: auto;
-    background-color: var(--Brand-Secondary-Bright-Blue);
+  width: auto;
+  background-color: var(--Brand-Secondary-Bright-Blue);
 }
 
 .usa-button--outline {
-    background-color: transparent;
-    color: var(--Brand-Secondary-Bright-Blue);
-    box-shadow: inset 0 0 0 2px var(--SBA-Celeste);
+  background-color: transparent;
+  color: var(--Brand-Secondary-Bright-Blue);
+  box-shadow: inset 0 0 0 2px var(--SBA-Celeste);
 }
 
 .side-nav-link {
-    outline: none;
-    color: var(--SBA-Dark-Blue);
-    font-family: var(--Font-Primary);
-    font-size: 17px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+  outline: none;
+  color: var(--SBA-Dark-Blue);
+  font-family: var(--Font-Primary);
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
 }
 
 .usa-sidenav .usa-current {
-    background-color: #F5F5F5;
+  background-color: #f5f5f5;
 }
 
 .usa-current {
-    background-color: #F0F0F0;
-    border: unset;
-    color: var(--Brand-Primary-SBA-Blue);
-    font-family: var(--Font-Primary);
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 700;
-    line-height: 120%;
+  background-color: #f0f0f0;
+  border: unset;
+  color: var(--Brand-Primary-SBA-Blue);
+  font-family: var(--Font-Primary);
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 120%;
 }
 
 .grid-col-wrap {
-    flex: unset;
-    display: flex;
-    flex-wrap: wrap;
+  flex: unset;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-.usa-radio__input--tile:checked + [class*=__label] {
-    background-color: unset;
-    border-color: unset;
+.usa-radio__input--tile:checked + [class*='__label'] {
+  background-color: unset;
+  border-color: unset;
 }
 
-.usa-radio__input--tile + [class*=__label] {
-    padding: 20px 20px 20px 66px;
-    background-color: unset;
-    border-radius: unset;
-    border: unset;
-    color: unset;
-    margin-top: unset;
+.usa-radio__input--tile + [class*='__label'] {
+  padding: 20px 20px 20px 66px;
+  background-color: unset;
+  border-radius: unset;
+  border: unset;
+  color: unset;
+  margin-top: unset;
 }
 
-.usa-radio__input--tile+[class*=__label]::before {
-    left: unset;
-    padding-right: 16px;
+.usa-radio__input--tile + [class*='__label']::before {
+  left: unset;
+  padding-right: 16px;
 }
 
+#fba-button.usa-button {
+  background-color: var(--SBA-Celeste) !important;
+}
+
+#fba-button.usa-button:hover {
+  background-color: #1a4480 !important;
+}
+
+/*.fba-modal-dialog h1 {*/
+/*    color: red;*/
+/*}*/
+
+.fba-modal-dialog {
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.fba-modal-dialog .wrapper {
+  padding-top: 32px;
+  padding-right: 32px;
+  padding-left: 32px;
+}
+
+.fba-modal-dialog .wrapper header h1 {
+  font-weight: 700;
+  padding-bottom: 20px;
+}
