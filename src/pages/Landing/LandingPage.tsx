@@ -40,6 +40,12 @@ const LandingPage = () => {
 
   const correctAccessKey = getAccessKeyFromURL();
 
+  useEffect(() => {
+    if (params.accessKey === correctAccessKey) {
+      sessionStorage.setItem('access-key', params.accessKey);
+    }
+  }, [params.accessKey, correctAccessKey]);
+
   const fetchUserDetails = async () => {
     try {
       const response = await fetch(`${CLS_URL}/api/current-user-details`, { method: 'GET', credentials: 'include' });

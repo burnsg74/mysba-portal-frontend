@@ -26,6 +26,27 @@ const App: React.FC = () => {
   const location = useLocation();
   const profileData: IUser = useSelector(getUser);
 
+  const handleSignOut = async () => {
+    console.log('No Access Key');
+    document.cookie = 'sid=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'okta-oauth-nonce=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    document.cookie = 'okta-oauth-state=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+
+    try {
+      console.log('Signing out');
+      await oktaAuth.signOut({
+        revokeAccessToken: true,
+        revokeRefreshToken: true,
+      });
+      console.log('Signed out, done');
+      navigate('/');
+    } catch (error) {
+      console.error('Error during sign out: ', error);
+    } finally {
+      navigate('/');
+    }
+  };
+
   useEffect(() => {
     if (location.pathname === '/' || location.pathname === '/loading' || location.pathname === '/login/callback') {
       return;
@@ -35,6 +56,17 @@ const App: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+
+    if (location.pathname === '/') {
+      return;
+    }
+
+    const accessKey = sessionStorage.getItem('access-key');
+    if (!accessKey) {
+      handleSignOut();
+      return;
+    }
+
     if (location.pathname === '/' || location.pathname === '/loading' || location.pathname === '/login/callback') {
       return;
     }
