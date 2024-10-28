@@ -30,6 +30,13 @@ if (isHomePage) {
   document.head.appendChild(dapScript);
 }
 
+if (!isHomePage) {
+  const touchPointsScript = document.createElement('script');
+  touchPointsScript.async = true;
+  touchPointsScript.src = 'https://touchpoints.app.cloud.gov/touchpoints/86b5b5ea.js';
+  document.body.prepend(touchPointsScript);
+}
+
 const root = createRoot(container);
 root.render(
   <Provider store={store}>
